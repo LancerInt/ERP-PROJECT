@@ -12,12 +12,73 @@ This blueprint translates the ERP vision into a Zoho Creator application suite t
 - **Workflow automation**: Approval routing, notifications, escalations, and conditional branching follow Deluge workflow rules.
 - **Financial compliance**: GST/TDS/TCS tracking, ledger integrity, bank reconciliation, and lockable fiscal periods follow Indian statutory needs.
 - **Extensibility**: IT Admin owns master data maintenance, including products, services, price lists, templates, tax masters, and freight matrices.
+- **Multi-device experience**: Key pages are optimised for both desktop (HO back office) and mobile (warehouse floor teams) interfaces within Zoho Creator.
 
 ### 1.2 Application Structure
 - **App Groups**: Separate Creator pages/workflows by module (Purchase, Sales, Production, QC, Inventory, Finance, Attendance, Logistics).
 - **Shared Masters**: Centralised forms (Company, Warehouse, Stakeholder Roles, Products, Services, Vendors, Customers, Transporters, Tax, Freight Terms, Templates, Machines, Employees/Staff).
-- **Integrations**: External services include Zoho Sign-in (portal users), AI-powered PO parser (custom function/API), face recognition (external API), Tally exports, bank statement parsers.
+- **Integrations**: External services include Zoho Sign-in (portal users), AI-powered PO parser (OpenAI API), face recognition (OpenAI API), Tally exports, bank statement parsers.
 - **Admin Console**: Custom page for IT Admin to maintain branding (logos/templates), system parameters, service categories, approval delegations, and automation thresholds.
+
+### 1.3 Cross-Module Flowchart
+The following flowchart summarises the interactions between major modules from demand capture to financial closure.
+
+```mermaid
+flowchart LR
+    subgraph Purchase
+        PR[Purchase Request]
+        RFQ[RFQ & Quote Evaluation]
+        PO[Purchase Order]
+        RA[Receipt Advice]
+    end
+
+    subgraph Sales
+        CPO[Customer PO Upload]
+        SO[Sales Order]
+        DC[Dispatch Challan]
+        SI[Sales Invoice]
+    end
+
+    subgraph Production
+        BOM[BOM Request]
+        WO[Production Batch]
+        QCProd[QC Result]
+    end
+
+    subgraph Logistics
+        STF[Stock Transfer]
+        JW[Job Work]
+        SR[Sales Return]
+    end
+
+    subgraph Finance
+        PayAdv[Vendor Payment Advice]
+        FreightAdv[Freight Advice]
+        Recv[Customer Receipt]
+        Recon[Bank Reconciliation]
+    end
+
+    subgraph Attendance
+        Att[Attendance & Overtime]
+    end
+
+    PR --> RFQ --> PO --> RA
+    RA --> QCProd
+    QCProd -->|Pass| Inventory[(Inventory Ledger)]
+    QCProd -->|Fail| Exception[Credit Note / Rework]
+    PO -. Shortfall .-> BOM
+    BOM --> WO --> QCProd
+    Inventory --> DC --> SI --> Recv
+    CPO --> SO --> DC
+    DC --> FreightAdv --> PayAdv
+    RA --> FreightAdv
+    PayAdv --> Recon
+    Recv --> Recon
+    STF --> Inventory
+    JW --> Inventory
+    SR --> QCProd
+    Att --> Wage[Wage Vouchers] --> PayAdv
+```
 
 ## 2. Data Model Catalogue
 The following tables are primary Zoho Creator forms (or subforms) with key fields and relationships. All forms include standard metadata: Created By, Created Time, Modified By, Modified Time, Active/Inactive.
@@ -145,6 +206,77 @@ The following tables are primary Zoho Creator forms (or subforms) with key field
 | **Overtime Wage Request** | Staff, Date, Hours, Rate, Task Description, Approval (Warehouse Coordinator at Office), Finance Integration | |
 | **Attendance Reports** | Daily Muster, Monthly Summary, Overtime Statement, Payroll Export | |
 
+### 2.12 Key Identifiers & Indexing Strategy
+| Entity/Form | Primary Identifier | Secondary Indexes | Rationale |
+| --- | --- | --- | --- |
+| Company | Company Code (unique) | GSTIN, Legal Name | Fast lookup for compliance and reporting. |
+| Warehouse | Warehouse Code | Company, Geo Coordinates | Supports warehouse-scoped sharing and attendance geo-fencing. |
+| Product | SKU Code | Product Type, Batch Flag | Enables template mapping and stock queries. |
+| Service Catalogue | Service Code | Category, Direction | Filtering for freight/wage vouchers. |
+| Vendor/Customer | Vendor Code / Customer Code | GSTIN, PAN, Company | Mandatory for statutory reports and ledger searches. |
+| Purchase Order | PO Number + Revision | Vendor, Status, Warehouse | Track partial receipts and approvals. |
+| Sales Order | SO Number | Customer, Warehouse, Status | Required for dispatch planning and reconciliation. |
+| Inventory Ledger | Auto ID | Warehouse, Product, Batch, Status | FIFO costing and in-transit tracking. |
+| Production Batch | Batch ID (warehouse prefix + running number) | Template Revision, Status | Traceability across QC and dispatch. |
+| QC Sample Register | Lab Code (warehouse + month + sequence) | Product, Status | Compliance traceability and counter sample reminders. |
+| Attendance Log | Auto ID | Staff, Date, Device | Payroll integration and audits. |
+
+### 2.13 ERD Diagrams
+#### 2.13.1 Core Masters & Security
+```mermaid
+erDiagram
+    COMPANY ||--o{ WAREHOUSE : owns
+    COMPANY ||--o{ PRICE_LIST : defines
+    COMPANY ||--o{ LEDGER : consolidates
+    WAREHOUSE ||--o{ GODOWN : contains
+    WAREHOUSE ||--o{ WAREHOUSE_ROLE_SCOPE : "shares with"
+    ROLE_DEFINITION ||--o{ WAREHOUSE_ROLE_SCOPE : governs
+    ROLE_DEFINITION ||--o{ USER_ROLE : assigned
+    STAKEHOLDER_USER ||--o{ USER_ROLE : holds
+    STAKEHOLDER_USER ||--o{ EMPLOYEE : references
+    PRODUCT ||--o{ TEMPLATE_LIBRARY : uses
+    PRODUCT ||--o{ PRICE_LIST_LINE : priced
+    SERVICE_CATALOGUE ||--o{ TEMPLATE_LIBRARY : referenced
+```
+
+#### 2.13.2 Purchase, Inventory & Finance
+```mermaid
+erDiagram
+    VENDOR ||--o{ PURCHASE_REQUEST : receives
+    PURCHASE_REQUEST ||--o{ RFQ : generates
+    RFQ ||--o{ QUOTE_RESPONSE : collects
+    QUOTE_RESPONSE ||--o{ QUOTE_EVALUATION : compared
+    QUOTE_EVALUATION ||--|| PURCHASE_ORDER : approves
+    PURCHASE_ORDER ||--o{ RECEIPT_ADVICE : fulfils
+    RECEIPT_ADVICE ||--o{ QC_INBOUND : triggers
+    RECEIPT_ADVICE ||--o{ FREIGHT_ADVICE : incurs
+    RECEIPT_ADVICE ||--o{ INVENTORY_LEDGER : posts
+    QC_INBOUND ||--o{ PAYMENT_ADVICE : authorises
+    FREIGHT_ADVICE ||--o{ PAYMENT_ADVICE : references
+    PAYMENT_ADVICE ||--o{ LEDGER : posts
+    LEDGER ||--o{ BANK_RECON : reconciles
+```
+
+#### 2.13.3 Sales, Production & Logistics
+```mermaid
+erDiagram
+    CUSTOMER ||--o{ CUSTOMER_PO : submits
+    CUSTOMER_PO ||--|| SALES_ORDER : converted
+    SALES_ORDER ||--o{ DISPATCH_CHALLAN : fulfilled
+    DISPATCH_CHALLAN ||--o{ FREIGHT_ADVICE : generates
+    DISPATCH_CHALLAN ||--o{ SALES_INVOICE : invoiced
+    SALES_INVOICE ||--o{ CUSTOMER_LEDGER : posts
+    SALES_INVOICE ||--o{ PRODUCTION_BATCH : reserves
+    PRODUCTION_TEMPLATE ||--o{ PRODUCTION_BATCH : guides
+    PRODUCTION_BATCH ||--o{ INVENTORY_LEDGER : outputs
+    PRODUCTION_BATCH ||--o{ QC_RESULT : evaluated
+    STOCK_TRANSFER_DC ||--o{ INVENTORY_LEDGER : moves
+    JOB_WORK_ORDER ||--o{ JOB_WORK_DC : dispatches
+    JOB_WORK_DC ||--o{ JOB_WORK_RECEIPT : returns
+    JOB_WORK_RECEIPT ||--o{ QC_RESULT : inspected
+    SALES_RETURN ||--o{ QC_RESULT : assessed
+```
+
 ## 3. Role-Based Access & Sharing Rules
 
 ### 3.1 Role Matrix
@@ -176,6 +308,27 @@ The following tables are primary Zoho Creator forms (or subforms) with key field
 - **Global masters**: Products, Services, Templates, Tax Masters accessible to IT Admin and relevant managers.
 - **Auto-sharing**: Workflows automatically share records with approvers and stakeholders referenced in role lookups (leveraging Creator’s `share` deluge task).
 
+### 3.3 Permission Matrix by Module
+| Module | Create | Review/Approve | View/Report | Mobile-first Audience |
+| --- | --- | --- | --- | --- |
+| Purchase Requests | Warehouse Coordinator, Warehouse Manager | Warehouse Coordinator (Office), Purchase Coordinator, Purchase Manager | Office Manager, Finance Manager | Warehouse Coordinator |
+| RFQ & Quote Evaluation | Purchase Coordinator | Purchase Manager, Office Manager (escalations) | Purchase Team, Office Manager | Purchase Coordinator |
+| Purchase Orders | Purchase Coordinator | Purchase Manager | Warehouse Coordinator (Office), Finance Manager, Accounts Manager | Purchase Team |
+| Receipt Advice | Warehouse Coordinator | Warehouse Manager (optional), QC Coordinator (for QC routing) | Purchase Team, Finance Manager | Warehouse Coordinator |
+| QC (Inbound & Production) | Warehouse Supervisor, Warehouse Coordinator | QC Coordinator, QC Manager | Office Manager, Production Manager | QC Field Teams |
+| Production Batches | Warehouse Coordinator, Production Planner | Warehouse Manager, Warehouse Coordinator (Office) | QC Team, Finance (for wages) | Warehouse Coordinator |
+| Sales Orders & Dispatch | Sales Coordinator | Sales Manager | Warehouse Manager, Finance Manager | Sales & Warehouse |
+| Freight Advice | Freight Coordinator | Finance Manager | Office Manager, Accounts Manager | Freight Coordinator |
+| Finance Vouchers (Payment/Receipt/Wages) | Finance Manager, Warehouse Coordinator (Office for drafts) | Office Manager (final), Finance Manager (initial) | Accounts Manager, Auditors (read-only) | Finance Team |
+| Stock Transfer / Shifting | Warehouse Manager, Warehouse Coordinator | Warehouse Coordinator (Office), Finance Manager (for vouchers) | Logistics Team, Office Manager | Warehouse & Logistics |
+| Job Work | Warehouse Coordinator | Warehouse Manager, Purchase Manager (when materials involved) | QC Team, Finance | Warehouse |
+| Sales Return | Warehouse Coordinator, Sales Coordinator | Sales Manager, Office Manager, Finance Manager | QC Team, Warehouse Manager | Warehouse & Sales |
+| Stock Adjustment | Warehouse Coordinator, Warehouse Manager | Warehouse Coordinator (Office), Finance Manager (if >₹25,000) | Office Manager | Warehouse |
+| Attendance & HR | Warehouse HR Coordinator, HR Coordinator (Office) | HR Coordinator (Office), Warehouse Coordinator (Office) | Office Manager (summary), Finance Manager (wage linkage) | HR Teams |
+| Dashboards & Reports | N/A | N/A | Role-based (Sales, Purchase, Finance, QC, HR, Executive) | Mixed |
+
+Permission rules leverage Creator’s granular form and record sharing combined with Deluge-based automation to ensure the same user acting in multiple roles inherits the union of permissions without duplicating accounts.
+
 ## 4. Module Workflows & Automations
 
 ### 4.1 Purchase Workflow Summary
@@ -188,7 +341,7 @@ The following tables are primary Zoho Creator forms (or subforms) with key field
 7. **Receipt Advice**: Upon arrival, Warehouse Coordinator scans vendor invoice (OCR optional), selects PO lines, records received qty, batch, godown, packing materials, freight terms, loading/unloading, discounts. Partial receipts update PO status to Partially Received.
 8. **QC Integration**: If QC required (per product), QC request auto-created and assigned to appropriate role.
 9. **Stock Update**: Passing QC adds goods to stock. Failing QC triggers notifications to Office Manager, Purchase Manager, Purchase Coordinator; credit note workflow available.
-10. **Freight Advice**: Based on freight terms (Paid/To_Pay/Mixed) and recorded actuals, Freight Coordinator drafts advice; Finance Manager approves. Supports instalments, TDS, discounts.
+10. **Freight Advice**: Based on freight terms (Paid/To_Pay/Mixed) and recorded actuals, Freight Coordinator drafts advice; Finance Manager approves. Supports instalments, TDS, discounts, and issues automatic payment reminders on each scheduled due date.
 11. **Payment Advice**: Payment terms drive due dates and ageing reports. Finance Manager generates advice post-QC approval; Office Manager final authorises. Bank statement uploads auto-match payments and mark invoices settled.
 12. **Reporting**: Pending PO report, Ageing payables, Vendor performance, GST/TDS/TCS summaries.
 
@@ -197,7 +350,7 @@ The following tables are primary Zoho Creator forms (or subforms) with key field
 2. **Draft SO**: Creator function maps PO line items to price list entries based on delivery location. Missing products trigger prompt to add to price list (Sales Manager action).
 3. **Approval & Assignment**: Sales Manager/Coordinator approves SO, assigns warehouse. Credit terms validated (overdue triggers warnings to Sales & Finance). Record auto-shared with assigned warehouse roles.
 4. **Dispatch Planning**: Sales Coordinator/Warehouse Manager create DCs. Each DC can pull lines from multiple SOs and specify multiple delivery locations. Transport details captured with master data reference.
-5. **Freight Advice**: Outbound Freight Advice generated similarly to inbound. Supports partial payments, instalments, TDS.
+5. **Freight Advice**: Outbound Freight Advice generated similarly to inbound. Supports partial payments, instalments, TDS, and scheduled due-date reminders for outstanding freight instalments.
 6. **Invoice Processing**: Once DC executed, internal invoice record created. Statutory invoice PDF uploaded; system compares line totals vs SO to detect variance. Office Manager/Sales Manager review and accept with remarks if overriding values.
 7. **Inventory Deduction**: On invoice acceptance, inventory deducted (per batch/godown). Payment terms update receivables ledger and trigger auto-reminders for overdue (> credit terms + 2 weeks).
 8. **Reconciliation Report**: Dashboard connecting Customer PO → SO → DC → Invoice → Payment with colour-coded status, anomalies flagged.
@@ -214,7 +367,7 @@ The following tables are primary Zoho Creator forms (or subforms) with key field
 9. **Integration**: Production completion triggers inventory additions, wage voucher creation, QC report linking.
 
 ### 4.4 Finance Workflow Summary
-- **Vendor Payments**: Payment advice from Purchase; 2-step approval (Finance Manager → Office Manager). Bank statement reconciliation auto-matches transactions, flags unmatched items.
+- **Vendor Payments**: Payment advice from Purchase; 2-step approval (Finance Manager → Office Manager). Bank statement reconciliation runs off daily uploads to auto-match transactions and flag unmatched items.
 - **Customer Receipts**: Payment receipt records created via bank upload or manual entry. Overdue receivables trigger notifications and escalate if >2 weeks overdue.
 - **Freight/Wage Ledgers**: Separate ledgers per transporter and contractor, capturing TDS, instalments, partial payments.
 - **GST/TDS/TCS**: Tax master maintains rates; each transaction calculates taxes separately from product price. GST reconciliation report compares tax liability vs credits per company.
@@ -239,7 +392,7 @@ The following tables are primary Zoho Creator forms (or subforms) with key field
 - **Stock Update**: Based on QC outcome, inventory adjusted (positive adjustments require approvals). Debit note auto-calculated with override + remarks.
 
 ### 4.8 Stock Adjustment Workflow Summary
-- Requests require attachments. Approvals by Warehouse Coordinator at Office; high-value adjustments escalate to Finance/Office Manager.
+- Requests require attachments. Approvals by Warehouse Coordinator at Office; adjustments valued above ₹25,000 automatically escalate to Finance Manager and Office Manager for secondary approval.
 - Monthly summary report auto-emailed.
 - Integration with physical stock-take schedule ensures adjustments linked to count events.
 
@@ -257,15 +410,75 @@ The following tables are primary Zoho Creator forms (or subforms) with key field
 - Photos auto-deleted after 7 days via scheduled function.
 - Payroll export integrates with payroll system; also feed into wage vouchers for contractors/headcount groups.
 
-## 5. Reporting & Dashboards
-- **Procurement**: Pending PRs, RFQ status, PO vs Receipt variance, Vendor OTIF, Pending POs, Ageing payables.
-- **Sales**: Open SOs, Dispatch status, Freight spend, Receivables ageing, Reconciliation report, Invoice variance log.
-- **Inventory**: Warehouse/godown stock, Batch tracking, In-transit stock, FIFO valuation, Stock adjustments, Safety stock warnings (optional).
-- **Production**: Batch yields, QC results, WIP, Wage costs, Template utilisation.
-- **Finance**: Cashflow, GST/TDS/TCS reports, Ledger summaries, Bank reconciliation status, Petty cash balances.
-- **QC**: Test turnaround, pass/fail trends, counter sample reminders.
-- **Attendance**: Daily muster, absenteeism trends, overtime cost, shift adherence.
-- **Job Work**: Open DCs, vendor performance, turnaround vs template targets.
+## 5. Dashboard Designs
+
+### 5.1 Executive Command Centre
+| Widget | Data Source | Insight | Device |
+| --- | --- | --- | --- |
+| Multi-company KPI tiles | Aggregated ledgers, inventory valuation | Revenue, payables, receivables, cash on hand per company | Desktop |
+| Warehouse health map | Inventory ledger, QC results | Stock availability, QC holds, in-transit shipments by warehouse | Desktop |
+| Exception feed | Workflow logs, variance trackers | High-value stock adjustments, overdue freight, QC failures, pending approvals | Desktop & Mobile |
+
+### 5.2 Purchase Operations Dashboard
+| Widget | Data Source | Insight | Device |
+| --- | --- | --- | --- |
+| PR ageing bar chart | Purchase Request | Demand backlog by warehouse and age | Desktop |
+| RFQ pipeline Kanban | RFQ, Quote Evaluation | RFQ stage progression and quote comparison status | Desktop |
+| PO vs Receipt variance table | Purchase Order, Receipt Advice | Ordered vs received qty/value, partial receipt tracker | Desktop |
+| Vendor OTIF gauge | Receipt Advice, QC Inbound | On-time-in-full % per vendor with drill-down | Desktop |
+| Pending freight reminders list | Freight Advice | Instalments due today/overdue | Mobile |
+
+### 5.3 Sales & Customer Service Dashboard
+| Widget | Data Source | Insight | Device |
+| --- | --- | --- | --- |
+| Sales funnel (PO → SO → DC → Invoice) | Customer PO, SO, DC, Invoice | Conversion ratios and bottlenecks | Desktop |
+| Dispatch calendar | Dispatch Challan | Upcoming dispatches per warehouse | Desktop & Mobile |
+| Receivables ageing matrix | Customer Ledger | Outstanding receivables by credit bucket with alerts beyond +14 days | Desktop |
+| Freight spend tracker | Freight Advice (Outbound) | Freight cost per transporter/route vs budget | Desktop |
+| Customer variance alert list | Invoice variance, Sales Reconciliation | Pricing discrepancies or short shipments flagged | Mobile |
+
+### 5.4 Production & QC Dashboard
+| Widget | Data Source | Insight | Device |
+| --- | --- | --- | --- |
+| Batch timeline Gantt | Production Batch | Stage progression per batch with SLA status | Desktop |
+| Yield analytics | Production Batch, Template | Actual vs expected yield, purity %, AI content per product/batch | Desktop |
+| QC turnaround tiles | QC Request, QC Result | Average test duration per warehouse/product | Desktop |
+| Rework tracker | QC Result, Production Batch | Active rework batches and reasons | Desktop & Mobile |
+| Wage impact chart | Wage Vouchers, Production Batch | Wage cost per batch vs template baseline | Desktop |
+
+### 5.5 Inventory & Logistics Dashboard
+| Widget | Data Source | Insight | Device |
+| --- | --- | --- | --- |
+| Warehouse/godown stock heatmap | Inventory Ledger | Quantity by product type and godown | Desktop |
+| In-transit monitor | Stock Transfer DC, Dispatch Challan | Shipments pending receipt with ETA | Desktop & Mobile |
+| Batch traceability search | Inventory Ledger, QC Result | Batch location, QC status, linked transactions | Desktop |
+| Stock adjustment summary | Stock Adjustment Request | Monthly adjustments by reason/value with high-value flags | Desktop |
+| Freight & wages voucher queue | Freight Advice, Wage Vouchers | Draft vs approved vouchers awaiting payment | Mobile |
+
+### 5.6 Finance Control Tower
+| Widget | Data Source | Insight | Device |
+| --- | --- | --- | --- |
+| Daily bank reconciliation status | Bank Statement Upload, Payment/Receipt | Matched vs unmatched transactions from daily uploads | Desktop |
+| Cashflow projection | Payment Advice, Receipt, Freight/Wage schedules | Next 30-day inflow/outflow | Desktop |
+| GST/TDS/TCS compliance cards | Tax Master, Ledgers | Liabilities vs credits, upcoming filing deadlines | Desktop |
+| Petty cash ledger | Petty Cash Float | Opening balance, settlements, replenishments per warehouse | Desktop & Mobile |
+| Overdue payables/receivables alerts | Vendor & Customer Ledgers | Items beyond terms (with +14 day escalation) | Mobile |
+
+### 5.7 HR & Attendance Dashboard
+| Widget | Data Source | Insight | Device |
+| --- | --- | --- | --- |
+| Daily muster list | Attendance Log | Present/absent/permission per shift | Mobile |
+| Shift compliance chart | Attendance Log, Shift Master | Late arrivals/early exits by shift | Desktop |
+| Leave approval queue | Leave Request | Pending requests by approver | Mobile |
+| Overtime cost trend | Overtime Wage Request, Wage Vouchers | Weekly OT hours vs approved wage cost | Desktop |
+
+### 5.8 Job Work Performance Dashboard
+| Widget | Data Source | Insight | Device |
+| --- | --- | --- | --- |
+| Open job work orders list | Job Work Order | Status, turnaround timer against template SLA | Desktop |
+| Material in/out tracker | Job Work DC, Job Work Receipt | Inventory currently with vendors vs returned | Desktop |
+| Job work cost analysis | Job Work Charge Voucher | Cost vs template baseline including freight | Desktop |
+| Pending QC for job work | QC Result | QC stages awaiting closure | Mobile |
 
 ## 6. Integration & Automation Considerations
 - **Zoho Sign-in**: Use Zoho Creator portals for user access; map portal users to stakeholder roles.
@@ -275,6 +488,8 @@ The following tables are primary Zoho Creator forms (or subforms) with key field
 - **Tally Export**: Generate CSV/PDF exports aligning with Tally import structure for GST reconciliation and ledger posting.
 - **Digital Signatures**: Use Zoho Sign or third-party for QC reports; store signed document.
 - **Notifications**: Email/SMS/Zoho Cliq notifications for approvals, overdue items, reminder triggers (freight payments, counter sample returns, job work overdue).
+- **IoT Readiness**: No immediate machinery IoT integration; leave extensibility hooks (webhooks/API placeholders) for future phases once monitoring scope is finalised.
+- **Device Optimisation**: Creator pages and mobile apps configured per role—warehouse, QC, logistics, and attendance stakeholders receive mobile-responsive pages while HO dashboards stay desktop-centric.
 
 ## 7. Implementation Roadmap (Suggested Phases)
 1. **Foundation & Masters**: Configure companies, warehouses, roles, products/services, tax masters, templates, branding console.
@@ -293,12 +508,12 @@ The following tables are primary Zoho Creator forms (or subforms) with key field
 - **Data Retention**: Attendance photos auto-purged after 7 days; QC counter samples tracked for 1–2 years; financial documents retained per statutory requirement.
 - **Exception Handling**: Provide workflows for manual interventions (e.g., skip RFQ, override invoice amount) with mandatory remarks and approvals.
 
-## 9. Open Questions & Suggestions
-- Confirm preferred AI services for PO parsing and face recognition to estimate integration effort.
-- Define thresholds for high-value stock adjustments and freight payment reminders (default ₹25,000 and payment schedule due date).
-- Decide on frequency for bank statement uploads (daily/weekly) to tune reconciliation automation.
-- Evaluate need for IoT connectivity for machinery monitoring in future phases.
-- Assess requirement for mobile vs desktop Creator interfaces per stakeholder group (warehouse teams likely need mobile-friendly pages).
+## 9. Decision Log
+- **AI Services**: OpenAI API selected for both customer PO parsing and face recognition integrations.
+- **High-Value Thresholds**: Stock adjustments above ₹25,000 escalate to Finance/Office Manager; freight payment reminders trigger on each instalment due date.
+- **Bank Statement Frequency**: Finance uploads bank statements daily to maximise reconciliation automation accuracy.
+- **IoT Roadmap**: Machinery IoT integration deferred to future phases; keep architecture extensible for later adoption.
+- **Interface Strategy**: Enable both Zoho Creator desktop pages (HO users) and mobile-optimised pages (warehouse, QC, logistics, attendance stakeholders).
 
 ---
 This blueprint serves as the authoritative reference for building the Zoho Creator ERP. Each module section can be expanded into detailed form/workflow specifications during configuration sprints. IT Admin and module owners should review jointly to validate data structures and approval matrices before development.
