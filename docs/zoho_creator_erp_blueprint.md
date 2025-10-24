@@ -4,6 +4,11 @@
 
 This blueprint translates the ERP vision into a Zoho Creator application suite that supports multi-company, multi-warehouse operations governed from a Head Office (HO). The design emphasises role-based security, modular workflows, configurable master data, and extensibility for future warehouses, products, and services. The artefact is structured for Creator builders and process owners to collaborate on implementation details, identify dependencies, and phase the rollout.
 
+### Related Documents
+- **[Module Flowcharts](./zoho_creator_module_flowcharts.md)** – detailed flow diagrams for each functional area.
+- **[Data Models](./zoho_creator_data_models.md)** – Creator form catalogues with key attributes and relationships.
+- **[ERD Library](./zoho_creator_erds.md)** – conceptual entity-relationship diagrams per domain.
+
 ### 1.1 Design Principles
 - **Single tenant, multi-entity**: One Creator application where companies and warehouses are linked to a central Head Office, yet each warehouse works autonomously for stock, production, and attendance.
 - **Role-centric security**: Stakeholders act in multiple roles; permissions inherit from role assignments with scoped data sharing rules per warehouse/company.
