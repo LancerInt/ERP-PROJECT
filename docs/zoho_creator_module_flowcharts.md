@@ -57,7 +57,7 @@ flowchart TD
     BOMReq[BOM Request\nWarehouse Coordinator] --> WMApprove{Warehouse Manager Approval?}
     WMApprove -->|Approved| BOMCalc[Auto Calculate Inputs & Shortfall]
     WMApprove -->|Rejected| CloseReq[Request Closed]
-    BOMCalc --> Issue["Material Issue\\n(Warehouse Stores)"]
+    BOMCalc --> Issue[Material Issue\n Warehouse Stores]
     Issue --> WO[Work Order / Batch Created]
     WO --> Stage1[Mixing / Production]
     Stage1 --> Stage2[Packing / Filling]
@@ -66,7 +66,7 @@ flowchart TD
     QCDecision -->|Pass| CloseBatch[Batch Closed & Inventory Updated]
     QCDecision -->|Reformulate| Rework[Create Rework Batch]
     QCDecision -->|Fail| Scrap[Notify & Scrap / Return]
-    WO --> WageCalc["Wage Calculation\\n(Template or Headcount)"]
+    WO --> WageCalc[Wage Calculation\n Template or Headcount]
     WageCalc --> WageApproval[Finance Approval Workflow]
 ```
 
@@ -94,7 +94,7 @@ flowchart TD
     DraftDC --> LoadWage[Record Loading Wages]
     DraftDC --> InTransit[Mark Inventory In-Transit]
     InTransit --> FreightAdvice[Draft Local Drayage Freight Advice]
-    FreightAdvice --> HOApprove["Warehouse Coordinator (Office) Approval"]
+    FreightAdvice --> HOApprove[Warehouse Coordinator Office Approval]
     HOApprove --> FinanceApprove[Finance Manager Approval]
     InTransit --> ReceiptAdvice[Receiving Warehouse Receipt Advice]
     ReceiptAdvice --> QCCheck{QC Required?}
@@ -142,7 +142,7 @@ flowchart TD
     ReceiptJW --> Partial{Partial Receipt?}
     Partial -->|Yes| UpdatePending[Keep Balance Open]
     Partial -->|No| CloseJW[Close Job Work Order]
-    ReceiptJW --> QCCheck["QC Workflow (if required)"]
+    ReceiptJW --> QCCheck[QC Workflow if required]
     QCCheck --> WageFinance[Process Job Work Charges & Freight Payments]
 ```
 
@@ -168,7 +168,7 @@ flowchart TD
     ReasonSel --> Threshold{Value > ₹25,000?}
     Threshold -->|Yes| Escalate[Notify Office Manager & Finance]
     Threshold -->|No| NormalFlow[Proceed]
-    NormalFlow --> OfficeApprove["Warehouse Coordinator (Office) Approval"]
+    NormalFlow --> OfficeApprove[Warehouse Coordinator Office Approval]
     Escalate --> OfficeApprove
     OfficeApprove --> UpdateStock[Update Inventory & Ledger]
     UpdateStock --> MonthlyRpt[Monthly Adjustment Report]
@@ -183,11 +183,12 @@ flowchart TD
     ActiveStaff --> ShiftAssign[Assign Shifts & Overtime Eligibility]
     ShiftAssign --> Attendance[Daily Attendance Capture\nGeo + Face Match]
     Attendance --> Overtime[Overtime Request]
-    Overtime --> OfficeReview["Warehouse Coordinator (Office) Review"]
+    Overtime --> OfficeReview[Warehouse Coordinator Office Review]
     OfficeReview --> FinanceWage[Finance Wage Processing]
     Attendance --> LeaveReq[Leave / Permission Request]
     LeaveReq --> ApproveLeave{Approved by HR Coordinator?}
     ApproveLeave -->|Yes| CalendarUpdate[Update Attendance Calendar]
     ApproveLeave -->|No| NotifyStaff[Notify Decision]
     Attendance --> Reports[HO HR Reports & Payroll Export]
+```
 ```
