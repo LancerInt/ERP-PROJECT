@@ -56,6 +56,7 @@ classDiagram
         +Capacity Value
         +Batch Tracking Enabled
         +Default QC Hold Area
+        +Machinery List
     }
     class Machinery {
         +Machine ID
@@ -308,7 +309,7 @@ classDiagram
     }
     Company "1" -- "many" Warehouse
     Warehouse "1" -- "many" Godown
-    Warehouse "1" -- "many" Machinery
+    Godown "1" -- "many" Machinery
     RoleDefinition "1" -- "many" ApprovalLevel
     StakeholderUser "1" -- "many" RoleDefinition : assigned
     StaffMaster "1" -- "many" StaffBank

@@ -55,7 +55,6 @@ and configuring automation.
 | Warehouse Coordinator(s) | Multi-select Lookup (Stakeholder User) |  | |
 | Warehouse Supervisor(s) | Multi-select Lookup (Stakeholder User) |  | |
 | Godown List | Subform | Y | Contains godown level stock segregation |
-| Machinery List | Subform |  | Reference to machinery installed |
 | Active Flag | Checkbox | Y | Deactivate to hide from new transactions |
 | Notes | Multi-line |  | |
 
@@ -69,8 +68,9 @@ and configuring automation.
 | Capacity Value | Decimal |  | Max storage |
 | Batch Tracking Enabled | Checkbox | Y | Controls batch-level location |
 | Default QC Hold Area | Checkbox |  | Flags quarantine |
+| Machinery List | Subform |  | Equipment housed in the godown |
 
-#### Machinery (subform)
+#### Machinery (Godown subform)
 | Field Name | Type | Req. | Notes |
 | --- | --- | --- | --- |
 | Machine ID | Single Line | Y | Unique equipment identifier |
