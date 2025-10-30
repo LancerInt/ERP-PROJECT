@@ -1,6 +1,6 @@
 # Zoho Creator ERP Data Models
 
-This is catalogue enumerates every Zoho Creator form, subform, and lookup that powers the ERP. Each section lists all fields
+This is the catalogue enumerates every Zoho Creator form, subform, and lookup that powers the ERP. Each section lists all fields
 required by the business requirements, grouped by module. Use these definitions when building forms, importing legacy data,
 and configuring automation.
 
