@@ -10,7 +10,9 @@ This blueprint translates the ERP vision into a Zoho Creator application suite t
 - **[Data Models](./zoho_creator_data_models.md)** – Creator form catalogues with key attributes and relationships.
 - **[Domain ERD Library](./zoho_creator_erds.md)** – conceptual entity-relationship diagrams per module.
 - **[Cross-Module ERDs](./zoho_creator_cross_module_erds.md)** – end-to-end data connections across modules.
+- **[Master Forms Guide](./zoho_creator_master_forms.md)** – step-by-step instructions for configuring all shared masters.
 - **[Phased Implementation Plan](./zoho_creator_implementation_plan.md)** – rollout roadmap with dependencies and timelines.
+- **[Setup Script & Repository Structure](./zoho_creator_setup_structure.md)** – scaffolding script usage and source control layout.
 
 ### 1.1 Design Principles
 - **Single tenant, multi-entity**: One Creator application where companies and warehouses are linked to a central Head Office, yet each warehouse works autonomously for stock, production, and attendance.
