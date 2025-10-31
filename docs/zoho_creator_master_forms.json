@@ -1,0 +1,512 @@
+{
+  "title": "Zoho Creator Master Forms",
+  "description": "Master data forms required before enabling transactional modules in Zoho Creator.",
+  "sections": [
+    {
+      "name": "Organisational Masters",
+      "forms": [
+        {
+          "name": "Company Master",
+          "purpose": "Register each legal entity participating in purchasing, sales, finance, or compliance so other masters can reference it.",
+          "fields": [
+            {"name": "Company Code", "type": "Single Line (Unique)", "required": true, "notes": "Short code used across modules and exports"},
+            {"name": "Legal Name", "type": "Single Line", "required": true, "notes": "Registered legal entity name"},
+            {"name": "Trade Name", "type": "Single Line", "required": false, "notes": "Optional doing-business-as name"},
+            {"name": "GSTIN", "type": "Single Line", "required": true, "notes": "Validate 15-character GST format"},
+            {"name": "PAN", "type": "Single Line", "required": false, "notes": "Required for TDS/TCS"},
+            {"name": "CIN", "type": "Single Line", "required": false, "notes": "Corporate Identification Number"},
+            {"name": "Registered Address", "type": "Address", "required": true, "notes": "Multi-line address"},
+            {"name": "Billing Address", "type": "Address", "required": true, "notes": "Defaults onto invoices"},
+            {"name": "Contact Email", "type": "Email", "required": false, "notes": "Finance escalation"},
+            {"name": "Contact Phone", "type": "Phone", "required": false, "notes": null},
+            {"name": "Default Currency", "type": "Dropdown", "required": true, "notes": "Seed from System Parameters"},
+            {"name": "Books Export Flag", "type": "Checkbox", "required": false, "notes": "Toggle for Tally integration"},
+            {"name": "Active From", "type": "Date", "required": true, "notes": "Effective start date"},
+            {"name": "Active To", "type": "Date", "required": false, "notes": "Optional sunset"},
+            {"name": "Notes", "type": "Multi-line", "required": false, "notes": null}
+          ]
+        },
+        {
+          "name": "Warehouse Master",
+          "purpose": "Capture warehouse profile, governance roles, and embedded godown/machinery lists.",
+          "fields": [
+            {"name": "Warehouse Code", "type": "Single Line (Unique)", "required": true, "notes": "Used in stock and logistics documents"},
+            {"name": "Company", "type": "Lookup (Company)", "required": true, "notes": "Owning entity"},
+            {"name": "Name", "type": "Single Line", "required": true, "notes": "Display name"},
+            {"name": "Warehouse Type", "type": "Dropdown", "required": true, "notes": "Head Office / Factory / Job Work Partner"},
+            {"name": "Address", "type": "Address", "required": true, "notes": "Physical location"},
+            {"name": "City", "type": "Single Line", "required": true, "notes": null},
+            {"name": "State", "type": "Dropdown", "required": true, "notes": "GST place of supply"},
+            {"name": "Country", "type": "Dropdown", "required": true, "notes": null},
+            {"name": "Pincode", "type": "Single Line", "required": true, "notes": null},
+            {"name": "Geo Latitude", "type": "Decimal", "required": true, "notes": "Attendance geofence"},
+            {"name": "Geo Longitude", "type": "Decimal", "required": true, "notes": "Attendance geofence"},
+            {"name": "Time Zone", "type": "Dropdown", "required": true, "notes": "SLA calculations"},
+            {"name": "Default Currency", "type": "Dropdown", "required": true, "notes": "Inherits from company by default"},
+            {"name": "Warehouse Coordinator (Office)", "type": "Lookup (Stakeholder User)", "required": "conditional", "notes": "Mandatory for active warehouses"},
+            {"name": "Warehouse HR Coordinator", "type": "Lookup (Stakeholder User)", "required": false, "notes": null},
+            {"name": "Warehouse Manager(s)", "type": "Multi-select Lookup (Stakeholder User)", "required": false, "notes": null},
+            {"name": "Warehouse Coordinator(s)", "type": "Multi-select Lookup (Stakeholder User)", "required": false, "notes": null},
+            {"name": "Warehouse Supervisor(s)", "type": "Multi-select Lookup (Stakeholder User)", "required": false, "notes": null},
+            {"name": "Godown List", "type": "Subform", "required": true, "notes": "Maintain at least one godown"},
+            {"name": "Active Flag", "type": "Checkbox", "required": true, "notes": "Deactivate to hide from new transactions"},
+            {"name": "Notes", "type": "Multi-line", "required": false, "notes": null}
+          ],
+          "subforms": [
+            {
+              "name": "Godown List",
+              "fields": [
+                {"name": "Godown Code", "type": "Single Line", "required": true, "notes": "Unique within warehouse"},
+                {"name": "Godown Name", "type": "Single Line", "required": true, "notes": null},
+                {"name": "Storage Condition", "type": "Dropdown", "required": false, "notes": "Ambient / Cold / Hazardous"},
+                {"name": "Capacity UOM", "type": "Dropdown", "required": false, "notes": null},
+                {"name": "Capacity Value", "type": "Decimal", "required": false, "notes": "Max storage"},
+                {"name": "Batch Tracking Enabled", "type": "Checkbox", "required": true, "notes": "Controls batch-level location"},
+                {"name": "Default QC Hold Area", "type": "Checkbox", "required": false, "notes": "Flags quarantine"},
+                {"name": "Machinery List", "type": "Subform", "required": false, "notes": "Independent machinery roster"}
+              ],
+              "subforms": [
+                {
+                  "name": "Machinery List",
+                  "fields": [
+                    {"name": "Machine ID", "type": "Single Line", "required": true, "notes": "Unique equipment identifier"},
+                    {"name": "Machine Name", "type": "Single Line", "required": true, "notes": null},
+                    {"name": "Category", "type": "Dropdown", "required": true, "notes": "Capital Goods / Machine Spares / Production Line"},
+                    {"name": "Commission Date", "type": "Date", "required": false, "notes": null},
+                    {"name": "Maintenance Vendor", "type": "Lookup (Vendor)", "required": false, "notes": "For service/job work"},
+                    {"name": "Next Service Due", "type": "Date", "required": false, "notes": null},
+                    {"name": "Status", "type": "Dropdown", "required": true, "notes": "Active / Under Maintenance / Retired"}
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Role Definition",
+          "purpose": "Define composite permission bundles that control record creation, approval, and sharing.",
+          "fields": [
+            {"name": "Role Code", "type": "Single Line", "required": true, "notes": "Unique role identifier"},
+            {"name": "Role Name", "type": "Single Line", "required": true, "notes": null},
+            {"name": "Module Permissions", "type": "Multi-line JSON", "required": true, "notes": "CRUD/approval rights per module"},
+            {"name": "Data Scope", "type": "Dropdown", "required": true, "notes": "Global / Company / Warehouse"},
+            {"name": "Approval Levels", "type": "Subform", "required": false, "notes": "Configure amount thresholds"},
+            {"name": "Default Share Rules", "type": "Multi-line", "required": false, "notes": "Creator share settings template"},
+            {"name": "Active Flag", "type": "Checkbox", "required": true, "notes": null}
+          ],
+          "subforms": [
+            {
+              "name": "Approval Levels",
+              "fields": [
+                {"name": "Module", "type": "Dropdown", "required": true, "notes": "Purchase / Sales / Production / etc."},
+                {"name": "Stage", "type": "Dropdown", "required": true, "notes": "Request / Evaluation / Payment"},
+                {"name": "Min Amount", "type": "Currency", "required": false, "notes": "Threshold"},
+                {"name": "Max Amount", "type": "Currency", "required": false, "notes": null}
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Stakeholder User",
+          "purpose": "Map Zoho portal users to ERP stakeholder roles and warehouse scopes.",
+          "fields": [
+            {"name": "Portal User ID", "type": "Single Line", "required": true, "notes": "Zoho portal identifier"},
+            {"name": "Employee Record", "type": "Lookup (Staff Master)", "required": true, "notes": "Links to staff"},
+            {"name": "Primary Email", "type": "Email", "required": true, "notes": null},
+            {"name": "Mobile", "type": "Phone", "required": false, "notes": null},
+            {"name": "Assigned Roles", "type": "Multi-select Lookup (Role Definition)", "required": true, "notes": "Supports multi-role users"},
+            {"name": "Default Warehouse", "type": "Lookup (Warehouse)", "required": false, "notes": null},
+            {"name": "Warehouse Scope", "type": "Multi-select Lookup (Warehouse)", "required": false, "notes": "Overrides default"},
+            {"name": "Status", "type": "Dropdown", "required": true, "notes": "Active / Suspended"},
+            {"name": "Last Accessed", "type": "Date-Time", "required": false, "notes": null},
+            {"name": "Notes", "type": "Multi-line", "required": false, "notes": null}
+          ]
+        },
+        {
+          "name": "Staff Master",
+          "purpose": "Maintain the complete roster of staff for attendance, HR, and wage integration.",
+          "fields": [
+            {"name": "Staff ID", "type": "Single Line (Unique)", "required": true, "notes": "Official staff number"},
+            {"name": "Full Name", "type": "Single Line", "required": true, "notes": null},
+            {"name": "Gender", "type": "Dropdown", "required": false, "notes": null},
+            {"name": "Date of Birth", "type": "Date", "required": false, "notes": null},
+            {"name": "Employment Type", "type": "Dropdown", "required": true, "notes": "Permanent / Contract / Trainee"},
+            {"name": "Employment Location", "type": "Dropdown", "required": true, "notes": "Office / Warehouse / Lab / etc."},
+            {"name": "Warehouse / Office", "type": "Lookup (Warehouse)", "required": "conditional", "notes": "Mandatory for warehouse-based staff"},
+            {"name": "Department", "type": "Dropdown", "required": false, "notes": null},
+            {"name": "Designation", "type": "Single Line", "required": false, "notes": null},
+            {"name": "Date of Joining", "type": "Date", "required": true, "notes": null},
+            {"name": "Reporting Manager", "type": "Lookup (Staff Master)", "required": false, "notes": "Self-reference"},
+            {"name": "Active Status", "type": "Dropdown", "required": true, "notes": "Active / On Notice / Relieved"},
+            {"name": "Attendance Shift", "type": "Lookup (Shift Definition)", "required": false, "notes": "Default shift"},
+            {"name": "Overtime Eligible", "type": "Checkbox", "required": false, "notes": null},
+            {"name": "Photo", "type": "Image", "required": true, "notes": "Used for face recognition"},
+            {"name": "Aadhaar Number", "type": "Single Line", "required": false, "notes": "Mask on display"},
+            {"name": "PAN Number", "type": "Single Line", "required": false, "notes": null},
+            {"name": "Address", "type": "Address", "required": false, "notes": null},
+            {"name": "Emergency Contact", "type": "Phone", "required": false, "notes": null},
+            {"name": "Bank Accounts", "type": "Subform", "required": false, "notes": "Multiple salary accounts"},
+            {"name": "ID Proofs", "type": "Subform", "required": false, "notes": "Documents"},
+            {"name": "Notes", "type": "Multi-line", "required": false, "notes": null}
+          ],
+          "subforms": [
+            {
+              "name": "Bank Accounts",
+              "fields": [
+                {"name": "Bank Name", "type": "Single Line", "required": true, "notes": null},
+                {"name": "Account Number", "type": "Single Line", "required": true, "notes": "Mask when displayed"},
+                {"name": "IFSC", "type": "Single Line", "required": true, "notes": "Validate pattern"},
+                {"name": "Account Type", "type": "Dropdown", "required": false, "notes": "Savings / Current"},
+                {"name": "Primary Account", "type": "Checkbox", "required": false, "notes": null}
+              ]
+            },
+            {
+              "name": "ID Proofs",
+              "fields": [
+                {"name": "Proof Type", "type": "Dropdown", "required": true, "notes": "Aadhaar / PAN / License"},
+                {"name": "Proof Number", "type": "Single Line", "required": true, "notes": null},
+                {"name": "Proof File", "type": "File Upload", "required": true, "notes": null},
+                {"name": "Expiry Date", "type": "Date", "required": false, "notes": "Mandatory for expiring proofs"}
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Shift Definition",
+          "purpose": "Preconfigure shift timings, allowances, and overtime policies for attendance automation.",
+          "fields": [
+            {"name": "Shift Code", "type": "Single Line (Unique)", "required": true, "notes": null},
+            {"name": "Shift Name", "type": "Single Line", "required": true, "notes": null},
+            {"name": "Location Scope", "type": "Dropdown", "required": true, "notes": "Office / Warehouse specific"},
+            {"name": "Warehouse", "type": "Lookup (Warehouse)", "required": "conditional", "notes": "Required for warehouse shifts"},
+            {"name": "Start Time", "type": "Time", "required": true, "notes": null},
+            {"name": "End Time", "type": "Time", "required": true, "notes": null},
+            {"name": "Break Minutes", "type": "Number", "required": false, "notes": null},
+            {"name": "Working Hours", "type": "Decimal", "required": true, "notes": "Auto-calc or manual"},
+            {"name": "Overtime Threshold (hrs)", "type": "Decimal", "required": false, "notes": null},
+            {"name": "Attendance Window Start", "type": "Time", "required": true, "notes": "Earliest check-in"},
+            {"name": "Attendance Window End", "type": "Time", "required": true, "notes": "Latest check-in"},
+            {"name": "Notes", "type": "Multi-line", "required": false, "notes": null}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Product & Service Catalogue Masters",
+      "forms": [
+        {
+          "name": "Product Master",
+          "purpose": "Maintain all goods tracked in stock, production, purchase, and sales, inclusive of unit conversions and QC flags.",
+          "fields": [
+            {"name": "Product Code", "type": "Single Line (Unique)", "required": true, "notes": "SKU identifier"},
+            {"name": "Product Name", "type": "Single Line", "required": true, "notes": null},
+            {"name": "Product Type", "type": "Dropdown", "required": true, "notes": "Goods / Service"},
+            {"name": "Goods Category", "type": "Dropdown", "required": "conditional", "notes": "RAW_MATERIAL / PACKING_MATERIAL / etc."},
+            {"name": "Service Category", "type": "Dropdown", "required": "conditional", "notes": "Only when Product Type = Service"},
+            {"name": "Specific Gravity", "type": "Decimal", "required": false, "notes": "For unit conversion"},
+            {"name": "Primary UOM", "type": "Dropdown", "required": true, "notes": null},
+            {"name": "Secondary UOMs", "type": "Subform", "required": false, "notes": "Unit conversion pairs"},
+            {"name": "Batch Tracking Required", "type": "Checkbox", "required": false, "notes": null},
+            {"name": "QC Required", "type": "Checkbox", "required": false, "notes": null},
+            {"name": "QC Performed By", "type": "Dropdown", "required": "conditional", "notes": "Warehouse Coordinator / QC Team"},
+            {"name": "Expiry Tracking", "type": "Checkbox", "required": false, "notes": null},
+            {"name": "Shelf Life (Days)", "type": "Number", "required": "conditional", "notes": "Required when expiry tracking"},
+            {"name": "Reorder Level", "type": "Number", "required": false, "notes": "For alerts"},
+            {"name": "HSN/SAC Code", "type": "Single Line", "required": false, "notes": "Tax integration"},
+            {"name": "GST Rate", "type": "Decimal", "required": false, "notes": "Default tax"},
+            {"name": "Default Company", "type": "Lookup (Company)", "required": false, "notes": "Used for variance checks"},
+            {"name": "Default Warehouse", "type": "Lookup (Warehouse)", "required": false, "notes": null},
+            {"name": "Active Flag", "type": "Checkbox", "required": true, "notes": null},
+            {"name": "Notes", "type": "Multi-line", "required": false, "notes": null}
+          ],
+          "subforms": [
+            {
+              "name": "Secondary UOMs",
+              "fields": [
+                {"name": "Alternate UOM", "type": "Dropdown", "required": true, "notes": null},
+                {"name": "Conversion Factor", "type": "Decimal", "required": true, "notes": "Multiply primary to get alternate"},
+                {"name": "Basis", "type": "Dropdown", "required": false, "notes": "Weight / Volume / Count"}
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Service Catalogue",
+          "purpose": "Register non-stock services with tax rules and warehouse availability.",
+          "fields": [
+            {"name": "Service Code", "type": "Single Line (Unique)", "required": true, "notes": null},
+            {"name": "Service Name", "type": "Single Line", "required": true, "notes": null},
+            {"name": "Service Type", "type": "Dropdown", "required": true, "notes": "Warehouse Expense / Wages / etc."},
+            {"name": "Warehouse Scope", "type": "Multi-select Lookup (Warehouse)", "required": false, "notes": "Limit availability"},
+            {"name": "GST Applicability", "type": "Dropdown", "required": true, "notes": "Taxable / Exempt"},
+            {"name": "GST Rate", "type": "Decimal", "required": "conditional", "notes": "When taxable"},
+            {"name": "TDS Section", "type": "Dropdown", "required": false, "notes": "Needed for wages"},
+            {"name": "Default Ledger", "type": "Dropdown", "required": true, "notes": "Finance mapping"},
+            {"name": "Active Flag", "type": "Checkbox", "required": true, "notes": null},
+            {"name": "Notes", "type": "Multi-line", "required": false, "notes": null}
+          ]
+        },
+        {
+          "name": "Template Library",
+          "purpose": "Store reusable templates for production, QC reports, job work, and document generation with version control.",
+          "fields": [
+            {"name": "Template Code", "type": "Single Line (Unique)", "required": true, "notes": null},
+            {"name": "Template Name", "type": "Single Line", "required": true, "notes": null},
+            {"name": "Template Type", "type": "Dropdown", "required": true, "notes": "Production / QC Report / Job Work / Document"},
+            {"name": "Revision Number", "type": "Single Line", "required": true, "notes": "e.g., Rev 1"},
+            {"name": "Effective From", "type": "Date", "required": true, "notes": null},
+            {"name": "Effective To", "type": "Date", "required": false, "notes": null},
+            {"name": "Warehouse Scope", "type": "Multi-select Lookup (Warehouse)", "required": false, "notes": null},
+            {"name": "JSON Definition", "type": "Multi-line JSON", "required": true, "notes": "Structured template payload"},
+            {"name": "Approval Log", "type": "Subform", "required": false, "notes": "Audit trail"},
+            {"name": "Notes", "type": "Multi-line", "required": false, "notes": null}
+          ],
+          "subforms": [
+            {
+              "name": "Approval Log",
+              "fields": [
+                {"name": "Approved By", "type": "Lookup (Stakeholder User)", "required": true, "notes": null},
+                {"name": "Approved On", "type": "Date-Time", "required": true, "notes": null},
+                {"name": "Remarks", "type": "Multi-line", "required": false, "notes": null}
+              ]
+            }
+          ]
+        },
+        {
+          "name": "QC Parameter Library",
+          "purpose": "Maintain parameter definitions used when configuring QC templates and recording lab results.",
+          "fields": [
+            {"name": "Parameter Code", "type": "Single Line (Unique)", "required": true, "notes": null},
+            {"name": "Parameter Name", "type": "Single Line", "required": true, "notes": null},
+            {"name": "Parameter Type", "type": "Dropdown", "required": true, "notes": "Physical / Chemical / Microbial"},
+            {"name": "Unit", "type": "Dropdown", "required": false, "notes": null},
+            {"name": "Min Spec", "type": "Decimal", "required": false, "notes": null},
+            {"name": "Max Spec", "type": "Decimal", "required": false, "notes": null},
+            {"name": "Default Method", "type": "Single Line", "required": false, "notes": null},
+            {"name": "Result Format", "type": "Dropdown", "required": true, "notes": "Numeric / Text / Pass-Fail"},
+            {"name": "Attachments Required", "type": "Checkbox", "required": false, "notes": null},
+            {"name": "Active Flag", "type": "Checkbox", "required": true, "notes": null},
+            {"name": "Notes", "type": "Multi-line", "required": false, "notes": null}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Partner, Pricing & Tax Masters",
+      "forms": [
+        {
+          "name": "Vendor Master",
+          "purpose": "Capture vendor identities, payment terms, tax compliance, and banking for purchase and job work operations.",
+          "fields": [
+            {"name": "Vendor Code", "type": "Single Line (Unique)", "required": true, "notes": null},
+            {"name": "Legal Name", "type": "Single Line", "required": true, "notes": null},
+            {"name": "Trade Name", "type": "Single Line", "required": false, "notes": null},
+            {"name": "Vendor Type", "type": "Dropdown", "required": true, "notes": "Goods Supplier / Service / Job Work / Contractor"},
+            {"name": "GSTIN", "type": "Single Line", "required": "conditional", "notes": "Mandatory when taxable"},
+            {"name": "PAN", "type": "Single Line", "required": false, "notes": null},
+            {"name": "Address", "type": "Address", "required": true, "notes": null},
+            {"name": "City", "type": "Single Line", "required": true, "notes": null},
+            {"name": "State", "type": "Dropdown", "required": true, "notes": null},
+            {"name": "Country", "type": "Dropdown", "required": true, "notes": null},
+            {"name": "Pincode", "type": "Single Line", "required": true, "notes": null},
+            {"name": "Contact Person", "type": "Single Line", "required": false, "notes": null},
+            {"name": "Contact Email", "type": "Email", "required": false, "notes": null},
+            {"name": "Contact Phone", "type": "Phone", "required": false, "notes": null},
+            {"name": "Payment Terms", "type": "Dropdown", "required": true, "notes": "Net 15 / Net 30 / Custom"},
+            {"name": "Credit Limit", "type": "Currency", "required": false, "notes": null},
+            {"name": "Freight Terms", "type": "Dropdown", "required": true, "notes": "Paid / To_Pay / Mixed"},
+            {"name": "Default Currency", "type": "Dropdown", "required": true, "notes": null},
+            {"name": "TDS Section", "type": "Dropdown", "required": false, "notes": null},
+            {"name": "MSME Category", "type": "Dropdown", "required": false, "notes": null},
+            {"name": "Vendor Bank Details", "type": "Subform", "required": false, "notes": "Multiple accounts"},
+            {"name": "Documents", "type": "File Upload (Multi)", "required": false, "notes": "Contracts, certifications"},
+            {"name": "Active Flag", "type": "Checkbox", "required": true, "notes": null},
+            {"name": "Notes", "type": "Multi-line", "required": false, "notes": null}
+          ],
+          "subforms": [
+            {
+              "name": "Vendor Bank Details",
+              "fields": [
+                {"name": "Bank Name", "type": "Single Line", "required": true, "notes": null},
+                {"name": "Branch", "type": "Single Line", "required": false, "notes": null},
+                {"name": "Account Number", "type": "Single Line", "required": true, "notes": "Mask when displayed"},
+                {"name": "IFSC", "type": "Single Line", "required": true, "notes": null},
+                {"name": "Account Type", "type": "Dropdown", "required": false, "notes": "Savings / Current"},
+                {"name": "Is Primary", "type": "Checkbox", "required": false, "notes": null}
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Customer Master",
+          "purpose": "Maintain customer billing and shipping profiles, credit terms, and price list assignments.",
+          "fields": [
+            {"name": "Customer Code", "type": "Single Line (Unique)", "required": true, "notes": null},
+            {"name": "Legal Name", "type": "Single Line", "required": true, "notes": null},
+            {"name": "Trade Name", "type": "Single Line", "required": false, "notes": null},
+            {"name": "Customer Type", "type": "Dropdown", "required": true, "notes": "Domestic / Export"},
+            {"name": "GSTIN", "type": "Single Line", "required": "conditional", "notes": "Mandatory for domestic taxable"},
+            {"name": "PAN", "type": "Single Line", "required": false, "notes": null},
+            {"name": "Billing Address", "type": "Address", "required": true, "notes": null},
+            {"name": "Billing City", "type": "Single Line", "required": true, "notes": null},
+            {"name": "Billing State", "type": "Dropdown", "required": true, "notes": null},
+            {"name": "Billing Country", "type": "Dropdown", "required": true, "notes": null},
+            {"name": "Billing Pincode", "type": "Single Line", "required": true, "notes": null},
+            {"name": "Contact Person", "type": "Single Line", "required": false, "notes": null},
+            {"name": "Contact Email", "type": "Email", "required": false, "notes": null},
+            {"name": "Contact Phone", "type": "Phone", "required": false, "notes": null},
+            {"name": "Payment Terms", "type": "Dropdown", "required": true, "notes": "Net 15 / Net 30 / etc."},
+            {"name": "Credit Limit", "type": "Currency", "required": false, "notes": null},
+            {"name": "Freight Terms", "type": "Dropdown", "required": true, "notes": "Paid / To_Pay / Mixed"},
+            {"name": "Default Currency", "type": "Dropdown", "required": true, "notes": null},
+            {"name": "Price Lists", "type": "Multi-select Lookup (Price List)", "required": false, "notes": "Allow multi-region pricing"},
+            {"name": "Shipping Address", "type": "Subform", "required": false, "notes": "Location-wise details"},
+            {"name": "Documents", "type": "File Upload (Multi)", "required": false, "notes": "Contracts"},
+            {"name": "Active Flag", "type": "Checkbox", "required": true, "notes": null},
+            {"name": "Notes", "type": "Multi-line", "required": false, "notes": null}
+          ],
+          "subforms": [
+            {
+              "name": "Shipping Address",
+              "fields": [
+                {"name": "Location Name", "type": "Single Line", "required": true, "notes": null},
+                {"name": "Address", "type": "Address", "required": true, "notes": null},
+                {"name": "City", "type": "Single Line", "required": true, "notes": null},
+                {"name": "State", "type": "Dropdown", "required": true, "notes": null},
+                {"name": "Country", "type": "Dropdown", "required": true, "notes": null},
+                {"name": "Pincode", "type": "Single Line", "required": true, "notes": null},
+                {"name": "Price List", "type": "Lookup (Price List)", "required": false, "notes": "Default per location"},
+                {"name": "Freight Terms Override", "type": "Dropdown", "required": false, "notes": "Optional per location"}
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Transporter Master",
+          "purpose": "Register transport partners for inbound/outbound freight, including payment preferences.",
+          "fields": [
+            {"name": "Transporter Code", "type": "Single Line (Unique)", "required": true, "notes": null},
+            {"name": "Transporter Name", "type": "Single Line", "required": true, "notes": null},
+            {"name": "GSTIN", "type": "Single Line", "required": false, "notes": null},
+            {"name": "PAN", "type": "Single Line", "required": false, "notes": null},
+            {"name": "Address", "type": "Address", "required": true, "notes": null},
+            {"name": "Contact Person", "type": "Single Line", "required": false, "notes": null},
+            {"name": "Contact Email", "type": "Email", "required": false, "notes": null},
+            {"name": "Contact Phone", "type": "Phone", "required": false, "notes": null},
+            {"name": "Service Regions", "type": "Multi-select Dropdown", "required": false, "notes": "States / Zones"},
+            {"name": "Payment Terms", "type": "Dropdown", "required": true, "notes": "Immediate / Weekly / Monthly"},
+            {"name": "Freight Type", "type": "Multi-select Dropdown", "required": true, "notes": "Local Drayage / Linehaul"},
+            {"name": "Preferred Payment Mode", "type": "Dropdown", "required": false, "notes": "Bank / Cash / UPI"},
+            {"name": "Active Flag", "type": "Checkbox", "required": true, "notes": null},
+            {"name": "Notes", "type": "Multi-line", "required": false, "notes": null}
+          ]
+        },
+        {
+          "name": "Price List Master",
+          "purpose": "Configure customer-specific price catalogues with effective periods and revision lines.",
+          "fields": [
+            {"name": "Price List Code", "type": "Single Line (Unique)", "required": true, "notes": null},
+            {"name": "Price List Name", "type": "Single Line", "required": true, "notes": null},
+            {"name": "Customer", "type": "Lookup (Customer)", "required": false, "notes": "Optional master without direct assignment"},
+            {"name": "Region", "type": "Dropdown", "required": false, "notes": null},
+            {"name": "Currency", "type": "Dropdown", "required": true, "notes": null},
+            {"name": "Effective From", "type": "Date", "required": true, "notes": null},
+            {"name": "Effective To", "type": "Date", "required": false, "notes": null},
+            {"name": "Default Freight Terms", "type": "Dropdown", "required": false, "notes": null},
+            {"name": "Active Flag", "type": "Checkbox", "required": true, "notes": null},
+            {"name": "Price Lines", "type": "Subform", "required": false, "notes": "Define product/service rates"},
+            {"name": "Notes", "type": "Multi-line", "required": false, "notes": null}
+          ],
+          "subforms": [
+            {
+              "name": "Price Lines",
+              "fields": [
+                {"name": "Item", "type": "Lookup (Product Master / Service Catalogue)", "required": true, "notes": null},
+                {"name": "UOM", "type": "Dropdown", "required": true, "notes": null},
+                {"name": "Unit Price", "type": "Currency", "required": true, "notes": null},
+                {"name": "Minimum Order Qty", "type": "Decimal", "required": false, "notes": null},
+                {"name": "Discount %", "type": "Decimal", "required": false, "notes": null},
+                {"name": "Freight Inclusion Flag", "type": "Checkbox", "required": false, "notes": "For bundled freight"}
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Tax Master",
+          "purpose": "Centralise GST, TDS, and TCS rates for automated calculations.",
+          "fields": [
+            {"name": "Tax Code", "type": "Single Line (Unique)", "required": true, "notes": null},
+            {"name": "Tax Type", "type": "Dropdown", "required": true, "notes": "GST / TDS / TCS"},
+            {"name": "Description", "type": "Single Line", "required": true, "notes": null},
+            {"name": "Rate (%)", "type": "Decimal", "required": true, "notes": null},
+            {"name": "Applicable From", "type": "Date", "required": true, "notes": null},
+            {"name": "Applicable To", "type": "Date", "required": false, "notes": null},
+            {"name": "Ledger Mapping", "type": "Dropdown", "required": false, "notes": "Finance integration"},
+            {"name": "Notes", "type": "Multi-line", "required": false, "notes": null}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Configuration & Governance Masters",
+      "forms": [
+        {
+          "name": "System Parameters",
+          "purpose": "Maintain configurable lists consumed across modules.",
+          "fields": [
+            {"name": "Parameter Code", "type": "Single Line (Unique)", "required": true, "notes": null},
+            {"name": "Parameter Group", "type": "Dropdown", "required": true, "notes": "Currency / UOM / Threshold / Alert"},
+            {"name": "Parameter Name", "type": "Single Line", "required": true, "notes": null},
+            {"name": "Value", "type": "Multi-line", "required": true, "notes": "JSON or delimited list"},
+            {"name": "Effective From", "type": "Date", "required": true, "notes": null},
+            {"name": "Effective To", "type": "Date", "required": false, "notes": null},
+            {"name": "Notes", "type": "Multi-line", "required": false, "notes": null}
+          ]
+        },
+        {
+          "name": "Decision Log",
+          "purpose": "Track strategic and configuration decisions for auditability and onboarding.",
+          "fields": [
+            {"name": "Decision ID", "type": "Single Line (Unique)", "required": true, "notes": null},
+            {"name": "Decision Date", "type": "Date", "required": true, "notes": null},
+            {"name": "Owner", "type": "Lookup (Stakeholder User)", "required": true, "notes": null},
+            {"name": "Topic", "type": "Dropdown", "required": true, "notes": "Integration / Finance / Process"},
+            {"name": "Summary", "type": "Multi-line", "required": true, "notes": null},
+            {"name": "Impacted Modules", "type": "Multi-select Dropdown", "required": false, "notes": null},
+            {"name": "Follow-up Actions", "type": "Multi-line", "required": false, "notes": null},
+            {"name": "Status", "type": "Dropdown", "required": true, "notes": "Proposed / Approved / Implemented"}
+          ]
+        },
+        {
+          "name": "Audit Trail",
+          "purpose": "Log structural changes to masters for compliance via automated triggers.",
+          "fields": [
+            {"name": "Audit ID", "type": "Single Line (Unique)", "required": true, "notes": null},
+            {"name": "Module", "type": "Dropdown", "required": true, "notes": "Master module name"},
+            {"name": "Record Reference", "type": "Lookup (Dynamic)", "required": true, "notes": "Link to impacted record"},
+            {"name": "Change Type", "type": "Dropdown", "required": true, "notes": "Create / Update / Delete"},
+            {"name": "Changed By", "type": "Lookup (Stakeholder User)", "required": true, "notes": null},
+            {"name": "Change Timestamp", "type": "Date-Time", "required": true, "notes": null},
+            {"name": "Change Summary", "type": "Multi-line", "required": true, "notes": null},
+            {"name": "Attachment", "type": "File Upload", "required": false, "notes": "Optional evidence"}
+          ]
+        }
+      ]
+    }
+  ],
+  "implementation_checklist": [
+    "Seed System Parameters – currencies, UOMs, state lists, alert thresholds.",
+    "Create Companies – load all legal entities and validate GSTIN/PAN formats.",
+    "Onboard Warehouses – ensure godown and machinery subforms are populated.",
+    "Define Roles – capture approval levels and share rules before user mapping.",
+    "Load Staff & Stakeholders – upload staff roster, then link portal users.",
+    "Configure Shifts – assign default shifts for attendance automation.",
+    "Catalogue Products & Services – include conversion factors and QC flags.",
+    "Load Vendors, Customers, Transporters – verify payment and freight terms.",
+    "Publish Price Lists – map to customers and shipping locations as needed.",
+    "Upload Template/QC Libraries – align with production and QC processes.",
+    "Set Tax Rates – GST, TDS, TCS for transactions and wage calculations.",
+    "Record Decisions & Audit Hooks – keep governance log current."
+  ],
+  "notes": "Completing these masters ensures downstream workflows have valid reference data and enforce the governance model described in the ERP blueprint."
+}
