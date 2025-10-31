@@ -1,0 +1,18 @@
+[
+  ["Field Name", "Type", "Req.", "Notes"],
+  ["Company Code", "Single Line (Unique)", "Y", "Short code used across modules and exports"],
+  ["Legal Name", "Single Line", "Y", "Registered legal entity name"],
+  ["Trade Name", "Single Line", "", "Optional doing-business-as name"],
+  ["GSTIN", "Single Line", "Y", "Validate 15-character GST format"],
+  ["PAN", "Single Line", "", "Required for TDS/TCS"],
+  ["CIN", "Single Line", "", "Corporate Identification Number"],
+  ["Registered Address", "Address", "Y", "Multi-line address"],
+  ["Billing Address", "Address", "Y", "Defaults onto invoices"],
+  ["Contact Email", "Email", "", "Finance escalation"],
+  ["Contact Phone", "Phone", "", ""],
+  ["Default Currency", "Dropdown", "Y", "Seed from System Parameters"],
+  ["Books Export Flag", "Checkbox", "", "Toggle for Tally integration"],
+  ["Active From", "Date", "Y", "Effective start date"],
+  ["Active To", "Date", "", "Optional sunset"],
+  ["Notes", "Multi-line", "", ""]
+]
