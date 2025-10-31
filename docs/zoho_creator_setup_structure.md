@@ -15,10 +15,16 @@ The `scripts/setup_creator_repo.sh` script provisions a standard set of director
 
 ./scripts/setup_creator_repo.sh --modules purchase,finance \
   # scaffold a subset of modules during pilots
+
+./scripts/setup_creator_repo.sh --base-dir ../erp-sandbox \
+  # create the structure outside the git root (e.g., for evaluation copies)
+
+# Tip: wrap the value passed to `--modules` in quotes when adding spaces, e.g.
+# `--modules "purchase, finance"`.
 ```
 
 ### 1.1 Script Features
-- Creates module-specific folders under `apps/` for **Purchase, Sales, Production, QC, Logistics, Finance, Attendance** (or a subset defined by `--modules`), with nested directories for forms, workflows, reports, pages, automations, scripts, integrations, Deluge functions, schedules, approvals, and tests.
+- Creates module-specific folders under `apps/` for **Purchase, Sales, Production, QC, Logistics, Finance, Attendance** (or a subset defined by `--modules`), with nested directories for forms, workflows, reports, pages, automations, scripts, integrations, Deluge functions, schedules, approvals, and tests. Extra spaces or uppercase names passed to `--modules` are normalised automatically.
 - Generates shared workspaces for masters, templates, dashboards, test data, reusable Deluge libraries, and Creator pages under `apps/shared/`.
 - Builds environment folders under `deploy/` for **dev**, **uat**, and **prod**, plus a reusable `pipelines/` directory for CI configuration.
 - Seeds integration stubs for AI PO parsing, face recognition, bank reconciliation, and Tally exports under `integrations/`.
@@ -26,6 +32,7 @@ The `scripts/setup_creator_repo.sh` script provisions a standard set of director
 - Provisions `tools/` folders for automation scripts and migration utilities used during rollout.
 - Drops `.gitkeep` markers so empty directories remain version-controlled.
 - Provides README templates describing how to populate each top-level and module-specific area; the script rewrites them when `--force` is supplied.
+- Accepts an optional `--base-dir` flag so scaffolding can be generated in a different workspace (for example, when mirroring the structure for vendor collaboration or air-gapped environments).
 
 ### 1.2 Extending the Script
 - Pass `--modules hr,maintenance` to quickly spin up experimental modules without editing the script.

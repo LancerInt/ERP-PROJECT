@@ -15,12 +15,15 @@ Options:
   --force               Recreate directories even if they already exist.
   --modules <list>      Comma-separated list of modules to scaffold. When
                         omitted, all standard ERP modules are created.
+  --base-dir <path>     Target directory for scaffolding. Defaults to the
+                        repository root. Accepts absolute or relative paths.
   -h, --help            Show this help message and exit.
 USAGE
 }
 
 FORCE=false
 CUSTOM_MODULES=""
+TARGET_ROOT=""
 
 while (($#)); do
   case "$1" in
@@ -37,6 +40,15 @@ while (($#)); do
       CUSTOM_MODULES="$2"
       shift 2
       ;;
+    --base-dir)
+      if [[ $# -lt 2 ]]; then
+        echo "Error: --base-dir requires a path." >&2
+        usage
+        exit 1
+      fi
+      TARGET_ROOT="$2"
+      shift 2
+      ;;
     -h|--help)
       usage
       exit 0
@@ -51,6 +63,23 @@ done
 
 ROOT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 
+if [[ -z "$TARGET_ROOT" ]]; then
+  TARGET_ROOT="$ROOT_DIR"
+else
+  if [[ "$TARGET_ROOT" = /* ]]; then
+    TARGET_ROOT="$TARGET_ROOT"
+  else
+    TARGET_ROOT="$ROOT_DIR/$TARGET_ROOT"
+  fi
+fi
+
+if ! mkdir -p "$TARGET_ROOT"; then
+  echo "Error: unable to create or access target directory '$TARGET_ROOT'." >&2
+  exit 1
+fi
+
+TARGET_ROOT=$(cd "$TARGET_ROOT" && pwd)
+
 DEFAULT_MODULES=(
   purchase
   sales
@@ -61,10 +90,26 @@ DEFAULT_MODULES=(
   attendance
 )
 
+declare -a MODULES=()
+
 if [[ -n "$CUSTOM_MODULES" ]]; then
-  IFS=',' read -r -a MODULES <<< "$CUSTOM_MODULES"
+  IFS=',' read -r -a RAW_MODULES <<< "$CUSTOM_MODULES"
+  declare -A SEEN_MODULES=()
+  for raw in "${RAW_MODULES[@]}"; do
+    cleaned=${raw//[[:space:]]/}
+    cleaned=$(echo "$cleaned" | tr '[:upper:]' '[:lower:]')
+    if [[ -n "$cleaned" && -z ${SEEN_MODULES[$cleaned]+x} ]]; then
+      MODULES+=("$cleaned")
+      SEEN_MODULES[$cleaned]=1
+    fi
+  done
 else
   MODULES=("${DEFAULT_MODULES[@]}")
+fi
+
+if [[ ${#MODULES[@]} -eq 0 ]]; then
+  echo "Error: no modules specified after processing '--modules'." >&2
+  exit 1
 fi
 
 MODULE_SUBDIRS=(
@@ -110,7 +155,7 @@ GLOBAL_DIRS=(
 
 create_dir() {
   local dir="$1"
-  local path="$ROOT_DIR/$dir"
+  local path="$TARGET_ROOT/$dir"
   if [[ -d "$path" ]]; then
     if [[ "$FORCE" == true ]]; then
       echo "[reset]  $dir"
@@ -132,7 +177,7 @@ seed_readme() {
   if [[ -f "$path" && "$FORCE" != true ]]; then
     return
   fi
-  echo "[seed]   ${path#"$ROOT_DIR/"}"
+  echo "[seed]   ${path#"$TARGET_ROOT/"}"
   mkdir -p "$(dirname "$path")"
   cat <<README > "$path"
 # $title
@@ -145,14 +190,14 @@ README
 }
 
 main() {
-  echo "Creating Zoho Creator ERP scaffolding under $ROOT_DIR"
+  echo "Creating Zoho Creator ERP scaffolding under $TARGET_ROOT"
 
   for module in "${MODULES[@]}"; do
     local module_root="apps/$module"
     local module_title=$(echo "$module" | tr '[:lower:]' '[:upper:]')
     create_dir "$module_root"
     seed_readme \
-      "$ROOT_DIR/$module_root/README.md" \
+      "$TARGET_ROOT/$module_root/README.md" \
       "$module_title Module" \
       "Forms, workflows, reports, and automations for the $module module."
     for subdir in "${MODULE_SUBDIRS[@]}"; do
@@ -164,7 +209,7 @@ main() {
     create_dir "apps/shared/$subdir"
   done
   seed_readme \
-    "$ROOT_DIR/apps/shared/README.md" \
+    "$TARGET_ROOT/apps/shared/README.md" \
     "Shared Assets" \
     "Common masters, templates, dashboards, and reusable Deluge assets."
 
@@ -187,7 +232,7 @@ main() {
   for dir in "${!README_MAP[@]}"; do
     local title_base=$(basename "$dir")
     local title_upper=$(echo "$title_base" | tr '[:lower:]' '[:upper:]')
-    seed_readme "$ROOT_DIR/$dir/README.md" "$title_upper Directory" "${README_MAP[$dir]}"
+    seed_readme "$TARGET_ROOT/$dir/README.md" "$title_upper Directory" "${README_MAP[$dir]}"
   done
 
   echo "Scaffolding complete."
