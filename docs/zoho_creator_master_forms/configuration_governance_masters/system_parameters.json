@@ -1,0 +1,61 @@
+{
+  "module_name": "Configuration & Governance Masters",
+  "module_slug": "configuration_governance_masters",
+  "display_name": "System Parameters",
+  "link_name": "system_parameters",
+  "fields": [
+    {
+      "display_label": "Parameter Code",
+      "field_name": "parameter_code",
+      "creator_type": "single_line",
+      "original_type": "Single Line (Unique)",
+      "required": true,
+      "unique": true
+    },
+    {
+      "display_label": "Parameter Group",
+      "field_name": "parameter_group",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Currency / UOM / Threshold / Alert"
+    },
+    {
+      "display_label": "Parameter Name",
+      "field_name": "parameter_name",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": true
+    },
+    {
+      "display_label": "Value",
+      "field_name": "value",
+      "creator_type": "multi_line",
+      "original_type": "Multi-line",
+      "required": true,
+      "help_text": "JSON or delimited list"
+    },
+    {
+      "display_label": "Effective From",
+      "field_name": "effective_from",
+      "creator_type": "date",
+      "original_type": "Date",
+      "required": true
+    },
+    {
+      "display_label": "Effective To",
+      "field_name": "effective_to",
+      "creator_type": "date",
+      "original_type": "Date",
+      "required": false
+    },
+    {
+      "display_label": "Notes",
+      "field_name": "notes",
+      "creator_type": "multi_line",
+      "original_type": "Multi-line",
+      "required": false
+    }
+  ],
+  "purpose": "Maintain configurable lists consumed across modules."
+}

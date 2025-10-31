@@ -1,0 +1,74 @@
+{
+  "module_name": "Configuration & Governance Masters",
+  "module_slug": "configuration_governance_masters",
+  "display_name": "Audit Trail",
+  "link_name": "audit_trail",
+  "fields": [
+    {
+      "display_label": "Audit ID",
+      "field_name": "audit_id",
+      "creator_type": "single_line",
+      "original_type": "Single Line (Unique)",
+      "required": true,
+      "unique": true
+    },
+    {
+      "display_label": "Module",
+      "field_name": "module",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Master module name"
+    },
+    {
+      "display_label": "Record Reference",
+      "field_name": "record_reference",
+      "creator_type": "lookup",
+      "original_type": "Lookup (Dynamic)",
+      "required": true,
+      "help_text": "Link to impacted record",
+      "lookup_target": "dynamic",
+      "lookup_display_name": "Dynamic"
+    },
+    {
+      "display_label": "Change Type",
+      "field_name": "change_type",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Create / Update / Delete"
+    },
+    {
+      "display_label": "Changed By",
+      "field_name": "changed_by",
+      "creator_type": "lookup",
+      "original_type": "Lookup (Stakeholder User)",
+      "required": true,
+      "lookup_target": "stakeholder_user",
+      "lookup_display_name": "Stakeholder User"
+    },
+    {
+      "display_label": "Change Timestamp",
+      "field_name": "change_timestamp",
+      "creator_type": "date_time",
+      "original_type": "Date-Time",
+      "required": true
+    },
+    {
+      "display_label": "Change Summary",
+      "field_name": "change_summary",
+      "creator_type": "multi_line",
+      "original_type": "Multi-line",
+      "required": true
+    },
+    {
+      "display_label": "Attachment",
+      "field_name": "attachment",
+      "creator_type": "file_upload",
+      "original_type": "File Upload",
+      "required": false,
+      "help_text": "Optional evidence"
+    }
+  ],
+  "purpose": "Log structural changes to masters for compliance via automated triggers."
+}

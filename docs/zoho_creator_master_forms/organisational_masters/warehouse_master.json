@@ -1,0 +1,318 @@
+{
+  "module_name": "Organisational Masters",
+  "module_slug": "organisational_masters",
+  "display_name": "Warehouse Master",
+  "link_name": "warehouse_master",
+  "fields": [
+    {
+      "display_label": "Warehouse Code",
+      "field_name": "warehouse_code",
+      "creator_type": "single_line",
+      "original_type": "Single Line (Unique)",
+      "required": true,
+      "unique": true,
+      "help_text": "Used in stock and logistics documents"
+    },
+    {
+      "display_label": "Company",
+      "field_name": "company",
+      "creator_type": "lookup",
+      "original_type": "Lookup (Company)",
+      "required": true,
+      "help_text": "Owning entity",
+      "lookup_target": "company",
+      "lookup_display_name": "Company"
+    },
+    {
+      "display_label": "Name",
+      "field_name": "name",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": true,
+      "help_text": "Display name"
+    },
+    {
+      "display_label": "Warehouse Type",
+      "field_name": "warehouse_type",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Head Office / Factory / Job Work Partner"
+    },
+    {
+      "display_label": "Address",
+      "field_name": "address",
+      "creator_type": "address",
+      "original_type": "Address",
+      "required": true,
+      "help_text": "Physical location"
+    },
+    {
+      "display_label": "City",
+      "field_name": "city",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": true
+    },
+    {
+      "display_label": "State",
+      "field_name": "state",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "GST place of supply"
+    },
+    {
+      "display_label": "Country",
+      "field_name": "country",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true
+    },
+    {
+      "display_label": "Pincode",
+      "field_name": "pincode",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": true
+    },
+    {
+      "display_label": "Geo Latitude",
+      "field_name": "geo_latitude",
+      "creator_type": "decimal",
+      "original_type": "Decimal",
+      "required": true,
+      "help_text": "Attendance geofence"
+    },
+    {
+      "display_label": "Geo Longitude",
+      "field_name": "geo_longitude",
+      "creator_type": "decimal",
+      "original_type": "Decimal",
+      "required": true,
+      "help_text": "Attendance geofence"
+    },
+    {
+      "display_label": "Time Zone",
+      "field_name": "time_zone",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "SLA calculations"
+    },
+    {
+      "display_label": "Default Currency",
+      "field_name": "default_currency",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Inherits from company by default"
+    },
+    {
+      "display_label": "Warehouse Coordinator (Office)",
+      "field_name": "warehouse_coordinator_office",
+      "creator_type": "lookup",
+      "original_type": "Lookup (Stakeholder User)",
+      "required": false,
+      "required_condition": "conditional",
+      "help_text": "Mandatory for active warehouses",
+      "lookup_target": "stakeholder_user",
+      "lookup_display_name": "Stakeholder User"
+    },
+    {
+      "display_label": "Warehouse HR Coordinator",
+      "field_name": "warehouse_hr_coordinator",
+      "creator_type": "lookup",
+      "original_type": "Lookup (Stakeholder User)",
+      "required": false,
+      "lookup_target": "stakeholder_user",
+      "lookup_display_name": "Stakeholder User"
+    },
+    {
+      "display_label": "Warehouse Manager(s)",
+      "field_name": "warehouse_manager_s",
+      "creator_type": "multi_select_lookup",
+      "original_type": "Multi-select Lookup (Stakeholder User)",
+      "required": false,
+      "lookup_target": "stakeholder_user",
+      "lookup_display_name": "Stakeholder User"
+    },
+    {
+      "display_label": "Warehouse Coordinator(s)",
+      "field_name": "warehouse_coordinator_s",
+      "creator_type": "multi_select_lookup",
+      "original_type": "Multi-select Lookup (Stakeholder User)",
+      "required": false,
+      "lookup_target": "stakeholder_user",
+      "lookup_display_name": "Stakeholder User"
+    },
+    {
+      "display_label": "Warehouse Supervisor(s)",
+      "field_name": "warehouse_supervisor_s",
+      "creator_type": "multi_select_lookup",
+      "original_type": "Multi-select Lookup (Stakeholder User)",
+      "required": false,
+      "lookup_target": "stakeholder_user",
+      "lookup_display_name": "Stakeholder User"
+    },
+    {
+      "display_label": "Godown List",
+      "field_name": "godown_list",
+      "creator_type": "subform",
+      "original_type": "Subform",
+      "required": true,
+      "help_text": "Maintain at least one godown",
+      "subform_link_name": "godown_list"
+    },
+    {
+      "display_label": "Active Flag",
+      "field_name": "active_flag",
+      "creator_type": "checkbox",
+      "original_type": "Checkbox",
+      "required": true,
+      "help_text": "Deactivate to hide from new transactions"
+    },
+    {
+      "display_label": "Notes",
+      "field_name": "notes",
+      "creator_type": "multi_line",
+      "original_type": "Multi-line",
+      "required": false
+    }
+  ],
+  "purpose": "Capture warehouse profile, governance roles, and embedded godown/machinery lists.",
+  "subforms": [
+    {
+      "display_name": "Godown List",
+      "link_name": "godown_list",
+      "fields": [
+        {
+          "display_label": "Godown Code",
+          "field_name": "godown_code",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true,
+          "help_text": "Unique within warehouse"
+        },
+        {
+          "display_label": "Godown Name",
+          "field_name": "godown_name",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true
+        },
+        {
+          "display_label": "Storage Condition",
+          "field_name": "storage_condition",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": false,
+          "help_text": "Ambient / Cold / Hazardous"
+        },
+        {
+          "display_label": "Capacity UOM",
+          "field_name": "capacity_uom",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": false
+        },
+        {
+          "display_label": "Capacity Value",
+          "field_name": "capacity_value",
+          "creator_type": "decimal",
+          "original_type": "Decimal",
+          "required": false,
+          "help_text": "Max storage"
+        },
+        {
+          "display_label": "Batch Tracking Enabled",
+          "field_name": "batch_tracking_enabled",
+          "creator_type": "checkbox",
+          "original_type": "Checkbox",
+          "required": true,
+          "help_text": "Controls batch-level location"
+        },
+        {
+          "display_label": "Default QC Hold Area",
+          "field_name": "default_qc_hold_area",
+          "creator_type": "checkbox",
+          "original_type": "Checkbox",
+          "required": false,
+          "help_text": "Flags quarantine"
+        },
+        {
+          "display_label": "Machinery List",
+          "field_name": "machinery_list",
+          "creator_type": "subform",
+          "original_type": "Subform",
+          "required": false,
+          "help_text": "Independent machinery roster",
+          "subform_link_name": "machinery_list"
+        }
+      ],
+      "subforms": [
+        {
+          "display_name": "Machinery List",
+          "link_name": "machinery_list",
+          "fields": [
+            {
+              "display_label": "Machine ID",
+              "field_name": "machine_id",
+              "creator_type": "single_line",
+              "original_type": "Single Line",
+              "required": true,
+              "help_text": "Unique equipment identifier"
+            },
+            {
+              "display_label": "Machine Name",
+              "field_name": "machine_name",
+              "creator_type": "single_line",
+              "original_type": "Single Line",
+              "required": true
+            },
+            {
+              "display_label": "Category",
+              "field_name": "category",
+              "creator_type": "drop_down",
+              "original_type": "Dropdown",
+              "required": true,
+              "help_text": "Capital Goods / Machine Spares / Production Line"
+            },
+            {
+              "display_label": "Commission Date",
+              "field_name": "commission_date",
+              "creator_type": "date",
+              "original_type": "Date",
+              "required": false
+            },
+            {
+              "display_label": "Maintenance Vendor",
+              "field_name": "maintenance_vendor",
+              "creator_type": "lookup",
+              "original_type": "Lookup (Vendor)",
+              "required": false,
+              "help_text": "For service/job work",
+              "lookup_target": "vendor",
+              "lookup_display_name": "Vendor"
+            },
+            {
+              "display_label": "Next Service Due",
+              "field_name": "next_service_due",
+              "creator_type": "date",
+              "original_type": "Date",
+              "required": false
+            },
+            {
+              "display_label": "Status",
+              "field_name": "status",
+              "creator_type": "drop_down",
+              "original_type": "Dropdown",
+              "required": true,
+              "help_text": "Active / Under Maintenance / Retired"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

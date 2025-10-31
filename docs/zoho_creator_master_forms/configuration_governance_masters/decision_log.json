@@ -1,0 +1,70 @@
+{
+  "module_name": "Configuration & Governance Masters",
+  "module_slug": "configuration_governance_masters",
+  "display_name": "Decision Log",
+  "link_name": "decision_log",
+  "fields": [
+    {
+      "display_label": "Decision ID",
+      "field_name": "decision_id",
+      "creator_type": "single_line",
+      "original_type": "Single Line (Unique)",
+      "required": true,
+      "unique": true
+    },
+    {
+      "display_label": "Decision Date",
+      "field_name": "decision_date",
+      "creator_type": "date",
+      "original_type": "Date",
+      "required": true
+    },
+    {
+      "display_label": "Owner",
+      "field_name": "owner",
+      "creator_type": "lookup",
+      "original_type": "Lookup (Stakeholder User)",
+      "required": true,
+      "lookup_target": "stakeholder_user",
+      "lookup_display_name": "Stakeholder User"
+    },
+    {
+      "display_label": "Topic",
+      "field_name": "topic",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Integration / Finance / Process"
+    },
+    {
+      "display_label": "Summary",
+      "field_name": "summary",
+      "creator_type": "multi_line",
+      "original_type": "Multi-line",
+      "required": true
+    },
+    {
+      "display_label": "Impacted Modules",
+      "field_name": "impacted_modules",
+      "creator_type": "multi_select_drop_down",
+      "original_type": "Multi-select Dropdown",
+      "required": false
+    },
+    {
+      "display_label": "Follow-up Actions",
+      "field_name": "follow_up_actions",
+      "creator_type": "multi_line",
+      "original_type": "Multi-line",
+      "required": false
+    },
+    {
+      "display_label": "Status",
+      "field_name": "status",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Proposed / Approved / Implemented"
+    }
+  ],
+  "purpose": "Track strategic and configuration decisions for auditability and onboarding."
+}

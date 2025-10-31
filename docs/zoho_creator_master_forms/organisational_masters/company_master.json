@@ -1,0 +1,128 @@
+{
+  "module_name": "Organisational Masters",
+  "module_slug": "organisational_masters",
+  "display_name": "Company Master",
+  "link_name": "company_master",
+  "fields": [
+    {
+      "display_label": "Company Code",
+      "field_name": "company_code",
+      "creator_type": "single_line",
+      "original_type": "Single Line (Unique)",
+      "required": true,
+      "unique": true,
+      "help_text": "Short code used across modules and exports"
+    },
+    {
+      "display_label": "Legal Name",
+      "field_name": "legal_name",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": true,
+      "help_text": "Registered legal entity name"
+    },
+    {
+      "display_label": "Trade Name",
+      "field_name": "trade_name",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": false,
+      "help_text": "Optional doing-business-as name"
+    },
+    {
+      "display_label": "GSTIN",
+      "field_name": "gstin",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": true,
+      "help_text": "Validate 15-character GST format"
+    },
+    {
+      "display_label": "PAN",
+      "field_name": "pan",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": false,
+      "help_text": "Required for TDS/TCS"
+    },
+    {
+      "display_label": "CIN",
+      "field_name": "cin",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": false,
+      "help_text": "Corporate Identification Number"
+    },
+    {
+      "display_label": "Registered Address",
+      "field_name": "registered_address",
+      "creator_type": "address",
+      "original_type": "Address",
+      "required": true,
+      "help_text": "Multi-line address"
+    },
+    {
+      "display_label": "Billing Address",
+      "field_name": "billing_address",
+      "creator_type": "address",
+      "original_type": "Address",
+      "required": true,
+      "help_text": "Defaults onto invoices"
+    },
+    {
+      "display_label": "Contact Email",
+      "field_name": "contact_email",
+      "creator_type": "email",
+      "original_type": "Email",
+      "required": false,
+      "help_text": "Finance escalation"
+    },
+    {
+      "display_label": "Contact Phone",
+      "field_name": "contact_phone",
+      "creator_type": "phone",
+      "original_type": "Phone",
+      "required": false
+    },
+    {
+      "display_label": "Default Currency",
+      "field_name": "default_currency",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Seed from System Parameters"
+    },
+    {
+      "display_label": "Books Export Flag",
+      "field_name": "books_export_flag",
+      "creator_type": "checkbox",
+      "original_type": "Checkbox",
+      "required": false,
+      "help_text": "Toggle for Tally integration"
+    },
+    {
+      "display_label": "Active From",
+      "field_name": "active_from",
+      "creator_type": "date",
+      "original_type": "Date",
+      "required": true,
+      "help_text": "Effective start date"
+    },
+    {
+      "display_label": "Active To",
+      "field_name": "active_to",
+      "creator_type": "date",
+      "original_type": "Date",
+      "required": false,
+      "help_text": "Optional sunset"
+    },
+    {
+      "display_label": "Notes",
+      "field_name": "notes",
+      "creator_type": "multi_line",
+      "original_type": "Multi-line",
+      "required": false
+    }
+  ],
+  "purpose": "Register each legal entity participating in purchasing, sales, finance, or compliance so other masters can reference it."
+}

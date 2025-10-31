@@ -1,0 +1,68 @@
+{
+  "module_name": "Partner, Pricing & Tax Masters",
+  "module_slug": "partner_pricing_tax_masters",
+  "display_name": "Tax Master",
+  "link_name": "tax_master",
+  "fields": [
+    {
+      "display_label": "Tax Code",
+      "field_name": "tax_code",
+      "creator_type": "single_line",
+      "original_type": "Single Line (Unique)",
+      "required": true,
+      "unique": true
+    },
+    {
+      "display_label": "Tax Type",
+      "field_name": "tax_type",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "GST / TDS / TCS"
+    },
+    {
+      "display_label": "Description",
+      "field_name": "description",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": true
+    },
+    {
+      "display_label": "Rate (%)",
+      "field_name": "rate",
+      "creator_type": "decimal",
+      "original_type": "Decimal",
+      "required": true
+    },
+    {
+      "display_label": "Applicable From",
+      "field_name": "applicable_from",
+      "creator_type": "date",
+      "original_type": "Date",
+      "required": true
+    },
+    {
+      "display_label": "Applicable To",
+      "field_name": "applicable_to",
+      "creator_type": "date",
+      "original_type": "Date",
+      "required": false
+    },
+    {
+      "display_label": "Ledger Mapping",
+      "field_name": "ledger_mapping",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": false,
+      "help_text": "Finance integration"
+    },
+    {
+      "display_label": "Notes",
+      "field_name": "notes",
+      "creator_type": "multi_line",
+      "original_type": "Multi-line",
+      "required": false
+    }
+  ],
+  "purpose": "Centralise GST, TDS, and TCS rates for automated calculations."
+}

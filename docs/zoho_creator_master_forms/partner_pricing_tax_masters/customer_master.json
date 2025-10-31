@@ -1,0 +1,250 @@
+{
+  "module_name": "Partner, Pricing & Tax Masters",
+  "module_slug": "partner_pricing_tax_masters",
+  "display_name": "Customer Master",
+  "link_name": "customer_master",
+  "fields": [
+    {
+      "display_label": "Customer Code",
+      "field_name": "customer_code",
+      "creator_type": "single_line",
+      "original_type": "Single Line (Unique)",
+      "required": true,
+      "unique": true
+    },
+    {
+      "display_label": "Legal Name",
+      "field_name": "legal_name",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": true
+    },
+    {
+      "display_label": "Trade Name",
+      "field_name": "trade_name",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": false
+    },
+    {
+      "display_label": "Customer Type",
+      "field_name": "customer_type",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Domestic / Export"
+    },
+    {
+      "display_label": "GSTIN",
+      "field_name": "gstin",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": false,
+      "required_condition": "conditional",
+      "help_text": "Mandatory for domestic taxable"
+    },
+    {
+      "display_label": "PAN",
+      "field_name": "pan",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": false
+    },
+    {
+      "display_label": "Billing Address",
+      "field_name": "billing_address",
+      "creator_type": "address",
+      "original_type": "Address",
+      "required": true
+    },
+    {
+      "display_label": "Billing City",
+      "field_name": "billing_city",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": true
+    },
+    {
+      "display_label": "Billing State",
+      "field_name": "billing_state",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true
+    },
+    {
+      "display_label": "Billing Country",
+      "field_name": "billing_country",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true
+    },
+    {
+      "display_label": "Billing Pincode",
+      "field_name": "billing_pincode",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": true
+    },
+    {
+      "display_label": "Contact Person",
+      "field_name": "contact_person",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": false
+    },
+    {
+      "display_label": "Contact Email",
+      "field_name": "contact_email",
+      "creator_type": "email",
+      "original_type": "Email",
+      "required": false
+    },
+    {
+      "display_label": "Contact Phone",
+      "field_name": "contact_phone",
+      "creator_type": "phone",
+      "original_type": "Phone",
+      "required": false
+    },
+    {
+      "display_label": "Payment Terms",
+      "field_name": "payment_terms",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Net 15 / Net 30 / etc."
+    },
+    {
+      "display_label": "Credit Limit",
+      "field_name": "credit_limit",
+      "creator_type": "currency",
+      "original_type": "Currency",
+      "required": false
+    },
+    {
+      "display_label": "Freight Terms",
+      "field_name": "freight_terms",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Paid / To_Pay / Mixed"
+    },
+    {
+      "display_label": "Default Currency",
+      "field_name": "default_currency",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true
+    },
+    {
+      "display_label": "Price Lists",
+      "field_name": "price_lists",
+      "creator_type": "multi_select_lookup",
+      "original_type": "Multi-select Lookup (Price List)",
+      "required": false,
+      "help_text": "Allow multi-region pricing",
+      "lookup_target": "price_list",
+      "lookup_display_name": "Price List"
+    },
+    {
+      "display_label": "Shipping Address",
+      "field_name": "shipping_address",
+      "creator_type": "subform",
+      "original_type": "Subform",
+      "required": false,
+      "help_text": "Location-wise details",
+      "subform_link_name": "shipping_address"
+    },
+    {
+      "display_label": "Documents",
+      "field_name": "documents",
+      "creator_type": "file_upload",
+      "original_type": "File Upload (Multi)",
+      "required": false,
+      "help_text": "Contracts"
+    },
+    {
+      "display_label": "Active Flag",
+      "field_name": "active_flag",
+      "creator_type": "checkbox",
+      "original_type": "Checkbox",
+      "required": true
+    },
+    {
+      "display_label": "Notes",
+      "field_name": "notes",
+      "creator_type": "multi_line",
+      "original_type": "Multi-line",
+      "required": false
+    }
+  ],
+  "purpose": "Maintain customer billing and shipping profiles, credit terms, and price list assignments.",
+  "subforms": [
+    {
+      "display_name": "Shipping Address",
+      "link_name": "shipping_address",
+      "fields": [
+        {
+          "display_label": "Location Name",
+          "field_name": "location_name",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true
+        },
+        {
+          "display_label": "Address",
+          "field_name": "address",
+          "creator_type": "address",
+          "original_type": "Address",
+          "required": true
+        },
+        {
+          "display_label": "City",
+          "field_name": "city",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true
+        },
+        {
+          "display_label": "State",
+          "field_name": "state",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": true
+        },
+        {
+          "display_label": "Country",
+          "field_name": "country",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": true
+        },
+        {
+          "display_label": "Pincode",
+          "field_name": "pincode",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true
+        },
+        {
+          "display_label": "Price List",
+          "field_name": "price_list",
+          "creator_type": "lookup",
+          "original_type": "Lookup (Price List)",
+          "required": false,
+          "help_text": "Default per location",
+          "lookup_target": "price_list",
+          "lookup_display_name": "Price List"
+        },
+        {
+          "display_label": "Freight Terms Override",
+          "field_name": "freight_terms_override",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": false,
+          "help_text": "Optional per location"
+        }
+      ]
+    }
+  ]
+}

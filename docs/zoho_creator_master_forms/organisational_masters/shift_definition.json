@@ -1,0 +1,102 @@
+{
+  "module_name": "Organisational Masters",
+  "module_slug": "organisational_masters",
+  "display_name": "Shift Definition",
+  "link_name": "shift_definition",
+  "fields": [
+    {
+      "display_label": "Shift Code",
+      "field_name": "shift_code",
+      "creator_type": "single_line",
+      "original_type": "Single Line (Unique)",
+      "required": true,
+      "unique": true
+    },
+    {
+      "display_label": "Shift Name",
+      "field_name": "shift_name",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": true
+    },
+    {
+      "display_label": "Location Scope",
+      "field_name": "location_scope",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Office / Warehouse specific"
+    },
+    {
+      "display_label": "Warehouse",
+      "field_name": "warehouse",
+      "creator_type": "lookup",
+      "original_type": "Lookup (Warehouse)",
+      "required": false,
+      "required_condition": "conditional",
+      "help_text": "Required for warehouse shifts",
+      "lookup_target": "warehouse",
+      "lookup_display_name": "Warehouse"
+    },
+    {
+      "display_label": "Start Time",
+      "field_name": "start_time",
+      "creator_type": "time",
+      "original_type": "Time",
+      "required": true
+    },
+    {
+      "display_label": "End Time",
+      "field_name": "end_time",
+      "creator_type": "time",
+      "original_type": "Time",
+      "required": true
+    },
+    {
+      "display_label": "Break Minutes",
+      "field_name": "break_minutes",
+      "creator_type": "number",
+      "original_type": "Number",
+      "required": false
+    },
+    {
+      "display_label": "Working Hours",
+      "field_name": "working_hours",
+      "creator_type": "decimal",
+      "original_type": "Decimal",
+      "required": true,
+      "help_text": "Auto-calc or manual"
+    },
+    {
+      "display_label": "Overtime Threshold (hrs)",
+      "field_name": "overtime_threshold_hrs",
+      "creator_type": "decimal",
+      "original_type": "Decimal",
+      "required": false
+    },
+    {
+      "display_label": "Attendance Window Start",
+      "field_name": "attendance_window_start",
+      "creator_type": "time",
+      "original_type": "Time",
+      "required": true,
+      "help_text": "Earliest check-in"
+    },
+    {
+      "display_label": "Attendance Window End",
+      "field_name": "attendance_window_end",
+      "creator_type": "time",
+      "original_type": "Time",
+      "required": true,
+      "help_text": "Latest check-in"
+    },
+    {
+      "display_label": "Notes",
+      "field_name": "notes",
+      "creator_type": "multi_line",
+      "original_type": "Multi-line",
+      "required": false
+    }
+  ],
+  "purpose": "Preconfigure shift timings, allowances, and overtime policies for attendance automation."
+}

@@ -1,0 +1,92 @@
+{
+  "module_name": "Organisational Masters",
+  "module_slug": "organisational_masters",
+  "display_name": "Stakeholder User",
+  "link_name": "stakeholder_user",
+  "fields": [
+    {
+      "display_label": "Portal User ID",
+      "field_name": "portal_user_id",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": true,
+      "help_text": "Zoho portal identifier"
+    },
+    {
+      "display_label": "Employee Record",
+      "field_name": "employee_record",
+      "creator_type": "lookup",
+      "original_type": "Lookup (Staff Master)",
+      "required": true,
+      "help_text": "Links to staff",
+      "lookup_target": "staff_master",
+      "lookup_display_name": "Staff Master"
+    },
+    {
+      "display_label": "Primary Email",
+      "field_name": "primary_email",
+      "creator_type": "email",
+      "original_type": "Email",
+      "required": true
+    },
+    {
+      "display_label": "Mobile",
+      "field_name": "mobile",
+      "creator_type": "phone",
+      "original_type": "Phone",
+      "required": false
+    },
+    {
+      "display_label": "Assigned Roles",
+      "field_name": "assigned_roles",
+      "creator_type": "multi_select_lookup",
+      "original_type": "Multi-select Lookup (Role Definition)",
+      "required": true,
+      "help_text": "Supports multi-role users",
+      "lookup_target": "role_definition",
+      "lookup_display_name": "Role Definition"
+    },
+    {
+      "display_label": "Default Warehouse",
+      "field_name": "default_warehouse",
+      "creator_type": "lookup",
+      "original_type": "Lookup (Warehouse)",
+      "required": false,
+      "lookup_target": "warehouse",
+      "lookup_display_name": "Warehouse"
+    },
+    {
+      "display_label": "Warehouse Scope",
+      "field_name": "warehouse_scope",
+      "creator_type": "multi_select_lookup",
+      "original_type": "Multi-select Lookup (Warehouse)",
+      "required": false,
+      "help_text": "Overrides default",
+      "lookup_target": "warehouse",
+      "lookup_display_name": "Warehouse"
+    },
+    {
+      "display_label": "Status",
+      "field_name": "status",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Active / Suspended"
+    },
+    {
+      "display_label": "Last Accessed",
+      "field_name": "last_accessed",
+      "creator_type": "date_time",
+      "original_type": "Date-Time",
+      "required": false
+    },
+    {
+      "display_label": "Notes",
+      "field_name": "notes",
+      "creator_type": "multi_line",
+      "original_type": "Multi-line",
+      "required": false
+    }
+  ],
+  "purpose": "Map Zoho portal users to ERP stakeholder roles and warehouse scopes."
+}

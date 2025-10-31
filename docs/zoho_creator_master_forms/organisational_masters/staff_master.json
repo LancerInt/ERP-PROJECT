@@ -1,0 +1,266 @@
+{
+  "module_name": "Organisational Masters",
+  "module_slug": "organisational_masters",
+  "display_name": "Staff Master",
+  "link_name": "staff_master",
+  "fields": [
+    {
+      "display_label": "Staff ID",
+      "field_name": "staff_id",
+      "creator_type": "single_line",
+      "original_type": "Single Line (Unique)",
+      "required": true,
+      "unique": true,
+      "help_text": "Official staff number"
+    },
+    {
+      "display_label": "Full Name",
+      "field_name": "full_name",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": true
+    },
+    {
+      "display_label": "Gender",
+      "field_name": "gender",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": false
+    },
+    {
+      "display_label": "Date of Birth",
+      "field_name": "date_of_birth",
+      "creator_type": "date",
+      "original_type": "Date",
+      "required": false
+    },
+    {
+      "display_label": "Employment Type",
+      "field_name": "employment_type",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Permanent / Contract / Trainee"
+    },
+    {
+      "display_label": "Employment Location",
+      "field_name": "employment_location",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Office / Warehouse / Lab / etc."
+    },
+    {
+      "display_label": "Warehouse / Office",
+      "field_name": "warehouse_office",
+      "creator_type": "lookup",
+      "original_type": "Lookup (Warehouse)",
+      "required": false,
+      "required_condition": "conditional",
+      "help_text": "Mandatory for warehouse-based staff",
+      "lookup_target": "warehouse",
+      "lookup_display_name": "Warehouse"
+    },
+    {
+      "display_label": "Department",
+      "field_name": "department",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": false
+    },
+    {
+      "display_label": "Designation",
+      "field_name": "designation",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": false
+    },
+    {
+      "display_label": "Date of Joining",
+      "field_name": "date_of_joining",
+      "creator_type": "date",
+      "original_type": "Date",
+      "required": true
+    },
+    {
+      "display_label": "Reporting Manager",
+      "field_name": "reporting_manager",
+      "creator_type": "lookup",
+      "original_type": "Lookup (Staff Master)",
+      "required": false,
+      "help_text": "Self-reference",
+      "lookup_target": "staff_master",
+      "lookup_display_name": "Staff Master"
+    },
+    {
+      "display_label": "Active Status",
+      "field_name": "active_status",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Active / On Notice / Relieved"
+    },
+    {
+      "display_label": "Attendance Shift",
+      "field_name": "attendance_shift",
+      "creator_type": "lookup",
+      "original_type": "Lookup (Shift Definition)",
+      "required": false,
+      "help_text": "Default shift",
+      "lookup_target": "shift_definition",
+      "lookup_display_name": "Shift Definition"
+    },
+    {
+      "display_label": "Overtime Eligible",
+      "field_name": "overtime_eligible",
+      "creator_type": "checkbox",
+      "original_type": "Checkbox",
+      "required": false
+    },
+    {
+      "display_label": "Photo",
+      "field_name": "photo",
+      "creator_type": "image",
+      "original_type": "Image",
+      "required": true,
+      "help_text": "Used for face recognition"
+    },
+    {
+      "display_label": "Aadhaar Number",
+      "field_name": "aadhaar_number",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": false,
+      "help_text": "Mask on display"
+    },
+    {
+      "display_label": "PAN Number",
+      "field_name": "pan_number",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": false
+    },
+    {
+      "display_label": "Address",
+      "field_name": "address",
+      "creator_type": "address",
+      "original_type": "Address",
+      "required": false
+    },
+    {
+      "display_label": "Emergency Contact",
+      "field_name": "emergency_contact",
+      "creator_type": "phone",
+      "original_type": "Phone",
+      "required": false
+    },
+    {
+      "display_label": "Bank Accounts",
+      "field_name": "bank_accounts",
+      "creator_type": "subform",
+      "original_type": "Subform",
+      "required": false,
+      "help_text": "Multiple salary accounts",
+      "subform_link_name": "bank_accounts"
+    },
+    {
+      "display_label": "ID Proofs",
+      "field_name": "id_proofs",
+      "creator_type": "subform",
+      "original_type": "Subform",
+      "required": false,
+      "help_text": "Documents",
+      "subform_link_name": "id_proofs"
+    },
+    {
+      "display_label": "Notes",
+      "field_name": "notes",
+      "creator_type": "multi_line",
+      "original_type": "Multi-line",
+      "required": false
+    }
+  ],
+  "purpose": "Maintain the complete roster of staff for attendance, HR, and wage integration.",
+  "subforms": [
+    {
+      "display_name": "Bank Accounts",
+      "link_name": "bank_accounts",
+      "fields": [
+        {
+          "display_label": "Bank Name",
+          "field_name": "bank_name",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true
+        },
+        {
+          "display_label": "Account Number",
+          "field_name": "account_number",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true,
+          "help_text": "Mask when displayed"
+        },
+        {
+          "display_label": "IFSC",
+          "field_name": "ifsc",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true,
+          "help_text": "Validate pattern"
+        },
+        {
+          "display_label": "Account Type",
+          "field_name": "account_type",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": false,
+          "help_text": "Savings / Current"
+        },
+        {
+          "display_label": "Primary Account",
+          "field_name": "primary_account",
+          "creator_type": "checkbox",
+          "original_type": "Checkbox",
+          "required": false
+        }
+      ]
+    },
+    {
+      "display_name": "ID Proofs",
+      "link_name": "id_proofs",
+      "fields": [
+        {
+          "display_label": "Proof Type",
+          "field_name": "proof_type",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": true,
+          "help_text": "Aadhaar / PAN / License"
+        },
+        {
+          "display_label": "Proof Number",
+          "field_name": "proof_number",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true
+        },
+        {
+          "display_label": "Proof File",
+          "field_name": "proof_file",
+          "creator_type": "file_upload",
+          "original_type": "File Upload",
+          "required": true
+        },
+        {
+          "display_label": "Expiry Date",
+          "field_name": "expiry_date",
+          "creator_type": "date",
+          "original_type": "Date",
+          "required": false,
+          "help_text": "Mandatory for expiring proofs"
+        }
+      ]
+    }
+  ]
+}

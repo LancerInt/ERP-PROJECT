@@ -1,0 +1,89 @@
+{
+  "module_name": "Product & Service Catalogue Masters",
+  "module_slug": "product_service_catalogue_masters",
+  "display_name": "Service Catalogue",
+  "link_name": "service_catalogue",
+  "fields": [
+    {
+      "display_label": "Service Code",
+      "field_name": "service_code",
+      "creator_type": "single_line",
+      "original_type": "Single Line (Unique)",
+      "required": true,
+      "unique": true
+    },
+    {
+      "display_label": "Service Name",
+      "field_name": "service_name",
+      "creator_type": "single_line",
+      "original_type": "Single Line",
+      "required": true
+    },
+    {
+      "display_label": "Service Type",
+      "field_name": "service_type",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Warehouse Expense / Wages / etc."
+    },
+    {
+      "display_label": "Warehouse Scope",
+      "field_name": "warehouse_scope",
+      "creator_type": "multi_select_lookup",
+      "original_type": "Multi-select Lookup (Warehouse)",
+      "required": false,
+      "help_text": "Limit availability",
+      "lookup_target": "warehouse",
+      "lookup_display_name": "Warehouse"
+    },
+    {
+      "display_label": "GST Applicability",
+      "field_name": "gst_applicability",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Taxable / Exempt"
+    },
+    {
+      "display_label": "GST Rate",
+      "field_name": "gst_rate",
+      "creator_type": "decimal",
+      "original_type": "Decimal",
+      "required": false,
+      "required_condition": "conditional",
+      "help_text": "When taxable"
+    },
+    {
+      "display_label": "TDS Section",
+      "field_name": "tds_section",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": false,
+      "help_text": "Needed for wages"
+    },
+    {
+      "display_label": "Default Ledger",
+      "field_name": "default_ledger",
+      "creator_type": "drop_down",
+      "original_type": "Dropdown",
+      "required": true,
+      "help_text": "Finance mapping"
+    },
+    {
+      "display_label": "Active Flag",
+      "field_name": "active_flag",
+      "creator_type": "checkbox",
+      "original_type": "Checkbox",
+      "required": true
+    },
+    {
+      "display_label": "Notes",
+      "field_name": "notes",
+      "creator_type": "multi_line",
+      "original_type": "Multi-line",
+      "required": false
+    }
+  ],
+  "purpose": "Register non-stock services with tax rules and warehouse availability."
+}
