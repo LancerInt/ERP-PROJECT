@@ -44,6 +44,9 @@ erDiagram
     RECEIPT_ADVICE ||--o{ VENDOR_PAYMENT_ADVICE : payable
 ```
 
+- **PO_LINE** holds extra and agent commission attributes so landed cost flows through receipts and finance.
+- **FREIGHT_ADVICE** nodes encapsulate shipment quantity/UOM and destination metadata for cost-per-unit analysis while remaining a Freight Coordinator → Finance Manager approval.
+
 ## 3. Sales, Dispatch & Outbound Freight
 ```mermaid
 erDiagram
@@ -61,6 +64,8 @@ erDiagram
     FREIGHT_ADVICE ||--o{ FREIGHT_LEDGER : posts
     RECEIVABLE_LEDGER ||--o{ BANK_RECON_EXCEPTION : unmatched
 ```
+
+- Outbound FREIGHT_ADVICE inherits the same quantity/UOM/destination capture so per-destination cost KPIs are available for customer shipments with Freight Coordinator initiation and Finance Manager approval.
 
 ## 4. Production, Inventory & QC
 ```mermaid
@@ -81,6 +86,8 @@ erDiagram
     QC_FINAL_REPORT ||--o{ COUNTER_SAMPLE : stores
 ```
 
+- WAGE_VOUCHER records originate from the Warehouse Coordinator (Office) and escalate to the Finance Manager for approval, meeting wage governance requirements.
+
 ## 5. Job Work, Transfers & Adjustments
 ```mermaid
 erDiagram
@@ -100,6 +107,8 @@ erDiagram
     WAREHOUSE ||--o{ STOCK_ADJUSTMENT : records
     STOCK_ADJUSTMENT ||--o{ INVENTORY_LEDGER : impacts
 ```
+
+- Transfer-related FREIGHT_ADVICE entries mirror the Freight Coordinator → Finance Manager approval path and capture shipment quantity/UOM for per-destination transfer costing.
 
 ## 6. Finance & Attendance
 ```mermaid

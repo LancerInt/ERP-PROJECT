@@ -67,7 +67,8 @@ flowchart TD
     QCDecision -->|Reformulate| Rework[Create Rework Batch]
     QCDecision -->|Fail| Scrap[Notify & Scrap / Return]
     WO --> WageCalc["Wage Calculation\\n(Template or Headcount)"]
-    WageCalc --> WageApproval[Finance Approval Workflow]
+    WageCalc --> WageDraft["Wage Advice Draft\\n(Warehouse Coordinator Office)"]
+    WageDraft --> WageApproval["Finance Manager Approval"]
 ```
 
 ## Quality Control Module
@@ -93,9 +94,8 @@ flowchart TD
     TransferReq[Stock Transfer Request\nSending Warehouse] --> DraftDC[Transfer DC Draft]
     DraftDC --> LoadWage[Record Loading Wages]
     DraftDC --> InTransit[Mark Inventory In-Transit]
-    InTransit --> FreightAdvice[Draft Local Drayage Freight Advice]
-    FreightAdvice --> HOApprove["Warehouse Coordinator (Office) Approval"]
-    HOApprove --> FinanceApprove[Finance Manager Approval]
+    InTransit --> FreightDraft["Freight Advice Draft\\n(Freight Coordinator)"]
+    FreightDraft --> FinanceApprove["Finance Manager Approval"]
     InTransit --> ReceiptAdvice[Receiving Warehouse Receipt Advice]
     ReceiptAdvice --> QCCheck{QC Required?}
     QCCheck -->|Pass| StockUpdate[Inventory Updated & Batch Stored]
@@ -122,7 +122,7 @@ flowchart TD
 ```mermaid
 flowchart TD
     Trigger[Inbound/Outbound Movement] --> FreightTerms[Read Freight Terms]
-    FreightTerms --> DraftAdvice[Draft Freight Advice]
+    FreightTerms --> DraftAdvice["Freight Advice Draft\\n(Freight Coordinator)"]
     DraftAdvice --> Discount[Optional Discount & TDS]
     Discount --> ApprovalFlow[Finance Manager Approval]
     ApprovalFlow --> PaymentSchedule[Set Payment Schedule]

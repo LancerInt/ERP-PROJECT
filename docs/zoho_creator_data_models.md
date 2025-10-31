@@ -1,6 +1,6 @@
 # Zoho Creator ERP Data Models
 
-This is the catalogue enumerates every Zoho Creator form, subform, and lookup that powers the ERP. Each section lists all fields
+This catalogue enumerates every Zoho Creator form, subform, and lookup that powers the ERP. Each section lists all fields
 required by the business requirements, grouped by module. Use these definitions when building forms, importing legacy data,
 and configuring automation.
 
@@ -532,6 +532,8 @@ and configuring automation.
 | Unit Price | Currency | Y | |
 | Discount % | Decimal |  | |
 | GST % | Decimal | Y | |
+| Extra Commission | Currency |  | Applied for select products; included in landed cost |
+| Agent Commission | Currency |  | Commission payable to external agents; included in landed cost |
 | Freight Estimate | Currency |  | Tentative freight |
 | Delivery Schedule | Date |  | |
 | Linked PR Line | Lookup (PR Line) |  | |
@@ -583,6 +585,8 @@ and configuring automation.
 | Expiry Date | Date |  | |
 | Quantity Received | Decimal | Y | |
 | UOM | Dropdown | Y | |
+| Extra Commission | Currency |  | Capture actual commission incurred |
+| Agent Commission | Currency |  | Capture agent payouts associated with the receipt |
 | Quantity Accepted | Decimal |  | Post QC |
 | Quantity Rejected | Decimal |  | |
 | Godown Location | Dropdown | Y | Filters by warehouse |
@@ -605,6 +609,10 @@ and configuring automation.
 | Tentative Charge | Currency |  | Pre-filled from PO |
 | Discount | Currency |  | Optional |
 | Payable By | Dropdown | Y | Company / Vendor |
+| Quantity Basis | Decimal |  | Total shipment quantity for cost-per-unit reporting |
+| Quantity UOM | Dropdown |  | Tonnes / KG / KL / Units |
+| Destination State | Dropdown |  | Auto-populated from receiving warehouse |
+| Cost Per Unit (Calc) | Decimal (Formula) |  | Tentative charge minus discount divided by quantity basis |
 | Payment Schedule | Subform |  | Instalments |
 
 #### Loading Unloading Wages (subform)
@@ -612,7 +620,7 @@ and configuring automation.
 | --- | --- | --- | --- |
 | Wage Type | Dropdown | Y | Loading / Unloading |
 | Contractor Vendor | Lookup (Vendor) | C | Mandatory if payable by company |
-| Amount | Currency | Y | |
+| Amount | Currency | Y | Includes product value plus extra/agent commissions when applicable |
 | TDS Applicable % | Decimal |  | |
 | Payable By | Dropdown | Y | Company / Vendor |
 | Remarks | Multi-line |  | |
@@ -633,10 +641,16 @@ and configuring automation.
 | Receipt Advice | Lookup (Receipt Advice) | Y | |
 | Transporter | Lookup (Transporter) | Y | |
 | Freight Type | Dropdown | Y | Local Drayage / Linehaul |
+| Created By | Lookup (Stakeholder User) | Y | Freight Coordinator originator |
+| Created Date | Date | Y | |
 | Base Amount | Currency | Y | |
 | Discount | Currency |  | |
 | Loading Wages Amount | Currency |  | |
 | Unloading Wages Amount | Currency |  | |
+| Quantity Basis | Decimal |  | Total quantity covered by the advice |
+| Quantity UOM | Dropdown |  | Tonnes / KG / KL / Units |
+| Cost Per Unit (Calc) | Decimal (Formula) |  | Payable amount divided by quantity basis |
+| Destination State | Dropdown |  | Auto-derived from receiving warehouse |
 | Payable Amount | Currency | Y | Base - discount + wages |
 | Payment Schedule | Subform |  | |
 | Approval Workflow | Subform |  | Freight Coordinator → Finance Manager |
@@ -653,7 +667,7 @@ and configuring automation.
 | Tax Components | Subform |  | TDS/TCS |
 | Due Date | Date | Y | |
 | Payment Method | Dropdown | Y | Bank Transfer / Cash / Cheque / UPI |
-| Prepared By | Lookup (Stakeholder User) | Y | |
+| Prepared By | Lookup (Stakeholder User) | Y | Warehouse Coordinator (Office) originator |
 | Approval Workflow | Subform | Y | Finance Manager → Office Manager |
 | Status | Dropdown | Y | Draft / Pending / Approved / Paid / On Hold |
 | Notes | Multi-line |  | |
@@ -792,10 +806,16 @@ and configuring automation.
 | Dispatch Challan | Lookup (Dispatch Challan) | Y | |
 | Transporter | Lookup (Transporter) | Y | |
 | Freight Type | Dropdown | Y | Local Drayage / Linehaul |
+| Created By | Lookup (Stakeholder User) | Y | Freight Coordinator originator |
+| Created Date | Date | Y | |
 | Base Amount | Currency | Y | |
 | Discount | Currency |  | |
 | Loading Wages Amount | Currency |  | |
 | Unloading Wages Amount | Currency |  | |
+| Shipment Quantity | Decimal |  | Total quantity dispatched |
+| Quantity UOM | Dropdown |  | Tonnes / KG / KL / Units |
+| Cost Per Unit (Calc) | Decimal (Formula) |  | Payable amount divided by shipment quantity |
+| Destination State | Dropdown |  | Auto-populated from delivery address |
 | Payable Amount | Currency | Y | |
 | Payment Schedule | Subform |  | |
 | Approval Workflow | Subform |  | Freight Coordinator → Finance Manager |
@@ -951,9 +971,9 @@ and configuring automation.
 | Hours / Tasks | Subform | Y | |
 | Amount | Currency | Y | |
 | TDS % | Decimal |  | |
-| Prepared By | Lookup (Stakeholder User) | Y | |
+| Prepared By | Lookup (Stakeholder User) | Y | Warehouse Coordinator (Office) originator |
 | Prepared Date | Date | Y | |
-| Approval Workflow | Subform | Y | Warehouse Coordinator (Office) → Finance |
+| Approval Workflow | Subform | Y | Warehouse Coordinator (Office) → Finance Manager |
 | Status | Dropdown | Y | Draft / Pending / Approved / Paid |
 | Remarks | Multi-line |  | |
 
@@ -1468,6 +1488,10 @@ and configuring automation.
 | Freight Advice | Lookup (Freight Advice) | Y | |
 | Amount | Currency | Y | |
 | Discount | Currency |  | |
+| Shipment Quantity | Decimal |  | Pulled from freight advice |
+| Quantity UOM | Dropdown |  | |
+| Cost Per Unit | Decimal |  | Stored for reporting |
+| Destination State | Dropdown |  | Enables cost-per-destination analytics |
 | Payment Schedule | Subform |  | |
 | Amount Paid | Currency |  | |
 | Balance | Currency | Y | |

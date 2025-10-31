@@ -458,6 +458,8 @@ classDiagram
         +Unit Price
         +Discount %
         +GST %
+        +Extra Commission
+        +Agent Commission
         +Freight Estimate
         +Delivery Schedule
         +Linked PR Line
@@ -499,6 +501,8 @@ classDiagram
         +Expiry Date
         +Quantity Received
         +UOM
+        +Extra Commission
+        +Agent Commission
         +Quantity Accepted
         +Quantity Rejected
         +Godown Location
@@ -517,10 +521,14 @@ classDiagram
         +Tentative Charge
         +Discount
         +Payable By
+        +Quantity Basis
+        +Quantity UOM
+        +Destination State
+        +Cost Per Unit (Calc)
     }
     class FreightPaymentSchedule {
         +Due Date
-        +Amount
+        +Amount (Incl. Commissions)
         +TDS %
         +Reminder Flag
     }
@@ -538,10 +546,16 @@ classDiagram
         +Receipt Advice
         +Transporter
         +Freight Type
+        +Created By
+        +Created Date
         +Base Amount
         +Discount
         +Loading Wages Amount
         +Unloading Wages Amount
+        +Quantity Basis
+        +Quantity UOM
+        +Cost Per Unit (Calc)
+        +Destination State
         +Payable Amount
         +Status
     }
@@ -685,10 +699,16 @@ classDiagram
         +Dispatch Challan
         +Transporter
         +Freight Type
+        +Created By
+        +Created Date
         +Base Amount
         +Discount
         +Loading Wages Amount
         +Unloading Wages Amount
+        +Shipment Quantity
+        +Quantity UOM
+        +Cost Per Unit (Calc)
+        +Destination State
         +Payable Amount
         +Status
     }
@@ -819,8 +839,9 @@ classDiagram
         +Staff Group
         +Amount
         +TDS %
-        +Prepared By
+        +Prepared By (Warehouse Coordinator - Office)
         +Prepared Date
+        +Approval Workflow (→ Finance Manager)
         +Status
         +Remarks
     }
@@ -1261,6 +1282,10 @@ classDiagram
         +Freight Advice
         +Amount
         +Discount
+        +Shipment Quantity
+        +Quantity UOM
+        +Cost Per Unit
+        +Destination State
         +Amount Paid
         +Balance
         +Reminder Flag

@@ -53,6 +53,9 @@ erDiagram
     PAYMENT_SCHEDULE }o--|| PAYMENT_ADVICE : funded_by
 ```
 
+- **PO_LINE** carries `Extra Commission` and `Agent Commission` fields so landed cost flows into receipt advice, inventory valuation, and vendor settlement.
+- **FREIGHT_ADVICE** persists shipment quantity, UOM, and destination state for cost-per-unit analytics while remaining a Freight Coordinator → Finance Manager approval flow.
+
 ## 3. Sales ↔ Logistics ↔ Finance
 
 ```mermaid
@@ -78,6 +81,8 @@ erDiagram
     RETURN_LINE }o--|| PRODUCT_BATCH : restocks
 ```
 
+- Outbound **FREIGHT_ADVICE** shares the same quantity/UOM/destination metrics, ensuring cost-per-unit reporting by customer geography while Freight Coordinator drafts and Finance Manager approves.
+
 ## 4. Production ↔ QC ↔ Wages
 
 ```mermaid
@@ -102,6 +107,8 @@ erDiagram
     QC_REPORT }o--|| PRODUCT_BATCH : certifies
 ```
 
+- **WAGE_ACCRUAL/WAGE_VOUCHER** records originate with the Warehouse Coordinator (Office) and route to the Finance Manager for approval, keeping wage advice ownership aligned with finance controls.
+
 ## 5. Logistics ↔ Stock Transfer ↔ Job Work
 
 ```mermaid
@@ -122,6 +129,8 @@ erDiagram
     JOBWORK_COST ||--|| JOBWORK_RA : derives
     JOBWORK_COST }o--|| FREIGHT_ADVICE : associates
 ```
+
+- Inter-warehouse freight advice follows the same Freight Coordinator creation and Finance Manager approval, with cost-per-unit and destination state captured for transfer analytics.
 
 ## 6. Attendance ↔ HR ↔ Finance
 
