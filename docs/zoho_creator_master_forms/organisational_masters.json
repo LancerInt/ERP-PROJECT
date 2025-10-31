@@ -1,0 +1,1003 @@
+{
+  "module_name": "Organisational Masters",
+  "module_slug": "organisational_masters",
+  "forms": [
+    {
+      "display_name": "Company Master",
+      "link_name": "company_master",
+      "fields": [
+        {
+          "display_label": "Company Code",
+          "field_name": "company_code",
+          "creator_type": "single_line",
+          "original_type": "Single Line (Unique)",
+          "required": true,
+          "unique": true,
+          "help_text": "Short code used across modules and exports"
+        },
+        {
+          "display_label": "Legal Name",
+          "field_name": "legal_name",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true,
+          "help_text": "Registered legal entity name"
+        },
+        {
+          "display_label": "Trade Name",
+          "field_name": "trade_name",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": false,
+          "help_text": "Optional doing-business-as name"
+        },
+        {
+          "display_label": "GSTIN",
+          "field_name": "gstin",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true,
+          "help_text": "Validate 15-character GST format"
+        },
+        {
+          "display_label": "PAN",
+          "field_name": "pan",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": false,
+          "help_text": "Required for TDS/TCS"
+        },
+        {
+          "display_label": "CIN",
+          "field_name": "cin",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": false,
+          "help_text": "Corporate Identification Number"
+        },
+        {
+          "display_label": "Registered Address",
+          "field_name": "registered_address",
+          "creator_type": "address",
+          "original_type": "Address",
+          "required": true,
+          "help_text": "Multi-line address"
+        },
+        {
+          "display_label": "Billing Address",
+          "field_name": "billing_address",
+          "creator_type": "address",
+          "original_type": "Address",
+          "required": true,
+          "help_text": "Defaults onto invoices"
+        },
+        {
+          "display_label": "Contact Email",
+          "field_name": "contact_email",
+          "creator_type": "email",
+          "original_type": "Email",
+          "required": false,
+          "help_text": "Finance escalation"
+        },
+        {
+          "display_label": "Contact Phone",
+          "field_name": "contact_phone",
+          "creator_type": "phone",
+          "original_type": "Phone",
+          "required": false
+        },
+        {
+          "display_label": "Default Currency",
+          "field_name": "default_currency",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": true,
+          "help_text": "Seed from System Parameters"
+        },
+        {
+          "display_label": "Books Export Flag",
+          "field_name": "books_export_flag",
+          "creator_type": "checkbox",
+          "original_type": "Checkbox",
+          "required": false,
+          "help_text": "Toggle for Tally integration"
+        },
+        {
+          "display_label": "Active From",
+          "field_name": "active_from",
+          "creator_type": "date",
+          "original_type": "Date",
+          "required": true,
+          "help_text": "Effective start date"
+        },
+        {
+          "display_label": "Active To",
+          "field_name": "active_to",
+          "creator_type": "date",
+          "original_type": "Date",
+          "required": false,
+          "help_text": "Optional sunset"
+        },
+        {
+          "display_label": "Notes",
+          "field_name": "notes",
+          "creator_type": "multi_line",
+          "original_type": "Multi-line",
+          "required": false
+        }
+      ],
+      "purpose": "Register each legal entity participating in purchasing, sales, finance, or compliance so other masters can reference it."
+    },
+    {
+      "display_name": "Warehouse Master",
+      "link_name": "warehouse_master",
+      "fields": [
+        {
+          "display_label": "Warehouse Code",
+          "field_name": "warehouse_code",
+          "creator_type": "single_line",
+          "original_type": "Single Line (Unique)",
+          "required": true,
+          "unique": true,
+          "help_text": "Used in stock and logistics documents"
+        },
+        {
+          "display_label": "Company",
+          "field_name": "company",
+          "creator_type": "lookup",
+          "original_type": "Lookup (Company)",
+          "required": true,
+          "help_text": "Owning entity",
+          "lookup_target": "company",
+          "lookup_display_name": "Company"
+        },
+        {
+          "display_label": "Name",
+          "field_name": "name",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true,
+          "help_text": "Display name"
+        },
+        {
+          "display_label": "Warehouse Type",
+          "field_name": "warehouse_type",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": true,
+          "help_text": "Head Office / Factory / Job Work Partner"
+        },
+        {
+          "display_label": "Address",
+          "field_name": "address",
+          "creator_type": "address",
+          "original_type": "Address",
+          "required": true,
+          "help_text": "Physical location"
+        },
+        {
+          "display_label": "City",
+          "field_name": "city",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true
+        },
+        {
+          "display_label": "State",
+          "field_name": "state",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": true,
+          "help_text": "GST place of supply"
+        },
+        {
+          "display_label": "Country",
+          "field_name": "country",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": true
+        },
+        {
+          "display_label": "Pincode",
+          "field_name": "pincode",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true
+        },
+        {
+          "display_label": "Geo Latitude",
+          "field_name": "geo_latitude",
+          "creator_type": "decimal",
+          "original_type": "Decimal",
+          "required": true,
+          "help_text": "Attendance geofence"
+        },
+        {
+          "display_label": "Geo Longitude",
+          "field_name": "geo_longitude",
+          "creator_type": "decimal",
+          "original_type": "Decimal",
+          "required": true,
+          "help_text": "Attendance geofence"
+        },
+        {
+          "display_label": "Time Zone",
+          "field_name": "time_zone",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": true,
+          "help_text": "SLA calculations"
+        },
+        {
+          "display_label": "Default Currency",
+          "field_name": "default_currency",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": true,
+          "help_text": "Inherits from company by default"
+        },
+        {
+          "display_label": "Warehouse Coordinator (Office)",
+          "field_name": "warehouse_coordinator_office",
+          "creator_type": "lookup",
+          "original_type": "Lookup (Stakeholder User)",
+          "required": false,
+          "required_condition": "conditional",
+          "help_text": "Mandatory for active warehouses",
+          "lookup_target": "stakeholder_user",
+          "lookup_display_name": "Stakeholder User"
+        },
+        {
+          "display_label": "Warehouse HR Coordinator",
+          "field_name": "warehouse_hr_coordinator",
+          "creator_type": "lookup",
+          "original_type": "Lookup (Stakeholder User)",
+          "required": false,
+          "lookup_target": "stakeholder_user",
+          "lookup_display_name": "Stakeholder User"
+        },
+        {
+          "display_label": "Warehouse Manager(s)",
+          "field_name": "warehouse_manager_s",
+          "creator_type": "multi_select_lookup",
+          "original_type": "Multi-select Lookup (Stakeholder User)",
+          "required": false,
+          "lookup_target": "stakeholder_user",
+          "lookup_display_name": "Stakeholder User"
+        },
+        {
+          "display_label": "Warehouse Coordinator(s)",
+          "field_name": "warehouse_coordinator_s",
+          "creator_type": "multi_select_lookup",
+          "original_type": "Multi-select Lookup (Stakeholder User)",
+          "required": false,
+          "lookup_target": "stakeholder_user",
+          "lookup_display_name": "Stakeholder User"
+        },
+        {
+          "display_label": "Warehouse Supervisor(s)",
+          "field_name": "warehouse_supervisor_s",
+          "creator_type": "multi_select_lookup",
+          "original_type": "Multi-select Lookup (Stakeholder User)",
+          "required": false,
+          "lookup_target": "stakeholder_user",
+          "lookup_display_name": "Stakeholder User"
+        },
+        {
+          "display_label": "Godown List",
+          "field_name": "godown_list",
+          "creator_type": "subform",
+          "original_type": "Subform",
+          "required": true,
+          "help_text": "Maintain at least one godown",
+          "subform_link_name": "godown_list"
+        },
+        {
+          "display_label": "Active Flag",
+          "field_name": "active_flag",
+          "creator_type": "checkbox",
+          "original_type": "Checkbox",
+          "required": true,
+          "help_text": "Deactivate to hide from new transactions"
+        },
+        {
+          "display_label": "Notes",
+          "field_name": "notes",
+          "creator_type": "multi_line",
+          "original_type": "Multi-line",
+          "required": false
+        }
+      ],
+      "purpose": "Capture warehouse profile, governance roles, and embedded godown/machinery lists.",
+      "subforms": [
+        {
+          "display_name": "Godown List",
+          "link_name": "godown_list",
+          "fields": [
+            {
+              "display_label": "Godown Code",
+              "field_name": "godown_code",
+              "creator_type": "single_line",
+              "original_type": "Single Line",
+              "required": true,
+              "help_text": "Unique within warehouse"
+            },
+            {
+              "display_label": "Godown Name",
+              "field_name": "godown_name",
+              "creator_type": "single_line",
+              "original_type": "Single Line",
+              "required": true
+            },
+            {
+              "display_label": "Storage Condition",
+              "field_name": "storage_condition",
+              "creator_type": "drop_down",
+              "original_type": "Dropdown",
+              "required": false,
+              "help_text": "Ambient / Cold / Hazardous"
+            },
+            {
+              "display_label": "Capacity UOM",
+              "field_name": "capacity_uom",
+              "creator_type": "drop_down",
+              "original_type": "Dropdown",
+              "required": false
+            },
+            {
+              "display_label": "Capacity Value",
+              "field_name": "capacity_value",
+              "creator_type": "decimal",
+              "original_type": "Decimal",
+              "required": false,
+              "help_text": "Max storage"
+            },
+            {
+              "display_label": "Batch Tracking Enabled",
+              "field_name": "batch_tracking_enabled",
+              "creator_type": "checkbox",
+              "original_type": "Checkbox",
+              "required": true,
+              "help_text": "Controls batch-level location"
+            },
+            {
+              "display_label": "Default QC Hold Area",
+              "field_name": "default_qc_hold_area",
+              "creator_type": "checkbox",
+              "original_type": "Checkbox",
+              "required": false,
+              "help_text": "Flags quarantine"
+            },
+            {
+              "display_label": "Machinery List",
+              "field_name": "machinery_list",
+              "creator_type": "subform",
+              "original_type": "Subform",
+              "required": false,
+              "help_text": "Independent machinery roster",
+              "subform_link_name": "machinery_list"
+            }
+          ],
+          "subforms": [
+            {
+              "display_name": "Machinery List",
+              "link_name": "machinery_list",
+              "fields": [
+                {
+                  "display_label": "Machine ID",
+                  "field_name": "machine_id",
+                  "creator_type": "single_line",
+                  "original_type": "Single Line",
+                  "required": true,
+                  "help_text": "Unique equipment identifier"
+                },
+                {
+                  "display_label": "Machine Name",
+                  "field_name": "machine_name",
+                  "creator_type": "single_line",
+                  "original_type": "Single Line",
+                  "required": true
+                },
+                {
+                  "display_label": "Category",
+                  "field_name": "category",
+                  "creator_type": "drop_down",
+                  "original_type": "Dropdown",
+                  "required": true,
+                  "help_text": "Capital Goods / Machine Spares / Production Line"
+                },
+                {
+                  "display_label": "Commission Date",
+                  "field_name": "commission_date",
+                  "creator_type": "date",
+                  "original_type": "Date",
+                  "required": false
+                },
+                {
+                  "display_label": "Maintenance Vendor",
+                  "field_name": "maintenance_vendor",
+                  "creator_type": "lookup",
+                  "original_type": "Lookup (Vendor)",
+                  "required": false,
+                  "help_text": "For service/job work",
+                  "lookup_target": "vendor",
+                  "lookup_display_name": "Vendor"
+                },
+                {
+                  "display_label": "Next Service Due",
+                  "field_name": "next_service_due",
+                  "creator_type": "date",
+                  "original_type": "Date",
+                  "required": false
+                },
+                {
+                  "display_label": "Status",
+                  "field_name": "status",
+                  "creator_type": "drop_down",
+                  "original_type": "Dropdown",
+                  "required": true,
+                  "help_text": "Active / Under Maintenance / Retired"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "display_name": "Role Definition",
+      "link_name": "role_definition",
+      "fields": [
+        {
+          "display_label": "Role Code",
+          "field_name": "role_code",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true,
+          "help_text": "Unique role identifier"
+        },
+        {
+          "display_label": "Role Name",
+          "field_name": "role_name",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true
+        },
+        {
+          "display_label": "Module Permissions",
+          "field_name": "module_permissions",
+          "creator_type": "multi_line",
+          "original_type": "Multi-line JSON",
+          "required": true,
+          "help_text": "CRUD/approval rights per module"
+        },
+        {
+          "display_label": "Data Scope",
+          "field_name": "data_scope",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": true,
+          "help_text": "Global / Company / Warehouse"
+        },
+        {
+          "display_label": "Approval Levels",
+          "field_name": "approval_levels",
+          "creator_type": "subform",
+          "original_type": "Subform",
+          "required": false,
+          "help_text": "Configure amount thresholds",
+          "subform_link_name": "approval_levels"
+        },
+        {
+          "display_label": "Default Share Rules",
+          "field_name": "default_share_rules",
+          "creator_type": "multi_line",
+          "original_type": "Multi-line",
+          "required": false,
+          "help_text": "Creator share settings template"
+        },
+        {
+          "display_label": "Active Flag",
+          "field_name": "active_flag",
+          "creator_type": "checkbox",
+          "original_type": "Checkbox",
+          "required": true
+        }
+      ],
+      "purpose": "Define composite permission bundles that control record creation, approval, and sharing.",
+      "subforms": [
+        {
+          "display_name": "Approval Levels",
+          "link_name": "approval_levels",
+          "fields": [
+            {
+              "display_label": "Module",
+              "field_name": "module",
+              "creator_type": "drop_down",
+              "original_type": "Dropdown",
+              "required": true,
+              "help_text": "Purchase / Sales / Production / etc."
+            },
+            {
+              "display_label": "Stage",
+              "field_name": "stage",
+              "creator_type": "drop_down",
+              "original_type": "Dropdown",
+              "required": true,
+              "help_text": "Request / Evaluation / Payment"
+            },
+            {
+              "display_label": "Min Amount",
+              "field_name": "min_amount",
+              "creator_type": "currency",
+              "original_type": "Currency",
+              "required": false,
+              "help_text": "Threshold"
+            },
+            {
+              "display_label": "Max Amount",
+              "field_name": "max_amount",
+              "creator_type": "currency",
+              "original_type": "Currency",
+              "required": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "display_name": "Stakeholder User",
+      "link_name": "stakeholder_user",
+      "fields": [
+        {
+          "display_label": "Portal User ID",
+          "field_name": "portal_user_id",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true,
+          "help_text": "Zoho portal identifier"
+        },
+        {
+          "display_label": "Employee Record",
+          "field_name": "employee_record",
+          "creator_type": "lookup",
+          "original_type": "Lookup (Staff Master)",
+          "required": true,
+          "help_text": "Links to staff",
+          "lookup_target": "staff_master",
+          "lookup_display_name": "Staff Master"
+        },
+        {
+          "display_label": "Primary Email",
+          "field_name": "primary_email",
+          "creator_type": "email",
+          "original_type": "Email",
+          "required": true
+        },
+        {
+          "display_label": "Mobile",
+          "field_name": "mobile",
+          "creator_type": "phone",
+          "original_type": "Phone",
+          "required": false
+        },
+        {
+          "display_label": "Assigned Roles",
+          "field_name": "assigned_roles",
+          "creator_type": "multi_select_lookup",
+          "original_type": "Multi-select Lookup (Role Definition)",
+          "required": true,
+          "help_text": "Supports multi-role users",
+          "lookup_target": "role_definition",
+          "lookup_display_name": "Role Definition"
+        },
+        {
+          "display_label": "Default Warehouse",
+          "field_name": "default_warehouse",
+          "creator_type": "lookup",
+          "original_type": "Lookup (Warehouse)",
+          "required": false,
+          "lookup_target": "warehouse",
+          "lookup_display_name": "Warehouse"
+        },
+        {
+          "display_label": "Warehouse Scope",
+          "field_name": "warehouse_scope",
+          "creator_type": "multi_select_lookup",
+          "original_type": "Multi-select Lookup (Warehouse)",
+          "required": false,
+          "help_text": "Overrides default",
+          "lookup_target": "warehouse",
+          "lookup_display_name": "Warehouse"
+        },
+        {
+          "display_label": "Status",
+          "field_name": "status",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": true,
+          "help_text": "Active / Suspended"
+        },
+        {
+          "display_label": "Last Accessed",
+          "field_name": "last_accessed",
+          "creator_type": "date_time",
+          "original_type": "Date-Time",
+          "required": false
+        },
+        {
+          "display_label": "Notes",
+          "field_name": "notes",
+          "creator_type": "multi_line",
+          "original_type": "Multi-line",
+          "required": false
+        }
+      ],
+      "purpose": "Map Zoho portal users to ERP stakeholder roles and warehouse scopes."
+    },
+    {
+      "display_name": "Staff Master",
+      "link_name": "staff_master",
+      "fields": [
+        {
+          "display_label": "Staff ID",
+          "field_name": "staff_id",
+          "creator_type": "single_line",
+          "original_type": "Single Line (Unique)",
+          "required": true,
+          "unique": true,
+          "help_text": "Official staff number"
+        },
+        {
+          "display_label": "Full Name",
+          "field_name": "full_name",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true
+        },
+        {
+          "display_label": "Gender",
+          "field_name": "gender",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": false
+        },
+        {
+          "display_label": "Date of Birth",
+          "field_name": "date_of_birth",
+          "creator_type": "date",
+          "original_type": "Date",
+          "required": false
+        },
+        {
+          "display_label": "Employment Type",
+          "field_name": "employment_type",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": true,
+          "help_text": "Permanent / Contract / Trainee"
+        },
+        {
+          "display_label": "Employment Location",
+          "field_name": "employment_location",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": true,
+          "help_text": "Office / Warehouse / Lab / etc."
+        },
+        {
+          "display_label": "Warehouse / Office",
+          "field_name": "warehouse_office",
+          "creator_type": "lookup",
+          "original_type": "Lookup (Warehouse)",
+          "required": false,
+          "required_condition": "conditional",
+          "help_text": "Mandatory for warehouse-based staff",
+          "lookup_target": "warehouse",
+          "lookup_display_name": "Warehouse"
+        },
+        {
+          "display_label": "Department",
+          "field_name": "department",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": false
+        },
+        {
+          "display_label": "Designation",
+          "field_name": "designation",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": false
+        },
+        {
+          "display_label": "Date of Joining",
+          "field_name": "date_of_joining",
+          "creator_type": "date",
+          "original_type": "Date",
+          "required": true
+        },
+        {
+          "display_label": "Reporting Manager",
+          "field_name": "reporting_manager",
+          "creator_type": "lookup",
+          "original_type": "Lookup (Staff Master)",
+          "required": false,
+          "help_text": "Self-reference",
+          "lookup_target": "staff_master",
+          "lookup_display_name": "Staff Master"
+        },
+        {
+          "display_label": "Active Status",
+          "field_name": "active_status",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": true,
+          "help_text": "Active / On Notice / Relieved"
+        },
+        {
+          "display_label": "Attendance Shift",
+          "field_name": "attendance_shift",
+          "creator_type": "lookup",
+          "original_type": "Lookup (Shift Definition)",
+          "required": false,
+          "help_text": "Default shift",
+          "lookup_target": "shift_definition",
+          "lookup_display_name": "Shift Definition"
+        },
+        {
+          "display_label": "Overtime Eligible",
+          "field_name": "overtime_eligible",
+          "creator_type": "checkbox",
+          "original_type": "Checkbox",
+          "required": false
+        },
+        {
+          "display_label": "Photo",
+          "field_name": "photo",
+          "creator_type": "image",
+          "original_type": "Image",
+          "required": true,
+          "help_text": "Used for face recognition"
+        },
+        {
+          "display_label": "Aadhaar Number",
+          "field_name": "aadhaar_number",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": false,
+          "help_text": "Mask on display"
+        },
+        {
+          "display_label": "PAN Number",
+          "field_name": "pan_number",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": false
+        },
+        {
+          "display_label": "Address",
+          "field_name": "address",
+          "creator_type": "address",
+          "original_type": "Address",
+          "required": false
+        },
+        {
+          "display_label": "Emergency Contact",
+          "field_name": "emergency_contact",
+          "creator_type": "phone",
+          "original_type": "Phone",
+          "required": false
+        },
+        {
+          "display_label": "Bank Accounts",
+          "field_name": "bank_accounts",
+          "creator_type": "subform",
+          "original_type": "Subform",
+          "required": false,
+          "help_text": "Multiple salary accounts",
+          "subform_link_name": "bank_accounts"
+        },
+        {
+          "display_label": "ID Proofs",
+          "field_name": "id_proofs",
+          "creator_type": "subform",
+          "original_type": "Subform",
+          "required": false,
+          "help_text": "Documents",
+          "subform_link_name": "id_proofs"
+        },
+        {
+          "display_label": "Notes",
+          "field_name": "notes",
+          "creator_type": "multi_line",
+          "original_type": "Multi-line",
+          "required": false
+        }
+      ],
+      "purpose": "Maintain the complete roster of staff for attendance, HR, and wage integration.",
+      "subforms": [
+        {
+          "display_name": "Bank Accounts",
+          "link_name": "bank_accounts",
+          "fields": [
+            {
+              "display_label": "Bank Name",
+              "field_name": "bank_name",
+              "creator_type": "single_line",
+              "original_type": "Single Line",
+              "required": true
+            },
+            {
+              "display_label": "Account Number",
+              "field_name": "account_number",
+              "creator_type": "single_line",
+              "original_type": "Single Line",
+              "required": true,
+              "help_text": "Mask when displayed"
+            },
+            {
+              "display_label": "IFSC",
+              "field_name": "ifsc",
+              "creator_type": "single_line",
+              "original_type": "Single Line",
+              "required": true,
+              "help_text": "Validate pattern"
+            },
+            {
+              "display_label": "Account Type",
+              "field_name": "account_type",
+              "creator_type": "drop_down",
+              "original_type": "Dropdown",
+              "required": false,
+              "help_text": "Savings / Current"
+            },
+            {
+              "display_label": "Primary Account",
+              "field_name": "primary_account",
+              "creator_type": "checkbox",
+              "original_type": "Checkbox",
+              "required": false
+            }
+          ]
+        },
+        {
+          "display_name": "ID Proofs",
+          "link_name": "id_proofs",
+          "fields": [
+            {
+              "display_label": "Proof Type",
+              "field_name": "proof_type",
+              "creator_type": "drop_down",
+              "original_type": "Dropdown",
+              "required": true,
+              "help_text": "Aadhaar / PAN / License"
+            },
+            {
+              "display_label": "Proof Number",
+              "field_name": "proof_number",
+              "creator_type": "single_line",
+              "original_type": "Single Line",
+              "required": true
+            },
+            {
+              "display_label": "Proof File",
+              "field_name": "proof_file",
+              "creator_type": "file_upload",
+              "original_type": "File Upload",
+              "required": true
+            },
+            {
+              "display_label": "Expiry Date",
+              "field_name": "expiry_date",
+              "creator_type": "date",
+              "original_type": "Date",
+              "required": false,
+              "help_text": "Mandatory for expiring proofs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "display_name": "Shift Definition",
+      "link_name": "shift_definition",
+      "fields": [
+        {
+          "display_label": "Shift Code",
+          "field_name": "shift_code",
+          "creator_type": "single_line",
+          "original_type": "Single Line (Unique)",
+          "required": true,
+          "unique": true
+        },
+        {
+          "display_label": "Shift Name",
+          "field_name": "shift_name",
+          "creator_type": "single_line",
+          "original_type": "Single Line",
+          "required": true
+        },
+        {
+          "display_label": "Location Scope",
+          "field_name": "location_scope",
+          "creator_type": "drop_down",
+          "original_type": "Dropdown",
+          "required": true,
+          "help_text": "Office / Warehouse specific"
+        },
+        {
+          "display_label": "Warehouse",
+          "field_name": "warehouse",
+          "creator_type": "lookup",
+          "original_type": "Lookup (Warehouse)",
+          "required": false,
+          "required_condition": "conditional",
+          "help_text": "Required for warehouse shifts",
+          "lookup_target": "warehouse",
+          "lookup_display_name": "Warehouse"
+        },
+        {
+          "display_label": "Start Time",
+          "field_name": "start_time",
+          "creator_type": "time",
+          "original_type": "Time",
+          "required": true
+        },
+        {
+          "display_label": "End Time",
+          "field_name": "end_time",
+          "creator_type": "time",
+          "original_type": "Time",
+          "required": true
+        },
+        {
+          "display_label": "Break Minutes",
+          "field_name": "break_minutes",
+          "creator_type": "number",
+          "original_type": "Number",
+          "required": false
+        },
+        {
+          "display_label": "Working Hours",
+          "field_name": "working_hours",
+          "creator_type": "decimal",
+          "original_type": "Decimal",
+          "required": true,
+          "help_text": "Auto-calc or manual"
+        },
+        {
+          "display_label": "Overtime Threshold (hrs)",
+          "field_name": "overtime_threshold_hrs",
+          "creator_type": "decimal",
+          "original_type": "Decimal",
+          "required": false
+        },
+        {
+          "display_label": "Attendance Window Start",
+          "field_name": "attendance_window_start",
+          "creator_type": "time",
+          "original_type": "Time",
+          "required": true,
+          "help_text": "Earliest check-in"
+        },
+        {
+          "display_label": "Attendance Window End",
+          "field_name": "attendance_window_end",
+          "creator_type": "time",
+          "original_type": "Time",
+          "required": true,
+          "help_text": "Latest check-in"
+        },
+        {
+          "display_label": "Notes",
+          "field_name": "notes",
+          "creator_type": "multi_line",
+          "original_type": "Multi-line",
+          "required": false
+        }
+      ],
+      "purpose": "Preconfigure shift timings, allowances, and overtime policies for attendance automation."
+    }
+  ]
+}

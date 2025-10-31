@@ -1,0 +1,18 @@
+{
+  "title": "Zoho Creator Master Form Implementation Checklist",
+  "items": [
+    "Seed System Parameters – currencies, UOMs, state lists, alert thresholds.",
+    "Create Companies – load all legal entities and validate GSTIN/PAN formats.",
+    "Onboard Warehouses – ensure godown and machinery subforms are populated.",
+    "Define Roles – capture approval levels and share rules before user mapping.",
+    "Load Staff & Stakeholders – upload staff roster, then link portal users.",
+    "Configure Shifts – assign default shifts for attendance automation.",
+    "Catalogue Products & Services – include conversion factors and QC flags.",
+    "Load Vendors, Customers, Transporters – verify payment and freight terms.",
+    "Publish Price Lists – map to customers and shipping locations as needed.",
+    "Upload Template/QC Libraries – align with production and QC processes.",
+    "Set Tax Rates – GST, TDS, TCS for transactions and wage calculations.",
+    "Record Decisions & Audit Hooks – keep governance log current."
+  ],
+  "notes": "Completing these masters ensures downstream workflows have valid reference data and enforce the governance model described in the ERP blueprint."
+}
