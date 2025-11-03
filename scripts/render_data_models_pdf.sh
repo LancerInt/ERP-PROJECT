@@ -25,7 +25,7 @@ if ! command -v "${PDF_ENGINE}" >/dev/null 2>&1; then
 fi
 
 pandoc "${SOURCE_FILE}" \
-  --from=gfm+pipe_tables+table_captions \
+  --from=markdown+pipe_tables+table_captions+autolink_bare_uris \
   --to=pdf \
   --pdf-engine="${PDF_ENGINE}" \
   --metadata=title:"Zoho Creator Data Models" \
