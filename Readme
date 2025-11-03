@@ -13,3 +13,13 @@ This repository provides scaffolding assets for configuring our Zoho Creator bas
 3. Extend or localise dropdown values and validation rules in Creator after import as necessary.
 
 > **Tip:** The JSON file also defines reusable choice lists (for example, Indian states) that can be copied into Creator picklists.
+
+## Documentation Map
+
+- `docs/overview/` — high-level blueprint and organisational hierarchy.
+- `docs/process/` — module flowcharts and master form build guides.
+- `docs/data-models/` — detailed field catalogues and ERD references.
+- `docs/implementation/` — phased rollout playbooks (including Phase 0 and Phase 1).
+- `docs/governance/` — security, integration, and change enablement playbooks.
+- `docs/setup/` — repository and scaffolding guidance for Zoho Creator exports.
+
