@@ -1,0 +1,43 @@
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[table]{xcolor}
+\usepackage{fontspec}
+\usepackage{caption}
+\usepackage{etoolbox}
+
+\definecolor{tableShade}{HTML}{F5F7FA}
+\definecolor{tableHeader}{HTML}{1F3A5F}
+\definecolor{tableHeaderText}{HTML}{FFFFFF}
+
+\captionsetup[table]{skip=10pt,labelfont=bf,textfont=bf}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\setlength{\extrarowheight}{2pt}
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{8pt}
+
+\makeatletter
+\@ifundefined{KOMAClassName}{
+  \usepackage{sectsty}
+  \allsectionsfont{\sffamily}
+}{
+  \addtokomafont{section}{\sffamily}
+  \addtokomafont{subsection}{\sffamily}
+  \addtokomafont{subsubsection}{\sffamily}
+}
+\makeatother
+
+\setmainfont{Arial}
+
+\newcommand{\tablesetup}{%
+  \rowcolors{2}{white}{tableShade}%
+}
+
+\preto\longtable{\sffamily}
+
+\AtBeginEnvironment{longtable}{\tablesetup}
+\AtEndEnvironment{longtable}{\rowcolors{2}{white}{white}}
+
+\newcommand{\headercell}[1]{\textcolor{tableHeaderText}{\bfseries #1}}
