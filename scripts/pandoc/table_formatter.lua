@@ -5,7 +5,7 @@ local current_heading = { level = 0, text = "" }
 local function make_cell(text, align)
   align = align or pandoc.AlignCenter
   local contents = {pandoc.Plain({pandoc.Str(text)})}
-  return pandoc.Cell(pandoc.Attr(), align, 1, 1, contents)
+  return pandoc.Cell(contents, pandoc.Attr(), align, 1, 1)
 end
 
 local function ensure_header_format(row)
