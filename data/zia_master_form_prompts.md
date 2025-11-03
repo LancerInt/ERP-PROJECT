@@ -4,408 +4,437 @@ Run each prompt separately inside Zoho Zia in the listed order so lookup depende
 
 ## Prompt 1
 
-Create form "Company Master" (link name company_master). Purpose: Stores legal entities that participate in purchase, sales, finance and compliance.
+Create form "Company Master" (link name company_master). Purpose: Register each legal entity participating in procurement, sales, finance, and compliance.
 Category: Core master.
 Fields:
-- Auto-number field "Company ID" (link name company_id) with prefix "COMP", 5-digit padding; required; unique
-- Single-line text field "Company Name" (link name company_name); required; unique
-- Single-line text field "Legal Name" (link name legal_name); required
-- Single-line text field "CIN" (link name cin)
-- Single-line text field "GSTIN" (link name gstin); required
-- Single-line text field "PAN" (link name pan)
-- Single-line text field "TAN" (link name tan)
-- Single-line text field "Billing Address Line 1" (link name billing_address_line1); required
-- Single-line text field "Billing Address Line 2" (link name billing_address_line2)
-- Single-line text field "City" (link name billing_city); required
-- Dropdown field "State" (link name billing_state); Choices: Andhra Pradesh, Arunachal Pradesh, Assam, Bihar, Chhattisgarh, Goa, Gujarat, Haryana, Himachal Pradesh, Jharkhand, Karnataka, Kerala, Madhya Pradesh, Maharashtra, Manipur, Meghalaya, Mizoram, Nagaland, Odisha, Punjab, Rajasthan, Sikkim, Tamil Nadu, Telangana, Tripura, Uttar Pradesh, Uttarakhand, West Bengal, Andaman and Nicobar Islands, Chandigarh, Dadra and Nagar Haveli and Daman and Diu, Delhi, Jammu and Kashmir, Ladakh, Lakshadweep, Puducherry
-- Single-line text field "Postal Code" (link name billing_postal_code); required
-- Single-line text field "Country" (link name billing_country); default 'India'
-- Single-line text field "Finance Contact Name" (link name finance_contact_name)
-- Email field "Finance Contact Email" (link name finance_contact_email)
-- Phone field "Finance Contact Phone" (link name finance_contact_phone)
-- Dropdown field "Default Currency" (link name default_currency); default 'INR'; Choices: INR, USD
-- Dropdown field "Accounting System" (link name books_system); default 'Tally'; Choices: Zoho Books, Tally, Other
-- Dropdown field "Status" (link name status); default 'Active'; Choices: Active, Inactive
-- Multi-line text field "Notes" (link name notes)
-
-
-Create form "Role Master" (link name role_master). Purpose: Defines system roles and governance metadata for access control.
-Category: Security master.
-Fields:
-- Auto-number field "Role ID" (link name role_id) with prefix "ROLE", 4-digit padding; required; unique
-- Single-line text field "Role Name" (link name role_name); required; unique
-- Dropdown field "Scope" (link name scope); Choices: Head Office, Warehouse, All
-- Multi-line text field "Description" (link name description)
-- Single-line text field "Default Page" (link name default_page)
-- Checkbox field "Active" (link name is_active); default True
+- Single-line (Unique) field "Company Code" (link name company_code); required; Short code used across modules and exports
+- Single-line field "Legal Name" (link name legal_name); required; Registered legal entity name
+- Single-line field "Trade Name" (link name trade_name); Optional doing-business-as name
+- Single-line field "GSTIN" (link name gstin); required; GST registration; validate 15-character format
+- Single-line field "PAN" (link name pan); For TDS/TCS calculations
+- Single-line field "CIN" (link name cin); Corporate Identification Number
+- Address field "Registered Address" (link name registered_address); required; Multi-line address
+- Address field "Billing Address" (link name billing_address); required; Defaults on invoices
+- Email field "Contact Email" (link name contact_email); Finance escalation
+- Phone field "Contact Phone" (link name contact_phone)
+- Dropdown field "Default Currency" (link name default_currency); required; Values maintained in system parameters
+- Checkbox field "Books Export Flag" (link name books_export_flag); Toggle for Tally integration
+- Date field "Active From" (link name active_from); required; Effective start date
+- Date field "Active To" (link name active_to); Optional sunset
+- Multi-line field "Notes" (link name notes); Additional remarks
 
 ## Prompt 2
 
-Create form "Tax Master" (link name tax_master). Purpose: Captures GST, TDS and TCS rates with validity periods.
-Category: Finance master.
+Create form "Warehouse Master" (link name warehouse_master). Purpose: Define warehouses along with their godown and machinery inventories.
+Category: Core master.
 Fields:
-- Auto-number field "Tax ID" (link name tax_id) with prefix "TAX", 4-digit padding; required; unique
-- Single-line text field "Tax Name" (link name tax_name); required
-- Dropdown field "Tax Type" (link name tax_type); required; Choices: GST, TDS, TCS
-- Single-line text field "Section/Rule" (link name section)
-- Decimal field "Rate (%)" (link name rate_percent) with precision 5, scale 2; required
-- Currency field "Threshold Amount" (link name threshold_amount) with precision 12, scale 2
-- Dropdown field "Applicable On" (link name applicable_on); Choices: Product, Freight, Wages, Service, All
-- Date field "Effective From" (link name effective_from); required
-- Date field "Effective To" (link name effective_to)
-- Dropdown field "Status" (link name status); default 'Active'; Choices: Active, Inactive
+- Single-line (Unique) field "Warehouse Code" (link name warehouse_code); required; Used in stock and logistics documents
+- Lookup (Company) field "Company" (link name company); required; Owning entity
+- Single-line field "Name" (link name name); required; Display name
+- Dropdown field "Warehouse Type" (link name warehouse_type); required; Head Office / Factory / Job Work Partner
+- Address field "Address" (link name address); required; Physical location
+- Single-line field "City" (link name city); required
+- Dropdown field "State" (link name state); required; For GST place of supply
+- Dropdown field "Country" (link name country); required
+- Single-line field "Pincode" (link name pincode); required
+- Decimal field "Geo Latitude" (link name geo_latitude); required; Attendance geofence
+- Decimal field "Geo Longitude" (link name geo_longitude); required; Attendance geofence
+- Dropdown field "Time Zone" (link name time_zone); required; For SLA calculations
+- Dropdown field "Default Currency" (link name default_currency); required; Inherits from company by default
+- Lookup (Stakeholder User) field "Warehouse Coordinator (Office)" (link name warehouse_coordinator_office); conditionally required; Required for warehouses
+- Lookup (Stakeholder User) field "Warehouse HR Coordinator" (link name warehouse_hr_coordinator); Optional
+- Multi-select Lookup (Stakeholder User) field "Warehouse Manager(s)" (link name warehouse_managers)
+- Multi-select Lookup (Stakeholder User) field "Warehouse Coordinator(s)" (link name warehouse_coordinators)
+- Multi-select Lookup (Stakeholder User) field "Warehouse Supervisor(s)" (link name warehouse_supervisors)
+- Subform field "Godown List" (link name godown_list); required; Contains godown level stock segregation
+- Checkbox field "Active Flag" (link name active_flag); required; Deactivate to hide from new transactions
+- Multi-line field "Notes" (link name notes)
 
+Subform "Godown (subform)" fields:
+- Single-line field "Godown Code" (link name godown_code); required; Unique within warehouse
+- Single-line field "Godown Name" (link name godown_name); required
+- Dropdown field "Storage Condition" (link name storage_condition); Ambient / Cold / Hazardous
+- Dropdown field "Capacity UOM" (link name capacity_uom)
+- Decimal field "Capacity Value" (link name capacity_value); Max storage
+- Checkbox field "Batch Tracking Enabled" (link name batch_tracking_enabled); required; Controls batch-level location
+- Checkbox field "Default QC Hold Area" (link name default_qc_hold_area); Flags quarantine
+- Subform field "Machinery List" (link name machinery_list); Equipment housed in the godown
 
-Create form "Payment Terms Master" (link name payment_terms_master). Purpose: Standard payment term definitions for vendors, customers and contractors.
-Category: Finance master.
-Fields:
-- Auto-number field "Payment Term ID" (link name payment_terms_id) with prefix "PT", 4-digit padding; required; unique
-- Single-line text field "Name" (link name name); required; unique
-- Multi-line text field "Description" (link name description)
-- Number field "Due in Days" (link name due_in_days); required
-- Decimal field "Early Payment Discount (%)" (link name early_payment_discount_percent) with precision 5, scale 2
-- Number field "Discount Window (Days)" (link name early_payment_window_days)
-- Checkbox field "Apply TCS" (link name apply_tcs); default False
-- Dropdown field "Status" (link name status); default 'Active'; Choices: Active, Inactive
+Subform "Machinery (Godown subform)" fields:
+- Single-line field "Machine ID" (link name machine_id); required; Unique equipment identifier
+- Single-line field "Machine Name" (link name machine_name); required
+- Dropdown field "Category" (link name category); required; Capital Goods / Machine Spares / Production Line
+- Date field "Commission Date" (link name commission_date)
+- Lookup (Vendor) field "Maintenance Vendor" (link name maintenance_vendor); For service/job work
+- Date field "Next Service Due" (link name next_service_due)
+- Dropdown field "Status" (link name status); required; Active / Under Maintenance / Retired
 
-
-Create form "Freight Terms Master" (link name freight_terms_master). Purpose: Defines inbound and outbound freight responsibilities and approvals.
-Category: Logistics master.
-Fields:
-- Auto-number field "Freight Term ID" (link name freight_term_id) with prefix "FT", 4-digit padding; required; unique
-- Single-line text field "Name" (link name name); required; unique
-- Dropdown field "Direction" (link name direction); required; Choices: Inbound, Outbound, Both
-- Dropdown field "Default Payer" (link name payer); required; Choices: Company, Vendor/Customer, Split
-- Checkbox field "Includes Loading" (link name includes_loading); default False
-- Checkbox field "Includes Unloading" (link name includes_unloading); default False
-- Checkbox field "Requires Approval" (link name requires_freight_approval); default True
-- Multi-line text field "Notes" (link name notes)
+Note: If Zoho Zia requires the Stakeholder User form to exist before adding the stakeholder lookup fields, revisit this form after Prompt 6 to add those lookups.
 
 ## Prompt 3
 
-Create form "Transporter Master" (link name transporter_master). Purpose: Transport partners for inbound, outbound, stock transfer and job work movements.
-Category: Logistics master.
+Create form "Role Definition" (link name role_definition). Purpose: Bundle permissions and approval thresholds for Zoho Creator sharing.
+Category: Security master.
 Fields:
-- Auto-number field "Transporter ID" (link name transporter_id) with prefix "TRN", 5-digit padding; required; unique
-- Single-line text field "Transporter Name" (link name transporter_name); required
-- Single-line text field "Code" (link name transporter_code); unique
-- Single-line text field "GSTIN" (link name gstin)
-- Single-line text field "PAN" (link name pan)
-- Single-line text field "Contact Name" (link name contact_name)
-- Phone field "Contact Phone" (link name contact_phone)
-- Email field "Contact Email" (link name contact_email)
-- Multi-select dropdown "Freight Directions" (link name freight_directions); Choices: Inbound, Outbound, Stock Transfer, Job Work
-- Multi-select dropdown "States Served" (link name states_served); Choices: Andhra Pradesh, Arunachal Pradesh, Assam, Bihar, Chhattisgarh, Goa, Gujarat, Haryana, Himachal Pradesh, Jharkhand, Karnataka, Kerala, Madhya Pradesh, Maharashtra, Manipur, Meghalaya, Mizoram, Nagaland, Odisha, Punjab, Rajasthan, Sikkim, Tamil Nadu, Telangana, Tripura, Uttar Pradesh, Uttarakhand, West Bengal, Andaman and Nicobar Islands, Chandigarh, Dadra and Nagar Haveli and Daman and Diu, Delhi, Jammu and Kashmir, Ladakh, Lakshadweep, Puducherry
-- Checkbox field "Preferred" (link name preferred); default False
-- Dropdown field "Status" (link name status); default 'Active'; Choices: Active, Inactive
-- Multi-line text field "Remarks" (link name remarks)
+- Single-line field "Role Code" (link name role_code); required; Unique role identifier
+- Single-line field "Role Name" (link name role_name); required
+- Multi-line JSON field "Module Permissions" (link name module_permissions); required; CRUD/approval rights per module
+- Dropdown field "Data Scope" (link name data_scope); required; Global / Company / Warehouse
+- Subform field "Approval Levels" (link name approval_levels); Specifies approvals handled
+- Multi-line field "Default Share Rules" (link name default_share_rules); Creator share settings template
+- Checkbox field "Active Flag" (link name active_flag); required
 
-
-Create form "UOM Master" (link name uom_master). Purpose: Standard unit of measure definitions including base conversions.
-Category: Inventory master.
-Fields:
-- Auto-number field "UOM ID" (link name uom_id) with prefix "UOM", 4-digit padding; required; unique
-- Single-line text field "Unit Name" (link name uom_name); required
-- Single-line text field "Symbol" (link name symbol)
-- Dropdown field "Category" (link name category); Choices: Weight, Volume, Count, Length, Area, Time
-- Checkbox field "Base Unit" (link name base_unit); default False
-- Lookup field "Base Reference" (link name base_reference) pointing to uom_master
-- Decimal field "Conversion Factor" (link name conversion_factor) with precision 12, scale 6
-- Checkbox field "Specific Gravity Applicable" (link name specific_gravity_applicable); default False
-- Multi-line text field "Notes" (link name notes)
-
-
-Create form "Integration Config" (link name integration_config). Purpose: Stores configuration values for AI parsers, attendance recognition and accounting connectors.
-Category: IT Governance master.
-Fields:
-- Auto-number field "Config ID" (link name config_id) with prefix "CFG", 4-digit padding; required; unique
-- Dropdown field "Category" (link name config_category); required; Choices: AI_PO_PARSER, FACE_RECOGNITION, BANK_RECON, ACCOUNTING, OTHERS
-- Single-line text field "Key" (link name key); required
-- Single-line text field "Value" (link name value); required
-- Multi-line text field "Description" (link name description)
-- Checkbox field "Active" (link name active); default True
+Subform "Approval Levels (subform)" fields:
+- Dropdown field "Module" (link name module); required; Purchase / Sales / Production / etc.
+- Dropdown field "Stage" (link name stage); required; Request / Evaluation / Payment
+- Currency field "Min Amount" (link name min_amount); Threshold
+- Currency field "Max Amount" (link name max_amount)
 
 ## Prompt 4
 
-Create form "Stock Adjustment Reasons" (link name stock_adjustment_reasons). Purpose: Controlled vocabulary for stock adjustment justifications.
-Category: Inventory master.
+Create form "Shift Definition" (link name shift_definition). Purpose: Configure standard shifts and attendance calculation rules.
+Category: HR master.
 Fields:
-- Auto-number field "Reason ID" (link name reason_id) with prefix "SAR", 4-digit padding; required; unique
-- Single-line text field "Reason Code" (link name reason_code); required; unique
-- Single-line text field "Reason Label" (link name reason_label); required
-- Dropdown field "Category" (link name reason_category); Choices: Damage, Expiry, Shortage, Surplus, Audit Correction, Other
-- Checkbox field "Needs Secondary Approval" (link name requires_secondary_approval); default False
-- Checkbox field "Active" (link name active); default True
-
-
-Create form "Inter-Warehouse Shift Reasons" (link name inter_warehouse_shift_reasons). Purpose: Reason codes for intra-warehouse shifting operations.
-Category: Inventory master.
-Fields:
-- Auto-number field "Reason ID" (link name reason_id) with prefix "IWSR", 4-digit padding; required; unique
-- Single-line text field "Reason Name" (link name reason_name); required
-- Checkbox field "Requires Comment" (link name requires_comment); default False
-- Checkbox field "Active" (link name active); default True
-
-
-Create form "ERP User Master" (link name user_master). Purpose: Stores stakeholders who access the ERP with role assignments.
-Category: Security master.
-Fields:
-- Auto-number field "User ID" (link name user_id) with prefix "USR", 5-digit padding; required; unique
-- Single-line text field "Full Name" (link name user_full_name); required
-- Email field "Email" (link name email); required; unique
-- Phone field "Phone" (link name phone)
-- Multi-select dropdown "Stakeholder Roles" (link name stakeholder_roles); Choices: Office Manager, Purchase Manager, Purchase Coordinator, Sales Manager, Sales Coordinator, Finance Manager, Accounts Manager, Freight Coordinator, QC Manager, QC Coordinator, QC Analyst, Warehouse Coordinator (Office), HR Coordinator (Office), IT Admin, Warehouse Manager, Warehouse Coordinator, Warehouse Supervisor, Warehouse HR Coordinator, Employee
-- Checkbox field "Active" (link name is_active); default True
-- Multi-line text field "Remarks" (link name remarks)
-Add the following lookup fields after their target form exists: Default Warehouse.
+- Single-line field "Shift Code" (link name shift_code); required
+- Lookup (Warehouse) field "Warehouse" (link name warehouse); required
+- Single-line field "Shift Name" (link name shift_name); required
+- Time field "Start Time" (link name start_time); required
+- Time field "End Time" (link name end_time); required
+- Number field "Break Duration (mins)" (link name break_duration_mins)
+- Checkbox field "Overtime Eligibility" (link name overtime_eligibility)
+- Dropdown field "Attendance Calculation Rule" (link name attendance_calculation_rule); required; 8-hour / Custom
+- Number field "Grace Period Minutes" (link name grace_period_minutes)
+- Checkbox field "Approval Required" (link name approval_required)
 
 ## Prompt 5
 
-Create form "Warehouse Master" (link name warehouse_master). Purpose: Defines physical warehouses managed by the organisation.
-Category: Core master.
+Create form "Staff Master" (link name staff_master). Purpose: Maintain the complete roster of staff for attendance, HR, and wage processing.
+Category: HR master.
 Fields:
-- Auto-number field "Warehouse ID" (link name warehouse_id) with prefix "WH", 5-digit padding; required; unique
-- Single-line text field "Warehouse Name" (link name warehouse_name); required
-- Single-line text field "Warehouse Code" (link name warehouse_code); required; unique
-- Lookup field "Company" (link name company) pointing to company_master; required
-- Single-line text field "Address Line 1" (link name address_line1); required
-- Single-line text field "Address Line 2" (link name address_line2)
-- Single-line text field "City" (link name city); required
-- Dropdown field "State" (link name state); Choices: Andhra Pradesh, Arunachal Pradesh, Assam, Bihar, Chhattisgarh, Goa, Gujarat, Haryana, Himachal Pradesh, Jharkhand, Karnataka, Kerala, Madhya Pradesh, Maharashtra, Manipur, Meghalaya, Mizoram, Nagaland, Odisha, Punjab, Rajasthan, Sikkim, Tamil Nadu, Telangana, Tripura, Uttar Pradesh, Uttarakhand, West Bengal, Andaman and Nicobar Islands, Chandigarh, Dadra and Nagar Haveli and Daman and Diu, Delhi, Jammu and Kashmir, Ladakh, Lakshadweep, Puducherry
-- Single-line text field "Postal Code" (link name postal_code); required
-- Single-line text field "Country" (link name country); default 'India'
-- Decimal field "Latitude" (link name latitude) with precision 8, scale 6
-- Decimal field "Longitude" (link name longitude) with precision 9, scale 6
-- Lookup field "Warehouse Manager" (link name warehouse_manager) pointing to user_master
-- Lookup field "Warehouse HR Coordinator" (link name hr_coordinator) pointing to user_master
-- Multi-line text field "Capacity Notes" (link name capacity_notes)
-- Dropdown field "Status" (link name status); default 'Active'; Choices: Active, Inactive
+- Single-line (Unique) field "Staff ID" (link name staff_id); required; Official staff number
+- Dropdown field "Staff Type" (link name staff_type); required; Employee (Stakeholder) / Staff
+- Single-line field "First Name" (link name first_name); required
+- Single-line field "Last Name" (link name last_name)
+- Dropdown field "Gender" (link name gender)
+- Date field "Date of Birth" (link name date_of_birth)
+- Lookup (Company) field "Company" (link name company); required; Employer entity
+- Lookup (Warehouse) field "Primary Location" (link name primary_location); required; For attendance
+- Dropdown field "Department" (link name department)
+- Single-line field "Designation" (link name designation); required
+- Date field "Employment Start Date" (link name employment_start_date); required
+- Date field "Employment End Date" (link name employment_end_date)
+- Dropdown field "Employment Status" (link name employment_status); required; Active / On Leave / Resigned
+- Lookup (Stakeholder User) field "HR Owner" (link name hr_owner); required; Controls approvals
+- Lookup (Shift Definition) field "Shift Assignment" (link name shift_assignment); Defaults attendance
+- Checkbox field "Overtime Eligible" (link name overtime_eligible)
+- Checkbox field "Contractor Flag" (link name contractor_flag); For wages via vendor
+- Lookup (Vendor) field "Contractor Vendor" (link name contractor_vendor); conditionally required; Mandatory if contractor flag checked
+- Subform field "Bank Account" (link name bank_account); Payment details
+- Subform field "ID Proofs" (link name id_proofs); Attachments
+- Single-line field "Face Template ID" (link name face_template_id); required; External face recognition ID
+- Image Upload field "Photo Reference" (link name photo_reference); required; Stored for 7 days
+- Phone field "Contact Number" (link name contact_number)
+- Phone field "Emergency Contact" (link name emergency_contact)
+- Address field "Address" (link name address)
+- Multi-line field "Remarks" (link name remarks)
 
+Subform "Bank Account (subform)" fields:
+- Single-line field "Account Holder" (link name account_holder); required
+- Single-line field "Bank Name" (link name bank_name); required
+- Single-line field "IFSC Code" (link name ifsc_code); required; Validate format
+- Single-line field "Account Number" (link name account_number); required; Mask display
+- Dropdown field "Account Type" (link name account_type)
 
-Update form "ERP User Master" (link name user_master) to add these fields now that dependencies are ready:
-- Lookup field "Default Warehouse" (link name default_warehouse) pointing to warehouse_master
+Subform "ID Proofs (subform)" fields:
+- Dropdown field "Document Type" (link name document_type); required; Aadhaar / PAN / License / Other
+- Single-line field "Document Number" (link name document_number); required
+- Date field "Expiry Date" (link name expiry_date)
+- File Upload field "Attachment" (link name attachment); required
 
+Note: If the HR Owner lookup cannot be created yet, add it after the Stakeholder User form (Prompt 6).
 
-Create form "Godown Master" (link name godown_master). Purpose: Defines storage godowns within a warehouse and the machinery allocated to them.
-Category: Core master.
-Fields:
-- Auto-number field "Godown ID" (link name godown_id) with prefix "GD", 5-digit padding; required; unique
-- Single-line text field "Godown Name" (link name godown_name); required
-- Single-line text field "Godown Code" (link name godown_code); required; unique
-- Lookup field "Warehouse" (link name warehouse) pointing to warehouse_master; required
-- Dropdown field "Storage Type" (link name storage_type); Choices: Ambient, Cold, Hazardous, Bulk, Finished Goods
-- Single-line text field "Temperature Range" (link name temperature_range)
-- Checkbox field "Humidity Control" (link name humidity_control); default False
-- Dropdown field "Status" (link name status); default 'Active'; Choices: Active, Inactive
+Note: Add the Contractor Vendor lookup once the Vendor Master (Prompt 12) exists if required.
 
 ## Prompt 6
 
-Create form "Service Catalog" (link name service_master). Purpose: Extensible list of services available per warehouse or centrally.
-Category: Finance master.
+Create form "Stakeholder User" (link name stakeholder_user). Purpose: Map portal users to stakeholder roles and warehouse scopes.
+Category: Security master.
 Fields:
-- Auto-number field "Service ID" (link name service_id) with prefix "SRV", 5-digit padding; required; unique
-- Single-line text field "Service Name" (link name service_name); required
-- Dropdown field "Service Category" (link name service_category); required; Choices: Warehouse Expense, Wages, Freight, Miscellaneous Expense, Staff Welfare, Vehicle, Custom
-- Lookup field "Warehouse" (link name warehouse) pointing to warehouse_master
-- Multi-line text field "Description" (link name description)
-- Checkbox field "Active" (link name is_active); default True
-
-
-Create form "Shift Master" (link name attendance_shift_master). Purpose: Shift definitions for attendance capture with overtime policies.
-Category: HR master.
-Fields:
-- Auto-number field "Shift ID" (link name shift_id) with prefix "SHIFT", 4-digit padding; required; unique
-- Single-line text field "Shift Name" (link name shift_name); required
-- Dropdown field "Location Type" (link name location_type); Choices: Head Office, Warehouse, Lab
-- Lookup field "Warehouse" (link name warehouse) pointing to warehouse_master
-- Time field "Start Time" (link name start_time); required
-- Time field "End Time" (link name end_time); required
-- Number field "Break Minutes" (link name break_minutes); default 0
-- Checkbox field "Overtime Applicable" (link name overtime_applicable); default False
-- Dropdown field "OT Rate Type" (link name overtime_rate_type); show when overtime_applicable; Choices: Multiplier, Fixed
-- Decimal field "OT Rate Value" (link name overtime_rate_value) with precision 6, scale 2; show when overtime_applicable
-- Date field "Effective From" (link name effective_from); required
-- Date field "Effective To" (link name effective_to)
-- Dropdown field "Status" (link name status); default 'Active'; Choices: Draft, Active, Inactive
+- Single-line field "Portal User ID" (link name portal_user_id); required; Zoho portal identifier
+- Lookup (Staff Master) field "Employee Record" (link name employee_record); required; Links to staff
+- Email field "Primary Email" (link name primary_email); required
+- Phone field "Mobile" (link name mobile)
+- Multi-select Lookup (Role Definition) field "Assigned Roles" (link name assigned_roles); required; Supports multi-role users
+- Lookup (Warehouse) field "Default Warehouse" (link name default_warehouse)
+- Multi-select Lookup (Warehouse) field "Warehouse Scope" (link name warehouse_scope); Overrides default
+- Dropdown field "Status" (link name status); required; Active / Suspended
+- Date-time field "Last Accessed" (link name last_accessed)
+- Multi-line field "Notes" (link name notes)
 
 ## Prompt 7
 
-Create form "Product Master" (link name product_master). Purpose: Catalogue of goods and services with QC, taxation and conversion metadata.
-Category: Inventory master.
+Create form "Service Catalogue" (link name service_catalogue). Purpose: Register services with tax and warehouse applicability.
+Category: Service master.
 Fields:
-- Auto-number field "Product ID" (link name product_id) with prefix "PRD", 5-digit padding; required; unique
-- Single-line text field "Product Name" (link name product_name); required
-- Single-line text field "SKU Code" (link name sku_code); required; unique
-- Dropdown field "Product Type" (link name product_type); required; Choices: Goods, Service
-- Dropdown field "Goods Type" (link name goods_type); show when product_type == 'Goods'; Choices: RAW_MATERIAL, PACKING_MATERIAL, FINISHED_GOOD, SEMI_FINISHED, TRADED_PRODUCT, CAPITAL_GOOD, MACHINE_SPARE, CONSUMABLE
-- Dropdown field "Service Type" (link name service_type); show when product_type == 'Service'; Choices: Warehouse Expense, Wages, Freight, Miscellaneous Expense, Staff Welfare, Vehicle, Custom
-- Single-line text field "Custom Service Category" (link name custom_service_category); show when service_type == 'Custom'
-- Lookup field "Base UOM" (link name base_uom) pointing to uom_master; required
-- Decimal field "Specific Gravity" (link name specific_gravity) with precision 6, scale 3
-- Checkbox field "Batch Tracking Required" (link name batch_tracking_required); default True
-- Checkbox field "Expiry Tracking Required" (link name expiry_required); default False
-- Dropdown field "QC Routing" (link name qc_routing); default 'Warehouse Coordinator'; Choices: Warehouse Coordinator, QC Coordinator, QC Manager
-- Dropdown field "Yield Tracking Mode" (link name yield_tracking_mode); default 'None'; Choices: None, Physical Quantity, Physical + Purity, Physical + Purity + AI
-- Checkbox field "Capture Received Packing" (link name packing_capture_required); default False
-- Checkbox field "Allow Reformulation" (link name reformulation_allowed); default False
-- Checkbox field "Active" (link name active); default True
-- Multi-line text field "Remarks" (link name remarks)
-
-
-Create form "Price List Master" (link name price_list_master). Purpose: Stores price policies per customer, region, and product.
-Category: Sales master.
-Fields:
-- Auto-number field "Price List ID" (link name price_list_id) with prefix "PL", 5-digit padding; required; unique
-- Single-line text field "Price List Name" (link name price_list_name); required
-- Single-line text field "Code" (link name price_list_code); unique
-- Lookup field "Company" (link name company) pointing to company_master
-- Single-line text field "Region" (link name region)
-- Dropdown field "Currency" (link name currency); default 'INR'; Choices: INR, USD
-- Date field "Effective From" (link name effective_from); required
-- Date field "Effective To" (link name effective_to)
-- Lookup field "Freight Term Override" (link name freight_term_override) pointing to freight_terms_master
-- Dropdown field "Status" (link name status); default 'Draft'; Choices: Draft, Active, Expired
+- Single-line field "Service Code" (link name service_code); required
+- Single-line field "Name" (link name name); required
+- Dropdown field "Category" (link name category); required; Warehouse Expense / Wages / Freight / Misc / Custom
+- Dropdown field "Direction" (link name direction); required; Inbound / Outbound / Both
+- Decimal field "Default TDS %" (link name default_tds)
+- Decimal field "Default TCS %" (link name default_tcs)
+- Multi-select Lookup (Warehouse) field "Warehouse Availability" (link name warehouse_availability)
+- Multi-line field "Description" (link name description)
+- Checkbox field "Active Flag" (link name active_flag); required
 
 ## Prompt 8
 
-Create form "Vendor Master" (link name vendor_master). Purpose: Maintains vendor identities, compliance data and credit terms.
-Category: Procurement master.
+Create form "Template Library" (link name template_library). Purpose: Store reusable production, QC, job work, and document templates.
+Category: Configuration master.
 Fields:
-- Auto-number field "Vendor ID" (link name vendor_id) with prefix "VND", 5-digit padding; required; unique
-- Single-line text field "Vendor Name" (link name vendor_name); required
-- Single-line text field "Vendor Code" (link name vendor_code); unique
-- Dropdown field "Vendor Type" (link name vendor_type); Choices: Raw Material, Packing Material, Machinery, Service, Job Work, Other
-- Single-line text field "GSTIN" (link name gstin)
-- Single-line text field "PAN" (link name pan)
-- Single-line text field "Primary Contact" (link name primary_contact_name)
-- Email field "Primary Email" (link name primary_email)
-- Phone field "Primary Phone" (link name primary_phone)
-- Currency field "Credit Limit" (link name credit_limit) with precision 12, scale 2
-- Lookup field "Payment Terms" (link name payment_terms) pointing to payment_terms_master
-- Lookup field "Freight Terms" (link name freight_terms) pointing to freight_terms_master
-- Lookup field "TDS Profile" (link name tds_profile) pointing to tax_master
-- Checkbox field "Wage Contractor" (link name wage_vendor); default False
-- Multi-line text field "Notes" (link name notes)
-- Checkbox field "Active" (link name active); default True
+- Single-line field "Template ID" (link name template_id); required
+- Dropdown field "Template Type" (link name template_type); required; Production / QC Report / Job Work / Packing / Invoice
+- Single-line field "Name" (link name name); required
+- Multi-select Lookup (Warehouse) field "Warehouse Scope" (link name warehouse_scope); required
+- Number field "Revision No." (link name revision_no); required; Rev 1, Rev 2, etc.
+- Date field "Effective From" (link name effective_from); required
+- Date field "Effective To" (link name effective_to)
+- Multi-line field "Layout JSON/XML" (link name layout_json_xml); required; Stores dynamic layout
+- Checkbox field "Requires Digital Signature" (link name requires_digital_signature)
+- Lookup (Stakeholder User) field "Created By" (link name created_by); required
+- Subform field "Approval Log" (link name approval_log)
+- Dropdown field "Status" (link name status); required; Draft / Active / Retired
 
-
-Create form "Customer Master" (link name customer_master). Purpose: Customer registry with credit terms, freight agreements and price list mapping.
-Category: Sales master.
-Fields:
-- Auto-number field "Customer ID" (link name customer_id) with prefix "CUS", 5-digit padding; required; unique
-- Single-line text field "Customer Name" (link name customer_name); required
-- Single-line text field "Customer Code" (link name customer_code); unique
-- Single-line text field "GSTIN" (link name gstin)
-- Single-line text field "PAN" (link name pan)
-- Currency field "Credit Limit" (link name credit_limit) with precision 12, scale 2
-- Lookup field "Credit Terms" (link name credit_terms) pointing to payment_terms_master
-- Lookup field "Freight Terms" (link name freight_terms) pointing to freight_terms_master
-- Lookup field "Default Price Policy" (link name price_policy) pointing to price_list_master
-- Single-line text field "Primary Contact" (link name primary_contact_name)
-- Email field "Primary Email" (link name primary_email)
-- Phone field "Primary Phone" (link name primary_phone)
-- Checkbox field "Notify on Overdue" (link name notify_on_overdue); default True
-- Checkbox field "Active" (link name active); default True
+Subform "Approval Log (subform)" fields:
+- Lookup (Stakeholder User) field "Approved By" (link name approved_by); required
+- Date-time field "Approval Date" (link name approval_date); required
+- Multi-line field "Remarks" (link name remarks)
 
 ## Prompt 9
 
-Create form "Bank Account Master" (link name bank_account_master). Purpose: Company bank accounts used for receivables and payables processing.
-Category: Finance master.
+Create form "QC Parameter Library" (link name qc_parameter_library). Purpose: Maintain QC parameter definitions for lab testing and templates.
+Category: QC master.
 Fields:
-- Auto-number field "Bank Account ID" (link name bank_account_id) with prefix "BANK", 4-digit padding; required; unique
-- Lookup field "Company" (link name company) pointing to company_master; required
-- Single-line text field "Bank Name" (link name bank_name); required
-- Single-line text field "Branch" (link name branch)
-- Single-line text field "Account Number" (link name account_number); required
-- Single-line text field "IFSC" (link name ifsc); required
-- Dropdown field "Account Type" (link name account_type); Choices: Current, Savings, Cash Credit, Overdraft
-- Dropdown field "Currency" (link name currency); default 'INR'; Choices: INR, USD
-- Multi-select dropdown "Usage" (link name usage); Choices: Payables, Receivables, Payroll, Petty Cash
-- Checkbox field "Active" (link name is_active); default True
-
-
-Create form "Staff Master" (link name staff_master). Purpose: Maintains staffing data for attendance, wage, and shift assignment workflows.
-Category: HR master.
-Fields:
-- Auto-number field "Staff ID" (link name staff_id) with prefix "STF", 5-digit padding; required; unique
-- Single-line text field "Staff Code" (link name staff_code); required; unique
-- Single-line text field "First Name" (link name first_name); required
-- Single-line text field "Last Name" (link name last_name)
-- Dropdown field "Employment Location" (link name employment_location); Choices: Head Office, Warehouse, Lab, QC
-- Lookup field "Warehouse" (link name warehouse) pointing to warehouse_master
-- Single-line text field "Department" (link name department)
-- Single-line text field "Designation" (link name designation)
-- Dropdown field "Employment Type" (link name employment_type); Choices: Permanent, Contract, Apprentice
-- Lookup field "Contractor Vendor" (link name contractor_vendor) pointing to vendor_master
-- Date field "Date of Joining" (link name date_of_joining)
-- Image upload field "Photo Reference" (link name photo_reference)
-- Checkbox field "Active" (link name active); default True
+- Single-line field "Parameter Code" (link name parameter_code); required
+- Single-line field "Parameter Name" (link name parameter_name); required
+- Single-line field "Unit" (link name unit)
+- Lookup (Template Library) field "Applicable Template" (link name applicable_template)
+- Lookup (Product) field "Applicable Product" (link name applicable_product)
+- Decimal field "Acceptable Min" (link name acceptable_min)
+- Decimal field "Acceptable Max" (link name acceptable_max)
+- Checkbox field "Critical Flag" (link name critical_flag)
+- Multi-line field "Notes" (link name notes)
 
 ## Prompt 10
 
-Create form "Freight Rate Card" (link name freight_rate_card). Purpose: Baseline freight cost references to support per-unit reporting.
-Category: Logistics master.
+Create form "Product Master" (link name product_master). Purpose: Catalogue all goods used in stock, production, purchasing, and sales.
+Category: Product master.
 Fields:
-- Auto-number field "Rate Card ID" (link name rate_card_id) with prefix "FRC", 5-digit padding; required; unique
-- Lookup field "Transporter" (link name transporter) pointing to transporter_master; required
-- Dropdown field "Origin State" (link name origin); Choices: Andhra Pradesh, Arunachal Pradesh, Assam, Bihar, Chhattisgarh, Goa, Gujarat, Haryana, Himachal Pradesh, Jharkhand, Karnataka, Kerala, Madhya Pradesh, Maharashtra, Manipur, Meghalaya, Mizoram, Nagaland, Odisha, Punjab, Rajasthan, Sikkim, Tamil Nadu, Telangana, Tripura, Uttar Pradesh, Uttarakhand, West Bengal, Andaman and Nicobar Islands, Chandigarh, Dadra and Nagar Haveli and Daman and Diu, Delhi, Jammu and Kashmir, Ladakh, Lakshadweep, Puducherry
-- Dropdown field "Destination State" (link name destination); required; Choices: Andhra Pradesh, Arunachal Pradesh, Assam, Bihar, Chhattisgarh, Goa, Gujarat, Haryana, Himachal Pradesh, Jharkhand, Karnataka, Kerala, Madhya Pradesh, Maharashtra, Manipur, Meghalaya, Mizoram, Nagaland, Odisha, Punjab, Rajasthan, Sikkim, Tamil Nadu, Telangana, Tripura, Uttar Pradesh, Uttarakhand, West Bengal, Andaman and Nicobar Islands, Chandigarh, Dadra and Nagar Haveli and Daman and Diu, Delhi, Jammu and Kashmir, Ladakh, Lakshadweep, Puducherry
-- Dropdown field "Freight Direction" (link name freight_direction); required; Choices: Inbound, Outbound, Stock Transfer, Job Work
-- Lookup field "Rate UOM" (link name uom) pointing to uom_master; required
-- Currency field "Rate per UOM" (link name rate_per_uom) with precision 12, scale 2; required
-- Decimal field "Surcharge (%)" (link name surcharge_percent) with precision 5, scale 2
-- Date field "Effective From" (link name effective_from); required
-- Date field "Effective To" (link name effective_to)
-- Checkbox field "Active" (link name active); default True
+- Single-line (Unique) field "SKU Code" (link name sku_code); required; Cross-module identifier
+- Single-line field "Product Name" (link name product_name); required
+- Dropdown field "Product Type" (link name product_type); required; Goods / Services
+- Dropdown field "Goods Sub-Type" (link name goods_sub_type); conditionally required; RAW_MATERIAL / PACKING_MATERIAL / FINISHED_GOOD / SEMI_FINISHED / TRADED_PRODUCTS / CAPITAL_GOOD / MACHINE_SPARES / CONSUMABLES
+- Dropdown field "Service Sub-Type" (link name service_sub_type); conditionally required; Warehouse Expense / Wages / Freight / Miscellaneous / Staff Welfare / Vehicle / Custom
+- Lookup (Service Catalogue) field "Custom Service Category" (link name custom_service_category); conditionally required; For IT-admin defined services
+- Multi-line field "Description" (link name description)
+- Checkbox field "Batch Tracking Required" (link name batch_tracking_required); conditionally required; Required for goods
+- Number field "Shelf Life (Days)" (link name shelf_life_days); For expiry
+- Dropdown field "QC Responsibility" (link name qc_responsibility); Warehouse Coordinator / QC Coordinator / QC Manager
+- Lookup (Template Library) field "QC Template" (link name qc_template); Default QC parameters
+- Dropdown field "UOM" (link name uom); required; Base unit
+- Subform field "Secondary UOMs" (link name secondary_uoms); For conversions
+- Decimal field "Specific Gravity" (link name specific_gravity); Used for kg ↔ litre
+- Multi-line field "Conversion Notes" (link name conversion_notes)
+- Lookup (Product) field "Packing Material Default" (link name packing_material_default); Default packaging
+- Checkbox field "Yield Tracking Required" (link name yield_tracking_required)
+- Multi-select field "Yield Parameters" (link name yield_parameters); Physical Qty / Purity % / AI Content
+- Dropdown field "Wage Method" (link name wage_method); Template Rate / Headcount / None
+- Dropdown field "Freight Class" (link name freight_class); Logistics reference
+- Checkbox field "Active Flag" (link name active_flag); required
+- Lookup (Stakeholder User) field "Created By" (link name created_by); required
+- Date-time field "Created Date" (link name created_date); required
+- Lookup (Stakeholder User) field "Last Modified By" (link name last_modified_by)
+- Date-time field "Last Modified Date" (link name last_modified_date)
 
-
-Create form "Wage Rate Master" (link name wage_rate_master). Purpose: Reference wage rates for production and logistics contractors.
-Category: Finance master.
-Fields:
-- Auto-number field "Wage Rate ID" (link name wage_rate_id) with prefix "WGR", 4-digit padding; required; unique
-- Dropdown field "Wage Category" (link name wage_category); required; Choices: Loading, Unloading, Production, Headcount
-- Lookup field "Contractor" (link name vendor) pointing to vendor_master
-- Lookup field "Warehouse" (link name warehouse) pointing to warehouse_master
-- Dropdown field "Rate Basis" (link name rate_basis); Choices: Per Batch, Per MT, Per Hour, Headcount
-- Lookup field "UOM" (link name uom) pointing to uom_master
-- Currency field "Rate" (link name rate) with precision 12, scale 2; required
-- Lookup field "TDS Profile" (link name tds_profile) pointing to tax_master
-- Date field "Effective From" (link name effective_from); required
-- Date field "Effective To" (link name effective_to)
-- Checkbox field "Active" (link name active); default True
+Subform "Secondary UOMs (subform)" fields:
+- Dropdown field "To UOM" (link name to_uom); required
+- Decimal field "Conversion Factor" (link name conversion_factor); required; Base to secondary
+- Decimal field "Specific Gravity Override" (link name specific_gravity_override); Optional
+- Date field "Valid From" (link name valid_from)
+- Date field "Valid To" (link name valid_to)
 
 ## Prompt 11
 
-Create form "Petty Cash Master" (link name petty_cash_master). Purpose: Tracks authorised petty cash custodians per warehouse.
+Create form "Transporter Master" (link name transporter_master). Purpose: Register freight partners and payment preferences.
+Category: Logistics master.
+Fields:
+- Single-line field "Transporter Code" (link name transporter_code); required
+- Single-line field "Name" (link name name); required
+- Single-line field "GSTIN" (link name gstin)
+- Single-line field "Contact Person" (link name contact_person)
+- Email field "Contact Email" (link name contact_email)
+- Phone field "Contact Phone" (link name contact_phone)
+- Multi-select Dropdown field "Freight Modes" (link name freight_modes); required; Local Drayage / Linehaul
+- Multi-line field "Coverage Routes" (link name coverage_routes)
+- Decimal field "TDS Rate %" (link name tds_rate)
+- Dropdown field "Payment Terms" (link name payment_terms)
+- Number (1-5) field "Rating" (link name rating)
+- File Upload field "Documents" (link name documents); Insurance
+- Checkbox field "Active Flag" (link name active_flag); required
+
+## Prompt 12
+
+Create form "Vendor Master" (link name vendor_master). Purpose: Capture vendor identities, compliance, payment, and logistics preferences.
+Category: Partner master.
+Fields:
+- Single-line field "Vendor Code" (link name vendor_code); required
+- Single-line field "Vendor Name" (link name vendor_name); required
+- Multi-select Dropdown field "Vendor Type" (link name vendor_type); required; Material / Service / Freight / Wages / Job Work / Contractor
+- Lookup (Company) field "Company" (link name company); required
+- Single-line field "GSTIN" (link name gstin); conditionally required; Mandatory if taxable
+- Single-line field "PAN" (link name pan); required
+- Address field "Address" (link name address); required
+- Single-line field "City" (link name city); required
+- Dropdown field "State" (link name state); required
+- Dropdown field "Country" (link name country); required
+- Single-line field "Pincode" (link name pincode); required
+- Single-line field "Contact Person" (link name contact_person)
+- Email field "Contact Email" (link name contact_email)
+- Phone field "Contact Phone" (link name contact_phone)
+- Dropdown field "Payment Terms" (link name payment_terms); required; Net 15 / Net 30 / Custom
+- Number field "Custom Payment Days" (link name custom_payment_days); conditionally required; Mandatory when Payment Terms = Custom
+- Dropdown field "Freight Terms" (link name freight_terms); required; Paid / To_Pay / Mixed
+- Multi-line field "Freight Split Notes" (link name freight_split_notes)
+- Currency field "Credit Limit" (link name credit_limit)
+- Number field "Credit Days" (link name credit_days)
+- Decimal field "TDS Rate %" (link name tds_rate)
+- Decimal field "TCS Rate %" (link name tcs_rate)
+- Subform field "Bank Details" (link name bank_details); Multiple accounts
+- Multi-select Lookup (Transporter) field "Preferred Transporters" (link name preferred_transporters)
+- Multi-select Lookup (Warehouse) field "Allowed Warehouses" (link name allowed_warehouses)
+- File Upload field "Attachments" (link name attachments); Agreements
+- Checkbox field "Active Flag" (link name active_flag); required
+- Date-time field "Created Date" (link name created_date); required
+
+Subform "Vendor Bank Details (subform)" fields:
+- Single-line field "Account Nickname" (link name account_nickname); required
+- Single-line field "Bank Name" (link name bank_name); required
+- Single-line field "Branch" (link name branch)
+- Single-line field "IFSC" (link name ifsc); required
+- Single-line field "Account Number" (link name account_number); required
+- Dropdown field "Payment Method" (link name payment_method); NEFT / RTGS / Cheque / UPI
+
+## Prompt 13
+
+Create form "Price List Master" (link name price_list_master). Purpose: Define product/service rate cards with validity periods.
+Category: Pricing master.
+Fields:
+- Single-line field "Price List ID" (link name price_list_id); required
+- Lookup (Company) field "Company" (link name company); required
+- Lookup (Customer) field "Customer" (link name customer); Optional if customer-specific
+- Dropdown field "Delivery Region" (link name delivery_region); For auto-selection
+- Dropdown field "Currency" (link name currency); required
+- Date field "Effective From" (link name effective_from); required
+- Date field "Effective To" (link name effective_to)
+- Dropdown field "Default Freight Terms" (link name default_freight_terms); Overrides customer
+- Dropdown field "Status" (link name status); required; Draft / Active / Archived
+- Subform field "Price Lines" (link name price_lines); required; Product level rates
+- Multi-line field "Notes" (link name notes)
+
+Subform "Price Lines (subform)" fields:
+- Lookup (Product) field "Product" (link name product); required
+- Dropdown field "UOM" (link name uom); required
+- Currency field "Rate" (link name rate); required
+- Decimal field "Discount %" (link name discount)
+- Decimal field "GST %" (link name gst); required
+- Currency field "Freight Component" (link name freight_component); Optional
+- Date field "Valid From" (link name valid_from)
+- Date field "Valid To" (link name valid_to)
+
+Note: If the Customer lookup cannot be added immediately, return after creating Customer Master (Prompt 14).
+
+## Prompt 14
+
+Create form "Customer Master" (link name customer_master). Purpose: Maintain customer billing, shipping, credit, and price list data.
+Category: Partner master.
+Fields:
+- Single-line field "Customer Code" (link name customer_code); required
+- Single-line field "Customer Name" (link name customer_name); required
+- Lookup (Company) field "Company" (link name company); required
+- Single-line field "GSTIN" (link name gstin); conditionally required; Mandatory if taxable
+- Single-line field "PAN" (link name pan)
+- Address field "Billing Address" (link name billing_address); required
+- Subform field "Shipping Addresses" (link name shipping_addresses); required; Supports multiple
+- Dropdown field "Credit Terms" (link name credit_terms); required; Net 15 / Net 30 / Net 45 / Custom
+- Number field "Custom Credit Days" (link name custom_credit_days); conditionally required; Mandatory when Credit Terms = Custom
+- Dropdown field "Freight Terms" (link name freight_terms); required; Paid / To_Pay / Mixed
+- Multi-line field "Freight Split Notes" (link name freight_split_notes)
+- Multi-select Lookup (Price List) field "Allowed Price Lists" (link name allowed_price_lists); required
+- Lookup (Warehouse) field "Default Warehouse" (link name default_warehouse); required
+- Multi-select Lookup (Stakeholder User) field "Overdue Notification Recipients" (link name overdue_notification_recipients)
+- Single-line field "Contact Person" (link name contact_person)
+- Email field "Contact Email" (link name contact_email)
+- Phone field "Contact Phone" (link name contact_phone)
+- File Upload field "Documents" (link name documents); Contracts
+- Checkbox field "Active Flag" (link name active_flag); required
+
+Subform "Shipping Address (subform)" fields:
+- Single-line field "Address Label" (link name address_label); required
+- Address field "Address" (link name address); required
+- Dropdown field "Delivery Region" (link name delivery_region); required; For price list mapping
+- Lookup (Price List) field "Default Price List" (link name default_price_list); Auto-selection
+- Single-line field "Contact Person" (link name contact_person)
+- Phone field "Contact Phone" (link name contact_phone)
+
+## Prompt 15
+
+Create form "Tax Master" (link name tax_master). Purpose: Centralise GST, TDS, and TCS rates for financial transactions.
 Category: Finance master.
 Fields:
-- Auto-number field "Petty Cash ID" (link name petty_cash_id) with prefix "PET", 4-digit padding; required; unique
-- Lookup field "Warehouse" (link name warehouse) pointing to warehouse_master; required
-- Lookup field "Custodian" (link name custodian) pointing to user_master; required
-- Currency field "Float Amount" (link name float_amount) with precision 12, scale 2; required
-- Currency field "Replenishment Threshold" (link name replenishment_threshold) with precision 12, scale 2
-- Dropdown field "Status" (link name status); default 'Active'; Choices: Active, Inactive
+- Dropdown field "Tax Type" (link name tax_type); required; GST / TDS / TCS
+- Single-line field "Section Reference" (link name section_reference)
+- Decimal field "Rate %" (link name rate); required
+- Date field "Effective From" (link name effective_from); required
+- Date field "Effective To" (link name effective_to)
+- Multi-select Dropdown field "Applicable On" (link name applicable_on); required; Product / Service / Freight / Wage
+- Currency field "Threshold Amount" (link name threshold_amount)
+- Lookup (Company) field "Company Scope" (link name company_scope); required
+- Multi-line field "Notes" (link name notes)
 
+## Prompt 16
 
-Create form "QC Report Templates" (link name qc_report_templates). Purpose: Controls final QC report formats per product and revision.
-Category: Quality master.
+Create form "System Parameters" (link name system_parameters). Purpose: Store configurable values used across modules.
+Category: Governance master.
 Fields:
-- Auto-number field "Template ID" (link name template_id) with prefix "QCT", 4-digit padding; required; unique
-- Single-line text field "Template Name" (link name template_name); required
-- Lookup field "Product" (link name product) pointing to product_master
-- Single-line text field "Revision" (link name revision); required
-- Checkbox field "Digital Signature Required" (link name requires_digital_signature); default True
-- Checkbox field "Active" (link name active); default True
+- Single-line field "Parameter Name" (link name parameter_name); required
+- Single-line field "Parameter Value" (link name parameter_value); required
+- Dropdown field "Module Scope" (link name module_scope); required; Purchase / Sales / Inventory / Finance / Attendance
+- Multi-line field "Description" (link name description)
+- Lookup (Stakeholder User) field "Last Updated By" (link name last_updated_by); required
+- Date field "Effective Date" (link name effective_date); required
 
+## Prompt 17
 
-Create form "Production Templates" (link name production_template_master). Purpose: Master data for production recipes with version control and yield settings.
-Category: Production master.
+Create form "Decision Log" (link name decision_log). Purpose: Record key configuration decisions and stakeholders.
+Category: Governance master.
 Fields:
-- Auto-number field "Template ID" (link name template_id) with prefix "BOM", 5-digit padding; required; unique
-- Single-line text field "Template Name" (link name template_name); required
-- Lookup field "Warehouse" (link name warehouse) pointing to warehouse_master; required
-- Lookup field "Output Product" (link name output_product) pointing to product_master; required
-- Single-line text field "Revision" (link name revision); required
-- Decimal field "Expected Yield Loss (%)" (link name yield_loss_percent) with precision 5, scale 2
-- Checkbox field "Wage Template" (link name wage_template); default False
-- Checkbox field "Active" (link name active); default True
+- Auto Number field "Decision ID" (link name decision_id); required
+- Single-line field "Topic" (link name topic); required
+- Multi-select Lookup (Stakeholder User) field "Stakeholders" (link name stakeholders); required
+- Multi-line field "Decision Details" (link name decision_details); required
+- Date field "Decision Date" (link name decision_date); required
+- Multi-line field "Follow-up Actions" (link name follow_up_actions)
+
+## Prompt 18
+
+Create form "Audit Trail" (link name audit_trail). Purpose: Capture master data changes for compliance.
+Category: Governance master.
+Fields:
+- Auto Number field "Audit ID" (link name audit_id); required
+- Dropdown field "Module" (link name module); required
+- Single-line field "Record ID" (link name record_id); required
+- Dropdown field "Action" (link name action); required; Create / Update / Delete / Approve
+- Lookup (Stakeholder User) field "User" (link name user); required
+- Date-time field "Timestamp" (link name timestamp); required
+- File Upload field "Before Snapshot" (link name before_snapshot); JSON export
+- File Upload field "After Snapshot" (link name after_snapshot); JSON export
+- Multi-line field "Remarks" (link name remarks)
