@@ -87,11 +87,16 @@ return {
       return el
     end,
     Table = function(tbl)
-      if (not tbl.caption) or (#tbl.caption.long == 0 and #tbl.caption.short == 0) then
+      local caption = tbl.caption or pandoc.Caption{}
+      caption.short = caption.short or {}
+      caption.long = caption.long or {}
+
+      if (#caption.long == 0) and (#caption.short == 0) then
         if current_heading.text ~= "" then
-          tbl.caption.long = { pandoc.Plain({ pandoc.Str(current_heading.text) }) }
+          caption.long = { pandoc.Plain({ pandoc.Str(current_heading.text) }) }
         end
       end
+      tbl.caption = caption
       return with_serial_numbers(tbl)
     end
   }
