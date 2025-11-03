@@ -369,6 +369,7 @@ and configuring automation.
 | Remarks | remarks | Multi-line |  |  |
 
 ---
+
 ## 2. Purchase Module
 
 ### Purchase Request (PR)
@@ -681,6 +682,7 @@ and configuring automation.
 | Amount | amount | Currency | Y |  |
 
 ---
+
 ## 3. Sales Module
 
 ### Customer PO Upload
@@ -846,6 +848,7 @@ and configuring automation.
 | Reminder Method | reminder_method | Dropdown |  | Email / Call |
 
 ---
+
 ## 4. Production Module
 
 ### BOM Request
@@ -1098,6 +1101,7 @@ and configuring automation.
 | Disposal Approved By | disposal_approved_by | Lookup (Stakeholder User) |  |  |
 
 ---
+
 ## 6. Inventory, Logistics & Returns
 
 ### Inventory Ledger
@@ -1365,6 +1369,7 @@ and configuring automation.
 | Notes | notes | Multi-line |  |  |
 
 ---
+
 ## 7. Finance Module
 
 ### Vendor Ledger
