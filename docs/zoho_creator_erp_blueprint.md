@@ -13,6 +13,9 @@ This blueprint translates the ERP vision into a Zoho Creator application suite t
 - **[Master Forms Guide](./zoho_creator_master_forms.md)** – step-by-step instructions for configuring all shared masters.
 - **[Phased Implementation Plan](./zoho_creator_implementation_plan.md)** – rollout roadmap with dependencies and timelines.
 - **[Setup Script & Repository Structure](./zoho_creator_setup_structure.md)** – scaffolding script usage and source control layout.
+- **[Security Model Build Playbook](./zoho_creator_security_model_plan.md)** – sequential procedure for implementing role-based access and record sharing.
+- **[Integration Baseline Build Playbook](./zoho_creator_integration_baseline_plan.md)** – step-by-step integration setup for AI services, finance, and banking.
+- **[Change Enablement Playbook](./zoho_creator_change_enablement_plan.md)** – communication, training, and adoption plan for rollout.
 
 ### 1.1 Design Principles
 - **Single tenant, multi-entity**: One Creator application where companies and warehouses are linked to a central Head Office, yet each warehouse works autonomously for stock, production, and attendance.
