@@ -1,45 +1,26 @@
-# Zoho Creator ERP Setup Script & Repository Structure
+# Zoho Creator ERP Repository Structure Guidelines
 
-This guide describes the scaffolding script and repository layout used to organise Zoho Creator exports for forms, workflows, reports, integrations, scripts, and related artefacts. Run the script before your first export to ensure a consistent folder hierarchy across environments.
+This guide documents the recommended folder hierarchy and branching model for organising Zoho Creator exports, Deluge assets, documentation, and automation artefacts. Use it as a checklist when preparing a fresh repository or reviewing an existing workspace.
 
-## 1. Scaffolding Script
+## 1. Preparing the Directory Layout
 
-The `scripts/setup_creator_repo.sh` script provisions a standard set of directories for every ERP module and shared component.
+Although the original scaffolding script has been retired, the structure it produced remains the standard. Create the directories manually (or via your own automation) before exporting assets from Creator to keep the repository consistent across environments.
 
-```bash
-./scripts/setup_creator_repo.sh \
-  # create structure (no overwrite)
+### 1.1 Core Steps
 
-./scripts/setup_creator_repo.sh --force \
-  # recreate structure and reset placeholders
+1. Create an `apps/` directory with module-specific subfolders for **Purchase, Sales, Production, QC, Logistics, Finance, Attendance**, and any additional modules you introduce (e.g., HR, Maintenance).
+2. Inside each module folder, add the following subdirectories to segregate artefacts:
+   - `forms/`, `workflows/`, `reports/`, `pages/`, `automations/`, `scripts/`, `integrations/`, `deluge_functions/`, `schedules/`, `approvals/`, `tests/`.
+3. Add `apps/shared/` to store cross-module masters, templates, dashboards, reusable Deluge libraries, and Creator pages.
+4. Create top-level folders for `integrations/` (external connectors, AI scripts, bank automation), `tools/` (helper scripts and utilities), and `docs/` (architecture, release notes, runbooks, governance material).
+5. Seed `deploy/dev`, `deploy/uat`, and `deploy/prod` directories for environment-specific configuration files, along with a `pipelines/` folder for CI definitions.
+6. Drop `.gitkeep` files into empty folders so Git can track them until exports populate the directories.
 
-./scripts/setup_creator_repo.sh --modules purchase,finance \
-  # scaffold a subset of modules during pilots
+### 1.2 Tailoring the Layout
 
-./scripts/setup_creator_repo.sh --base-dir ../erp-sandbox \
-  # create the structure outside the git root (e.g., for evaluation copies)
-
-# Tip: wrap the value passed to `--modules` in quotes when adding spaces, e.g.
-# `--modules "purchase, finance"`.
-```
-
-### 1.1 Script Features
-- Creates module-specific folders under `apps/` for **Purchase, Sales, Production, QC, Logistics, Finance, Attendance** (or a subset defined by `--modules`), with nested directories for forms, workflows, reports, pages, automations, scripts, integrations, Deluge functions, schedules, approvals, and tests. Extra spaces or uppercase names passed to `--modules` are normalised automatically.
-- Generates shared workspaces for masters, templates, dashboards, test data, reusable Deluge libraries, and Creator pages under `apps/shared/`.
-- Builds environment folders under `deploy/` for **dev**, **uat**, and **prod**, plus a reusable `pipelines/` directory for CI configuration.
-- Seeds integration stubs for AI PO parsing, face recognition, bank reconciliation, and Tally exports under `integrations/`.
-- Adds dedicated `docs/architecture` and `docs/release_notes` areas alongside runbooks and change logs to support governance deliverables.
-- Provisions `tools/` folders for automation scripts and migration utilities used during rollout.
-- Drops `.gitkeep` markers so empty directories remain version-controlled.
-- Provides README templates describing how to populate each top-level and module-specific area; the script rewrites them when `--force` is supplied.
-- Accepts an optional `--base-dir` flag so scaffolding can be generated in a different workspace (for example, when mirroring the structure for vendor collaboration or air-gapped environments).
-
-### 1.2 Extending the Script
-- Pass `--modules hr,maintenance` to quickly spin up experimental modules without editing the script.
-- Update the `MODULE_SUBDIRS` array when Creator introduces new artefact types (e.g., blueprint states, serverless functions).
-- Extend `GLOBAL_DIRS` for additional cross-cutting folders such as monitoring, compliance evidence, or incident response.
-- Update the `README_MAP` dictionary with explanatory text when new top-level collections are introduced.
-- Wrap custom setup logic (such as copying boilerplate Deluge scripts) in helper functions invoked from `main()` to maintain readability.
+- Extend each module with extra folders (for example, `blueprints/` or `serverless/`) when Creator introduces new artefact types.
+- Mirror the hierarchy in external workspaces (such as vendor collaboration areas) to simplify comparisons and code reviews.
+- Maintain a short README in every top-level directory to describe its intended contents and contribution guidelines.
 
 ## 2. Repository Branch Structure
 
@@ -70,7 +51,7 @@ main
 
 ## 3. Directory Map
 
-Once the scaffolding script runs, the repository will follow this high-level layout:
+Once you apply the directory layout steps, the repository should resemble the structure below:
 
 ```
 apps/
@@ -191,7 +172,7 @@ tools/
 └── migrations/
 
 scripts/
-└── setup_creator_repo.sh
+└── render_data_models_pdf.sh
 ```
 
 ### 3.1 Recommended Contents
@@ -218,10 +199,10 @@ scripts/
 3. **Capture test evidence** under `tests/` and document assumptions in `docs/change_logs/`.
 4. **Update documentation** (e.g., data models, ERDs, release notes) if the change modifies schema or process logic.
 5. **Commit and push** the artefacts alongside supporting notes, then open a pull request targeting `env/dev` or `main` based on the release path.
-6. **Run the setup script** with `--force` when structure resets are required (e.g., repo bootstrap, major reorganisation) or `--modules` for incremental pilots.
+6. **Automate directory audits** with lightweight shell scripts or CI checks to ensure required folders stay present after merges.
 
 ## 5. Next Steps
 
 - Add module-specific README files that describe naming conventions for forms, workflows, and scripts.
-- Integrate the scaffolding script with CI to validate required directories exist before merges.
+- Create a simple CI check (for example, a shell script) that validates the expected directory structure before merges.
 - Capture environment-specific secrets in a secure vault and reference them in `deploy/environments/*` documentation rather than storing plain text in the repository.
