@@ -11,6 +11,7 @@ This blueprint translates the ERP vision into a Zoho Creator application suite t
 - **[Domain ERD Library](../data-models/zoho_creator_erds.md)** – conceptual entity-relationship diagrams per module.
 - **[Cross-Module ERDs](../data-models/zoho_creator_cross_module_erds.md)** – end-to-end data connections across modules.
 - **[Master Forms Guide](../process/zoho_creator_master_forms.md)** – step-by-step instructions for configuring all shared masters.
+- **[Phase 1 Zia Form Prompts](../../data/zia_phase1_form_prompts.md)** – Zoho Zia inputs for Procure-to-Pay & inventory transactional forms.
 - **[Phased Implementation Plan](../implementation/zoho_creator_implementation_plan.md)** – rollout roadmap with dependencies and timelines.
 - **[Phase 0 – Foundation & Governance Playbook](../implementation/phase0_foundation_governance_plan.md)** – detailed week-by-week setup actions.
 - **[Phase 1 – Procure-to-Pay & Inventory Control Playbook](../implementation/phase1_procure_to_pay_inventory_plan.md)** – implementation steps for procurement and inventory.

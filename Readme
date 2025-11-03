@@ -5,6 +5,8 @@ This repository provides scaffolding assets for configuring our Zoho Creator bas
 ## Contents
 
 - `data/master_forms.json` — canonical master data form specification with field-level metadata for every Zoho Creator master module (companies, warehouses, products, vendors, customers, logistics, finance, HR, QC, production, integrations, and more).
+- `data/zia_master_form_prompts.md` — sequential Zoho Zia prompts for building all master/reference forms.
+- `data/zia_phase1_form_prompts.md` — Zoho Zia prompts covering every Phase 1 procure-to-pay and inventory transaction form.
 
 ## Usage
 
