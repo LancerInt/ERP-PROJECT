@@ -1,0 +1,698 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "generated_on": "2024-05-16",
+    "description": "Master data form blueprint for Zoho Creator ERP implementation",
+    "notes": [
+      "Use this JSON as a reference when creating forms via Zoho Creator's UI or Deluge scripts.",
+      "Lookups reference the form name provided in the 'lookup' attribute.",
+      "Dropdown choices are provided as canonical values; adjust labels as required."
+    ]
+  },
+  "forms": [
+    {
+      "name": "company_master",
+      "display_name": "Company Master",
+      "category": "Core",
+      "description": "Stores legal entities that participate in purchase, sales, finance and compliance.",
+      "fields": [
+        {"name": "company_id", "display_name": "Company ID", "type": "auto_number", "required": true, "unique": true, "prefix": "COMP", "padding": 5},
+        {"name": "company_name", "display_name": "Company Name", "type": "single_line", "required": true, "unique": true},
+        {"name": "legal_name", "display_name": "Legal Name", "type": "single_line", "required": true},
+        {"name": "cin", "display_name": "CIN", "type": "single_line", "required": false},
+        {"name": "gstin", "display_name": "GSTIN", "type": "single_line", "required": true},
+        {"name": "pan", "display_name": "PAN", "type": "single_line"},
+        {"name": "tan", "display_name": "TAN", "type": "single_line"},
+        {"name": "billing_address_line1", "display_name": "Billing Address Line 1", "type": "single_line", "required": true},
+        {"name": "billing_address_line2", "display_name": "Billing Address Line 2", "type": "single_line"},
+        {"name": "billing_city", "display_name": "City", "type": "single_line", "required": true},
+        {"name": "billing_state", "display_name": "State", "type": "dropdown", "choices": "@indian_states"},
+        {"name": "billing_postal_code", "display_name": "Postal Code", "type": "single_line", "required": true},
+        {"name": "billing_country", "display_name": "Country", "type": "single_line", "default": "India"},
+        {"name": "finance_contact_name", "display_name": "Finance Contact Name", "type": "single_line"},
+        {"name": "finance_contact_email", "display_name": "Finance Contact Email", "type": "email"},
+        {"name": "finance_contact_phone", "display_name": "Finance Contact Phone", "type": "phone"},
+        {"name": "default_currency", "display_name": "Default Currency", "type": "dropdown", "choices": ["INR", "USD"], "default": "INR"},
+        {"name": "books_system", "display_name": "Accounting System", "type": "dropdown", "choices": ["Zoho Books", "Tally", "Other"], "default": "Tally"},
+        {"name": "status", "display_name": "Status", "type": "dropdown", "choices": ["Active", "Inactive"], "default": "Active"},
+        {"name": "notes", "display_name": "Notes", "type": "multi_line"}
+      ]
+    },
+    {
+      "name": "warehouse_master",
+      "display_name": "Warehouse Master",
+      "category": "Core",
+      "description": "Defines physical warehouses managed by the organisation.",
+      "fields": [
+        {"name": "warehouse_id", "display_name": "Warehouse ID", "type": "auto_number", "required": true, "unique": true, "prefix": "WH", "padding": 5},
+        {"name": "warehouse_name", "display_name": "Warehouse Name", "type": "single_line", "required": true},
+        {"name": "warehouse_code", "display_name": "Warehouse Code", "type": "single_line", "required": true, "unique": true},
+        {"name": "company", "display_name": "Company", "type": "lookup", "lookup": "company_master", "required": true},
+        {"name": "address_line1", "display_name": "Address Line 1", "type": "single_line", "required": true},
+        {"name": "address_line2", "display_name": "Address Line 2", "type": "single_line"},
+        {"name": "city", "display_name": "City", "type": "single_line", "required": true},
+        {"name": "state", "display_name": "State", "type": "dropdown", "choices": "@indian_states"},
+        {"name": "postal_code", "display_name": "Postal Code", "type": "single_line", "required": true},
+        {"name": "country", "display_name": "Country", "type": "single_line", "default": "India"},
+        {"name": "latitude", "display_name": "Latitude", "type": "decimal", "precision": 8, "scale": 6},
+        {"name": "longitude", "display_name": "Longitude", "type": "decimal", "precision": 9, "scale": 6},
+        {"name": "warehouse_manager", "display_name": "Warehouse Manager", "type": "lookup", "lookup": "user_master"},
+        {"name": "hr_coordinator", "display_name": "Warehouse HR Coordinator", "type": "lookup", "lookup": "user_master"},
+        {"name": "capacity_notes", "display_name": "Capacity Notes", "type": "multi_line"},
+        {"name": "status", "display_name": "Status", "type": "dropdown", "choices": ["Active", "Inactive"], "default": "Active"}
+      ],
+      "subforms": [
+        {
+          "name": "warehouse_contacts",
+          "display_name": "Warehouse Contacts",
+          "fields": [
+            {"name": "contact_name", "display_name": "Contact Name", "type": "single_line", "required": true},
+            {"name": "role", "display_name": "Role", "type": "dropdown", "choices": ["Manager", "Coordinator", "Security", "Maintenance"]},
+            {"name": "email", "display_name": "Email", "type": "email"},
+            {"name": "phone", "display_name": "Phone", "type": "phone"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "godown_master",
+      "display_name": "Godown Master",
+      "category": "Core",
+      "description": "Defines storage godowns within a warehouse and the machinery allocated to them.",
+      "fields": [
+        {"name": "godown_id", "display_name": "Godown ID", "type": "auto_number", "required": true, "unique": true, "prefix": "GD", "padding": 5},
+        {"name": "godown_name", "display_name": "Godown Name", "type": "single_line", "required": true},
+        {"name": "godown_code", "display_name": "Godown Code", "type": "single_line", "required": true, "unique": true},
+        {"name": "warehouse", "display_name": "Warehouse", "type": "lookup", "lookup": "warehouse_master", "required": true},
+        {"name": "storage_type", "display_name": "Storage Type", "type": "dropdown", "choices": ["Ambient", "Cold", "Hazardous", "Bulk", "Finished Goods"]},
+        {"name": "temperature_range", "display_name": "Temperature Range", "type": "single_line"},
+        {"name": "humidity_control", "display_name": "Humidity Control", "type": "boolean", "default": false},
+        {"name": "status", "display_name": "Status", "type": "dropdown", "choices": ["Active", "Inactive"], "default": "Active"}
+      ],
+      "subforms": [
+        {
+          "name": "godown_machinery",
+          "display_name": "Machinery",
+          "fields": [
+            {"name": "machinery_name", "display_name": "Machinery Name", "type": "single_line", "required": true},
+            {"name": "equipment_type", "display_name": "Equipment Type", "type": "dropdown", "choices": ["Mixer", "Reactor", "Filler", "Conveyor", "Utility", "Other"]},
+            {"name": "asset_tag", "display_name": "Asset Tag", "type": "single_line", "required": true},
+            {"name": "serial_number", "display_name": "Serial Number", "type": "single_line"},
+            {"name": "manufacturer", "display_name": "Manufacturer", "type": "single_line"},
+            {"name": "model", "display_name": "Model", "type": "single_line"},
+            {"name": "installation_date", "display_name": "Installation Date", "type": "date"},
+            {"name": "maintenance_frequency_days", "display_name": "Maintenance Frequency (Days)", "type": "number", "precision": 5},
+            {"name": "status", "display_name": "Status", "type": "dropdown", "choices": ["Active", "Under Maintenance", "Retired"], "default": "Active"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "user_master",
+      "display_name": "ERP User Master",
+      "category": "Security",
+      "description": "Stores stakeholders who access the ERP with role assignments.",
+      "fields": [
+        {"name": "user_id", "display_name": "User ID", "type": "auto_number", "required": true, "unique": true, "prefix": "USR", "padding": 5},
+        {"name": "user_full_name", "display_name": "Full Name", "type": "single_line", "required": true},
+        {"name": "email", "display_name": "Email", "type": "email", "required": true, "unique": true},
+        {"name": "phone", "display_name": "Phone", "type": "phone"},
+        {"name": "stakeholder_roles", "display_name": "Stakeholder Roles", "type": "multi_select", "choices": ["Office Manager", "Purchase Manager", "Purchase Coordinator", "Sales Manager", "Sales Coordinator", "Finance Manager", "Accounts Manager", "Freight Coordinator", "QC Manager", "QC Coordinator", "QC Analyst", "Warehouse Coordinator (Office)", "HR Coordinator (Office)", "IT Admin", "Warehouse Manager", "Warehouse Coordinator", "Warehouse Supervisor", "Warehouse HR Coordinator", "Employee"]},
+        {"name": "default_warehouse", "display_name": "Default Warehouse", "type": "lookup", "lookup": "warehouse_master"},
+        {"name": "is_active", "display_name": "Active", "type": "boolean", "default": true},
+        {"name": "remarks", "display_name": "Remarks", "type": "multi_line"}
+      ],
+      "subforms": [
+        {
+          "name": "user_role_assignments",
+          "display_name": "Role Assignments",
+          "fields": [
+            {"name": "role", "display_name": "Role", "type": "lookup", "lookup": "role_master", "required": true},
+            {"name": "warehouse_scope", "display_name": "Warehouse Scope", "type": "lookup", "lookup": "warehouse_master"},
+            {"name": "effective_from", "display_name": "Effective From", "type": "date", "required": true},
+            {"name": "effective_to", "display_name": "Effective To", "type": "date"},
+            {"name": "is_primary", "display_name": "Primary Role", "type": "boolean", "default": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "role_master",
+      "display_name": "Role Master",
+      "category": "Security",
+      "description": "Defines system roles and governance metadata for access control.",
+      "fields": [
+        {"name": "role_id", "display_name": "Role ID", "type": "auto_number", "required": true, "unique": true, "prefix": "ROLE", "padding": 4},
+        {"name": "role_name", "display_name": "Role Name", "type": "single_line", "required": true, "unique": true},
+        {"name": "scope", "display_name": "Scope", "type": "dropdown", "choices": ["Head Office", "Warehouse", "All"]},
+        {"name": "description", "display_name": "Description", "type": "multi_line"},
+        {"name": "default_page", "display_name": "Default Page", "type": "single_line"},
+        {"name": "is_active", "display_name": "Active", "type": "boolean", "default": true}
+      ]
+    },
+    {
+      "name": "uom_master",
+      "display_name": "UOM Master",
+      "category": "Inventory",
+      "description": "Standard unit of measure definitions including base conversions.",
+      "fields": [
+        {"name": "uom_id", "display_name": "UOM ID", "type": "auto_number", "required": true, "unique": true, "prefix": "UOM", "padding": 4},
+        {"name": "uom_name", "display_name": "Unit Name", "type": "single_line", "required": true},
+        {"name": "symbol", "display_name": "Symbol", "type": "single_line"},
+        {"name": "category", "display_name": "Category", "type": "dropdown", "choices": ["Weight", "Volume", "Count", "Length", "Area", "Time"]},
+        {"name": "base_unit", "display_name": "Base Unit", "type": "boolean", "default": false},
+        {"name": "base_reference", "display_name": "Base Reference", "type": "lookup", "lookup": "uom_master"},
+        {"name": "conversion_factor", "display_name": "Conversion Factor", "type": "decimal", "precision": 12, "scale": 6},
+        {"name": "specific_gravity_applicable", "display_name": "Specific Gravity Applicable", "type": "boolean", "default": false},
+        {"name": "notes", "display_name": "Notes", "type": "multi_line"}
+      ]
+    },
+    {
+      "name": "product_master",
+      "display_name": "Product Master",
+      "category": "Inventory",
+      "description": "Catalogue of goods and services with QC, taxation and conversion metadata.",
+      "fields": [
+        {"name": "product_id", "display_name": "Product ID", "type": "auto_number", "required": true, "unique": true, "prefix": "PRD", "padding": 5},
+        {"name": "product_name", "display_name": "Product Name", "type": "single_line", "required": true},
+        {"name": "sku_code", "display_name": "SKU Code", "type": "single_line", "required": true, "unique": true},
+        {"name": "product_type", "display_name": "Product Type", "type": "dropdown", "choices": ["Goods", "Service"], "required": true},
+        {"name": "goods_type", "display_name": "Goods Type", "type": "dropdown", "choices": ["RAW_MATERIAL", "PACKING_MATERIAL", "FINISHED_GOOD", "SEMI_FINISHED", "TRADED_PRODUCT", "CAPITAL_GOOD", "MACHINE_SPARE", "CONSUMABLE"], "visible_if": "product_type == 'Goods'"},
+        {"name": "service_type", "display_name": "Service Type", "type": "dropdown", "choices": ["Warehouse Expense", "Wages", "Freight", "Miscellaneous Expense", "Staff Welfare", "Vehicle", "Custom"], "visible_if": "product_type == 'Service'"},
+        {"name": "custom_service_category", "display_name": "Custom Service Category", "type": "single_line", "visible_if": "service_type == 'Custom'"},
+        {"name": "base_uom", "display_name": "Base UOM", "type": "lookup", "lookup": "uom_master", "required": true},
+        {"name": "specific_gravity", "display_name": "Specific Gravity", "type": "decimal", "precision": 6, "scale": 3},
+        {"name": "batch_tracking_required", "display_name": "Batch Tracking Required", "type": "boolean", "default": true},
+        {"name": "expiry_required", "display_name": "Expiry Tracking Required", "type": "boolean", "default": false},
+        {"name": "qc_routing", "display_name": "QC Routing", "type": "dropdown", "choices": ["Warehouse Coordinator", "QC Coordinator", "QC Manager"], "default": "Warehouse Coordinator"},
+        {"name": "yield_tracking_mode", "display_name": "Yield Tracking Mode", "type": "dropdown", "choices": ["None", "Physical Quantity", "Physical + Purity", "Physical + Purity + AI"], "default": "None"},
+        {"name": "packing_capture_required", "display_name": "Capture Received Packing", "type": "boolean", "default": false},
+        {"name": "reformulation_allowed", "display_name": "Allow Reformulation", "type": "boolean", "default": false},
+        {"name": "active", "display_name": "Active", "type": "boolean", "default": true},
+        {"name": "remarks", "display_name": "Remarks", "type": "multi_line"}
+      ],
+      "subforms": [
+        {
+          "name": "product_uom_conversions",
+          "display_name": "UOM Conversions",
+          "fields": [
+            {"name": "to_uom", "display_name": "To UOM", "type": "lookup", "lookup": "uom_master", "required": true},
+            {"name": "conversion_factor", "display_name": "Conversion Factor", "type": "decimal", "precision": 12, "scale": 6, "required": true},
+            {"name": "use_specific_gravity", "display_name": "Use Specific Gravity", "type": "boolean", "default": false}
+          ]
+        },
+        {
+          "name": "product_qc_parameters",
+          "display_name": "QC Parameters",
+          "fields": [
+            {"name": "parameter_name", "display_name": "Parameter", "type": "single_line", "required": true},
+            {"name": "method", "display_name": "Method", "type": "single_line"},
+            {"name": "specification", "display_name": "Specification", "type": "single_line"},
+            {"name": "is_mandatory", "display_name": "Mandatory", "type": "boolean", "default": true}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "service_master",
+      "display_name": "Service Catalog",
+      "category": "Finance",
+      "description": "Extensible list of services available per warehouse or centrally.",
+      "fields": [
+        {"name": "service_id", "display_name": "Service ID", "type": "auto_number", "required": true, "unique": true, "prefix": "SRV", "padding": 5},
+        {"name": "service_name", "display_name": "Service Name", "type": "single_line", "required": true},
+        {"name": "service_category", "display_name": "Service Category", "type": "dropdown", "choices": ["Warehouse Expense", "Wages", "Freight", "Miscellaneous Expense", "Staff Welfare", "Vehicle", "Custom"], "required": true},
+        {"name": "warehouse", "display_name": "Warehouse", "type": "lookup", "lookup": "warehouse_master"},
+        {"name": "description", "display_name": "Description", "type": "multi_line"},
+        {"name": "is_active", "display_name": "Active", "type": "boolean", "default": true}
+      ]
+    },
+    {
+      "name": "vendor_master",
+      "display_name": "Vendor Master",
+      "category": "Procurement",
+      "description": "Maintains vendor identities, compliance data and credit terms.",
+      "fields": [
+        {"name": "vendor_id", "display_name": "Vendor ID", "type": "auto_number", "required": true, "unique": true, "prefix": "VND", "padding": 5},
+        {"name": "vendor_name", "display_name": "Vendor Name", "type": "single_line", "required": true},
+        {"name": "vendor_code", "display_name": "Vendor Code", "type": "single_line", "unique": true},
+        {"name": "vendor_type", "display_name": "Vendor Type", "type": "dropdown", "choices": ["Raw Material", "Packing Material", "Machinery", "Service", "Job Work", "Other"]},
+        {"name": "gstin", "display_name": "GSTIN", "type": "single_line"},
+        {"name": "pan", "display_name": "PAN", "type": "single_line"},
+        {"name": "primary_contact_name", "display_name": "Primary Contact", "type": "single_line"},
+        {"name": "primary_email", "display_name": "Primary Email", "type": "email"},
+        {"name": "primary_phone", "display_name": "Primary Phone", "type": "phone"},
+        {"name": "credit_limit", "display_name": "Credit Limit", "type": "currency", "precision": 12, "scale": 2},
+        {"name": "payment_terms", "display_name": "Payment Terms", "type": "lookup", "lookup": "payment_terms_master"},
+        {"name": "freight_terms", "display_name": "Freight Terms", "type": "lookup", "lookup": "freight_terms_master"},
+        {"name": "tds_profile", "display_name": "TDS Profile", "type": "lookup", "lookup": "tax_master"},
+        {"name": "wage_vendor", "display_name": "Wage Contractor", "type": "boolean", "default": false},
+        {"name": "notes", "display_name": "Notes", "type": "multi_line"},
+        {"name": "active", "display_name": "Active", "type": "boolean", "default": true}
+      ],
+      "subforms": [
+        {
+          "name": "vendor_addresses",
+          "display_name": "Addresses",
+          "fields": [
+            {"name": "address_type", "display_name": "Address Type", "type": "dropdown", "choices": ["Head Office", "Billing", "Shipping", "Factory"]},
+            {"name": "line1", "display_name": "Address Line 1", "type": "single_line", "required": true},
+            {"name": "line2", "display_name": "Address Line 2", "type": "single_line"},
+            {"name": "city", "display_name": "City", "type": "single_line", "required": true},
+            {"name": "state", "display_name": "State", "type": "dropdown", "choices": "@indian_states"},
+            {"name": "postal_code", "display_name": "Postal Code", "type": "single_line", "required": true},
+            {"name": "country", "display_name": "Country", "type": "single_line", "default": "India"}
+          ]
+        },
+        {
+          "name": "vendor_bank_accounts",
+          "display_name": "Bank Accounts",
+          "fields": [
+            {"name": "account_holder_name", "display_name": "Account Holder", "type": "single_line", "required": true},
+            {"name": "bank_name", "display_name": "Bank Name", "type": "single_line", "required": true},
+            {"name": "branch", "display_name": "Branch", "type": "single_line"},
+            {"name": "account_number", "display_name": "Account Number", "type": "single_line", "required": true},
+            {"name": "ifsc", "display_name": "IFSC", "type": "single_line", "required": true},
+            {"name": "is_primary", "display_name": "Primary", "type": "boolean", "default": false}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "customer_master",
+      "display_name": "Customer Master",
+      "category": "Sales",
+      "description": "Customer registry with credit terms, freight agreements and price list mapping.",
+      "fields": [
+        {"name": "customer_id", "display_name": "Customer ID", "type": "auto_number", "required": true, "unique": true, "prefix": "CUS", "padding": 5},
+        {"name": "customer_name", "display_name": "Customer Name", "type": "single_line", "required": true},
+        {"name": "customer_code", "display_name": "Customer Code", "type": "single_line", "unique": true},
+        {"name": "gstin", "display_name": "GSTIN", "type": "single_line"},
+        {"name": "pan", "display_name": "PAN", "type": "single_line"},
+        {"name": "credit_limit", "display_name": "Credit Limit", "type": "currency", "precision": 12, "scale": 2},
+        {"name": "credit_terms", "display_name": "Credit Terms", "type": "lookup", "lookup": "payment_terms_master"},
+        {"name": "freight_terms", "display_name": "Freight Terms", "type": "lookup", "lookup": "freight_terms_master"},
+        {"name": "price_policy", "display_name": "Default Price Policy", "type": "lookup", "lookup": "price_list_master"},
+        {"name": "primary_contact_name", "display_name": "Primary Contact", "type": "single_line"},
+        {"name": "primary_email", "display_name": "Primary Email", "type": "email"},
+        {"name": "primary_phone", "display_name": "Primary Phone", "type": "phone"},
+        {"name": "notify_on_overdue", "display_name": "Notify on Overdue", "type": "boolean", "default": true},
+        {"name": "active", "display_name": "Active", "type": "boolean", "default": true}
+      ],
+      "subforms": [
+        {
+          "name": "customer_locations",
+          "display_name": "Delivery Locations",
+          "fields": [
+            {"name": "location_name", "display_name": "Location Name", "type": "single_line", "required": true},
+            {"name": "price_list", "display_name": "Price List", "type": "lookup", "lookup": "price_list_master"},
+            {"name": "address_line1", "display_name": "Address Line 1", "type": "single_line", "required": true},
+            {"name": "address_line2", "display_name": "Address Line 2", "type": "single_line"},
+            {"name": "city", "display_name": "City", "type": "single_line", "required": true},
+            {"name": "state", "display_name": "State", "type": "dropdown", "choices": "@indian_states"},
+            {"name": "postal_code", "display_name": "Postal Code", "type": "single_line", "required": true},
+            {"name": "country", "display_name": "Country", "type": "single_line", "default": "India"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "price_list_master",
+      "display_name": "Price List Master",
+      "category": "Sales",
+      "description": "Stores price policies per customer, region, and product.",
+      "fields": [
+        {"name": "price_list_id", "display_name": "Price List ID", "type": "auto_number", "required": true, "unique": true, "prefix": "PL", "padding": 5},
+        {"name": "price_list_name", "display_name": "Price List Name", "type": "single_line", "required": true},
+        {"name": "price_list_code", "display_name": "Code", "type": "single_line", "unique": true},
+        {"name": "company", "display_name": "Company", "type": "lookup", "lookup": "company_master"},
+        {"name": "region", "display_name": "Region", "type": "single_line"},
+        {"name": "currency", "display_name": "Currency", "type": "dropdown", "choices": ["INR", "USD"], "default": "INR"},
+        {"name": "effective_from", "display_name": "Effective From", "type": "date", "required": true},
+        {"name": "effective_to", "display_name": "Effective To", "type": "date"},
+        {"name": "freight_term_override", "display_name": "Freight Term Override", "type": "lookup", "lookup": "freight_terms_master"},
+        {"name": "status", "display_name": "Status", "type": "dropdown", "choices": ["Draft", "Active", "Expired"], "default": "Draft"}
+      ],
+      "subforms": [
+        {
+          "name": "price_list_lines",
+          "display_name": "Price Lines",
+          "fields": [
+            {"name": "product", "display_name": "Product", "type": "lookup", "lookup": "product_master", "required": true},
+            {"name": "uom", "display_name": "UOM", "type": "lookup", "lookup": "uom_master", "required": true},
+            {"name": "unit_price", "display_name": "Unit Price", "type": "currency", "precision": 12, "scale": 2, "required": true},
+            {"name": "min_order_quantity", "display_name": "Minimum Order Quantity", "type": "number", "precision": 10},
+            {"name": "tax_profile", "display_name": "Tax Profile", "type": "lookup", "lookup": "tax_master"},
+            {"name": "remarks", "display_name": "Remarks", "type": "multi_line"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "tax_master",
+      "display_name": "Tax Master",
+      "category": "Finance",
+      "description": "Captures GST, TDS and TCS rates with validity periods.",
+      "fields": [
+        {"name": "tax_id", "display_name": "Tax ID", "type": "auto_number", "required": true, "unique": true, "prefix": "TAX", "padding": 4},
+        {"name": "tax_name", "display_name": "Tax Name", "type": "single_line", "required": true},
+        {"name": "tax_type", "display_name": "Tax Type", "type": "dropdown", "choices": ["GST", "TDS", "TCS"], "required": true},
+        {"name": "section", "display_name": "Section/Rule", "type": "single_line"},
+        {"name": "rate_percent", "display_name": "Rate (%)", "type": "decimal", "precision": 5, "scale": 2, "required": true},
+        {"name": "threshold_amount", "display_name": "Threshold Amount", "type": "currency", "precision": 12, "scale": 2},
+        {"name": "applicable_on", "display_name": "Applicable On", "type": "dropdown", "choices": ["Product", "Freight", "Wages", "Service", "All"]},
+        {"name": "effective_from", "display_name": "Effective From", "type": "date", "required": true},
+        {"name": "effective_to", "display_name": "Effective To", "type": "date"},
+        {"name": "status", "display_name": "Status", "type": "dropdown", "choices": ["Active", "Inactive"], "default": "Active"}
+      ]
+    },
+    {
+      "name": "payment_terms_master",
+      "display_name": "Payment Terms Master",
+      "category": "Finance",
+      "description": "Standard payment term definitions for vendors, customers and contractors.",
+      "fields": [
+        {"name": "payment_terms_id", "display_name": "Payment Term ID", "type": "auto_number", "required": true, "unique": true, "prefix": "PT", "padding": 4},
+        {"name": "name", "display_name": "Name", "type": "single_line", "required": true, "unique": true},
+        {"name": "description", "display_name": "Description", "type": "multi_line"},
+        {"name": "due_in_days", "display_name": "Due in Days", "type": "number", "precision": 3, "required": true},
+        {"name": "early_payment_discount_percent", "display_name": "Early Payment Discount (%)", "type": "decimal", "precision": 5, "scale": 2},
+        {"name": "early_payment_window_days", "display_name": "Discount Window (Days)", "type": "number", "precision": 3},
+        {"name": "apply_tcs", "display_name": "Apply TCS", "type": "boolean", "default": false},
+        {"name": "status", "display_name": "Status", "type": "dropdown", "choices": ["Active", "Inactive"], "default": "Active"}
+      ]
+    },
+    {
+      "name": "freight_terms_master",
+      "display_name": "Freight Terms Master",
+      "category": "Logistics",
+      "description": "Defines inbound and outbound freight responsibilities and approvals.",
+      "fields": [
+        {"name": "freight_term_id", "display_name": "Freight Term ID", "type": "auto_number", "required": true, "unique": true, "prefix": "FT", "padding": 4},
+        {"name": "name", "display_name": "Name", "type": "single_line", "required": true, "unique": true},
+        {"name": "direction", "display_name": "Direction", "type": "dropdown", "choices": ["Inbound", "Outbound", "Both"], "required": true},
+        {"name": "payer", "display_name": "Default Payer", "type": "dropdown", "choices": ["Company", "Vendor/Customer", "Split"], "required": true},
+        {"name": "includes_loading", "display_name": "Includes Loading", "type": "boolean", "default": false},
+        {"name": "includes_unloading", "display_name": "Includes Unloading", "type": "boolean", "default": false},
+        {"name": "requires_freight_approval", "display_name": "Requires Approval", "type": "boolean", "default": true},
+        {"name": "notes", "display_name": "Notes", "type": "multi_line"}
+      ]
+    },
+    {
+      "name": "transporter_master",
+      "display_name": "Transporter Master",
+      "category": "Logistics",
+      "description": "Transport partners for inbound, outbound, stock transfer and job work movements.",
+      "fields": [
+        {"name": "transporter_id", "display_name": "Transporter ID", "type": "auto_number", "required": true, "unique": true, "prefix": "TRN", "padding": 5},
+        {"name": "transporter_name", "display_name": "Transporter Name", "type": "single_line", "required": true},
+        {"name": "transporter_code", "display_name": "Code", "type": "single_line", "unique": true},
+        {"name": "gstin", "display_name": "GSTIN", "type": "single_line"},
+        {"name": "pan", "display_name": "PAN", "type": "single_line"},
+        {"name": "contact_name", "display_name": "Contact Name", "type": "single_line"},
+        {"name": "contact_phone", "display_name": "Contact Phone", "type": "phone"},
+        {"name": "contact_email", "display_name": "Contact Email", "type": "email"},
+        {"name": "freight_directions", "display_name": "Freight Directions", "type": "multi_select", "choices": ["Inbound", "Outbound", "Stock Transfer", "Job Work"]},
+        {"name": "states_served", "display_name": "States Served", "type": "multi_select", "choices": "@indian_states"},
+        {"name": "preferred", "display_name": "Preferred", "type": "boolean", "default": false},
+        {"name": "status", "display_name": "Status", "type": "dropdown", "choices": ["Active", "Inactive"], "default": "Active"},
+        {"name": "remarks", "display_name": "Remarks", "type": "multi_line"}
+      ]
+    },
+    {
+      "name": "bank_account_master",
+      "display_name": "Bank Account Master",
+      "category": "Finance",
+      "description": "Company bank accounts used for receivables and payables processing.",
+      "fields": [
+        {"name": "bank_account_id", "display_name": "Bank Account ID", "type": "auto_number", "required": true, "unique": true, "prefix": "BANK", "padding": 4},
+        {"name": "company", "display_name": "Company", "type": "lookup", "lookup": "company_master", "required": true},
+        {"name": "bank_name", "display_name": "Bank Name", "type": "single_line", "required": true},
+        {"name": "branch", "display_name": "Branch", "type": "single_line"},
+        {"name": "account_number", "display_name": "Account Number", "type": "single_line", "required": true},
+        {"name": "ifsc", "display_name": "IFSC", "type": "single_line", "required": true},
+        {"name": "account_type", "display_name": "Account Type", "type": "dropdown", "choices": ["Current", "Savings", "Cash Credit", "Overdraft"]},
+        {"name": "currency", "display_name": "Currency", "type": "dropdown", "choices": ["INR", "USD"], "default": "INR"},
+        {"name": "usage", "display_name": "Usage", "type": "multi_select", "choices": ["Payables", "Receivables", "Payroll", "Petty Cash"]},
+        {"name": "is_active", "display_name": "Active", "type": "boolean", "default": true}
+      ]
+    },
+    {
+      "name": "attendance_shift_master",
+      "display_name": "Shift Master",
+      "category": "HR",
+      "description": "Shift definitions for attendance capture with overtime policies.",
+      "fields": [
+        {"name": "shift_id", "display_name": "Shift ID", "type": "auto_number", "required": true, "unique": true, "prefix": "SHIFT", "padding": 4},
+        {"name": "shift_name", "display_name": "Shift Name", "type": "single_line", "required": true},
+        {"name": "location_type", "display_name": "Location Type", "type": "dropdown", "choices": ["Head Office", "Warehouse", "Lab"]},
+        {"name": "warehouse", "display_name": "Warehouse", "type": "lookup", "lookup": "warehouse_master"},
+        {"name": "start_time", "display_name": "Start Time", "type": "time", "required": true},
+        {"name": "end_time", "display_name": "End Time", "type": "time", "required": true},
+        {"name": "break_minutes", "display_name": "Break Minutes", "type": "number", "precision": 3, "default": 0},
+        {"name": "overtime_applicable", "display_name": "Overtime Applicable", "type": "boolean", "default": false},
+        {"name": "overtime_rate_type", "display_name": "OT Rate Type", "type": "dropdown", "choices": ["Multiplier", "Fixed"], "visible_if": "overtime_applicable"},
+        {"name": "overtime_rate_value", "display_name": "OT Rate Value", "type": "decimal", "precision": 6, "scale": 2, "visible_if": "overtime_applicable"},
+        {"name": "effective_from", "display_name": "Effective From", "type": "date", "required": true},
+        {"name": "effective_to", "display_name": "Effective To", "type": "date"},
+        {"name": "status", "display_name": "Status", "type": "dropdown", "choices": ["Draft", "Active", "Inactive"], "default": "Active"}
+      ]
+    },
+    {
+      "name": "staff_master",
+      "display_name": "Staff Master",
+      "category": "HR",
+      "description": "Maintains staffing data for attendance, wage, and shift assignment workflows.",
+      "fields": [
+        {"name": "staff_id", "display_name": "Staff ID", "type": "auto_number", "required": true, "unique": true, "prefix": "STF", "padding": 5},
+        {"name": "staff_code", "display_name": "Staff Code", "type": "single_line", "required": true, "unique": true},
+        {"name": "first_name", "display_name": "First Name", "type": "single_line", "required": true},
+        {"name": "last_name", "display_name": "Last Name", "type": "single_line"},
+        {"name": "employment_location", "display_name": "Employment Location", "type": "dropdown", "choices": ["Head Office", "Warehouse", "Lab", "QC"]},
+        {"name": "warehouse", "display_name": "Warehouse", "type": "lookup", "lookup": "warehouse_master"},
+        {"name": "department", "display_name": "Department", "type": "single_line"},
+        {"name": "designation", "display_name": "Designation", "type": "single_line"},
+        {"name": "employment_type", "display_name": "Employment Type", "type": "dropdown", "choices": ["Permanent", "Contract", "Apprentice"]},
+        {"name": "contractor_vendor", "display_name": "Contractor Vendor", "type": "lookup", "lookup": "vendor_master"},
+        {"name": "date_of_joining", "display_name": "Date of Joining", "type": "date"},
+        {"name": "photo_reference", "display_name": "Photo Reference", "type": "image"},
+        {"name": "active", "display_name": "Active", "type": "boolean", "default": true}
+      ],
+      "subforms": [
+        {
+          "name": "staff_shift_history",
+          "display_name": "Shift History",
+          "fields": [
+            {"name": "shift", "display_name": "Shift", "type": "lookup", "lookup": "attendance_shift_master", "required": true},
+            {"name": "effective_from", "display_name": "Effective From", "type": "date", "required": true},
+            {"name": "effective_to", "display_name": "Effective To", "type": "date"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "stock_adjustment_reasons",
+      "display_name": "Stock Adjustment Reasons",
+      "category": "Inventory",
+      "description": "Controlled vocabulary for stock adjustment justifications.",
+      "fields": [
+        {"name": "reason_id", "display_name": "Reason ID", "type": "auto_number", "required": true, "unique": true, "prefix": "SAR", "padding": 4},
+        {"name": "reason_code", "display_name": "Reason Code", "type": "single_line", "required": true, "unique": true},
+        {"name": "reason_label", "display_name": "Reason Label", "type": "single_line", "required": true},
+        {"name": "reason_category", "display_name": "Category", "type": "dropdown", "choices": ["Damage", "Expiry", "Shortage", "Surplus", "Audit Correction", "Other"]},
+        {"name": "requires_secondary_approval", "display_name": "Needs Secondary Approval", "type": "boolean", "default": false},
+        {"name": "active", "display_name": "Active", "type": "boolean", "default": true}
+      ]
+    },
+    {
+      "name": "inter_warehouse_shift_reasons",
+      "display_name": "Inter-Warehouse Shift Reasons",
+      "category": "Inventory",
+      "description": "Reason codes for intra-warehouse shifting operations.",
+      "fields": [
+        {"name": "reason_id", "display_name": "Reason ID", "type": "auto_number", "required": true, "unique": true, "prefix": "IWSR", "padding": 4},
+        {"name": "reason_name", "display_name": "Reason Name", "type": "single_line", "required": true},
+        {"name": "requires_comment", "display_name": "Requires Comment", "type": "boolean", "default": false},
+        {"name": "active", "display_name": "Active", "type": "boolean", "default": true}
+      ]
+    },
+    {
+      "name": "qc_report_templates",
+      "display_name": "QC Report Templates",
+      "category": "Quality",
+      "description": "Controls final QC report formats per product and revision.",
+      "fields": [
+        {"name": "template_id", "display_name": "Template ID", "type": "auto_number", "required": true, "unique": true, "prefix": "QCT", "padding": 4},
+        {"name": "template_name", "display_name": "Template Name", "type": "single_line", "required": true},
+        {"name": "product", "display_name": "Product", "type": "lookup", "lookup": "product_master"},
+        {"name": "revision", "display_name": "Revision", "type": "single_line", "required": true},
+        {"name": "requires_digital_signature", "display_name": "Digital Signature Required", "type": "boolean", "default": true},
+        {"name": "active", "display_name": "Active", "type": "boolean", "default": true}
+      ],
+      "subforms": [
+        {
+          "name": "qc_template_sections",
+          "display_name": "Template Sections",
+          "fields": [
+            {"name": "section_title", "display_name": "Section Title", "type": "single_line", "required": true},
+            {"name": "parameter_ref", "display_name": "Parameter Reference", "type": "single_line"},
+            {"name": "sequence", "display_name": "Sequence", "type": "number", "precision": 3}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "production_template_master",
+      "display_name": "Production Templates",
+      "category": "Production",
+      "description": "Master data for production recipes with version control and yield settings.",
+      "fields": [
+        {"name": "template_id", "display_name": "Template ID", "type": "auto_number", "required": true, "unique": true, "prefix": "BOM", "padding": 5},
+        {"name": "template_name", "display_name": "Template Name", "type": "single_line", "required": true},
+        {"name": "warehouse", "display_name": "Warehouse", "type": "lookup", "lookup": "warehouse_master", "required": true},
+        {"name": "output_product", "display_name": "Output Product", "type": "lookup", "lookup": "product_master", "required": true},
+        {"name": "revision", "display_name": "Revision", "type": "single_line", "required": true},
+        {"name": "yield_loss_percent", "display_name": "Expected Yield Loss (%)", "type": "decimal", "precision": 5, "scale": 2},
+        {"name": "wage_template", "display_name": "Wage Template", "type": "boolean", "default": false},
+        {"name": "active", "display_name": "Active", "type": "boolean", "default": true}
+      ],
+      "subforms": [
+        {
+          "name": "template_inputs",
+          "display_name": "Inputs",
+          "fields": [
+            {"name": "sequence", "display_name": "Sequence", "type": "number", "precision": 3},
+            {"name": "input_product", "display_name": "Input Product", "type": "lookup", "lookup": "product_master", "required": true},
+            {"name": "input_type", "display_name": "Input Type", "type": "dropdown", "choices": ["Raw Material", "Packing Material", "Semi Finished", "Utility"]},
+            {"name": "ratio", "display_name": "Ratio", "type": "decimal", "precision": 10, "scale": 4},
+            {"name": "issue_stage", "display_name": "Issue Stage", "type": "dropdown", "choices": ["Material Issue", "Mixing", "Packing"]}
+          ]
+        },
+        {
+          "name": "template_outputs",
+          "display_name": "Outputs",
+          "fields": [
+            {"name": "output_product", "display_name": "Output Product", "type": "lookup", "lookup": "product_master", "required": true},
+            {"name": "expected_yield_percent", "display_name": "Expected Yield (%)", "type": "decimal", "precision": 5, "scale": 2},
+            {"name": "packaging_included", "display_name": "Include Packaging", "type": "boolean", "default": false}
+          ]
+        },
+        {
+          "name": "template_wage_components",
+          "display_name": "Wage Components",
+          "fields": [
+            {"name": "wage_type", "display_name": "Wage Type", "type": "dropdown", "choices": ["Per Batch", "Per Unit", "Headcount"]},
+            {"name": "rate", "display_name": "Rate", "type": "currency", "precision": 12, "scale": 2},
+            {"name": "approval_required_by", "display_name": "Approval Required By", "type": "dropdown", "choices": ["Warehouse Coordinator (Office)", "Finance Manager"]}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "freight_rate_card",
+      "display_name": "Freight Rate Card",
+      "category": "Logistics",
+      "description": "Baseline freight cost references to support per-unit reporting.",
+      "fields": [
+        {"name": "rate_card_id", "display_name": "Rate Card ID", "type": "auto_number", "required": true, "unique": true, "prefix": "FRC", "padding": 5},
+        {"name": "transporter", "display_name": "Transporter", "type": "lookup", "lookup": "transporter_master", "required": true},
+        {"name": "origin", "display_name": "Origin State", "type": "dropdown", "choices": "@indian_states"},
+        {"name": "destination", "display_name": "Destination State", "type": "dropdown", "choices": "@indian_states", "required": true},
+        {"name": "freight_direction", "display_name": "Freight Direction", "type": "dropdown", "choices": ["Inbound", "Outbound", "Stock Transfer", "Job Work"], "required": true},
+        {"name": "uom", "display_name": "Rate UOM", "type": "lookup", "lookup": "uom_master", "required": true},
+        {"name": "rate_per_uom", "display_name": "Rate per UOM", "type": "currency", "precision": 12, "scale": 2, "required": true},
+        {"name": "surcharge_percent", "display_name": "Surcharge (%)", "type": "decimal", "precision": 5, "scale": 2},
+        {"name": "effective_from", "display_name": "Effective From", "type": "date", "required": true},
+        {"name": "effective_to", "display_name": "Effective To", "type": "date"},
+        {"name": "active", "display_name": "Active", "type": "boolean", "default": true}
+      ]
+    },
+    {
+      "name": "wage_rate_master",
+      "display_name": "Wage Rate Master",
+      "category": "Finance",
+      "description": "Reference wage rates for production and logistics contractors.",
+      "fields": [
+        {"name": "wage_rate_id", "display_name": "Wage Rate ID", "type": "auto_number", "required": true, "unique": true, "prefix": "WGR", "padding": 4},
+        {"name": "wage_category", "display_name": "Wage Category", "type": "dropdown", "choices": ["Loading", "Unloading", "Production", "Headcount"], "required": true},
+        {"name": "vendor", "display_name": "Contractor", "type": "lookup", "lookup": "vendor_master"},
+        {"name": "warehouse", "display_name": "Warehouse", "type": "lookup", "lookup": "warehouse_master"},
+        {"name": "rate_basis", "display_name": "Rate Basis", "type": "dropdown", "choices": ["Per Batch", "Per MT", "Per Hour", "Headcount"]},
+        {"name": "uom", "display_name": "UOM", "type": "lookup", "lookup": "uom_master"},
+        {"name": "rate", "display_name": "Rate", "type": "currency", "precision": 12, "scale": 2, "required": true},
+        {"name": "tds_profile", "display_name": "TDS Profile", "type": "lookup", "lookup": "tax_master"},
+        {"name": "effective_from", "display_name": "Effective From", "type": "date", "required": true},
+        {"name": "effective_to", "display_name": "Effective To", "type": "date"},
+        {"name": "active", "display_name": "Active", "type": "boolean", "default": true}
+      ]
+    },
+    {
+      "name": "petty_cash_master",
+      "display_name": "Petty Cash Master",
+      "category": "Finance",
+      "description": "Tracks authorised petty cash custodians per warehouse.",
+      "fields": [
+        {"name": "petty_cash_id", "display_name": "Petty Cash ID", "type": "auto_number", "required": true, "unique": true, "prefix": "PET", "padding": 4},
+        {"name": "warehouse", "display_name": "Warehouse", "type": "lookup", "lookup": "warehouse_master", "required": true},
+        {"name": "custodian", "display_name": "Custodian", "type": "lookup", "lookup": "user_master", "required": true},
+        {"name": "float_amount", "display_name": "Float Amount", "type": "currency", "precision": 12, "scale": 2, "required": true},
+        {"name": "replenishment_threshold", "display_name": "Replenishment Threshold", "type": "currency", "precision": 12, "scale": 2},
+        {"name": "status", "display_name": "Status", "type": "dropdown", "choices": ["Active", "Inactive"], "default": "Active"}
+      ]
+    },
+    {
+      "name": "integration_config",
+      "display_name": "Integration Config",
+      "category": "IT Governance",
+      "description": "Stores configuration values for AI parsers, attendance recognition and accounting connectors.",
+      "fields": [
+        {"name": "config_id", "display_name": "Config ID", "type": "auto_number", "required": true, "unique": true, "prefix": "CFG", "padding": 4},
+        {"name": "config_category", "display_name": "Category", "type": "dropdown", "choices": ["AI_PO_PARSER", "FACE_RECOGNITION", "BANK_RECON", "ACCOUNTING", "OTHERS"], "required": true},
+        {"name": "key", "display_name": "Key", "type": "single_line", "required": true},
+        {"name": "value", "display_name": "Value", "type": "single_line", "required": true},
+        {"name": "description", "display_name": "Description", "type": "multi_line"},
+        {"name": "active", "display_name": "Active", "type": "boolean", "default": true}
+      ]
+    }
+  ],
+  "choice_lists": {
+    "@indian_states": [
+      "Andhra Pradesh",
+      "Arunachal Pradesh",
+      "Assam",
+      "Bihar",
+      "Chhattisgarh",
+      "Goa",
+      "Gujarat",
+      "Haryana",
+      "Himachal Pradesh",
+      "Jharkhand",
+      "Karnataka",
+      "Kerala",
+      "Madhya Pradesh",
+      "Maharashtra",
+      "Manipur",
+      "Meghalaya",
+      "Mizoram",
+      "Nagaland",
+      "Odisha",
+      "Punjab",
+      "Rajasthan",
+      "Sikkim",
+      "Tamil Nadu",
+      "Telangana",
+      "Tripura",
+      "Uttar Pradesh",
+      "Uttarakhand",
+      "West Bengal",
+      "Andaman and Nicobar Islands",
+      "Chandigarh",
+      "Dadra and Nagar Haveli and Daman and Diu",
+      "Delhi",
+      "Jammu and Kashmir",
+      "Ladakh",
+      "Lakshadweep",
+      "Puducherry"
+    ]
+  }
+}
