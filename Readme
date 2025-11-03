@@ -1,1 +1,25 @@
-Hi! 
+# ERP Project Sandbox
+
+This repository provides scaffolding assets for configuring our Zoho Creator based ERP.
+
+## Contents
+
+- `data/master_forms.json` — canonical master data form specification with field-level metadata for every Zoho Creator master module (companies, warehouses, products, vendors, customers, logistics, finance, HR, QC, production, integrations, and more).
+
+## Usage
+
+1. Review `data/master_forms.json` to understand required forms, fields, lookups, and dropdown choices.
+2. Create the forms inside Zoho Creator manually or via Deluge scripts, mirroring the field definitions.
+3. Extend or localise dropdown values and validation rules in Creator after import as necessary.
+
+> **Tip:** The JSON file also defines reusable choice lists (for example, Indian states) that can be copied into Creator picklists.
+
+## Documentation Map
+
+- `docs/overview/` — high-level blueprint and organisational hierarchy.
+- `docs/process/` — module flowcharts and master form build guides.
+- `docs/data-models/` — detailed field catalogues and ERD references.
+- `docs/implementation/` — phased rollout playbooks (including Phase 0 and Phase 1).
+- `docs/governance/` — security, integration, and change enablement playbooks.
+- `docs/setup/` — repository and scaffolding guidance for Zoho Creator exports.
+
