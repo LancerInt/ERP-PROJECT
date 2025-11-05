@@ -1,0 +1,56 @@
+// Module: 1. Core & Shared Masters
+// Form: Bank Account
+form bank_account
+{
+    DisplayName = "Bank Account";
+    LinkName = "bank_account";
+    Module = "1. Core & Shared Masters";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field account_holder
+                {
+                    DisplayName = "Account Holder";
+                    LinkName = "account_holder";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field bank_name
+                {
+                    DisplayName = "Bank Name";
+                    LinkName = "bank_name";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field ifsc_code
+                {
+                    DisplayName = "IFSC Code";
+                    LinkName = "ifsc_code";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                    HelpText = "Validate format";
+                }
+                Field account_number
+                {
+                    DisplayName = "Account Number";
+                    LinkName = "account_number";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                    HelpText = "Mask display";
+                }
+                Field account_type
+                {
+                    DisplayName = "Account Type";
+                    LinkName = "account_type";
+                    DataType = "Dropdown";
+                }
+            }
+        }
+    }
+}

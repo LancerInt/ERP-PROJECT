@@ -6,13 +6,16 @@ This repository provides scaffolding assets for configuring our Zoho Creator bas
 
 - `data/zia_master_form_prompts.md` — sequential Zoho Zia prompts for building all master/reference forms.
 - `data/zia_phase1_form_prompts.md` — Zoho Zia prompts covering every Phase 1 procure-to-pay and inventory transaction form.
+- `forms/ds/` — ready-to-import Deluge (`.ds`) scripts for every master and transactional form defined in the data model.
 - `scripts/render_data_models_pdf.sh` — Pandoc helper that produces a professionally formatted PDF of the detailed data model catalogue.
+- `scripts/generate_creator_ds_forms.py` — converter that regenerates the `.ds` form library straight from the data model catalogue.
 
 ## Usage
 
 1. Use the master-form or Phase 1 Zia prompt packs in `data/` to seed the Creator forms quickly.
 2. Refer to `docs/data-models/zoho_creator_data_models.md` for the authoritative field definitions, link-name mappings, and validation guidance.
-3. Run `scripts/render_data_models_pdf.sh` (after installing Pandoc and a PDF engine) when you need an offline reference copy of the data model catalogue.
+3. Import the required `.ds` scripts from `forms/ds/` into Zoho Creator (each file represents a single form or subform).
+4. Run `scripts/generate_creator_ds_forms.py` whenever the data model changes to refresh the `.ds` library, and `scripts/render_data_models_pdf.sh` (after installing Pandoc and a PDF engine) when you need an offline reference copy of the data model catalogue.
 
 > **Tip:** Supply `PDF_ENGINE=wkhtmltopdf` (or another installed engine) when your environment lacks LaTeX tooling.
 

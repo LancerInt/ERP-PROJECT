@@ -1,0 +1,123 @@
+// Module: 6. Inventory, Logistics & Returns
+// Form: Sales Return Advice
+form sales_return_advice
+{
+    DisplayName = "Sales Return Advice";
+    LinkName = "sales_return_advice";
+    Module = "6. Inventory, Logistics & Returns";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field return_no
+                {
+                    DisplayName = "Return No.";
+                    LinkName = "return_no";
+                    DataType = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field return_date
+                {
+                    DisplayName = "Return Date";
+                    LinkName = "return_date";
+                    DataType = "Date";
+                    IsMandatory = true;
+                }
+                Field customer
+                {
+                    DisplayName = "Customer";
+                    LinkName = "customer";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "customer";
+                }
+                Field original_invoice
+                {
+                    DisplayName = "Original Invoice";
+                    LinkName = "original_invoice";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "sales_invoice_check";
+                }
+                Field returned_by
+                {
+                    DisplayName = "Returned By";
+                    LinkName = "returned_by";
+                    DataType = "SingleLine";
+                    HelpText = "Customer contact";
+                }
+                Field received_warehouse
+                {
+                    DisplayName = "Received Warehouse";
+                    LinkName = "received_warehouse";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field return_lines
+                {
+                    DisplayName = "Return Lines";
+                    LinkName = "return_lines";
+                    DataType = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "return_lines";
+                }
+                Field freight_terms
+                {
+                    DisplayName = "Freight Terms";
+                    LinkName = "freight_terms";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field freight_charges
+                {
+                    DisplayName = "Freight Charges";
+                    LinkName = "freight_charges";
+                    DataType = "SubForm";
+                    SubFormLinkName = "freight_charges";
+                }
+                Field loading_unloading_charges
+                {
+                    DisplayName = "Loading/Unloading Charges";
+                    LinkName = "loading_unloading_charges";
+                    DataType = "SubForm";
+                    SubFormLinkName = "loading_unloading_charges";
+                }
+                Field qc_requirement
+                {
+                    DisplayName = "QC Requirement";
+                    LinkName = "qc_requirement";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Required / Optional";
+                }
+                Field approval_status
+                {
+                    DisplayName = "Approval Status";
+                    LinkName = "approval_status";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Draft / Pending / Approved / Rejected";
+                }
+                Field approval_trail
+                {
+                    DisplayName = "Approval Trail";
+                    LinkName = "approval_trail";
+                    DataType = "SubForm";
+                    SubFormLinkName = "approval_trail";
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    DataType = "MultiLine";
+                }
+            }
+        }
+    }
+}

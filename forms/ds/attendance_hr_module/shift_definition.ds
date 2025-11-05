@@ -1,0 +1,88 @@
+// Module: 8. Attendance & HR Module
+// Form: Shift Definition
+form shift_definition
+{
+    DisplayName = "Shift Definition";
+    LinkName = "shift_definition";
+    Module = "8. Attendance & HR Module";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field shift_code
+                {
+                    DisplayName = "Shift Code";
+                    LinkName = "shift_code";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field warehouse
+                {
+                    DisplayName = "Warehouse";
+                    LinkName = "warehouse";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field shift_name
+                {
+                    DisplayName = "Shift Name";
+                    LinkName = "shift_name";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field start_time
+                {
+                    DisplayName = "Start Time";
+                    LinkName = "start_time";
+                    DataType = "Time";
+                    IsMandatory = true;
+                }
+                Field end_time
+                {
+                    DisplayName = "End Time";
+                    LinkName = "end_time";
+                    DataType = "Time";
+                    IsMandatory = true;
+                }
+                Field break_duration_mins
+                {
+                    DisplayName = "Break Duration (mins)";
+                    LinkName = "break_duration_mins";
+                    DataType = "Number";
+                }
+                Field overtime_eligibility
+                {
+                    DisplayName = "Overtime Eligibility";
+                    LinkName = "overtime_eligibility";
+                    DataType = "Checkbox";
+                }
+                Field attendance_calculation_rule
+                {
+                    DisplayName = "Attendance Calculation Rule";
+                    LinkName = "attendance_calculation_rule";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "8-hour / Custom";
+                }
+                Field grace_period_minutes
+                {
+                    DisplayName = "Grace Period Minutes";
+                    LinkName = "grace_period_minutes";
+                    DataType = "Number";
+                }
+                Field approval_required
+                {
+                    DisplayName = "Approval Required";
+                    LinkName = "approval_required";
+                    DataType = "Checkbox";
+                }
+            }
+        }
+    }
+}

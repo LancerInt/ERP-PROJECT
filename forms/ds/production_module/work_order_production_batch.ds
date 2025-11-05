@@ -1,0 +1,182 @@
+// Module: 4. Production Module
+// Form: Work Order / Production Batch
+form work_order_production_batch
+{
+    DisplayName = "Work Order / Production Batch";
+    LinkName = "work_order_production_batch";
+    Module = "4. Production Module";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field batch_id
+                {
+                    DisplayName = "Batch ID";
+                    LinkName = "batch_id";
+                    DataType = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field work_order_no
+                {
+                    DisplayName = "Work Order No.";
+                    LinkName = "work_order_no";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                    HelpText = "Display";
+                }
+                Field warehouse
+                {
+                    DisplayName = "Warehouse";
+                    LinkName = "warehouse";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field production_template
+                {
+                    DisplayName = "Production Template";
+                    LinkName = "production_template";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "template_library";
+                    HelpText = "Includes revision";
+                }
+                Field template_revision
+                {
+                    DisplayName = "Template Revision";
+                    LinkName = "template_revision";
+                    DataType = "Number";
+                    IsMandatory = true;
+                }
+                Field linked_sales_order
+                {
+                    DisplayName = "Linked Sales Order";
+                    LinkName = "linked_sales_order";
+                    DataType = "Lookup";
+                    RelatedFormLinkName = "sales_order";
+                }
+                Field linked_dispatch_challan
+                {
+                    DisplayName = "Linked Dispatch Challan";
+                    LinkName = "linked_dispatch_challan";
+                    DataType = "Lookup";
+                    RelatedFormLinkName = "dispatch_challan";
+                }
+                Field planned_start_date
+                {
+                    DisplayName = "Planned Start Date";
+                    LinkName = "planned_start_date";
+                    DataType = "Date";
+                    IsMandatory = true;
+                }
+                Field planned_end_date
+                {
+                    DisplayName = "Planned End Date";
+                    LinkName = "planned_end_date";
+                    DataType = "Date";
+                }
+                Field actual_start_date
+                {
+                    DisplayName = "Actual Start Date";
+                    LinkName = "actual_start_date";
+                    DataType = "Date";
+                }
+                Field actual_end_date
+                {
+                    DisplayName = "Actual End Date";
+                    LinkName = "actual_end_date";
+                    DataType = "Date";
+                }
+                Field stage_status
+                {
+                    DisplayName = "Stage Status";
+                    LinkName = "stage_status";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Material Issue / Mixing / Packing / QC / Closed";
+                }
+                Field input_consumption
+                {
+                    DisplayName = "Input Consumption";
+                    LinkName = "input_consumption";
+                    DataType = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "input_consumption";
+                    HelpText = "Actual usage";
+                }
+                Field output_products
+                {
+                    DisplayName = "Output Products";
+                    LinkName = "output_products";
+                    DataType = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "output_products";
+                    HelpText = "Manufactured goods";
+                }
+                Field damage_report
+                {
+                    DisplayName = "Damage Report";
+                    LinkName = "damage_report";
+                    DataType = "SubForm";
+                    SubFormLinkName = "damage_report";
+                    HelpText = "Damage / scrap";
+                }
+                Field qc_request
+                {
+                    DisplayName = "QC Request";
+                    LinkName = "qc_request";
+                    DataType = "Lookup";
+                    RelatedFormLinkName = "qc_request";
+                }
+                Field wage_method
+                {
+                    DisplayName = "Wage Method";
+                    LinkName = "wage_method";
+                    DataType = "Dropdown";
+                    HelpText = "Template Rate / Headcount";
+                }
+                Field wage_vouchers
+                {
+                    DisplayName = "Wage Vouchers";
+                    LinkName = "wage_vouchers";
+                    DataType = "SubForm";
+                    SubFormLinkName = "wage_vouchers";
+                    HelpText = "Linked vouchers";
+                }
+                Field yield_log_reference
+                {
+                    DisplayName = "Yield Log Reference";
+                    LinkName = "yield_log_reference";
+                    DataType = "Lookup";
+                    RelatedFormLinkName = "production_yield_log";
+                }
+                Field rework_flag
+                {
+                    DisplayName = "Rework Flag";
+                    LinkName = "rework_flag";
+                    DataType = "Checkbox";
+                    HelpText = "For reformulation";
+                }
+                Field parent_batch
+                {
+                    DisplayName = "Parent Batch";
+                    LinkName = "parent_batch";
+                    DataType = "Lookup";
+                    RelatedFormLinkName = "work_order_production_batch";
+                    HelpText = "For rework linkage";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    DataType = "MultiLine";
+                }
+            }
+        }
+    }
+}

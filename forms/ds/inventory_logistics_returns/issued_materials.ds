@@ -1,0 +1,62 @@
+// Module: 6. Inventory, Logistics & Returns
+// Form: Issued Materials
+form issued_materials
+{
+    DisplayName = "Issued Materials";
+    LinkName = "issued_materials";
+    Module = "6. Inventory, Logistics & Returns";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field material_type
+                {
+                    DisplayName = "Material Type";
+                    LinkName = "material_type";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "RM / PM / Machine";
+                }
+                Field product_machine
+                {
+                    DisplayName = "Product/Machine";
+                    LinkName = "product_machine";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkNames = ["product_master", "machinery"];
+                }
+                Field batch
+                {
+                    DisplayName = "Batch";
+                    LinkName = "batch";
+                    DataType = "SingleLine";
+                }
+                Field quantity
+                {
+                    DisplayName = "Quantity";
+                    LinkName = "quantity";
+                    DataType = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field expected_return_date
+                {
+                    DisplayName = "Expected Return Date";
+                    LinkName = "expected_return_date";
+                    DataType = "Date";
+                }
+            }
+        }
+    }
+}
