@@ -1,0 +1,81 @@
+% --------------------------------------------------------------------
+% Zoho Creator ERP Data Models – PDF Preamble
+% Final portrait-mode configuration for Pandoc 3.8 / XeLaTeX / macOS
+% --------------------------------------------------------------------
+
+% --- Core packages ---
+\usepackage{fontspec}
+\usepackage{amssymb,amsmath,unicode-math}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{xcolor,colortbl}
+\usepackage{caption}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+
+% --------------------------------------------------------------------
+% --- Page & typography setup (portrait mode) ---
+% --------------------------------------------------------------------
+\geometry{margin=0.75in, portrait}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+% --- macOS-safe fonts (Helvetica Neue + Menlo) ---
+\setmainfont{Helvetica Neue}
+\setsansfont{Helvetica Neue}
+\setmonofont{Menlo}
+
+% --- Header & footer ---
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot[C]{\thepage}
+
+% --------------------------------------------------------------------
+% --- Table appearance ---
+% --------------------------------------------------------------------
+\rowcolors{2}{gray!5}{white}
+\arrayrulecolor{gray!50}
+\setlength{\arrayrulewidth}{0.3pt}
+\renewcommand{\arraystretch}{1.2}
+
+% --------------------------------------------------------------------
+% --- Define header cell macro (used by Lua filter) ---
+% --------------------------------------------------------------------
+\newcommand{\headercell}[1]{%
+  \bfseries\centering #1%
+}
+
+% --------------------------------------------------------------------
+% --- Caption styling ---
+% Pandoc’s default label suppressed; Lua filter supplies full caption.
+% --------------------------------------------------------------------
+\captionsetup{
+  labelformat=empty,
+  labelfont=bf,
+  textfont=bf,
+  justification=centering,
+  labelsep=none
+}
+
+% --------------------------------------------------------------------
+% --- Unicode-safe: use Apple Symbols for arrows, ₹, etc. ---
+% --------------------------------------------------------------------
+\newfontfamily\FallbackSymbols{Apple Symbols}
+
+% --------------------------------------------------------------------
+% --- Misc cosmetic spacing tweaks ---
+% --------------------------------------------------------------------
+\setlength{\belowcaptionskip}{6pt}
+\setlength{\abovecaptionskip}{6pt}
+
+% --------------------------------------------------------------------
+% --- Document metadata (optional, overridable by Pandoc) ---
+% --------------------------------------------------------------------
+\title{Zoho Creator Data Models}
+\author{ERP Implementation Team}
+\date{}
+
+% --------------------------------------------------------------------
+% End of preamble
+% --------------------------------------------------------------------
