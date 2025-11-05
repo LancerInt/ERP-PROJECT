@@ -9,7 +9,7 @@ Fields:
 - Auto-number field "PR No." (link name pr_no); required
 - Date field "Request Date" (link name request_date); required
 - Lookup (Warehouse) field "Warehouse" (link name warehouse); required
-- Dropdown field "Godown" (link name godown); conditional; require when goods tracked in stock
+- Lookup (Godown Master) field "Godown" (link name godown); conditional; filter by selected warehouse when goods tracked in stock
 - Lookup (Stakeholder User) field "Requested By" (link name requested_by); required
 - Dropdown field "Requestor Role" (link name requestor_role); required; values: Warehouse Manager, Warehouse Coordinator
 - Dropdown field "Requirement Type" (link name requirement_type); required; values: Goods, Services, Machinery
@@ -196,7 +196,7 @@ Fields:
 - Auto-number field "Receipt Advice No." (link name receipt_advice_no); required
 - Date field "Receipt Date" (link name receipt_date); required
 - Lookup (Warehouse) field "Warehouse" (link name warehouse); required
-- Dropdown field "Godown" (link name godown); required
+- Lookup (Godown Master) field "Godown" (link name godown); required; filter by warehouse context
 - Lookup (Vendor) field "Vendor" (link name vendor); required
 - Multi-select Lookup (Purchase Order) field "Linked PO(s)" (link name linked_pos); required
 - Single-line field "Vehicle Number" (link name vehicle_number)
@@ -226,7 +226,7 @@ Subform "Receipt Lines" (link name receipt_lines):
 - Currency field "Agent Commission" (link name agent_commission); optional
 - Decimal field "Quantity Accepted" (link name quantity_accepted); optional
 - Decimal field "Quantity Rejected" (link name quantity_rejected); optional
-- Dropdown field "Godown Location" (link name godown_location); required; filtered by warehouse
+- Lookup (Godown Master) field "Godown Location" (link name godown_location); required; filtered by warehouse
 - Multi-line field "Remarks" (link name remarks)
 
 Subform "Packing Material Lines" (link name packing_material_lines):
@@ -246,13 +246,14 @@ Subform "Freight Details" (link name freight_details):
 - Dropdown field "Quantity UOM" (link name quantity_uom); optional; values include Tonnes, KG, KL, Units
 - Dropdown field "Destination State" (link name destination_state); optional; auto from warehouse
 - Decimal (Formula) field "Cost Per Unit (Calc)" (link name cost_per_unit_calc); calculated
-- Subform field "Payment Schedule" (link name payment_schedule); optional
-
-Nested subform "Payment Schedule" (link name payment_schedule):
+Subform "Freight Payment Schedule" (link name payment_schedule):
+- Dropdown field "Freight Type" (link name freight_type); required; values: Local Drayage, Linehaul
+- Lookup (Transporter) field "Transporter" (link name transporter); conditional when payable by company
 - Date field "Due Date" (link name due_date); required
 - Currency field "Amount" (link name amount); required
 - Decimal field "TDS %" (link name tds); optional
 - Checkbox field "Reminder Flag" (link name reminder_flag); optional
+
 
 Subform "Loading Unloading Wages" (link name loading_unloading_wages):
 - Dropdown field "Wage Type" (link name wage_type); required; values: Loading, Unloading
@@ -314,6 +315,8 @@ Fields:
 - Dropdown field "Status" (link name status); required; values: Draft, Pending Approval, Approved, Paid
 
 Subform "Payment Schedule" (link name payment_schedule):
+- Dropdown field "Freight Type" (link name freight_type); required; inherit from advice
+- Lookup (Transporter) field "Transporter" (link name transporter); optional; inherit from advice
 - Date field "Due Date" (link name due_date); required
 - Currency field "Amount" (link name amount); required
 - Decimal field "TDS %" (link name tds); optional
@@ -399,7 +402,7 @@ Fields:
 - Auto-number field "Ledger Entry ID" (link name ledger_entry_id); required
 - Date field "Transaction Date" (link name transaction_date); required
 - Lookup (Warehouse) field "Warehouse" (link name warehouse); required
-- Dropdown field "Godown" (link name godown); required
+- Lookup (Godown Master) field "Godown" (link name godown); required; filter by warehouse context
 - Lookup (Product) field "Product" (link name product); required
 - Single-line field "Batch" (link name batch); optional
 - Decimal field "Quantity In" (link name quantity_in); optional
@@ -428,7 +431,7 @@ Fields:
 Subform "Issue Lines" (link name issue_lines):
 - Lookup (Product) field "Product" (link name product); required
 - Single-line field "Batch Out" (link name batch_out); conditional when batch tracking applies
-- Dropdown field "Godown" (link name godown); required
+- Lookup (Godown Master) field "Godown" (link name godown); required; filter by warehouse context
 - Decimal field "Quantity Issued" (link name quantity_issued); required
 - Dropdown field "UOM" (link name uom); required
 - Checkbox field "Reserved for Template" (link name reserved_for_template); optional; tick when issuing reserved packing material

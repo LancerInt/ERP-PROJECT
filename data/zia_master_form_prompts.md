@@ -25,7 +25,7 @@ Fields:
 
 ## Prompt 2
 
-Create form "Warehouse Master" (link name warehouse_master). Purpose: Define warehouses along with their godown and machinery inventories.
+Create form "Warehouse Master" (link name warehouse_master). Purpose: Define warehouse profile and governance roles.
 Category: Core master.
 Fields:
 - Single-line (Unique) field "Warehouse Code" (link name warehouse_code); required; Used in stock and logistics documents
@@ -46,32 +46,44 @@ Fields:
 - Multi-select Lookup (Stakeholder User) field "Warehouse Manager(s)" (link name warehouse_managers)
 - Multi-select Lookup (Stakeholder User) field "Warehouse Coordinator(s)" (link name warehouse_coordinators)
 - Multi-select Lookup (Stakeholder User) field "Warehouse Supervisor(s)" (link name warehouse_supervisors)
-- Subform field "Godown List" (link name godown_list); required; Contains godown level stock segregation
 - Checkbox field "Active Flag" (link name active_flag); required; Deactivate to hide from new transactions
 - Multi-line field "Notes" (link name notes)
 
-Subform "Godown (subform)" fields:
-- Single-line field "Godown Code" (link name godown_code); required; Unique within warehouse
-- Single-line field "Godown Name" (link name godown_name); required
-- Dropdown field "Storage Condition" (link name storage_condition); Ambient / Cold / Hazardous
-- Dropdown field "Capacity UOM" (link name capacity_uom)
-- Decimal field "Capacity Value" (link name capacity_value); Max storage
-- Checkbox field "Batch Tracking Enabled" (link name batch_tracking_enabled); required; Controls batch-level location
-- Checkbox field "Default QC Hold Area" (link name default_qc_hold_area); Flags quarantine
-- Subform field "Machinery List" (link name machinery_list); Equipment housed in the godown
-
-Subform "Machinery (Godown subform)" fields:
-- Single-line field "Machine ID" (link name machine_id); required; Unique equipment identifier
-- Single-line field "Machine Name" (link name machine_name); required
-- Dropdown field "Category" (link name category); required; Capital Goods / Machine Spares / Production Line
-- Date field "Commission Date" (link name commission_date)
-- Lookup (Vendor) field "Maintenance Vendor" (link name maintenance_vendor); For service/job work
-- Date field "Next Service Due" (link name next_service_due)
-- Dropdown field "Status" (link name status); required; Active / Under Maintenance / Retired
-
-Note: If Zoho Zia requires the Stakeholder User form to exist before adding the stakeholder lookup fields, revisit this form after Prompt 6 to add those lookups.
+Note: If Zoho Zia requires the Stakeholder User form to exist before adding the stakeholder lookup fields, revisit this form after the Stakeholder User prompt to add those lookups.
 
 ## Prompt 3
+
+Create form "Godown Master" (link name godown_master). Purpose: Manage storage zones under each warehouse for stock and QC tracking.
+Category: Core master.
+Fields:
+- Single-line (Unique) field "Godown Code" (link name godown_code); required; Unique within the owning company
+- Lookup (Warehouse Master) field "Warehouse" (link name warehouse); required; Owning warehouse
+- Single-line field "Godown Name" (link name godown_name); required; Display name
+- Dropdown field "Storage Condition" (link name storage_condition); Ambient / Cold / Hazardous
+- Dropdown field "Capacity UOM" (link name capacity_uom)
+- Decimal field "Capacity Value" (link name capacity_value); Maximum storage capacity
+- Checkbox field "Batch Tracking Enabled" (link name batch_tracking_enabled); required; Controls batch-level location
+- Checkbox field "Default QC Hold Area" (link name default_qc_hold_area); Flags quarantine locations
+- Checkbox field "Active Flag" (link name active_flag); required; Hide from selection when inactive
+- Multi-line field "Notes" (link name notes)
+
+## Prompt 4
+
+Create form "Machinery Master" (link name machinery_master). Purpose: Register machinery per godown for maintenance and production allocation.
+Category: Core master.
+Fields:
+- Single-line (Unique) field "Machine ID" (link name machine_id); required; Unique equipment identifier
+- Lookup (Warehouse Master) field "Warehouse" (link name warehouse); required; Auto-populated from the selected godown
+- Lookup (Godown Master) field "Godown" (link name godown); required; Location of the machine
+- Single-line field "Machine Name" (link name machine_name); required; Display name
+- Dropdown field "Category" (link name category); required; Capital Goods / Machine Spares / Production Line
+- Date field "Commission Date" (link name commission_date)
+- Lookup (Vendor Master) field "Maintenance Vendor" (link name maintenance_vendor); For service/job work
+- Date field "Next Service Due" (link name next_service_due)
+- Dropdown field "Status" (link name status); required; Active / Under Maintenance / Retired
+- Multi-line field "Notes" (link name notes)
+
+## Prompt 5
 
 Create form "Role Definition" (link name role_definition). Purpose: Bundle permissions and approval thresholds for Zoho Creator sharing.
 Category: Security master.
@@ -90,7 +102,7 @@ Subform "Approval Levels (subform)" fields:
 - Currency field "Min Amount" (link name min_amount); Threshold
 - Currency field "Max Amount" (link name max_amount)
 
-## Prompt 4
+## Prompt 6
 
 Create form "Shift Definition" (link name shift_definition). Purpose: Configure standard shifts and attendance calculation rules.
 Category: HR master.
@@ -106,7 +118,7 @@ Fields:
 - Number field "Grace Period Minutes" (link name grace_period_minutes)
 - Checkbox field "Approval Required" (link name approval_required)
 
-## Prompt 5
+## Prompt 7
 
 Create form "Staff Master" (link name staff_master). Purpose: Maintain the complete roster of staff for attendance, HR, and wage processing.
 Category: HR master.
@@ -155,7 +167,7 @@ Note: If the HR Owner lookup cannot be created yet, add it after the Stakeholder
 
 Note: Add the Contractor Vendor lookup once the Vendor Master (Prompt 12) exists if required.
 
-## Prompt 6
+## Prompt 8
 
 Create form "Stakeholder User" (link name stakeholder_user). Purpose: Map portal users to stakeholder roles and warehouse scopes.
 Category: Security master.
@@ -171,7 +183,7 @@ Fields:
 - Date-time field "Last Accessed" (link name last_accessed)
 - Multi-line field "Notes" (link name notes)
 
-## Prompt 7
+## Prompt 9
 
 Create form "Service Catalogue" (link name service_catalogue). Purpose: Register services with tax and warehouse applicability.
 Category: Service master.
@@ -186,7 +198,7 @@ Fields:
 - Multi-line field "Description" (link name description)
 - Checkbox field "Active Flag" (link name active_flag); required
 
-## Prompt 8
+## Prompt 10
 
 Create form "Template Library" (link name template_library). Purpose: Store reusable production, QC, job work, and document templates.
 Category: Configuration master.
@@ -209,7 +221,7 @@ Subform "Approval Log (subform)" fields:
 - Date-time field "Approval Date" (link name approval_date); required
 - Multi-line field "Remarks" (link name remarks)
 
-## Prompt 9
+## Prompt 11
 
 Create form "QC Parameter Library" (link name qc_parameter_library). Purpose: Maintain QC parameter definitions for lab testing and templates.
 Category: QC master.
@@ -224,7 +236,7 @@ Fields:
 - Checkbox field "Critical Flag" (link name critical_flag)
 - Multi-line field "Notes" (link name notes)
 
-## Prompt 10
+## Prompt 12
 
 Create form "Product Master" (link name product_master). Purpose: Catalogue all goods used in stock, production, purchasing, and sales.
 Category: Product master.
@@ -262,7 +274,7 @@ Subform "Secondary UOMs (subform)" fields:
 - Date field "Valid From" (link name valid_from)
 - Date field "Valid To" (link name valid_to)
 
-## Prompt 11
+## Prompt 13
 
 Create form "Transporter Master" (link name transporter_master). Purpose: Register freight partners and payment preferences.
 Category: Logistics master.
@@ -281,7 +293,7 @@ Fields:
 - File Upload field "Documents" (link name documents); Insurance
 - Checkbox field "Active Flag" (link name active_flag); required
 
-## Prompt 12
+## Prompt 14
 
 Create form "Vendor Master" (link name vendor_master). Purpose: Capture vendor identities, compliance, payment, and logistics preferences.
 Category: Partner master.
@@ -323,7 +335,7 @@ Subform "Vendor Bank Details (subform)" fields:
 - Single-line field "Account Number" (link name account_number); required
 - Dropdown field "Payment Method" (link name payment_method); NEFT / RTGS / Cheque / UPI
 
-## Prompt 13
+## Prompt 15
 
 Create form "Price List Master" (link name price_list_master). Purpose: Define product/service rate cards with validity periods.
 Category: Pricing master.
@@ -352,7 +364,7 @@ Subform "Price Lines (subform)" fields:
 
 Note: If the Customer lookup cannot be added immediately, return after creating Customer Master (Prompt 14).
 
-## Prompt 14
+## Prompt 16
 
 Create form "Customer Master" (link name customer_master). Purpose: Maintain customer billing, shipping, credit, and price list data.
 Category: Partner master.
@@ -385,7 +397,7 @@ Subform "Shipping Address (subform)" fields:
 - Single-line field "Contact Person" (link name contact_person)
 - Phone field "Contact Phone" (link name contact_phone)
 
-## Prompt 15
+## Prompt 17
 
 Create form "Tax Master" (link name tax_master). Purpose: Centralise GST, TDS, and TCS rates for financial transactions.
 Category: Finance master.
@@ -400,7 +412,7 @@ Fields:
 - Lookup (Company) field "Company Scope" (link name company_scope); required
 - Multi-line field "Notes" (link name notes)
 
-## Prompt 16
+## Prompt 18
 
 Create form "System Parameters" (link name system_parameters). Purpose: Store configurable values used across modules.
 Category: Governance master.
@@ -412,7 +424,7 @@ Fields:
 - Lookup (Stakeholder User) field "Last Updated By" (link name last_updated_by); required
 - Date field "Effective Date" (link name effective_date); required
 
-## Prompt 17
+## Prompt 19
 
 Create form "Decision Log" (link name decision_log). Purpose: Record key configuration decisions and stakeholders.
 Category: Governance master.
@@ -424,7 +436,7 @@ Fields:
 - Date field "Decision Date" (link name decision_date); required
 - Multi-line field "Follow-up Actions" (link name follow_up_actions)
 
-## Prompt 18
+## Prompt 20
 
 Create form "Audit Trail" (link name audit_trail). Purpose: Capture master data changes for compliance.
 Category: Governance master.

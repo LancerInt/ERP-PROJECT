@@ -11,7 +11,7 @@ erDiagram
     CUSTOMER ||--o{ PRICE_LIST : uses
     COMPANY ||--o{ VENDOR : registers
     COMPANY ||--o{ CUSTOMER : serves
-    WAREHOUSE ||--o{ MACHINE : hosts
+    GODOWN ||--o{ MACHINE : hosts
     PRODUCT ||--o{ TEMPLATE_LIBRARY : configures
     PRODUCT ||--o{ QC_PARAMETER : requires
     ROLE_DEFINITION ||--o{ USER_ROLE : assigned
