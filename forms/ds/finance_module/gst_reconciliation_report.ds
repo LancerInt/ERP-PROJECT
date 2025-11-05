@@ -1,0 +1,63 @@
+// Module: 7. Finance Module
+// Form: GST Reconciliation Report
+form gst_reconciliation_report
+{
+    DisplayName = "GST Reconciliation Report";
+    LinkName = "gst_reconciliation_report";
+    Module = "7. Finance Module";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field report_id
+                {
+                    DisplayName = "Report ID";
+                    LinkName = "report_id";
+                    DataType = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field reporting_period
+                {
+                    DisplayName = "Reporting Period";
+                    LinkName = "reporting_period";
+                    DataType = "DateRange";
+                    IsMandatory = true;
+                    HelpText = "Month/Quarter";
+                }
+                Field data_source
+                {
+                    DisplayName = "Data Source";
+                    LinkName = "data_source";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Creator / GSTR-2B / GSTR-1";
+                }
+                Field variance_summary
+                {
+                    DisplayName = "Variance Summary";
+                    LinkName = "variance_summary";
+                    DataType = "MultiLine";
+                }
+                Field adjustments
+                {
+                    DisplayName = "Adjustments";
+                    LinkName = "adjustments";
+                    DataType = "SubForm";
+                    SubFormLinkName = "adjustments";
+                }
+                Field export_file
+                {
+                    DisplayName = "Export File";
+                    LinkName = "export_file";
+                    DataType = "FileUpload";
+                    HelpText = "CSV for Tally";
+                }
+            }
+        }
+    }
+}

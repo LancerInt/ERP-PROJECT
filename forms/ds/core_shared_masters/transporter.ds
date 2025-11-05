@@ -1,0 +1,104 @@
+// Module: 1. Core & Shared Masters
+// Form: Transporter
+form transporter
+{
+    DisplayName = "Transporter";
+    LinkName = "transporter";
+    Module = "1. Core & Shared Masters";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field transporter_code
+                {
+                    DisplayName = "Transporter Code";
+                    LinkName = "transporter_code";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field name
+                {
+                    DisplayName = "Name";
+                    LinkName = "name";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field gstin
+                {
+                    DisplayName = "GSTIN";
+                    LinkName = "gstin";
+                    DataType = "SingleLine";
+                }
+                Field contact_person
+                {
+                    DisplayName = "Contact Person";
+                    LinkName = "contact_person";
+                    DataType = "SingleLine";
+                }
+                Field contact_email
+                {
+                    DisplayName = "Contact Email";
+                    LinkName = "contact_email";
+                    DataType = "Email";
+                }
+                Field contact_phone
+                {
+                    DisplayName = "Contact Phone";
+                    LinkName = "contact_phone";
+                    DataType = "Phone";
+                }
+                Field freight_modes
+                {
+                    DisplayName = "Freight Modes";
+                    LinkName = "freight_modes";
+                    DataType = "MultiSelectDropdown";
+                    IsMandatory = true;
+                    HelpText = "Local Drayage / Linehaul";
+                }
+                Field coverage_routes
+                {
+                    DisplayName = "Coverage Routes";
+                    LinkName = "coverage_routes";
+                    DataType = "MultiLine";
+                }
+                Field tds_rate
+                {
+                    DisplayName = "TDS Rate %";
+                    LinkName = "tds_rate";
+                    DataType = "Decimal";
+                }
+                Field payment_terms
+                {
+                    DisplayName = "Payment Terms";
+                    LinkName = "payment_terms";
+                    DataType = "Dropdown";
+                }
+                Field rating
+                {
+                    DisplayName = "Rating";
+                    LinkName = "rating";
+                    DataType = "Number";
+                }
+                Field documents
+                {
+                    DisplayName = "Documents";
+                    LinkName = "documents";
+                    DataType = "FileUpload";
+                    HelpText = "Insurance";
+                }
+                Field active_flag
+                {
+                    DisplayName = "Active Flag";
+                    LinkName = "active_flag";
+                    DataType = "Checkbox";
+                    IsMandatory = true;
+                }
+            }
+        }
+    }
+}

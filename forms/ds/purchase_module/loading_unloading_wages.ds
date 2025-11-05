@@ -1,0 +1,65 @@
+// Module: 2. Purchase Module
+// Form: Loading Unloading Wages
+form loading_unloading_wages
+{
+    DisplayName = "Loading Unloading Wages";
+    LinkName = "loading_unloading_wages";
+    Module = "2. Purchase Module";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field wage_type
+                {
+                    DisplayName = "Wage Type";
+                    LinkName = "wage_type";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Loading / Unloading";
+                }
+                Field contractor_vendor
+                {
+                    DisplayName = "Contractor Vendor";
+                    LinkName = "contractor_vendor";
+                    DataType = "Lookup";
+                    ConditionalMandatory = true;
+                    RelatedFormLinkName = "vendor";
+                    HelpText = "Mandatory if payable by company";
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    DataType = "Currency";
+                    IsMandatory = true;
+                    HelpText = "Includes product value plus extra/agent commissions when applicable";
+                }
+                Field tds_applicable
+                {
+                    DisplayName = "TDS Applicable %";
+                    LinkName = "tds_applicable";
+                    DataType = "Decimal";
+                }
+                Field payable_by
+                {
+                    DisplayName = "Payable By";
+                    LinkName = "payable_by";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Company / Vendor";
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    DataType = "MultiLine";
+                }
+            }
+        }
+    }
+}

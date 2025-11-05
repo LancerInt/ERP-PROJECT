@@ -1,0 +1,108 @@
+// Module: 1. Core & Shared Masters
+// Form: Template Library
+form template_library
+{
+    DisplayName = "Template Library";
+    LinkName = "template_library";
+    Module = "1. Core & Shared Masters";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field template_id
+                {
+                    DisplayName = "Template ID";
+                    LinkName = "template_id";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field template_type
+                {
+                    DisplayName = "Template Type";
+                    LinkName = "template_type";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Production / QC Report / Job Work / Packing / Invoice";
+                }
+                Field name
+                {
+                    DisplayName = "Name";
+                    LinkName = "name";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field warehouse_scope
+                {
+                    DisplayName = "Warehouse Scope";
+                    LinkName = "warehouse_scope";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                    AllowMultiple = true;
+                }
+                Field revision_no
+                {
+                    DisplayName = "Revision No.";
+                    LinkName = "revision_no";
+                    DataType = "Number";
+                    IsMandatory = true;
+                    HelpText = "Rev 1, Rev 2, etc.";
+                }
+                Field effective_from
+                {
+                    DisplayName = "Effective From";
+                    LinkName = "effective_from";
+                    DataType = "Date";
+                    IsMandatory = true;
+                }
+                Field effective_to
+                {
+                    DisplayName = "Effective To";
+                    LinkName = "effective_to";
+                    DataType = "Date";
+                }
+                Field layout_json_xml
+                {
+                    DisplayName = "Layout JSON/XML";
+                    LinkName = "layout_json_xml";
+                    DataType = "MultiLine";
+                    IsMandatory = true;
+                    HelpText = "Stores dynamic layout";
+                }
+                Field requires_digital_signature
+                {
+                    DisplayName = "Requires Digital Signature";
+                    LinkName = "requires_digital_signature";
+                    DataType = "Checkbox";
+                }
+                Field created_by
+                {
+                    DisplayName = "Created By";
+                    LinkName = "created_by";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field approval_log
+                {
+                    DisplayName = "Approval Log";
+                    LinkName = "approval_log";
+                    DataType = "SubForm";
+                    SubFormLinkName = "approval_log";
+                }
+                Field status
+                {
+                    DisplayName = "Status";
+                    LinkName = "status";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Draft / Active / Retired";
+                }
+            }
+        }
+    }
+}

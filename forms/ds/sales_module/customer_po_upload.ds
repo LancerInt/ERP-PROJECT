@@ -1,0 +1,112 @@
+// Module: 3. Sales Module
+// Form: Customer PO Upload
+form customer_po_upload
+{
+    DisplayName = "Customer PO Upload";
+    LinkName = "customer_po_upload";
+    Module = "3. Sales Module";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field upload_id
+                {
+                    DisplayName = "Upload ID";
+                    LinkName = "upload_id";
+                    DataType = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field customer
+                {
+                    DisplayName = "Customer";
+                    LinkName = "customer";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "customer";
+                }
+                Field upload_date
+                {
+                    DisplayName = "Upload Date";
+                    LinkName = "upload_date";
+                    DataType = "DateTime";
+                    IsMandatory = true;
+                }
+                Field po_file
+                {
+                    DisplayName = "PO File";
+                    LinkName = "po_file";
+                    DataType = "FileUpload";
+                    IsMandatory = true;
+                    HelpText = "PDF";
+                }
+                Field ai_parser_confidence
+                {
+                    DisplayName = "AI Parser Confidence";
+                    LinkName = "ai_parser_confidence";
+                    DataType = "Decimal";
+                    IsMandatory = true;
+                }
+                Field parsed_po_number
+                {
+                    DisplayName = "Parsed PO Number";
+                    LinkName = "parsed_po_number";
+                    DataType = "SingleLine";
+                }
+                Field parsed_po_date
+                {
+                    DisplayName = "Parsed PO Date";
+                    LinkName = "parsed_po_date";
+                    DataType = "Date";
+                }
+                Field delivery_location
+                {
+                    DisplayName = "Delivery Location";
+                    LinkName = "delivery_location";
+                    DataType = "Dropdown";
+                    HelpText = "Suggest price list";
+                }
+                Field parsed_lines
+                {
+                    DisplayName = "Parsed Lines";
+                    LinkName = "parsed_lines";
+                    DataType = "SubForm";
+                    SubFormLinkName = "parsed_lines";
+                    HelpText = "Output of parser";
+                }
+                Field manual_review_required
+                {
+                    DisplayName = "Manual Review Required";
+                    LinkName = "manual_review_required";
+                    DataType = "Checkbox";
+                    HelpText = "Auto checked if confidence < threshold";
+                }
+                Field review_comments
+                {
+                    DisplayName = "Review Comments";
+                    LinkName = "review_comments";
+                    DataType = "MultiLine";
+                }
+                Field status
+                {
+                    DisplayName = "Status";
+                    LinkName = "status";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Uploaded / Parsed / Converted / Archived";
+                }
+                Field linked_sales_order
+                {
+                    DisplayName = "Linked Sales Order";
+                    LinkName = "linked_sales_order";
+                    DataType = "Lookup";
+                    RelatedFormLinkName = "sales_order";
+                }
+            }
+        }
+    }
+}

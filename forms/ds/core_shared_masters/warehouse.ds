@@ -1,0 +1,175 @@
+// Module: 1. Core & Shared Masters
+// Form: Warehouse
+form warehouse
+{
+    DisplayName = "Warehouse";
+    LinkName = "warehouse";
+    Module = "1. Core & Shared Masters";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field warehouse_code
+                {
+                    DisplayName = "Warehouse Code";
+                    LinkName = "warehouse_code";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                    IsUnique = true;
+                    HelpText = "Used in stock and logistics documents";
+                }
+                Field company
+                {
+                    DisplayName = "Company";
+                    LinkName = "company";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "company";
+                    HelpText = "Owning entity";
+                }
+                Field name
+                {
+                    DisplayName = "Name";
+                    LinkName = "name";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                    HelpText = "Display name";
+                }
+                Field warehouse_type
+                {
+                    DisplayName = "Warehouse Type";
+                    LinkName = "warehouse_type";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Head Office / Factory / Job Work Partner";
+                }
+                Field address
+                {
+                    DisplayName = "Address";
+                    LinkName = "address";
+                    DataType = "Address";
+                    IsMandatory = true;
+                    HelpText = "Physical location";
+                }
+                Field city
+                {
+                    DisplayName = "City";
+                    LinkName = "city";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field state
+                {
+                    DisplayName = "State";
+                    LinkName = "state";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "For GST place of supply";
+                }
+                Field country
+                {
+                    DisplayName = "Country";
+                    LinkName = "country";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field pincode
+                {
+                    DisplayName = "Pincode";
+                    LinkName = "pincode";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field geo_latitude
+                {
+                    DisplayName = "Geo Latitude";
+                    LinkName = "geo_latitude";
+                    DataType = "Decimal";
+                    IsMandatory = true;
+                    HelpText = "Attendance geofence";
+                }
+                Field geo_longitude
+                {
+                    DisplayName = "Geo Longitude";
+                    LinkName = "geo_longitude";
+                    DataType = "Decimal";
+                    IsMandatory = true;
+                    HelpText = "Attendance geofence";
+                }
+                Field time_zone
+                {
+                    DisplayName = "Time Zone";
+                    LinkName = "time_zone";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "For SLA calculations";
+                }
+                Field default_currency
+                {
+                    DisplayName = "Default Currency";
+                    LinkName = "default_currency";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Inherits from company by default";
+                }
+                Field warehouse_coordinator_office
+                {
+                    DisplayName = "Warehouse Coordinator (Office)";
+                    LinkName = "warehouse_coordinator_office";
+                    DataType = "Lookup";
+                    ConditionalMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                    HelpText = "Required for warehouses";
+                }
+                Field warehouse_hr_coordinator
+                {
+                    DisplayName = "Warehouse HR Coordinator";
+                    LinkName = "warehouse_hr_coordinator";
+                    DataType = "Lookup";
+                    RelatedFormLinkName = "stakeholder_user";
+                    HelpText = "Optional";
+                }
+                Field warehouse_managers
+                {
+                    DisplayName = "Warehouse Manager(s)";
+                    LinkName = "warehouse_managers";
+                    DataType = "SingleLine";
+                    AllowMultiple = true;
+                }
+                Field warehouse_coordinators
+                {
+                    DisplayName = "Warehouse Coordinator(s)";
+                    LinkName = "warehouse_coordinators";
+                    DataType = "SingleLine";
+                    AllowMultiple = true;
+                }
+                Field warehouse_supervisors
+                {
+                    DisplayName = "Warehouse Supervisor(s)";
+                    LinkName = "warehouse_supervisors";
+                    DataType = "SingleLine";
+                    AllowMultiple = true;
+                }
+                Field active_flag
+                {
+                    DisplayName = "Active Flag";
+                    LinkName = "active_flag";
+                    DataType = "Checkbox";
+                    IsMandatory = true;
+                    HelpText = "Deactivate to hide from new transactions";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    DataType = "MultiLine";
+                }
+            }
+        }
+    }
+}

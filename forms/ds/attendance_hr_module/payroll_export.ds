@@ -1,0 +1,82 @@
+// Module: 8. Attendance & HR Module
+// Form: Payroll Export
+form payroll_export
+{
+    DisplayName = "Payroll Export";
+    LinkName = "payroll_export";
+    Module = "8. Attendance & HR Module";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field export_id
+                {
+                    DisplayName = "Export ID";
+                    LinkName = "export_id";
+                    DataType = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field period_start
+                {
+                    DisplayName = "Period Start";
+                    LinkName = "period_start";
+                    DataType = "Date";
+                    IsMandatory = true;
+                }
+                Field period_end
+                {
+                    DisplayName = "Period End";
+                    LinkName = "period_end";
+                    DataType = "Date";
+                    IsMandatory = true;
+                }
+                Field warehouse
+                {
+                    DisplayName = "Warehouse";
+                    LinkName = "warehouse";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field staff_summary
+                {
+                    DisplayName = "Staff Summary";
+                    LinkName = "staff_summary";
+                    DataType = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "staff_summary";
+                }
+                Field attendance_metrics
+                {
+                    DisplayName = "Attendance Metrics";
+                    LinkName = "attendance_metrics";
+                    DataType = "MultiLine";
+                }
+                Field overtime_hours_total
+                {
+                    DisplayName = "Overtime Hours Total";
+                    LinkName = "overtime_hours_total";
+                    DataType = "Decimal";
+                }
+                Field exceptions
+                {
+                    DisplayName = "Exceptions";
+                    LinkName = "exceptions";
+                    DataType = "MultiLine";
+                }
+                Field export_file
+                {
+                    DisplayName = "Export File";
+                    LinkName = "export_file";
+                    DataType = "FileUpload";
+                    HelpText = "CSV for payroll";
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,48 @@
+// Module: 6. Inventory, Logistics & Returns
+// Form: Products
+form products
+{
+    DisplayName = "Products";
+    LinkName = "products";
+    Module = "6. Inventory, Logistics & Returns";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field batch
+                {
+                    DisplayName = "Batch";
+                    LinkName = "batch";
+                    DataType = "SingleLine";
+                }
+                Field quantity
+                {
+                    DisplayName = "Quantity";
+                    LinkName = "quantity";
+                    DataType = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                }
+            }
+        }
+    }
+}
