@@ -1,0 +1,2011 @@
+/*
+ * Author       : it_lancers
+ * Generated on : 05-Nov-2025 17:29:32
+ * Version      : 1.0
+ */
+ application "Enterprise_ERP"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+ 	forms
+	{
+		form company_master
+		{
+			displayname = "Company Master"
+			success message = "Company Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique company_code
+			(
+    			type = text
+				displayname = "Company Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have legal_name
+			(
+    			type = text
+				displayname = "Legal Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			trade_name
+			(
+    			type = text
+				displayname = "Trade Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have gstin
+			(
+    			type = text
+				displayname = "GSTIN"
+				maxchar = 15
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			pan
+			(
+    			type = text
+				displayname = "PAN"
+				maxchar = 10
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			cin
+			(
+    			type = text
+				displayname = "CIN"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have registered_address
+			(
+    			type = address
+				displayname = "Registered Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have billing_address
+			(
+    			type = address
+				displayname = "Billing Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			contact_email
+			(
+    			type = email
+				displayname = "Contact Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			contact_phone
+			(
+    			type = phonenumber
+				displayname = "Contact Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have default_currency
+			(
+				type = picklist
+				displayname = "Default Currency"
+				values = {"INR","USD","EUR"}
+				others option = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			books_export_flag
+			(
+    			type = checkbox
+				displayname = "Books Export Flag"
+				initial value = false
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have active_from
+			(
+    			type = date
+				displayname = "Active From"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			active_to
+			(
+    			type = date
+				displayname = "Active To"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			notes
+			(
+    			type = textarea
+				displayname = "Notes"
+				height = 100px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			machinery_list
+			(
+				type = grid
+				displayname = "Machinery List"
+				must have machine_id
+				(
+    				type = text
+					displayname = "Machine ID"
+					width = medium
+				)
+				machinery_master
+				(
+					type = picklist	
+					displayname = "Machinery Master"
+					values  = machinery_master.ID
+    				displayformat = [machine_id]
+					sortorder = ascending
+					width = medium
+				)
+				must have machine_name
+				(
+    				type = text
+					displayname = "Machine Name"
+					width = medium
+				)
+				must have category
+				(
+					type = picklist
+					displayname = "Category"
+					maxchar = 100
+					values = {"Capital goods","Machine Spares","Production Line"}
+					sortorder = ascending
+					width = medium
+				)
+				commision_date
+				(
+    				type = date
+					displayname = "Commision Date"
+					alloweddays = 0,1,2,3,4,5,6
+					width = medium
+				)
+				maintenance_vendor
+				(
+					type = picklist	
+					displayname = "Maintenance Vendor"
+					values  = vendor_master.ID
+    				displayformat = [vendor_name]
+					sortorder = ascending
+					width = medium
+				)
+				next_service_due
+				(
+    				type = date
+					displayname = "Next Service Due"
+					alloweddays = 0,1,2,3,4,5,6
+					width = medium
+				)
+				must have status
+				(
+					type = picklist
+					displayname = "Status"
+					maxchar = 100
+					values = {"Active","Under Maintenance","Retired"}
+					width = medium
+				)
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form godown_master
+		{
+			displayname = "Godown Master"
+			success message = "Godown Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique godown_code
+			(
+    			type = text
+				displayname = "Godown Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have warehouse
+			(
+    			type = text
+				displayname = "Warehouse"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have godown_name
+			(
+    			type = text
+				displayname = "Godown Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			storage_condition
+			(
+				type = picklist
+				displayname = "Storage Condition"
+				maxchar = 100
+				values = {"Ambient","Cold","Hazardous"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			capacity_uom
+			(
+				type = picklist
+				displayname = "Capacity UOM"
+				maxchar = 100
+				values = {"MT","KG","Litre","Unit"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			capacity_value
+			(
+				type = decimal
+				displayname = "Capacity Value"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have batch_tracking_enabled
+			(
+    			type = checkbox
+				displayname = "Batch Tracking Enabled"
+				initial value = false
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			default_qc_hold_area
+			(
+    			type = checkbox
+				displayname = "Default QC Hold Area"
+				initial value = false
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form machinery_master
+		{
+			displayname = "Machinery Master"
+			success message = "Machinery Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique machine_id
+			(
+    			type = text
+				displayname = "Machine ID"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have machine_name
+			(
+    			type = text
+				displayname = "Machine Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have category
+			(
+				type = picklist
+				displayname = "Category"
+				maxchar = 100
+				values = {"Capital Goods","Machine Spares","Production Line"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			warehouse
+			(
+    			type = text
+				displayname = "Warehouse"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			godown
+			(
+    			type = text
+				displayname = "Godown"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			commission_date
+			(
+    			type = date
+				displayname = "Commission Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			maintenance_vendor
+			(
+    			type = text
+				displayname = "Maintenance Vendor"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			next_service_due
+			(
+    			type = date
+				displayname = "Next Service Due"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have status
+			(
+				type = picklist
+				displayname = "Status"
+				maxchar = 100
+				values = {"Active","Under Maintenance","Retired"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			notes
+			(
+    			type = textarea
+				displayname = "Notes"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form vendor_master
+		{
+			displayname = "Vendor Master"
+			success message = "Vendor Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique vendor_code
+			(
+    			type = text
+				displayname = "Vendor Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have vendor_name
+			(
+    			type = text
+				displayname = "Vendor Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have vendor_type
+			(
+				type = list	
+				displayname = "Vendor Type"
+				values = {"Material","Service","Freight","Wages","Job Work","Contractor"}
+				height = 60px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have company
+			(
+    			type = text
+				displayname = "Company"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			gstin
+			(
+    			type = text
+				displayname = "GSTIN"
+				maxchar = 15
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have pan
+			(
+    			type = text
+				displayname = "PAN"
+				maxchar = 10
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have address
+			(
+    			type = address
+				displayname = "Vendor Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have city
+			(
+    			type = text
+				displayname = "City"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have state
+			(
+				type = picklist
+				displayname = "State"
+				maxchar = 100
+				values = {"Andhra Pradesh","Delhi","Karnataka","Maharashtra","Tamil Nadu"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have country
+			(
+				type = picklist
+				displayname = "Country"
+				maxchar = 100
+				values = {"India","United Arab Emirates","Singapore"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have pincode
+			(
+    			type = text
+				displayname = "Pincode"
+				maxchar = 10
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			contact_person
+			(
+    			type = text
+				displayname = "Contact Person"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			contact_email
+			(
+    			type = email
+				displayname = "Contact Email"
+				maxchar = 80
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			contact_phone
+			(
+    			type = phonenumber
+				displayname = "Contact Phone"
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have payment_terms
+			(
+				type = picklist
+				displayname = "Payment Terms"
+				maxchar = 100
+				values = {"Net 15","Net 30","Custom"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			custom_payment_days
+			(
+				type = number
+				displayname = "Custom Payment Days"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have freight_terms
+			(
+				type = picklist
+				displayname = "Freight Terms"
+				maxchar = 100
+				values = {"Paid","To Pay","Mixed"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			freight_split_notes
+			(
+    			type = textarea
+				displayname = "Freight Split Notes"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			credit_limit
+			(
+				type = INR
+				format = commadotindian
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			credit_days
+			(
+				type = number
+				displayname = "Credit Days"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			tds_rate
+			(
+				type = decimal
+				displayname = "TDS Rate "
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			tcs_rate
+			(
+				type = decimal
+				displayname = "TCS Rate "
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			preferred_transporters
+			(
+    			type = textarea
+				displayname = "Preferred Transporters"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			allowed_warehouses
+			(
+    			type = textarea
+				displayname = "Allowed Warehouses"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have active_flag
+			(
+    			type = checkbox
+				displayname = "Active Flag"
+				initial value = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+		form warehouse_master
+		{
+			displayname = "Warehouse Master"
+			success message = "Warehouse Master Added Successfully"
+			Section
+			(
+				type = section
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have unique warehouse_code
+			(
+    			type = text
+				displayname = "Warehouse Code"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have company
+			(
+    			type = text
+				displayname = "Company"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have name
+			(
+    			type = text
+				displayname = "Warehouse Name"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have warehouse_type
+			(
+				type = picklist
+				displayname = "Warehouse Type"
+				maxchar = 100
+				values = {"Head Office","Factory","Job Work Partner"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have address
+			(
+    			type = address
+				displayname = "Warehouse Address"
+     			capture_coordinates = true
+     			adjust_using_map = false
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+	     			 visibility = false
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+				personal data = true
+			)
+			must have city
+			(
+    			type = text
+				displayname = "City"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have state
+			(
+				type = picklist
+				displayname = "State"
+				maxchar = 100
+				values = {"Andhra Pradesh","Delhi","Karnataka","Maharashtra","Tamil Nadu"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have country
+			(
+				type = picklist
+				displayname = "Country"
+				maxchar = 100
+				values = {"India","United Arab Emirates","Singapore"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have pincode
+			(
+    			type = text
+				displayname = "Pincode"
+				maxchar = 10
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have geo_latitude
+			(
+				type = decimal
+				displayname = "Geo Latitude"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have geo_longitude
+			(
+				type = decimal
+				displayname = "Geo Longitude"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have time_zone
+			(
+				type = picklist
+				displayname = "Time Zone"
+				maxchar = 100
+				values = {"Asia/Kolkata","Asia/Dubai","Asia/Singapore"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have default_currency
+			(
+				type = picklist
+				displayname = "Default Currency"
+				maxchar = 100
+				values = {"INR","USD","EUR"}
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			warehouse_coordinator_office
+			(
+    			type = text
+				displayname = "Warehouse Coordinator (Office)"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			warehouse_hr_coordinator
+			(
+    			type = text
+				displayname = "Warehouse HR Coordinator"
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			warehouse_managers
+			(
+    			type = textarea
+				displayname = "Warehouse Manager(s)"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			warehouse_coordinators
+			(
+    			type = textarea
+				displayname = "Warehouse Coordinator(s)"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			warehouse_supervisors
+			(
+    			type = textarea
+				displayname = "Warehouse Supervisor(s)"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have active_flag
+			(
+    			type = checkbox
+				displayname = "Active Flag"
+				initial value = true
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			notes
+			(
+    			type = textarea
+				displayname = "Notes"
+				height = 13px
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			godown_list
+			(
+				type = grid
+				displayname = "Godown List"
+				must have godown_code
+				(
+    				type = text
+					displayname = "Godown Code"
+					width = medium
+				)
+				must have godown_name
+				(
+    				type = text
+					displayname = "Godown Name"
+					width = medium
+				)
+				storage_condition
+				(
+					type = picklist
+					displayname = "Storage Condition"
+					maxchar = 100
+					values = {"Ambient","Cold","Hazardous"}
+					width = medium
+				)
+				Checkbox
+				(
+					type = checkboxes	
+					values = {"Choice 1","Choice 2","Choice 3"}
+					width = medium
+				)
+				capacity_uom
+				(
+					type = picklist
+					displayname = "Capacity UOM"
+					maxchar = 100
+					values = {"Choice 1","Choice 2","Choice 3"}
+					width = medium
+				)
+				capacity_value
+				(
+					type = decimal
+					displayname = "Capacity Value"
+					width = medium
+				)
+				must have batch_tracking_enabled
+				(
+    				type = checkbox
+					displayname = "Batch Tracking Enabled"
+					initial value = false
+					width = medium
+				)
+				default_qc_hold_area
+				(
+    				type = checkbox
+					displayname = "Default QC Hold Area"
+					initial value = false
+					width = medium
+				)
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+					reset
+					(
+   						type = reset
+   						displayname = "Reset"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list company_master_Report
+		{
+			displayName = "All Company Masters"
+			show all rows from company_master    
+			(
+				company_code as "Company Code"
+				legal_name as "Legal Name"
+				trade_name as "Trade Name"
+				gstin as "GSTIN"
+				pan as "PAN"
+				cin as "CIN"
+				registered_address  as "Registered Address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	 			)
+				billing_address  as "Billing Address"
+	 			(
+	      			displayformat = [address_line_1+""+address_line_2+""+district_city+""+state_province+""+postal_Code+""+country]
+	 			)
+				contact_email as "Contact Email"
+				contact_phone as "Contact Phone"
+				default_currency as "Default Currency"
+				books_export_flag as "Books Export Flag"
+				active_from as "Active From"
+				active_to as "Active To"
+				notes as "Notes"
+				ID
+			)
+		}
+		default list godown_master_Report
+		{
+			displayName = "All Godowns"
+			show all rows from godown_master    
+			(
+				godown_code as "Godown Code"
+				warehouse as "Warehouse"
+				godown_name as "Godown Name"
+				storage_condition as "Storage Condition"
+				batch_tracking_enabled as "Batch Tracking"
+				default_qc_hold_area as "Default QC Hold"
+			)
+		}
+		default list vendor_master_Report
+		{
+			displayName = "vendor_master Report"
+			show all rows from vendor_master    
+			(
+				vendor_code as "Vendor Code"
+				vendor_name as "Vendor Name"
+				vendor_type as "Vendor Type"
+				company as "Company"
+				city as "City"
+				state as "State"
+				country as "Country"
+				payment_terms as "Payment Terms"
+				freight_terms as "Freight Terms"
+				active_flag as "Active"
+			)
+		}
+		default list warehouse_master_Report
+		{
+			displayName = "warehouse_master Report"
+			show all rows from warehouse_master    
+			(
+				warehouse_code as "Warehouse Code"
+				company as "Company"
+				name as "Warehouse Name"
+				warehouse_type as "Warehouse Type"
+				city as "City"
+				state as "State"
+				country as "Country"
+				time_zone as "Time Zone"
+				default_currency as "Default Currency"
+				active_flag as "Active Flag"
+			)
+		}
+		default list machinery_master_Report
+		{
+			displayName = "machinery_master Report"
+			show all rows from machinery_master    
+			(
+				machine_id as "Machine ID"
+				machine_name as "Machine Name"
+				category as "Category"
+				warehouse as "Warehouse"
+				godown as "Godown"
+				status as "Status"
+				next_service_due as "Next Service Due"
+			)
+		}
+	}
+
+
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+
+	web
+	{
+		forms
+		{
+			form company_master
+			{
+				label placement = left
+			}
+			form godown_master
+			{
+				label placement = left
+			}
+			form machinery_master
+			{
+				label placement = left
+			}
+			form vendor_master
+			{
+				label placement = left
+			}
+			form warehouse_master
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report company_master_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -1
+						datablock1
+						(
+							layout type = -1
+							fields
+							(
+								company_code as "Company Code"
+								legal_name as "Legal Name"
+								trade_name as "Trade Name"
+								gstin as "GSTIN"
+								default_currency as "Default Currency"
+								books_export_flag as "Books Export Flag"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    		 				Add 
+    		 				Import 
+    		 				Export 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+							Print   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+		     				title = "Overview"
+							fields
+							(
+								company_code as "Company Code"
+								legal_name as "Legal Name"
+								trade_name as "Trade Name"
+								gstin as "GSTIN"
+								pan as "PAN"
+								cin as "CIN"
+								registered_address as "Registered Address"
+								billing_address as "Billing Address"
+								contact_email as "Contact Email"
+								contact_phone as "Contact Phone"
+								default_currency as "Default Currency"
+								books_export_flag as "Books Export Flag"
+								active_from as "Active From"
+								active_to as "Active To"
+								notes as "Notes"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report godown_master_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -2
+						datablock1
+						(
+							layout type = -2
+		     				title = "Godown Overview"
+							fields
+							(
+								godown_code as "Godown Code"
+								warehouse as "Warehouse"
+								godown_name as "Godown Name"
+								storage_condition as "Storage Condition"
+								batch_tracking_enabled as "Batch Tracking"
+								default_qc_hold_area as "Default QC Hold"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report vendor_master_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -2
+						datablock1
+						(
+							layout type = -2
+		     				title = "Vendor Overview"
+							fields
+							(
+								vendor_code as "Vendor Code"
+								vendor_name as "Vendor Name"
+								vendor_type as "Vendor Type"
+								company as "Company"
+								city as "City"
+								state as "State"
+								country as "Country"
+								payment_terms as "Payment Terms"
+								freight_terms as "Freight Terms"
+								active_flag as "Active"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report warehouse_master_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -2
+						datablock1
+						(
+							layout type = -2
+		     				title = "Warehouse Overview"
+							fields
+							(
+								warehouse_code as "Warehouse Code"
+								company as "Company"
+								name as "Warehouse Name"
+								warehouse_type as "Warehouse Type"
+								city as "City"
+								state as "State"
+								country as "Country"
+								time_zone as "Time Zone"
+								default_currency as "Default Currency"
+								active_flag as "Active Flag"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+			report machinery_master_Report
+			{
+				quickview
+				(
+					layout
+					(
+		 				type = -2
+						datablock1
+						(
+							layout type = -2
+		     				title = "Machinery Overview"
+							fields
+							(
+								machine_id as "Machine ID"
+								machine_name as "Machine Name"
+								category as "Category"
+								warehouse as "Warehouse"
+								godown as "Godown"
+								status as "Status"
+								next_service_due as "Next Service Due"
+							)
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+    				)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+		 				type = 1
+						datablock1
+						(
+							layout type = -2
+						)
+					)
+					menu
+    				(
+    	 				header
+    	 				(
+    		 				Edit 
+    		 				Duplicate 
+    		 				Delete 
+    	 				)
+    				)
+				)
+			}
+		}
+		menu
+		{
+			unused
+			{
+				systemcomponent
+				{
+					type = localization
+					displayname = "Language Selection"
+					icon = "education-language"
+				}
+				systemcomponent
+				{
+					type = connection
+					displayname = "Integrations"
+					icon = "tech-2-connection"
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+			}
+			space Company_Space
+			{
+				displayname = "Company"
+				icon = "business-briefcase"
+
+				section Company_Master
+				{
+					displayname = "Company Master"
+					icon = "design-app"
+					form  company_master
+					{
+						icon = "files-archive"
+					}
+					report company_master_Report
+					{
+						icon = "business-chart-bar-33"
+					}
+				}
+				section godown_master
+				{
+					displayname = "godown_master"
+					icon = "tech-desktop"
+					form  godown_master
+					{
+						icon = "tech-desktop"
+					}
+					report godown_master_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section vendor_master
+				{
+					displayname = "vendor_master"
+					icon = "tech-desktop"
+					form  vendor_master
+					{
+						icon = "tech-desktop"
+					}
+					report vendor_master_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section warehouse_master
+				{
+					displayname = "warehouse_master"
+					icon = "tech-desktop"
+					form  warehouse_master
+					{
+						icon = "tech-desktop"
+					}
+					report warehouse_master_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section machinery_master
+				{
+					displayname = "machinery_master"
+					icon = "tech-desktop"
+					form  machinery_master
+					{
+						icon = "tech-desktop"
+					}
+					report machinery_master_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			new theme = 3
+			font = "comfortaa"
+			color options
+			{
+				color = "5"
+			}
+			logo
+			{
+				preference = "app_icon"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		forms
+		{
+			form company_master
+			{
+				label placement = auto
+			}
+			form godown_master
+			{
+				label placement = auto
+			}
+			form machinery_master
+			{
+				label placement = auto
+			}
+			form vendor_master
+			{
+				label placement = auto
+			}
+			form warehouse_master
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = lightred
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		forms
+		{
+			form company_master
+			{
+				label placement = auto
+			}
+			form godown_master
+			{
+				label placement = auto
+			}
+			form machinery_master
+			{
+				label placement = auto
+			}
+			form vendor_master
+			{
+				label placement = auto
+			}
+			form warehouse_master
+			{
+				label placement = auto
+			}
+		}
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = lightred
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
