@@ -50,22 +50,27 @@ classDiagram
     }
     class Godown {
         +Godown Code
+        +Warehouse
         +Godown Name
         +Storage Condition
         +Capacity UOM
         +Capacity Value
         +Batch Tracking Enabled
         +Default QC Hold Area
-        +Machinery List
+        +Active Flag
+        +Notes
     }
     class Machinery {
         +Machine ID
+        +Warehouse
+        +Godown
         +Machine Name
         +Category
         +Commission Date
         +Maintenance Vendor
         +Next Service Due
         +Status
+        +Notes
     }
     class RoleDefinition {
         +Role Code
@@ -492,6 +497,7 @@ classDiagram
         +Remarks
         +Created By
         +Created Time
+        +Freight Payment Schedule
     }
     class ReceiptLine {
         +Line No.
@@ -527,8 +533,10 @@ classDiagram
         +Cost Per Unit (Calc)
     }
     class FreightPaymentSchedule {
+        +Freight Type
+        +Transporter
         +Due Date
-        +Amount (Incl. Commissions)
+        +Amount
         +TDS %
         +Reminder Flag
     }
@@ -557,6 +565,7 @@ classDiagram
         +Cost Per Unit (Calc)
         +Destination State
         +Payable Amount
+        +Payment Schedule
         +Status
     }
     class VendorPaymentAdvice {
@@ -587,8 +596,9 @@ classDiagram
     ReceiptAdvice "1" -- "many" PackingMaterialLine
     ReceiptAdvice "1" -- "many" FreightDetail
     ReceiptAdvice "1" -- "many" LoadingWage
-    FreightDetail "1" -- "many" FreightPaymentSchedule
+    ReceiptAdvice "1" -- "many" FreightPaymentSchedule
     FreightAdviceInbound "1" -- "many" FreightPaymentSchedule
+    FreightAdviceOutbound "1" -- "many" FreightPaymentSchedule
     FreightAdviceInbound "1" -- "many" LoadingWage
     VendorPaymentAdvice "1" -- "many" TaxComponent
 ```
@@ -710,6 +720,7 @@ classDiagram
         +Cost Per Unit (Calc)
         +Destination State
         +Payable Amount
+        +Payment Schedule
         +Status
     }
     class ReceivableLedger {

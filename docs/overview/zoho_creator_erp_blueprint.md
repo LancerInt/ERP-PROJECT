@@ -103,14 +103,14 @@ The following tables are primary Zoho Creator forms (or subforms) with key field
 | Form | Key Fields | Relationships/Notes |
 | --- | --- | --- |
 | **Company** | Company Code, Legal Name, GSTIN, Billing Address, Default Currency | Linked to Price Lists, Tax Policies, Financial Ledgers |
-| **Warehouse** | Warehouse Code, Name, Company Lookup, Address, Geo Coordinates, Time Zone, Default Currency | Lookup to Warehouse Coordinator (Office) & Warehouse HR Coordinator; Subform for Godowns |
-| **Godown** (subform under Warehouse) | Godown Code, Name, Temperature Range, Capacity | Products-in-godown via Inventory Ledger |
+| **Warehouse** | Warehouse Code, Name, Company Lookup, Address, Geo Coordinates, Time Zone, Default Currency | Lookup to Warehouse Coordinator (Office) & Warehouse HR Coordinator; Godowns captured via dedicated master |
+| **Godown** | Godown Code, Warehouse Lookup, Temperature Range, Capacity, Batch Tracking Flag | Products-in-godown via Inventory Ledger |
 | **Role Definition** | Role Code, Role Name, Module Permissions (JSON), Visibility Scope (HO-only, Warehouse-specific), Approval Levels | Associated with Portal Users |
 | **User (Stakeholder)** | Portal User, Employee Lookup (optional), Roles (multi-select), Default Warehouse Scope | Sharing rules rely on this mapping |
 | **Employee / Staff Master** | Staff ID, Name, Employment Type (Staff/Employee), Designation, Company, Warehouse/Department, Join Date, Photo, Active Flag | Used by Attendance, Wage modules |
 | **Product** | SKU Code, Name, Company Scope (multi), Product Type (Goods/Services), Sub-type, Batch Tracking (Yes/No), QC Required By (Warehouse Coordinator / QC Coordinator / QC Manager), Unit of Measure, Alternate UOMs (subform with conversion factors and specific gravity), Packing Material Association, Yield Tracking Flags (Physical Qty, Purity %, AI Content), Wage Calculation Method (Template-based / Headcount-based / None), Service Category (for service-type) | Linked to BOM templates, Price Lists, Inventory, QC templates |
 | **Service Catalogue** | Service Code, Name, Category (Warehouse Expense, Wages, Freight, etc.), Direction (Inbound/Outbound/Both), Default TDS/TCS, Warehouse-specific availability | IT Admin can extend |
-| **Machine / Equipment** | Machine ID, Warehouse, Machine Type, Associated Products (if consumed), Maintenance Schedule | Used in Job Work tracking |
+| **Machine / Equipment** | Machine ID, Warehouse Lookup, Godown Lookup, Machine Type, Maintenance Schedule | Used in Job Work tracking and maintenance planning |
 | **Vendor** | Vendor Code, Company, Vendor Type (Goods, Services, Freight, Job Work, Contractor), GSTIN, PAN, Address, Payment Terms (Net Days), Freight Terms (Paid/To_Pay/Mixed), TDS/TCS Rates, Bank Details, Preferred Transporters, Default Currency | Linked to Purchase Orders, Freight Advice, Wages, Job Work |
 | **Customer** | Customer Code, Company, GSTIN, Billing/Shipping Addresses, Credit Terms, Freight Terms, Allowed Price Lists (multi-select), Default Warehouse | Linked to Sales Orders, Freight Advice, Receivables |
 | **Transporter** | Transporter Code, Name, GSTIN, Contact, Freight Modes (Local Drayage, Linehaul), Usual Routes, TDS %, Payment Terms | Shared between Purchase/Sales logistics |

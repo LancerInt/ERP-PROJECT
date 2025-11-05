@@ -37,8 +37,8 @@ associated with a company.
 | Notes | Multi-line |  | |
 
 ### 1.2 Warehouse Master
-**Purpose:** Capture warehouse profile, governance roles, and embedded godown/machinery
-lists. Warehouses cannot be used until at least one godown row is present.
+**Purpose:** Capture warehouse profile and governance roles. Godowns and machinery are
+maintained via dedicated masters that reference the warehouse record.
 
 | Field Name | Type | Req. | Notes |
 | --- | --- | --- | --- |
@@ -60,34 +60,44 @@ lists. Warehouses cannot be used until at least one godown row is present.
 | Warehouse Manager(s) | Multi-select Lookup (Stakeholder User) |  | |
 | Warehouse Coordinator(s) | Multi-select Lookup (Stakeholder User) |  | |
 | Warehouse Supervisor(s) | Multi-select Lookup (Stakeholder User) |  | |
-| Godown List | Subform | Y | Maintain at least one godown |
 | Active Flag | Checkbox | Y | Deactivate to hide from new transactions |
 | Notes | Multi-line |  | |
 
-#### Godown Subform
+### 1.3 Godown Master
+**Purpose:** Manage individual storage zones within a warehouse so stock, QC, and
+production flows can reference the precise location.
+
 | Field Name | Type | Req. | Notes |
 | --- | --- | --- | --- |
-| Godown Code | Single Line | Y | Unique within warehouse |
-| Godown Name | Single Line | Y | |
+| Godown Code | Single Line (Unique) | Y | Unique within the owning company |
+| Warehouse | Lookup (Warehouse) | Y | Owning warehouse |
+| Godown Name | Single Line | Y | Display name |
 | Storage Condition | Dropdown |  | Ambient / Cold / Hazardous |
 | Capacity UOM | Dropdown |  | |
-| Capacity Value | Decimal |  | Max storage |
+| Capacity Value | Decimal |  | Maximum storage capacity |
 | Batch Tracking Enabled | Checkbox | Y | Controls batch-level location |
 | Default QC Hold Area | Checkbox |  | Flags quarantine |
-| Machinery List | Subform |  | Independent machinery roster |
+| Active Flag | Checkbox | Y | Hide from selection when inactive |
+| Notes | Multi-line |  | |
 
-#### Machinery Subform (under Godown)
+### 1.4 Machinery Master
+**Purpose:** Register machinery located in each godown for maintenance tracking, job
+work, and production allocation.
+
 | Field Name | Type | Req. | Notes |
 | --- | --- | --- | --- |
-| Machine ID | Single Line | Y | Unique equipment identifier |
-| Machine Name | Single Line | Y | |
+| Machine ID | Single Line (Unique) | Y | Unique equipment identifier |
+| Warehouse | Lookup (Warehouse) | Y | Auto-populated from the selected godown |
+| Godown | Lookup (Godown) | Y | Location of the machine |
+| Machine Name | Single Line | Y | Display name |
 | Category | Dropdown | Y | Capital Goods / Machine Spares / Production Line |
 | Commission Date | Date |  | |
 | Maintenance Vendor | Lookup (Vendor) |  | For service/job work |
 | Next Service Due | Date |  | |
 | Status | Dropdown | Y | Active / Under Maintenance / Retired |
+| Notes | Multi-line |  | |
 
-### 1.3 Role Definition
+### 1.5 Role Definition
 **Purpose:** Define composite permission bundles that control record creation,
 approval, and sharing.
 
@@ -109,7 +119,7 @@ approval, and sharing.
 | Min Amount | Currency |  | Threshold |
 | Max Amount | Currency |  | |
 
-### 1.4 Stakeholder User
+### 1.6 Stakeholder User
 **Purpose:** Map Zoho portal users to ERP stakeholder roles and warehouse scopes.
 
 | Field Name | Type | Req. | Notes |
@@ -125,7 +135,7 @@ approval, and sharing.
 | Last Accessed | Date-Time |  | |
 | Notes | Multi-line |  | |
 
-### 1.5 Staff Master
+### 1.7 Staff Master
 **Purpose:** Maintain the complete roster of staff (office and warehouse) for
 attendance, HR, and wage integration.
 
@@ -171,7 +181,7 @@ attendance, HR, and wage integration.
 | Proof File | File Upload | Y | |
 | Expiry Date | Date |  | Mandatory for expiring proofs |
 
-### 1.6 Shift Definition
+### 1.8 Shift Definition
 **Purpose:** Preconfigure shift timings, allowances, and overtime policies for
 attendance automation.
 

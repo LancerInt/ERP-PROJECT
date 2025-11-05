@@ -55,32 +55,36 @@ and configuring automation.
 | Warehouse Manager(s) | warehouse_managers | Multi-select Lookup (Stakeholder User) |  |  |
 | Warehouse Coordinator(s) | warehouse_coordinators | Multi-select Lookup (Stakeholder User) |  |  |
 | Warehouse Supervisor(s) | warehouse_supervisors | Multi-select Lookup (Stakeholder User) |  |  |
-| Godown List | godown_list | Subform | Y | Contains godown level stock segregation |
 | Active Flag | active_flag | Checkbox | Y | Deactivate to hide from new transactions |
 | Notes | notes | Multi-line |  |  |
 
-#### Godown (subform)
+### Godown
 | Field Name | Link Name | Type | Req. | Notes |
 | --- | --- | --- | --- | --- |
-| Godown Code | godown_code | Single Line | Y | Unique within warehouse |
-| Godown Name | godown_name | Single Line | Y |  |
+| Godown Code | godown_code | Single Line (Unique) | Y | Unique within company |
+| Warehouse | warehouse | Lookup (Warehouse) | Y | Owning warehouse |
+| Godown Name | godown_name | Single Line | Y | Display name |
 | Storage Condition | storage_condition | Dropdown |  | Ambient / Cold / Hazardous |
 | Capacity UOM | capacity_uom | Dropdown |  |  |
-| Capacity Value | capacity_value | Decimal |  | Max storage |
+| Capacity Value | capacity_value | Decimal |  | Maximum storage capacity |
 | Batch Tracking Enabled | batch_tracking_enabled | Checkbox | Y | Controls batch-level location |
-| Default QC Hold Area | default_qc_hold_area | Checkbox |  | Flags quarantine |
-| Machinery List | machinery_list | Subform |  | Equipment housed in the godown |
+| Default QC Hold Area | default_qc_hold_area | Checkbox |  | Flags quarantine locations |
+| Active Flag | active_flag | Checkbox | Y | Hide from selection when inactive |
+| Notes | notes | Multi-line |  |  |
 
-#### Machinery (Godown subform)
+### Machinery
 | Field Name | Link Name | Type | Req. | Notes |
 | --- | --- | --- | --- | --- |
-| Machine ID | machine_id | Single Line | Y | Unique equipment identifier |
-| Machine Name | machine_name | Single Line | Y |  |
+| Machine ID | machine_id | Single Line (Unique) | Y | Unique equipment identifier |
+| Warehouse | warehouse | Lookup (Warehouse) | Y | Auto-populated from selected godown |
+| Godown | godown | Lookup (Godown) | Y | Location of the machine |
+| Machine Name | machine_name | Single Line | Y | Display name |
 | Category | category | Dropdown | Y | Capital Goods / Machine Spares / Production Line |
 | Commission Date | commission_date | Date |  |  |
 | Maintenance Vendor | maintenance_vendor | Lookup (Vendor) |  | For service/job work |
 | Next Service Due | next_service_due | Date |  |  |
 | Status | status | Dropdown | Y | Active / Under Maintenance / Retired |
+| Notes | notes | Multi-line |  |  |
 
 ### Role Definition
 | Field Name | Link Name | Type | Req. | Notes |
@@ -378,7 +382,7 @@ and configuring automation.
 | PR No. | pr_no | Auto Number | Y |  |
 | Request Date | request_date | Date | Y |  |
 | Warehouse | warehouse | Lookup (Warehouse) | Y | Visibility restricted |
-| Godown | godown | Dropdown (filtered) | C | Required for stock items |
+| Godown | godown | Lookup (Godown) | C | Filtered by selected warehouse |
 | Requested By | requested_by | Lookup (Stakeholder User) | Y |  |
 | Requestor Role | requestor_role | Dropdown | Y | Warehouse Manager / Coordinator |
 | Requirement Type | requirement_type | Dropdown | Y | Goods / Services / Machinery |
@@ -559,7 +563,7 @@ and configuring automation.
 | Receipt Advice No. | receipt_advice_no | Auto Number | Y |  |
 | Receipt Date | receipt_date | Date | Y |  |
 | Warehouse | warehouse | Lookup (Warehouse) | Y |  |
-| Godown | godown | Dropdown | Y |  |
+| Godown | godown | Lookup (Godown) | Y | Receiving location within warehouse |
 | Vendor | vendor | Lookup (Vendor) | Y |  |
 | Linked PO(s) | linked_pos | Multi-select Lookup (Purchase Order) | Y |  |
 | Vehicle Number | vehicle_number | Single Line |  |  |
@@ -591,7 +595,7 @@ and configuring automation.
 | Agent Commission | agent_commission | Currency |  | Capture agent payouts associated with the receipt |
 | Quantity Accepted | quantity_accepted | Decimal |  | Post QC |
 | Quantity Rejected | quantity_rejected | Decimal |  |  |
-| Godown Location | godown_location | Dropdown | Y | Filters by warehouse |
+| Godown Location | godown_location | Lookup (Godown) | Y | Filtered by parent warehouse |
 | Remarks | remarks | Multi-line |  |  |
 
 #### Packing Material Lines (subform)
@@ -615,7 +619,6 @@ and configuring automation.
 | Quantity UOM | quantity_uom | Dropdown |  | Tonnes / KG / KL / Units |
 | Destination State | destination_state | Dropdown |  | Auto-populated from receiving warehouse |
 | Cost Per Unit (Calc) | cost_per_unit_calc | Decimal (Formula) |  | Tentative charge minus discount divided by quantity basis |
-| Payment Schedule | payment_schedule | Subform |  | Instalments |
 
 #### Loading Unloading Wages (subform)
 | Field | Link Name | Type | Req. | Notes |
@@ -627,12 +630,14 @@ and configuring automation.
 | Payable By | payable_by | Dropdown | Y | Company / Vendor |
 | Remarks | remarks | Multi-line |  |  |
 
-#### Payment Schedule (nested subform)
+#### Freight Payment Schedule (subform)
 | Field | Link Name | Type | Req. | Notes |
 | --- | --- | --- | --- | --- |
-| Due Date | due_date | Date | Y |  |
-| Amount | amount | Currency | Y |  |
-| TDS % | tds | Decimal |  |  |
+| Freight Type | freight_type | Dropdown | Y | Local Drayage / Linehaul |
+| Transporter | transporter | Lookup (Transporter) | C | Required when company pays |
+| Due Date | due_date | Date | Y | Instalment due date |
+| Amount | amount | Currency | Y | Instalment amount |
+| TDS % | tds | Decimal |  | Apply for freight TDS when relevant |
 | Reminder Flag | reminder_flag | Checkbox |  | Triggers auto reminders |
 
 ### Freight Advice (Inbound)
@@ -896,7 +901,7 @@ and configuring automation.
 | --- | --- | --- | --- | --- |
 | Product | product | Lookup (Product) | Y |  |
 | Batch Out | batch_out | Single Line | C | Required when batch tracking |
-| Godown | godown | Dropdown | Y |  |
+| Godown | godown | Lookup (Godown) | Y | Filtered by issue warehouse |
 | Quantity Issued | quantity_issued | Decimal | Y |  |
 | UOM | uom | Dropdown | Y |  |
 | Reserved for Template | reserved_for_template | Checkbox |  | Packing material reservation |
@@ -935,7 +940,7 @@ and configuring automation.
 | Actual Qty | actual_qty | Decimal | Y |  |
 | UOM | uom | Dropdown | Y |  |
 | Batch Used | batch_used | Single Line | C |  |
-| Godown | godown | Dropdown | Y |  |
+| Godown | godown | Lookup (Godown) | Y | Filtered by production warehouse |
 | Yield Loss % | yield_loss | Decimal |  | Capture deviations |
 
 #### Output Products (subform)
@@ -1110,7 +1115,7 @@ and configuring automation.
 | Ledger Entry ID | ledger_entry_id | Auto Number | Y |  |
 | Transaction Date | transaction_date | Date | Y |  |
 | Warehouse | warehouse | Lookup (Warehouse) | Y |  |
-| Godown | godown | Dropdown | Y |  |
+| Godown | godown | Lookup (Godown) | Y | Stock location |
 | Product | product | Lookup (Product) | Y |  |
 | Batch | batch | Single Line |  |  |
 | Quantity In | quantity_in | Decimal |  |  |
@@ -1146,8 +1151,8 @@ and configuring automation.
 | Batch | batch | Single Line | C |  |
 | Quantity | quantity | Decimal | Y |  |
 | UOM | uom | Dropdown | Y |  |
-| Source Godown | source_godown | Dropdown | Y |  |
-| Destination Godown | destination_godown | Dropdown | Y |  |
+| Source Godown | source_godown | Lookup (Godown) | Y | Origin location |
+| Destination Godown | destination_godown | Lookup (Godown) | Y | Receiving location |
 
 ### Stock Transfer Receipt
 | Field | Link Name | Type | Req. | Notes |
@@ -1173,7 +1178,7 @@ and configuring automation.
 | Quantity Dispatched | quantity_dispatched | Decimal | Y |  |
 | Quantity Received | quantity_received | Decimal | Y |  |
 | UOM | uom | Dropdown | Y |  |
-| Received Godown | received_godown | Dropdown | Y |  |
+| Received Godown | received_godown | Lookup (Godown) | Y | Filtered by receiving warehouse |
 | Condition | condition | Dropdown |  | Good / Damaged |
 
 ### Warehouse Shifting
@@ -1182,8 +1187,8 @@ and configuring automation.
 | Shifting No. | shifting_no | Auto Number | Y |  |
 | Warehouse | warehouse | Lookup (Warehouse) | Y |  |
 | Request Date | request_date | Date | Y |  |
-| From Godown | from_godown | Dropdown | Y |  |
-| To Godown | to_godown | Dropdown | Y |  |
+| From Godown | from_godown | Lookup (Godown) | Y | Origin location |
+| To Godown | to_godown | Lookup (Godown) | Y | Destination location |
 | Reason Code | reason_code | Dropdown | Y | Damage / Space Optimisation / Audit / Other |
 | Other Reason | other_reason | Multi-line | C | Mandatory when Reason = Other |
 | Products | products | Subform | Y |  |
@@ -1351,7 +1356,7 @@ and configuring automation.
 | Adjustment No. | adjustment_no | Auto Number | Y |  |
 | Adjustment Date | adjustment_date | Date | Y |  |
 | Warehouse | warehouse | Lookup (Warehouse) | Y |  |
-| Godown | godown | Dropdown | Y |  |
+| Godown | godown | Lookup (Godown) | Y | Stock location |
 | Product | product | Lookup (Product) | Y |  |
 | Batch | batch | Single Line |  |  |
 | Adjustment Type | adjustment_type | Dropdown | Y | Positive / Negative |
