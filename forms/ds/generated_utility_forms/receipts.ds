@@ -1,0 +1,71 @@
+// Module: Generated Utility Forms
+// Form: Receipts
+form receipts
+{
+    DisplayName = "Receipts";
+    LinkName = "receipts";
+    Module = "Generated Utility Forms";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field receipt_no
+                {
+                    DisplayName = "Receipt No.";
+                    LinkName = "receipt_no";
+                    DataType = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field customer
+                {
+                    DisplayName = "Customer";
+                    LinkName = "customer";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "customer";
+                }
+                Field receipt_date
+                {
+                    DisplayName = "Receipt Date";
+                    LinkName = "receipt_date";
+                    DataType = "Date";
+                    IsMandatory = true;
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    DataType = "Currency";
+                    IsMandatory = true;
+                }
+                Field payment_method
+                {
+                    DisplayName = "Payment Method";
+                    LinkName = "payment_method";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Bank Transfer / Cash / Cheque / UPI";
+                }
+                Field reference_document
+                {
+                    DisplayName = "Reference Document";
+                    LinkName = "reference_document";
+                    DataType = "Lookup";
+                    RelatedFormLinkName = "sales_invoice_check";
+                    HelpText = "Original invoice reference";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    DataType = "MultiLine";
+                }
+            }
+        }
+    }
+}

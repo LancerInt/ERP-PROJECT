@@ -1,0 +1,117 @@
+// Module: 6. Inventory, Logistics & Returns
+// Form: Job Work Order
+form job_work_order
+{
+    DisplayName = "Job Work Order";
+    LinkName = "job_work_order";
+    Module = "6. Inventory, Logistics & Returns";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field order_no
+                {
+                    DisplayName = "Order No.";
+                    LinkName = "order_no";
+                    DataType = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field warehouse
+                {
+                    DisplayName = "Warehouse";
+                    LinkName = "warehouse";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field vendor
+                {
+                    DisplayName = "Vendor";
+                    LinkName = "vendor";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "vendor";
+                }
+                Field template
+                {
+                    DisplayName = "Template";
+                    LinkName = "template";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "template_library";
+                }
+                Field template_revision
+                {
+                    DisplayName = "Template Revision";
+                    LinkName = "template_revision";
+                    DataType = "Number";
+                    IsMandatory = true;
+                }
+                Field start_date
+                {
+                    DisplayName = "Start Date";
+                    LinkName = "start_date";
+                    DataType = "Date";
+                    IsMandatory = true;
+                }
+                Field expected_completion_date
+                {
+                    DisplayName = "Expected Completion Date";
+                    LinkName = "expected_completion_date";
+                    DataType = "Date";
+                    HelpText = "From template";
+                }
+                Field turnaround_threshold
+                {
+                    DisplayName = "Turnaround Threshold";
+                    LinkName = "turnaround_threshold";
+                    DataType = "Number";
+                    HelpText = "For alerts";
+                }
+                Field materials_supplied
+                {
+                    DisplayName = "Materials Supplied";
+                    LinkName = "materials_supplied";
+                    DataType = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "materials_supplied";
+                }
+                Field outputs_expected
+                {
+                    DisplayName = "Outputs Expected";
+                    LinkName = "outputs_expected";
+                    DataType = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "outputs_expected";
+                }
+                Field freight_terms
+                {
+                    DisplayName = "Freight Terms";
+                    LinkName = "freight_terms";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field status
+                {
+                    DisplayName = "Status";
+                    LinkName = "status";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Draft / In Progress / Completed";
+                }
+                Field alerts_enabled
+                {
+                    DisplayName = "Alerts Enabled";
+                    LinkName = "alerts_enabled";
+                    DataType = "Checkbox";
+                    HelpText = "Trigger overdue reminders";
+                }
+            }
+        }
+    }
+}

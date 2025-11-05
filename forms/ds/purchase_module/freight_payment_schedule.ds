@@ -1,0 +1,67 @@
+// Module: 2. Purchase Module
+// Form: Freight Payment Schedule
+form freight_payment_schedule
+{
+    DisplayName = "Freight Payment Schedule";
+    LinkName = "freight_payment_schedule";
+    Module = "2. Purchase Module";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field freight_type
+                {
+                    DisplayName = "Freight Type";
+                    LinkName = "freight_type";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Local Drayage / Linehaul";
+                }
+                Field transporter
+                {
+                    DisplayName = "Transporter";
+                    LinkName = "transporter";
+                    DataType = "Lookup";
+                    ConditionalMandatory = true;
+                    RelatedFormLinkName = "transporter";
+                    HelpText = "Required when company pays";
+                }
+                Field due_date
+                {
+                    DisplayName = "Due Date";
+                    LinkName = "due_date";
+                    DataType = "Date";
+                    IsMandatory = true;
+                    HelpText = "Instalment due date";
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    DataType = "Currency";
+                    IsMandatory = true;
+                    HelpText = "Instalment amount";
+                }
+                Field tds
+                {
+                    DisplayName = "TDS %";
+                    LinkName = "tds";
+                    DataType = "Decimal";
+                    HelpText = "Apply for freight TDS when relevant";
+                }
+                Field reminder_flag
+                {
+                    DisplayName = "Reminder Flag";
+                    LinkName = "reminder_flag";
+                    DataType = "Checkbox";
+                    HelpText = "Triggers auto reminders";
+                }
+            }
+        }
+    }
+}

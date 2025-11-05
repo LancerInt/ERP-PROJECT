@@ -1,0 +1,125 @@
+// Module: 2. Purchase Module
+// Form: Quote Response
+form quote_response
+{
+    DisplayName = "Quote Response";
+    LinkName = "quote_response";
+    Module = "2. Purchase Module";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field quote_id
+                {
+                    DisplayName = "Quote ID";
+                    LinkName = "quote_id";
+                    DataType = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field rfq
+                {
+                    DisplayName = "RFQ";
+                    LinkName = "rfq";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "rfq_header";
+                }
+                Field vendor
+                {
+                    DisplayName = "Vendor";
+                    LinkName = "vendor";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "vendor";
+                }
+                Field quote_date
+                {
+                    DisplayName = "Quote Date";
+                    LinkName = "quote_date";
+                    DataType = "Date";
+                    IsMandatory = true;
+                }
+                Field price_valid_till
+                {
+                    DisplayName = "Price Valid Till";
+                    LinkName = "price_valid_till";
+                    DataType = "Date";
+                }
+                Field currency
+                {
+                    DisplayName = "Currency";
+                    LinkName = "currency";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field quote_lines
+                {
+                    DisplayName = "Quote Lines";
+                    LinkName = "quote_lines";
+                    DataType = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "quote_lines";
+                }
+                Field freight_terms
+                {
+                    DisplayName = "Freight Terms";
+                    LinkName = "freight_terms";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Paid / To_Pay / Mixed";
+                }
+                Field payment_terms
+                {
+                    DisplayName = "Payment Terms";
+                    LinkName = "payment_terms";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Inherit from vendor but editable";
+                }
+                Field delivery_terms
+                {
+                    DisplayName = "Delivery Terms";
+                    LinkName = "delivery_terms";
+                    DataType = "MultiLine";
+                }
+                Field lead_time_days
+                {
+                    DisplayName = "Lead Time (Days)";
+                    LinkName = "lead_time_days";
+                    DataType = "Number";
+                }
+                Field attachments
+                {
+                    DisplayName = "Attachments";
+                    LinkName = "attachments";
+                    DataType = "FileUpload";
+                    HelpText = "Vendor quote";
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    DataType = "MultiLine";
+                }
+                Field evaluation_score
+                {
+                    DisplayName = "Evaluation Score";
+                    LinkName = "evaluation_score";
+                    DataType = "Decimal";
+                    HelpText = "Computed";
+                }
+                Field chosen_flag
+                {
+                    DisplayName = "Chosen Flag";
+                    LinkName = "chosen_flag";
+                    DataType = "Checkbox";
+                }
+            }
+        }
+    }
+}

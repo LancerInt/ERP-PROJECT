@@ -1,0 +1,89 @@
+// Module: 2. Purchase Module
+// Form: Quote Lines
+form quote_lines
+{
+    DisplayName = "Quote Lines";
+    LinkName = "quote_lines";
+    Module = "2. Purchase Module";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field pr_line
+                {
+                    DisplayName = "PR Line";
+                    LinkName = "pr_line";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "pr_lines";
+                }
+                Field product_service
+                {
+                    DisplayName = "Product/Service";
+                    LinkName = "product_service";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field specification
+                {
+                    DisplayName = "Specification";
+                    LinkName = "specification";
+                    DataType = "MultiLine";
+                }
+                Field quantity_offered
+                {
+                    DisplayName = "Quantity Offered";
+                    LinkName = "quantity_offered";
+                    DataType = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field unit_price
+                {
+                    DisplayName = "Unit Price";
+                    LinkName = "unit_price";
+                    DataType = "Currency";
+                    IsMandatory = true;
+                }
+                Field discount
+                {
+                    DisplayName = "Discount %";
+                    LinkName = "discount";
+                    DataType = "Decimal";
+                }
+                Field gst
+                {
+                    DisplayName = "GST %";
+                    LinkName = "gst";
+                    DataType = "Decimal";
+                    IsMandatory = true;
+                }
+                Field freight_charge
+                {
+                    DisplayName = "Freight Charge";
+                    LinkName = "freight_charge";
+                    DataType = "Currency";
+                }
+                Field delivery_timeline
+                {
+                    DisplayName = "Delivery Timeline";
+                    LinkName = "delivery_timeline";
+                    DataType = "Number";
+                    HelpText = "Days";
+                }
+            }
+        }
+    }
+}

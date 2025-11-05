@@ -1,0 +1,49 @@
+// Module: 2. Purchase Module
+// Form: Approval Trail
+form approval_trail
+{
+    DisplayName = "Approval Trail";
+    LinkName = "approval_trail";
+    Module = "2. Purchase Module";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field action
+                {
+                    DisplayName = "Action";
+                    LinkName = "action";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Approved / Rejected / Partial";
+                }
+                Field actor
+                {
+                    DisplayName = "Actor";
+                    LinkName = "actor";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field action_date
+                {
+                    DisplayName = "Action Date";
+                    LinkName = "action_date";
+                    DataType = "DateTime";
+                    IsMandatory = true;
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    DataType = "MultiLine";
+                }
+            }
+        }
+    }
+}

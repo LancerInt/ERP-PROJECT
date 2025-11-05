@@ -1,0 +1,3 @@
+# Prevent duplicate markdown copies at the docs root.
+# Keep module references inside their dedicated subdirectories.
+/*.md

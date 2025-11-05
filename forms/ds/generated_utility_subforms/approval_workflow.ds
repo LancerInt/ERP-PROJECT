@@ -1,0 +1,60 @@
+// Module: Generated Utility Subforms
+// Form: Approval Workflow
+form approval_workflow
+{
+    DisplayName = "Approval Workflow";
+    LinkName = "approval_workflow";
+    Module = "Generated Utility Subforms";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field stage
+                {
+                    DisplayName = "Stage";
+                    LinkName = "stage";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Draft Review / Finance Manager Review / Office Manager Authorization";
+                }
+                Field approver
+                {
+                    DisplayName = "Approver";
+                    LinkName = "approver";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                    HelpText = "Approving stakeholder";
+                }
+                Field decision
+                {
+                    DisplayName = "Decision";
+                    LinkName = "decision";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Pending / Approved / Rejected";
+                }
+                Field decision_date
+                {
+                    DisplayName = "Decision Date";
+                    LinkName = "decision_date";
+                    DataType = "DateTime";
+                    ConditionalMandatory = true;
+                    HelpText = "Required when decision is approved/rejected";
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    DataType = "MultiLine";
+                    HelpText = "Approval comments";
+                }
+            }
+        }
+    }
+}

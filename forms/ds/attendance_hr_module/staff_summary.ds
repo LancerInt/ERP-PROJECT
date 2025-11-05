@@ -1,0 +1,54 @@
+// Module: 8. Attendance & HR Module
+// Form: Staff Summary
+form staff_summary
+{
+    DisplayName = "Staff Summary";
+    LinkName = "staff_summary";
+    Module = "8. Attendance & HR Module";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field staff
+                {
+                    DisplayName = "Staff";
+                    LinkName = "staff";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "staff_master";
+                }
+                Field present_days
+                {
+                    DisplayName = "Present Days";
+                    LinkName = "present_days";
+                    DataType = "Number";
+                    IsMandatory = true;
+                }
+                Field absent_days
+                {
+                    DisplayName = "Absent Days";
+                    LinkName = "absent_days";
+                    DataType = "Number";
+                    IsMandatory = true;
+                }
+                Field overtime_hours
+                {
+                    DisplayName = "Overtime Hours";
+                    LinkName = "overtime_hours";
+                    DataType = "Decimal";
+                }
+                Field wages_amount
+                {
+                    DisplayName = "Wages Amount";
+                    LinkName = "wages_amount";
+                    DataType = "Currency";
+                }
+            }
+        }
+    }
+}

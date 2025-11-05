@@ -1,0 +1,204 @@
+// Module: 1. Core & Shared Masters
+// Form: Product Master
+form product_master
+{
+    DisplayName = "Product Master";
+    LinkName = "product_master";
+    Module = "1. Core & Shared Masters";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field sku_code
+                {
+                    DisplayName = "SKU Code";
+                    LinkName = "sku_code";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                    IsUnique = true;
+                    HelpText = "Cross-module identifier";
+                }
+                Field product_name
+                {
+                    DisplayName = "Product Name";
+                    LinkName = "product_name";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field product_type
+                {
+                    DisplayName = "Product Type";
+                    LinkName = "product_type";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Goods / Services";
+                }
+                Field goods_sub_type
+                {
+                    DisplayName = "Goods Sub-Type";
+                    LinkName = "goods_sub_type";
+                    DataType = "Dropdown";
+                    ConditionalMandatory = true;
+                    HelpText = "RAW_MATERIAL / PACKING_MATERIAL / FINISHED_GOOD / SEMI_FINISHED / TRADED_PRODUCTS / CAPITAL_GOOD / MACHINE_SPARES / CONSUMABLES";
+                }
+                Field service_sub_type
+                {
+                    DisplayName = "Service Sub-Type";
+                    LinkName = "service_sub_type";
+                    DataType = "Dropdown";
+                    ConditionalMandatory = true;
+                    HelpText = "Warehouse Expense / Wages / Freight / Miscellaneous / Staff Welfare / Vehicle / Custom";
+                }
+                Field custom_service_category
+                {
+                    DisplayName = "Custom Service Category";
+                    LinkName = "custom_service_category";
+                    DataType = "Lookup";
+                    ConditionalMandatory = true;
+                    RelatedFormLinkName = "service_catalogue";
+                    HelpText = "For IT-admin defined services";
+                }
+                Field description
+                {
+                    DisplayName = "Description";
+                    LinkName = "description";
+                    DataType = "MultiLine";
+                }
+                Field batch_tracking_required
+                {
+                    DisplayName = "Batch Tracking Required";
+                    LinkName = "batch_tracking_required";
+                    DataType = "Checkbox";
+                    ConditionalMandatory = true;
+                    HelpText = "Required for goods";
+                }
+                Field shelf_life_days
+                {
+                    DisplayName = "Shelf Life (Days)";
+                    LinkName = "shelf_life_days";
+                    DataType = "Number";
+                    HelpText = "For expiry";
+                }
+                Field qc_responsibility
+                {
+                    DisplayName = "QC Responsibility";
+                    LinkName = "qc_responsibility";
+                    DataType = "Dropdown";
+                    HelpText = "Warehouse Coordinator / QC Coordinator / QC Manager";
+                }
+                Field qc_template
+                {
+                    DisplayName = "QC Template";
+                    LinkName = "qc_template";
+                    DataType = "Lookup";
+                    RelatedFormLinkName = "template_library";
+                    HelpText = "Default QC parameters";
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Base unit";
+                }
+                Field secondary_uoms
+                {
+                    DisplayName = "Secondary UOMs";
+                    LinkName = "secondary_uoms";
+                    DataType = "SubForm";
+                    SubFormLinkName = "secondary_uoms";
+                    HelpText = "For conversions";
+                }
+                Field specific_gravity
+                {
+                    DisplayName = "Specific Gravity";
+                    LinkName = "specific_gravity";
+                    DataType = "Decimal";
+                    HelpText = "Used for kg ↔ litre";
+                }
+                Field conversion_notes
+                {
+                    DisplayName = "Conversion Notes";
+                    LinkName = "conversion_notes";
+                    DataType = "MultiLine";
+                }
+                Field packing_material_default
+                {
+                    DisplayName = "Packing Material Default";
+                    LinkName = "packing_material_default";
+                    DataType = "Lookup";
+                    RelatedFormLinkName = "product_master";
+                    HelpText = "Default packaging";
+                }
+                Field yield_tracking_required
+                {
+                    DisplayName = "Yield Tracking Required";
+                    LinkName = "yield_tracking_required";
+                    DataType = "Checkbox";
+                }
+                Field yield_parameters
+                {
+                    DisplayName = "Yield Parameters";
+                    LinkName = "yield_parameters";
+                    DataType = "MultiSelect";
+                    HelpText = "Physical Qty / Purity % / AI Content";
+                }
+                Field wage_method
+                {
+                    DisplayName = "Wage Method";
+                    LinkName = "wage_method";
+                    DataType = "Dropdown";
+                    HelpText = "Template Rate / Headcount / None";
+                }
+                Field freight_class
+                {
+                    DisplayName = "Freight Class";
+                    LinkName = "freight_class";
+                    DataType = "Dropdown";
+                    HelpText = "Logistics reference";
+                }
+                Field active_flag
+                {
+                    DisplayName = "Active Flag";
+                    LinkName = "active_flag";
+                    DataType = "Checkbox";
+                    IsMandatory = true;
+                }
+                Field created_by
+                {
+                    DisplayName = "Created By";
+                    LinkName = "created_by";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field created_date
+                {
+                    DisplayName = "Created Date";
+                    LinkName = "created_date";
+                    DataType = "DateTime";
+                    IsMandatory = true;
+                }
+                Field last_modified_by
+                {
+                    DisplayName = "Last Modified By";
+                    LinkName = "last_modified_by";
+                    DataType = "Lookup";
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field last_modified_date
+                {
+                    DisplayName = "Last Modified Date";
+                    LinkName = "last_modified_date";
+                    DataType = "DateTime";
+                }
+            }
+        }
+    }
+}

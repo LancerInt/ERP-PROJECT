@@ -1,0 +1,67 @@
+// Module: 6. Inventory, Logistics & Returns
+// Form: Transfer Lines
+form transfer_lines
+{
+    DisplayName = "Transfer Lines";
+    LinkName = "transfer_lines";
+    Module = "6. Inventory, Logistics & Returns";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field batch
+                {
+                    DisplayName = "Batch";
+                    LinkName = "batch";
+                    DataType = "SingleLine";
+                    ConditionalMandatory = true;
+                }
+                Field quantity
+                {
+                    DisplayName = "Quantity";
+                    LinkName = "quantity";
+                    DataType = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field source_godown
+                {
+                    DisplayName = "Source Godown";
+                    LinkName = "source_godown";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "godown";
+                    HelpText = "Origin location";
+                }
+                Field destination_godown
+                {
+                    DisplayName = "Destination Godown";
+                    LinkName = "destination_godown";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "godown";
+                    HelpText = "Receiving location";
+                }
+            }
+        }
+    }
+}

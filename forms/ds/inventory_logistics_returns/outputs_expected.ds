@@ -1,0 +1,49 @@
+// Module: 6. Inventory, Logistics & Returns
+// Form: Outputs Expected
+form outputs_expected
+{
+    DisplayName = "Outputs Expected";
+    LinkName = "outputs_expected";
+    Module = "6. Inventory, Logistics & Returns";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field expected_quantity
+                {
+                    DisplayName = "Expected Quantity";
+                    LinkName = "expected_quantity";
+                    DataType = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field expected_batch_suffix
+                {
+                    DisplayName = "Expected Batch Suffix";
+                    LinkName = "expected_batch_suffix";
+                    DataType = "SingleLine";
+                    HelpText = "For tracking";
+                }
+            }
+        }
+    }
+}

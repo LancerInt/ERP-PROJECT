@@ -1,0 +1,56 @@
+// Module: 6. Inventory, Logistics & Returns
+// Form: Loading/Unloading Charges
+form loading_unloading_charges
+{
+    DisplayName = "Loading/Unloading Charges";
+    LinkName = "loading_unloading_charges";
+    Module = "6. Inventory, Logistics & Returns";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field charge_type
+                {
+                    DisplayName = "Charge Type";
+                    LinkName = "charge_type";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Loading / Unloading";
+                }
+                Field contractor_vendor
+                {
+                    DisplayName = "Contractor Vendor";
+                    LinkName = "contractor_vendor";
+                    DataType = "Lookup";
+                    RelatedFormLinkName = "vendor";
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    DataType = "Currency";
+                    IsMandatory = true;
+                }
+                Field tds
+                {
+                    DisplayName = "TDS %";
+                    LinkName = "tds";
+                    DataType = "Decimal";
+                }
+                Field payable_by
+                {
+                    DisplayName = "Payable By";
+                    LinkName = "payable_by";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Company / Customer";
+                }
+            }
+        }
+    }
+}

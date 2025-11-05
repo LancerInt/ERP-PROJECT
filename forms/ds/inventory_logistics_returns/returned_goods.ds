@@ -1,0 +1,56 @@
+// Module: 6. Inventory, Logistics & Returns
+// Form: Returned Goods
+form returned_goods
+{
+    DisplayName = "Returned Goods";
+    LinkName = "returned_goods";
+    Module = "6. Inventory, Logistics & Returns";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field batch
+                {
+                    DisplayName = "Batch";
+                    LinkName = "batch";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field quantity_received
+                {
+                    DisplayName = "Quantity Received";
+                    LinkName = "quantity_received";
+                    DataType = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field viability
+                {
+                    DisplayName = "Viability";
+                    LinkName = "viability";
+                    DataType = "Dropdown";
+                    HelpText = "Resaleable / Reformulate / Scrap";
+                }
+            }
+        }
+    }
+}
