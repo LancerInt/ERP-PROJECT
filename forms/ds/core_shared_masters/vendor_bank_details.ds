@@ -1,0 +1,61 @@
+// Module: 1. Core & Shared Masters
+// Form: Vendor Bank Details
+form vendor_bank_details
+{
+    DisplayName = "Vendor Bank Details";
+    LinkName = "vendor_bank_details";
+    Module = "1. Core & Shared Masters";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field account_nickname
+                {
+                    DisplayName = "Account Nickname";
+                    LinkName = "account_nickname";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field bank_name
+                {
+                    DisplayName = "Bank Name";
+                    LinkName = "bank_name";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field branch
+                {
+                    DisplayName = "Branch";
+                    LinkName = "branch";
+                    DataType = "SingleLine";
+                }
+                Field ifsc
+                {
+                    DisplayName = "IFSC";
+                    LinkName = "ifsc";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field account_number
+                {
+                    DisplayName = "Account Number";
+                    LinkName = "account_number";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field payment_method
+                {
+                    DisplayName = "Payment Method";
+                    LinkName = "payment_method";
+                    DataType = "Dropdown";
+                    HelpText = "NEFT / RTGS / Cheque / UPI";
+                }
+            }
+        }
+    }
+}

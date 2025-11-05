@@ -1,0 +1,42 @@
+// Module: 7. Finance Module
+// Form: Tax Breakdown
+form tax_breakdown
+{
+    DisplayName = "Tax Breakdown";
+    LinkName = "tax_breakdown";
+    Module = "7. Finance Module";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field tax_type
+                {
+                    DisplayName = "Tax Type";
+                    LinkName = "tax_type";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "GST / TDS / TCS";
+                }
+                Field rate
+                {
+                    DisplayName = "Rate %";
+                    LinkName = "rate";
+                    DataType = "Decimal";
+                    IsMandatory = true;
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    DataType = "Currency";
+                    IsMandatory = true;
+                }
+            }
+        }
+    }
+}

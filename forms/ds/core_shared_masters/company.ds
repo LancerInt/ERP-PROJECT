@@ -1,0 +1,132 @@
+// Module: 1. Core & Shared Masters
+// Form: Company
+form company
+{
+    DisplayName = "Company";
+    LinkName = "company";
+    Module = "1. Core & Shared Masters";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field company_code
+                {
+                    DisplayName = "Company Code";
+                    LinkName = "company_code";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                    IsUnique = true;
+                    HelpText = "Short code used across modules and exports";
+                }
+                Field legal_name
+                {
+                    DisplayName = "Legal Name";
+                    LinkName = "legal_name";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                    HelpText = "Registered legal entity name";
+                }
+                Field trade_name
+                {
+                    DisplayName = "Trade Name";
+                    LinkName = "trade_name";
+                    DataType = "SingleLine";
+                    HelpText = "Optional doing-business-as name";
+                }
+                Field gstin
+                {
+                    DisplayName = "GSTIN";
+                    LinkName = "gstin";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                    HelpText = "GST registration; validate 15-character format";
+                }
+                Field pan
+                {
+                    DisplayName = "PAN";
+                    LinkName = "pan";
+                    DataType = "SingleLine";
+                    HelpText = "For TDS/TCS calculations";
+                }
+                Field cin
+                {
+                    DisplayName = "CIN";
+                    LinkName = "cin";
+                    DataType = "SingleLine";
+                    HelpText = "Corporate Identification Number";
+                }
+                Field registered_address
+                {
+                    DisplayName = "Registered Address";
+                    LinkName = "registered_address";
+                    DataType = "Address";
+                    IsMandatory = true;
+                    HelpText = "Multi-line address";
+                }
+                Field billing_address
+                {
+                    DisplayName = "Billing Address";
+                    LinkName = "billing_address";
+                    DataType = "Address";
+                    IsMandatory = true;
+                    HelpText = "Defaults on invoices";
+                }
+                Field contact_email
+                {
+                    DisplayName = "Contact Email";
+                    LinkName = "contact_email";
+                    DataType = "Email";
+                    HelpText = "Finance escalation";
+                }
+                Field contact_phone
+                {
+                    DisplayName = "Contact Phone";
+                    LinkName = "contact_phone";
+                    DataType = "Phone";
+                }
+                Field default_currency
+                {
+                    DisplayName = "Default Currency";
+                    LinkName = "default_currency";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Values maintained in system parameters";
+                }
+                Field books_export_flag
+                {
+                    DisplayName = "Books Export Flag";
+                    LinkName = "books_export_flag";
+                    DataType = "Checkbox";
+                    HelpText = "Toggle for Tally integration";
+                }
+                Field active_from
+                {
+                    DisplayName = "Active From";
+                    LinkName = "active_from";
+                    DataType = "Date";
+                    IsMandatory = true;
+                    HelpText = "Effective start date";
+                }
+                Field active_to
+                {
+                    DisplayName = "Active To";
+                    LinkName = "active_to";
+                    DataType = "Date";
+                    HelpText = "Optional sunset";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    DataType = "MultiLine";
+                    HelpText = "Additional remarks";
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+// Module: 8. Attendance & HR Module
+// Form: Attendance Device Log
+form attendance_device_log
+{
+    DisplayName = "Attendance Device Log";
+    LinkName = "attendance_device_log";
+    Module = "8. Attendance & HR Module";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field log_id
+                {
+                    DisplayName = "Log ID";
+                    LinkName = "log_id";
+                    DataType = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field device_id
+                {
+                    DisplayName = "Device ID";
+                    LinkName = "device_id";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field event_time
+                {
+                    DisplayName = "Event Time";
+                    LinkName = "event_time";
+                    DataType = "DateTime";
+                    IsMandatory = true;
+                }
+                Field event_type
+                {
+                    DisplayName = "Event Type";
+                    LinkName = "event_type";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Capture / Sync";
+                }
+                Field status
+                {
+                    DisplayName = "Status";
+                    LinkName = "status";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Success / Failed";
+                }
+                Field error_message
+                {
+                    DisplayName = "Error Message";
+                    LinkName = "error_message";
+                    DataType = "MultiLine";
+                }
+            }
+        }
+    }
+}

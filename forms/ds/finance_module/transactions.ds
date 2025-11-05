@@ -1,0 +1,56 @@
+// Module: 7. Finance Module
+// Form: Transactions
+form transactions
+{
+    DisplayName = "Transactions";
+    LinkName = "transactions";
+    Module = "7. Finance Module";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field transaction_date
+                {
+                    DisplayName = "Transaction Date";
+                    LinkName = "transaction_date";
+                    DataType = "Date";
+                    IsMandatory = true;
+                }
+                Field voucher_reference
+                {
+                    DisplayName = "Voucher Reference";
+                    LinkName = "voucher_reference";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkNames = ["vendor_payment_advice", "wage_voucher"];
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    DataType = "Currency";
+                    IsMandatory = true;
+                }
+                Field type
+                {
+                    DisplayName = "Type";
+                    LinkName = "type";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Advance / Settlement";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    DataType = "MultiLine";
+                }
+            }
+        }
+    }
+}

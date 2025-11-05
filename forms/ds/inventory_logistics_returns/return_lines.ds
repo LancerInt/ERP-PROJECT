@@ -1,0 +1,69 @@
+// Module: 6. Inventory, Logistics & Returns
+// Form: Return Lines
+form return_lines
+{
+    DisplayName = "Return Lines";
+    LinkName = "return_lines";
+    Module = "6. Inventory, Logistics & Returns";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field batch
+                {
+                    DisplayName = "Batch";
+                    LinkName = "batch";
+                    DataType = "SingleLine";
+                }
+                Field quantity_returned
+                {
+                    DisplayName = "Quantity Returned";
+                    LinkName = "quantity_returned";
+                    DataType = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field condition
+                {
+                    DisplayName = "Condition";
+                    LinkName = "condition";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Resaleable / Reformulate / Scrap";
+                }
+                Field viability_notes
+                {
+                    DisplayName = "Viability Notes";
+                    LinkName = "viability_notes";
+                    DataType = "MultiLine";
+                }
+                Field packing_material_captured
+                {
+                    DisplayName = "Packing Material Captured";
+                    LinkName = "packing_material_captured";
+                    DataType = "Lookup";
+                    RelatedFormLinkName = "product_master";
+                }
+            }
+        }
+    }
+}
