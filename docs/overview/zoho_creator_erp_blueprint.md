@@ -12,7 +12,7 @@ This blueprint translates the ERP vision into a Zoho Creator application suite t
 - **[Cross-Module ERDs](../data-models/zoho_creator_cross_module_erds.md)** – end-to-end data connections across modules.
 - **[Master Forms Guide](../process/zoho_creator_master_forms.md)** – step-by-step instructions for configuring all shared masters.
 - **[Phase 1 Zia Form Prompts](../../data/zia_phase1_form_prompts.md)** – Zoho Zia inputs for Procure-to-Pay & inventory transactional forms.
-- **[Deluge Form Scripts Library](../../forms/ds/)** – ready-to-import `.ds` scripts for every master and transactional form.
+- **[Deluge Form Script](../../forms/ds/erp_creator_suite.ds)** – ready-to-import `.ds` application containing every master and transactional form.
 - **[Form Script Generator](../../scripts/generate_creator_ds_forms.py)** – converts the canonical data model into the `.ds` library.
 - **[Phased Implementation Plan](../implementation/zoho_creator_implementation_plan.md)** – rollout roadmap with dependencies and timelines.
 - **[Phase 0 – Foundation & Governance Playbook](../implementation/phase0_foundation_governance_plan.md)** – detailed week-by-week setup actions.

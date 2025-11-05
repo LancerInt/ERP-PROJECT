@@ -1,10 +1,13 @@
 import re
+import shutil
 from pathlib import Path
 from collections import defaultdict
 import copy
 
 DATA_MODEL_PATH = Path('docs/data-models/zoho_creator_data_models.md')
 OUTPUT_ROOT = Path('forms/ds')
+APP_SLUG = 'erp_creator_suite'
+APP_DISPLAY_NAME = 'ERP Creator Suite'
 UNMAPPED_LOOKUPS = defaultdict(list)
 
 LOOKUP_ALIAS_MAP = {
@@ -347,64 +350,81 @@ def format_value(value):
     return f'"{value}"'
 
 
-def render_form(form, name_map):
+def render_form_lines(form, name_map):
     lines = []
     display_name = form['display_name']
     clean_display = re.sub(r"\s*\(subform\)", "", display_name, flags=re.IGNORECASE)
-    lines.append(f"// Module: {form['module'] or 'General'}")
-    lines.append(f"// Form: {clean_display}")
-    lines.append(f"form {form['slug']}")
-    lines.append('{')
-    lines.append(f"    DisplayName = {format_value(clean_display)};")
-    lines.append(f"    LinkName = {format_value(form['slug'])};")
-    lines.append(f"    Module = {format_value(form['module'] or 'General')};")
-    lines.append(f"    IsSubForm = {format_value(form['is_subform'])};")
-    lines.append("")
-    lines.append("    Sections")
-    lines.append("    {")
-    lines.append("        Section main")
+    lines.append(f"        // Module: {form['module'] or 'General'}")
+    lines.append(f"        // Form: {clean_display}")
+    lines.append(f"        form {form['slug']}")
     lines.append("        {")
-    lines.append("            DisplayName = \"Main\";")
-    lines.append("            Fields")
+    lines.append(f"            DisplayName = {format_value(clean_display)};")
+    lines.append(f"            LinkName = {format_value(form['slug'])};")
+    lines.append(f"            Module = {format_value(form['module'] or 'General')};")
+    lines.append(f"            IsSubForm = {format_value(form['is_subform'])};")
+    lines.append("")
+    lines.append("            Sections")
     lines.append("            {")
+    lines.append("                Section main")
+    lines.append("                {")
+    lines.append("                    DisplayName = \"Main\";")
+    lines.append("                    Fields")
+    lines.append("                    {")
     for field in form['fields']:
         field_name = field['link_name'] or slugify(field['field_name'])
-        lines.append(f"                Field {field_name}")
-        lines.append("                {")
-        lines.append(f"                    DisplayName = {format_value(field['field_name'])};")
-        lines.append(f"                    LinkName = {format_value(field_name)};")
+        lines.append(f"                        Field {field_name}")
+        lines.append("                        {")
+        lines.append(f"                            DisplayName = {format_value(field['field_name'])};")
+        lines.append(f"                            LinkName = {format_value(field_name)};")
         data_type, props = map_field_type(field, form, name_map)
-        lines.append(f"                    DataType = {format_value(data_type)};")
+        lines.append(f"                            DataType = {format_value(data_type)};")
         req = field['required'].strip().upper()
         if req == 'Y':
-            lines.append("                    IsMandatory = true;")
+            lines.append("                            IsMandatory = true;")
         elif req == 'C':
-            lines.append("                    ConditionalMandatory = true;")
+            lines.append("                            ConditionalMandatory = true;")
         for key, value in props.items():
-            lines.append(f"                    {key} = {format_value(value)};")
+            lines.append(f"                            {key} = {format_value(value)};")
         if field['notes']:
-            lines.append(f"                    HelpText = {format_value(field['notes'])};")
-        lines.append("                }")
+            lines.append(f"                            HelpText = {format_value(field['notes'])};")
+        lines.append("                        }")
+    lines.append("                    }")
+    lines.append("                }")
     lines.append("            }")
     lines.append("        }")
+    lines.append("")
+    return lines
+
+
+def render_application(forms, name_map):
+    lines = []
+    lines.append(f"application {APP_SLUG}")
+    lines.append("{")
+    lines.append(f"    DisplayName = {format_value(APP_DISPLAY_NAME)};")
+    lines.append("    Forms")
+    lines.append("    {")
+    for form in forms:
+        form_lines = render_form_lines(form, name_map)
+        lines.extend(form_lines)
+    if lines[-1] != "":
+        lines.append("")
     lines.append("    }")
-    lines.append('}')
-    lines.append('')
-    return '\n'.join(lines)
+    lines.append("}")
+    lines.append("")
+    return "\n".join(lines)
 
 
 def main():
     forms = parse_forms()
     ensure_unique_slugs(forms)
     name_map = build_name_maps(forms)
+    if OUTPUT_ROOT.exists():
+        shutil.rmtree(OUTPUT_ROOT)
     OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
-    for form in forms:
-        module_dir = OUTPUT_ROOT / module_slug(form['module'])
-        module_dir.mkdir(parents=True, exist_ok=True)
-        content = render_form(form, name_map)
-        target_path = module_dir / f"{form['slug']}.ds"
-        target_path.write_text(content)
-    print(f"Generated {len(forms)} form scripts under {OUTPUT_ROOT}")
+    app_content = render_application(forms, name_map)
+    target_path = OUTPUT_ROOT / f"{APP_SLUG}.ds"
+    target_path.write_text(app_content)
+    print(f"Generated application script with {len(forms)} forms at {target_path}")
     if UNMAPPED_LOOKUPS:
         print("Unmapped lookup targets detected:")
         for key in sorted(UNMAPPED_LOOKUPS):
