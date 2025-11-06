@@ -1,0 +1,25 @@
+report decision_log_report
+{
+
+    displayname = "Decision Log Report"
+    sourceform = decision_log
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {decision_id, topic, stakeholders, decision_details, decision_date, follow_up_actions}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {decision_id, topic, stakeholders, decision_details, decision_date, follow_up_actions}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {decision_id, topic, stakeholders, decision_details, decision_date, follow_up_actions}
+    )
+}

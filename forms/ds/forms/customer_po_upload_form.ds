@@ -1,0 +1,224 @@
+// Module: 3. Sales Module
+form customer_po_upload
+{
+
+    displayname = "Customer PO Upload"
+    success message = "Customer PO Upload added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have upload_id
+    (
+        type = autonumber
+        displayname = "Upload ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have customer
+    (
+        type = lookup
+        displayname = "Customer"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = customer
+    )
+
+    must have upload_date
+    (
+        type = datetime
+        displayname = "Upload Date"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have po_file
+    (
+        type = upload file
+        displayname = "PO File"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "PDF"
+    )
+
+    must have ai_parser_confidence
+    (
+        type = number
+        displayname = "AI Parser Confidence"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    parsed_po_number
+    (
+        type = text
+        displayname = "Parsed PO Number"
+        row = 6
+        column = 1
+        width = medium
+    )
+
+    parsed_po_date
+    (
+        type = date
+        displayname = "Parsed PO Date"
+        row = 7
+        column = 1
+        width = medium
+    )
+
+    delivery_location
+    (
+        type = picklist
+        displayname = "Delivery Location"
+        row = 8
+        column = 1
+        width = medium
+        notes = "Suggest price list"
+    )
+
+    parsed_lines
+    (
+        type = grid
+        displayname = "Parsed Lines"
+        row = 9
+        column = 1
+        width = medium
+
+        product_description
+        (
+            type = text
+            displayname = "Product Description"
+            width = medium
+        )
+
+        quantity
+        (
+            type = number
+            displayname = "Quantity"
+            width = medium
+        )
+
+        uom
+        (
+            type = picklist
+            displayname = "UOM"
+            width = medium
+        )
+
+        price
+        (
+            type = INR
+            displayname = "Price"
+            width = medium
+            format = commadotindian
+        )
+
+        parsed_sku
+        (
+            type = lookup
+            displayname = "Parsed SKU"
+            width = medium
+            formlinkname = product_master
+            notes = "Auto-mapped"
+        )
+
+        confidence
+        (
+            type = number
+            displayname = "Confidence %"
+            width = medium
+        )
+    )
+
+    manual_review_required
+    (
+        type = checkbox
+        displayname = "Manual Review Required"
+        row = 10
+        column = 1
+        width = medium
+        notes = "Auto checked if confidence < threshold"
+    )
+
+    review_comments
+    (
+        type = textarea
+        displayname = "Review Comments"
+        row = 11
+        column = 1
+        width = medium
+    )
+
+    must have status
+    (
+        type = picklist
+        displayname = "Status"
+        row = 12
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Uploaded","Parsed","Converted","Archived"}
+        notes = "Uploaded / Parsed / Converted / Archived"
+    )
+
+    linked_sales_order
+    (
+        type = lookup
+        displayname = "Linked Sales Order"
+        row = 13
+        column = 1
+        width = medium
+        formlinkname = sales_order
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

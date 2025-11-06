@@ -1,0 +1,25 @@
+report role_definition_report
+{
+
+    displayname = "Role Definition Report"
+    sourceform = role_definition
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {role_code, role_name, module_permissions, data_scope, approval_levels, default_share_rules, active_flag}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {role_code, role_name, module_permissions, data_scope, approval_levels, default_share_rules, active_flag}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {role_code, role_name, module_permissions, data_scope, approval_levels, default_share_rules, active_flag}
+    )
+}

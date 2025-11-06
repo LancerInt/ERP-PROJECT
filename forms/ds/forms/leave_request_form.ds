@@ -1,0 +1,165 @@
+// Module: 8. Attendance & HR Module
+form leave_request
+{
+
+    displayname = "Leave Request"
+    success message = "Leave Request added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have request_no
+    (
+        type = autonumber
+        displayname = "Request No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have staff
+    (
+        type = lookup
+        displayname = "Staff"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = staff_master
+    )
+
+    must have leave_type
+    (
+        type = picklist
+        displayname = "Leave Type"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Full Day","Half Day","Permission"}
+        notes = "Full Day / Half Day / Permission"
+    )
+
+    must have start_date
+    (
+        type = date
+        displayname = "Start Date"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have end_date
+    (
+        type = date
+        displayname = "End Date"
+        row = 5
+        column = 1
+        width = medium
+        conditional mandatory = true
+        notes = "Required when full-day leave"
+    )
+
+    must have duration_hours
+    (
+        type = number
+        displayname = "Duration (Hours)"
+        row = 6
+        column = 1
+        width = medium
+        conditional mandatory = true
+        notes = "Required for permission"
+    )
+
+    must have reason
+    (
+        type = textarea
+        displayname = "Reason"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    attachment
+    (
+        type = upload file
+        displayname = "Attachment"
+        row = 8
+        column = 1
+        width = medium
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "Medical proof"
+    )
+
+    must have status
+    (
+        type = picklist
+        displayname = "Status"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Pending","Approved","Rejected"}
+        notes = "Pending / Approved / Rejected"
+    )
+
+    approver
+    (
+        type = lookup
+        displayname = "Approver"
+        row = 10
+        column = 1
+        width = medium
+        formlinkname = stakeholder_user
+    )
+
+    approval_date
+    (
+        type = datetime
+        displayname = "Approval Date"
+        row = 11
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

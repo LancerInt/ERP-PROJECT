@@ -1,0 +1,240 @@
+// Module: 6. Inventory, Logistics & Returns
+form job_work_receipt
+{
+
+    displayname = "Job Work Receipt"
+    success message = "Job Work Receipt added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have receipt_no
+    (
+        type = autonumber
+        displayname = "Receipt No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have receipt_date
+    (
+        type = date
+        displayname = "Receipt Date"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have job_work_order
+    (
+        type = lookup
+        displayname = "Job Work Order"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = job_work_order
+    )
+
+    must have jw_dc_reference
+    (
+        type = lookup
+        displayname = "JW DC Reference"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = job_work_dc
+    )
+
+    must have vendor
+    (
+        type = lookup
+        displayname = "Vendor"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = vendor
+    )
+
+    must have returned_goods
+    (
+        type = grid
+        displayname = "Returned Goods"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have product
+        (
+            type = lookup
+            displayname = "Product"
+            width = medium
+            mandatory = true
+            formlinkname = product_master
+        )
+
+        must have batch
+        (
+            type = text
+            displayname = "Batch"
+            width = medium
+            mandatory = true
+        )
+
+        must have quantity_received
+        (
+            type = number
+            displayname = "Quantity Received"
+            width = medium
+            mandatory = true
+        )
+
+        must have uom
+        (
+            type = picklist
+            displayname = "UOM"
+            width = medium
+            mandatory = true
+        )
+
+        viability
+        (
+            type = picklist
+            displayname = "Viability"
+            width = medium
+            values = {"Resaleable","Reformulate","Scrap"}
+            notes = "Resaleable / Reformulate / Scrap"
+        )
+    )
+
+    new_batch_id
+    (
+        type = text
+        displayname = "New Batch ID"
+        row = 7
+        column = 1
+        width = medium
+        notes = "Distinct batch"
+    )
+
+    qc_result
+    (
+        type = picklist
+        displayname = "QC Result"
+        row = 8
+        column = 1
+        width = medium
+        values = {"Pass","Fail"}
+        notes = "Pass / Fail"
+    )
+
+    must have pending_quantity
+    (
+        type = number
+        displayname = "Pending Quantity"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    charges
+    (
+        type = grid
+        displayname = "Charges"
+        row = 10
+        column = 1
+        width = medium
+
+        must have charge_type
+        (
+            type = picklist
+            displayname = "Charge Type"
+            width = medium
+            mandatory = true
+            values = {"Job Work","Freight","Loading","Unloading"}
+            notes = "Job Work / Freight / Loading / Unloading"
+        )
+
+        must have amount
+        (
+            type = INR
+            displayname = "Amount"
+            width = medium
+            mandatory = true
+            format = commadotindian
+        )
+
+        tds
+        (
+            type = number
+            displayname = "TDS %"
+            width = medium
+            notes = "Separate rates"
+        )
+
+        must have payable_by
+        (
+            type = picklist
+            displayname = "Payable By"
+            width = medium
+            mandatory = true
+            values = {"Company","Vendor"}
+            notes = "Company / Vendor"
+        )
+    )
+
+    must have status
+    (
+        type = picklist
+        displayname = "Status"
+        row = 11
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Draft","Completed"}
+        notes = "Draft / Completed"
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

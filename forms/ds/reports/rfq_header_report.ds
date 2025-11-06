@@ -1,0 +1,25 @@
+report rfq_header_report
+{
+
+    displayname = "RFQ Header Report"
+    sourceform = rfq_header
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {rfq_no, linked_prs, created_by, creation_date, rfq_mode, rfq_documents, rfq_status, quote_count_expected, skip_rfq_flag, skip_rfq_justification, purchase_manager_approval, approval_attachment, dispatch_eta_updates}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {rfq_no, linked_prs, created_by, creation_date, rfq_mode, rfq_documents, rfq_status, quote_count_expected, skip_rfq_flag, skip_rfq_justification, purchase_manager_approval, approval_attachment, dispatch_eta_updates}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {rfq_no, linked_prs, created_by, creation_date, rfq_mode, rfq_documents, rfq_status, quote_count_expected, skip_rfq_flag, skip_rfq_justification, purchase_manager_approval, approval_attachment, dispatch_eta_updates}
+    )
+}

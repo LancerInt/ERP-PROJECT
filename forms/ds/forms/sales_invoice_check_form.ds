@@ -1,0 +1,176 @@
+// Module: 3. Sales Module
+form sales_invoice_check
+{
+
+    displayname = "Sales Invoice Check"
+    success message = "Sales Invoice Check added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have invoice_check_id
+    (
+        type = autonumber
+        displayname = "Invoice Check ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have dc_reference
+    (
+        type = lookup
+        displayname = "DC Reference"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = dispatch_challan
+    )
+
+    must have statutory_invoice_upload
+    (
+        type = upload file
+        displayname = "Statutory Invoice Upload"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "External invoice"
+    )
+
+    must have invoice_number
+    (
+        type = text
+        displayname = "Invoice Number"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have invoice_date
+    (
+        type = date
+        displayname = "Invoice Date"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have total_value_upload
+    (
+        type = INR
+        displayname = "Total Value (Upload)"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+        format = commadotindian
+        notes = "Parsed"
+    )
+
+    must have total_value_so
+    (
+        type = INR
+        displayname = "Total Value (SO)"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+        format = commadotindian
+        notes = "Computed"
+    )
+
+    must have variance_amount
+    (
+        type = INR
+        displayname = "Variance Amount"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+        format = commadotindian
+    )
+
+    must have variance_flag
+    (
+        type = picklist
+        displayname = "Variance Flag"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Within Tolerance","Requires Review"}
+        notes = "Within Tolerance / Requires Review"
+    )
+
+    remarks
+    (
+        type = textarea
+        displayname = "Remarks"
+        row = 10
+        column = 1
+        width = medium
+    )
+
+    acceptance_timestamp
+    (
+        type = datetime
+        displayname = "Acceptance Timestamp"
+        row = 11
+        column = 1
+        width = medium
+    )
+
+    accepted_by
+    (
+        type = lookup
+        displayname = "Accepted By"
+        row = 12
+        column = 1
+        width = medium
+        formlinkname = stakeholder_user
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

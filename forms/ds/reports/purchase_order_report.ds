@@ -1,0 +1,25 @@
+report purchase_order_report
+{
+
+    displayname = "Purchase Order (PO) Report"
+    sourceform = purchase_order
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {po_no, revision_no, vendor, company, warehouse, linked_prs, linked_rfq, po_date, expected_delivery_start, expected_delivery_end, freight_terms, payment_terms, currency, po_lines, attachments, terms_and_conditions, approval_trail, status, partial_receipt_flag}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {po_no, revision_no, vendor, company, warehouse, linked_prs, linked_rfq, po_date, expected_delivery_start, expected_delivery_end, freight_terms, payment_terms, currency, po_lines, attachments, terms_and_conditions, approval_trail, status, partial_receipt_flag}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {po_no, revision_no, vendor, company, warehouse, linked_prs, linked_rfq, po_date, expected_delivery_start, expected_delivery_end, freight_terms, payment_terms, currency, po_lines, attachments, terms_and_conditions, approval_trail, status, partial_receipt_flag}
+    )
+}

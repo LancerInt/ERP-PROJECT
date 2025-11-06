@@ -1,0 +1,25 @@
+report sales_return_advice_report
+{
+
+    displayname = "Sales Return Advice Report"
+    sourceform = sales_return_advice
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {return_no, return_date, customer, original_invoice, returned_by, received_warehouse, return_lines, freight_terms, freight_charges, loading_unloading_charges, qc_requirement, approval_status, approval_trail, remarks}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {return_no, return_date, customer, original_invoice, returned_by, received_warehouse, return_lines, freight_terms, freight_charges, loading_unloading_charges, qc_requirement, approval_status, approval_trail, remarks}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {return_no, return_date, customer, original_invoice, returned_by, received_warehouse, return_lines, freight_terms, freight_charges, loading_unloading_charges, qc_requirement, approval_status, approval_trail, remarks}
+    )
+}

@@ -1,0 +1,221 @@
+// Module: 1. Core & Shared Masters
+form price_list
+{
+
+    displayname = "Price List"
+    success message = "Price List added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have price_list_id
+    (
+        type = text
+        displayname = "Price List ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have company
+    (
+        type = lookup
+        displayname = "Company"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = company
+    )
+
+    customer
+    (
+        type = lookup
+        displayname = "Customer"
+        row = 3
+        column = 1
+        width = medium
+        formlinkname = customer
+        notes = "Optional if customer-specific"
+    )
+
+    delivery_region
+    (
+        type = picklist
+        displayname = "Delivery Region"
+        row = 4
+        column = 1
+        width = medium
+        notes = "For auto-selection"
+    )
+
+    must have currency
+    (
+        type = picklist
+        displayname = "Currency"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have effective_from
+    (
+        type = date
+        displayname = "Effective From"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    effective_to
+    (
+        type = date
+        displayname = "Effective To"
+        row = 7
+        column = 1
+        width = medium
+    )
+
+    default_freight_terms
+    (
+        type = picklist
+        displayname = "Default Freight Terms"
+        row = 8
+        column = 1
+        width = medium
+        notes = "Overrides customer"
+    )
+
+    must have status
+    (
+        type = picklist
+        displayname = "Status"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Draft","Active","Archived"}
+        notes = "Draft / Active / Archived"
+    )
+
+    must have price_lines
+    (
+        type = grid
+        displayname = "Price Lines"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have product
+        (
+            type = lookup
+            displayname = "Product"
+            width = medium
+            mandatory = true
+            formlinkname = product_master
+        )
+
+        must have uom
+        (
+            type = picklist
+            displayname = "UOM"
+            width = medium
+            mandatory = true
+        )
+
+        must have rate
+        (
+            type = INR
+            displayname = "Rate"
+            width = medium
+            mandatory = true
+            format = commadotindian
+        )
+
+        discount
+        (
+            type = number
+            displayname = "Discount %"
+            width = medium
+        )
+
+        must have gst
+        (
+            type = number
+            displayname = "GST %"
+            width = medium
+            mandatory = true
+        )
+
+        freight_component
+        (
+            type = INR
+            displayname = "Freight Component"
+            width = medium
+            format = commadotindian
+            notes = "Optional"
+        )
+
+        valid_from
+        (
+            type = date
+            displayname = "Valid From"
+            width = medium
+        )
+
+        valid_to
+        (
+            type = date
+            displayname = "Valid To"
+            width = medium
+        )
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 11
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

@@ -1,0 +1,25 @@
+report tax_master_report
+{
+
+    displayname = "Tax Master Report"
+    sourceform = tax_master
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {tax_type, section_reference, rate, effective_from, effective_to, applicable_on, threshold_amount, company_scope, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {tax_type, section_reference, rate, effective_from, effective_to, applicable_on, threshold_amount, company_scope, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {tax_type, section_reference, rate, effective_from, effective_to, applicable_on, threshold_amount, company_scope, notes}
+    )
+}

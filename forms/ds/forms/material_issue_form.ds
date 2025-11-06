@@ -1,0 +1,180 @@
+// Module: 4. Production Module
+form material_issue
+{
+
+    displayname = "Material Issue"
+    success message = "Material Issue added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have issue_no
+    (
+        type = autonumber
+        displayname = "Issue No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have issue_date
+    (
+        type = date
+        displayname = "Issue Date"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have warehouse
+    (
+        type = lookup
+        displayname = "Warehouse"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+    )
+
+    must have work_order
+    (
+        type = lookup
+        displayname = "Work Order"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = work_order_production_batch
+    )
+
+    must have issued_by
+    (
+        type = lookup
+        displayname = "Issued By"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+    )
+
+    approved_by
+    (
+        type = lookup
+        displayname = "Approved By"
+        row = 6
+        column = 1
+        width = medium
+        formlinkname = stakeholder_user
+    )
+
+    must have issue_lines
+    (
+        type = grid
+        displayname = "Issue Lines"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have product
+        (
+            type = lookup
+            displayname = "Product"
+            width = medium
+            mandatory = true
+            formlinkname = product_master
+        )
+
+        must have batch_out
+        (
+            type = text
+            displayname = "Batch Out"
+            width = medium
+            conditional mandatory = true
+            notes = "Required when batch tracking"
+        )
+
+        must have godown
+        (
+            type = lookup
+            displayname = "Godown"
+            width = medium
+            mandatory = true
+            formlinkname = godown
+            notes = "Filtered by issue warehouse"
+        )
+
+        must have quantity_issued
+        (
+            type = number
+            displayname = "Quantity Issued"
+            width = medium
+            mandatory = true
+        )
+
+        must have uom
+        (
+            type = picklist
+            displayname = "UOM"
+            width = medium
+            mandatory = true
+        )
+
+        reserved_for_template
+        (
+            type = checkbox
+            displayname = "Reserved for Template"
+            width = medium
+            notes = "Packing material reservation"
+        )
+    )
+
+    remarks
+    (
+        type = textarea
+        displayname = "Remarks"
+        row = 8
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

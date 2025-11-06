@@ -1,0 +1,146 @@
+// Module: 4. Production Module
+form production_yield_log
+{
+
+    displayname = "Production Yield Log"
+    success message = "Production Yield Log added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have log_id
+    (
+        type = autonumber
+        displayname = "Log ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have work_order
+    (
+        type = lookup
+        displayname = "Work Order"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = work_order_production_batch
+    )
+
+    must have product
+    (
+        type = lookup
+        displayname = "Product"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = product_master
+    )
+
+    planned_yield
+    (
+        type = number
+        displayname = "Planned Yield %"
+        row = 4
+        column = 1
+        width = medium
+    )
+
+    must have actual_output_qty
+    (
+        type = number
+        displayname = "Actual Output Qty"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have purity
+    (
+        type = number
+        displayname = "Purity %"
+        row = 6
+        column = 1
+        width = medium
+        conditional mandatory = true
+    )
+
+    must have ai_content
+    (
+        type = number
+        displayname = "AI Content"
+        row = 7
+        column = 1
+        width = medium
+        conditional mandatory = true
+    )
+
+    must have variance
+    (
+        type = number
+        displayname = "Variance %"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    remarks
+    (
+        type = textarea
+        displayname = "Remarks"
+        row = 9
+        column = 1
+        width = medium
+    )
+
+    must have report_date
+    (
+        type = date
+        displayname = "Report Date"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

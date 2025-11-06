@@ -1,0 +1,158 @@
+// Module: 5. Quality Control Module
+form qc_final_report
+{
+
+    displayname = "QC Final Report"
+    success message = "QC Final Report added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have report_no
+    (
+        type = autonumber
+        displayname = "Report No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have qc_request
+    (
+        type = lookup
+        displayname = "QC Request"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = qc_request
+    )
+
+    must have template_revision
+    (
+        type = number
+        displayname = "Template Revision"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have prepared_by
+    (
+        type = lookup
+        displayname = "Prepared By"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+        notes = "Coordinator or Manager"
+    )
+
+    must have prepared_date
+    (
+        type = date
+        displayname = "Prepared Date"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have overall_result
+    (
+        type = picklist
+        displayname = "Overall Result"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Pass","Fail","Rework"}
+        notes = "Pass / Fail / Rework"
+    )
+
+    remarks
+    (
+        type = textarea
+        displayname = "Remarks"
+        row = 7
+        column = 1
+        width = medium
+    )
+
+    must have digital_signature
+    (
+        type = upload file
+        displayname = "Digital Signature"
+        row = 8
+        column = 1
+        width = medium
+        conditional mandatory = true
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "Required if template demands"
+    )
+
+    distribution_list
+    (
+        type = lookup
+        displayname = "Distribution List"
+        row = 9
+        column = 1
+        width = medium
+        allow multiple = true
+        formlinkname = stakeholder_user
+    )
+
+    attachments
+    (
+        type = upload file
+        displayname = "Attachments"
+        row = 10
+        column = 1
+        width = medium
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "Final COA"
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

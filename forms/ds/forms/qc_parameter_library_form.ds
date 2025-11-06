@@ -1,0 +1,130 @@
+// Module: 5. Quality Control Module
+form qc_parameter_library
+{
+
+    displayname = "QC Parameter Library"
+    success message = "QC Parameter Library added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have parameter_code
+    (
+        type = text
+        displayname = "Parameter Code"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have parameter_name
+    (
+        type = text
+        displayname = "Parameter Name"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    unit
+    (
+        type = text
+        displayname = "Unit"
+        row = 3
+        column = 1
+        width = medium
+    )
+
+    applicable_template
+    (
+        type = lookup
+        displayname = "Applicable Template"
+        row = 4
+        column = 1
+        width = medium
+        formlinkname = template_library
+    )
+
+    applicable_product
+    (
+        type = lookup
+        displayname = "Applicable Product"
+        row = 5
+        column = 1
+        width = medium
+        formlinkname = product_master
+    )
+
+    acceptable_min
+    (
+        type = number
+        displayname = "Acceptable Min"
+        row = 6
+        column = 1
+        width = medium
+    )
+
+    acceptable_max
+    (
+        type = number
+        displayname = "Acceptable Max"
+        row = 7
+        column = 1
+        width = medium
+    )
+
+    critical_flag
+    (
+        type = checkbox
+        displayname = "Critical Flag"
+        row = 8
+        column = 1
+        width = medium
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 9
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

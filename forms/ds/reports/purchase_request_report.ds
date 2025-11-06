@@ -1,0 +1,25 @@
+report purchase_request_report
+{
+
+    displayname = "Purchase Request (PR) Report"
+    sourceform = purchase_request
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {pr_no, request_date, warehouse, godown, requested_by, requestor_role, requirement_type, lines, priority, required_by_date, justification, attachments, approval_status, approval_trail, visibility_scope, created_from_bom_request, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {pr_no, request_date, warehouse, godown, requested_by, requestor_role, requirement_type, lines, priority, required_by_date, justification, attachments, approval_status, approval_trail, visibility_scope, created_from_bom_request, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {pr_no, request_date, warehouse, godown, requested_by, requestor_role, requirement_type, lines, priority, required_by_date, justification, attachments, approval_status, approval_trail, visibility_scope, created_from_bom_request, notes}
+    )
+}

@@ -1,0 +1,385 @@
+// Module: 1. Core & Shared Masters
+form customer
+{
+
+    displayname = "Customer"
+    success message = "Customer added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have customer_code
+    (
+        type = text
+        displayname = "Customer Code"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have customer_name
+    (
+        type = text
+        displayname = "Customer Name"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have company
+    (
+        type = lookup
+        displayname = "Company"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = company
+    )
+
+    must have gstin
+    (
+        type = text
+        displayname = "GSTIN"
+        row = 4
+        column = 1
+        width = medium
+        conditional mandatory = true
+        notes = "Mandatory if taxable"
+    )
+
+    pan
+    (
+        type = text
+        displayname = "PAN"
+        row = 5
+        column = 1
+        width = medium
+    )
+
+    must have billing_address
+    (
+        type = address
+        displayname = "Billing Address"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+        capture_coordinates = true
+        adjust_using_map = false
+        address_line_1
+        (
+            type = address_line_1
+            displayname = "Address Line 1"
+        )
+        address_line_2
+        (
+            type = address_line_2
+            displayname = "Address Line 2"
+        )
+        district_city
+        (
+            type = district_city
+            displayname = "City / District"
+        )
+        state_province
+        (
+            type = state_province
+            displayname = "State / Province"
+        )
+        postal_code
+        (
+            type = postal_code
+            displayname = "Postal Code"
+        )
+        country
+        (
+            type = country
+            displayname = "Country"
+        )
+        latitude
+        (
+            type = latitude
+            displayname = "Latitude"
+            visibility = false
+        )
+        longitude
+        (
+            type = longitude
+            displayname = "Longitude"
+            visibility = false
+        )
+        personal data = true
+    )
+
+    must have shipping_addresses
+    (
+        type = grid
+        displayname = "Shipping Addresses"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have address_label
+        (
+            type = text
+            displayname = "Address Label"
+            width = medium
+            mandatory = true
+        )
+
+        must have address
+        (
+            type = address
+            displayname = "Address"
+            width = medium
+            mandatory = true
+            capture_coordinates = true
+            adjust_using_map = false
+            address_line_1
+            (
+                type = address_line_1
+                displayname = "Address Line 1"
+            )
+            address_line_2
+            (
+                type = address_line_2
+                displayname = "Address Line 2"
+            )
+            district_city
+            (
+                type = district_city
+                displayname = "City / District"
+            )
+            state_province
+            (
+                type = state_province
+                displayname = "State / Province"
+            )
+            postal_code
+            (
+                type = postal_code
+                displayname = "Postal Code"
+            )
+            country
+            (
+                type = country
+                displayname = "Country"
+            )
+            latitude
+            (
+                type = latitude
+                displayname = "Latitude"
+                visibility = false
+            )
+            longitude
+            (
+                type = longitude
+                displayname = "Longitude"
+                visibility = false
+            )
+            personal data = true
+        )
+
+        must have delivery_region
+        (
+            type = picklist
+            displayname = "Delivery Region"
+            width = medium
+            mandatory = true
+            notes = "For price list mapping"
+        )
+
+        default_price_list
+        (
+            type = lookup
+            displayname = "Default Price List"
+            width = medium
+            formlinkname = price_list
+            notes = "Auto-selection"
+        )
+
+        contact_person
+        (
+            type = text
+            displayname = "Contact Person"
+            width = medium
+        )
+
+        contact_phone
+        (
+            type = phonenumber
+            displayname = "Contact Phone"
+            width = medium
+            personal data = true
+        )
+    )
+
+    must have credit_terms
+    (
+        type = picklist
+        displayname = "Credit Terms"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Net 15","Net 30","Net 45","Custom"}
+        notes = "Net 15 / Net 30 / Net 45 / Custom"
+    )
+
+    must have custom_credit_days
+    (
+        type = number
+        displayname = "Custom Credit Days"
+        row = 9
+        column = 1
+        width = medium
+        conditional mandatory = true
+        notes = "Mandatory when Credit Terms = Custom"
+    )
+
+    must have freight_terms
+    (
+        type = picklist
+        displayname = "Freight Terms"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Paid","To_Pay","Mixed"}
+        notes = "Paid / To_Pay / Mixed"
+    )
+
+    freight_split_notes
+    (
+        type = textarea
+        displayname = "Freight Split Notes"
+        row = 11
+        column = 1
+        width = medium
+    )
+
+    must have allowed_price_lists
+    (
+        type = lookup
+        displayname = "Allowed Price Lists"
+        row = 12
+        column = 1
+        width = medium
+        mandatory = true
+        allow multiple = true
+        formlinkname = price_list
+    )
+
+    must have default_warehouse
+    (
+        type = lookup
+        displayname = "Default Warehouse"
+        row = 13
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+    )
+
+    overdue_notification_recipients
+    (
+        type = lookup
+        displayname = "Overdue Notification Recipients"
+        row = 14
+        column = 1
+        width = medium
+        allow multiple = true
+        formlinkname = stakeholder_user
+    )
+
+    contact_person
+    (
+        type = text
+        displayname = "Contact Person"
+        row = 15
+        column = 1
+        width = medium
+    )
+
+    contact_email
+    (
+        type = email
+        displayname = "Contact Email"
+        row = 16
+        column = 1
+        width = medium
+        personal data = true
+    )
+
+    contact_phone
+    (
+        type = phonenumber
+        displayname = "Contact Phone"
+        row = 17
+        column = 1
+        width = medium
+        personal data = true
+    )
+
+    documents
+    (
+        type = upload file
+        displayname = "Documents"
+        row = 18
+        column = 1
+        width = medium
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "Contracts"
+    )
+
+    must have active_flag
+    (
+        type = checkbox
+        displayname = "Active Flag"
+        row = 19
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

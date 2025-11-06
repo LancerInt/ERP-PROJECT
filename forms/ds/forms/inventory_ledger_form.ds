@@ -1,0 +1,201 @@
+// Module: 6. Inventory, Logistics & Returns
+form inventory_ledger
+{
+
+    displayname = "Inventory Ledger"
+    success message = "Inventory Ledger added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have ledger_entry_id
+    (
+        type = autonumber
+        displayname = "Ledger Entry ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have transaction_date
+    (
+        type = date
+        displayname = "Transaction Date"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have warehouse
+    (
+        type = lookup
+        displayname = "Warehouse"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+    )
+
+    must have godown
+    (
+        type = lookup
+        displayname = "Godown"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = godown
+        notes = "Stock location"
+    )
+
+    must have product
+    (
+        type = lookup
+        displayname = "Product"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = product_master
+    )
+
+    batch
+    (
+        type = text
+        displayname = "Batch"
+        row = 6
+        column = 1
+        width = medium
+    )
+
+    quantity_in
+    (
+        type = number
+        displayname = "Quantity In"
+        row = 7
+        column = 1
+        width = medium
+    )
+
+    quantity_out
+    (
+        type = number
+        displayname = "Quantity Out"
+        row = 8
+        column = 1
+        width = medium
+    )
+
+    must have uom
+    (
+        type = picklist
+        displayname = "UOM"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have transaction_type
+    (
+        type = picklist
+        displayname = "Transaction Type"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Receipt","Issue","Transfer","Adjustment","Dispatch"}
+        notes = "Receipt / Issue / Transfer / Adjustment / Dispatch"
+    )
+
+    must have source_document
+    (
+        type = lookup
+        displayname = "Source Document"
+        row = 11
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = purchase_order
+    )
+
+    cost
+    (
+        type = INR
+        displayname = "Cost"
+        row = 12
+        column = 1
+        width = medium
+        format = commadotindian
+    )
+
+    must have status
+    (
+        type = picklist
+        displayname = "Status"
+        row = 13
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Available","In Transit","Reserved"}
+        notes = "Available / In Transit / Reserved"
+    )
+
+    fifo_layer_id
+    (
+        type = text
+        displayname = "FIFO Layer ID"
+        row = 14
+        column = 1
+        width = medium
+        notes = "Valuation"
+    )
+
+    remarks
+    (
+        type = textarea
+        displayname = "Remarks"
+        row = 15
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

@@ -1,0 +1,25 @@
+report quote_evaluation_report
+{
+
+    displayname = "Quote Evaluation Report"
+    sourceform = quote_evaluation
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {evaluation_id, rfq, evaluation_date, evaluated_by, comparison_table, best_quote_flag, recommended_vendor, justification_notes, approval_status, approval_trail}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {evaluation_id, rfq, evaluation_date, evaluated_by, comparison_table, best_quote_flag, recommended_vendor, justification_notes, approval_status, approval_trail}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {evaluation_id, rfq, evaluation_date, evaluated_by, comparison_table, best_quote_flag, recommended_vendor, justification_notes, approval_status, approval_trail}
+    )
+}

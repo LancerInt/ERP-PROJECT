@@ -1,0 +1,25 @@
+report po_eta_update_report
+{
+
+    displayname = "PO ETA Update (Anticipated Arrival) Report"
+    sourceform = po_eta_update
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {update_id, po, update_date, updated_by, expected_arrival_date, status, remarks}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {update_id, po, update_date, updated_by, expected_arrival_date, status, remarks}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {update_id, po, update_date, updated_by, expected_arrival_date, status, remarks}
+    )
+}

@@ -1,0 +1,25 @@
+report job_work_dc_report
+{
+
+    displayname = "Job Work DC Report"
+    sourceform = job_work_dc
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {jw_dc_no, job_work_order, vendor, dispatch_date, transporter, freight_terms, issued_materials, documents, status}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {jw_dc_no, job_work_order, vendor, dispatch_date, transporter, freight_terms, issued_materials, documents, status}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {jw_dc_no, job_work_order, vendor, dispatch_date, transporter, freight_terms, issued_materials, documents, status}
+    )
+}

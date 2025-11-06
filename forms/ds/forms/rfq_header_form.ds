@@ -1,0 +1,220 @@
+// Module: 2. Purchase Module
+form rfq_header
+{
+
+    displayname = "RFQ Header"
+    success message = "RFQ Header added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have rfq_no
+    (
+        type = autonumber
+        displayname = "RFQ No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have linked_prs
+    (
+        type = lookup
+        displayname = "Linked PRs"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        allow multiple = true
+        formlinkname = purchase_request
+    )
+
+    must have created_by
+    (
+        type = lookup
+        displayname = "Created By"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+    )
+
+    must have creation_date
+    (
+        type = date
+        displayname = "Creation Date"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have rfq_mode
+    (
+        type = picklist
+        displayname = "RFQ Mode"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Email","Portal","Phone"}
+        notes = "Email / Portal / Phone"
+    )
+
+    rfq_documents
+    (
+        type = upload file
+        displayname = "RFQ Documents"
+        row = 6
+        column = 1
+        width = medium
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "Specs"
+    )
+
+    must have rfq_status
+    (
+        type = picklist
+        displayname = "RFQ Status"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Open","Closed","Cancelled"}
+        notes = "Open / Closed / Cancelled"
+    )
+
+    quote_count_expected
+    (
+        type = number
+        displayname = "Quote Count Expected"
+        row = 8
+        column = 1
+        width = medium
+        notes = "Typically 3"
+    )
+
+    skip_rfq_flag
+    (
+        type = checkbox
+        displayname = "Skip RFQ Flag"
+        row = 9
+        column = 1
+        width = medium
+        notes = "Requires purchase manager approval"
+    )
+
+    must have skip_rfq_justification
+    (
+        type = textarea
+        displayname = "Skip RFQ Justification"
+        row = 10
+        column = 1
+        width = medium
+        conditional mandatory = true
+        notes = "Mandatory when skip flag = true"
+    )
+
+    purchase_manager_approval
+    (
+        type = lookup
+        displayname = "Purchase Manager Approval"
+        row = 11
+        column = 1
+        width = medium
+        formlinkname = stakeholder_user
+    )
+
+    approval_attachment
+    (
+        type = upload file
+        displayname = "Approval Attachment"
+        row = 12
+        column = 1
+        width = medium
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+    )
+
+    dispatch_eta_updates
+    (
+        type = grid
+        displayname = "Dispatch ETA Updates"
+        row = 13
+        column = 1
+        width = medium
+
+        must have update_date
+        (
+            type = datetime
+            displayname = "Update Date"
+            width = medium
+            mandatory = true
+        )
+
+        must have updated_by
+        (
+            type = lookup
+            displayname = "Updated By"
+            width = medium
+            mandatory = true
+            formlinkname = stakeholder_user
+        )
+
+        must have expected_arrival
+        (
+            type = date
+            displayname = "Expected Arrival"
+            width = medium
+            mandatory = true
+        )
+
+        remarks
+        (
+            type = textarea
+            displayname = "Remarks"
+            width = medium
+        )
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

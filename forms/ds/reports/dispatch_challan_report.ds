@@ -1,0 +1,25 @@
+report dispatch_challan_report
+{
+
+    displayname = "Dispatch Challan (DC) Report"
+    sourceform = dispatch_challan
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {dc_no, warehouse, dispatch_date, transporter, freight_rate_type, freight_rate_value, freight_amount_total, lorry_no, driver_contact, linked_so_lines, dc_lines, delivery_locations, documents, status, created_by, freight_advice_link}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {dc_no, warehouse, dispatch_date, transporter, freight_rate_type, freight_rate_value, freight_amount_total, lorry_no, driver_contact, linked_so_lines, dc_lines, delivery_locations, documents, status, created_by, freight_advice_link}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {dc_no, warehouse, dispatch_date, transporter, freight_rate_type, freight_rate_value, freight_amount_total, lorry_no, driver_contact, linked_so_lines, dc_lines, delivery_locations, documents, status, created_by, freight_advice_link}
+    )
+}

@@ -1,0 +1,25 @@
+report payment_advice_workflow_report
+{
+
+    displayname = "Payment Advice Workflow Report"
+    sourceform = payment_advice_workflow
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {advice_no, beneficiary_type, beneficiary, source_document, amount, tds_tcs_details, due_date, payment_method, bank_account, prepared_by, prepared_date, finance_manager_approval, office_manager_authorization, payment_status, payment_reference, attachments}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {advice_no, beneficiary_type, beneficiary, source_document, amount, tds_tcs_details, due_date, payment_method, bank_account, prepared_by, prepared_date, finance_manager_approval, office_manager_authorization, payment_status, payment_reference, attachments}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {advice_no, beneficiary_type, beneficiary, source_document, amount, tds_tcs_details, due_date, payment_method, bank_account, prepared_by, prepared_date, finance_manager_approval, office_manager_authorization, payment_status, payment_reference, attachments}
+    )
+}

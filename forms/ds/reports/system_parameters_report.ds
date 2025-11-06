@@ -1,0 +1,25 @@
+report system_parameters_report
+{
+
+    displayname = "System Parameters Report"
+    sourceform = system_parameters
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {parameter_name, parameter_value, module_scope, description, last_updated_by, effective_date}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {parameter_name, parameter_value, module_scope, description, last_updated_by, effective_date}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {parameter_name, parameter_value, module_scope, description, last_updated_by, effective_date}
+    )
+}

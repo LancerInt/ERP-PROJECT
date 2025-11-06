@@ -1,0 +1,25 @@
+report product_master_report
+{
+
+    displayname = "Product Master Report"
+    sourceform = product_master
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {sku_code, product_name, product_type, goods_sub_type, service_sub_type, custom_service_category, description, batch_tracking_required, shelf_life_days, qc_responsibility, qc_template, uom, secondary_uoms, specific_gravity, conversion_notes, packing_material_default, yield_tracking_required, yield_parameters, wage_method, freight_class, active_flag, created_by, created_date, last_modified_by, last_modified_date}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {sku_code, product_name, product_type, goods_sub_type, service_sub_type, custom_service_category, description, batch_tracking_required, shelf_life_days, qc_responsibility, qc_template, uom, secondary_uoms, specific_gravity, conversion_notes, packing_material_default, yield_tracking_required, yield_parameters, wage_method, freight_class, active_flag, created_by, created_date, last_modified_by, last_modified_date}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {sku_code, product_name, product_type, goods_sub_type, service_sub_type, custom_service_category, description, batch_tracking_required, shelf_life_days, qc_responsibility, qc_template, uom, secondary_uoms, specific_gravity, conversion_notes, packing_material_default, yield_tracking_required, yield_parameters, wage_method, freight_class, active_flag, created_by, created_date, last_modified_by, last_modified_date}
+    )
+}

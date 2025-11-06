@@ -1,0 +1,266 @@
+// Module: 4. Production Module
+form wage_voucher
+{
+
+    displayname = "Wage Voucher (Production)"
+    success message = "Wage Voucher (Production) added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have voucher_no
+    (
+        type = autonumber
+        displayname = "Voucher No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have work_order
+    (
+        type = lookup
+        displayname = "Work Order"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = work_order_production_batch
+    )
+
+    must have wage_type
+    (
+        type = picklist
+        displayname = "Wage Type"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Template Rate","Headcount"}
+        notes = "Template Rate / Headcount"
+    )
+
+    must have contractor_vendor
+    (
+        type = lookup
+        displayname = "Contractor Vendor"
+        row = 4
+        column = 1
+        width = medium
+        conditional mandatory = true
+        formlinkname = vendor
+        notes = "Mandatory for contractor"
+    )
+
+    must have staff_group
+    (
+        type = lookup
+        displayname = "Staff Group"
+        row = 5
+        column = 1
+        width = medium
+        conditional mandatory = true
+        allow multiple = true
+        formlinkname = staff_master
+        notes = "Mandatory for headcount"
+    )
+
+    must have hours_tasks
+    (
+        type = grid
+        displayname = "Hours / Tasks"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+
+        staff
+        (
+            type = lookup
+            displayname = "Staff"
+            width = medium
+            formlinkname = staff_master
+            notes = "Required for headcount"
+        )
+
+        must have task_description
+        (
+            type = textarea
+            displayname = "Task Description"
+            width = medium
+            mandatory = true
+        )
+
+        hours_worked
+        (
+            type = number
+            displayname = "Hours Worked"
+            width = medium
+        )
+
+        quantity_produced
+        (
+            type = number
+            displayname = "Quantity Produced"
+            width = medium
+            notes = "For incentive"
+        )
+    )
+
+    must have amount
+    (
+        type = INR
+        displayname = "Amount"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+        format = commadotindian
+    )
+
+    tds
+    (
+        type = number
+        displayname = "TDS %"
+        row = 8
+        column = 1
+        width = medium
+    )
+
+    must have prepared_by
+    (
+        type = lookup
+        displayname = "Prepared By"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+        notes = "Warehouse Coordinator (Office) originator"
+    )
+
+    must have prepared_date
+    (
+        type = date
+        displayname = "Prepared Date"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have approval_workflow
+    (
+        type = grid
+        displayname = "Approval Workflow"
+        row = 11
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have stage
+        (
+            type = picklist
+            displayname = "Stage"
+            width = medium
+            mandatory = true
+            values = {"Draft Review","Finance Manager Review","Office Manager Authorization"}
+            notes = "Draft Review / Finance Manager Review / Office Manager Authorization"
+        )
+
+        must have approver
+        (
+            type = lookup
+            displayname = "Approver"
+            width = medium
+            mandatory = true
+            formlinkname = stakeholder_user
+            notes = "Approving stakeholder"
+        )
+
+        must have decision
+        (
+            type = picklist
+            displayname = "Decision"
+            width = medium
+            mandatory = true
+            values = {"Pending","Approved","Rejected"}
+            notes = "Pending / Approved / Rejected"
+        )
+
+        must have decision_date
+        (
+            type = datetime
+            displayname = "Decision Date"
+            width = medium
+            conditional mandatory = true
+            notes = "Required when decision is approved/rejected"
+        )
+
+        remarks
+        (
+            type = textarea
+            displayname = "Remarks"
+            width = medium
+            notes = "Approval comments"
+        )
+    )
+
+    must have status
+    (
+        type = picklist
+        displayname = "Status"
+        row = 12
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Draft","Pending","Approved","Paid"}
+        notes = "Draft / Pending / Approved / Paid"
+    )
+
+    remarks
+    (
+        type = textarea
+        displayname = "Remarks"
+        row = 13
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

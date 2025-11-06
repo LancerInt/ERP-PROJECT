@@ -1,1 +1,31 @@
-Hi! 
+# ERP Project Sandbox
+
+This repository provides scaffolding assets for configuring our Zoho Creator based ERP.
+
+## Contents
+
+- `data/zia_master_form_prompts.md` — sequential Zoho Zia prompts for building all master/reference forms.
+- `data/zia_phase1_form_prompts.md` — Zoho Zia prompts covering every Phase 1 procure-to-pay and inventory transaction form.
+- `forms/ds/forms/` — per-form Deluge (`.ds`) definitions generated from the data model catalogue (one file per form) using the Final_All_Field_Types template structure (section blocks, `must have` prefixes, wrapped tables, and action controls).
+- `forms/ds/reports/` — companion list report scripts that mirror each form's field set across list, quick, and detail views in the same template style.
+- `scripts/render_data_models_pdf.sh` — Pandoc helper that produces a professionally formatted PDF of the detailed data model catalogue.
+- `scripts/generate_creator_ds_forms.py` — converter that regenerates the `.ds` form library straight from the data model catalogue.
+
+## Usage
+
+1. Use the master-form or Phase 1 Zia prompt packs in `data/` to seed the Creator forms quickly.
+2. Refer to `docs/data-models/zoho_creator_data_models.md` for the authoritative field definitions, link-name mappings, and validation guidance.
+3. Import the required form and report pairs from `forms/ds/forms/` and `forms/ds/reports/` (the filenames share the same link name prefix). The scripts already include sections, grid/subform definitions, upload limits, `allow multiple` flags, and lookup mappings so they can be dropped directly into Zoho Creator.
+4. Run `scripts/generate_creator_ds_forms.py` whenever the data model changes to refresh the `.ds` library, and `scripts/render_data_models_pdf.sh` (after installing Pandoc and a PDF engine) when you need an offline reference copy of the data model catalogue.
+
+> **Tip:** Supply `PDF_ENGINE=wkhtmltopdf` (or another installed engine) when your environment lacks LaTeX tooling.
+
+## Documentation Map
+
+- `docs/overview/` — high-level blueprint and organisational hierarchy.
+- `docs/process/` — module flowcharts and master form build guides.
+- `docs/data-models/` — detailed field catalogues and ERD references.
+- `docs/implementation/` — phased rollout playbooks (including Phase 0 and Phase 1).
+- `docs/governance/` — security, integration, and change enablement playbooks.
+- `docs/setup/` — repository and scaffolding guidance for Zoho Creator exports.
+

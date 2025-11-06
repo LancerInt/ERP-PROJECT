@@ -1,0 +1,225 @@
+// Module: 6. Inventory, Logistics & Returns
+form stock_transfer_dc
+{
+
+    displayname = "Stock Transfer DC"
+    success message = "Stock Transfer DC added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have transfer_no
+    (
+        type = autonumber
+        displayname = "Transfer No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have created_date
+    (
+        type = date
+        displayname = "Created Date"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have from_warehouse
+    (
+        type = lookup
+        displayname = "From Warehouse"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+    )
+
+    must have to_warehouse
+    (
+        type = lookup
+        displayname = "To Warehouse"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+    )
+
+    dispatch_date
+    (
+        type = date
+        displayname = "Dispatch Date"
+        row = 5
+        column = 1
+        width = medium
+    )
+
+    transporter
+    (
+        type = lookup
+        displayname = "Transporter"
+        row = 6
+        column = 1
+        width = medium
+        formlinkname = transporter
+    )
+
+    must have freight_terms
+    (
+        type = picklist
+        displayname = "Freight Terms"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    loading_wages
+    (
+        type = INR
+        displayname = "Loading Wages"
+        row = 8
+        column = 1
+        width = medium
+        format = commadotindian
+    )
+
+    freight_amount
+    (
+        type = INR
+        displayname = "Freight Amount"
+        row = 9
+        column = 1
+        width = medium
+        format = commadotindian
+    )
+
+    must have transfer_lines
+    (
+        type = grid
+        displayname = "Transfer Lines"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have product
+        (
+            type = lookup
+            displayname = "Product"
+            width = medium
+            mandatory = true
+            formlinkname = product_master
+        )
+
+        must have batch
+        (
+            type = text
+            displayname = "Batch"
+            width = medium
+            conditional mandatory = true
+        )
+
+        must have quantity
+        (
+            type = number
+            displayname = "Quantity"
+            width = medium
+            mandatory = true
+        )
+
+        must have uom
+        (
+            type = picklist
+            displayname = "UOM"
+            width = medium
+            mandatory = true
+        )
+
+        must have source_godown
+        (
+            type = lookup
+            displayname = "Source Godown"
+            width = medium
+            mandatory = true
+            formlinkname = godown
+            notes = "Origin location"
+        )
+
+        must have destination_godown
+        (
+            type = lookup
+            displayname = "Destination Godown"
+            width = medium
+            mandatory = true
+            formlinkname = godown
+            notes = "Receiving location"
+        )
+    )
+
+    must have status
+    (
+        type = picklist
+        displayname = "Status"
+        row = 11
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Draft","In Transit","Received","Closed"}
+        notes = "Draft / In Transit / Received / Closed"
+    )
+
+    documents
+    (
+        type = upload file
+        displayname = "Documents"
+        row = 12
+        column = 1
+        width = medium
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "DC"
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

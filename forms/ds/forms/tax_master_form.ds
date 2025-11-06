@@ -1,0 +1,138 @@
+// Module: 1. Core & Shared Masters
+form tax_master
+{
+
+    displayname = "Tax Master"
+    success message = "Tax Master added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have tax_type
+    (
+        type = picklist
+        displayname = "Tax Type"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"GST","TDS","TCS"}
+        notes = "GST / TDS / TCS"
+    )
+
+    section_reference
+    (
+        type = text
+        displayname = "Section Reference"
+        row = 2
+        column = 1
+        width = medium
+    )
+
+    must have rate
+    (
+        type = number
+        displayname = "Rate %"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have effective_from
+    (
+        type = date
+        displayname = "Effective From"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    effective_to
+    (
+        type = date
+        displayname = "Effective To"
+        row = 5
+        column = 1
+        width = medium
+    )
+
+    must have applicable_on
+    (
+        type = list
+        displayname = "Applicable On"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Product","Service","Freight","Wage"}
+        allow multiple = true
+        notes = "Product / Service / Freight / Wage"
+    )
+
+    threshold_amount
+    (
+        type = INR
+        displayname = "Threshold Amount"
+        row = 7
+        column = 1
+        width = medium
+        format = commadotindian
+    )
+
+    must have company_scope
+    (
+        type = lookup
+        displayname = "Company Scope"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = company
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 9
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

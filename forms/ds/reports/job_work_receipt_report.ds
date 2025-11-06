@@ -1,0 +1,25 @@
+report job_work_receipt_report
+{
+
+    displayname = "Job Work Receipt Report"
+    sourceform = job_work_receipt
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {receipt_no, receipt_date, job_work_order, jw_dc_reference, vendor, returned_goods, new_batch_id, qc_result, pending_quantity, charges, status}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {receipt_no, receipt_date, job_work_order, jw_dc_reference, vendor, returned_goods, new_batch_id, qc_result, pending_quantity, charges, status}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {receipt_no, receipt_date, job_work_order, jw_dc_reference, vendor, returned_goods, new_batch_id, qc_result, pending_quantity, charges, status}
+    )
+}

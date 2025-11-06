@@ -1,0 +1,25 @@
+report qc_lab_job_report
+{
+
+    displayname = "QC Lab Job Report"
+    sourceform = qc_lab_job
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {job_no, qc_request, analyst, assigned_parameters, sample_received_date, results_attachment, comments, status}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {job_no, qc_request, analyst, assigned_parameters, sample_received_date, results_attachment, comments, status}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {job_no, qc_request, analyst, assigned_parameters, sample_received_date, results_attachment, comments, status}
+    )
+}

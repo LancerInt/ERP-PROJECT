@@ -1,0 +1,25 @@
+report shift_definition_report
+{
+
+    displayname = "Shift Definition Report"
+    sourceform = shift_definition
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {shift_code, warehouse, shift_name, start_time, end_time, break_duration_mins, overtime_eligibility, attendance_calculation_rule, grace_period_minutes, approval_required}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {shift_code, warehouse, shift_name, start_time, end_time, break_duration_mins, overtime_eligibility, attendance_calculation_rule, grace_period_minutes, approval_required}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {shift_code, warehouse, shift_name, start_time, end_time, break_duration_mins, overtime_eligibility, attendance_calculation_rule, grace_period_minutes, approval_required}
+    )
+}

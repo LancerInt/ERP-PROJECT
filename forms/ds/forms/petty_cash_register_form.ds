@@ -1,0 +1,163 @@
+// Module: 7. Finance Module
+form petty_cash_register
+{
+
+    displayname = "Petty Cash Register"
+    success message = "Petty Cash Register added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have register_id
+    (
+        type = autonumber
+        displayname = "Register ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have warehouse
+    (
+        type = lookup
+        displayname = "Warehouse"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+    )
+
+    must have coordinator
+    (
+        type = lookup
+        displayname = "Coordinator"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+    )
+
+    must have opening_balance
+    (
+        type = INR
+        displayname = "Opening Balance"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        format = commadotindian
+    )
+
+    must have transactions
+    (
+        type = grid
+        displayname = "Transactions"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have transaction_date
+        (
+            type = date
+            displayname = "Transaction Date"
+            width = medium
+            mandatory = true
+        )
+
+        must have voucher_reference
+        (
+            type = lookup
+            displayname = "Voucher Reference"
+            width = medium
+            mandatory = true
+            formlinkname = vendor_payment_advice
+        )
+
+        must have amount
+        (
+            type = INR
+            displayname = "Amount"
+            width = medium
+            mandatory = true
+            format = commadotindian
+        )
+
+        must have type
+        (
+            type = picklist
+            displayname = "Type"
+            width = medium
+            mandatory = true
+            values = {"Advance","Settlement"}
+            notes = "Advance / Settlement"
+        )
+
+        notes
+        (
+            type = textarea
+            displayname = "Notes"
+            width = medium
+        )
+    )
+
+    must have current_balance
+    (
+        type = INR
+        displayname = "Current Balance"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+        format = commadotindian
+        notes = "Auto-calculated"
+    )
+
+    last_reconciled_date
+    (
+        type = date
+        displayname = "Last Reconciled Date"
+        row = 7
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

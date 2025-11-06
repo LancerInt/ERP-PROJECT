@@ -1,0 +1,238 @@
+// Module: 2. Purchase Module
+form quote_evaluation
+{
+
+    displayname = "Quote Evaluation"
+    success message = "Quote Evaluation added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have evaluation_id
+    (
+        type = autonumber
+        displayname = "Evaluation ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have rfq
+    (
+        type = lookup
+        displayname = "RFQ"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = rfq_header
+    )
+
+    must have evaluation_date
+    (
+        type = date
+        displayname = "Evaluation Date"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have evaluated_by
+    (
+        type = lookup
+        displayname = "Evaluated By"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+    )
+
+    must have comparison_table
+    (
+        type = grid
+        displayname = "Comparison Table"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have vendor
+        (
+            type = lookup
+            displayname = "Vendor"
+            width = medium
+            mandatory = true
+            formlinkname = vendor
+        )
+
+        must have total_cost
+        (
+            type = INR
+            displayname = "Total Cost"
+            width = medium
+            mandatory = true
+            format = commadotindian
+            notes = "Sum of lines"
+        )
+
+        lead_time
+        (
+            type = number
+            displayname = "Lead Time"
+            width = medium
+        )
+
+        freight_terms
+        (
+            type = picklist
+            displayname = "Freight Terms"
+            width = medium
+        )
+
+        payment_terms
+        (
+            type = picklist
+            displayname = "Payment Terms"
+            width = medium
+        )
+
+        score
+        (
+            type = number
+            displayname = "Score"
+            width = medium
+            notes = "Weighted"
+        )
+
+        remarks
+        (
+            type = textarea
+            displayname = "Remarks"
+            width = medium
+        )
+    )
+
+    best_quote_flag
+    (
+        type = checkbox
+        displayname = "Best Quote Flag"
+        row = 6
+        column = 1
+        width = medium
+    )
+
+    recommended_vendor
+    (
+        type = lookup
+        displayname = "Recommended Vendor"
+        row = 7
+        column = 1
+        width = medium
+        formlinkname = vendor
+    )
+
+    must have justification_notes
+    (
+        type = textarea
+        displayname = "Justification Notes"
+        row = 8
+        column = 1
+        width = medium
+        conditional mandatory = true
+        notes = "Mandatory when best quote not chosen"
+    )
+
+    must have approval_status
+    (
+        type = picklist
+        displayname = "Approval Status"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Pending","Approved","Rejected"}
+        notes = "Pending / Approved / Rejected"
+    )
+
+    approval_trail
+    (
+        type = grid
+        displayname = "Approval Trail"
+        row = 10
+        column = 1
+        width = medium
+
+        must have action
+        (
+            type = picklist
+            displayname = "Action"
+            width = medium
+            mandatory = true
+            values = {"Approved","Rejected","Partial"}
+            notes = "Approved / Rejected / Partial"
+        )
+
+        must have actor
+        (
+            type = lookup
+            displayname = "Actor"
+            width = medium
+            mandatory = true
+            formlinkname = stakeholder_user
+        )
+
+        must have action_date
+        (
+            type = datetime
+            displayname = "Action Date"
+            width = medium
+            mandatory = true
+        )
+
+        remarks
+        (
+            type = textarea
+            displayname = "Remarks"
+            width = medium
+        )
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

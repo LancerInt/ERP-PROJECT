@@ -1,0 +1,25 @@
+report stakeholder_user_report
+{
+
+    displayname = "Stakeholder User Report"
+    sourceform = stakeholder_user
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {portal_user_id, employee_record, primary_email, mobile, assigned_roles, default_warehouse, warehouse_scope, status, last_accessed, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {portal_user_id, employee_record, primary_email, mobile, assigned_roles, default_warehouse, warehouse_scope, status, last_accessed, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {portal_user_id, employee_record, primary_email, mobile, assigned_roles, default_warehouse, warehouse_scope, status, last_accessed, notes}
+    )
+}

@@ -1,0 +1,151 @@
+// Module: 1. Core & Shared Masters
+form godown
+{
+
+    displayname = "Godown"
+    success message = "Godown added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have godown_code
+    (
+        type = text
+        displayname = "Godown Code"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        unique = true
+        notes = "Unique within company"
+    )
+
+    must have warehouse
+    (
+        type = lookup
+        displayname = "Warehouse"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+        notes = "Owning warehouse"
+    )
+
+    must have godown_name
+    (
+        type = text
+        displayname = "Godown Name"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Display name"
+    )
+
+    storage_condition
+    (
+        type = picklist
+        displayname = "Storage Condition"
+        row = 4
+        column = 1
+        width = medium
+        values = {"Ambient","Cold","Hazardous"}
+        notes = "Ambient / Cold / Hazardous"
+    )
+
+    capacity_uom
+    (
+        type = picklist
+        displayname = "Capacity UOM"
+        row = 5
+        column = 1
+        width = medium
+    )
+
+    capacity_value
+    (
+        type = number
+        displayname = "Capacity Value"
+        row = 6
+        column = 1
+        width = medium
+        notes = "Maximum storage capacity"
+    )
+
+    must have batch_tracking_enabled
+    (
+        type = checkbox
+        displayname = "Batch Tracking Enabled"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Controls batch-level location"
+    )
+
+    default_qc_hold_area
+    (
+        type = checkbox
+        displayname = "Default QC Hold Area"
+        row = 8
+        column = 1
+        width = medium
+        notes = "Flags quarantine locations"
+    )
+
+    must have active_flag
+    (
+        type = checkbox
+        displayname = "Active Flag"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Hide from selection when inactive"
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 10
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

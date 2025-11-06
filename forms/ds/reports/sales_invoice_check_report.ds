@@ -1,0 +1,25 @@
+report sales_invoice_check_report
+{
+
+    displayname = "Sales Invoice Check Report"
+    sourceform = sales_invoice_check
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {invoice_check_id, dc_reference, statutory_invoice_upload, invoice_number, invoice_date, total_value_upload, total_value_so, variance_amount, variance_flag, remarks, acceptance_timestamp, accepted_by}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {invoice_check_id, dc_reference, statutory_invoice_upload, invoice_number, invoice_date, total_value_upload, total_value_so, variance_amount, variance_flag, remarks, acceptance_timestamp, accepted_by}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {invoice_check_id, dc_reference, statutory_invoice_upload, invoice_number, invoice_date, total_value_upload, total_value_so, variance_amount, variance_flag, remarks, acceptance_timestamp, accepted_by}
+    )
+}

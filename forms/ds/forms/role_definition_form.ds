@@ -1,0 +1,154 @@
+// Module: 1. Core & Shared Masters
+form role_definition
+{
+
+    displayname = "Role Definition"
+    success message = "Role Definition added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have role_code
+    (
+        type = text
+        displayname = "Role Code"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Unique role identifier"
+    )
+
+    must have role_name
+    (
+        type = text
+        displayname = "Role Name"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have module_permissions
+    (
+        type = textarea
+        displayname = "Module Permissions"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "CRUD/approval rights per module"
+    )
+
+    must have data_scope
+    (
+        type = picklist
+        displayname = "Data Scope"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Global","Company","Warehouse"}
+        notes = "Global / Company / Warehouse"
+    )
+
+    approval_levels
+    (
+        type = grid
+        displayname = "Approval Levels"
+        row = 5
+        column = 1
+        width = medium
+
+        must have module
+        (
+            type = picklist
+            displayname = "Module"
+            width = medium
+            mandatory = true
+            notes = "Purchase / Sales / Production / etc."
+        )
+
+        must have stage
+        (
+            type = picklist
+            displayname = "Stage"
+            width = medium
+            mandatory = true
+            values = {"Request","Evaluation","Payment"}
+            notes = "Request / Evaluation / Payment"
+        )
+
+        min_amount
+        (
+            type = INR
+            displayname = "Min Amount"
+            width = medium
+            format = commadotindian
+            notes = "Threshold"
+        )
+
+        max_amount
+        (
+            type = INR
+            displayname = "Max Amount"
+            width = medium
+            format = commadotindian
+        )
+    )
+
+    default_share_rules
+    (
+        type = textarea
+        displayname = "Default Share Rules"
+        row = 6
+        column = 1
+        width = medium
+        notes = "Creator share settings template"
+    )
+
+    must have active_flag
+    (
+        type = checkbox
+        displayname = "Active Flag"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

@@ -1,0 +1,25 @@
+report sales_order_report
+{
+
+    displayname = "Sales Order (SO) Report"
+    sourceform = sales_order
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {so_no, customer, company, warehouse, price_list, credit_terms, freight_terms, customer_po_reference, so_date, required_ship_date, lines, remarks, approval_status, approved_by, approval_date, assigned_warehouse_stakeholders}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {so_no, customer, company, warehouse, price_list, credit_terms, freight_terms, customer_po_reference, so_date, required_ship_date, lines, remarks, approval_status, approved_by, approval_date, assigned_warehouse_stakeholders}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {so_no, customer, company, warehouse, price_list, credit_terms, freight_terms, customer_po_reference, so_date, required_ship_date, lines, remarks, approval_status, approved_by, approval_date, assigned_warehouse_stakeholders}
+    )
+}

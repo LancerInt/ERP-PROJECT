@@ -1,0 +1,163 @@
+// Module: 5. Quality Control Module
+form counter_sample_register
+{
+
+    displayname = "Counter Sample Register"
+    success message = "Counter Sample Register added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have sample_id
+    (
+        type = autonumber
+        displayname = "Sample ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have qc_request
+    (
+        type = lookup
+        displayname = "QC Request"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = qc_request
+    )
+
+    must have storage_location
+    (
+        type = picklist
+        displayname = "Storage Location"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Warehouse","QC Lab"}
+        notes = "Warehouse / QC Lab"
+    )
+
+    shelf
+    (
+        type = text
+        displayname = "Shelf"
+        row = 4
+        column = 1
+        width = medium
+    )
+
+    bin
+    (
+        type = text
+        displayname = "Bin"
+        row = 5
+        column = 1
+        width = medium
+    )
+
+    issued_to
+    (
+        type = lookup
+        displayname = "Issued To"
+        row = 6
+        column = 1
+        width = medium
+        formlinkname = stakeholder_user
+    )
+
+    issue_date
+    (
+        type = date
+        displayname = "Issue Date"
+        row = 7
+        column = 1
+        width = medium
+    )
+
+    expected_return_date
+    (
+        type = date
+        displayname = "Expected Return Date"
+        row = 8
+        column = 1
+        width = medium
+    )
+
+    actual_return_date
+    (
+        type = date
+        displayname = "Actual Return Date"
+        row = 9
+        column = 1
+        width = medium
+    )
+
+    reminder_sent
+    (
+        type = checkbox
+        displayname = "Reminder Sent"
+        row = 10
+        column = 1
+        width = medium
+        notes = "Auto-reminder"
+    )
+
+    disposal_date
+    (
+        type = date
+        displayname = "Disposal Date"
+        row = 11
+        column = 1
+        width = medium
+    )
+
+    disposal_approved_by
+    (
+        type = lookup
+        displayname = "Disposal Approved By"
+        row = 12
+        column = 1
+        width = medium
+        formlinkname = stakeholder_user
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

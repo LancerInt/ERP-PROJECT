@@ -1,0 +1,25 @@
+report vendor_payment_advice_report
+{
+
+    displayname = "Vendor Payment Advice Report"
+    sourceform = vendor_payment_advice
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {advice_no, vendor, source_document_type, source_document, amount, tax_components, due_date, payment_method, prepared_by, approval_workflow, status, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {advice_no, vendor, source_document_type, source_document, amount, tax_components, due_date, payment_method, prepared_by, approval_workflow, status, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {advice_no, vendor, source_document_type, source_document, amount, tax_components, due_date, payment_method, prepared_by, approval_workflow, status, notes}
+    )
+}

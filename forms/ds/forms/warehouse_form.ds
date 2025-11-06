@@ -1,0 +1,309 @@
+// Module: 1. Core & Shared Masters
+form warehouse
+{
+
+    displayname = "Warehouse"
+    success message = "Warehouse added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have warehouse_code
+    (
+        type = text
+        displayname = "Warehouse Code"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        unique = true
+        notes = "Used in stock and logistics documents"
+    )
+
+    must have company
+    (
+        type = lookup
+        displayname = "Company"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = company
+        notes = "Owning entity"
+    )
+
+    must have name
+    (
+        type = text
+        displayname = "Name"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Display name"
+    )
+
+    must have warehouse_type
+    (
+        type = picklist
+        displayname = "Warehouse Type"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Head Office","Factory","Job Work Partner"}
+        notes = "Head Office / Factory / Job Work Partner"
+    )
+
+    must have address
+    (
+        type = address
+        displayname = "Address"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        capture_coordinates = true
+        adjust_using_map = false
+        address_line_1
+        (
+            type = address_line_1
+            displayname = "Address Line 1"
+        )
+        address_line_2
+        (
+            type = address_line_2
+            displayname = "Address Line 2"
+        )
+        district_city
+        (
+            type = district_city
+            displayname = "City / District"
+        )
+        state_province
+        (
+            type = state_province
+            displayname = "State / Province"
+        )
+        postal_code
+        (
+            type = postal_code
+            displayname = "Postal Code"
+        )
+        country
+        (
+            type = country
+            displayname = "Country"
+        )
+        latitude
+        (
+            type = latitude
+            displayname = "Latitude"
+            visibility = false
+        )
+        longitude
+        (
+            type = longitude
+            displayname = "Longitude"
+            visibility = false
+        )
+        notes = "Physical location"
+        personal data = true
+    )
+
+    must have city
+    (
+        type = text
+        displayname = "City"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have state
+    (
+        type = picklist
+        displayname = "State"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "For GST place of supply"
+    )
+
+    must have country
+    (
+        type = picklist
+        displayname = "Country"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have pincode
+    (
+        type = text
+        displayname = "Pincode"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have geo_latitude
+    (
+        type = number
+        displayname = "Geo Latitude"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Attendance geofence"
+    )
+
+    must have geo_longitude
+    (
+        type = number
+        displayname = "Geo Longitude"
+        row = 11
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Attendance geofence"
+    )
+
+    must have time_zone
+    (
+        type = picklist
+        displayname = "Time Zone"
+        row = 12
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "For SLA calculations"
+    )
+
+    must have default_currency
+    (
+        type = picklist
+        displayname = "Default Currency"
+        row = 13
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Inherits from company by default"
+    )
+
+    must have warehouse_coordinator_office
+    (
+        type = lookup
+        displayname = "Warehouse Coordinator (Office)"
+        row = 14
+        column = 1
+        width = medium
+        conditional mandatory = true
+        formlinkname = stakeholder_user
+        notes = "Required for warehouses"
+    )
+
+    warehouse_hr_coordinator
+    (
+        type = lookup
+        displayname = "Warehouse HR Coordinator"
+        row = 15
+        column = 1
+        width = medium
+        formlinkname = stakeholder_user
+        notes = "Optional"
+    )
+
+    warehouse_managers
+    (
+        type = lookup
+        displayname = "Warehouse Manager(s)"
+        row = 16
+        column = 1
+        width = medium
+        allow multiple = true
+        formlinkname = stakeholder_user
+    )
+
+    warehouse_coordinators
+    (
+        type = lookup
+        displayname = "Warehouse Coordinator(s)"
+        row = 17
+        column = 1
+        width = medium
+        allow multiple = true
+        formlinkname = stakeholder_user
+    )
+
+    warehouse_supervisors
+    (
+        type = lookup
+        displayname = "Warehouse Supervisor(s)"
+        row = 18
+        column = 1
+        width = medium
+        allow multiple = true
+        formlinkname = stakeholder_user
+    )
+
+    must have active_flag
+    (
+        type = checkbox
+        displayname = "Active Flag"
+        row = 19
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Deactivate to hide from new transactions"
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 20
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

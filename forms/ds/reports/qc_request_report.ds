@@ -1,0 +1,25 @@
+report qc_request_report
+{
+
+    displayname = "QC Request Report"
+    sourceform = qc_request
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {request_no, request_date, requested_by, requestor_role, warehouse, product, batch, stage, qc_template, selected_parameters, sample_photo, sample_qty, priority, remarks, status, lab_code, counter_sample_required}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {request_no, request_date, requested_by, requestor_role, warehouse, product, batch, stage, qc_template, selected_parameters, sample_photo, sample_qty, priority, remarks, status, lab_code, counter_sample_required}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {request_no, request_date, requested_by, requestor_role, warehouse, product, batch, stage, qc_template, selected_parameters, sample_photo, sample_qty, priority, remarks, status, lab_code, counter_sample_required}
+    )
+}

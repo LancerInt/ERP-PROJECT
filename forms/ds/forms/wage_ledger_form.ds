@@ -1,0 +1,142 @@
+// Module: 7. Finance Module
+form wage_ledger
+{
+
+    displayname = "Wage Ledger"
+    success message = "Wage Ledger added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have ledger_id
+    (
+        type = autonumber
+        displayname = "Ledger ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have wage_voucher
+    (
+        type = lookup
+        displayname = "Wage Voucher"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = wage_voucher
+    )
+
+    must have contractor_staff_group
+    (
+        type = lookup
+        displayname = "Contractor/Staff Group"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = vendor
+    )
+
+    must have amount
+    (
+        type = INR
+        displayname = "Amount"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        format = commadotindian
+    )
+
+    tds
+    (
+        type = number
+        displayname = "TDS %"
+        row = 5
+        column = 1
+        width = medium
+    )
+
+    must have payment_week
+    (
+        type = date
+        displayname = "Payment Week"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Week ending date"
+    )
+
+    must have approval_status
+    (
+        type = picklist
+        displayname = "Approval Status"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Draft","Pending","Approved","Paid"}
+        notes = "Draft / Pending / Approved / Paid"
+    )
+
+    must have settlement_method
+    (
+        type = picklist
+        displayname = "Settlement Method"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Bank Transfer","Cash"}
+        notes = "Bank Transfer / Cash"
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 9
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

@@ -1,0 +1,368 @@
+// Module: 2. Purchase Module
+form purchase_request
+{
+
+    displayname = "Purchase Request (PR)"
+    success message = "Purchase Request (PR) added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have pr_no
+    (
+        type = autonumber
+        displayname = "PR No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have request_date
+    (
+        type = date
+        displayname = "Request Date"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have warehouse
+    (
+        type = lookup
+        displayname = "Warehouse"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+        notes = "Visibility restricted"
+    )
+
+    must have godown
+    (
+        type = lookup
+        displayname = "Godown"
+        row = 4
+        column = 1
+        width = medium
+        conditional mandatory = true
+        formlinkname = godown
+        notes = "Filtered by selected warehouse"
+    )
+
+    must have requested_by
+    (
+        type = lookup
+        displayname = "Requested By"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+    )
+
+    must have requestor_role
+    (
+        type = picklist
+        displayname = "Requestor Role"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Warehouse Manager","Coordinator"}
+        notes = "Warehouse Manager / Coordinator"
+    )
+
+    must have requirement_type
+    (
+        type = picklist
+        displayname = "Requirement Type"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Goods","Services","Machinery"}
+        notes = "Goods / Services / Machinery"
+    )
+
+    must have lines
+    (
+        type = grid
+        displayname = "Lines"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have line_no
+        (
+            type = number
+            displayname = "Line No."
+            width = medium
+            mandatory = true
+        )
+
+        must have product_service
+        (
+            type = lookup
+            displayname = "Product/Service"
+            width = medium
+            mandatory = true
+            formlinkname = product_master
+        )
+
+        description_override
+        (
+            type = textarea
+            displayname = "Description Override"
+            width = medium
+        )
+
+        must have quantity_requested
+        (
+            type = number
+            displayname = "Quantity Requested"
+            width = medium
+            mandatory = true
+        )
+
+        must have uom
+        (
+            type = picklist
+            displayname = "UOM"
+            width = medium
+            mandatory = true
+        )
+
+        required_date
+        (
+            type = date
+            displayname = "Required Date"
+            width = medium
+        )
+
+        purpose
+        (
+            type = picklist
+            displayname = "Purpose"
+            width = medium
+            values = {"Production","Maintenance","Consumable"}
+            notes = "Production / Maintenance / Consumable"
+        )
+
+        machine_reference
+        (
+            type = lookup
+            displayname = "Machine Reference"
+            width = medium
+            formlinkname = machinery
+            notes = "For spares/job work"
+        )
+
+        allow_rfq_skip
+        (
+            type = checkbox
+            displayname = "Allow RFQ Skip"
+            width = medium
+            notes = "Requires approval"
+        )
+
+        attachments
+        (
+            type = upload file
+            displayname = "Attachments"
+            width = medium
+            allow multiple = true
+            file count = 10
+            browse = local_drive
+            notes = "Photos"
+        )
+
+        must have status
+        (
+            type = picklist
+            displayname = "Status"
+            width = medium
+            mandatory = true
+            values = {"Pending","Approved","Rejected","Fulfilled"}
+            notes = "Pending / Approved / Rejected / Fulfilled"
+        )
+
+        approved_quantity
+        (
+            type = number
+            displayname = "Approved Quantity"
+            width = medium
+            notes = "For partial approval"
+        )
+    )
+
+    priority
+    (
+        type = picklist
+        displayname = "Priority"
+        row = 9
+        column = 1
+        width = medium
+        values = {"Low","Medium","High"}
+        notes = "Low / Medium / High"
+    )
+
+    must have required_by_date
+    (
+        type = date
+        displayname = "Required By Date"
+        row = 10
+        column = 1
+        width = medium
+        conditional mandatory = true
+        notes = "Mandatory when Requirement Type = Goods"
+    )
+
+    justification
+    (
+        type = textarea
+        displayname = "Justification"
+        row = 11
+        column = 1
+        width = medium
+    )
+
+    attachments
+    (
+        type = upload file
+        displayname = "Attachments"
+        row = 12
+        column = 1
+        width = medium
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "Specs, photos"
+    )
+
+    must have approval_status
+    (
+        type = picklist
+        displayname = "Approval Status"
+        row = 13
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Draft","Pending","Approved","Rejected","Partially Approved"}
+        notes = "Draft / Pending / Approved / Rejected / Partially Approved"
+    )
+
+    approval_trail
+    (
+        type = grid
+        displayname = "Approval Trail"
+        row = 14
+        column = 1
+        width = medium
+
+        must have action
+        (
+            type = picklist
+            displayname = "Action"
+            width = medium
+            mandatory = true
+            values = {"Approved","Rejected","Partial"}
+            notes = "Approved / Rejected / Partial"
+        )
+
+        must have actor
+        (
+            type = lookup
+            displayname = "Actor"
+            width = medium
+            mandatory = true
+            formlinkname = stakeholder_user
+        )
+
+        must have action_date
+        (
+            type = datetime
+            displayname = "Action Date"
+            width = medium
+            mandatory = true
+        )
+
+        remarks
+        (
+            type = textarea
+            displayname = "Remarks"
+            width = medium
+        )
+    )
+
+    visibility_scope
+    (
+        type = lookup
+        displayname = "Visibility Scope"
+        row = 15
+        column = 1
+        width = medium
+        allow multiple = true
+        formlinkname = stakeholder_user
+        notes = "Auto-share"
+    )
+
+    created_from_bom_request
+    (
+        type = lookup
+        displayname = "Created From BOM Request"
+        row = 16
+        column = 1
+        width = medium
+        formlinkname = bom_request
+        notes = "Traceability"
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 17
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

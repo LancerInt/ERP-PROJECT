@@ -1,0 +1,25 @@
+report warehouse_report
+{
+
+    displayname = "Warehouse Report"
+    sourceform = warehouse
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {warehouse_code, company, name, warehouse_type, address, city, state, country, pincode, geo_latitude, geo_longitude, time_zone, default_currency, warehouse_coordinator_office, warehouse_hr_coordinator, warehouse_managers, warehouse_coordinators, warehouse_supervisors, active_flag, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {warehouse_code, company, name, warehouse_type, address, city, state, country, pincode, geo_latitude, geo_longitude, time_zone, default_currency, warehouse_coordinator_office, warehouse_hr_coordinator, warehouse_managers, warehouse_coordinators, warehouse_supervisors, active_flag, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {warehouse_code, company, name, warehouse_type, address, city, state, country, pincode, geo_latitude, geo_longitude, time_zone, default_currency, warehouse_coordinator_office, warehouse_hr_coordinator, warehouse_managers, warehouse_coordinators, warehouse_supervisors, active_flag, notes}
+    )
+}

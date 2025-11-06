@@ -1,0 +1,120 @@
+// Module: 2. Purchase Module
+form po_eta_update
+{
+
+    displayname = "PO ETA Update (Anticipated Arrival)"
+    success message = "PO ETA Update (Anticipated Arrival) added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have update_id
+    (
+        type = autonumber
+        displayname = "Update ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have po
+    (
+        type = lookup
+        displayname = "PO"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = purchase_order
+    )
+
+    must have update_date
+    (
+        type = datetime
+        displayname = "Update Date"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have updated_by
+    (
+        type = lookup
+        displayname = "Updated By"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+        notes = "Purchase Coordinator or Warehouse Coordinator"
+    )
+
+    must have expected_arrival_date
+    (
+        type = date
+        displayname = "Expected Arrival Date"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have status
+    (
+        type = picklist
+        displayname = "Status"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Pending","Updated"}
+        notes = "Pending / Updated"
+    )
+
+    remarks
+    (
+        type = textarea
+        displayname = "Remarks"
+        row = 7
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

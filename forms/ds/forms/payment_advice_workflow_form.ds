@@ -1,0 +1,302 @@
+// Module: 7. Finance Module
+form payment_advice_workflow
+{
+
+    displayname = "Payment Advice Workflow"
+    success message = "Payment Advice Workflow added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have advice_no
+    (
+        type = autonumber
+        displayname = "Advice No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have beneficiary_type
+    (
+        type = picklist
+        displayname = "Beneficiary Type"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Vendor","Transporter","Contractor"}
+        notes = "Vendor / Transporter / Contractor"
+    )
+
+    must have beneficiary
+    (
+        type = lookup
+        displayname = "Beneficiary"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = vendor
+    )
+
+    must have source_document
+    (
+        type = lookup
+        displayname = "Source Document"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = purchase_order
+    )
+
+    must have amount
+    (
+        type = INR
+        displayname = "Amount"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        format = commadotindian
+    )
+
+    tds_tcs_details
+    (
+        type = grid
+        displayname = "TDS/TCS Details"
+        row = 6
+        column = 1
+        width = medium
+
+        must have tax_type
+        (
+            type = picklist
+            displayname = "Tax Type"
+            width = medium
+            mandatory = true
+            values = {"TDS","TCS"}
+            notes = "TDS / TCS"
+        )
+
+        section
+        (
+            type = text
+            displayname = "Section"
+            width = medium
+        )
+
+        must have rate
+        (
+            type = number
+            displayname = "Rate %"
+            width = medium
+            mandatory = true
+        )
+
+        must have amount
+        (
+            type = INR
+            displayname = "Amount"
+            width = medium
+            mandatory = true
+            format = commadotindian
+        )
+    )
+
+    must have due_date
+    (
+        type = date
+        displayname = "Due Date"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have payment_method
+    (
+        type = picklist
+        displayname = "Payment Method"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Bank Transfer","Cash","Cheque","UPI"}
+        notes = "Bank Transfer / Cash / Cheque / UPI"
+    )
+
+    must have bank_account
+    (
+        type = lookup
+        displayname = "Bank Account"
+        row = 9
+        column = 1
+        width = medium
+        conditional mandatory = true
+        formlinkname = vendor_bank_details
+        notes = "Required for bank transfer"
+    )
+
+    must have prepared_by
+    (
+        type = lookup
+        displayname = "Prepared By"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+    )
+
+    must have prepared_date
+    (
+        type = date
+        displayname = "Prepared Date"
+        row = 11
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have finance_manager_approval
+    (
+        type = grid
+        displayname = "Finance Manager Approval"
+        row = 12
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have approved_by
+        (
+            type = lookup
+            displayname = "Approved By"
+            width = medium
+            mandatory = true
+            formlinkname = stakeholder_user
+        )
+
+        must have approval_date
+        (
+            type = datetime
+            displayname = "Approval Date"
+            width = medium
+            mandatory = true
+        )
+
+        remarks
+        (
+            type = textarea
+            displayname = "Remarks"
+            width = medium
+        )
+    )
+
+    must have office_manager_authorization
+    (
+        type = grid
+        displayname = "Office Manager Authorization"
+        row = 13
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have authorized_by
+        (
+            type = lookup
+            displayname = "Authorized By"
+            width = medium
+            mandatory = true
+            formlinkname = stakeholder_user
+        )
+
+        must have authorization_date
+        (
+            type = datetime
+            displayname = "Authorization Date"
+            width = medium
+            mandatory = true
+        )
+
+        remarks
+        (
+            type = textarea
+            displayname = "Remarks"
+            width = medium
+        )
+    )
+
+    must have payment_status
+    (
+        type = picklist
+        displayname = "Payment Status"
+        row = 14
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Draft","Pending Finance","Pending Authorization","Approved","Paid"}
+        notes = "Draft / Pending Finance / Pending Authorization / Approved / Paid"
+    )
+
+    payment_reference
+    (
+        type = text
+        displayname = "Payment Reference"
+        row = 15
+        column = 1
+        width = medium
+        notes = "Bank txn"
+    )
+
+    attachments
+    (
+        type = upload file
+        displayname = "Attachments"
+        row = 16
+        column = 1
+        width = medium
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "Bank proof"
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

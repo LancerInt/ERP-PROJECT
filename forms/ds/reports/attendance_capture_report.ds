@@ -1,0 +1,25 @@
+report attendance_capture_report
+{
+
+    displayname = "Attendance Capture Report"
+    sourceform = attendance_capture
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {record_id, staff, date, check_in_time, check_out_time, entry_photo, exit_photo, geo_latitude, geo_longitude, face_match_confidence, device_id, shift, attendance_status, overtime_hours, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {record_id, staff, date, check_in_time, check_out_time, entry_photo, exit_photo, geo_latitude, geo_longitude, face_match_confidence, device_id, shift, attendance_status, overtime_hours, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {record_id, staff, date, check_in_time, check_out_time, entry_photo, exit_photo, geo_latitude, geo_longitude, face_match_confidence, device_id, shift, attendance_status, overtime_hours, notes}
+    )
+}

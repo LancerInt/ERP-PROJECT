@@ -1,0 +1,25 @@
+report freight_advice_2_report
+{
+
+    displayname = "Freight Advice (Outbound) Report"
+    sourceform = freight_advice_2
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {advice_no, direction, dispatch_challan, transporter, freight_type, created_by, created_date, base_amount, discount, loading_wages_amount, unloading_wages_amount, shipment_quantity, quantity_uom, cost_per_unit_calc, destination_state, payable_amount, payment_schedule, approval_workflow, status}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {advice_no, direction, dispatch_challan, transporter, freight_type, created_by, created_date, base_amount, discount, loading_wages_amount, unloading_wages_amount, shipment_quantity, quantity_uom, cost_per_unit_calc, destination_state, payable_amount, payment_schedule, approval_workflow, status}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {advice_no, direction, dispatch_challan, transporter, freight_type, created_by, created_date, base_amount, discount, loading_wages_amount, unloading_wages_amount, shipment_quantity, quantity_uom, cost_per_unit_calc, destination_state, payable_amount, payment_schedule, approval_workflow, status}
+    )
+}

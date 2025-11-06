@@ -1,0 +1,25 @@
+report counter_sample_register_report
+{
+
+    displayname = "Counter Sample Register Report"
+    sourceform = counter_sample_register
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {sample_id, qc_request, storage_location, shelf, bin, issued_to, issue_date, expected_return_date, actual_return_date, reminder_sent, disposal_date, disposal_approved_by}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {sample_id, qc_request, storage_location, shelf, bin, issued_to, issue_date, expected_return_date, actual_return_date, reminder_sent, disposal_date, disposal_approved_by}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {sample_id, qc_request, storage_location, shelf, bin, issued_to, issue_date, expected_return_date, actual_return_date, reminder_sent, disposal_date, disposal_approved_by}
+    )
+}

@@ -1,0 +1,25 @@
+report stock_transfer_dc_report
+{
+
+    displayname = "Stock Transfer DC Report"
+    sourceform = stock_transfer_dc
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {transfer_no, created_date, from_warehouse, to_warehouse, dispatch_date, transporter, freight_terms, loading_wages, freight_amount, transfer_lines, status, documents}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {transfer_no, created_date, from_warehouse, to_warehouse, dispatch_date, transporter, freight_terms, loading_wages, freight_amount, transfer_lines, status, documents}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {transfer_no, created_date, from_warehouse, to_warehouse, dispatch_date, transporter, freight_terms, loading_wages, freight_amount, transfer_lines, status, documents}
+    )
+}

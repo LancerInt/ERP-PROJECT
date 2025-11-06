@@ -1,0 +1,25 @@
+report work_order_production_batch_report
+{
+
+    displayname = "Work Order / Production Batch Report"
+    sourceform = work_order_production_batch
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {batch_id, work_order_no, warehouse, production_template, template_revision, linked_sales_order, linked_dispatch_challan, planned_start_date, planned_end_date, actual_start_date, actual_end_date, stage_status, input_consumption, output_products, damage_report, qc_request, wage_method, wage_vouchers, yield_log_reference, rework_flag, parent_batch, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {batch_id, work_order_no, warehouse, production_template, template_revision, linked_sales_order, linked_dispatch_challan, planned_start_date, planned_end_date, actual_start_date, actual_end_date, stage_status, input_consumption, output_products, damage_report, qc_request, wage_method, wage_vouchers, yield_log_reference, rework_flag, parent_batch, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {batch_id, work_order_no, warehouse, production_template, template_revision, linked_sales_order, linked_dispatch_challan, planned_start_date, planned_end_date, actual_start_date, actual_end_date, stage_status, input_consumption, output_products, damage_report, qc_request, wage_method, wage_vouchers, yield_log_reference, rework_flag, parent_batch, notes}
+    )
+}

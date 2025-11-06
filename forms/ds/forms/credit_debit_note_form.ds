@@ -1,0 +1,162 @@
+// Module: 7. Finance Module
+form credit_debit_note
+{
+
+    displayname = "Credit/Debit Note"
+    success message = "Credit/Debit Note added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have note_no
+    (
+        type = autonumber
+        displayname = "Note No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have note_type
+    (
+        type = picklist
+        displayname = "Note Type"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Credit","Debit"}
+        notes = "Credit / Debit"
+    )
+
+    must have vendor_customer
+    (
+        type = lookup
+        displayname = "Vendor/Customer"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = vendor
+    )
+
+    must have source_document
+    (
+        type = lookup
+        displayname = "Source Document"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = purchase_order
+    )
+
+    must have amount
+    (
+        type = INR
+        displayname = "Amount"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        format = commadotindian
+    )
+
+    tax
+    (
+        type = INR
+        displayname = "Tax"
+        row = 6
+        column = 1
+        width = medium
+        format = commadotindian
+    )
+
+    must have reason
+    (
+        type = textarea
+        displayname = "Reason"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have approval_status
+    (
+        type = picklist
+        displayname = "Approval Status"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Draft","Pending","Approved"}
+        notes = "Draft / Pending / Approved"
+    )
+
+    approved_by
+    (
+        type = lookup
+        displayname = "Approved By"
+        row = 9
+        column = 1
+        width = medium
+        formlinkname = stakeholder_user
+    )
+
+    approval_date
+    (
+        type = datetime
+        displayname = "Approval Date"
+        row = 10
+        column = 1
+        width = medium
+    )
+
+    ledger_posting_reference
+    (
+        type = lookup
+        displayname = "Ledger Posting Reference"
+        row = 11
+        column = 1
+        width = medium
+        formlinkname = vendor_ledger
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

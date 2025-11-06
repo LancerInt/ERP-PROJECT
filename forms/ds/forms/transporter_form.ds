@@ -1,0 +1,175 @@
+// Module: 1. Core & Shared Masters
+form transporter
+{
+
+    displayname = "Transporter"
+    success message = "Transporter added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have transporter_code
+    (
+        type = text
+        displayname = "Transporter Code"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have name
+    (
+        type = text
+        displayname = "Name"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    gstin
+    (
+        type = text
+        displayname = "GSTIN"
+        row = 3
+        column = 1
+        width = medium
+    )
+
+    contact_person
+    (
+        type = text
+        displayname = "Contact Person"
+        row = 4
+        column = 1
+        width = medium
+    )
+
+    contact_email
+    (
+        type = email
+        displayname = "Contact Email"
+        row = 5
+        column = 1
+        width = medium
+        personal data = true
+    )
+
+    contact_phone
+    (
+        type = phonenumber
+        displayname = "Contact Phone"
+        row = 6
+        column = 1
+        width = medium
+        personal data = true
+    )
+
+    must have freight_modes
+    (
+        type = list
+        displayname = "Freight Modes"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Local Drayage","Linehaul"}
+        allow multiple = true
+        notes = "Local Drayage / Linehaul"
+    )
+
+    coverage_routes
+    (
+        type = textarea
+        displayname = "Coverage Routes"
+        row = 8
+        column = 1
+        width = medium
+    )
+
+    tds_rate
+    (
+        type = number
+        displayname = "TDS Rate %"
+        row = 9
+        column = 1
+        width = medium
+    )
+
+    payment_terms
+    (
+        type = picklist
+        displayname = "Payment Terms"
+        row = 10
+        column = 1
+        width = medium
+    )
+
+    rating
+    (
+        type = number
+        displayname = "Rating"
+        row = 11
+        column = 1
+        width = medium
+    )
+
+    documents
+    (
+        type = upload file
+        displayname = "Documents"
+        row = 12
+        column = 1
+        width = medium
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "Insurance"
+    )
+
+    must have active_flag
+    (
+        type = checkbox
+        displayname = "Active Flag"
+        row = 13
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

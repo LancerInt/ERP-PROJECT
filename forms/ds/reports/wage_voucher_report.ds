@@ -1,0 +1,25 @@
+report wage_voucher_report
+{
+
+    displayname = "Wage Voucher (Production) Report"
+    sourceform = wage_voucher
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {voucher_no, work_order, wage_type, contractor_vendor, staff_group, hours_tasks, amount, tds, prepared_by, prepared_date, approval_workflow, status, remarks}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {voucher_no, work_order, wage_type, contractor_vendor, staff_group, hours_tasks, amount, tds, prepared_by, prepared_date, approval_workflow, status, remarks}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {voucher_no, work_order, wage_type, contractor_vendor, staff_group, hours_tasks, amount, tds, prepared_by, prepared_date, approval_workflow, status, remarks}
+    )
+}

@@ -1,0 +1,25 @@
+report material_issue_report
+{
+
+    displayname = "Material Issue Report"
+    sourceform = material_issue
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {issue_no, issue_date, warehouse, work_order, issued_by, approved_by, issue_lines, remarks}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {issue_no, issue_date, warehouse, work_order, issued_by, approved_by, issue_lines, remarks}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {issue_no, issue_date, warehouse, work_order, issued_by, approved_by, issue_lines, remarks}
+    )
+}

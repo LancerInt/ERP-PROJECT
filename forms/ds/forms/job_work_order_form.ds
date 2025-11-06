@@ -1,0 +1,256 @@
+// Module: 6. Inventory, Logistics & Returns
+form job_work_order
+{
+
+    displayname = "Job Work Order"
+    success message = "Job Work Order added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have order_no
+    (
+        type = autonumber
+        displayname = "Order No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have warehouse
+    (
+        type = lookup
+        displayname = "Warehouse"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+    )
+
+    must have vendor
+    (
+        type = lookup
+        displayname = "Vendor"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = vendor
+    )
+
+    must have template
+    (
+        type = lookup
+        displayname = "Template"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = template_library
+    )
+
+    must have template_revision
+    (
+        type = number
+        displayname = "Template Revision"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have start_date
+    (
+        type = date
+        displayname = "Start Date"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    expected_completion_date
+    (
+        type = date
+        displayname = "Expected Completion Date"
+        row = 7
+        column = 1
+        width = medium
+        notes = "From template"
+    )
+
+    turnaround_threshold
+    (
+        type = number
+        displayname = "Turnaround Threshold"
+        row = 8
+        column = 1
+        width = medium
+        notes = "For alerts"
+    )
+
+    must have materials_supplied
+    (
+        type = grid
+        displayname = "Materials Supplied"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have material_type
+        (
+            type = picklist
+            displayname = "Material Type"
+            width = medium
+            mandatory = true
+            values = {"RM","PM","Machine"}
+            notes = "RM / PM / Machine"
+        )
+
+        must have product_machine
+        (
+            type = lookup
+            displayname = "Product/Machine"
+            width = medium
+            mandatory = true
+            formlinkname = product_master
+        )
+
+        batch
+        (
+            type = text
+            displayname = "Batch"
+            width = medium
+        )
+
+        must have quantity
+        (
+            type = number
+            displayname = "Quantity"
+            width = medium
+            mandatory = true
+        )
+
+        must have uom
+        (
+            type = picklist
+            displayname = "UOM"
+            width = medium
+            mandatory = true
+        )
+    )
+
+    must have outputs_expected
+    (
+        type = grid
+        displayname = "Outputs Expected"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have product
+        (
+            type = lookup
+            displayname = "Product"
+            width = medium
+            mandatory = true
+            formlinkname = product_master
+        )
+
+        must have expected_quantity
+        (
+            type = number
+            displayname = "Expected Quantity"
+            width = medium
+            mandatory = true
+        )
+
+        must have uom
+        (
+            type = picklist
+            displayname = "UOM"
+            width = medium
+            mandatory = true
+        )
+
+        expected_batch_suffix
+        (
+            type = text
+            displayname = "Expected Batch Suffix"
+            width = medium
+            notes = "For tracking"
+        )
+    )
+
+    must have freight_terms
+    (
+        type = picklist
+        displayname = "Freight Terms"
+        row = 11
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have status
+    (
+        type = picklist
+        displayname = "Status"
+        row = 12
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Draft","In Progress","Completed"}
+        notes = "Draft / In Progress / Completed"
+    )
+
+    alerts_enabled
+    (
+        type = checkbox
+        displayname = "Alerts Enabled"
+        row = 13
+        column = 1
+        width = medium
+        notes = "Trigger overdue reminders"
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

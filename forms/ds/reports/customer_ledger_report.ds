@@ -1,0 +1,25 @@
+report customer_ledger_report
+{
+
+    displayname = "Customer Ledger Report"
+    sourceform = customer_ledger
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {ledger_id, customer, document_type, document_reference, document_date, debit_amount, credit_amount, due_date, payment_status, reminder_sent_flags, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {ledger_id, customer, document_type, document_reference, document_date, debit_amount, credit_amount, due_date, payment_status, reminder_sent_flags, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {ledger_id, customer, document_type, document_reference, document_date, debit_amount, credit_amount, due_date, payment_status, reminder_sent_flags, notes}
+    )
+}

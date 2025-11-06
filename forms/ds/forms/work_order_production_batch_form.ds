@@ -1,0 +1,449 @@
+// Module: 4. Production Module
+form work_order_production_batch
+{
+
+    displayname = "Work Order / Production Batch"
+    success message = "Work Order / Production Batch added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have batch_id
+    (
+        type = autonumber
+        displayname = "Batch ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have work_order_no
+    (
+        type = text
+        displayname = "Work Order No."
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Display"
+    )
+
+    must have warehouse
+    (
+        type = lookup
+        displayname = "Warehouse"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+    )
+
+    must have production_template
+    (
+        type = lookup
+        displayname = "Production Template"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = template_library
+        notes = "Includes revision"
+    )
+
+    must have template_revision
+    (
+        type = number
+        displayname = "Template Revision"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    linked_sales_order
+    (
+        type = lookup
+        displayname = "Linked Sales Order"
+        row = 6
+        column = 1
+        width = medium
+        formlinkname = sales_order
+    )
+
+    linked_dispatch_challan
+    (
+        type = lookup
+        displayname = "Linked Dispatch Challan"
+        row = 7
+        column = 1
+        width = medium
+        formlinkname = dispatch_challan
+    )
+
+    must have planned_start_date
+    (
+        type = date
+        displayname = "Planned Start Date"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    planned_end_date
+    (
+        type = date
+        displayname = "Planned End Date"
+        row = 9
+        column = 1
+        width = medium
+    )
+
+    actual_start_date
+    (
+        type = date
+        displayname = "Actual Start Date"
+        row = 10
+        column = 1
+        width = medium
+    )
+
+    actual_end_date
+    (
+        type = date
+        displayname = "Actual End Date"
+        row = 11
+        column = 1
+        width = medium
+    )
+
+    must have stage_status
+    (
+        type = picklist
+        displayname = "Stage Status"
+        row = 12
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Material Issue","Mixing","Packing","QC","Closed"}
+        notes = "Material Issue / Mixing / Packing / QC / Closed"
+    )
+
+    must have input_consumption
+    (
+        type = grid
+        displayname = "Input Consumption"
+        row = 13
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have product
+        (
+            type = lookup
+            displayname = "Product"
+            width = medium
+            mandatory = true
+            formlinkname = product_master
+        )
+
+        must have planned_qty
+        (
+            type = number
+            displayname = "Planned Qty"
+            width = medium
+            mandatory = true
+            notes = "From template"
+        )
+
+        must have actual_qty
+        (
+            type = number
+            displayname = "Actual Qty"
+            width = medium
+            mandatory = true
+        )
+
+        must have uom
+        (
+            type = picklist
+            displayname = "UOM"
+            width = medium
+            mandatory = true
+        )
+
+        must have batch_used
+        (
+            type = text
+            displayname = "Batch Used"
+            width = medium
+            conditional mandatory = true
+        )
+
+        must have godown
+        (
+            type = lookup
+            displayname = "Godown"
+            width = medium
+            mandatory = true
+            formlinkname = godown
+            notes = "Filtered by production warehouse"
+        )
+
+        yield_loss
+        (
+            type = number
+            displayname = "Yield Loss %"
+            width = medium
+            notes = "Capture deviations"
+        )
+    )
+
+    must have output_products
+    (
+        type = grid
+        displayname = "Output Products"
+        row = 14
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have product
+        (
+            type = lookup
+            displayname = "Product"
+            width = medium
+            mandatory = true
+            formlinkname = product_master
+        )
+
+        must have batch_id
+        (
+            type = text
+            displayname = "Batch ID"
+            width = medium
+            mandatory = true
+            notes = "Auto-generated"
+        )
+
+        must have quantity_produced
+        (
+            type = number
+            displayname = "Quantity Produced"
+            width = medium
+            mandatory = true
+        )
+
+        must have uom
+        (
+            type = picklist
+            displayname = "UOM"
+            width = medium
+            mandatory = true
+        )
+
+        must have purity
+        (
+            type = number
+            displayname = "Purity %"
+            width = medium
+            conditional mandatory = true
+            notes = "Required when yield tracking includes purity"
+        )
+
+        must have ai_content
+        (
+            type = number
+            displayname = "AI Content"
+            width = medium
+            conditional mandatory = true
+            notes = "Required when tracked"
+        )
+
+        must have qc_status
+        (
+            type = picklist
+            displayname = "QC Status"
+            width = medium
+            mandatory = true
+            values = {"Pending","Pass","Fail","Hold"}
+            notes = "Pending / Pass / Fail / Hold"
+        )
+    )
+
+    damage_report
+    (
+        type = grid
+        displayname = "Damage Report"
+        row = 15
+        column = 1
+        width = medium
+
+        must have stage
+        (
+            type = picklist
+            displayname = "Stage"
+            width = medium
+            mandatory = true
+            values = {"Mixing","Packing","QC"}
+            notes = "Mixing / Packing / QC"
+        )
+
+        must have description
+        (
+            type = textarea
+            displayname = "Description"
+            width = medium
+            mandatory = true
+        )
+
+        quantity_lost
+        (
+            type = number
+            displayname = "Quantity Lost"
+            width = medium
+        )
+
+        uom
+        (
+            type = picklist
+            displayname = "UOM"
+            width = medium
+        )
+
+        handling_action
+        (
+            type = picklist
+            displayname = "Handling Action"
+            width = medium
+            values = {"Scrap","Rework"}
+            notes = "Scrap / Rework"
+        )
+    )
+
+    qc_request
+    (
+        type = lookup
+        displayname = "QC Request"
+        row = 16
+        column = 1
+        width = medium
+        formlinkname = qc_request
+    )
+
+    wage_method
+    (
+        type = picklist
+        displayname = "Wage Method"
+        row = 17
+        column = 1
+        width = medium
+        values = {"Template Rate","Headcount"}
+        notes = "Template Rate / Headcount"
+    )
+
+    wage_vouchers
+    (
+        type = grid
+        displayname = "Wage Vouchers"
+        row = 18
+        column = 1
+        width = medium
+
+        must have wage_voucher
+        (
+            type = lookup
+            displayname = "Wage Voucher"
+            width = medium
+            mandatory = true
+            formlinkname = wage_voucher
+        )
+
+        must have amount
+        (
+            type = INR
+            displayname = "Amount"
+            width = medium
+            mandatory = true
+            format = commadotindian
+        )
+    )
+
+    yield_log_reference
+    (
+        type = lookup
+        displayname = "Yield Log Reference"
+        row = 19
+        column = 1
+        width = medium
+        formlinkname = production_yield_log
+    )
+
+    rework_flag
+    (
+        type = checkbox
+        displayname = "Rework Flag"
+        row = 20
+        column = 1
+        width = medium
+        notes = "For reformulation"
+    )
+
+    parent_batch
+    (
+        type = lookup
+        displayname = "Parent Batch"
+        row = 21
+        column = 1
+        width = medium
+        formlinkname = work_order_production_batch
+        notes = "For rework linkage"
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 22
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

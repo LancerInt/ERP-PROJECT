@@ -1,0 +1,25 @@
+report stock_transfer_receipt_report
+{
+
+    displayname = "Stock Transfer Receipt Report"
+    sourceform = stock_transfer_receipt
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {receipt_no, receipt_date, from_warehouse, to_warehouse, linked_transfer, received_by, receipt_lines, qc_result, variance_notes, freight_details, loading_unloading_wages, status}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {receipt_no, receipt_date, from_warehouse, to_warehouse, linked_transfer, received_by, receipt_lines, qc_result, variance_notes, freight_details, loading_unloading_wages, status}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {receipt_no, receipt_date, from_warehouse, to_warehouse, linked_transfer, received_by, receipt_lines, qc_result, variance_notes, freight_details, loading_unloading_wages, status}
+    )
+}

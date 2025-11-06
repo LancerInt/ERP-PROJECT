@@ -1,0 +1,25 @@
+report inventory_ledger_report
+{
+
+    displayname = "Inventory Ledger Report"
+    sourceform = inventory_ledger
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {ledger_entry_id, transaction_date, warehouse, godown, product, batch, quantity_in, quantity_out, uom, transaction_type, source_document, cost, status, fifo_layer_id, remarks}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {ledger_entry_id, transaction_date, warehouse, godown, product, batch, quantity_in, quantity_out, uom, transaction_type, source_document, cost, status, fifo_layer_id, remarks}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {ledger_entry_id, transaction_date, warehouse, godown, product, batch, quantity_in, quantity_out, uom, transaction_type, source_document, cost, status, fifo_layer_id, remarks}
+    )
+}

@@ -1,0 +1,254 @@
+// Module: 7. Finance Module
+form freight_ledger
+{
+
+    displayname = "Freight Ledger"
+    success message = "Freight Ledger added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have ledger_id
+    (
+        type = autonumber
+        displayname = "Ledger ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have direction
+    (
+        type = picklist
+        displayname = "Direction"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Inbound","Outbound","Transfer"}
+        notes = "Inbound / Outbound / Transfer"
+    )
+
+    must have transporter
+    (
+        type = lookup
+        displayname = "Transporter"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = transporter
+    )
+
+    must have freight_advice
+    (
+        type = lookup
+        displayname = "Freight Advice"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = freight_advice
+    )
+
+    must have amount
+    (
+        type = INR
+        displayname = "Amount"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        format = commadotindian
+    )
+
+    discount
+    (
+        type = INR
+        displayname = "Discount"
+        row = 6
+        column = 1
+        width = medium
+        format = commadotindian
+    )
+
+    shipment_quantity
+    (
+        type = number
+        displayname = "Shipment Quantity"
+        row = 7
+        column = 1
+        width = medium
+        notes = "Pulled from freight advice"
+    )
+
+    quantity_uom
+    (
+        type = picklist
+        displayname = "Quantity UOM"
+        row = 8
+        column = 1
+        width = medium
+    )
+
+    cost_per_unit
+    (
+        type = number
+        displayname = "Cost Per Unit"
+        row = 9
+        column = 1
+        width = medium
+        notes = "Stored for reporting"
+    )
+
+    destination_state
+    (
+        type = picklist
+        displayname = "Destination State"
+        row = 10
+        column = 1
+        width = medium
+        notes = "Enables cost-per-destination analytics"
+    )
+
+    payment_schedule
+    (
+        type = grid
+        displayname = "Payment Schedule"
+        row = 11
+        column = 1
+        width = medium
+
+        must have freight_type
+        (
+            type = picklist
+            displayname = "Freight Type"
+            width = medium
+            mandatory = true
+            values = {"Local Drayage","Linehaul"}
+            notes = "Local Drayage / Linehaul"
+        )
+
+        must have transporter
+        (
+            type = lookup
+            displayname = "Transporter"
+            width = medium
+            conditional mandatory = true
+            formlinkname = transporter
+            notes = "Required when company pays"
+        )
+
+        must have due_date
+        (
+            type = date
+            displayname = "Due Date"
+            width = medium
+            mandatory = true
+            notes = "Instalment due date"
+        )
+
+        must have amount
+        (
+            type = INR
+            displayname = "Amount"
+            width = medium
+            mandatory = true
+            format = commadotindian
+            notes = "Instalment amount"
+        )
+
+        tds
+        (
+            type = number
+            displayname = "TDS %"
+            width = medium
+            notes = "Apply for freight TDS when relevant"
+        )
+
+        reminder_flag
+        (
+            type = checkbox
+            displayname = "Reminder Flag"
+            width = medium
+            notes = "Triggers auto reminders"
+        )
+    )
+
+    amount_paid
+    (
+        type = INR
+        displayname = "Amount Paid"
+        row = 12
+        column = 1
+        width = medium
+        format = commadotindian
+    )
+
+    must have balance
+    (
+        type = INR
+        displayname = "Balance"
+        row = 13
+        column = 1
+        width = medium
+        mandatory = true
+        format = commadotindian
+    )
+
+    reminder_flag
+    (
+        type = checkbox
+        displayname = "Reminder Flag"
+        row = 14
+        column = 1
+        width = medium
+        notes = "Auto reminder on due date"
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 15
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

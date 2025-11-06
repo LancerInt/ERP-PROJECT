@@ -1,0 +1,25 @@
+report payroll_export_report
+{
+
+    displayname = "Payroll Export Report"
+    sourceform = payroll_export
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {export_id, period_start, period_end, warehouse, staff_summary, attendance_metrics, overtime_hours_total, exceptions, export_file}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {export_id, period_start, period_end, warehouse, staff_summary, attendance_metrics, overtime_hours_total, exceptions, export_file}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {export_id, period_start, period_end, warehouse, staff_summary, attendance_metrics, overtime_hours_total, exceptions, export_file}
+    )
+}

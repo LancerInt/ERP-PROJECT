@@ -1,0 +1,25 @@
+report bank_statement_upload_report
+{
+
+    displayname = "Bank Statement Upload Report"
+    sourceform = bank_statement_upload
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {upload_id, bank_account, statement_period_start, statement_period_end, upload_date, statement_file, parsing_status, auto_matched_entries, exceptions, remarks}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {upload_id, bank_account, statement_period_start, statement_period_end, upload_date, statement_file, parsing_status, auto_matched_entries, exceptions, remarks}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {upload_id, bank_account, statement_period_start, statement_period_end, upload_date, statement_file, parsing_status, auto_matched_entries, exceptions, remarks}
+    )
+}

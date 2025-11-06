@@ -1,0 +1,25 @@
+report vendor_report
+{
+
+    displayname = "Vendor Report"
+    sourceform = vendor
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {vendor_code, vendor_name, vendor_type, company, gstin, pan, address, city, state, country, pincode, contact_person, contact_email, contact_phone, payment_terms, custom_payment_days, freight_terms, freight_split_notes, credit_limit, credit_days, tds_rate, tcs_rate, bank_details, preferred_transporters, allowed_warehouses, attachments, active_flag, created_date}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {vendor_code, vendor_name, vendor_type, company, gstin, pan, address, city, state, country, pincode, contact_person, contact_email, contact_phone, payment_terms, custom_payment_days, freight_terms, freight_split_notes, credit_limit, credit_days, tds_rate, tcs_rate, bank_details, preferred_transporters, allowed_warehouses, attachments, active_flag, created_date}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {vendor_code, vendor_name, vendor_type, company, gstin, pan, address, city, state, country, pincode, contact_person, contact_email, contact_phone, payment_terms, custom_payment_days, freight_terms, freight_split_notes, credit_limit, credit_days, tds_rate, tcs_rate, bank_details, preferred_transporters, allowed_warehouses, attachments, active_flag, created_date}
+    )
+}

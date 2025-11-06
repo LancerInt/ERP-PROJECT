@@ -1,0 +1,25 @@
+report audit_trail_report
+{
+
+    displayname = "Audit Trail Report"
+    sourceform = audit_trail
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {audit_id, module, record_id, action, user, timestamp, before_snapshot, after_snapshot, remarks}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {audit_id, module, record_id, action, user, timestamp, before_snapshot, after_snapshot, remarks}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {audit_id, module, record_id, action, user, timestamp, before_snapshot, after_snapshot, remarks}
+    )
+}

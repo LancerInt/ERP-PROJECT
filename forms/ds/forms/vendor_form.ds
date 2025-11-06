@@ -1,0 +1,427 @@
+// Module: 1. Core & Shared Masters
+form vendor
+{
+
+    displayname = "Vendor"
+    success message = "Vendor added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have vendor_code
+    (
+        type = text
+        displayname = "Vendor Code"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have vendor_name
+    (
+        type = text
+        displayname = "Vendor Name"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have vendor_type
+    (
+        type = list
+        displayname = "Vendor Type"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Material","Service","Freight","Wages","Job Work","Contractor"}
+        allow multiple = true
+        notes = "Material / Service / Freight / Wages / Job Work / Contractor"
+    )
+
+    must have company
+    (
+        type = lookup
+        displayname = "Company"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = company
+    )
+
+    must have gstin
+    (
+        type = text
+        displayname = "GSTIN"
+        row = 5
+        column = 1
+        width = medium
+        conditional mandatory = true
+        notes = "Mandatory if taxable"
+    )
+
+    must have pan
+    (
+        type = text
+        displayname = "PAN"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have address
+    (
+        type = address
+        displayname = "Address"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+        capture_coordinates = true
+        adjust_using_map = false
+        address_line_1
+        (
+            type = address_line_1
+            displayname = "Address Line 1"
+        )
+        address_line_2
+        (
+            type = address_line_2
+            displayname = "Address Line 2"
+        )
+        district_city
+        (
+            type = district_city
+            displayname = "City / District"
+        )
+        state_province
+        (
+            type = state_province
+            displayname = "State / Province"
+        )
+        postal_code
+        (
+            type = postal_code
+            displayname = "Postal Code"
+        )
+        country
+        (
+            type = country
+            displayname = "Country"
+        )
+        latitude
+        (
+            type = latitude
+            displayname = "Latitude"
+            visibility = false
+        )
+        longitude
+        (
+            type = longitude
+            displayname = "Longitude"
+            visibility = false
+        )
+        personal data = true
+    )
+
+    must have city
+    (
+        type = text
+        displayname = "City"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have state
+    (
+        type = picklist
+        displayname = "State"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have country
+    (
+        type = picklist
+        displayname = "Country"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have pincode
+    (
+        type = text
+        displayname = "Pincode"
+        row = 11
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    contact_person
+    (
+        type = text
+        displayname = "Contact Person"
+        row = 12
+        column = 1
+        width = medium
+    )
+
+    contact_email
+    (
+        type = email
+        displayname = "Contact Email"
+        row = 13
+        column = 1
+        width = medium
+        personal data = true
+    )
+
+    contact_phone
+    (
+        type = phonenumber
+        displayname = "Contact Phone"
+        row = 14
+        column = 1
+        width = medium
+        personal data = true
+    )
+
+    must have payment_terms
+    (
+        type = picklist
+        displayname = "Payment Terms"
+        row = 15
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Net 15","Net 30","Custom"}
+        notes = "Net 15 / Net 30 / Custom"
+    )
+
+    must have custom_payment_days
+    (
+        type = number
+        displayname = "Custom Payment Days"
+        row = 16
+        column = 1
+        width = medium
+        conditional mandatory = true
+        notes = "Mandatory when Payment Terms = Custom"
+    )
+
+    must have freight_terms
+    (
+        type = picklist
+        displayname = "Freight Terms"
+        row = 17
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Paid","To_Pay","Mixed"}
+        notes = "Paid / To_Pay / Mixed"
+    )
+
+    freight_split_notes
+    (
+        type = textarea
+        displayname = "Freight Split Notes"
+        row = 18
+        column = 1
+        width = medium
+    )
+
+    credit_limit
+    (
+        type = INR
+        displayname = "Credit Limit"
+        row = 19
+        column = 1
+        width = medium
+        format = commadotindian
+    )
+
+    credit_days
+    (
+        type = number
+        displayname = "Credit Days"
+        row = 20
+        column = 1
+        width = medium
+    )
+
+    tds_rate
+    (
+        type = number
+        displayname = "TDS Rate %"
+        row = 21
+        column = 1
+        width = medium
+    )
+
+    tcs_rate
+    (
+        type = number
+        displayname = "TCS Rate %"
+        row = 22
+        column = 1
+        width = medium
+    )
+
+    bank_details
+    (
+        type = grid
+        displayname = "Bank Details"
+        row = 23
+        column = 1
+        width = medium
+
+        must have account_nickname
+        (
+            type = text
+            displayname = "Account Nickname"
+            width = medium
+            mandatory = true
+        )
+
+        must have bank_name
+        (
+            type = text
+            displayname = "Bank Name"
+            width = medium
+            mandatory = true
+        )
+
+        branch
+        (
+            type = text
+            displayname = "Branch"
+            width = medium
+        )
+
+        must have ifsc
+        (
+            type = text
+            displayname = "IFSC"
+            width = medium
+            mandatory = true
+        )
+
+        must have account_number
+        (
+            type = text
+            displayname = "Account Number"
+            width = medium
+            mandatory = true
+        )
+
+        payment_method
+        (
+            type = picklist
+            displayname = "Payment Method"
+            width = medium
+            values = {"NEFT","RTGS","Cheque","UPI"}
+            notes = "NEFT / RTGS / Cheque / UPI"
+        )
+    )
+
+    preferred_transporters
+    (
+        type = lookup
+        displayname = "Preferred Transporters"
+        row = 24
+        column = 1
+        width = medium
+        allow multiple = true
+        formlinkname = transporter
+    )
+
+    allowed_warehouses
+    (
+        type = lookup
+        displayname = "Allowed Warehouses"
+        row = 25
+        column = 1
+        width = medium
+        allow multiple = true
+        formlinkname = warehouse
+    )
+
+    attachments
+    (
+        type = upload file
+        displayname = "Attachments"
+        row = 26
+        column = 1
+        width = medium
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "Agreements"
+    )
+
+    must have active_flag
+    (
+        type = checkbox
+        displayname = "Active Flag"
+        row = 27
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have created_date
+    (
+        type = datetime
+        displayname = "Created Date"
+        row = 28
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

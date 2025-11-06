@@ -1,0 +1,245 @@
+// Module: 7. Finance Module
+form bank_statement_upload
+{
+
+    displayname = "Bank Statement Upload"
+    success message = "Bank Statement Upload added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have upload_id
+    (
+        type = autonumber
+        displayname = "Upload ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have bank_account
+    (
+        type = picklist
+        displayname = "Bank Account"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have statement_period_start
+    (
+        type = date
+        displayname = "Statement Period Start"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have statement_period_end
+    (
+        type = date
+        displayname = "Statement Period End"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have upload_date
+    (
+        type = date
+        displayname = "Upload Date"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have statement_file
+    (
+        type = upload file
+        displayname = "Statement File"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "PDF/CSV"
+    )
+
+    must have parsing_status
+    (
+        type = picklist
+        displayname = "Parsing Status"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Pending","Parsed","Error"}
+        notes = "Pending / Parsed / Error"
+    )
+
+    auto_matched_entries
+    (
+        type = grid
+        displayname = "Auto-Matched Entries"
+        row = 8
+        column = 1
+        width = medium
+
+        must have statement_line_id
+        (
+            type = text
+            displayname = "Statement Line ID"
+            width = medium
+            mandatory = true
+        )
+
+        must have match_type
+        (
+            type = picklist
+            displayname = "Match Type"
+            width = medium
+            mandatory = true
+            values = {"Payable","Receivable"}
+            notes = "Payable / Receivable"
+        )
+
+        must have linked_document
+        (
+            type = lookup
+            displayname = "Linked Document"
+            width = medium
+            mandatory = true
+            formlinkname = vendor_ledger
+        )
+
+        must have amount
+        (
+            type = INR
+            displayname = "Amount"
+            width = medium
+            mandatory = true
+            format = commadotindian
+        )
+
+        must have status
+        (
+            type = picklist
+            displayname = "Status"
+            width = medium
+            mandatory = true
+            values = {"Confirmed","Pending"}
+            notes = "Confirmed / Pending"
+        )
+    )
+
+    exceptions
+    (
+        type = grid
+        displayname = "Exceptions"
+        row = 9
+        column = 1
+        width = medium
+
+        must have statement_line_id
+        (
+            type = text
+            displayname = "Statement Line ID"
+            width = medium
+            mandatory = true
+        )
+
+        must have transaction_date
+        (
+            type = date
+            displayname = "Transaction Date"
+            width = medium
+            mandatory = true
+        )
+
+        must have amount
+        (
+            type = INR
+            displayname = "Amount"
+            width = medium
+            mandatory = true
+            format = commadotindian
+        )
+
+        suggested_match
+        (
+            type = lookup
+            displayname = "Suggested Match"
+            width = medium
+            formlinkname = vendor_ledger
+        )
+
+        exception_notes
+        (
+            type = textarea
+            displayname = "Exception Notes"
+            width = medium
+        )
+
+        must have resolution_status
+        (
+            type = picklist
+            displayname = "Resolution Status"
+            width = medium
+            mandatory = true
+            values = {"Open","Resolved"}
+            notes = "Open / Resolved"
+        )
+    )
+
+    remarks
+    (
+        type = textarea
+        displayname = "Remarks"
+        row = 10
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

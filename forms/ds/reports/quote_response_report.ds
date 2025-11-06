@@ -1,0 +1,25 @@
+report quote_response_report
+{
+
+    displayname = "Quote Response Report"
+    sourceform = quote_response
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {quote_id, rfq, vendor, quote_date, price_valid_till, currency, quote_lines, freight_terms, payment_terms, delivery_terms, lead_time_days, attachments, remarks, evaluation_score, chosen_flag}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {quote_id, rfq, vendor, quote_date, price_valid_till, currency, quote_lines, freight_terms, payment_terms, delivery_terms, lead_time_days, attachments, remarks, evaluation_score, chosen_flag}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {quote_id, rfq, vendor, quote_date, price_valid_till, currency, quote_lines, freight_terms, payment_terms, delivery_terms, lead_time_days, attachments, remarks, evaluation_score, chosen_flag}
+    )
+}

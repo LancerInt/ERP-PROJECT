@@ -1,0 +1,137 @@
+// Module: 1. Core & Shared Masters
+form service_catalogue
+{
+
+    displayname = "Service Catalogue"
+    success message = "Service Catalogue added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have service_code
+    (
+        type = text
+        displayname = "Service Code"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have name
+    (
+        type = text
+        displayname = "Name"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have category
+    (
+        type = picklist
+        displayname = "Category"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Warehouse Expense","Wages","Freight","Misc","Custom"}
+        notes = "Warehouse Expense / Wages / Freight / Misc / Custom"
+    )
+
+    must have direction
+    (
+        type = picklist
+        displayname = "Direction"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Inbound","Outbound","Both"}
+        notes = "Inbound / Outbound / Both"
+    )
+
+    default_tds
+    (
+        type = number
+        displayname = "Default TDS %"
+        row = 5
+        column = 1
+        width = medium
+    )
+
+    default_tcs
+    (
+        type = number
+        displayname = "Default TCS %"
+        row = 6
+        column = 1
+        width = medium
+    )
+
+    warehouse_availability
+    (
+        type = lookup
+        displayname = "Warehouse Availability"
+        row = 7
+        column = 1
+        width = medium
+        allow multiple = true
+        formlinkname = warehouse
+    )
+
+    description
+    (
+        type = textarea
+        displayname = "Description"
+        row = 8
+        column = 1
+        width = medium
+    )
+
+    must have active_flag
+    (
+        type = checkbox
+        displayname = "Active Flag"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

@@ -1,0 +1,294 @@
+// Module: 1. Core & Shared Masters
+form company
+{
+
+    displayname = "Company"
+    success message = "Company added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have company_code
+    (
+        type = text
+        displayname = "Company Code"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        unique = true
+        notes = "Short code used across modules and exports"
+    )
+
+    must have legal_name
+    (
+        type = text
+        displayname = "Legal Name"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Registered legal entity name"
+    )
+
+    trade_name
+    (
+        type = text
+        displayname = "Trade Name"
+        row = 3
+        column = 1
+        width = medium
+        notes = "Optional doing-business-as name"
+    )
+
+    must have gstin
+    (
+        type = text
+        displayname = "GSTIN"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "GST registration; validate 15-character format"
+    )
+
+    pan
+    (
+        type = text
+        displayname = "PAN"
+        row = 5
+        column = 1
+        width = medium
+        notes = "For TDS/TCS calculations"
+    )
+
+    cin
+    (
+        type = text
+        displayname = "CIN"
+        row = 6
+        column = 1
+        width = medium
+        notes = "Corporate Identification Number"
+    )
+
+    must have registered_address
+    (
+        type = address
+        displayname = "Registered Address"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+        capture_coordinates = true
+        adjust_using_map = false
+        address_line_1
+        (
+            type = address_line_1
+            displayname = "Address Line 1"
+        )
+        address_line_2
+        (
+            type = address_line_2
+            displayname = "Address Line 2"
+        )
+        district_city
+        (
+            type = district_city
+            displayname = "City / District"
+        )
+        state_province
+        (
+            type = state_province
+            displayname = "State / Province"
+        )
+        postal_code
+        (
+            type = postal_code
+            displayname = "Postal Code"
+        )
+        country
+        (
+            type = country
+            displayname = "Country"
+        )
+        latitude
+        (
+            type = latitude
+            displayname = "Latitude"
+            visibility = false
+        )
+        longitude
+        (
+            type = longitude
+            displayname = "Longitude"
+            visibility = false
+        )
+        notes = "Multi-line address"
+        personal data = true
+    )
+
+    must have billing_address
+    (
+        type = address
+        displayname = "Billing Address"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+        capture_coordinates = true
+        adjust_using_map = false
+        address_line_1
+        (
+            type = address_line_1
+            displayname = "Address Line 1"
+        )
+        address_line_2
+        (
+            type = address_line_2
+            displayname = "Address Line 2"
+        )
+        district_city
+        (
+            type = district_city
+            displayname = "City / District"
+        )
+        state_province
+        (
+            type = state_province
+            displayname = "State / Province"
+        )
+        postal_code
+        (
+            type = postal_code
+            displayname = "Postal Code"
+        )
+        country
+        (
+            type = country
+            displayname = "Country"
+        )
+        latitude
+        (
+            type = latitude
+            displayname = "Latitude"
+            visibility = false
+        )
+        longitude
+        (
+            type = longitude
+            displayname = "Longitude"
+            visibility = false
+        )
+        notes = "Defaults on invoices"
+        personal data = true
+    )
+
+    contact_email
+    (
+        type = email
+        displayname = "Contact Email"
+        row = 9
+        column = 1
+        width = medium
+        notes = "Finance escalation"
+        personal data = true
+    )
+
+    contact_phone
+    (
+        type = phonenumber
+        displayname = "Contact Phone"
+        row = 10
+        column = 1
+        width = medium
+        personal data = true
+    )
+
+    must have default_currency
+    (
+        type = picklist
+        displayname = "Default Currency"
+        row = 11
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Values maintained in system parameters"
+    )
+
+    books_export_flag
+    (
+        type = checkbox
+        displayname = "Books Export Flag"
+        row = 12
+        column = 1
+        width = medium
+        notes = "Toggle for Tally integration"
+    )
+
+    must have active_from
+    (
+        type = date
+        displayname = "Active From"
+        row = 13
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Effective start date"
+    )
+
+    active_to
+    (
+        type = date
+        displayname = "Active To"
+        row = 14
+        column = 1
+        width = medium
+        notes = "Optional sunset"
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 15
+        column = 1
+        width = medium
+        notes = "Additional remarks"
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

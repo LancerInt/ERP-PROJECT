@@ -1,0 +1,195 @@
+// Module: 3. Sales Module
+form receivable_ledger
+{
+
+    displayname = "Receivable Ledger"
+    success message = "Receivable Ledger added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have ledger_id
+    (
+        type = autonumber
+        displayname = "Ledger ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have customer
+    (
+        type = lookup
+        displayname = "Customer"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = customer
+    )
+
+    must have invoice_reference
+    (
+        type = lookup
+        displayname = "Invoice Reference"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = sales_invoice_check
+    )
+
+    must have invoice_date
+    (
+        type = date
+        displayname = "Invoice Date"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have due_date
+    (
+        type = date
+        displayname = "Due Date"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have amount
+    (
+        type = INR
+        displayname = "Amount"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+        format = commadotindian
+    )
+
+    amount_paid
+    (
+        type = INR
+        displayname = "Amount Paid"
+        row = 7
+        column = 1
+        width = medium
+        format = commadotindian
+    )
+
+    must have balance
+    (
+        type = INR
+        displayname = "Balance"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+        format = commadotindian
+    )
+
+    must have payment_status
+    (
+        type = picklist
+        displayname = "Payment Status"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Not Due","Partially Paid","Paid","Overdue"}
+        notes = "Not Due / Partially Paid / Paid / Overdue"
+    )
+
+    reminder_dates
+    (
+        type = grid
+        displayname = "Reminder Dates"
+        row = 10
+        column = 1
+        width = medium
+
+        must have reminder_date
+        (
+            type = date
+            displayname = "Reminder Date"
+            width = medium
+            mandatory = true
+        )
+
+        reminder_sent_by
+        (
+            type = lookup
+            displayname = "Reminder Sent By"
+            width = medium
+            formlinkname = stakeholder_user
+        )
+
+        reminder_method
+        (
+            type = picklist
+            displayname = "Reminder Method"
+            width = medium
+            values = {"Email","Call"}
+            notes = "Email / Call"
+        )
+    )
+
+    escalation_flag
+    (
+        type = checkbox
+        displayname = "Escalation Flag"
+        row = 11
+        column = 1
+        width = medium
+        notes = "Trigger after 2 weeks"
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 12
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

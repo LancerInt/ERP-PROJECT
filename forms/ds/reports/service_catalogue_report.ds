@@ -1,0 +1,25 @@
+report service_catalogue_report
+{
+
+    displayname = "Service Catalogue Report"
+    sourceform = service_catalogue
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {service_code, name, category, direction, default_tds, default_tcs, warehouse_availability, description, active_flag}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {service_code, name, category, direction, default_tds, default_tcs, warehouse_availability, description, active_flag}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {service_code, name, category, direction, default_tds, default_tcs, warehouse_availability, description, active_flag}
+    )
+}

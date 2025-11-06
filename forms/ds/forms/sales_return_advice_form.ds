@@ -1,0 +1,369 @@
+// Module: 6. Inventory, Logistics & Returns
+form sales_return_advice
+{
+
+    displayname = "Sales Return Advice"
+    success message = "Sales Return Advice added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have return_no
+    (
+        type = autonumber
+        displayname = "Return No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have return_date
+    (
+        type = date
+        displayname = "Return Date"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have customer
+    (
+        type = lookup
+        displayname = "Customer"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = customer
+    )
+
+    must have original_invoice
+    (
+        type = lookup
+        displayname = "Original Invoice"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = sales_invoice_check
+    )
+
+    returned_by
+    (
+        type = text
+        displayname = "Returned By"
+        row = 5
+        column = 1
+        width = medium
+        notes = "Customer contact"
+    )
+
+    must have received_warehouse
+    (
+        type = lookup
+        displayname = "Received Warehouse"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+    )
+
+    must have return_lines
+    (
+        type = grid
+        displayname = "Return Lines"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have product
+        (
+            type = lookup
+            displayname = "Product"
+            width = medium
+            mandatory = true
+            formlinkname = product_master
+        )
+
+        batch
+        (
+            type = text
+            displayname = "Batch"
+            width = medium
+        )
+
+        must have quantity_returned
+        (
+            type = number
+            displayname = "Quantity Returned"
+            width = medium
+            mandatory = true
+        )
+
+        must have uom
+        (
+            type = picklist
+            displayname = "UOM"
+            width = medium
+            mandatory = true
+        )
+
+        must have condition
+        (
+            type = picklist
+            displayname = "Condition"
+            width = medium
+            mandatory = true
+            values = {"Resaleable","Reformulate","Scrap"}
+            notes = "Resaleable / Reformulate / Scrap"
+        )
+
+        viability_notes
+        (
+            type = textarea
+            displayname = "Viability Notes"
+            width = medium
+        )
+
+        packing_material_captured
+        (
+            type = lookup
+            displayname = "Packing Material Captured"
+            width = medium
+            formlinkname = product_master
+        )
+    )
+
+    must have freight_terms
+    (
+        type = picklist
+        displayname = "Freight Terms"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    freight_charges
+    (
+        type = grid
+        displayname = "Freight Charges"
+        row = 9
+        column = 1
+        width = medium
+
+        must have freight_type
+        (
+            type = picklist
+            displayname = "Freight Type"
+            width = medium
+            mandatory = true
+            values = {"Local Drayage","Linehaul"}
+            notes = "Local Drayage / Linehaul"
+        )
+
+        transporter
+        (
+            type = lookup
+            displayname = "Transporter"
+            width = medium
+            formlinkname = transporter
+        )
+
+        must have amount
+        (
+            type = INR
+            displayname = "Amount"
+            width = medium
+            mandatory = true
+            format = commadotindian
+        )
+
+        discount
+        (
+            type = INR
+            displayname = "Discount"
+            width = medium
+            format = commadotindian
+        )
+
+        must have payable_by
+        (
+            type = picklist
+            displayname = "Payable By"
+            width = medium
+            mandatory = true
+            values = {"Company","Customer"}
+            notes = "Company / Customer"
+        )
+    )
+
+    loading_unloading_charges
+    (
+        type = grid
+        displayname = "Loading/Unloading Charges"
+        row = 10
+        column = 1
+        width = medium
+
+        must have charge_type
+        (
+            type = picklist
+            displayname = "Charge Type"
+            width = medium
+            mandatory = true
+            values = {"Loading","Unloading"}
+            notes = "Loading / Unloading"
+        )
+
+        contractor_vendor
+        (
+            type = lookup
+            displayname = "Contractor Vendor"
+            width = medium
+            formlinkname = vendor
+        )
+
+        must have amount
+        (
+            type = INR
+            displayname = "Amount"
+            width = medium
+            mandatory = true
+            format = commadotindian
+        )
+
+        tds
+        (
+            type = number
+            displayname = "TDS %"
+            width = medium
+        )
+
+        must have payable_by
+        (
+            type = picklist
+            displayname = "Payable By"
+            width = medium
+            mandatory = true
+            values = {"Company","Customer"}
+            notes = "Company / Customer"
+        )
+    )
+
+    must have qc_requirement
+    (
+        type = picklist
+        displayname = "QC Requirement"
+        row = 11
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Required","Optional"}
+        notes = "Required / Optional"
+    )
+
+    must have approval_status
+    (
+        type = picklist
+        displayname = "Approval Status"
+        row = 12
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Draft","Pending","Approved","Rejected"}
+        notes = "Draft / Pending / Approved / Rejected"
+    )
+
+    approval_trail
+    (
+        type = grid
+        displayname = "Approval Trail"
+        row = 13
+        column = 1
+        width = medium
+
+        must have action
+        (
+            type = picklist
+            displayname = "Action"
+            width = medium
+            mandatory = true
+            values = {"Approved","Rejected","Partial"}
+            notes = "Approved / Rejected / Partial"
+        )
+
+        must have actor
+        (
+            type = lookup
+            displayname = "Actor"
+            width = medium
+            mandatory = true
+            formlinkname = stakeholder_user
+        )
+
+        must have action_date
+        (
+            type = datetime
+            displayname = "Action Date"
+            width = medium
+            mandatory = true
+        )
+
+        remarks
+        (
+            type = textarea
+            displayname = "Remarks"
+            width = medium
+        )
+    )
+
+    remarks
+    (
+        type = textarea
+        displayname = "Remarks"
+        row = 14
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

@@ -1,0 +1,25 @@
+report price_list_report
+{
+
+    displayname = "Price List Report"
+    sourceform = price_list
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {price_list_id, company, customer, delivery_region, currency, effective_from, effective_to, default_freight_terms, status, price_lines, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {price_list_id, company, customer, delivery_region, currency, effective_from, effective_to, default_freight_terms, status, price_lines, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {price_list_id, company, customer, delivery_region, currency, effective_from, effective_to, default_freight_terms, status, price_lines, notes}
+    )
+}

@@ -1,0 +1,25 @@
+report petty_cash_register_report
+{
+
+    displayname = "Petty Cash Register Report"
+    sourceform = petty_cash_register
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {register_id, warehouse, coordinator, opening_balance, transactions, current_balance, last_reconciled_date}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {register_id, warehouse, coordinator, opening_balance, transactions, current_balance, last_reconciled_date}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {register_id, warehouse, coordinator, opening_balance, transactions, current_balance, last_reconciled_date}
+    )
+}

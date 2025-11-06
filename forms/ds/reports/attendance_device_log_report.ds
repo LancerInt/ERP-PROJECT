@@ -1,0 +1,25 @@
+report attendance_device_log_report
+{
+
+    displayname = "Attendance Device Log Report"
+    sourceform = attendance_device_log
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {log_id, device_id, event_time, event_type, status, error_message}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {log_id, device_id, event_time, event_type, status, error_message}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {log_id, device_id, event_time, event_type, status, error_message}
+    )
+}

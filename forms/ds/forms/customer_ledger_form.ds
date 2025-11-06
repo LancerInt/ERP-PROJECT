@@ -1,0 +1,191 @@
+// Module: 7. Finance Module
+form customer_ledger
+{
+
+    displayname = "Customer Ledger"
+    success message = "Customer Ledger added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have ledger_id
+    (
+        type = autonumber
+        displayname = "Ledger ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have customer
+    (
+        type = lookup
+        displayname = "Customer"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = customer
+    )
+
+    must have document_type
+    (
+        type = picklist
+        displayname = "Document Type"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Invoice","Receipt","Credit Note"}
+        notes = "Invoice / Receipt / Credit Note"
+    )
+
+    must have document_reference
+    (
+        type = lookup
+        displayname = "Document Reference"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = sales_invoice_check
+    )
+
+    must have document_date
+    (
+        type = date
+        displayname = "Document Date"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    debit_amount
+    (
+        type = INR
+        displayname = "Debit Amount"
+        row = 6
+        column = 1
+        width = medium
+        format = commadotindian
+    )
+
+    credit_amount
+    (
+        type = INR
+        displayname = "Credit Amount"
+        row = 7
+        column = 1
+        width = medium
+        format = commadotindian
+    )
+
+    due_date
+    (
+        type = date
+        displayname = "Due Date"
+        row = 8
+        column = 1
+        width = medium
+    )
+
+    must have payment_status
+    (
+        type = picklist
+        displayname = "Payment Status"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Not Due","Partially Paid","Paid","Overdue"}
+        notes = "Not Due / Partially Paid / Paid / Overdue"
+    )
+
+    reminder_sent_flags
+    (
+        type = grid
+        displayname = "Reminder Sent Flags"
+        row = 10
+        column = 1
+        width = medium
+
+        must have reminder_date
+        (
+            type = date
+            displayname = "Reminder Date"
+            width = medium
+            mandatory = true
+        )
+
+        reminder_method
+        (
+            type = picklist
+            displayname = "Reminder Method"
+            width = medium
+            values = {"Email","Call","SMS"}
+            notes = "Email / Call / SMS"
+        )
+
+        reminder_sent_by
+        (
+            type = lookup
+            displayname = "Reminder Sent By"
+            width = medium
+            formlinkname = stakeholder_user
+        )
+
+        notes
+        (
+            type = textarea
+            displayname = "Notes"
+            width = medium
+        )
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 11
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

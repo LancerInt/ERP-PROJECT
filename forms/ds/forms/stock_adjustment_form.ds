@@ -1,0 +1,253 @@
+// Module: 6. Inventory, Logistics & Returns
+form stock_adjustment
+{
+
+    displayname = "Stock Adjustment"
+    success message = "Stock Adjustment added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have adjustment_no
+    (
+        type = autonumber
+        displayname = "Adjustment No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have adjustment_date
+    (
+        type = date
+        displayname = "Adjustment Date"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have warehouse
+    (
+        type = lookup
+        displayname = "Warehouse"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+    )
+
+    must have godown
+    (
+        type = lookup
+        displayname = "Godown"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = godown
+        notes = "Stock location"
+    )
+
+    must have product
+    (
+        type = lookup
+        displayname = "Product"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = product_master
+    )
+
+    batch
+    (
+        type = text
+        displayname = "Batch"
+        row = 6
+        column = 1
+        width = medium
+    )
+
+    must have adjustment_type
+    (
+        type = picklist
+        displayname = "Adjustment Type"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Positive","Negative"}
+        notes = "Positive / Negative"
+    )
+
+    must have quantity
+    (
+        type = number
+        displayname = "Quantity"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have uom
+    (
+        type = picklist
+        displayname = "UOM"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have reason_code
+    (
+        type = picklist
+        displayname = "Reason Code"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Damage","Expiry","Shortage","Surplus","Audit Correction","Others"}
+        notes = "Damage / Expiry / Shortage / Surplus / Audit Correction / Others"
+    )
+
+    must have other_reason
+    (
+        type = textarea
+        displayname = "Other Reason"
+        row = 11
+        column = 1
+        width = medium
+        conditional mandatory = true
+        notes = "Mandatory if Others"
+    )
+
+    must have evidence_attachments
+    (
+        type = upload file
+        displayname = "Evidence Attachments"
+        row = 12
+        column = 1
+        width = medium
+        mandatory = true
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "Photos, documents"
+    )
+
+    must have value_impact
+    (
+        type = INR
+        displayname = "Value Impact"
+        row = 13
+        column = 1
+        width = medium
+        mandatory = true
+        format = commadotindian
+        notes = "Auto-calculated"
+    )
+
+    must have finance_review_required
+    (
+        type = checkbox
+        displayname = "Finance Review Required"
+        row = 14
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Auto flag if value > ₹25,000"
+    )
+
+    must have approval_status
+    (
+        type = picklist
+        displayname = "Approval Status"
+        row = 15
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Draft","Pending","Approved","Rejected"}
+        notes = "Draft / Pending / Approved / Rejected"
+    )
+
+    approved_by
+    (
+        type = lookup
+        displayname = "Approved By"
+        row = 16
+        column = 1
+        width = medium
+        formlinkname = stakeholder_user
+    )
+
+    approval_date
+    (
+        type = datetime
+        displayname = "Approval Date"
+        row = 17
+        column = 1
+        width = medium
+    )
+
+    notified_to
+    (
+        type = lookup
+        displayname = "Notified To"
+        row = 18
+        column = 1
+        width = medium
+        allow multiple = true
+        formlinkname = stakeholder_user
+        notes = "Office Manager notification"
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 19
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

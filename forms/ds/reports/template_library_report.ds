@@ -1,0 +1,25 @@
+report template_library_report
+{
+
+    displayname = "Template Library Report"
+    sourceform = template_library
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {template_id, template_type, name, warehouse_scope, revision_no, effective_from, effective_to, layout_json_xml, requires_digital_signature, created_by, approval_log, status}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {template_id, template_type, name, warehouse_scope, revision_no, effective_from, effective_to, layout_json_xml, requires_digital_signature, created_by, approval_log, status}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {template_id, template_type, name, warehouse_scope, revision_no, effective_from, effective_to, layout_json_xml, requires_digital_signature, created_by, approval_log, status}
+    )
+}

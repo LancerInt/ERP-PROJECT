@@ -1,0 +1,25 @@
+report godown_report
+{
+
+    displayname = "Godown Report"
+    sourceform = godown
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {godown_code, warehouse, godown_name, storage_condition, capacity_uom, capacity_value, batch_tracking_enabled, default_qc_hold_area, active_flag, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {godown_code, warehouse, godown_name, storage_condition, capacity_uom, capacity_value, batch_tracking_enabled, default_qc_hold_area, active_flag, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {godown_code, warehouse, godown_name, storage_condition, capacity_uom, capacity_value, batch_tracking_enabled, default_qc_hold_area, active_flag, notes}
+    )
+}

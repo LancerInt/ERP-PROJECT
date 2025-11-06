@@ -1,0 +1,25 @@
+report overtime_request_report
+{
+
+    displayname = "Overtime Request Report"
+    sourceform = overtime_request
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {request_no, staff, date, shift, hours_worked, task_description, supporting_evidence, approval_status, approved_by, wage_integration_flag}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {request_no, staff, date, shift, hours_worked, task_description, supporting_evidence, approval_status, approved_by, wage_integration_flag}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {request_no, staff, date, shift, hours_worked, task_description, supporting_evidence, approval_status, approved_by, wage_integration_flag}
+    )
+}

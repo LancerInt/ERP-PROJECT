@@ -1,0 +1,25 @@
+report credit_debit_note_report
+{
+
+    displayname = "Credit/Debit Note Report"
+    sourceform = credit_debit_note
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {note_no, note_type, vendor_customer, source_document, amount, tax, reason, approval_status, approved_by, approval_date, ledger_posting_reference}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {note_no, note_type, vendor_customer, source_document, amount, tax, reason, approval_status, approved_by, approval_date, ledger_posting_reference}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {note_no, note_type, vendor_customer, source_document, amount, tax, reason, approval_status, approved_by, approval_date, ledger_posting_reference}
+    )
+}

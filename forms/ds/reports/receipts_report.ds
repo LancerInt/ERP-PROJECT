@@ -1,0 +1,25 @@
+report receipts_report
+{
+
+    displayname = "Receipts Report"
+    sourceform = receipts
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {receipt_no, customer, receipt_date, amount, payment_method, reference_document, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {receipt_no, customer, receipt_date, amount, payment_method, reference_document, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {receipt_no, customer, receipt_date, amount, payment_method, reference_document, notes}
+    )
+}

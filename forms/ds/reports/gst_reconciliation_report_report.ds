@@ -1,0 +1,25 @@
+report gst_reconciliation_report_report
+{
+
+    displayname = "GST Reconciliation Report Report"
+    sourceform = gst_reconciliation_report
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {report_id, reporting_period, data_source, variance_summary, adjustments, export_file}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {report_id, reporting_period, data_source, variance_summary, adjustments, export_file}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {report_id, reporting_period, data_source, variance_summary, adjustments, export_file}
+    )
+}

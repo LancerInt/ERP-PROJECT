@@ -1,0 +1,107 @@
+// Module: 9. Configuration & Audit
+form decision_log
+{
+
+    displayname = "Decision Log"
+    success message = "Decision Log added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have decision_id
+    (
+        type = autonumber
+        displayname = "Decision ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have topic
+    (
+        type = text
+        displayname = "Topic"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have stakeholders
+    (
+        type = lookup
+        displayname = "Stakeholders"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        allow multiple = true
+        formlinkname = stakeholder_user
+    )
+
+    must have decision_details
+    (
+        type = textarea
+        displayname = "Decision Details"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have decision_date
+    (
+        type = date
+        displayname = "Decision Date"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    follow_up_actions
+    (
+        type = textarea
+        displayname = "Follow-up Actions"
+        row = 6
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

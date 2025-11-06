@@ -1,0 +1,25 @@
+report production_yield_log_report
+{
+
+    displayname = "Production Yield Log Report"
+    sourceform = production_yield_log
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {log_id, work_order, product, planned_yield, actual_output_qty, purity, ai_content, variance, remarks, report_date}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {log_id, work_order, product, planned_yield, actual_output_qty, purity, ai_content, variance, remarks, report_date}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {log_id, work_order, product, planned_yield, actual_output_qty, purity, ai_content, variance, remarks, report_date}
+    )
+}

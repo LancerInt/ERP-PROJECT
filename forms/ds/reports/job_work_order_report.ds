@@ -1,0 +1,25 @@
+report job_work_order_report
+{
+
+    displayname = "Job Work Order Report"
+    sourceform = job_work_order
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {order_no, warehouse, vendor, template, template_revision, start_date, expected_completion_date, turnaround_threshold, materials_supplied, outputs_expected, freight_terms, status, alerts_enabled}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {order_no, warehouse, vendor, template, template_revision, start_date, expected_completion_date, turnaround_threshold, materials_supplied, outputs_expected, freight_terms, status, alerts_enabled}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {order_no, warehouse, vendor, template, template_revision, start_date, expected_completion_date, turnaround_threshold, materials_supplied, outputs_expected, freight_terms, status, alerts_enabled}
+    )
+}

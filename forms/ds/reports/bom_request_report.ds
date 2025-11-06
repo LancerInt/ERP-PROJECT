@@ -1,0 +1,25 @@
+report bom_request_report
+{
+
+    displayname = "BOM Request Report"
+    sourceform = bom_request
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {request_no, request_date, warehouse, requested_by, production_template, output_product, output_quantity, required_completion_date, auto_calculated_inputs, shortfall_summary, approval_status, approved_by, approved_date, excel_export_link, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {request_no, request_date, warehouse, requested_by, production_template, output_product, output_quantity, required_completion_date, auto_calculated_inputs, shortfall_summary, approval_status, approved_by, approved_date, excel_export_link, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {request_no, request_date, warehouse, requested_by, production_template, output_product, output_quantity, required_completion_date, auto_calculated_inputs, shortfall_summary, approval_status, approved_by, approved_date, excel_export_link, notes}
+    )
+}

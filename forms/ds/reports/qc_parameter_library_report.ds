@@ -1,0 +1,25 @@
+report qc_parameter_library_report
+{
+
+    displayname = "QC Parameter Library Report"
+    sourceform = qc_parameter_library
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {parameter_code, parameter_name, unit, applicable_template, applicable_product, acceptable_min, acceptable_max, critical_flag, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {parameter_code, parameter_name, unit, applicable_template, applicable_product, acceptable_min, acceptable_max, critical_flag, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {parameter_code, parameter_name, unit, applicable_template, applicable_product, acceptable_min, acceptable_max, critical_flag, notes}
+    )
+}

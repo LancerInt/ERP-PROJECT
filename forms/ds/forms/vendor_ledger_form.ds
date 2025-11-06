@@ -1,0 +1,197 @@
+// Module: 7. Finance Module
+form vendor_ledger
+{
+
+    displayname = "Vendor Ledger"
+    success message = "Vendor Ledger added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have ledger_id
+    (
+        type = autonumber
+        displayname = "Ledger ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have vendor
+    (
+        type = lookup
+        displayname = "Vendor"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = vendor
+    )
+
+    must have document_type
+    (
+        type = picklist
+        displayname = "Document Type"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"PO","Receipt","Invoice","Freight","Wage","Credit Note"}
+        notes = "PO / Receipt / Invoice / Freight / Wage / Credit Note"
+    )
+
+    must have document_reference
+    (
+        type = lookup
+        displayname = "Document Reference"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = purchase_order
+    )
+
+    must have document_date
+    (
+        type = date
+        displayname = "Document Date"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    debit_amount
+    (
+        type = INR
+        displayname = "Debit Amount"
+        row = 6
+        column = 1
+        width = medium
+        format = commadotindian
+    )
+
+    credit_amount
+    (
+        type = INR
+        displayname = "Credit Amount"
+        row = 7
+        column = 1
+        width = medium
+        format = commadotindian
+    )
+
+    tax_breakdown
+    (
+        type = grid
+        displayname = "Tax Breakdown"
+        row = 8
+        column = 1
+        width = medium
+
+        must have tax_type
+        (
+            type = picklist
+            displayname = "Tax Type"
+            width = medium
+            mandatory = true
+            values = {"GST","TDS","TCS"}
+            notes = "GST / TDS / TCS"
+        )
+
+        must have rate
+        (
+            type = number
+            displayname = "Rate %"
+            width = medium
+            mandatory = true
+        )
+
+        must have amount
+        (
+            type = INR
+            displayname = "Amount"
+            width = medium
+            mandatory = true
+            format = commadotindian
+        )
+    )
+
+    due_date
+    (
+        type = date
+        displayname = "Due Date"
+        row = 9
+        column = 1
+        width = medium
+    )
+
+    must have payment_status
+    (
+        type = picklist
+        displayname = "Payment Status"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Not Due","Partially Paid","Paid","Overdue"}
+        notes = "Not Due / Partially Paid / Paid / Overdue"
+    )
+
+    ageing_bucket
+    (
+        type = picklist
+        displayname = "Ageing Bucket"
+        row = 11
+        column = 1
+        width = medium
+        values = {"0-30","31-60",">60"}
+        notes = "0-30 / 31-60 / >60"
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 12
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

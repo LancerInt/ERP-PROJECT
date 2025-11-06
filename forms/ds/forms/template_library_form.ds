@@ -1,0 +1,195 @@
+// Module: 1. Core & Shared Masters
+form template_library
+{
+
+    displayname = "Template Library"
+    success message = "Template Library added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have template_id
+    (
+        type = text
+        displayname = "Template ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have template_type
+    (
+        type = picklist
+        displayname = "Template Type"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Production","QC Report","Job Work","Packing","Invoice"}
+        notes = "Production / QC Report / Job Work / Packing / Invoice"
+    )
+
+    must have name
+    (
+        type = text
+        displayname = "Name"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have warehouse_scope
+    (
+        type = lookup
+        displayname = "Warehouse Scope"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        allow multiple = true
+        formlinkname = warehouse
+    )
+
+    must have revision_no
+    (
+        type = number
+        displayname = "Revision No."
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Rev 1, Rev 2, etc."
+    )
+
+    must have effective_from
+    (
+        type = date
+        displayname = "Effective From"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    effective_to
+    (
+        type = date
+        displayname = "Effective To"
+        row = 7
+        column = 1
+        width = medium
+    )
+
+    must have layout_json_xml
+    (
+        type = textarea
+        displayname = "Layout JSON/XML"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Stores dynamic layout"
+    )
+
+    requires_digital_signature
+    (
+        type = checkbox
+        displayname = "Requires Digital Signature"
+        row = 9
+        column = 1
+        width = medium
+    )
+
+    must have created_by
+    (
+        type = lookup
+        displayname = "Created By"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+    )
+
+    approval_log
+    (
+        type = grid
+        displayname = "Approval Log"
+        row = 11
+        column = 1
+        width = medium
+
+        must have approved_by
+        (
+            type = lookup
+            displayname = "Approved By"
+            width = medium
+            mandatory = true
+            formlinkname = stakeholder_user
+        )
+
+        must have approval_date
+        (
+            type = datetime
+            displayname = "Approval Date"
+            width = medium
+            mandatory = true
+        )
+
+        remarks
+        (
+            type = textarea
+            displayname = "Remarks"
+            width = medium
+        )
+    )
+
+    must have status
+    (
+        type = picklist
+        displayname = "Status"
+        row = 12
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Draft","Active","Retired"}
+        notes = "Draft / Active / Retired"
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

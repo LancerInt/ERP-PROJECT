@@ -1,0 +1,154 @@
+// Module: 1. Core & Shared Masters
+form stakeholder_user
+{
+
+    displayname = "Stakeholder User"
+    success message = "Stakeholder User added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have portal_user_id
+    (
+        type = text
+        displayname = "Portal User ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Zoho portal identifier"
+    )
+
+    must have employee_record
+    (
+        type = lookup
+        displayname = "Employee Record"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = staff_master
+        notes = "Links to staff"
+    )
+
+    must have primary_email
+    (
+        type = email
+        displayname = "Primary Email"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        personal data = true
+    )
+
+    mobile
+    (
+        type = phonenumber
+        displayname = "Mobile"
+        row = 4
+        column = 1
+        width = medium
+        personal data = true
+    )
+
+    must have assigned_roles
+    (
+        type = lookup
+        displayname = "Assigned Roles"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        allow multiple = true
+        formlinkname = role_definition
+        notes = "Supports multi-role users"
+    )
+
+    default_warehouse
+    (
+        type = lookup
+        displayname = "Default Warehouse"
+        row = 6
+        column = 1
+        width = medium
+        formlinkname = warehouse
+    )
+
+    warehouse_scope
+    (
+        type = lookup
+        displayname = "Warehouse Scope"
+        row = 7
+        column = 1
+        width = medium
+        allow multiple = true
+        formlinkname = warehouse
+        notes = "Overrides default"
+    )
+
+    must have status
+    (
+        type = picklist
+        displayname = "Status"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Active","Suspended"}
+        notes = "Active / Suspended"
+    )
+
+    last_accessed
+    (
+        type = datetime
+        displayname = "Last Accessed"
+        row = 9
+        column = 1
+        width = medium
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 10
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

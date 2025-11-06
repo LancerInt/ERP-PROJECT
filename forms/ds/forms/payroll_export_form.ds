@@ -1,0 +1,177 @@
+// Module: 8. Attendance & HR Module
+form payroll_export
+{
+
+    displayname = "Payroll Export"
+    success message = "Payroll Export added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have export_id
+    (
+        type = autonumber
+        displayname = "Export ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have period_start
+    (
+        type = date
+        displayname = "Period Start"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have period_end
+    (
+        type = date
+        displayname = "Period End"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have warehouse
+    (
+        type = lookup
+        displayname = "Warehouse"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+    )
+
+    must have staff_summary
+    (
+        type = grid
+        displayname = "Staff Summary"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have staff
+        (
+            type = lookup
+            displayname = "Staff"
+            width = medium
+            mandatory = true
+            formlinkname = staff_master
+        )
+
+        must have present_days
+        (
+            type = number
+            displayname = "Present Days"
+            width = medium
+            mandatory = true
+        )
+
+        must have absent_days
+        (
+            type = number
+            displayname = "Absent Days"
+            width = medium
+            mandatory = true
+        )
+
+        overtime_hours
+        (
+            type = number
+            displayname = "Overtime Hours"
+            width = medium
+        )
+
+        wages_amount
+        (
+            type = INR
+            displayname = "Wages Amount"
+            width = medium
+            format = commadotindian
+        )
+    )
+
+    attendance_metrics
+    (
+        type = textarea
+        displayname = "Attendance Metrics"
+        row = 6
+        column = 1
+        width = medium
+    )
+
+    overtime_hours_total
+    (
+        type = number
+        displayname = "Overtime Hours Total"
+        row = 7
+        column = 1
+        width = medium
+    )
+
+    exceptions
+    (
+        type = textarea
+        displayname = "Exceptions"
+        row = 8
+        column = 1
+        width = medium
+    )
+
+    export_file
+    (
+        type = upload file
+        displayname = "Export File"
+        row = 9
+        column = 1
+        width = medium
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "CSV for payroll"
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

@@ -1,0 +1,25 @@
+report freight_ledger_report
+{
+
+    displayname = "Freight Ledger Report"
+    sourceform = freight_ledger
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {ledger_id, direction, transporter, freight_advice, amount, discount, shipment_quantity, quantity_uom, cost_per_unit, destination_state, payment_schedule, amount_paid, balance, reminder_flag, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {ledger_id, direction, transporter, freight_advice, amount, discount, shipment_quantity, quantity_uom, cost_per_unit, destination_state, payment_schedule, amount_paid, balance, reminder_flag, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {ledger_id, direction, transporter, freight_advice, amount, discount, shipment_quantity, quantity_uom, cost_per_unit, destination_state, payment_schedule, amount_paid, balance, reminder_flag, notes}
+    )
+}

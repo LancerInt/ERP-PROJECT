@@ -1,0 +1,25 @@
+report machinery_report
+{
+
+    displayname = "Machinery Report"
+    sourceform = machinery
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {machine_id, warehouse, godown, machine_name, category, commission_date, maintenance_vendor, next_service_due, status, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {machine_id, warehouse, godown, machine_name, category, commission_date, maintenance_vendor, next_service_due, status, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {machine_id, warehouse, godown, machine_name, category, commission_date, maintenance_vendor, next_service_due, status, notes}
+    )
+}

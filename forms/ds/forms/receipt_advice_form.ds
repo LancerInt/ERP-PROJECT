@@ -1,0 +1,545 @@
+// Module: 2. Purchase Module
+form receipt_advice
+{
+
+    displayname = "Receipt Advice (Inbound)"
+    success message = "Receipt Advice (Inbound) added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have receipt_advice_no
+    (
+        type = autonumber
+        displayname = "Receipt Advice No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have receipt_date
+    (
+        type = date
+        displayname = "Receipt Date"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have warehouse
+    (
+        type = lookup
+        displayname = "Warehouse"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+    )
+
+    must have godown
+    (
+        type = lookup
+        displayname = "Godown"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = godown
+        notes = "Receiving location within warehouse"
+    )
+
+    must have vendor
+    (
+        type = lookup
+        displayname = "Vendor"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = vendor
+    )
+
+    must have linked_pos
+    (
+        type = lookup
+        displayname = "Linked PO(s)"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+        allow multiple = true
+        formlinkname = purchase_order
+    )
+
+    vehicle_number
+    (
+        type = text
+        displayname = "Vehicle Number"
+        row = 7
+        column = 1
+        width = medium
+    )
+
+    driver_name
+    (
+        type = text
+        displayname = "Driver Name"
+        row = 8
+        column = 1
+        width = medium
+    )
+
+    must have invoice_upload
+    (
+        type = upload file
+        displayname = "Invoice Upload"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "Vendor invoice"
+    )
+
+    packing_list_upload
+    (
+        type = upload file
+        displayname = "Packing List Upload"
+        row = 10
+        column = 1
+        width = medium
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+    )
+
+    must have receipt_lines
+    (
+        type = grid
+        displayname = "Receipt Lines"
+        row = 11
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have line_no
+        (
+            type = number
+            displayname = "Line No."
+            width = medium
+            mandatory = true
+        )
+
+        must have po_line
+        (
+            type = lookup
+            displayname = "PO Line"
+            width = medium
+            mandatory = true
+            formlinkname = po_lines
+        )
+
+        must have product
+        (
+            type = lookup
+            displayname = "Product"
+            width = medium
+            mandatory = true
+            formlinkname = product_master
+        )
+
+        must have batch_no
+        (
+            type = text
+            displayname = "Batch No."
+            width = medium
+            conditional mandatory = true
+            notes = "Mandatory when batch tracking enabled"
+        )
+
+        expiry_date
+        (
+            type = date
+            displayname = "Expiry Date"
+            width = medium
+        )
+
+        must have quantity_received
+        (
+            type = number
+            displayname = "Quantity Received"
+            width = medium
+            mandatory = true
+        )
+
+        must have uom
+        (
+            type = picklist
+            displayname = "UOM"
+            width = medium
+            mandatory = true
+        )
+
+        extra_commission
+        (
+            type = INR
+            displayname = "Extra Commission"
+            width = medium
+            format = commadotindian
+            notes = "Capture actual commission incurred"
+        )
+
+        agent_commission
+        (
+            type = INR
+            displayname = "Agent Commission"
+            width = medium
+            format = commadotindian
+            notes = "Capture agent payouts associated with the receipt"
+        )
+
+        quantity_accepted
+        (
+            type = number
+            displayname = "Quantity Accepted"
+            width = medium
+            notes = "Post QC"
+        )
+
+        quantity_rejected
+        (
+            type = number
+            displayname = "Quantity Rejected"
+            width = medium
+        )
+
+        must have godown_location
+        (
+            type = lookup
+            displayname = "Godown Location"
+            width = medium
+            mandatory = true
+            formlinkname = godown
+            notes = "Filtered by parent warehouse"
+        )
+
+        remarks
+        (
+            type = textarea
+            displayname = "Remarks"
+            width = medium
+        )
+    )
+
+    packing_material_lines
+    (
+        type = grid
+        displayname = "Packing Material Lines"
+        row = 12
+        column = 1
+        width = medium
+
+        must have packaging_sku
+        (
+            type = lookup
+            displayname = "Packaging SKU"
+            width = medium
+            mandatory = true
+            formlinkname = product_master
+            notes = "Must be PACKING_MATERIAL"
+        )
+
+        must have quantity
+        (
+            type = number
+            displayname = "Quantity"
+            width = medium
+            mandatory = true
+        )
+
+        must have uom
+        (
+            type = picklist
+            displayname = "UOM"
+            width = medium
+            mandatory = true
+        )
+
+        condition
+        (
+            type = picklist
+            displayname = "Condition"
+            width = medium
+            values = {"New","Damaged"}
+            notes = "New / Damaged"
+        )
+    )
+
+    freight_details
+    (
+        type = grid
+        displayname = "Freight Details"
+        row = 13
+        column = 1
+        width = medium
+
+        must have freight_type
+        (
+            type = picklist
+            displayname = "Freight Type"
+            width = medium
+            mandatory = true
+            values = {"Local Drayage","Linehaul"}
+            notes = "Local Drayage / Linehaul"
+        )
+
+        must have transporter
+        (
+            type = lookup
+            displayname = "Transporter"
+            width = medium
+            conditional mandatory = true
+            formlinkname = transporter
+            notes = "Required when company pays"
+        )
+
+        must have freight_terms
+        (
+            type = picklist
+            displayname = "Freight Terms"
+            width = medium
+            mandatory = true
+            values = {"Paid","To_Pay","Mixed"}
+            notes = "Paid / To_Pay / Mixed"
+        )
+
+        tentative_charge
+        (
+            type = INR
+            displayname = "Tentative Charge"
+            width = medium
+            format = commadotindian
+            notes = "Pre-filled from PO"
+        )
+
+        discount
+        (
+            type = INR
+            displayname = "Discount"
+            width = medium
+            format = commadotindian
+            notes = "Optional"
+        )
+
+        must have payable_by
+        (
+            type = picklist
+            displayname = "Payable By"
+            width = medium
+            mandatory = true
+            values = {"Company","Vendor"}
+            notes = "Company / Vendor"
+        )
+
+        quantity_basis
+        (
+            type = number
+            displayname = "Quantity Basis"
+            width = medium
+            notes = "Total shipment quantity for cost-per-unit reporting"
+        )
+
+        quantity_uom
+        (
+            type = picklist
+            displayname = "Quantity UOM"
+            width = medium
+            values = {"Tonnes","KG","KL","Units"}
+            notes = "Tonnes / KG / KL / Units"
+        )
+
+        destination_state
+        (
+            type = picklist
+            displayname = "Destination State"
+            width = medium
+            notes = "Auto-populated from receiving warehouse"
+        )
+
+        cost_per_unit_calc
+        (
+            type = number
+            displayname = "Cost Per Unit (Calc)"
+            width = medium
+            formula = true
+            notes = "Tentative charge minus discount divided by quantity basis"
+        )
+    )
+
+    loading_unloading_wages
+    (
+        type = grid
+        displayname = "Loading Unloading Wages"
+        row = 14
+        column = 1
+        width = medium
+
+        must have wage_type
+        (
+            type = picklist
+            displayname = "Wage Type"
+            width = medium
+            mandatory = true
+            values = {"Loading","Unloading"}
+            notes = "Loading / Unloading"
+        )
+
+        must have contractor_vendor
+        (
+            type = lookup
+            displayname = "Contractor Vendor"
+            width = medium
+            conditional mandatory = true
+            formlinkname = vendor
+            notes = "Mandatory if payable by company"
+        )
+
+        must have amount
+        (
+            type = INR
+            displayname = "Amount"
+            width = medium
+            mandatory = true
+            format = commadotindian
+            notes = "Includes product value plus extra/agent commissions when applicable"
+        )
+
+        tds_applicable
+        (
+            type = number
+            displayname = "TDS Applicable %"
+            width = medium
+        )
+
+        must have payable_by
+        (
+            type = picklist
+            displayname = "Payable By"
+            width = medium
+            mandatory = true
+            values = {"Company","Vendor"}
+            notes = "Company / Vendor"
+        )
+
+        remarks
+        (
+            type = textarea
+            displayname = "Remarks"
+            width = medium
+        )
+    )
+
+    must have qc_routing
+    (
+        type = picklist
+        displayname = "QC Routing"
+        row = 15
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Warehouse","QC Coordinator","QC Manager"}
+        notes = "Warehouse / QC Coordinator / QC Manager"
+    )
+
+    must have qc_status
+    (
+        type = picklist
+        displayname = "QC Status"
+        row = 16
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Pending","Pass","Fail","Hold"}
+        notes = "Pending / Pass / Fail / Hold"
+    )
+
+    partial_receipt_flag
+    (
+        type = checkbox
+        displayname = "Partial Receipt Flag"
+        row = 17
+        column = 1
+        width = medium
+    )
+
+    remarks
+    (
+        type = textarea
+        displayname = "Remarks"
+        row = 18
+        column = 1
+        width = medium
+    )
+
+    must have created_by
+    (
+        type = lookup
+        displayname = "Created By"
+        row = 19
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+    )
+
+    must have created_time
+    (
+        type = datetime
+        displayname = "Created Time"
+        row = 20
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

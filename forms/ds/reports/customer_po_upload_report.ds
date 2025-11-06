@@ -1,0 +1,25 @@
+report customer_po_upload_report
+{
+
+    displayname = "Customer PO Upload Report"
+    sourceform = customer_po_upload
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {upload_id, customer, upload_date, po_file, ai_parser_confidence, parsed_po_number, parsed_po_date, delivery_location, parsed_lines, manual_review_required, review_comments, status, linked_sales_order}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {upload_id, customer, upload_date, po_file, ai_parser_confidence, parsed_po_number, parsed_po_date, delivery_location, parsed_lines, manual_review_required, review_comments, status, linked_sales_order}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {upload_id, customer, upload_date, po_file, ai_parser_confidence, parsed_po_number, parsed_po_date, delivery_location, parsed_lines, manual_review_required, review_comments, status, linked_sales_order}
+    )
+}

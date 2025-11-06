@@ -1,0 +1,205 @@
+// Module: 8. Attendance & HR Module
+form attendance_capture
+{
+
+    displayname = "Attendance Capture"
+    success message = "Attendance Capture added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have record_id
+    (
+        type = autonumber
+        displayname = "Record ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have staff
+    (
+        type = lookup
+        displayname = "Staff"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = staff_master
+    )
+
+    must have date
+    (
+        type = date
+        displayname = "Date"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have check_in_time
+    (
+        type = datetime
+        displayname = "Check-in Time"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    check_out_time
+    (
+        type = datetime
+        displayname = "Check-out Time"
+        row = 5
+        column = 1
+        width = medium
+    )
+
+    must have entry_photo
+    (
+        type = upload file
+        displayname = "Entry Photo"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+        file count = 10
+        browse = local_drive
+        notes = "Retained 7 days"
+    )
+
+    exit_photo
+    (
+        type = upload file
+        displayname = "Exit Photo"
+        row = 7
+        column = 1
+        width = medium
+        file count = 10
+        browse = local_drive
+        notes = "Retained 7 days"
+    )
+
+    must have geo_latitude
+    (
+        type = number
+        displayname = "Geo Latitude"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Must fall within warehouse geofence"
+    )
+
+    must have geo_longitude
+    (
+        type = number
+        displayname = "Geo Longitude"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have face_match_confidence
+    (
+        type = number
+        displayname = "Face Match Confidence"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "From external API"
+    )
+
+    must have device_id
+    (
+        type = text
+        displayname = "Device ID"
+        row = 11
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "HR device"
+    )
+
+    must have shift
+    (
+        type = lookup
+        displayname = "Shift"
+        row = 12
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = shift_definition
+    )
+
+    must have attendance_status
+    (
+        type = picklist
+        displayname = "Attendance Status"
+        row = 13
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Present","Absent","Half Day","Permission"}
+        notes = "Present / Absent / Half Day / Permission"
+    )
+
+    overtime_hours
+    (
+        type = number
+        displayname = "Overtime Hours"
+        row = 14
+        column = 1
+        width = medium
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 15
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

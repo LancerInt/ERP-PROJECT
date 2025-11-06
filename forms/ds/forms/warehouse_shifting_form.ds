@@ -1,0 +1,258 @@
+// Module: 6. Inventory, Logistics & Returns
+form warehouse_shifting
+{
+
+    displayname = "Warehouse Shifting"
+    success message = "Warehouse Shifting added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have shifting_no
+    (
+        type = autonumber
+        displayname = "Shifting No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have warehouse
+    (
+        type = lookup
+        displayname = "Warehouse"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+    )
+
+    must have request_date
+    (
+        type = date
+        displayname = "Request Date"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have from_godown
+    (
+        type = lookup
+        displayname = "From Godown"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = godown
+        notes = "Origin location"
+    )
+
+    must have to_godown
+    (
+        type = lookup
+        displayname = "To Godown"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = godown
+        notes = "Destination location"
+    )
+
+    must have reason_code
+    (
+        type = picklist
+        displayname = "Reason Code"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Damage","Space Optimisation","Audit","Other"}
+        notes = "Damage / Space Optimisation / Audit / Other"
+    )
+
+    must have other_reason
+    (
+        type = textarea
+        displayname = "Other Reason"
+        row = 7
+        column = 1
+        width = medium
+        conditional mandatory = true
+        notes = "Mandatory when Reason = Other"
+    )
+
+    must have products
+    (
+        type = grid
+        displayname = "Products"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have product
+        (
+            type = lookup
+            displayname = "Product"
+            width = medium
+            mandatory = true
+            formlinkname = product_master
+        )
+
+        batch
+        (
+            type = text
+            displayname = "Batch"
+            width = medium
+        )
+
+        must have quantity
+        (
+            type = number
+            displayname = "Quantity"
+            width = medium
+            mandatory = true
+        )
+
+        must have uom
+        (
+            type = picklist
+            displayname = "UOM"
+            width = medium
+            mandatory = true
+        )
+    )
+
+    freight_wage_drafts
+    (
+        type = grid
+        displayname = "Freight/Wage Drafts"
+        row = 9
+        column = 1
+        width = medium
+
+        must have expense_type
+        (
+            type = picklist
+            displayname = "Expense Type"
+            width = medium
+            mandatory = true
+            values = {"Freight","Loading","Unloading"}
+            notes = "Freight / Loading / Unloading"
+        )
+
+        must have vendor
+        (
+            type = lookup
+            displayname = "Vendor"
+            width = medium
+            conditional mandatory = true
+            formlinkname = vendor
+            notes = "Mandatory when payable by company"
+        )
+
+        must have amount
+        (
+            type = INR
+            displayname = "Amount"
+            width = medium
+            mandatory = true
+            format = commadotindian
+        )
+
+        must have payable_by
+        (
+            type = picklist
+            displayname = "Payable By"
+            width = medium
+            mandatory = true
+            values = {"Sending Warehouse","Receiving Warehouse"}
+            notes = "Sending Warehouse / Receiving Warehouse"
+        )
+
+        must have approval_status
+        (
+            type = picklist
+            displayname = "Approval Status"
+            width = medium
+            mandatory = true
+            values = {"Draft","Pending","Approved"}
+            notes = "Draft / Pending / Approved"
+        )
+    )
+
+    must have status
+    (
+        type = picklist
+        displayname = "Status"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Draft","Pending Approval","Approved","Completed"}
+        notes = "Draft / Pending Approval / Approved / Completed"
+    )
+
+    in_transit_flag
+    (
+        type = checkbox
+        displayname = "In-Transit Flag"
+        row = 11
+        column = 1
+        width = medium
+    )
+
+    attachments
+    (
+        type = upload file
+        displayname = "Attachments"
+        row = 12
+        column = 1
+        width = medium
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "Evidence"
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

@@ -1,0 +1,25 @@
+report qc_final_report_report
+{
+
+    displayname = "QC Final Report Report"
+    sourceform = qc_final_report
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {report_no, qc_request, template_revision, prepared_by, prepared_date, overall_result, remarks, digital_signature, distribution_list, attachments}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {report_no, qc_request, template_revision, prepared_by, prepared_date, overall_result, remarks, digital_signature, distribution_list, attachments}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {report_no, qc_request, template_revision, prepared_by, prepared_date, overall_result, remarks, digital_signature, distribution_list, attachments}
+    )
+}

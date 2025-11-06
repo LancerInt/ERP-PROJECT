@@ -1,0 +1,244 @@
+// Module: 4. Production Module
+form bom_request
+{
+
+    displayname = "BOM Request"
+    success message = "BOM Request added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have request_no
+    (
+        type = autonumber
+        displayname = "Request No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have request_date
+    (
+        type = date
+        displayname = "Request Date"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have warehouse
+    (
+        type = lookup
+        displayname = "Warehouse"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+    )
+
+    must have requested_by
+    (
+        type = lookup
+        displayname = "Requested By"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+        notes = "Warehouse Coordinator"
+    )
+
+    must have production_template
+    (
+        type = lookup
+        displayname = "Production Template"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = template_library
+    )
+
+    must have output_product
+    (
+        type = lookup
+        displayname = "Output Product"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = product_master
+    )
+
+    must have output_quantity
+    (
+        type = number
+        displayname = "Output Quantity"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    required_completion_date
+    (
+        type = date
+        displayname = "Required Completion Date"
+        row = 8
+        column = 1
+        width = medium
+    )
+
+    must have auto_calculated_inputs
+    (
+        type = grid
+        displayname = "Auto-calculated Inputs"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have product
+        (
+            type = lookup
+            displayname = "Product"
+            width = medium
+            mandatory = true
+            formlinkname = product_master
+        )
+
+        must have required_qty
+        (
+            type = number
+            displayname = "Required Qty"
+            width = medium
+            mandatory = true
+        )
+
+        must have available_qty
+        (
+            type = number
+            displayname = "Available Qty"
+            width = medium
+            mandatory = true
+            notes = "From stock"
+        )
+
+        must have shortfall_qty
+        (
+            type = number
+            displayname = "Shortfall Qty"
+            width = medium
+            mandatory = true
+            notes = "Negative allowed"
+        )
+
+        must have purpose
+        (
+            type = picklist
+            displayname = "Purpose"
+            width = medium
+            mandatory = true
+            values = {"RM","PM","Wage"}
+            notes = "RM / PM / Wage"
+        )
+    )
+
+    shortfall_summary
+    (
+        type = textarea
+        displayname = "Shortfall Summary"
+        row = 10
+        column = 1
+        width = medium
+    )
+
+    must have approval_status
+    (
+        type = picklist
+        displayname = "Approval Status"
+        row = 11
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Draft","Pending","Approved","Rejected"}
+        notes = "Draft / Pending / Approved / Rejected"
+    )
+
+    approved_by
+    (
+        type = lookup
+        displayname = "Approved By"
+        row = 12
+        column = 1
+        width = medium
+        formlinkname = stakeholder_user
+    )
+
+    approved_date
+    (
+        type = datetime
+        displayname = "Approved Date"
+        row = 13
+        column = 1
+        width = medium
+    )
+
+    excel_export_link
+    (
+        type = url
+        displayname = "Excel Export Link"
+        row = 14
+        column = 1
+        width = medium
+        notes = "Download BOM"
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 15
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

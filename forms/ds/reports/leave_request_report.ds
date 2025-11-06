@@ -1,0 +1,25 @@
+report leave_request_report
+{
+
+    displayname = "Leave Request Report"
+    sourceform = leave_request
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {request_no, staff, leave_type, start_date, end_date, duration_hours, reason, attachment, status, approver, approval_date}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {request_no, staff, leave_type, start_date, end_date, duration_hours, reason, attachment, status, approver, approval_date}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {request_no, staff, leave_type, start_date, end_date, duration_hours, reason, attachment, status, approver, approval_date}
+    )
+}

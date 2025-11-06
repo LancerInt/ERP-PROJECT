@@ -1,0 +1,25 @@
+report receivable_ledger_report
+{
+
+    displayname = "Receivable Ledger Report"
+    sourceform = receivable_ledger
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {ledger_id, customer, invoice_reference, invoice_date, due_date, amount, amount_paid, balance, payment_status, reminder_dates, escalation_flag, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {ledger_id, customer, invoice_reference, invoice_date, due_date, amount, amount_paid, balance, payment_status, reminder_dates, escalation_flag, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {ledger_id, customer, invoice_reference, invoice_date, due_date, amount, amount_paid, balance, payment_status, reminder_dates, escalation_flag, notes}
+    )
+}

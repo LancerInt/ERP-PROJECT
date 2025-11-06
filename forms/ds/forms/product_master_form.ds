@@ -1,0 +1,348 @@
+// Module: 1. Core & Shared Masters
+form product_master
+{
+
+    displayname = "Product Master"
+    success message = "Product Master added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have sku_code
+    (
+        type = text
+        displayname = "SKU Code"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        unique = true
+        notes = "Cross-module identifier"
+    )
+
+    must have product_name
+    (
+        type = text
+        displayname = "Product Name"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have product_type
+    (
+        type = picklist
+        displayname = "Product Type"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Goods","Services"}
+        notes = "Goods / Services"
+    )
+
+    must have goods_sub_type
+    (
+        type = picklist
+        displayname = "Goods Sub-Type"
+        row = 4
+        column = 1
+        width = medium
+        conditional mandatory = true
+        values = {"RAW_MATERIAL","PACKING_MATERIAL","FINISHED_GOOD","SEMI_FINISHED","TRADED_PRODUCTS","CAPITAL_GOOD","MACHINE_SPARES","CONSUMABLES"}
+        notes = "RAW_MATERIAL / PACKING_MATERIAL / FINISHED_GOOD / SEMI_FINISHED / TRADED_PRODUCTS / CAPITAL_GOOD / MACHINE_SPARES / CONSUMABLES"
+    )
+
+    must have service_sub_type
+    (
+        type = picklist
+        displayname = "Service Sub-Type"
+        row = 5
+        column = 1
+        width = medium
+        conditional mandatory = true
+        values = {"Warehouse Expense","Wages","Freight","Miscellaneous","Staff Welfare","Vehicle","Custom"}
+        notes = "Warehouse Expense / Wages / Freight / Miscellaneous / Staff Welfare / Vehicle / Custom"
+    )
+
+    must have custom_service_category
+    (
+        type = lookup
+        displayname = "Custom Service Category"
+        row = 6
+        column = 1
+        width = medium
+        conditional mandatory = true
+        formlinkname = service_catalogue
+        notes = "For IT-admin defined services"
+    )
+
+    description
+    (
+        type = textarea
+        displayname = "Description"
+        row = 7
+        column = 1
+        width = medium
+    )
+
+    must have batch_tracking_required
+    (
+        type = checkbox
+        displayname = "Batch Tracking Required"
+        row = 8
+        column = 1
+        width = medium
+        conditional mandatory = true
+        notes = "Required for goods"
+    )
+
+    shelf_life_days
+    (
+        type = number
+        displayname = "Shelf Life (Days)"
+        row = 9
+        column = 1
+        width = medium
+        notes = "For expiry"
+    )
+
+    qc_responsibility
+    (
+        type = picklist
+        displayname = "QC Responsibility"
+        row = 10
+        column = 1
+        width = medium
+        values = {"Warehouse Coordinator","QC Coordinator","QC Manager"}
+        notes = "Warehouse Coordinator / QC Coordinator / QC Manager"
+    )
+
+    qc_template
+    (
+        type = lookup
+        displayname = "QC Template"
+        row = 11
+        column = 1
+        width = medium
+        formlinkname = template_library
+        notes = "Default QC parameters"
+    )
+
+    must have uom
+    (
+        type = picklist
+        displayname = "UOM"
+        row = 12
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Base unit"
+    )
+
+    secondary_uoms
+    (
+        type = grid
+        displayname = "Secondary UOMs"
+        row = 13
+        column = 1
+        width = medium
+
+        must have to_uom
+        (
+            type = picklist
+            displayname = "To UOM"
+            width = medium
+            mandatory = true
+        )
+
+        must have conversion_factor
+        (
+            type = number
+            displayname = "Conversion Factor"
+            width = medium
+            mandatory = true
+            notes = "Base to secondary"
+        )
+
+        specific_gravity_override
+        (
+            type = number
+            displayname = "Specific Gravity Override"
+            width = medium
+            notes = "Optional"
+        )
+
+        valid_from
+        (
+            type = date
+            displayname = "Valid From"
+            width = medium
+        )
+
+        valid_to
+        (
+            type = date
+            displayname = "Valid To"
+            width = medium
+        )
+    )
+
+    specific_gravity
+    (
+        type = number
+        displayname = "Specific Gravity"
+        row = 14
+        column = 1
+        width = medium
+        notes = "Used for kg ↔ litre"
+    )
+
+    conversion_notes
+    (
+        type = textarea
+        displayname = "Conversion Notes"
+        row = 15
+        column = 1
+        width = medium
+    )
+
+    packing_material_default
+    (
+        type = lookup
+        displayname = "Packing Material Default"
+        row = 16
+        column = 1
+        width = medium
+        formlinkname = product_master
+        notes = "Default packaging"
+    )
+
+    yield_tracking_required
+    (
+        type = checkbox
+        displayname = "Yield Tracking Required"
+        row = 17
+        column = 1
+        width = medium
+    )
+
+    yield_parameters
+    (
+        type = checkboxes
+        displayname = "Yield Parameters"
+        row = 18
+        column = 1
+        width = medium
+        values = {"Physical Qty","Purity %","AI Content"}
+        allow multiple = true
+        notes = "Physical Qty / Purity % / AI Content"
+    )
+
+    wage_method
+    (
+        type = picklist
+        displayname = "Wage Method"
+        row = 19
+        column = 1
+        width = medium
+        values = {"Template Rate","Headcount","None"}
+        notes = "Template Rate / Headcount / None"
+    )
+
+    freight_class
+    (
+        type = picklist
+        displayname = "Freight Class"
+        row = 20
+        column = 1
+        width = medium
+        notes = "Logistics reference"
+    )
+
+    must have active_flag
+    (
+        type = checkbox
+        displayname = "Active Flag"
+        row = 21
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have created_by
+    (
+        type = lookup
+        displayname = "Created By"
+        row = 22
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+    )
+
+    must have created_date
+    (
+        type = datetime
+        displayname = "Created Date"
+        row = 23
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    last_modified_by
+    (
+        type = lookup
+        displayname = "Last Modified By"
+        row = 24
+        column = 1
+        width = medium
+        formlinkname = stakeholder_user
+    )
+
+    last_modified_date
+    (
+        type = datetime
+        displayname = "Last Modified Date"
+        row = 25
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

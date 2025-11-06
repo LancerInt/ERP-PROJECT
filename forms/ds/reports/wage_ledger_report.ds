@@ -1,0 +1,25 @@
+report wage_ledger_report
+{
+
+    displayname = "Wage Ledger Report"
+    sourceform = wage_ledger
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {ledger_id, wage_voucher, contractor_staff_group, amount, tds, payment_week, approval_status, settlement_method, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {ledger_id, wage_voucher, contractor_staff_group, amount, tds, payment_week, approval_status, settlement_method, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {ledger_id, wage_voucher, contractor_staff_group, amount, tds, payment_week, approval_status, settlement_method, notes}
+    )
+}

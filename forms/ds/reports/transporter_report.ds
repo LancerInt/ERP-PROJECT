@@ -1,0 +1,25 @@
+report transporter_report
+{
+
+    displayname = "Transporter Report"
+    sourceform = transporter
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {transporter_code, name, gstin, contact_person, contact_email, contact_phone, freight_modes, coverage_routes, tds_rate, payment_terms, rating, documents, active_flag}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {transporter_code, name, gstin, contact_person, contact_email, contact_phone, freight_modes, coverage_routes, tds_rate, payment_terms, rating, documents, active_flag}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {transporter_code, name, gstin, contact_person, contact_email, contact_phone, freight_modes, coverage_routes, tds_rate, payment_terms, rating, documents, active_flag}
+    )
+}

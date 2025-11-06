@@ -1,0 +1,250 @@
+// Module: 2. Purchase Module
+form vendor_payment_advice
+{
+
+    displayname = "Vendor Payment Advice"
+    success message = "Vendor Payment Advice added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have advice_no
+    (
+        type = autonumber
+        displayname = "Advice No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have vendor
+    (
+        type = lookup
+        displayname = "Vendor"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = vendor
+    )
+
+    must have source_document_type
+    (
+        type = picklist
+        displayname = "Source Document Type"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"PO","Receipt","Freight","Wage","Credit Note"}
+        notes = "PO / Receipt / Freight / Wage / Credit Note"
+    )
+
+    must have source_document
+    (
+        type = lookup
+        displayname = "Source Document"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = purchase_order
+        notes = "Dynamic lookup"
+    )
+
+    must have amount
+    (
+        type = INR
+        displayname = "Amount"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        format = commadotindian
+    )
+
+    tax_components
+    (
+        type = grid
+        displayname = "Tax Components"
+        row = 6
+        column = 1
+        width = medium
+
+        must have tax_type
+        (
+            type = picklist
+            displayname = "Tax Type"
+            width = medium
+            mandatory = true
+            values = {"TDS","TCS"}
+            notes = "TDS / TCS"
+        )
+
+        must have rate
+        (
+            type = number
+            displayname = "Rate %"
+            width = medium
+            mandatory = true
+        )
+
+        must have amount
+        (
+            type = INR
+            displayname = "Amount"
+            width = medium
+            mandatory = true
+            format = commadotindian
+        )
+    )
+
+    must have due_date
+    (
+        type = date
+        displayname = "Due Date"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have payment_method
+    (
+        type = picklist
+        displayname = "Payment Method"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Bank Transfer","Cash","Cheque","UPI"}
+        notes = "Bank Transfer / Cash / Cheque / UPI"
+    )
+
+    must have prepared_by
+    (
+        type = lookup
+        displayname = "Prepared By"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+        notes = "Warehouse Coordinator (Office) originator"
+    )
+
+    must have approval_workflow
+    (
+        type = grid
+        displayname = "Approval Workflow"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have stage
+        (
+            type = picklist
+            displayname = "Stage"
+            width = medium
+            mandatory = true
+            values = {"Draft Review","Finance Manager Review","Office Manager Authorization"}
+            notes = "Draft Review / Finance Manager Review / Office Manager Authorization"
+        )
+
+        must have approver
+        (
+            type = lookup
+            displayname = "Approver"
+            width = medium
+            mandatory = true
+            formlinkname = stakeholder_user
+            notes = "Approving stakeholder"
+        )
+
+        must have decision
+        (
+            type = picklist
+            displayname = "Decision"
+            width = medium
+            mandatory = true
+            values = {"Pending","Approved","Rejected"}
+            notes = "Pending / Approved / Rejected"
+        )
+
+        must have decision_date
+        (
+            type = datetime
+            displayname = "Decision Date"
+            width = medium
+            conditional mandatory = true
+            notes = "Required when decision is approved/rejected"
+        )
+
+        remarks
+        (
+            type = textarea
+            displayname = "Remarks"
+            width = medium
+            notes = "Approval comments"
+        )
+    )
+
+    must have status
+    (
+        type = picklist
+        displayname = "Status"
+        row = 11
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Draft","Pending","Approved","Paid","On Hold"}
+        notes = "Draft / Pending / Approved / Paid / On Hold"
+    )
+
+    notes
+    (
+        type = textarea
+        displayname = "Notes"
+        row = 12
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

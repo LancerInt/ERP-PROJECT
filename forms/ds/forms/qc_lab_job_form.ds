@@ -1,0 +1,171 @@
+// Module: 5. Quality Control Module
+form qc_lab_job
+{
+
+    displayname = "QC Lab Job"
+    success message = "QC Lab Job added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have job_no
+    (
+        type = autonumber
+        displayname = "Job No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have qc_request
+    (
+        type = lookup
+        displayname = "QC Request"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = qc_request
+    )
+
+    must have analyst
+    (
+        type = lookup
+        displayname = "Analyst"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+    )
+
+    must have assigned_parameters
+    (
+        type = grid
+        displayname = "Assigned Parameters"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have parameter
+        (
+            type = lookup
+            displayname = "Parameter"
+            width = medium
+            mandatory = true
+            formlinkname = qc_parameter_library
+        )
+
+        result_value
+        (
+            type = number
+            displayname = "Result Value"
+            width = medium
+        )
+
+        result_text
+        (
+            type = textarea
+            displayname = "Result Text"
+            width = medium
+        )
+
+        result_photo
+        (
+            type = upload file
+            displayname = "Result Photo"
+            width = medium
+            file count = 10
+            browse = local_drive
+        )
+
+        pass_fail
+        (
+            type = picklist
+            displayname = "Pass/Fail"
+            width = medium
+        )
+    )
+
+    must have sample_received_date
+    (
+        type = date
+        displayname = "Sample Received Date"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    results_attachment
+    (
+        type = upload file
+        displayname = "Results Attachment"
+        row = 6
+        column = 1
+        width = medium
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "Raw data"
+    )
+
+    comments
+    (
+        type = textarea
+        displayname = "Comments"
+        row = 7
+        column = 1
+        width = medium
+    )
+
+    must have status
+    (
+        type = picklist
+        displayname = "Status"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Assigned","In Progress","Completed"}
+        notes = "Assigned / In Progress / Completed"
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

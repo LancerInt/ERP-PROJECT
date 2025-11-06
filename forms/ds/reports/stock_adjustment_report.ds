@@ -1,0 +1,25 @@
+report stock_adjustment_report
+{
+
+    displayname = "Stock Adjustment Report"
+    sourceform = stock_adjustment
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {adjustment_no, adjustment_date, warehouse, godown, product, batch, adjustment_type, quantity, uom, reason_code, other_reason, evidence_attachments, value_impact, finance_review_required, approval_status, approved_by, approval_date, notified_to, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {adjustment_no, adjustment_date, warehouse, godown, product, batch, adjustment_type, quantity, uom, reason_code, other_reason, evidence_attachments, value_impact, finance_review_required, approval_status, approved_by, approval_date, notified_to, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {adjustment_no, adjustment_date, warehouse, godown, product, batch, adjustment_type, quantity, uom, reason_code, other_reason, evidence_attachments, value_impact, finance_review_required, approval_status, approved_by, approval_date, notified_to, notes}
+    )
+}

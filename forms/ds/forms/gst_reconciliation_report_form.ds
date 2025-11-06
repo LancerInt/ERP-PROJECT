@@ -1,0 +1,144 @@
+// Module: 7. Finance Module
+form gst_reconciliation_report
+{
+
+    displayname = "GST Reconciliation Report"
+    success message = "GST Reconciliation Report added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have report_id
+    (
+        type = autonumber
+        displayname = "Report ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have reporting_period
+    (
+        type = daterange
+        displayname = "Reporting Period"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Month/Quarter"
+    )
+
+    must have data_source
+    (
+        type = picklist
+        displayname = "Data Source"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Creator","GSTR-2B","GSTR-1"}
+        notes = "Creator / GSTR-2B / GSTR-1"
+    )
+
+    variance_summary
+    (
+        type = textarea
+        displayname = "Variance Summary"
+        row = 4
+        column = 1
+        width = medium
+    )
+
+    adjustments
+    (
+        type = grid
+        displayname = "Adjustments"
+        row = 5
+        column = 1
+        width = medium
+
+        must have adjustment_type
+        (
+            type = picklist
+            displayname = "Adjustment Type"
+            width = medium
+            mandatory = true
+            values = {"ITC Reversal","Additional Claim"}
+            notes = "ITC Reversal / Additional Claim"
+        )
+
+        must have amount
+        (
+            type = INR
+            displayname = "Amount"
+            width = medium
+            mandatory = true
+            format = commadotindian
+        )
+
+        notes
+        (
+            type = textarea
+            displayname = "Notes"
+            width = medium
+        )
+
+        approved_by
+        (
+            type = lookup
+            displayname = "Approved By"
+            width = medium
+            formlinkname = stakeholder_user
+        )
+    )
+
+    export_file
+    (
+        type = upload file
+        displayname = "Export File"
+        row = 6
+        column = 1
+        width = medium
+        allow multiple = true
+        file count = 10
+        browse = local_drive
+        notes = "CSV for Tally"
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

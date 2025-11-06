@@ -1,0 +1,301 @@
+// Module: 3. Sales Module
+form sales_order
+{
+
+    displayname = "Sales Order (SO)"
+    success message = "Sales Order (SO) added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have so_no
+    (
+        type = autonumber
+        displayname = "SO No."
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        start index = 1
+    )
+
+    must have customer
+    (
+        type = lookup
+        displayname = "Customer"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = customer
+    )
+
+    must have company
+    (
+        type = lookup
+        displayname = "Company"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = company
+    )
+
+    must have warehouse
+    (
+        type = lookup
+        displayname = "Warehouse"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+    )
+
+    must have price_list
+    (
+        type = lookup
+        displayname = "Price List"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = price_list
+        notes = "Filter by customer"
+    )
+
+    must have credit_terms
+    (
+        type = picklist
+        displayname = "Credit Terms"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "Inherit from customer"
+    )
+
+    must have freight_terms
+    (
+        type = picklist
+        displayname = "Freight Terms"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    customer_po_reference
+    (
+        type = lookup
+        displayname = "Customer PO Reference"
+        row = 8
+        column = 1
+        width = medium
+        formlinkname = customer_po_upload
+    )
+
+    must have so_date
+    (
+        type = date
+        displayname = "SO Date"
+        row = 9
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    required_ship_date
+    (
+        type = date
+        displayname = "Required Ship Date"
+        row = 10
+        column = 1
+        width = medium
+    )
+
+    must have lines
+    (
+        type = grid
+        displayname = "Lines"
+        row = 11
+        column = 1
+        width = medium
+        mandatory = true
+
+        must have line_no
+        (
+            type = number
+            displayname = "Line No."
+            width = medium
+            mandatory = true
+        )
+
+        must have product
+        (
+            type = lookup
+            displayname = "Product"
+            width = medium
+            mandatory = true
+            formlinkname = product_master
+            notes = "Must exist in price list"
+        )
+
+        batch_preference
+        (
+            type = text
+            displayname = "Batch Preference"
+            width = medium
+        )
+
+        must have quantity_ordered
+        (
+            type = number
+            displayname = "Quantity Ordered"
+            width = medium
+            mandatory = true
+        )
+
+        must have uom
+        (
+            type = picklist
+            displayname = "UOM"
+            width = medium
+            mandatory = true
+        )
+
+        must have unit_price
+        (
+            type = INR
+            displayname = "Unit Price"
+            width = medium
+            mandatory = true
+            format = commadotindian
+            notes = "From price list"
+        )
+
+        discount
+        (
+            type = number
+            displayname = "Discount %"
+            width = medium
+        )
+
+        must have gst
+        (
+            type = number
+            displayname = "GST %"
+            width = medium
+            mandatory = true
+        )
+
+        delivery_schedule_date
+        (
+            type = date
+            displayname = "Delivery Schedule Date"
+            width = medium
+        )
+
+        remarks
+        (
+            type = textarea
+            displayname = "Remarks"
+            width = medium
+        )
+
+        reserved_qty
+        (
+            type = number
+            displayname = "Reserved Qty"
+            width = medium
+            notes = "Updated at dispatch"
+        )
+    )
+
+    remarks
+    (
+        type = textarea
+        displayname = "Remarks"
+        row = 12
+        column = 1
+        width = medium
+    )
+
+    must have approval_status
+    (
+        type = picklist
+        displayname = "Approval Status"
+        row = 13
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Draft","Pending","Approved","Rejected"}
+        notes = "Draft / Pending / Approved / Rejected"
+    )
+
+    approved_by
+    (
+        type = lookup
+        displayname = "Approved By"
+        row = 14
+        column = 1
+        width = medium
+        formlinkname = stakeholder_user
+    )
+
+    approval_date
+    (
+        type = datetime
+        displayname = "Approval Date"
+        row = 15
+        column = 1
+        width = medium
+    )
+
+    assigned_warehouse_stakeholders
+    (
+        type = lookup
+        displayname = "Assigned Warehouse Stakeholders"
+        row = 16
+        column = 1
+        width = medium
+        allow multiple = true
+        formlinkname = stakeholder_user
+        notes = "Auto-share"
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

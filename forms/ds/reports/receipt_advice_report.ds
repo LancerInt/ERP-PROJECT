@@ -1,0 +1,25 @@
+report receipt_advice_report
+{
+
+    displayname = "Receipt Advice (Inbound) Report"
+    sourceform = receipt_advice
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {receipt_advice_no, receipt_date, warehouse, godown, vendor, linked_pos, vehicle_number, driver_name, invoice_upload, packing_list_upload, receipt_lines, packing_material_lines, freight_details, loading_unloading_wages, qc_routing, qc_status, partial_receipt_flag, remarks, created_by, created_time}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {receipt_advice_no, receipt_date, warehouse, godown, vendor, linked_pos, vehicle_number, driver_name, invoice_upload, packing_list_upload, receipt_lines, packing_material_lines, freight_details, loading_unloading_wages, qc_routing, qc_status, partial_receipt_flag, remarks, created_by, created_time}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {receipt_advice_no, receipt_date, warehouse, godown, vendor, linked_pos, vehicle_number, driver_name, invoice_upload, packing_list_upload, receipt_lines, packing_material_lines, freight_details, loading_unloading_wages, qc_routing, qc_status, partial_receipt_flag, remarks, created_by, created_time}
+    )
+}

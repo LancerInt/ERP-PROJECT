@@ -1,0 +1,436 @@
+// Module: 1. Core & Shared Masters
+form staff_master
+{
+
+    displayname = "Staff Master (Employees & Staff)"
+    success message = "Staff Master (Employees & Staff) added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have staff_id
+    (
+        type = text
+        displayname = "Staff ID"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+        unique = true
+        notes = "Official staff number"
+    )
+
+    must have staff_type
+    (
+        type = picklist
+        displayname = "Staff Type"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Employee","Staff"}
+        notes = "Employee (Stakeholder) / Staff"
+    )
+
+    must have first_name
+    (
+        type = text
+        displayname = "First Name"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    last_name
+    (
+        type = text
+        displayname = "Last Name"
+        row = 4
+        column = 1
+        width = medium
+    )
+
+    gender
+    (
+        type = picklist
+        displayname = "Gender"
+        row = 5
+        column = 1
+        width = medium
+    )
+
+    date_of_birth
+    (
+        type = date
+        displayname = "Date of Birth"
+        row = 6
+        column = 1
+        width = medium
+    )
+
+    must have company
+    (
+        type = lookup
+        displayname = "Company"
+        row = 7
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = company
+        notes = "Employer entity"
+    )
+
+    must have primary_location
+    (
+        type = lookup
+        displayname = "Primary Location"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+        notes = "For attendance"
+    )
+
+    department
+    (
+        type = picklist
+        displayname = "Department"
+        row = 9
+        column = 1
+        width = medium
+    )
+
+    must have designation
+    (
+        type = text
+        displayname = "Designation"
+        row = 10
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have employment_start_date
+    (
+        type = date
+        displayname = "Employment Start Date"
+        row = 11
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    employment_end_date
+    (
+        type = date
+        displayname = "Employment End Date"
+        row = 12
+        column = 1
+        width = medium
+    )
+
+    must have employment_status
+    (
+        type = picklist
+        displayname = "Employment Status"
+        row = 13
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Active","On Leave","Resigned"}
+        notes = "Active / On Leave / Resigned"
+    )
+
+    must have hr_owner
+    (
+        type = lookup
+        displayname = "HR Owner"
+        row = 14
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+        notes = "Controls approvals"
+    )
+
+    shift_assignment
+    (
+        type = lookup
+        displayname = "Shift Assignment"
+        row = 15
+        column = 1
+        width = medium
+        formlinkname = shift_definition
+        notes = "Defaults attendance"
+    )
+
+    overtime_eligible
+    (
+        type = checkbox
+        displayname = "Overtime Eligible"
+        row = 16
+        column = 1
+        width = medium
+    )
+
+    contractor_flag
+    (
+        type = checkbox
+        displayname = "Contractor Flag"
+        row = 17
+        column = 1
+        width = medium
+        notes = "For wages via vendor"
+    )
+
+    must have contractor_vendor
+    (
+        type = lookup
+        displayname = "Contractor Vendor"
+        row = 18
+        column = 1
+        width = medium
+        conditional mandatory = true
+        formlinkname = vendor
+        notes = "Mandatory if contractor flag checked"
+    )
+
+    bank_account
+    (
+        type = grid
+        displayname = "Bank Account"
+        row = 19
+        column = 1
+        width = medium
+
+        must have account_holder
+        (
+            type = text
+            displayname = "Account Holder"
+            width = medium
+            mandatory = true
+        )
+
+        must have bank_name
+        (
+            type = text
+            displayname = "Bank Name"
+            width = medium
+            mandatory = true
+        )
+
+        must have ifsc_code
+        (
+            type = text
+            displayname = "IFSC Code"
+            width = medium
+            mandatory = true
+            notes = "Validate format"
+        )
+
+        must have account_number
+        (
+            type = text
+            displayname = "Account Number"
+            width = medium
+            mandatory = true
+            notes = "Mask display"
+        )
+
+        account_type
+        (
+            type = picklist
+            displayname = "Account Type"
+            width = medium
+        )
+    )
+
+    id_proofs
+    (
+        type = grid
+        displayname = "ID Proofs"
+        row = 20
+        column = 1
+        width = medium
+
+        must have document_type
+        (
+            type = picklist
+            displayname = "Document Type"
+            width = medium
+            mandatory = true
+            values = {"Aadhaar","PAN","License","Other"}
+            notes = "Aadhaar / PAN / License / Other"
+        )
+
+        must have document_number
+        (
+            type = text
+            displayname = "Document Number"
+            width = medium
+            mandatory = true
+        )
+
+        expiry_date
+        (
+            type = date
+            displayname = "Expiry Date"
+            width = medium
+        )
+
+        must have attachment
+        (
+            type = upload file
+            displayname = "Attachment"
+            width = medium
+            mandatory = true
+            allow multiple = true
+            file count = 10
+            browse = local_drive
+        )
+    )
+
+    must have face_template_id
+    (
+        type = text
+        displayname = "Face Template ID"
+        row = 21
+        column = 1
+        width = medium
+        mandatory = true
+        notes = "External face recognition ID"
+    )
+
+    must have photo_reference
+    (
+        type = upload file
+        displayname = "Photo Reference"
+        row = 22
+        column = 1
+        width = medium
+        mandatory = true
+        file count = 10
+        browse = local_drive
+        notes = "Stored for 7 days"
+    )
+
+    contact_number
+    (
+        type = phonenumber
+        displayname = "Contact Number"
+        row = 23
+        column = 1
+        width = medium
+        personal data = true
+    )
+
+    emergency_contact
+    (
+        type = phonenumber
+        displayname = "Emergency Contact"
+        row = 24
+        column = 1
+        width = medium
+        personal data = true
+    )
+
+    address
+    (
+        type = address
+        displayname = "Address"
+        row = 25
+        column = 1
+        width = medium
+        capture_coordinates = true
+        adjust_using_map = false
+        address_line_1
+        (
+            type = address_line_1
+            displayname = "Address Line 1"
+        )
+        address_line_2
+        (
+            type = address_line_2
+            displayname = "Address Line 2"
+        )
+        district_city
+        (
+            type = district_city
+            displayname = "City / District"
+        )
+        state_province
+        (
+            type = state_province
+            displayname = "State / Province"
+        )
+        postal_code
+        (
+            type = postal_code
+            displayname = "Postal Code"
+        )
+        country
+        (
+            type = country
+            displayname = "Country"
+        )
+        latitude
+        (
+            type = latitude
+            displayname = "Latitude"
+            visibility = false
+        )
+        longitude
+        (
+            type = longitude
+            displayname = "Longitude"
+            visibility = false
+        )
+        personal data = true
+    )
+
+    remarks
+    (
+        type = textarea
+        displayname = "Remarks"
+        row = 26
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

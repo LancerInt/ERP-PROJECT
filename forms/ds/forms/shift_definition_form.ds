@@ -1,0 +1,146 @@
+// Module: 8. Attendance & HR Module
+form shift_definition
+{
+
+    displayname = "Shift Definition"
+    success message = "Shift Definition added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have shift_code
+    (
+        type = text
+        displayname = "Shift Code"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have warehouse
+    (
+        type = lookup
+        displayname = "Warehouse"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = warehouse
+    )
+
+    must have shift_name
+    (
+        type = text
+        displayname = "Shift Name"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have start_time
+    (
+        type = time
+        displayname = "Start Time"
+        row = 4
+        column = 1
+        width = medium
+        mandatory = true
+        timedisplayoptions = "hh:mm:ss"
+    )
+
+    must have end_time
+    (
+        type = time
+        displayname = "End Time"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        timedisplayoptions = "hh:mm:ss"
+    )
+
+    break_duration_mins
+    (
+        type = number
+        displayname = "Break Duration (mins)"
+        row = 6
+        column = 1
+        width = medium
+    )
+
+    overtime_eligibility
+    (
+        type = checkbox
+        displayname = "Overtime Eligibility"
+        row = 7
+        column = 1
+        width = medium
+    )
+
+    must have attendance_calculation_rule
+    (
+        type = picklist
+        displayname = "Attendance Calculation Rule"
+        row = 8
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"8-hour","Custom"}
+        notes = "8-hour / Custom"
+    )
+
+    grace_period_minutes
+    (
+        type = number
+        displayname = "Grace Period Minutes"
+        row = 9
+        column = 1
+        width = medium
+    )
+
+    approval_required
+    (
+        type = checkbox
+        displayname = "Approval Required"
+        row = 10
+        column = 1
+        width = medium
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}

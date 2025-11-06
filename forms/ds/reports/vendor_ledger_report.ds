@@ -1,0 +1,25 @@
+report vendor_ledger_report
+{
+
+    displayname = "Vendor Ledger Report"
+    sourceform = vendor_ledger
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {ledger_id, vendor, document_type, document_reference, document_date, debit_amount, credit_amount, tax_breakdown, due_date, payment_status, ageing_bucket, notes}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {ledger_id, vendor, document_type, document_reference, document_date, debit_amount, credit_amount, tax_breakdown, due_date, payment_status, ageing_bucket, notes}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {ledger_id, vendor, document_type, document_reference, document_date, debit_amount, credit_amount, tax_breakdown, due_date, payment_status, ageing_bucket, notes}
+    )
+}

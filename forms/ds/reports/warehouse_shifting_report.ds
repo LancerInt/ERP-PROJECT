@@ -1,0 +1,25 @@
+report warehouse_shifting_report
+{
+
+    displayname = "Warehouse Shifting Report"
+    sourceform = warehouse_shifting
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {shifting_no, warehouse, request_date, from_godown, to_godown, reason_code, other_reason, products, freight_wage_drafts, status, in_transit_flag, attachments}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {shifting_no, warehouse, request_date, from_godown, to_godown, reason_code, other_reason, products, freight_wage_drafts, status, in_transit_flag, attachments}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {shifting_no, warehouse, request_date, from_godown, to_godown, reason_code, other_reason, products, freight_wage_drafts, status, in_transit_flag, attachments}
+    )
+}

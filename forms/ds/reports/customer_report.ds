@@ -1,0 +1,25 @@
+report customer_report
+{
+
+    displayname = "Customer Report"
+    sourceform = customer
+    type = list
+
+    listview
+    (
+        type = listview
+        columns = {customer_code, customer_name, company, gstin, pan, billing_address, shipping_addresses, credit_terms, custom_credit_days, freight_terms, freight_split_notes, allowed_price_lists, default_warehouse, overdue_notification_recipients, contact_person, contact_email, contact_phone, documents, active_flag}
+    )
+
+    quickview
+    (
+        type = quickview
+        columns = {customer_code, customer_name, company, gstin, pan, billing_address, shipping_addresses, credit_terms, custom_credit_days, freight_terms, freight_split_notes, allowed_price_lists, default_warehouse, overdue_notification_recipients, contact_person, contact_email, contact_phone, documents, active_flag}
+    )
+
+    detailview
+    (
+        type = detailview
+        columns = {customer_code, customer_name, company, gstin, pan, billing_address, shipping_addresses, credit_terms, custom_credit_days, freight_terms, freight_split_notes, allowed_price_lists, default_warehouse, overdue_notification_recipients, contact_person, contact_email, contact_phone, documents, active_flag}
+    )
+}

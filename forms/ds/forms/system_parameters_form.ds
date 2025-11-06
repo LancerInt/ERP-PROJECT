@@ -1,0 +1,107 @@
+// Module: 9. Configuration & Audit
+form system_parameters
+{
+
+    displayname = "System Parameters"
+    success message = "System Parameters added successfully"
+
+    Section
+    (
+        type = section
+        row = 1
+        column = 0
+        width = medium
+    )
+
+    must have parameter_name
+    (
+        type = text
+        displayname = "Parameter Name"
+        row = 1
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have parameter_value
+    (
+        type = text
+        displayname = "Parameter Value"
+        row = 2
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    must have module_scope
+    (
+        type = picklist
+        displayname = "Module Scope"
+        row = 3
+        column = 1
+        width = medium
+        mandatory = true
+        values = {"Purchase","Sales","Inventory","Finance","Attendance"}
+        notes = "Purchase / Sales / Inventory / Finance / Attendance"
+    )
+
+    description
+    (
+        type = textarea
+        displayname = "Description"
+        row = 4
+        column = 1
+        width = medium
+    )
+
+    must have last_updated_by
+    (
+        type = lookup
+        displayname = "Last Updated By"
+        row = 5
+        column = 1
+        width = medium
+        mandatory = true
+        formlinkname = stakeholder_user
+    )
+
+    must have effective_date
+    (
+        type = date
+        displayname = "Effective Date"
+        row = 6
+        column = 1
+        width = medium
+        mandatory = true
+    )
+
+    actions
+    {
+        on add
+        {
+            submit
+            (
+                type = submit
+                displayname = "Submit"
+            )
+            reset
+            (
+                type = reset
+                displayname = "Reset"
+            )
+        }
+        on edit
+        {
+            update
+            (
+                type = submit
+                displayname = "Update"
+            )
+            cancel
+            (
+                type = cancel
+                displayname = "Cancel"
+            )
+        }
+    }
+}
