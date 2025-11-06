@@ -1,0 +1,45 @@
+// Module: 4. Production Module
+form wage_vouchers
+{
+    DisplayName = "Wage Vouchers";
+    LinkName = "wage_vouchers";
+    Module = "4. Production Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field wage_voucher
+                {
+                    DisplayName = "Wage Voucher";
+                    LinkName = "wage_voucher";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "wage_voucher";
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    Type = "INR";
+                    IsMandatory = true;
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

@@ -1,0 +1,83 @@
+report packing_material_lines_report
+{
+    DisplayName = "Packing Material Lines Report";
+    LinkName = "packing_material_lines_report";
+    Type = "List";
+    SourceFormLinkName = "packing_material_lines";
+
+    ListView
+    {
+        Columns
+        {
+            Column packaging_sku
+            {
+                FieldLinkName = "packaging_sku";
+            }
+            Column quantity
+            {
+                FieldLinkName = "quantity";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column condition
+            {
+                FieldLinkName = "condition";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column packaging_sku
+            {
+                FieldLinkName = "packaging_sku";
+            }
+            Column quantity
+            {
+                FieldLinkName = "quantity";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column condition
+            {
+                FieldLinkName = "condition";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column packaging_sku
+                    {
+                        FieldLinkName = "packaging_sku";
+                    }
+                    Column quantity
+                    {
+                        FieldLinkName = "quantity";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                    Column condition
+                    {
+                        FieldLinkName = "condition";
+                    }
+                }
+            }
+        }
+    }
+}

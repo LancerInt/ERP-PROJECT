@@ -1,0 +1,116 @@
+// Module: 3. Sales Module
+form receivable_ledger
+{
+    DisplayName = "Receivable Ledger";
+    LinkName = "receivable_ledger";
+    Module = "3. Sales Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field ledger_id
+                {
+                    DisplayName = "Ledger ID";
+                    LinkName = "ledger_id";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field customer
+                {
+                    DisplayName = "Customer";
+                    LinkName = "customer";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "customer";
+                }
+                Field invoice_reference
+                {
+                    DisplayName = "Invoice Reference";
+                    LinkName = "invoice_reference";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "sales_invoice_check";
+                }
+                Field invoice_date
+                {
+                    DisplayName = "Invoice Date";
+                    LinkName = "invoice_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field due_date
+                {
+                    DisplayName = "Due Date";
+                    LinkName = "due_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    Type = "INR";
+                    IsMandatory = true;
+                }
+                Field amount_paid
+                {
+                    DisplayName = "Amount Paid";
+                    LinkName = "amount_paid";
+                    Type = "INR";
+                }
+                Field balance
+                {
+                    DisplayName = "Balance";
+                    LinkName = "balance";
+                    Type = "INR";
+                    IsMandatory = true;
+                }
+                Field payment_status
+                {
+                    DisplayName = "Payment Status";
+                    LinkName = "payment_status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Not Due / Partially Paid / Paid / Overdue";
+                }
+                Field reminder_dates
+                {
+                    DisplayName = "Reminder Dates";
+                    LinkName = "reminder_dates";
+                    Type = "SubForm";
+                    SubFormLinkName = "reminder_dates";
+                    HelpText = "Auto reminders";
+                }
+                Field escalation_flag
+                {
+                    DisplayName = "Escalation Flag";
+                    LinkName = "escalation_flag";
+                    Type = "Checkbox";
+                    HelpText = "Trigger after 2 weeks";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

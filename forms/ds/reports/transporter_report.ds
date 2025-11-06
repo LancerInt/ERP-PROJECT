@@ -1,0 +1,191 @@
+report transporter_report
+{
+    DisplayName = "Transporter Report";
+    LinkName = "transporter_report";
+    Type = "List";
+    SourceFormLinkName = "transporter";
+
+    ListView
+    {
+        Columns
+        {
+            Column transporter_code
+            {
+                FieldLinkName = "transporter_code";
+            }
+            Column name
+            {
+                FieldLinkName = "name";
+            }
+            Column gstin
+            {
+                FieldLinkName = "gstin";
+            }
+            Column contact_person
+            {
+                FieldLinkName = "contact_person";
+            }
+            Column contact_email
+            {
+                FieldLinkName = "contact_email";
+            }
+            Column contact_phone
+            {
+                FieldLinkName = "contact_phone";
+            }
+            Column freight_modes
+            {
+                FieldLinkName = "freight_modes";
+            }
+            Column coverage_routes
+            {
+                FieldLinkName = "coverage_routes";
+            }
+            Column tds_rate
+            {
+                FieldLinkName = "tds_rate";
+            }
+            Column payment_terms
+            {
+                FieldLinkName = "payment_terms";
+            }
+            Column rating
+            {
+                FieldLinkName = "rating";
+            }
+            Column documents
+            {
+                FieldLinkName = "documents";
+            }
+            Column active_flag
+            {
+                FieldLinkName = "active_flag";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column transporter_code
+            {
+                FieldLinkName = "transporter_code";
+            }
+            Column name
+            {
+                FieldLinkName = "name";
+            }
+            Column gstin
+            {
+                FieldLinkName = "gstin";
+            }
+            Column contact_person
+            {
+                FieldLinkName = "contact_person";
+            }
+            Column contact_email
+            {
+                FieldLinkName = "contact_email";
+            }
+            Column contact_phone
+            {
+                FieldLinkName = "contact_phone";
+            }
+            Column freight_modes
+            {
+                FieldLinkName = "freight_modes";
+            }
+            Column coverage_routes
+            {
+                FieldLinkName = "coverage_routes";
+            }
+            Column tds_rate
+            {
+                FieldLinkName = "tds_rate";
+            }
+            Column payment_terms
+            {
+                FieldLinkName = "payment_terms";
+            }
+            Column rating
+            {
+                FieldLinkName = "rating";
+            }
+            Column documents
+            {
+                FieldLinkName = "documents";
+            }
+            Column active_flag
+            {
+                FieldLinkName = "active_flag";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column transporter_code
+                    {
+                        FieldLinkName = "transporter_code";
+                    }
+                    Column name
+                    {
+                        FieldLinkName = "name";
+                    }
+                    Column gstin
+                    {
+                        FieldLinkName = "gstin";
+                    }
+                    Column contact_person
+                    {
+                        FieldLinkName = "contact_person";
+                    }
+                    Column contact_email
+                    {
+                        FieldLinkName = "contact_email";
+                    }
+                    Column contact_phone
+                    {
+                        FieldLinkName = "contact_phone";
+                    }
+                    Column freight_modes
+                    {
+                        FieldLinkName = "freight_modes";
+                    }
+                    Column coverage_routes
+                    {
+                        FieldLinkName = "coverage_routes";
+                    }
+                    Column tds_rate
+                    {
+                        FieldLinkName = "tds_rate";
+                    }
+                    Column payment_terms
+                    {
+                        FieldLinkName = "payment_terms";
+                    }
+                    Column rating
+                    {
+                        FieldLinkName = "rating";
+                    }
+                    Column documents
+                    {
+                        FieldLinkName = "documents";
+                    }
+                    Column active_flag
+                    {
+                        FieldLinkName = "active_flag";
+                    }
+                }
+            }
+        }
+    }
+}

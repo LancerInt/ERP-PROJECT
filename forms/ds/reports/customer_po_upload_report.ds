@@ -1,0 +1,191 @@
+report customer_po_upload_report
+{
+    DisplayName = "Customer PO Upload Report";
+    LinkName = "customer_po_upload_report";
+    Type = "List";
+    SourceFormLinkName = "customer_po_upload";
+
+    ListView
+    {
+        Columns
+        {
+            Column upload_id
+            {
+                FieldLinkName = "upload_id";
+            }
+            Column customer
+            {
+                FieldLinkName = "customer";
+            }
+            Column upload_date
+            {
+                FieldLinkName = "upload_date";
+            }
+            Column po_file
+            {
+                FieldLinkName = "po_file";
+            }
+            Column ai_parser_confidence
+            {
+                FieldLinkName = "ai_parser_confidence";
+            }
+            Column parsed_po_number
+            {
+                FieldLinkName = "parsed_po_number";
+            }
+            Column parsed_po_date
+            {
+                FieldLinkName = "parsed_po_date";
+            }
+            Column delivery_location
+            {
+                FieldLinkName = "delivery_location";
+            }
+            Column parsed_lines
+            {
+                FieldLinkName = "parsed_lines";
+            }
+            Column manual_review_required
+            {
+                FieldLinkName = "manual_review_required";
+            }
+            Column review_comments
+            {
+                FieldLinkName = "review_comments";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column linked_sales_order
+            {
+                FieldLinkName = "linked_sales_order";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column upload_id
+            {
+                FieldLinkName = "upload_id";
+            }
+            Column customer
+            {
+                FieldLinkName = "customer";
+            }
+            Column upload_date
+            {
+                FieldLinkName = "upload_date";
+            }
+            Column po_file
+            {
+                FieldLinkName = "po_file";
+            }
+            Column ai_parser_confidence
+            {
+                FieldLinkName = "ai_parser_confidence";
+            }
+            Column parsed_po_number
+            {
+                FieldLinkName = "parsed_po_number";
+            }
+            Column parsed_po_date
+            {
+                FieldLinkName = "parsed_po_date";
+            }
+            Column delivery_location
+            {
+                FieldLinkName = "delivery_location";
+            }
+            Column parsed_lines
+            {
+                FieldLinkName = "parsed_lines";
+            }
+            Column manual_review_required
+            {
+                FieldLinkName = "manual_review_required";
+            }
+            Column review_comments
+            {
+                FieldLinkName = "review_comments";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column linked_sales_order
+            {
+                FieldLinkName = "linked_sales_order";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column upload_id
+                    {
+                        FieldLinkName = "upload_id";
+                    }
+                    Column customer
+                    {
+                        FieldLinkName = "customer";
+                    }
+                    Column upload_date
+                    {
+                        FieldLinkName = "upload_date";
+                    }
+                    Column po_file
+                    {
+                        FieldLinkName = "po_file";
+                    }
+                    Column ai_parser_confidence
+                    {
+                        FieldLinkName = "ai_parser_confidence";
+                    }
+                    Column parsed_po_number
+                    {
+                        FieldLinkName = "parsed_po_number";
+                    }
+                    Column parsed_po_date
+                    {
+                        FieldLinkName = "parsed_po_date";
+                    }
+                    Column delivery_location
+                    {
+                        FieldLinkName = "delivery_location";
+                    }
+                    Column parsed_lines
+                    {
+                        FieldLinkName = "parsed_lines";
+                    }
+                    Column manual_review_required
+                    {
+                        FieldLinkName = "manual_review_required";
+                    }
+                    Column review_comments
+                    {
+                        FieldLinkName = "review_comments";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                    Column linked_sales_order
+                    {
+                        FieldLinkName = "linked_sales_order";
+                    }
+                }
+            }
+        }
+    }
+}

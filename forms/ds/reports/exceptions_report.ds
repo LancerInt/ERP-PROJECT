@@ -1,0 +1,107 @@
+report exceptions_report
+{
+    DisplayName = "Exceptions Report";
+    LinkName = "exceptions_report";
+    Type = "List";
+    SourceFormLinkName = "exceptions";
+
+    ListView
+    {
+        Columns
+        {
+            Column statement_line_id
+            {
+                FieldLinkName = "statement_line_id";
+            }
+            Column transaction_date
+            {
+                FieldLinkName = "transaction_date";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column suggested_match
+            {
+                FieldLinkName = "suggested_match";
+            }
+            Column exception_notes
+            {
+                FieldLinkName = "exception_notes";
+            }
+            Column resolution_status
+            {
+                FieldLinkName = "resolution_status";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column statement_line_id
+            {
+                FieldLinkName = "statement_line_id";
+            }
+            Column transaction_date
+            {
+                FieldLinkName = "transaction_date";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column suggested_match
+            {
+                FieldLinkName = "suggested_match";
+            }
+            Column exception_notes
+            {
+                FieldLinkName = "exception_notes";
+            }
+            Column resolution_status
+            {
+                FieldLinkName = "resolution_status";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column statement_line_id
+                    {
+                        FieldLinkName = "statement_line_id";
+                    }
+                    Column transaction_date
+                    {
+                        FieldLinkName = "transaction_date";
+                    }
+                    Column amount
+                    {
+                        FieldLinkName = "amount";
+                    }
+                    Column suggested_match
+                    {
+                        FieldLinkName = "suggested_match";
+                    }
+                    Column exception_notes
+                    {
+                        FieldLinkName = "exception_notes";
+                    }
+                    Column resolution_status
+                    {
+                        FieldLinkName = "resolution_status";
+                    }
+                }
+            }
+        }
+    }
+}

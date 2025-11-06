@@ -1,0 +1,107 @@
+report vendor_bank_details_report
+{
+    DisplayName = "Vendor Bank Details Report";
+    LinkName = "vendor_bank_details_report";
+    Type = "List";
+    SourceFormLinkName = "vendor_bank_details";
+
+    ListView
+    {
+        Columns
+        {
+            Column account_nickname
+            {
+                FieldLinkName = "account_nickname";
+            }
+            Column bank_name
+            {
+                FieldLinkName = "bank_name";
+            }
+            Column branch
+            {
+                FieldLinkName = "branch";
+            }
+            Column ifsc
+            {
+                FieldLinkName = "ifsc";
+            }
+            Column account_number
+            {
+                FieldLinkName = "account_number";
+            }
+            Column payment_method
+            {
+                FieldLinkName = "payment_method";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column account_nickname
+            {
+                FieldLinkName = "account_nickname";
+            }
+            Column bank_name
+            {
+                FieldLinkName = "bank_name";
+            }
+            Column branch
+            {
+                FieldLinkName = "branch";
+            }
+            Column ifsc
+            {
+                FieldLinkName = "ifsc";
+            }
+            Column account_number
+            {
+                FieldLinkName = "account_number";
+            }
+            Column payment_method
+            {
+                FieldLinkName = "payment_method";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column account_nickname
+                    {
+                        FieldLinkName = "account_nickname";
+                    }
+                    Column bank_name
+                    {
+                        FieldLinkName = "bank_name";
+                    }
+                    Column branch
+                    {
+                        FieldLinkName = "branch";
+                    }
+                    Column ifsc
+                    {
+                        FieldLinkName = "ifsc";
+                    }
+                    Column account_number
+                    {
+                        FieldLinkName = "account_number";
+                    }
+                    Column payment_method
+                    {
+                        FieldLinkName = "payment_method";
+                    }
+                }
+            }
+        }
+    }
+}

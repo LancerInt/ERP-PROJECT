@@ -1,0 +1,275 @@
+report receipt_advice_report
+{
+    DisplayName = "Receipt Advice (Inbound) Report";
+    LinkName = "receipt_advice_report";
+    Type = "List";
+    SourceFormLinkName = "receipt_advice";
+
+    ListView
+    {
+        Columns
+        {
+            Column receipt_advice_no
+            {
+                FieldLinkName = "receipt_advice_no";
+            }
+            Column receipt_date
+            {
+                FieldLinkName = "receipt_date";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column godown
+            {
+                FieldLinkName = "godown";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column linked_pos
+            {
+                FieldLinkName = "linked_pos";
+            }
+            Column vehicle_number
+            {
+                FieldLinkName = "vehicle_number";
+            }
+            Column driver_name
+            {
+                FieldLinkName = "driver_name";
+            }
+            Column invoice_upload
+            {
+                FieldLinkName = "invoice_upload";
+            }
+            Column packing_list_upload
+            {
+                FieldLinkName = "packing_list_upload";
+            }
+            Column receipt_lines
+            {
+                FieldLinkName = "receipt_lines";
+            }
+            Column packing_material_lines
+            {
+                FieldLinkName = "packing_material_lines";
+            }
+            Column freight_details
+            {
+                FieldLinkName = "freight_details";
+            }
+            Column loading_unloading_wages
+            {
+                FieldLinkName = "loading_unloading_wages";
+            }
+            Column qc_routing
+            {
+                FieldLinkName = "qc_routing";
+            }
+            Column qc_status
+            {
+                FieldLinkName = "qc_status";
+            }
+            Column partial_receipt_flag
+            {
+                FieldLinkName = "partial_receipt_flag";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+            Column created_by
+            {
+                FieldLinkName = "created_by";
+            }
+            Column created_time
+            {
+                FieldLinkName = "created_time";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column receipt_advice_no
+            {
+                FieldLinkName = "receipt_advice_no";
+            }
+            Column receipt_date
+            {
+                FieldLinkName = "receipt_date";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column godown
+            {
+                FieldLinkName = "godown";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column linked_pos
+            {
+                FieldLinkName = "linked_pos";
+            }
+            Column vehicle_number
+            {
+                FieldLinkName = "vehicle_number";
+            }
+            Column driver_name
+            {
+                FieldLinkName = "driver_name";
+            }
+            Column invoice_upload
+            {
+                FieldLinkName = "invoice_upload";
+            }
+            Column packing_list_upload
+            {
+                FieldLinkName = "packing_list_upload";
+            }
+            Column receipt_lines
+            {
+                FieldLinkName = "receipt_lines";
+            }
+            Column packing_material_lines
+            {
+                FieldLinkName = "packing_material_lines";
+            }
+            Column freight_details
+            {
+                FieldLinkName = "freight_details";
+            }
+            Column loading_unloading_wages
+            {
+                FieldLinkName = "loading_unloading_wages";
+            }
+            Column qc_routing
+            {
+                FieldLinkName = "qc_routing";
+            }
+            Column qc_status
+            {
+                FieldLinkName = "qc_status";
+            }
+            Column partial_receipt_flag
+            {
+                FieldLinkName = "partial_receipt_flag";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+            Column created_by
+            {
+                FieldLinkName = "created_by";
+            }
+            Column created_time
+            {
+                FieldLinkName = "created_time";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column receipt_advice_no
+                    {
+                        FieldLinkName = "receipt_advice_no";
+                    }
+                    Column receipt_date
+                    {
+                        FieldLinkName = "receipt_date";
+                    }
+                    Column warehouse
+                    {
+                        FieldLinkName = "warehouse";
+                    }
+                    Column godown
+                    {
+                        FieldLinkName = "godown";
+                    }
+                    Column vendor
+                    {
+                        FieldLinkName = "vendor";
+                    }
+                    Column linked_pos
+                    {
+                        FieldLinkName = "linked_pos";
+                    }
+                    Column vehicle_number
+                    {
+                        FieldLinkName = "vehicle_number";
+                    }
+                    Column driver_name
+                    {
+                        FieldLinkName = "driver_name";
+                    }
+                    Column invoice_upload
+                    {
+                        FieldLinkName = "invoice_upload";
+                    }
+                    Column packing_list_upload
+                    {
+                        FieldLinkName = "packing_list_upload";
+                    }
+                    Column receipt_lines
+                    {
+                        FieldLinkName = "receipt_lines";
+                    }
+                    Column packing_material_lines
+                    {
+                        FieldLinkName = "packing_material_lines";
+                    }
+                    Column freight_details
+                    {
+                        FieldLinkName = "freight_details";
+                    }
+                    Column loading_unloading_wages
+                    {
+                        FieldLinkName = "loading_unloading_wages";
+                    }
+                    Column qc_routing
+                    {
+                        FieldLinkName = "qc_routing";
+                    }
+                    Column qc_status
+                    {
+                        FieldLinkName = "qc_status";
+                    }
+                    Column partial_receipt_flag
+                    {
+                        FieldLinkName = "partial_receipt_flag";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                    Column created_by
+                    {
+                        FieldLinkName = "created_by";
+                    }
+                    Column created_time
+                    {
+                        FieldLinkName = "created_time";
+                    }
+                }
+            }
+        }
+    }
+}

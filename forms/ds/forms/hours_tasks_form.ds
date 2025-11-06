@@ -1,0 +1,58 @@
+// Module: 4. Production Module
+form hours_tasks
+{
+    DisplayName = "Hours / Tasks";
+    LinkName = "hours_tasks";
+    Module = "4. Production Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field staff
+                {
+                    DisplayName = "Staff";
+                    LinkName = "staff";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "staff_master";
+                    HelpText = "Required for headcount";
+                }
+                Field task_description
+                {
+                    DisplayName = "Task Description";
+                    LinkName = "task_description";
+                    Type = "MultiLine";
+                    IsMandatory = true;
+                }
+                Field hours_worked
+                {
+                    DisplayName = "Hours Worked";
+                    LinkName = "hours_worked";
+                    Type = "Decimal";
+                }
+                Field quantity_produced
+                {
+                    DisplayName = "Quantity Produced";
+                    LinkName = "quantity_produced";
+                    Type = "Decimal";
+                    HelpText = "For incentive";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

@@ -1,0 +1,299 @@
+report work_order_production_batch_report
+{
+    DisplayName = "Work Order / Production Batch Report";
+    LinkName = "work_order_production_batch_report";
+    Type = "List";
+    SourceFormLinkName = "work_order_production_batch";
+
+    ListView
+    {
+        Columns
+        {
+            Column batch_id
+            {
+                FieldLinkName = "batch_id";
+            }
+            Column work_order_no
+            {
+                FieldLinkName = "work_order_no";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column production_template
+            {
+                FieldLinkName = "production_template";
+            }
+            Column template_revision
+            {
+                FieldLinkName = "template_revision";
+            }
+            Column linked_sales_order
+            {
+                FieldLinkName = "linked_sales_order";
+            }
+            Column linked_dispatch_challan
+            {
+                FieldLinkName = "linked_dispatch_challan";
+            }
+            Column planned_start_date
+            {
+                FieldLinkName = "planned_start_date";
+            }
+            Column planned_end_date
+            {
+                FieldLinkName = "planned_end_date";
+            }
+            Column actual_start_date
+            {
+                FieldLinkName = "actual_start_date";
+            }
+            Column actual_end_date
+            {
+                FieldLinkName = "actual_end_date";
+            }
+            Column stage_status
+            {
+                FieldLinkName = "stage_status";
+            }
+            Column input_consumption
+            {
+                FieldLinkName = "input_consumption";
+            }
+            Column output_products
+            {
+                FieldLinkName = "output_products";
+            }
+            Column damage_report
+            {
+                FieldLinkName = "damage_report";
+            }
+            Column qc_request
+            {
+                FieldLinkName = "qc_request";
+            }
+            Column wage_method
+            {
+                FieldLinkName = "wage_method";
+            }
+            Column wage_vouchers
+            {
+                FieldLinkName = "wage_vouchers";
+            }
+            Column yield_log_reference
+            {
+                FieldLinkName = "yield_log_reference";
+            }
+            Column rework_flag
+            {
+                FieldLinkName = "rework_flag";
+            }
+            Column parent_batch
+            {
+                FieldLinkName = "parent_batch";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column batch_id
+            {
+                FieldLinkName = "batch_id";
+            }
+            Column work_order_no
+            {
+                FieldLinkName = "work_order_no";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column production_template
+            {
+                FieldLinkName = "production_template";
+            }
+            Column template_revision
+            {
+                FieldLinkName = "template_revision";
+            }
+            Column linked_sales_order
+            {
+                FieldLinkName = "linked_sales_order";
+            }
+            Column linked_dispatch_challan
+            {
+                FieldLinkName = "linked_dispatch_challan";
+            }
+            Column planned_start_date
+            {
+                FieldLinkName = "planned_start_date";
+            }
+            Column planned_end_date
+            {
+                FieldLinkName = "planned_end_date";
+            }
+            Column actual_start_date
+            {
+                FieldLinkName = "actual_start_date";
+            }
+            Column actual_end_date
+            {
+                FieldLinkName = "actual_end_date";
+            }
+            Column stage_status
+            {
+                FieldLinkName = "stage_status";
+            }
+            Column input_consumption
+            {
+                FieldLinkName = "input_consumption";
+            }
+            Column output_products
+            {
+                FieldLinkName = "output_products";
+            }
+            Column damage_report
+            {
+                FieldLinkName = "damage_report";
+            }
+            Column qc_request
+            {
+                FieldLinkName = "qc_request";
+            }
+            Column wage_method
+            {
+                FieldLinkName = "wage_method";
+            }
+            Column wage_vouchers
+            {
+                FieldLinkName = "wage_vouchers";
+            }
+            Column yield_log_reference
+            {
+                FieldLinkName = "yield_log_reference";
+            }
+            Column rework_flag
+            {
+                FieldLinkName = "rework_flag";
+            }
+            Column parent_batch
+            {
+                FieldLinkName = "parent_batch";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column batch_id
+                    {
+                        FieldLinkName = "batch_id";
+                    }
+                    Column work_order_no
+                    {
+                        FieldLinkName = "work_order_no";
+                    }
+                    Column warehouse
+                    {
+                        FieldLinkName = "warehouse";
+                    }
+                    Column production_template
+                    {
+                        FieldLinkName = "production_template";
+                    }
+                    Column template_revision
+                    {
+                        FieldLinkName = "template_revision";
+                    }
+                    Column linked_sales_order
+                    {
+                        FieldLinkName = "linked_sales_order";
+                    }
+                    Column linked_dispatch_challan
+                    {
+                        FieldLinkName = "linked_dispatch_challan";
+                    }
+                    Column planned_start_date
+                    {
+                        FieldLinkName = "planned_start_date";
+                    }
+                    Column planned_end_date
+                    {
+                        FieldLinkName = "planned_end_date";
+                    }
+                    Column actual_start_date
+                    {
+                        FieldLinkName = "actual_start_date";
+                    }
+                    Column actual_end_date
+                    {
+                        FieldLinkName = "actual_end_date";
+                    }
+                    Column stage_status
+                    {
+                        FieldLinkName = "stage_status";
+                    }
+                    Column input_consumption
+                    {
+                        FieldLinkName = "input_consumption";
+                    }
+                    Column output_products
+                    {
+                        FieldLinkName = "output_products";
+                    }
+                    Column damage_report
+                    {
+                        FieldLinkName = "damage_report";
+                    }
+                    Column qc_request
+                    {
+                        FieldLinkName = "qc_request";
+                    }
+                    Column wage_method
+                    {
+                        FieldLinkName = "wage_method";
+                    }
+                    Column wage_vouchers
+                    {
+                        FieldLinkName = "wage_vouchers";
+                    }
+                    Column yield_log_reference
+                    {
+                        FieldLinkName = "yield_log_reference";
+                    }
+                    Column rework_flag
+                    {
+                        FieldLinkName = "rework_flag";
+                    }
+                    Column parent_batch
+                    {
+                        FieldLinkName = "parent_batch";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

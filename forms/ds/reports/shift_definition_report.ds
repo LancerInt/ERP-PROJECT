@@ -1,0 +1,155 @@
+report shift_definition_report
+{
+    DisplayName = "Shift Definition Report";
+    LinkName = "shift_definition_report";
+    Type = "List";
+    SourceFormLinkName = "shift_definition";
+
+    ListView
+    {
+        Columns
+        {
+            Column shift_code
+            {
+                FieldLinkName = "shift_code";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column shift_name
+            {
+                FieldLinkName = "shift_name";
+            }
+            Column start_time
+            {
+                FieldLinkName = "start_time";
+            }
+            Column end_time
+            {
+                FieldLinkName = "end_time";
+            }
+            Column break_duration_mins
+            {
+                FieldLinkName = "break_duration_mins";
+            }
+            Column overtime_eligibility
+            {
+                FieldLinkName = "overtime_eligibility";
+            }
+            Column attendance_calculation_rule
+            {
+                FieldLinkName = "attendance_calculation_rule";
+            }
+            Column grace_period_minutes
+            {
+                FieldLinkName = "grace_period_minutes";
+            }
+            Column approval_required
+            {
+                FieldLinkName = "approval_required";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column shift_code
+            {
+                FieldLinkName = "shift_code";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column shift_name
+            {
+                FieldLinkName = "shift_name";
+            }
+            Column start_time
+            {
+                FieldLinkName = "start_time";
+            }
+            Column end_time
+            {
+                FieldLinkName = "end_time";
+            }
+            Column break_duration_mins
+            {
+                FieldLinkName = "break_duration_mins";
+            }
+            Column overtime_eligibility
+            {
+                FieldLinkName = "overtime_eligibility";
+            }
+            Column attendance_calculation_rule
+            {
+                FieldLinkName = "attendance_calculation_rule";
+            }
+            Column grace_period_minutes
+            {
+                FieldLinkName = "grace_period_minutes";
+            }
+            Column approval_required
+            {
+                FieldLinkName = "approval_required";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column shift_code
+                    {
+                        FieldLinkName = "shift_code";
+                    }
+                    Column warehouse
+                    {
+                        FieldLinkName = "warehouse";
+                    }
+                    Column shift_name
+                    {
+                        FieldLinkName = "shift_name";
+                    }
+                    Column start_time
+                    {
+                        FieldLinkName = "start_time";
+                    }
+                    Column end_time
+                    {
+                        FieldLinkName = "end_time";
+                    }
+                    Column break_duration_mins
+                    {
+                        FieldLinkName = "break_duration_mins";
+                    }
+                    Column overtime_eligibility
+                    {
+                        FieldLinkName = "overtime_eligibility";
+                    }
+                    Column attendance_calculation_rule
+                    {
+                        FieldLinkName = "attendance_calculation_rule";
+                    }
+                    Column grace_period_minutes
+                    {
+                        FieldLinkName = "grace_period_minutes";
+                    }
+                    Column approval_required
+                    {
+                        FieldLinkName = "approval_required";
+                    }
+                }
+            }
+        }
+    }
+}

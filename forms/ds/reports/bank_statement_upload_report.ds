@@ -1,0 +1,155 @@
+report bank_statement_upload_report
+{
+    DisplayName = "Bank Statement Upload Report";
+    LinkName = "bank_statement_upload_report";
+    Type = "List";
+    SourceFormLinkName = "bank_statement_upload";
+
+    ListView
+    {
+        Columns
+        {
+            Column upload_id
+            {
+                FieldLinkName = "upload_id";
+            }
+            Column bank_account
+            {
+                FieldLinkName = "bank_account";
+            }
+            Column statement_period_start
+            {
+                FieldLinkName = "statement_period_start";
+            }
+            Column statement_period_end
+            {
+                FieldLinkName = "statement_period_end";
+            }
+            Column upload_date
+            {
+                FieldLinkName = "upload_date";
+            }
+            Column statement_file
+            {
+                FieldLinkName = "statement_file";
+            }
+            Column parsing_status
+            {
+                FieldLinkName = "parsing_status";
+            }
+            Column auto_matched_entries
+            {
+                FieldLinkName = "auto_matched_entries";
+            }
+            Column exceptions
+            {
+                FieldLinkName = "exceptions";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column upload_id
+            {
+                FieldLinkName = "upload_id";
+            }
+            Column bank_account
+            {
+                FieldLinkName = "bank_account";
+            }
+            Column statement_period_start
+            {
+                FieldLinkName = "statement_period_start";
+            }
+            Column statement_period_end
+            {
+                FieldLinkName = "statement_period_end";
+            }
+            Column upload_date
+            {
+                FieldLinkName = "upload_date";
+            }
+            Column statement_file
+            {
+                FieldLinkName = "statement_file";
+            }
+            Column parsing_status
+            {
+                FieldLinkName = "parsing_status";
+            }
+            Column auto_matched_entries
+            {
+                FieldLinkName = "auto_matched_entries";
+            }
+            Column exceptions
+            {
+                FieldLinkName = "exceptions";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column upload_id
+                    {
+                        FieldLinkName = "upload_id";
+                    }
+                    Column bank_account
+                    {
+                        FieldLinkName = "bank_account";
+                    }
+                    Column statement_period_start
+                    {
+                        FieldLinkName = "statement_period_start";
+                    }
+                    Column statement_period_end
+                    {
+                        FieldLinkName = "statement_period_end";
+                    }
+                    Column upload_date
+                    {
+                        FieldLinkName = "upload_date";
+                    }
+                    Column statement_file
+                    {
+                        FieldLinkName = "statement_file";
+                    }
+                    Column parsing_status
+                    {
+                        FieldLinkName = "parsing_status";
+                    }
+                    Column auto_matched_entries
+                    {
+                        FieldLinkName = "auto_matched_entries";
+                    }
+                    Column exceptions
+                    {
+                        FieldLinkName = "exceptions";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                }
+            }
+        }
+    }
+}

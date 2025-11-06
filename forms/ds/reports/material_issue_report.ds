@@ -1,0 +1,131 @@
+report material_issue_report
+{
+    DisplayName = "Material Issue Report";
+    LinkName = "material_issue_report";
+    Type = "List";
+    SourceFormLinkName = "material_issue";
+
+    ListView
+    {
+        Columns
+        {
+            Column issue_no
+            {
+                FieldLinkName = "issue_no";
+            }
+            Column issue_date
+            {
+                FieldLinkName = "issue_date";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column work_order
+            {
+                FieldLinkName = "work_order";
+            }
+            Column issued_by
+            {
+                FieldLinkName = "issued_by";
+            }
+            Column approved_by
+            {
+                FieldLinkName = "approved_by";
+            }
+            Column issue_lines
+            {
+                FieldLinkName = "issue_lines";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column issue_no
+            {
+                FieldLinkName = "issue_no";
+            }
+            Column issue_date
+            {
+                FieldLinkName = "issue_date";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column work_order
+            {
+                FieldLinkName = "work_order";
+            }
+            Column issued_by
+            {
+                FieldLinkName = "issued_by";
+            }
+            Column approved_by
+            {
+                FieldLinkName = "approved_by";
+            }
+            Column issue_lines
+            {
+                FieldLinkName = "issue_lines";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column issue_no
+                    {
+                        FieldLinkName = "issue_no";
+                    }
+                    Column issue_date
+                    {
+                        FieldLinkName = "issue_date";
+                    }
+                    Column warehouse
+                    {
+                        FieldLinkName = "warehouse";
+                    }
+                    Column work_order
+                    {
+                        FieldLinkName = "work_order";
+                    }
+                    Column issued_by
+                    {
+                        FieldLinkName = "issued_by";
+                    }
+                    Column approved_by
+                    {
+                        FieldLinkName = "approved_by";
+                    }
+                    Column issue_lines
+                    {
+                        FieldLinkName = "issue_lines";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                }
+            }
+        }
+    }
+}

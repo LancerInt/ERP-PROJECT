@@ -1,0 +1,95 @@
+report staff_summary_report
+{
+    DisplayName = "Staff Summary Report";
+    LinkName = "staff_summary_report";
+    Type = "List";
+    SourceFormLinkName = "staff_summary";
+
+    ListView
+    {
+        Columns
+        {
+            Column staff
+            {
+                FieldLinkName = "staff";
+            }
+            Column present_days
+            {
+                FieldLinkName = "present_days";
+            }
+            Column absent_days
+            {
+                FieldLinkName = "absent_days";
+            }
+            Column overtime_hours
+            {
+                FieldLinkName = "overtime_hours";
+            }
+            Column wages_amount
+            {
+                FieldLinkName = "wages_amount";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column staff
+            {
+                FieldLinkName = "staff";
+            }
+            Column present_days
+            {
+                FieldLinkName = "present_days";
+            }
+            Column absent_days
+            {
+                FieldLinkName = "absent_days";
+            }
+            Column overtime_hours
+            {
+                FieldLinkName = "overtime_hours";
+            }
+            Column wages_amount
+            {
+                FieldLinkName = "wages_amount";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column staff
+                    {
+                        FieldLinkName = "staff";
+                    }
+                    Column present_days
+                    {
+                        FieldLinkName = "present_days";
+                    }
+                    Column absent_days
+                    {
+                        FieldLinkName = "absent_days";
+                    }
+                    Column overtime_hours
+                    {
+                        FieldLinkName = "overtime_hours";
+                    }
+                    Column wages_amount
+                    {
+                        FieldLinkName = "wages_amount";
+                    }
+                }
+            }
+        }
+    }
+}

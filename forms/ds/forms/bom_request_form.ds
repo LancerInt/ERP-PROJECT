@@ -1,0 +1,139 @@
+// Module: 4. Production Module
+form bom_request
+{
+    DisplayName = "BOM Request";
+    LinkName = "bom_request";
+    Module = "4. Production Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field request_no
+                {
+                    DisplayName = "Request No.";
+                    LinkName = "request_no";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field request_date
+                {
+                    DisplayName = "Request Date";
+                    LinkName = "request_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field warehouse
+                {
+                    DisplayName = "Warehouse";
+                    LinkName = "warehouse";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field requested_by
+                {
+                    DisplayName = "Requested By";
+                    LinkName = "requested_by";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                    HelpText = "Warehouse Coordinator";
+                }
+                Field production_template
+                {
+                    DisplayName = "Production Template";
+                    LinkName = "production_template";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "template_library";
+                }
+                Field output_product
+                {
+                    DisplayName = "Output Product";
+                    LinkName = "output_product";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field output_quantity
+                {
+                    DisplayName = "Output Quantity";
+                    LinkName = "output_quantity";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field required_completion_date
+                {
+                    DisplayName = "Required Completion Date";
+                    LinkName = "required_completion_date";
+                    Type = "Date";
+                }
+                Field auto_calculated_inputs
+                {
+                    DisplayName = "Auto-calculated Inputs";
+                    LinkName = "auto_calculated_inputs";
+                    Type = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "auto_calculated_inputs";
+                    HelpText = "Computed from template";
+                }
+                Field shortfall_summary
+                {
+                    DisplayName = "Shortfall Summary";
+                    LinkName = "shortfall_summary";
+                    Type = "MultiLine";
+                }
+                Field approval_status
+                {
+                    DisplayName = "Approval Status";
+                    LinkName = "approval_status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Draft / Pending / Approved / Rejected";
+                }
+                Field approved_by
+                {
+                    DisplayName = "Approved By";
+                    LinkName = "approved_by";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field approved_date
+                {
+                    DisplayName = "Approved Date";
+                    LinkName = "approved_date";
+                    Type = "DateTime";
+                }
+                Field excel_export_link
+                {
+                    DisplayName = "Excel Export Link";
+                    LinkName = "excel_export_link";
+                    Type = "URL";
+                    HelpText = "Download BOM";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

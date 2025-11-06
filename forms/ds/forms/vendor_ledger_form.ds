@@ -1,0 +1,114 @@
+// Module: 7. Finance Module
+form vendor_ledger
+{
+    DisplayName = "Vendor Ledger";
+    LinkName = "vendor_ledger";
+    Module = "7. Finance Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field ledger_id
+                {
+                    DisplayName = "Ledger ID";
+                    LinkName = "ledger_id";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field vendor
+                {
+                    DisplayName = "Vendor";
+                    LinkName = "vendor";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "vendor";
+                }
+                Field document_type
+                {
+                    DisplayName = "Document Type";
+                    LinkName = "document_type";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "PO / Receipt / Invoice / Freight / Wage / Credit Note";
+                }
+                Field document_reference
+                {
+                    DisplayName = "Document Reference";
+                    LinkName = "document_reference";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkNames = ["purchase_order", "receipt_advice", "freight_advice", "wage_voucher", "credit_debit_note"];
+                }
+                Field document_date
+                {
+                    DisplayName = "Document Date";
+                    LinkName = "document_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field debit_amount
+                {
+                    DisplayName = "Debit Amount";
+                    LinkName = "debit_amount";
+                    Type = "INR";
+                }
+                Field credit_amount
+                {
+                    DisplayName = "Credit Amount";
+                    LinkName = "credit_amount";
+                    Type = "INR";
+                }
+                Field tax_breakdown
+                {
+                    DisplayName = "Tax Breakdown";
+                    LinkName = "tax_breakdown";
+                    Type = "SubForm";
+                    SubFormLinkName = "tax_breakdown";
+                }
+                Field due_date
+                {
+                    DisplayName = "Due Date";
+                    LinkName = "due_date";
+                    Type = "Date";
+                }
+                Field payment_status
+                {
+                    DisplayName = "Payment Status";
+                    LinkName = "payment_status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Not Due / Partially Paid / Paid / Overdue";
+                }
+                Field ageing_bucket
+                {
+                    DisplayName = "Ageing Bucket";
+                    LinkName = "ageing_bucket";
+                    Type = "Dropdown";
+                    HelpText = "0-30 / 31-60 / >60";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

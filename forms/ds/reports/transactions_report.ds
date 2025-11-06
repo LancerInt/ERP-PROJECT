@@ -1,0 +1,95 @@
+report transactions_report
+{
+    DisplayName = "Transactions Report";
+    LinkName = "transactions_report";
+    Type = "List";
+    SourceFormLinkName = "transactions";
+
+    ListView
+    {
+        Columns
+        {
+            Column transaction_date
+            {
+                FieldLinkName = "transaction_date";
+            }
+            Column voucher_reference
+            {
+                FieldLinkName = "voucher_reference";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column type
+            {
+                FieldLinkName = "type";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column transaction_date
+            {
+                FieldLinkName = "transaction_date";
+            }
+            Column voucher_reference
+            {
+                FieldLinkName = "voucher_reference";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column type
+            {
+                FieldLinkName = "type";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column transaction_date
+                    {
+                        FieldLinkName = "transaction_date";
+                    }
+                    Column voucher_reference
+                    {
+                        FieldLinkName = "voucher_reference";
+                    }
+                    Column amount
+                    {
+                        FieldLinkName = "amount";
+                    }
+                    Column type
+                    {
+                        FieldLinkName = "type";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

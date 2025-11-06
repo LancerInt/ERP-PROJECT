@@ -1,0 +1,51 @@
+// Module: 7. Finance Module
+form finance_manager_approval
+{
+    DisplayName = "Finance Manager Approval";
+    LinkName = "finance_manager_approval";
+    Module = "7. Finance Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field approved_by
+                {
+                    DisplayName = "Approved By";
+                    LinkName = "approved_by";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field approval_date
+                {
+                    DisplayName = "Approval Date";
+                    LinkName = "approval_date";
+                    Type = "DateTime";
+                    IsMandatory = true;
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

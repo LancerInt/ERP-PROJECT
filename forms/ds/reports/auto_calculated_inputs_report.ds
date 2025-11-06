@@ -1,0 +1,95 @@
+report auto_calculated_inputs_report
+{
+    DisplayName = "Auto-calculated Inputs Report";
+    LinkName = "auto_calculated_inputs_report";
+    Type = "List";
+    SourceFormLinkName = "auto_calculated_inputs";
+
+    ListView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column required_qty
+            {
+                FieldLinkName = "required_qty";
+            }
+            Column available_qty
+            {
+                FieldLinkName = "available_qty";
+            }
+            Column shortfall_qty
+            {
+                FieldLinkName = "shortfall_qty";
+            }
+            Column purpose
+            {
+                FieldLinkName = "purpose";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column required_qty
+            {
+                FieldLinkName = "required_qty";
+            }
+            Column available_qty
+            {
+                FieldLinkName = "available_qty";
+            }
+            Column shortfall_qty
+            {
+                FieldLinkName = "shortfall_qty";
+            }
+            Column purpose
+            {
+                FieldLinkName = "purpose";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column product
+                    {
+                        FieldLinkName = "product";
+                    }
+                    Column required_qty
+                    {
+                        FieldLinkName = "required_qty";
+                    }
+                    Column available_qty
+                    {
+                        FieldLinkName = "available_qty";
+                    }
+                    Column shortfall_qty
+                    {
+                        FieldLinkName = "shortfall_qty";
+                    }
+                    Column purpose
+                    {
+                        FieldLinkName = "purpose";
+                    }
+                }
+            }
+        }
+    }
+}

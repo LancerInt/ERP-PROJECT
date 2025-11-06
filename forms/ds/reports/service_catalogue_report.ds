@@ -1,0 +1,143 @@
+report service_catalogue_report
+{
+    DisplayName = "Service Catalogue Report";
+    LinkName = "service_catalogue_report";
+    Type = "List";
+    SourceFormLinkName = "service_catalogue";
+
+    ListView
+    {
+        Columns
+        {
+            Column service_code
+            {
+                FieldLinkName = "service_code";
+            }
+            Column name
+            {
+                FieldLinkName = "name";
+            }
+            Column category
+            {
+                FieldLinkName = "category";
+            }
+            Column direction
+            {
+                FieldLinkName = "direction";
+            }
+            Column default_tds
+            {
+                FieldLinkName = "default_tds";
+            }
+            Column default_tcs
+            {
+                FieldLinkName = "default_tcs";
+            }
+            Column warehouse_availability
+            {
+                FieldLinkName = "warehouse_availability";
+            }
+            Column description
+            {
+                FieldLinkName = "description";
+            }
+            Column active_flag
+            {
+                FieldLinkName = "active_flag";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column service_code
+            {
+                FieldLinkName = "service_code";
+            }
+            Column name
+            {
+                FieldLinkName = "name";
+            }
+            Column category
+            {
+                FieldLinkName = "category";
+            }
+            Column direction
+            {
+                FieldLinkName = "direction";
+            }
+            Column default_tds
+            {
+                FieldLinkName = "default_tds";
+            }
+            Column default_tcs
+            {
+                FieldLinkName = "default_tcs";
+            }
+            Column warehouse_availability
+            {
+                FieldLinkName = "warehouse_availability";
+            }
+            Column description
+            {
+                FieldLinkName = "description";
+            }
+            Column active_flag
+            {
+                FieldLinkName = "active_flag";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column service_code
+                    {
+                        FieldLinkName = "service_code";
+                    }
+                    Column name
+                    {
+                        FieldLinkName = "name";
+                    }
+                    Column category
+                    {
+                        FieldLinkName = "category";
+                    }
+                    Column direction
+                    {
+                        FieldLinkName = "direction";
+                    }
+                    Column default_tds
+                    {
+                        FieldLinkName = "default_tds";
+                    }
+                    Column default_tcs
+                    {
+                        FieldLinkName = "default_tcs";
+                    }
+                    Column warehouse_availability
+                    {
+                        FieldLinkName = "warehouse_availability";
+                    }
+                    Column description
+                    {
+                        FieldLinkName = "description";
+                    }
+                    Column active_flag
+                    {
+                        FieldLinkName = "active_flag";
+                    }
+                }
+            }
+        }
+    }
+}

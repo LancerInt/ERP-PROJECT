@@ -1,0 +1,83 @@
+// Module: 4. Production Module
+form input_consumption
+{
+    DisplayName = "Input Consumption";
+    LinkName = "input_consumption";
+    Module = "4. Production Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field planned_qty
+                {
+                    DisplayName = "Planned Qty";
+                    LinkName = "planned_qty";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                    HelpText = "From template";
+                }
+                Field actual_qty
+                {
+                    DisplayName = "Actual Qty";
+                    LinkName = "actual_qty";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field batch_used
+                {
+                    DisplayName = "Batch Used";
+                    LinkName = "batch_used";
+                    Type = "SingleLine";
+                    ConditionalMandatory = true;
+                }
+                Field godown
+                {
+                    DisplayName = "Godown";
+                    LinkName = "godown";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "godown";
+                    HelpText = "Filtered by production warehouse";
+                }
+                Field yield_loss
+                {
+                    DisplayName = "Yield Loss %";
+                    LinkName = "yield_loss";
+                    Type = "Decimal";
+                    HelpText = "Capture deviations";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

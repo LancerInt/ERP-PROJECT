@@ -1,0 +1,83 @@
+report products_report
+{
+    DisplayName = "Products Report";
+    LinkName = "products_report";
+    Type = "List";
+    SourceFormLinkName = "products";
+
+    ListView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch
+            {
+                FieldLinkName = "batch";
+            }
+            Column quantity
+            {
+                FieldLinkName = "quantity";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch
+            {
+                FieldLinkName = "batch";
+            }
+            Column quantity
+            {
+                FieldLinkName = "quantity";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column product
+                    {
+                        FieldLinkName = "product";
+                    }
+                    Column batch
+                    {
+                        FieldLinkName = "batch";
+                    }
+                    Column quantity
+                    {
+                        FieldLinkName = "quantity";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                }
+            }
+        }
+    }
+}

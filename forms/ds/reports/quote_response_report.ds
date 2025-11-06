@@ -1,0 +1,215 @@
+report quote_response_report
+{
+    DisplayName = "Quote Response Report";
+    LinkName = "quote_response_report";
+    Type = "List";
+    SourceFormLinkName = "quote_response";
+
+    ListView
+    {
+        Columns
+        {
+            Column quote_id
+            {
+                FieldLinkName = "quote_id";
+            }
+            Column rfq
+            {
+                FieldLinkName = "rfq";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column quote_date
+            {
+                FieldLinkName = "quote_date";
+            }
+            Column price_valid_till
+            {
+                FieldLinkName = "price_valid_till";
+            }
+            Column currency
+            {
+                FieldLinkName = "currency";
+            }
+            Column quote_lines
+            {
+                FieldLinkName = "quote_lines";
+            }
+            Column freight_terms
+            {
+                FieldLinkName = "freight_terms";
+            }
+            Column payment_terms
+            {
+                FieldLinkName = "payment_terms";
+            }
+            Column delivery_terms
+            {
+                FieldLinkName = "delivery_terms";
+            }
+            Column lead_time_days
+            {
+                FieldLinkName = "lead_time_days";
+            }
+            Column attachments
+            {
+                FieldLinkName = "attachments";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+            Column evaluation_score
+            {
+                FieldLinkName = "evaluation_score";
+            }
+            Column chosen_flag
+            {
+                FieldLinkName = "chosen_flag";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column quote_id
+            {
+                FieldLinkName = "quote_id";
+            }
+            Column rfq
+            {
+                FieldLinkName = "rfq";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column quote_date
+            {
+                FieldLinkName = "quote_date";
+            }
+            Column price_valid_till
+            {
+                FieldLinkName = "price_valid_till";
+            }
+            Column currency
+            {
+                FieldLinkName = "currency";
+            }
+            Column quote_lines
+            {
+                FieldLinkName = "quote_lines";
+            }
+            Column freight_terms
+            {
+                FieldLinkName = "freight_terms";
+            }
+            Column payment_terms
+            {
+                FieldLinkName = "payment_terms";
+            }
+            Column delivery_terms
+            {
+                FieldLinkName = "delivery_terms";
+            }
+            Column lead_time_days
+            {
+                FieldLinkName = "lead_time_days";
+            }
+            Column attachments
+            {
+                FieldLinkName = "attachments";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+            Column evaluation_score
+            {
+                FieldLinkName = "evaluation_score";
+            }
+            Column chosen_flag
+            {
+                FieldLinkName = "chosen_flag";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column quote_id
+                    {
+                        FieldLinkName = "quote_id";
+                    }
+                    Column rfq
+                    {
+                        FieldLinkName = "rfq";
+                    }
+                    Column vendor
+                    {
+                        FieldLinkName = "vendor";
+                    }
+                    Column quote_date
+                    {
+                        FieldLinkName = "quote_date";
+                    }
+                    Column price_valid_till
+                    {
+                        FieldLinkName = "price_valid_till";
+                    }
+                    Column currency
+                    {
+                        FieldLinkName = "currency";
+                    }
+                    Column quote_lines
+                    {
+                        FieldLinkName = "quote_lines";
+                    }
+                    Column freight_terms
+                    {
+                        FieldLinkName = "freight_terms";
+                    }
+                    Column payment_terms
+                    {
+                        FieldLinkName = "payment_terms";
+                    }
+                    Column delivery_terms
+                    {
+                        FieldLinkName = "delivery_terms";
+                    }
+                    Column lead_time_days
+                    {
+                        FieldLinkName = "lead_time_days";
+                    }
+                    Column attachments
+                    {
+                        FieldLinkName = "attachments";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                    Column evaluation_score
+                    {
+                        FieldLinkName = "evaluation_score";
+                    }
+                    Column chosen_flag
+                    {
+                        FieldLinkName = "chosen_flag";
+                    }
+                }
+            }
+        }
+    }
+}

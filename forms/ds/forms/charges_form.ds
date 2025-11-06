@@ -1,0 +1,60 @@
+// Module: 6. Inventory, Logistics & Returns
+form charges
+{
+    DisplayName = "Charges";
+    LinkName = "charges";
+    Module = "6. Inventory, Logistics & Returns";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field charge_type
+                {
+                    DisplayName = "Charge Type";
+                    LinkName = "charge_type";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Job Work / Freight / Loading / Unloading";
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    Type = "INR";
+                    IsMandatory = true;
+                }
+                Field tds
+                {
+                    DisplayName = "TDS %";
+                    LinkName = "tds";
+                    Type = "Decimal";
+                    HelpText = "Separate rates";
+                }
+                Field payable_by
+                {
+                    DisplayName = "Payable By";
+                    LinkName = "payable_by";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Company / Vendor";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

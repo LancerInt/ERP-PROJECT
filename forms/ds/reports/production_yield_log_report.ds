@@ -1,0 +1,155 @@
+report production_yield_log_report
+{
+    DisplayName = "Production Yield Log Report";
+    LinkName = "production_yield_log_report";
+    Type = "List";
+    SourceFormLinkName = "production_yield_log";
+
+    ListView
+    {
+        Columns
+        {
+            Column log_id
+            {
+                FieldLinkName = "log_id";
+            }
+            Column work_order
+            {
+                FieldLinkName = "work_order";
+            }
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column planned_yield
+            {
+                FieldLinkName = "planned_yield";
+            }
+            Column actual_output_qty
+            {
+                FieldLinkName = "actual_output_qty";
+            }
+            Column purity
+            {
+                FieldLinkName = "purity";
+            }
+            Column ai_content
+            {
+                FieldLinkName = "ai_content";
+            }
+            Column variance
+            {
+                FieldLinkName = "variance";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+            Column report_date
+            {
+                FieldLinkName = "report_date";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column log_id
+            {
+                FieldLinkName = "log_id";
+            }
+            Column work_order
+            {
+                FieldLinkName = "work_order";
+            }
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column planned_yield
+            {
+                FieldLinkName = "planned_yield";
+            }
+            Column actual_output_qty
+            {
+                FieldLinkName = "actual_output_qty";
+            }
+            Column purity
+            {
+                FieldLinkName = "purity";
+            }
+            Column ai_content
+            {
+                FieldLinkName = "ai_content";
+            }
+            Column variance
+            {
+                FieldLinkName = "variance";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+            Column report_date
+            {
+                FieldLinkName = "report_date";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column log_id
+                    {
+                        FieldLinkName = "log_id";
+                    }
+                    Column work_order
+                    {
+                        FieldLinkName = "work_order";
+                    }
+                    Column product
+                    {
+                        FieldLinkName = "product";
+                    }
+                    Column planned_yield
+                    {
+                        FieldLinkName = "planned_yield";
+                    }
+                    Column actual_output_qty
+                    {
+                        FieldLinkName = "actual_output_qty";
+                    }
+                    Column purity
+                    {
+                        FieldLinkName = "purity";
+                    }
+                    Column ai_content
+                    {
+                        FieldLinkName = "ai_content";
+                    }
+                    Column variance
+                    {
+                        FieldLinkName = "variance";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                    Column report_date
+                    {
+                        FieldLinkName = "report_date";
+                    }
+                }
+            }
+        }
+    }
+}

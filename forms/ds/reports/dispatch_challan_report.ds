@@ -1,0 +1,227 @@
+report dispatch_challan_report
+{
+    DisplayName = "Dispatch Challan (DC) Report";
+    LinkName = "dispatch_challan_report";
+    Type = "List";
+    SourceFormLinkName = "dispatch_challan";
+
+    ListView
+    {
+        Columns
+        {
+            Column dc_no
+            {
+                FieldLinkName = "dc_no";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column dispatch_date
+            {
+                FieldLinkName = "dispatch_date";
+            }
+            Column transporter
+            {
+                FieldLinkName = "transporter";
+            }
+            Column freight_rate_type
+            {
+                FieldLinkName = "freight_rate_type";
+            }
+            Column freight_rate_value
+            {
+                FieldLinkName = "freight_rate_value";
+            }
+            Column freight_amount_total
+            {
+                FieldLinkName = "freight_amount_total";
+            }
+            Column lorry_no
+            {
+                FieldLinkName = "lorry_no";
+            }
+            Column driver_contact
+            {
+                FieldLinkName = "driver_contact";
+            }
+            Column linked_so_lines
+            {
+                FieldLinkName = "linked_so_lines";
+            }
+            Column dc_lines
+            {
+                FieldLinkName = "dc_lines";
+            }
+            Column delivery_locations
+            {
+                FieldLinkName = "delivery_locations";
+            }
+            Column documents
+            {
+                FieldLinkName = "documents";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column created_by
+            {
+                FieldLinkName = "created_by";
+            }
+            Column freight_advice_link
+            {
+                FieldLinkName = "freight_advice_link";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column dc_no
+            {
+                FieldLinkName = "dc_no";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column dispatch_date
+            {
+                FieldLinkName = "dispatch_date";
+            }
+            Column transporter
+            {
+                FieldLinkName = "transporter";
+            }
+            Column freight_rate_type
+            {
+                FieldLinkName = "freight_rate_type";
+            }
+            Column freight_rate_value
+            {
+                FieldLinkName = "freight_rate_value";
+            }
+            Column freight_amount_total
+            {
+                FieldLinkName = "freight_amount_total";
+            }
+            Column lorry_no
+            {
+                FieldLinkName = "lorry_no";
+            }
+            Column driver_contact
+            {
+                FieldLinkName = "driver_contact";
+            }
+            Column linked_so_lines
+            {
+                FieldLinkName = "linked_so_lines";
+            }
+            Column dc_lines
+            {
+                FieldLinkName = "dc_lines";
+            }
+            Column delivery_locations
+            {
+                FieldLinkName = "delivery_locations";
+            }
+            Column documents
+            {
+                FieldLinkName = "documents";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column created_by
+            {
+                FieldLinkName = "created_by";
+            }
+            Column freight_advice_link
+            {
+                FieldLinkName = "freight_advice_link";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column dc_no
+                    {
+                        FieldLinkName = "dc_no";
+                    }
+                    Column warehouse
+                    {
+                        FieldLinkName = "warehouse";
+                    }
+                    Column dispatch_date
+                    {
+                        FieldLinkName = "dispatch_date";
+                    }
+                    Column transporter
+                    {
+                        FieldLinkName = "transporter";
+                    }
+                    Column freight_rate_type
+                    {
+                        FieldLinkName = "freight_rate_type";
+                    }
+                    Column freight_rate_value
+                    {
+                        FieldLinkName = "freight_rate_value";
+                    }
+                    Column freight_amount_total
+                    {
+                        FieldLinkName = "freight_amount_total";
+                    }
+                    Column lorry_no
+                    {
+                        FieldLinkName = "lorry_no";
+                    }
+                    Column driver_contact
+                    {
+                        FieldLinkName = "driver_contact";
+                    }
+                    Column linked_so_lines
+                    {
+                        FieldLinkName = "linked_so_lines";
+                    }
+                    Column dc_lines
+                    {
+                        FieldLinkName = "dc_lines";
+                    }
+                    Column delivery_locations
+                    {
+                        FieldLinkName = "delivery_locations";
+                    }
+                    Column documents
+                    {
+                        FieldLinkName = "documents";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                    Column created_by
+                    {
+                        FieldLinkName = "created_by";
+                    }
+                    Column freight_advice_link
+                    {
+                        FieldLinkName = "freight_advice_link";
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,149 @@
+// Module: 3. Sales Module
+form dispatch_challan
+{
+    DisplayName = "Dispatch Challan (DC)";
+    LinkName = "dispatch_challan";
+    Module = "3. Sales Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field dc_no
+                {
+                    DisplayName = "DC No.";
+                    LinkName = "dc_no";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field warehouse
+                {
+                    DisplayName = "Warehouse";
+                    LinkName = "warehouse";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field dispatch_date
+                {
+                    DisplayName = "Dispatch Date";
+                    LinkName = "dispatch_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field transporter
+                {
+                    DisplayName = "Transporter";
+                    LinkName = "transporter";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "transporter";
+                }
+                Field freight_rate_type
+                {
+                    DisplayName = "Freight Rate Type";
+                    LinkName = "freight_rate_type";
+                    Type = "Dropdown";
+                    HelpText = "Per km / Flat";
+                }
+                Field freight_rate_value
+                {
+                    DisplayName = "Freight Rate Value";
+                    LinkName = "freight_rate_value";
+                    Type = "INR";
+                }
+                Field freight_amount_total
+                {
+                    DisplayName = "Freight Amount Total";
+                    LinkName = "freight_amount_total";
+                    Type = "INR";
+                }
+                Field lorry_no
+                {
+                    DisplayName = "Lorry No.";
+                    LinkName = "lorry_no";
+                    Type = "SingleLine";
+                }
+                Field driver_contact
+                {
+                    DisplayName = "Driver Contact";
+                    LinkName = "driver_contact";
+                    Type = "Phone";
+                }
+                Field linked_so_lines
+                {
+                    DisplayName = "Linked SO Lines";
+                    LinkName = "linked_so_lines";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                    AllowMultiple = true;
+                }
+                Field dc_lines
+                {
+                    DisplayName = "DC Lines";
+                    LinkName = "dc_lines";
+                    Type = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "dc_lines";
+                    HelpText = "Consolidated products";
+                }
+                Field delivery_locations
+                {
+                    DisplayName = "Delivery Locations";
+                    LinkName = "delivery_locations";
+                    Type = "SubForm";
+                    SubFormLinkName = "delivery_locations";
+                    HelpText = "For multi-drop";
+                }
+                Field documents
+                {
+                    DisplayName = "Documents";
+                    LinkName = "documents";
+                    Type = "UploadFile";
+                    MaxFileCount = 10;
+                    AllowMultiple = true;
+                    FileSource = "LocalDrive";
+                    HelpText = "DC PDF";
+                }
+                Field status
+                {
+                    DisplayName = "Status";
+                    LinkName = "status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Draft / Released / Delivered / Closed";
+                }
+                Field created_by
+                {
+                    DisplayName = "Created By";
+                    LinkName = "created_by";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field freight_advice_link
+                {
+                    DisplayName = "Freight Advice Link";
+                    LinkName = "freight_advice_link";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "freight_advice_2";
+                    HelpText = "Outbound";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

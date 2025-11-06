@@ -1,0 +1,71 @@
+report approval_log_report
+{
+    DisplayName = "Approval Log Report";
+    LinkName = "approval_log_report";
+    Type = "List";
+    SourceFormLinkName = "approval_log";
+
+    ListView
+    {
+        Columns
+        {
+            Column approved_by
+            {
+                FieldLinkName = "approved_by";
+            }
+            Column approval_date
+            {
+                FieldLinkName = "approval_date";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column approved_by
+            {
+                FieldLinkName = "approved_by";
+            }
+            Column approval_date
+            {
+                FieldLinkName = "approval_date";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column approved_by
+                    {
+                        FieldLinkName = "approved_by";
+                    }
+                    Column approval_date
+                    {
+                        FieldLinkName = "approval_date";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                }
+            }
+        }
+    }
+}

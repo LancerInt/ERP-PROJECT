@@ -1,0 +1,215 @@
+report freight_ledger_report
+{
+    DisplayName = "Freight Ledger Report";
+    LinkName = "freight_ledger_report";
+    Type = "List";
+    SourceFormLinkName = "freight_ledger";
+
+    ListView
+    {
+        Columns
+        {
+            Column ledger_id
+            {
+                FieldLinkName = "ledger_id";
+            }
+            Column direction
+            {
+                FieldLinkName = "direction";
+            }
+            Column transporter
+            {
+                FieldLinkName = "transporter";
+            }
+            Column freight_advice
+            {
+                FieldLinkName = "freight_advice";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column discount
+            {
+                FieldLinkName = "discount";
+            }
+            Column shipment_quantity
+            {
+                FieldLinkName = "shipment_quantity";
+            }
+            Column quantity_uom
+            {
+                FieldLinkName = "quantity_uom";
+            }
+            Column cost_per_unit
+            {
+                FieldLinkName = "cost_per_unit";
+            }
+            Column destination_state
+            {
+                FieldLinkName = "destination_state";
+            }
+            Column payment_schedule
+            {
+                FieldLinkName = "payment_schedule";
+            }
+            Column amount_paid
+            {
+                FieldLinkName = "amount_paid";
+            }
+            Column balance
+            {
+                FieldLinkName = "balance";
+            }
+            Column reminder_flag
+            {
+                FieldLinkName = "reminder_flag";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column ledger_id
+            {
+                FieldLinkName = "ledger_id";
+            }
+            Column direction
+            {
+                FieldLinkName = "direction";
+            }
+            Column transporter
+            {
+                FieldLinkName = "transporter";
+            }
+            Column freight_advice
+            {
+                FieldLinkName = "freight_advice";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column discount
+            {
+                FieldLinkName = "discount";
+            }
+            Column shipment_quantity
+            {
+                FieldLinkName = "shipment_quantity";
+            }
+            Column quantity_uom
+            {
+                FieldLinkName = "quantity_uom";
+            }
+            Column cost_per_unit
+            {
+                FieldLinkName = "cost_per_unit";
+            }
+            Column destination_state
+            {
+                FieldLinkName = "destination_state";
+            }
+            Column payment_schedule
+            {
+                FieldLinkName = "payment_schedule";
+            }
+            Column amount_paid
+            {
+                FieldLinkName = "amount_paid";
+            }
+            Column balance
+            {
+                FieldLinkName = "balance";
+            }
+            Column reminder_flag
+            {
+                FieldLinkName = "reminder_flag";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column ledger_id
+                    {
+                        FieldLinkName = "ledger_id";
+                    }
+                    Column direction
+                    {
+                        FieldLinkName = "direction";
+                    }
+                    Column transporter
+                    {
+                        FieldLinkName = "transporter";
+                    }
+                    Column freight_advice
+                    {
+                        FieldLinkName = "freight_advice";
+                    }
+                    Column amount
+                    {
+                        FieldLinkName = "amount";
+                    }
+                    Column discount
+                    {
+                        FieldLinkName = "discount";
+                    }
+                    Column shipment_quantity
+                    {
+                        FieldLinkName = "shipment_quantity";
+                    }
+                    Column quantity_uom
+                    {
+                        FieldLinkName = "quantity_uom";
+                    }
+                    Column cost_per_unit
+                    {
+                        FieldLinkName = "cost_per_unit";
+                    }
+                    Column destination_state
+                    {
+                        FieldLinkName = "destination_state";
+                    }
+                    Column payment_schedule
+                    {
+                        FieldLinkName = "payment_schedule";
+                    }
+                    Column amount_paid
+                    {
+                        FieldLinkName = "amount_paid";
+                    }
+                    Column balance
+                    {
+                        FieldLinkName = "balance";
+                    }
+                    Column reminder_flag
+                    {
+                        FieldLinkName = "reminder_flag";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

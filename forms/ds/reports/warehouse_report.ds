@@ -1,0 +1,275 @@
+report warehouse_report
+{
+    DisplayName = "Warehouse Report";
+    LinkName = "warehouse_report";
+    Type = "List";
+    SourceFormLinkName = "warehouse";
+
+    ListView
+    {
+        Columns
+        {
+            Column warehouse_code
+            {
+                FieldLinkName = "warehouse_code";
+            }
+            Column company
+            {
+                FieldLinkName = "company";
+            }
+            Column name
+            {
+                FieldLinkName = "name";
+            }
+            Column warehouse_type
+            {
+                FieldLinkName = "warehouse_type";
+            }
+            Column address
+            {
+                FieldLinkName = "address";
+            }
+            Column city
+            {
+                FieldLinkName = "city";
+            }
+            Column state
+            {
+                FieldLinkName = "state";
+            }
+            Column country
+            {
+                FieldLinkName = "country";
+            }
+            Column pincode
+            {
+                FieldLinkName = "pincode";
+            }
+            Column geo_latitude
+            {
+                FieldLinkName = "geo_latitude";
+            }
+            Column geo_longitude
+            {
+                FieldLinkName = "geo_longitude";
+            }
+            Column time_zone
+            {
+                FieldLinkName = "time_zone";
+            }
+            Column default_currency
+            {
+                FieldLinkName = "default_currency";
+            }
+            Column warehouse_coordinator_office
+            {
+                FieldLinkName = "warehouse_coordinator_office";
+            }
+            Column warehouse_hr_coordinator
+            {
+                FieldLinkName = "warehouse_hr_coordinator";
+            }
+            Column warehouse_managers
+            {
+                FieldLinkName = "warehouse_managers";
+            }
+            Column warehouse_coordinators
+            {
+                FieldLinkName = "warehouse_coordinators";
+            }
+            Column warehouse_supervisors
+            {
+                FieldLinkName = "warehouse_supervisors";
+            }
+            Column active_flag
+            {
+                FieldLinkName = "active_flag";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column warehouse_code
+            {
+                FieldLinkName = "warehouse_code";
+            }
+            Column company
+            {
+                FieldLinkName = "company";
+            }
+            Column name
+            {
+                FieldLinkName = "name";
+            }
+            Column warehouse_type
+            {
+                FieldLinkName = "warehouse_type";
+            }
+            Column address
+            {
+                FieldLinkName = "address";
+            }
+            Column city
+            {
+                FieldLinkName = "city";
+            }
+            Column state
+            {
+                FieldLinkName = "state";
+            }
+            Column country
+            {
+                FieldLinkName = "country";
+            }
+            Column pincode
+            {
+                FieldLinkName = "pincode";
+            }
+            Column geo_latitude
+            {
+                FieldLinkName = "geo_latitude";
+            }
+            Column geo_longitude
+            {
+                FieldLinkName = "geo_longitude";
+            }
+            Column time_zone
+            {
+                FieldLinkName = "time_zone";
+            }
+            Column default_currency
+            {
+                FieldLinkName = "default_currency";
+            }
+            Column warehouse_coordinator_office
+            {
+                FieldLinkName = "warehouse_coordinator_office";
+            }
+            Column warehouse_hr_coordinator
+            {
+                FieldLinkName = "warehouse_hr_coordinator";
+            }
+            Column warehouse_managers
+            {
+                FieldLinkName = "warehouse_managers";
+            }
+            Column warehouse_coordinators
+            {
+                FieldLinkName = "warehouse_coordinators";
+            }
+            Column warehouse_supervisors
+            {
+                FieldLinkName = "warehouse_supervisors";
+            }
+            Column active_flag
+            {
+                FieldLinkName = "active_flag";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column warehouse_code
+                    {
+                        FieldLinkName = "warehouse_code";
+                    }
+                    Column company
+                    {
+                        FieldLinkName = "company";
+                    }
+                    Column name
+                    {
+                        FieldLinkName = "name";
+                    }
+                    Column warehouse_type
+                    {
+                        FieldLinkName = "warehouse_type";
+                    }
+                    Column address
+                    {
+                        FieldLinkName = "address";
+                    }
+                    Column city
+                    {
+                        FieldLinkName = "city";
+                    }
+                    Column state
+                    {
+                        FieldLinkName = "state";
+                    }
+                    Column country
+                    {
+                        FieldLinkName = "country";
+                    }
+                    Column pincode
+                    {
+                        FieldLinkName = "pincode";
+                    }
+                    Column geo_latitude
+                    {
+                        FieldLinkName = "geo_latitude";
+                    }
+                    Column geo_longitude
+                    {
+                        FieldLinkName = "geo_longitude";
+                    }
+                    Column time_zone
+                    {
+                        FieldLinkName = "time_zone";
+                    }
+                    Column default_currency
+                    {
+                        FieldLinkName = "default_currency";
+                    }
+                    Column warehouse_coordinator_office
+                    {
+                        FieldLinkName = "warehouse_coordinator_office";
+                    }
+                    Column warehouse_hr_coordinator
+                    {
+                        FieldLinkName = "warehouse_hr_coordinator";
+                    }
+                    Column warehouse_managers
+                    {
+                        FieldLinkName = "warehouse_managers";
+                    }
+                    Column warehouse_coordinators
+                    {
+                        FieldLinkName = "warehouse_coordinators";
+                    }
+                    Column warehouse_supervisors
+                    {
+                        FieldLinkName = "warehouse_supervisors";
+                    }
+                    Column active_flag
+                    {
+                        FieldLinkName = "active_flag";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

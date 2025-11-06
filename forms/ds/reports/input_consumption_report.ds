@@ -1,0 +1,119 @@
+report input_consumption_report
+{
+    DisplayName = "Input Consumption Report";
+    LinkName = "input_consumption_report";
+    Type = "List";
+    SourceFormLinkName = "input_consumption";
+
+    ListView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column planned_qty
+            {
+                FieldLinkName = "planned_qty";
+            }
+            Column actual_qty
+            {
+                FieldLinkName = "actual_qty";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column batch_used
+            {
+                FieldLinkName = "batch_used";
+            }
+            Column godown
+            {
+                FieldLinkName = "godown";
+            }
+            Column yield_loss
+            {
+                FieldLinkName = "yield_loss";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column planned_qty
+            {
+                FieldLinkName = "planned_qty";
+            }
+            Column actual_qty
+            {
+                FieldLinkName = "actual_qty";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column batch_used
+            {
+                FieldLinkName = "batch_used";
+            }
+            Column godown
+            {
+                FieldLinkName = "godown";
+            }
+            Column yield_loss
+            {
+                FieldLinkName = "yield_loss";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column product
+                    {
+                        FieldLinkName = "product";
+                    }
+                    Column planned_qty
+                    {
+                        FieldLinkName = "planned_qty";
+                    }
+                    Column actual_qty
+                    {
+                        FieldLinkName = "actual_qty";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                    Column batch_used
+                    {
+                        FieldLinkName = "batch_used";
+                    }
+                    Column godown
+                    {
+                        FieldLinkName = "godown";
+                    }
+                    Column yield_loss
+                    {
+                        FieldLinkName = "yield_loss";
+                    }
+                }
+            }
+        }
+    }
+}

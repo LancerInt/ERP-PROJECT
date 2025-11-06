@@ -1,0 +1,105 @@
+// Module: 8. Attendance & HR Module
+form overtime_request
+{
+    DisplayName = "Overtime Request";
+    LinkName = "overtime_request";
+    Module = "8. Attendance & HR Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field request_no
+                {
+                    DisplayName = "Request No.";
+                    LinkName = "request_no";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field staff
+                {
+                    DisplayName = "Staff";
+                    LinkName = "staff";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "staff_master";
+                }
+                Field date
+                {
+                    DisplayName = "Date";
+                    LinkName = "date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field shift
+                {
+                    DisplayName = "Shift";
+                    LinkName = "shift";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "shift_definition";
+                }
+                Field hours_worked
+                {
+                    DisplayName = "Hours Worked";
+                    LinkName = "hours_worked";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field task_description
+                {
+                    DisplayName = "Task Description";
+                    LinkName = "task_description";
+                    Type = "MultiLine";
+                    IsMandatory = true;
+                }
+                Field supporting_evidence
+                {
+                    DisplayName = "Supporting Evidence";
+                    LinkName = "supporting_evidence";
+                    Type = "UploadFile";
+                    MaxFileCount = 10;
+                    AllowMultiple = true;
+                    FileSource = "LocalDrive";
+                }
+                Field approval_status
+                {
+                    DisplayName = "Approval Status";
+                    LinkName = "approval_status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Pending / Approved / Rejected";
+                }
+                Field approved_by
+                {
+                    DisplayName = "Approved By";
+                    LinkName = "approved_by";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "stakeholder_user";
+                    HelpText = "Warehouse Coordinator (Office)";
+                }
+                Field wage_integration_flag
+                {
+                    DisplayName = "Wage Integration Flag";
+                    LinkName = "wage_integration_flag";
+                    Type = "Checkbox";
+                    HelpText = "Creates wage voucher";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

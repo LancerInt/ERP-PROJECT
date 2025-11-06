@@ -1,0 +1,83 @@
+report charges_report
+{
+    DisplayName = "Charges Report";
+    LinkName = "charges_report";
+    Type = "List";
+    SourceFormLinkName = "charges";
+
+    ListView
+    {
+        Columns
+        {
+            Column charge_type
+            {
+                FieldLinkName = "charge_type";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column tds
+            {
+                FieldLinkName = "tds";
+            }
+            Column payable_by
+            {
+                FieldLinkName = "payable_by";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column charge_type
+            {
+                FieldLinkName = "charge_type";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column tds
+            {
+                FieldLinkName = "tds";
+            }
+            Column payable_by
+            {
+                FieldLinkName = "payable_by";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column charge_type
+                    {
+                        FieldLinkName = "charge_type";
+                    }
+                    Column amount
+                    {
+                        FieldLinkName = "amount";
+                    }
+                    Column tds
+                    {
+                        FieldLinkName = "tds";
+                    }
+                    Column payable_by
+                    {
+                        FieldLinkName = "payable_by";
+                    }
+                }
+            }
+        }
+    }
+}

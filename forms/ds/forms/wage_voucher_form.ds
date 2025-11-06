@@ -1,0 +1,131 @@
+// Module: 4. Production Module
+form wage_voucher
+{
+    DisplayName = "Wage Voucher (Production)";
+    LinkName = "wage_voucher";
+    Module = "4. Production Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field voucher_no
+                {
+                    DisplayName = "Voucher No.";
+                    LinkName = "voucher_no";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field work_order
+                {
+                    DisplayName = "Work Order";
+                    LinkName = "work_order";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "work_order_production_batch";
+                }
+                Field wage_type
+                {
+                    DisplayName = "Wage Type";
+                    LinkName = "wage_type";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Template Rate / Headcount";
+                }
+                Field contractor_vendor
+                {
+                    DisplayName = "Contractor Vendor";
+                    LinkName = "contractor_vendor";
+                    Type = "Lookup";
+                    ConditionalMandatory = true;
+                    RelatedFormLinkName = "vendor";
+                    HelpText = "Mandatory for contractor";
+                }
+                Field staff_group
+                {
+                    DisplayName = "Staff Group";
+                    LinkName = "staff_group";
+                    Type = "SingleLine";
+                    ConditionalMandatory = true;
+                    AllowMultiple = true;
+                    HelpText = "Mandatory for headcount";
+                }
+                Field hours_tasks
+                {
+                    DisplayName = "Hours / Tasks";
+                    LinkName = "hours_tasks";
+                    Type = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "hours_tasks";
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    Type = "INR";
+                    IsMandatory = true;
+                }
+                Field tds
+                {
+                    DisplayName = "TDS %";
+                    LinkName = "tds";
+                    Type = "Decimal";
+                }
+                Field prepared_by
+                {
+                    DisplayName = "Prepared By";
+                    LinkName = "prepared_by";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                    HelpText = "Warehouse Coordinator (Office) originator";
+                }
+                Field prepared_date
+                {
+                    DisplayName = "Prepared Date";
+                    LinkName = "prepared_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field approval_workflow
+                {
+                    DisplayName = "Approval Workflow";
+                    LinkName = "approval_workflow";
+                    Type = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "approval_workflow";
+                    HelpText = "Warehouse Coordinator (Office) → Finance Manager";
+                }
+                Field status
+                {
+                    DisplayName = "Status";
+                    LinkName = "status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Draft / Pending / Approved / Paid";
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

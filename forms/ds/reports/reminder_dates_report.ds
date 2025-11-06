@@ -1,0 +1,71 @@
+report reminder_dates_report
+{
+    DisplayName = "Reminder Dates Report";
+    LinkName = "reminder_dates_report";
+    Type = "List";
+    SourceFormLinkName = "reminder_dates";
+
+    ListView
+    {
+        Columns
+        {
+            Column reminder_date
+            {
+                FieldLinkName = "reminder_date";
+            }
+            Column reminder_sent_by
+            {
+                FieldLinkName = "reminder_sent_by";
+            }
+            Column reminder_method
+            {
+                FieldLinkName = "reminder_method";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column reminder_date
+            {
+                FieldLinkName = "reminder_date";
+            }
+            Column reminder_sent_by
+            {
+                FieldLinkName = "reminder_sent_by";
+            }
+            Column reminder_method
+            {
+                FieldLinkName = "reminder_method";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column reminder_date
+                    {
+                        FieldLinkName = "reminder_date";
+                    }
+                    Column reminder_sent_by
+                    {
+                        FieldLinkName = "reminder_sent_by";
+                    }
+                    Column reminder_method
+                    {
+                        FieldLinkName = "reminder_method";
+                    }
+                }
+            }
+        }
+    }
+}

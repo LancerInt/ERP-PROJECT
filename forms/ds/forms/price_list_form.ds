@@ -1,0 +1,110 @@
+// Module: 1. Core & Shared Masters
+form price_list
+{
+    DisplayName = "Price List";
+    LinkName = "price_list";
+    Module = "1. Core & Shared Masters";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field price_list_id
+                {
+                    DisplayName = "Price List ID";
+                    LinkName = "price_list_id";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field company
+                {
+                    DisplayName = "Company";
+                    LinkName = "company";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "company";
+                }
+                Field customer
+                {
+                    DisplayName = "Customer";
+                    LinkName = "customer";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "customer";
+                    HelpText = "Optional if customer-specific";
+                }
+                Field delivery_region
+                {
+                    DisplayName = "Delivery Region";
+                    LinkName = "delivery_region";
+                    Type = "Dropdown";
+                    HelpText = "For auto-selection";
+                }
+                Field currency
+                {
+                    DisplayName = "Currency";
+                    LinkName = "currency";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field effective_from
+                {
+                    DisplayName = "Effective From";
+                    LinkName = "effective_from";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field effective_to
+                {
+                    DisplayName = "Effective To";
+                    LinkName = "effective_to";
+                    Type = "Date";
+                }
+                Field default_freight_terms
+                {
+                    DisplayName = "Default Freight Terms";
+                    LinkName = "default_freight_terms";
+                    Type = "Dropdown";
+                    HelpText = "Overrides customer";
+                }
+                Field status
+                {
+                    DisplayName = "Status";
+                    LinkName = "status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Draft / Active / Archived";
+                }
+                Field price_lines
+                {
+                    DisplayName = "Price Lines";
+                    LinkName = "price_lines";
+                    Type = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "price_lines";
+                    HelpText = "Product level rates";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

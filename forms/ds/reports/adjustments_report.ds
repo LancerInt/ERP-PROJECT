@@ -1,0 +1,83 @@
+report adjustments_report
+{
+    DisplayName = "Adjustments Report";
+    LinkName = "adjustments_report";
+    Type = "List";
+    SourceFormLinkName = "adjustments";
+
+    ListView
+    {
+        Columns
+        {
+            Column adjustment_type
+            {
+                FieldLinkName = "adjustment_type";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+            Column approved_by
+            {
+                FieldLinkName = "approved_by";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column adjustment_type
+            {
+                FieldLinkName = "adjustment_type";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+            Column approved_by
+            {
+                FieldLinkName = "approved_by";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column adjustment_type
+                    {
+                        FieldLinkName = "adjustment_type";
+                    }
+                    Column amount
+                    {
+                        FieldLinkName = "amount";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                    Column approved_by
+                    {
+                        FieldLinkName = "approved_by";
+                    }
+                }
+            }
+        }
+    }
+}

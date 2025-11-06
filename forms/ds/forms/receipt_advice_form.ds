@@ -1,0 +1,184 @@
+// Module: 2. Purchase Module
+form receipt_advice
+{
+    DisplayName = "Receipt Advice (Inbound)";
+    LinkName = "receipt_advice";
+    Module = "2. Purchase Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field receipt_advice_no
+                {
+                    DisplayName = "Receipt Advice No.";
+                    LinkName = "receipt_advice_no";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field receipt_date
+                {
+                    DisplayName = "Receipt Date";
+                    LinkName = "receipt_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field warehouse
+                {
+                    DisplayName = "Warehouse";
+                    LinkName = "warehouse";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field godown
+                {
+                    DisplayName = "Godown";
+                    LinkName = "godown";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "godown";
+                    HelpText = "Receiving location within warehouse";
+                }
+                Field vendor
+                {
+                    DisplayName = "Vendor";
+                    LinkName = "vendor";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "vendor";
+                }
+                Field linked_pos
+                {
+                    DisplayName = "Linked PO(s)";
+                    LinkName = "linked_pos";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                    AllowMultiple = true;
+                }
+                Field vehicle_number
+                {
+                    DisplayName = "Vehicle Number";
+                    LinkName = "vehicle_number";
+                    Type = "SingleLine";
+                }
+                Field driver_name
+                {
+                    DisplayName = "Driver Name";
+                    LinkName = "driver_name";
+                    Type = "SingleLine";
+                }
+                Field invoice_upload
+                {
+                    DisplayName = "Invoice Upload";
+                    LinkName = "invoice_upload";
+                    Type = "UploadFile";
+                    IsMandatory = true;
+                    MaxFileCount = 10;
+                    AllowMultiple = true;
+                    FileSource = "LocalDrive";
+                    HelpText = "Vendor invoice";
+                }
+                Field packing_list_upload
+                {
+                    DisplayName = "Packing List Upload";
+                    LinkName = "packing_list_upload";
+                    Type = "UploadFile";
+                    MaxFileCount = 10;
+                    AllowMultiple = true;
+                    FileSource = "LocalDrive";
+                }
+                Field receipt_lines
+                {
+                    DisplayName = "Receipt Lines";
+                    LinkName = "receipt_lines";
+                    Type = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "receipt_lines";
+                    HelpText = "Products received";
+                }
+                Field packing_material_lines
+                {
+                    DisplayName = "Packing Material Lines";
+                    LinkName = "packing_material_lines";
+                    Type = "SubForm";
+                    SubFormLinkName = "packing_material_lines";
+                    HelpText = "Packaging capture";
+                }
+                Field freight_details
+                {
+                    DisplayName = "Freight Details";
+                    LinkName = "freight_details";
+                    Type = "SubForm";
+                    SubFormLinkName = "freight_details";
+                    HelpText = "Local/Linehaul";
+                }
+                Field loading_unloading_wages
+                {
+                    DisplayName = "Loading Unloading Wages";
+                    LinkName = "loading_unloading_wages";
+                    Type = "SubForm";
+                    SubFormLinkName = "loading_unloading_wages";
+                }
+                Field qc_routing
+                {
+                    DisplayName = "QC Routing";
+                    LinkName = "qc_routing";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Warehouse / QC Coordinator / QC Manager";
+                }
+                Field qc_status
+                {
+                    DisplayName = "QC Status";
+                    LinkName = "qc_status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Pending / Pass / Fail / Hold";
+                }
+                Field partial_receipt_flag
+                {
+                    DisplayName = "Partial Receipt Flag";
+                    LinkName = "partial_receipt_flag";
+                    Type = "Checkbox";
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+                Field created_by
+                {
+                    DisplayName = "Created By";
+                    LinkName = "created_by";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field created_time
+                {
+                    DisplayName = "Created Time";
+                    LinkName = "created_time";
+                    Type = "DateTime";
+                    IsMandatory = true;
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

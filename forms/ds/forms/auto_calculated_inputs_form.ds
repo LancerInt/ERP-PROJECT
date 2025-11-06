@@ -1,0 +1,69 @@
+// Module: 4. Production Module
+form auto_calculated_inputs
+{
+    DisplayName = "Auto-calculated Inputs";
+    LinkName = "auto_calculated_inputs";
+    Module = "4. Production Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field required_qty
+                {
+                    DisplayName = "Required Qty";
+                    LinkName = "required_qty";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field available_qty
+                {
+                    DisplayName = "Available Qty";
+                    LinkName = "available_qty";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                    HelpText = "From stock";
+                }
+                Field shortfall_qty
+                {
+                    DisplayName = "Shortfall Qty";
+                    LinkName = "shortfall_qty";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                    HelpText = "Negative allowed";
+                }
+                Field purpose
+                {
+                    DisplayName = "Purpose";
+                    LinkName = "purpose";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "RM / PM / Wage";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

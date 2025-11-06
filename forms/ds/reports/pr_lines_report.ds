@@ -1,0 +1,179 @@
+report pr_lines_report
+{
+    DisplayName = "PR Lines Report";
+    LinkName = "pr_lines_report";
+    Type = "List";
+    SourceFormLinkName = "pr_lines";
+
+    ListView
+    {
+        Columns
+        {
+            Column line_no
+            {
+                FieldLinkName = "line_no";
+            }
+            Column product_service
+            {
+                FieldLinkName = "product_service";
+            }
+            Column description_override
+            {
+                FieldLinkName = "description_override";
+            }
+            Column quantity_requested
+            {
+                FieldLinkName = "quantity_requested";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column required_date
+            {
+                FieldLinkName = "required_date";
+            }
+            Column purpose
+            {
+                FieldLinkName = "purpose";
+            }
+            Column machine_reference
+            {
+                FieldLinkName = "machine_reference";
+            }
+            Column allow_rfq_skip
+            {
+                FieldLinkName = "allow_rfq_skip";
+            }
+            Column attachments
+            {
+                FieldLinkName = "attachments";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column approved_quantity
+            {
+                FieldLinkName = "approved_quantity";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column line_no
+            {
+                FieldLinkName = "line_no";
+            }
+            Column product_service
+            {
+                FieldLinkName = "product_service";
+            }
+            Column description_override
+            {
+                FieldLinkName = "description_override";
+            }
+            Column quantity_requested
+            {
+                FieldLinkName = "quantity_requested";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column required_date
+            {
+                FieldLinkName = "required_date";
+            }
+            Column purpose
+            {
+                FieldLinkName = "purpose";
+            }
+            Column machine_reference
+            {
+                FieldLinkName = "machine_reference";
+            }
+            Column allow_rfq_skip
+            {
+                FieldLinkName = "allow_rfq_skip";
+            }
+            Column attachments
+            {
+                FieldLinkName = "attachments";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column approved_quantity
+            {
+                FieldLinkName = "approved_quantity";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column line_no
+                    {
+                        FieldLinkName = "line_no";
+                    }
+                    Column product_service
+                    {
+                        FieldLinkName = "product_service";
+                    }
+                    Column description_override
+                    {
+                        FieldLinkName = "description_override";
+                    }
+                    Column quantity_requested
+                    {
+                        FieldLinkName = "quantity_requested";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                    Column required_date
+                    {
+                        FieldLinkName = "required_date";
+                    }
+                    Column purpose
+                    {
+                        FieldLinkName = "purpose";
+                    }
+                    Column machine_reference
+                    {
+                        FieldLinkName = "machine_reference";
+                    }
+                    Column allow_rfq_skip
+                    {
+                        FieldLinkName = "allow_rfq_skip";
+                    }
+                    Column attachments
+                    {
+                        FieldLinkName = "attachments";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                    Column approved_quantity
+                    {
+                        FieldLinkName = "approved_quantity";
+                    }
+                }
+            }
+        }
+    }
+}

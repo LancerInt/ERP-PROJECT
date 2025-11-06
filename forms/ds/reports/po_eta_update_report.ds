@@ -1,0 +1,119 @@
+report po_eta_update_report
+{
+    DisplayName = "PO ETA Update (Anticipated Arrival) Report";
+    LinkName = "po_eta_update_report";
+    Type = "List";
+    SourceFormLinkName = "po_eta_update";
+
+    ListView
+    {
+        Columns
+        {
+            Column update_id
+            {
+                FieldLinkName = "update_id";
+            }
+            Column po
+            {
+                FieldLinkName = "po";
+            }
+            Column update_date
+            {
+                FieldLinkName = "update_date";
+            }
+            Column updated_by
+            {
+                FieldLinkName = "updated_by";
+            }
+            Column expected_arrival_date
+            {
+                FieldLinkName = "expected_arrival_date";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column update_id
+            {
+                FieldLinkName = "update_id";
+            }
+            Column po
+            {
+                FieldLinkName = "po";
+            }
+            Column update_date
+            {
+                FieldLinkName = "update_date";
+            }
+            Column updated_by
+            {
+                FieldLinkName = "updated_by";
+            }
+            Column expected_arrival_date
+            {
+                FieldLinkName = "expected_arrival_date";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column update_id
+                    {
+                        FieldLinkName = "update_id";
+                    }
+                    Column po
+                    {
+                        FieldLinkName = "po";
+                    }
+                    Column update_date
+                    {
+                        FieldLinkName = "update_date";
+                    }
+                    Column updated_by
+                    {
+                        FieldLinkName = "updated_by";
+                    }
+                    Column expected_arrival_date
+                    {
+                        FieldLinkName = "expected_arrival_date";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                }
+            }
+        }
+    }
+}

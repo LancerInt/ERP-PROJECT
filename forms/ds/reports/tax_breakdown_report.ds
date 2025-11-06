@@ -1,0 +1,71 @@
+report tax_breakdown_report
+{
+    DisplayName = "Tax Breakdown Report";
+    LinkName = "tax_breakdown_report";
+    Type = "List";
+    SourceFormLinkName = "tax_breakdown";
+
+    ListView
+    {
+        Columns
+        {
+            Column tax_type
+            {
+                FieldLinkName = "tax_type";
+            }
+            Column rate
+            {
+                FieldLinkName = "rate";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column tax_type
+            {
+                FieldLinkName = "tax_type";
+            }
+            Column rate
+            {
+                FieldLinkName = "rate";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column tax_type
+                    {
+                        FieldLinkName = "tax_type";
+                    }
+                    Column rate
+                    {
+                        FieldLinkName = "rate";
+                    }
+                    Column amount
+                    {
+                        FieldLinkName = "amount";
+                    }
+                }
+            }
+        }
+    }
+}

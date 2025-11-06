@@ -1,0 +1,263 @@
+report stock_adjustment_report
+{
+    DisplayName = "Stock Adjustment Report";
+    LinkName = "stock_adjustment_report";
+    Type = "List";
+    SourceFormLinkName = "stock_adjustment";
+
+    ListView
+    {
+        Columns
+        {
+            Column adjustment_no
+            {
+                FieldLinkName = "adjustment_no";
+            }
+            Column adjustment_date
+            {
+                FieldLinkName = "adjustment_date";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column godown
+            {
+                FieldLinkName = "godown";
+            }
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch
+            {
+                FieldLinkName = "batch";
+            }
+            Column adjustment_type
+            {
+                FieldLinkName = "adjustment_type";
+            }
+            Column quantity
+            {
+                FieldLinkName = "quantity";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column reason_code
+            {
+                FieldLinkName = "reason_code";
+            }
+            Column other_reason
+            {
+                FieldLinkName = "other_reason";
+            }
+            Column evidence_attachments
+            {
+                FieldLinkName = "evidence_attachments";
+            }
+            Column value_impact
+            {
+                FieldLinkName = "value_impact";
+            }
+            Column finance_review_required
+            {
+                FieldLinkName = "finance_review_required";
+            }
+            Column approval_status
+            {
+                FieldLinkName = "approval_status";
+            }
+            Column approved_by
+            {
+                FieldLinkName = "approved_by";
+            }
+            Column approval_date
+            {
+                FieldLinkName = "approval_date";
+            }
+            Column notified_to
+            {
+                FieldLinkName = "notified_to";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column adjustment_no
+            {
+                FieldLinkName = "adjustment_no";
+            }
+            Column adjustment_date
+            {
+                FieldLinkName = "adjustment_date";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column godown
+            {
+                FieldLinkName = "godown";
+            }
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch
+            {
+                FieldLinkName = "batch";
+            }
+            Column adjustment_type
+            {
+                FieldLinkName = "adjustment_type";
+            }
+            Column quantity
+            {
+                FieldLinkName = "quantity";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column reason_code
+            {
+                FieldLinkName = "reason_code";
+            }
+            Column other_reason
+            {
+                FieldLinkName = "other_reason";
+            }
+            Column evidence_attachments
+            {
+                FieldLinkName = "evidence_attachments";
+            }
+            Column value_impact
+            {
+                FieldLinkName = "value_impact";
+            }
+            Column finance_review_required
+            {
+                FieldLinkName = "finance_review_required";
+            }
+            Column approval_status
+            {
+                FieldLinkName = "approval_status";
+            }
+            Column approved_by
+            {
+                FieldLinkName = "approved_by";
+            }
+            Column approval_date
+            {
+                FieldLinkName = "approval_date";
+            }
+            Column notified_to
+            {
+                FieldLinkName = "notified_to";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column adjustment_no
+                    {
+                        FieldLinkName = "adjustment_no";
+                    }
+                    Column adjustment_date
+                    {
+                        FieldLinkName = "adjustment_date";
+                    }
+                    Column warehouse
+                    {
+                        FieldLinkName = "warehouse";
+                    }
+                    Column godown
+                    {
+                        FieldLinkName = "godown";
+                    }
+                    Column product
+                    {
+                        FieldLinkName = "product";
+                    }
+                    Column batch
+                    {
+                        FieldLinkName = "batch";
+                    }
+                    Column adjustment_type
+                    {
+                        FieldLinkName = "adjustment_type";
+                    }
+                    Column quantity
+                    {
+                        FieldLinkName = "quantity";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                    Column reason_code
+                    {
+                        FieldLinkName = "reason_code";
+                    }
+                    Column other_reason
+                    {
+                        FieldLinkName = "other_reason";
+                    }
+                    Column evidence_attachments
+                    {
+                        FieldLinkName = "evidence_attachments";
+                    }
+                    Column value_impact
+                    {
+                        FieldLinkName = "value_impact";
+                    }
+                    Column finance_review_required
+                    {
+                        FieldLinkName = "finance_review_required";
+                    }
+                    Column approval_status
+                    {
+                        FieldLinkName = "approval_status";
+                    }
+                    Column approved_by
+                    {
+                        FieldLinkName = "approved_by";
+                    }
+                    Column approval_date
+                    {
+                        FieldLinkName = "approval_date";
+                    }
+                    Column notified_to
+                    {
+                        FieldLinkName = "notified_to";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

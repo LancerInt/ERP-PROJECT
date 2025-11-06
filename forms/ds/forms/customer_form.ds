@@ -1,0 +1,179 @@
+// Module: 1. Core & Shared Masters
+form customer
+{
+    DisplayName = "Customer";
+    LinkName = "customer";
+    Module = "1. Core & Shared Masters";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field customer_code
+                {
+                    DisplayName = "Customer Code";
+                    LinkName = "customer_code";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field customer_name
+                {
+                    DisplayName = "Customer Name";
+                    LinkName = "customer_name";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field company
+                {
+                    DisplayName = "Company";
+                    LinkName = "company";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "company";
+                }
+                Field gstin
+                {
+                    DisplayName = "GSTIN";
+                    LinkName = "gstin";
+                    Type = "SingleLine";
+                    ConditionalMandatory = true;
+                    HelpText = "Mandatory if taxable";
+                }
+                Field pan
+                {
+                    DisplayName = "PAN";
+                    LinkName = "pan";
+                    Type = "SingleLine";
+                }
+                Field billing_address
+                {
+                    DisplayName = "Billing Address";
+                    LinkName = "billing_address";
+                    Type = "Address";
+                    IsMandatory = true;
+                    AddressFields
+                    {
+                        AddressLine1 = true;
+                        AddressLine2 = true;
+                        City = true;
+                        State = true;
+                        Country = true;
+                        PostalCode = true;
+                    }
+                }
+                Field shipping_addresses
+                {
+                    DisplayName = "Shipping Addresses";
+                    LinkName = "shipping_addresses";
+                    Type = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "shipping_address";
+                    HelpText = "Supports multiple";
+                }
+                Field credit_terms
+                {
+                    DisplayName = "Credit Terms";
+                    LinkName = "credit_terms";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Net 15 / Net 30 / Net 45 / Custom";
+                }
+                Field custom_credit_days
+                {
+                    DisplayName = "Custom Credit Days";
+                    LinkName = "custom_credit_days";
+                    Type = "Number";
+                    ConditionalMandatory = true;
+                    HelpText = "Mandatory when Credit Terms = Custom";
+                }
+                Field freight_terms
+                {
+                    DisplayName = "Freight Terms";
+                    LinkName = "freight_terms";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Paid / To_Pay / Mixed";
+                }
+                Field freight_split_notes
+                {
+                    DisplayName = "Freight Split Notes";
+                    LinkName = "freight_split_notes";
+                    Type = "MultiLine";
+                }
+                Field allowed_price_lists
+                {
+                    DisplayName = "Allowed Price Lists";
+                    LinkName = "allowed_price_lists";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                    AllowMultiple = true;
+                }
+                Field default_warehouse
+                {
+                    DisplayName = "Default Warehouse";
+                    LinkName = "default_warehouse";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field overdue_notification_recipients
+                {
+                    DisplayName = "Overdue Notification Recipients";
+                    LinkName = "overdue_notification_recipients";
+                    Type = "SingleLine";
+                    AllowMultiple = true;
+                }
+                Field contact_person
+                {
+                    DisplayName = "Contact Person";
+                    LinkName = "contact_person";
+                    Type = "SingleLine";
+                }
+                Field contact_email
+                {
+                    DisplayName = "Contact Email";
+                    LinkName = "contact_email";
+                    Type = "Email";
+                }
+                Field contact_phone
+                {
+                    DisplayName = "Contact Phone";
+                    LinkName = "contact_phone";
+                    Type = "Phone";
+                }
+                Field documents
+                {
+                    DisplayName = "Documents";
+                    LinkName = "documents";
+                    Type = "UploadFile";
+                    MaxFileCount = 10;
+                    AllowMultiple = true;
+                    FileSource = "LocalDrive";
+                    HelpText = "Contracts";
+                }
+                Field active_flag
+                {
+                    DisplayName = "Active Flag";
+                    LinkName = "active_flag";
+                    Type = "Checkbox";
+                    IsMandatory = true;
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

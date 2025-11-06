@@ -1,0 +1,83 @@
+report reminder_sent_flags_report
+{
+    DisplayName = "Reminder Sent Flags Report";
+    LinkName = "reminder_sent_flags_report";
+    Type = "List";
+    SourceFormLinkName = "reminder_sent_flags";
+
+    ListView
+    {
+        Columns
+        {
+            Column reminder_date
+            {
+                FieldLinkName = "reminder_date";
+            }
+            Column reminder_method
+            {
+                FieldLinkName = "reminder_method";
+            }
+            Column reminder_sent_by
+            {
+                FieldLinkName = "reminder_sent_by";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column reminder_date
+            {
+                FieldLinkName = "reminder_date";
+            }
+            Column reminder_method
+            {
+                FieldLinkName = "reminder_method";
+            }
+            Column reminder_sent_by
+            {
+                FieldLinkName = "reminder_sent_by";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column reminder_date
+                    {
+                        FieldLinkName = "reminder_date";
+                    }
+                    Column reminder_method
+                    {
+                        FieldLinkName = "reminder_method";
+                    }
+                    Column reminder_sent_by
+                    {
+                        FieldLinkName = "reminder_sent_by";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

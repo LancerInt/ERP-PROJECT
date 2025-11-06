@@ -1,0 +1,263 @@
+report purchase_order_report
+{
+    DisplayName = "Purchase Order (PO) Report";
+    LinkName = "purchase_order_report";
+    Type = "List";
+    SourceFormLinkName = "purchase_order";
+
+    ListView
+    {
+        Columns
+        {
+            Column po_no
+            {
+                FieldLinkName = "po_no";
+            }
+            Column revision_no
+            {
+                FieldLinkName = "revision_no";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column company
+            {
+                FieldLinkName = "company";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column linked_prs
+            {
+                FieldLinkName = "linked_prs";
+            }
+            Column linked_rfq
+            {
+                FieldLinkName = "linked_rfq";
+            }
+            Column po_date
+            {
+                FieldLinkName = "po_date";
+            }
+            Column expected_delivery_start
+            {
+                FieldLinkName = "expected_delivery_start";
+            }
+            Column expected_delivery_end
+            {
+                FieldLinkName = "expected_delivery_end";
+            }
+            Column freight_terms
+            {
+                FieldLinkName = "freight_terms";
+            }
+            Column payment_terms
+            {
+                FieldLinkName = "payment_terms";
+            }
+            Column currency
+            {
+                FieldLinkName = "currency";
+            }
+            Column po_lines
+            {
+                FieldLinkName = "po_lines";
+            }
+            Column attachments
+            {
+                FieldLinkName = "attachments";
+            }
+            Column terms_and_conditions
+            {
+                FieldLinkName = "terms_and_conditions";
+            }
+            Column approval_trail
+            {
+                FieldLinkName = "approval_trail";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column partial_receipt_flag
+            {
+                FieldLinkName = "partial_receipt_flag";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column po_no
+            {
+                FieldLinkName = "po_no";
+            }
+            Column revision_no
+            {
+                FieldLinkName = "revision_no";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column company
+            {
+                FieldLinkName = "company";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column linked_prs
+            {
+                FieldLinkName = "linked_prs";
+            }
+            Column linked_rfq
+            {
+                FieldLinkName = "linked_rfq";
+            }
+            Column po_date
+            {
+                FieldLinkName = "po_date";
+            }
+            Column expected_delivery_start
+            {
+                FieldLinkName = "expected_delivery_start";
+            }
+            Column expected_delivery_end
+            {
+                FieldLinkName = "expected_delivery_end";
+            }
+            Column freight_terms
+            {
+                FieldLinkName = "freight_terms";
+            }
+            Column payment_terms
+            {
+                FieldLinkName = "payment_terms";
+            }
+            Column currency
+            {
+                FieldLinkName = "currency";
+            }
+            Column po_lines
+            {
+                FieldLinkName = "po_lines";
+            }
+            Column attachments
+            {
+                FieldLinkName = "attachments";
+            }
+            Column terms_and_conditions
+            {
+                FieldLinkName = "terms_and_conditions";
+            }
+            Column approval_trail
+            {
+                FieldLinkName = "approval_trail";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column partial_receipt_flag
+            {
+                FieldLinkName = "partial_receipt_flag";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column po_no
+                    {
+                        FieldLinkName = "po_no";
+                    }
+                    Column revision_no
+                    {
+                        FieldLinkName = "revision_no";
+                    }
+                    Column vendor
+                    {
+                        FieldLinkName = "vendor";
+                    }
+                    Column company
+                    {
+                        FieldLinkName = "company";
+                    }
+                    Column warehouse
+                    {
+                        FieldLinkName = "warehouse";
+                    }
+                    Column linked_prs
+                    {
+                        FieldLinkName = "linked_prs";
+                    }
+                    Column linked_rfq
+                    {
+                        FieldLinkName = "linked_rfq";
+                    }
+                    Column po_date
+                    {
+                        FieldLinkName = "po_date";
+                    }
+                    Column expected_delivery_start
+                    {
+                        FieldLinkName = "expected_delivery_start";
+                    }
+                    Column expected_delivery_end
+                    {
+                        FieldLinkName = "expected_delivery_end";
+                    }
+                    Column freight_terms
+                    {
+                        FieldLinkName = "freight_terms";
+                    }
+                    Column payment_terms
+                    {
+                        FieldLinkName = "payment_terms";
+                    }
+                    Column currency
+                    {
+                        FieldLinkName = "currency";
+                    }
+                    Column po_lines
+                    {
+                        FieldLinkName = "po_lines";
+                    }
+                    Column attachments
+                    {
+                        FieldLinkName = "attachments";
+                    }
+                    Column terms_and_conditions
+                    {
+                        FieldLinkName = "terms_and_conditions";
+                    }
+                    Column approval_trail
+                    {
+                        FieldLinkName = "approval_trail";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                    Column partial_receipt_flag
+                    {
+                        FieldLinkName = "partial_receipt_flag";
+                    }
+                }
+            }
+        }
+    }
+}

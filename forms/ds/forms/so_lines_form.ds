@@ -1,0 +1,106 @@
+// Module: 3. Sales Module
+form so_lines
+{
+    DisplayName = "SO Lines";
+    LinkName = "so_lines";
+    Module = "3. Sales Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field line_no
+                {
+                    DisplayName = "Line No.";
+                    LinkName = "line_no";
+                    Type = "Number";
+                    IsMandatory = true;
+                }
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                    HelpText = "Must exist in price list";
+                }
+                Field batch_preference
+                {
+                    DisplayName = "Batch Preference";
+                    LinkName = "batch_preference";
+                    Type = "SingleLine";
+                }
+                Field quantity_ordered
+                {
+                    DisplayName = "Quantity Ordered";
+                    LinkName = "quantity_ordered";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field unit_price
+                {
+                    DisplayName = "Unit Price";
+                    LinkName = "unit_price";
+                    Type = "INR";
+                    IsMandatory = true;
+                    HelpText = "From price list";
+                }
+                Field discount
+                {
+                    DisplayName = "Discount %";
+                    LinkName = "discount";
+                    Type = "Decimal";
+                }
+                Field gst
+                {
+                    DisplayName = "GST %";
+                    LinkName = "gst";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field delivery_schedule_date
+                {
+                    DisplayName = "Delivery Schedule Date";
+                    LinkName = "delivery_schedule_date";
+                    Type = "Date";
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+                Field reserved_qty
+                {
+                    DisplayName = "Reserved Qty";
+                    LinkName = "reserved_qty";
+                    Type = "Decimal";
+                    HelpText = "Updated at dispatch";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

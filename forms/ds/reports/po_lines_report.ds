@@ -1,0 +1,215 @@
+report po_lines_report
+{
+    DisplayName = "PO Lines Report";
+    LinkName = "po_lines_report";
+    Type = "List";
+    SourceFormLinkName = "po_lines";
+
+    ListView
+    {
+        Columns
+        {
+            Column line_no
+            {
+                FieldLinkName = "line_no";
+            }
+            Column product_service
+            {
+                FieldLinkName = "product_service";
+            }
+            Column description
+            {
+                FieldLinkName = "description";
+            }
+            Column quantity_ordered
+            {
+                FieldLinkName = "quantity_ordered";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column unit_price
+            {
+                FieldLinkName = "unit_price";
+            }
+            Column discount
+            {
+                FieldLinkName = "discount";
+            }
+            Column gst
+            {
+                FieldLinkName = "gst";
+            }
+            Column extra_commission
+            {
+                FieldLinkName = "extra_commission";
+            }
+            Column agent_commission
+            {
+                FieldLinkName = "agent_commission";
+            }
+            Column freight_estimate
+            {
+                FieldLinkName = "freight_estimate";
+            }
+            Column delivery_schedule
+            {
+                FieldLinkName = "delivery_schedule";
+            }
+            Column linked_pr_line
+            {
+                FieldLinkName = "linked_pr_line";
+            }
+            Column linked_rfq_line
+            {
+                FieldLinkName = "linked_rfq_line";
+            }
+            Column batch_requirement_notes
+            {
+                FieldLinkName = "batch_requirement_notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column line_no
+            {
+                FieldLinkName = "line_no";
+            }
+            Column product_service
+            {
+                FieldLinkName = "product_service";
+            }
+            Column description
+            {
+                FieldLinkName = "description";
+            }
+            Column quantity_ordered
+            {
+                FieldLinkName = "quantity_ordered";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column unit_price
+            {
+                FieldLinkName = "unit_price";
+            }
+            Column discount
+            {
+                FieldLinkName = "discount";
+            }
+            Column gst
+            {
+                FieldLinkName = "gst";
+            }
+            Column extra_commission
+            {
+                FieldLinkName = "extra_commission";
+            }
+            Column agent_commission
+            {
+                FieldLinkName = "agent_commission";
+            }
+            Column freight_estimate
+            {
+                FieldLinkName = "freight_estimate";
+            }
+            Column delivery_schedule
+            {
+                FieldLinkName = "delivery_schedule";
+            }
+            Column linked_pr_line
+            {
+                FieldLinkName = "linked_pr_line";
+            }
+            Column linked_rfq_line
+            {
+                FieldLinkName = "linked_rfq_line";
+            }
+            Column batch_requirement_notes
+            {
+                FieldLinkName = "batch_requirement_notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column line_no
+                    {
+                        FieldLinkName = "line_no";
+                    }
+                    Column product_service
+                    {
+                        FieldLinkName = "product_service";
+                    }
+                    Column description
+                    {
+                        FieldLinkName = "description";
+                    }
+                    Column quantity_ordered
+                    {
+                        FieldLinkName = "quantity_ordered";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                    Column unit_price
+                    {
+                        FieldLinkName = "unit_price";
+                    }
+                    Column discount
+                    {
+                        FieldLinkName = "discount";
+                    }
+                    Column gst
+                    {
+                        FieldLinkName = "gst";
+                    }
+                    Column extra_commission
+                    {
+                        FieldLinkName = "extra_commission";
+                    }
+                    Column agent_commission
+                    {
+                        FieldLinkName = "agent_commission";
+                    }
+                    Column freight_estimate
+                    {
+                        FieldLinkName = "freight_estimate";
+                    }
+                    Column delivery_schedule
+                    {
+                        FieldLinkName = "delivery_schedule";
+                    }
+                    Column linked_pr_line
+                    {
+                        FieldLinkName = "linked_pr_line";
+                    }
+                    Column linked_rfq_line
+                    {
+                        FieldLinkName = "linked_rfq_line";
+                    }
+                    Column batch_requirement_notes
+                    {
+                        FieldLinkName = "batch_requirement_notes";
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,58 @@
+// Module: 3. Sales Module
+form delivery_locations
+{
+    DisplayName = "Delivery Locations";
+    LinkName = "delivery_locations";
+    Module = "3. Sales Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field sequence
+                {
+                    DisplayName = "Sequence";
+                    LinkName = "sequence";
+                    Type = "Number";
+                    IsMandatory = true;
+                }
+                Field shipping_address
+                {
+                    DisplayName = "Shipping Address";
+                    LinkName = "shipping_address";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "shipping_address";
+                }
+                Field quantity_for_location
+                {
+                    DisplayName = "Quantity for Location";
+                    LinkName = "quantity_for_location";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field estimated_arrival
+                {
+                    DisplayName = "Estimated Arrival";
+                    LinkName = "estimated_arrival";
+                    Type = "Date";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

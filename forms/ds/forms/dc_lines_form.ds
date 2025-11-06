@@ -1,0 +1,75 @@
+// Module: 3. Sales Module
+form dc_lines
+{
+    DisplayName = "DC Lines";
+    LinkName = "dc_lines";
+    Module = "3. Sales Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field batch
+                {
+                    DisplayName = "Batch";
+                    LinkName = "batch";
+                    Type = "SingleLine";
+                    ConditionalMandatory = true;
+                    HelpText = "Required if batch tracking";
+                }
+                Field quantity_dispatched
+                {
+                    DisplayName = "Quantity Dispatched";
+                    LinkName = "quantity_dispatched";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field linked_so_line
+                {
+                    DisplayName = "Linked SO Line";
+                    LinkName = "linked_so_line";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "so_lines";
+                }
+                Field weight
+                {
+                    DisplayName = "Weight";
+                    LinkName = "weight";
+                    Type = "Decimal";
+                    HelpText = "Optional for weighment";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

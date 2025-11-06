@@ -1,0 +1,155 @@
+report overtime_request_report
+{
+    DisplayName = "Overtime Request Report";
+    LinkName = "overtime_request_report";
+    Type = "List";
+    SourceFormLinkName = "overtime_request";
+
+    ListView
+    {
+        Columns
+        {
+            Column request_no
+            {
+                FieldLinkName = "request_no";
+            }
+            Column staff
+            {
+                FieldLinkName = "staff";
+            }
+            Column date
+            {
+                FieldLinkName = "date";
+            }
+            Column shift
+            {
+                FieldLinkName = "shift";
+            }
+            Column hours_worked
+            {
+                FieldLinkName = "hours_worked";
+            }
+            Column task_description
+            {
+                FieldLinkName = "task_description";
+            }
+            Column supporting_evidence
+            {
+                FieldLinkName = "supporting_evidence";
+            }
+            Column approval_status
+            {
+                FieldLinkName = "approval_status";
+            }
+            Column approved_by
+            {
+                FieldLinkName = "approved_by";
+            }
+            Column wage_integration_flag
+            {
+                FieldLinkName = "wage_integration_flag";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column request_no
+            {
+                FieldLinkName = "request_no";
+            }
+            Column staff
+            {
+                FieldLinkName = "staff";
+            }
+            Column date
+            {
+                FieldLinkName = "date";
+            }
+            Column shift
+            {
+                FieldLinkName = "shift";
+            }
+            Column hours_worked
+            {
+                FieldLinkName = "hours_worked";
+            }
+            Column task_description
+            {
+                FieldLinkName = "task_description";
+            }
+            Column supporting_evidence
+            {
+                FieldLinkName = "supporting_evidence";
+            }
+            Column approval_status
+            {
+                FieldLinkName = "approval_status";
+            }
+            Column approved_by
+            {
+                FieldLinkName = "approved_by";
+            }
+            Column wage_integration_flag
+            {
+                FieldLinkName = "wage_integration_flag";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column request_no
+                    {
+                        FieldLinkName = "request_no";
+                    }
+                    Column staff
+                    {
+                        FieldLinkName = "staff";
+                    }
+                    Column date
+                    {
+                        FieldLinkName = "date";
+                    }
+                    Column shift
+                    {
+                        FieldLinkName = "shift";
+                    }
+                    Column hours_worked
+                    {
+                        FieldLinkName = "hours_worked";
+                    }
+                    Column task_description
+                    {
+                        FieldLinkName = "task_description";
+                    }
+                    Column supporting_evidence
+                    {
+                        FieldLinkName = "supporting_evidence";
+                    }
+                    Column approval_status
+                    {
+                        FieldLinkName = "approval_status";
+                    }
+                    Column approved_by
+                    {
+                        FieldLinkName = "approved_by";
+                    }
+                    Column wage_integration_flag
+                    {
+                        FieldLinkName = "wage_integration_flag";
+                    }
+                }
+            }
+        }
+    }
+}

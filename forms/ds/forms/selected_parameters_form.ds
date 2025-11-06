@@ -1,0 +1,56 @@
+// Module: 5. Quality Control Module
+form selected_parameters
+{
+    DisplayName = "Selected Parameters";
+    LinkName = "selected_parameters";
+    Module = "5. Quality Control Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field parameter
+                {
+                    DisplayName = "Parameter";
+                    LinkName = "parameter";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "qc_parameter_library";
+                }
+                Field override_range_min
+                {
+                    DisplayName = "Override Range Min";
+                    LinkName = "override_range_min";
+                    Type = "Decimal";
+                }
+                Field override_range_max
+                {
+                    DisplayName = "Override Range Max";
+                    LinkName = "override_range_max";
+                    Type = "Decimal";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

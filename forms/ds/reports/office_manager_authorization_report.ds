@@ -1,0 +1,71 @@
+report office_manager_authorization_report
+{
+    DisplayName = "Office Manager Authorization Report";
+    LinkName = "office_manager_authorization_report";
+    Type = "List";
+    SourceFormLinkName = "office_manager_authorization";
+
+    ListView
+    {
+        Columns
+        {
+            Column authorized_by
+            {
+                FieldLinkName = "authorized_by";
+            }
+            Column authorization_date
+            {
+                FieldLinkName = "authorization_date";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column authorized_by
+            {
+                FieldLinkName = "authorized_by";
+            }
+            Column authorization_date
+            {
+                FieldLinkName = "authorization_date";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column authorized_by
+                    {
+                        FieldLinkName = "authorized_by";
+                    }
+                    Column authorization_date
+                    {
+                        FieldLinkName = "authorization_date";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,143 @@
+report tax_master_report
+{
+    DisplayName = "Tax Master Report";
+    LinkName = "tax_master_report";
+    Type = "List";
+    SourceFormLinkName = "tax_master";
+
+    ListView
+    {
+        Columns
+        {
+            Column tax_type
+            {
+                FieldLinkName = "tax_type";
+            }
+            Column section_reference
+            {
+                FieldLinkName = "section_reference";
+            }
+            Column rate
+            {
+                FieldLinkName = "rate";
+            }
+            Column effective_from
+            {
+                FieldLinkName = "effective_from";
+            }
+            Column effective_to
+            {
+                FieldLinkName = "effective_to";
+            }
+            Column applicable_on
+            {
+                FieldLinkName = "applicable_on";
+            }
+            Column threshold_amount
+            {
+                FieldLinkName = "threshold_amount";
+            }
+            Column company_scope
+            {
+                FieldLinkName = "company_scope";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column tax_type
+            {
+                FieldLinkName = "tax_type";
+            }
+            Column section_reference
+            {
+                FieldLinkName = "section_reference";
+            }
+            Column rate
+            {
+                FieldLinkName = "rate";
+            }
+            Column effective_from
+            {
+                FieldLinkName = "effective_from";
+            }
+            Column effective_to
+            {
+                FieldLinkName = "effective_to";
+            }
+            Column applicable_on
+            {
+                FieldLinkName = "applicable_on";
+            }
+            Column threshold_amount
+            {
+                FieldLinkName = "threshold_amount";
+            }
+            Column company_scope
+            {
+                FieldLinkName = "company_scope";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column tax_type
+                    {
+                        FieldLinkName = "tax_type";
+                    }
+                    Column section_reference
+                    {
+                        FieldLinkName = "section_reference";
+                    }
+                    Column rate
+                    {
+                        FieldLinkName = "rate";
+                    }
+                    Column effective_from
+                    {
+                        FieldLinkName = "effective_from";
+                    }
+                    Column effective_to
+                    {
+                        FieldLinkName = "effective_to";
+                    }
+                    Column applicable_on
+                    {
+                        FieldLinkName = "applicable_on";
+                    }
+                    Column threshold_amount
+                    {
+                        FieldLinkName = "threshold_amount";
+                    }
+                    Column company_scope
+                    {
+                        FieldLinkName = "company_scope";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

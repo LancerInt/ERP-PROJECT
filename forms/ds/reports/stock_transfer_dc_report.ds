@@ -1,0 +1,179 @@
+report stock_transfer_dc_report
+{
+    DisplayName = "Stock Transfer DC Report";
+    LinkName = "stock_transfer_dc_report";
+    Type = "List";
+    SourceFormLinkName = "stock_transfer_dc";
+
+    ListView
+    {
+        Columns
+        {
+            Column transfer_no
+            {
+                FieldLinkName = "transfer_no";
+            }
+            Column created_date
+            {
+                FieldLinkName = "created_date";
+            }
+            Column from_warehouse
+            {
+                FieldLinkName = "from_warehouse";
+            }
+            Column to_warehouse
+            {
+                FieldLinkName = "to_warehouse";
+            }
+            Column dispatch_date
+            {
+                FieldLinkName = "dispatch_date";
+            }
+            Column transporter
+            {
+                FieldLinkName = "transporter";
+            }
+            Column freight_terms
+            {
+                FieldLinkName = "freight_terms";
+            }
+            Column loading_wages
+            {
+                FieldLinkName = "loading_wages";
+            }
+            Column freight_amount
+            {
+                FieldLinkName = "freight_amount";
+            }
+            Column transfer_lines
+            {
+                FieldLinkName = "transfer_lines";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column documents
+            {
+                FieldLinkName = "documents";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column transfer_no
+            {
+                FieldLinkName = "transfer_no";
+            }
+            Column created_date
+            {
+                FieldLinkName = "created_date";
+            }
+            Column from_warehouse
+            {
+                FieldLinkName = "from_warehouse";
+            }
+            Column to_warehouse
+            {
+                FieldLinkName = "to_warehouse";
+            }
+            Column dispatch_date
+            {
+                FieldLinkName = "dispatch_date";
+            }
+            Column transporter
+            {
+                FieldLinkName = "transporter";
+            }
+            Column freight_terms
+            {
+                FieldLinkName = "freight_terms";
+            }
+            Column loading_wages
+            {
+                FieldLinkName = "loading_wages";
+            }
+            Column freight_amount
+            {
+                FieldLinkName = "freight_amount";
+            }
+            Column transfer_lines
+            {
+                FieldLinkName = "transfer_lines";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column documents
+            {
+                FieldLinkName = "documents";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column transfer_no
+                    {
+                        FieldLinkName = "transfer_no";
+                    }
+                    Column created_date
+                    {
+                        FieldLinkName = "created_date";
+                    }
+                    Column from_warehouse
+                    {
+                        FieldLinkName = "from_warehouse";
+                    }
+                    Column to_warehouse
+                    {
+                        FieldLinkName = "to_warehouse";
+                    }
+                    Column dispatch_date
+                    {
+                        FieldLinkName = "dispatch_date";
+                    }
+                    Column transporter
+                    {
+                        FieldLinkName = "transporter";
+                    }
+                    Column freight_terms
+                    {
+                        FieldLinkName = "freight_terms";
+                    }
+                    Column loading_wages
+                    {
+                        FieldLinkName = "loading_wages";
+                    }
+                    Column freight_amount
+                    {
+                        FieldLinkName = "freight_amount";
+                    }
+                    Column transfer_lines
+                    {
+                        FieldLinkName = "transfer_lines";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                    Column documents
+                    {
+                        FieldLinkName = "documents";
+                    }
+                }
+            }
+        }
+    }
+}

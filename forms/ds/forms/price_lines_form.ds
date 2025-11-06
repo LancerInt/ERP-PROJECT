@@ -1,0 +1,84 @@
+// Module: 1. Core & Shared Masters
+form price_lines
+{
+    DisplayName = "Price Lines";
+    LinkName = "price_lines";
+    Module = "1. Core & Shared Masters";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field rate
+                {
+                    DisplayName = "Rate";
+                    LinkName = "rate";
+                    Type = "INR";
+                    IsMandatory = true;
+                }
+                Field discount
+                {
+                    DisplayName = "Discount %";
+                    LinkName = "discount";
+                    Type = "Decimal";
+                }
+                Field gst
+                {
+                    DisplayName = "GST %";
+                    LinkName = "gst";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field freight_component
+                {
+                    DisplayName = "Freight Component";
+                    LinkName = "freight_component";
+                    Type = "INR";
+                    HelpText = "Optional";
+                }
+                Field valid_from
+                {
+                    DisplayName = "Valid From";
+                    LinkName = "valid_from";
+                    Type = "Date";
+                }
+                Field valid_to
+                {
+                    DisplayName = "Valid To";
+                    LinkName = "valid_to";
+                    Type = "Date";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

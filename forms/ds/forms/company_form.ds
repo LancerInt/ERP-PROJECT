@@ -1,0 +1,160 @@
+// Module: 1. Core & Shared Masters
+form company
+{
+    DisplayName = "Company";
+    LinkName = "company";
+    Module = "1. Core & Shared Masters";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field company_code
+                {
+                    DisplayName = "Company Code";
+                    LinkName = "company_code";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                    IsUnique = true;
+                    HelpText = "Short code used across modules and exports";
+                }
+                Field legal_name
+                {
+                    DisplayName = "Legal Name";
+                    LinkName = "legal_name";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                    HelpText = "Registered legal entity name";
+                }
+                Field trade_name
+                {
+                    DisplayName = "Trade Name";
+                    LinkName = "trade_name";
+                    Type = "SingleLine";
+                    HelpText = "Optional doing-business-as name";
+                }
+                Field gstin
+                {
+                    DisplayName = "GSTIN";
+                    LinkName = "gstin";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                    HelpText = "GST registration; validate 15-character format";
+                }
+                Field pan
+                {
+                    DisplayName = "PAN";
+                    LinkName = "pan";
+                    Type = "SingleLine";
+                    HelpText = "For TDS/TCS calculations";
+                }
+                Field cin
+                {
+                    DisplayName = "CIN";
+                    LinkName = "cin";
+                    Type = "SingleLine";
+                    HelpText = "Corporate Identification Number";
+                }
+                Field registered_address
+                {
+                    DisplayName = "Registered Address";
+                    LinkName = "registered_address";
+                    Type = "Address";
+                    IsMandatory = true;
+                    AddressFields
+                    {
+                        AddressLine1 = true;
+                        AddressLine2 = true;
+                        City = true;
+                        State = true;
+                        Country = true;
+                        PostalCode = true;
+                    }
+                    HelpText = "Multi-line address";
+                }
+                Field billing_address
+                {
+                    DisplayName = "Billing Address";
+                    LinkName = "billing_address";
+                    Type = "Address";
+                    IsMandatory = true;
+                    AddressFields
+                    {
+                        AddressLine1 = true;
+                        AddressLine2 = true;
+                        City = true;
+                        State = true;
+                        Country = true;
+                        PostalCode = true;
+                    }
+                    HelpText = "Defaults on invoices";
+                }
+                Field contact_email
+                {
+                    DisplayName = "Contact Email";
+                    LinkName = "contact_email";
+                    Type = "Email";
+                    HelpText = "Finance escalation";
+                }
+                Field contact_phone
+                {
+                    DisplayName = "Contact Phone";
+                    LinkName = "contact_phone";
+                    Type = "Phone";
+                }
+                Field default_currency
+                {
+                    DisplayName = "Default Currency";
+                    LinkName = "default_currency";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Values maintained in system parameters";
+                }
+                Field books_export_flag
+                {
+                    DisplayName = "Books Export Flag";
+                    LinkName = "books_export_flag";
+                    Type = "Checkbox";
+                    HelpText = "Toggle for Tally integration";
+                }
+                Field active_from
+                {
+                    DisplayName = "Active From";
+                    LinkName = "active_from";
+                    Type = "Date";
+                    IsMandatory = true;
+                    HelpText = "Effective start date";
+                }
+                Field active_to
+                {
+                    DisplayName = "Active To";
+                    LinkName = "active_to";
+                    Type = "Date";
+                    HelpText = "Optional sunset";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    Type = "MultiLine";
+                    HelpText = "Additional remarks";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

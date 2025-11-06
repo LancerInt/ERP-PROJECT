@@ -1,0 +1,125 @@
+// Module: 3. Sales Module
+form customer_po_upload
+{
+    DisplayName = "Customer PO Upload";
+    LinkName = "customer_po_upload";
+    Module = "3. Sales Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field upload_id
+                {
+                    DisplayName = "Upload ID";
+                    LinkName = "upload_id";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field customer
+                {
+                    DisplayName = "Customer";
+                    LinkName = "customer";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "customer";
+                }
+                Field upload_date
+                {
+                    DisplayName = "Upload Date";
+                    LinkName = "upload_date";
+                    Type = "DateTime";
+                    IsMandatory = true;
+                }
+                Field po_file
+                {
+                    DisplayName = "PO File";
+                    LinkName = "po_file";
+                    Type = "UploadFile";
+                    IsMandatory = true;
+                    MaxFileCount = 10;
+                    AllowMultiple = true;
+                    FileSource = "LocalDrive";
+                    HelpText = "PDF";
+                }
+                Field ai_parser_confidence
+                {
+                    DisplayName = "AI Parser Confidence";
+                    LinkName = "ai_parser_confidence";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field parsed_po_number
+                {
+                    DisplayName = "Parsed PO Number";
+                    LinkName = "parsed_po_number";
+                    Type = "SingleLine";
+                }
+                Field parsed_po_date
+                {
+                    DisplayName = "Parsed PO Date";
+                    LinkName = "parsed_po_date";
+                    Type = "Date";
+                }
+                Field delivery_location
+                {
+                    DisplayName = "Delivery Location";
+                    LinkName = "delivery_location";
+                    Type = "Dropdown";
+                    HelpText = "Suggest price list";
+                }
+                Field parsed_lines
+                {
+                    DisplayName = "Parsed Lines";
+                    LinkName = "parsed_lines";
+                    Type = "SubForm";
+                    SubFormLinkName = "parsed_lines";
+                    HelpText = "Output of parser";
+                }
+                Field manual_review_required
+                {
+                    DisplayName = "Manual Review Required";
+                    LinkName = "manual_review_required";
+                    Type = "Checkbox";
+                    HelpText = "Auto checked if confidence < threshold";
+                }
+                Field review_comments
+                {
+                    DisplayName = "Review Comments";
+                    LinkName = "review_comments";
+                    Type = "MultiLine";
+                }
+                Field status
+                {
+                    DisplayName = "Status";
+                    LinkName = "status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Uploaded / Parsed / Converted / Archived";
+                }
+                Field linked_sales_order
+                {
+                    DisplayName = "Linked Sales Order";
+                    LinkName = "linked_sales_order";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "sales_order";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

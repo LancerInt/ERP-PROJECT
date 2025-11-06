@@ -1,0 +1,51 @@
+// Module: 1. Core & Shared Masters
+form approval_log
+{
+    DisplayName = "Approval Log";
+    LinkName = "approval_log";
+    Module = "1. Core & Shared Masters";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field approved_by
+                {
+                    DisplayName = "Approved By";
+                    LinkName = "approved_by";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field approval_date
+                {
+                    DisplayName = "Approval Date";
+                    LinkName = "approval_date";
+                    Type = "DateTime";
+                    IsMandatory = true;
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

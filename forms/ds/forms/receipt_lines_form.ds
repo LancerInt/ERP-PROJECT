@@ -1,0 +1,123 @@
+// Module: 2. Purchase Module
+form receipt_lines
+{
+    DisplayName = "Receipt Lines";
+    LinkName = "receipt_lines";
+    Module = "2. Purchase Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field line_no
+                {
+                    DisplayName = "Line No.";
+                    LinkName = "line_no";
+                    Type = "Number";
+                    IsMandatory = true;
+                }
+                Field po_line
+                {
+                    DisplayName = "PO Line";
+                    LinkName = "po_line";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "po_lines";
+                }
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field batch_no
+                {
+                    DisplayName = "Batch No.";
+                    LinkName = "batch_no";
+                    Type = "SingleLine";
+                    ConditionalMandatory = true;
+                    HelpText = "Mandatory when batch tracking enabled";
+                }
+                Field expiry_date
+                {
+                    DisplayName = "Expiry Date";
+                    LinkName = "expiry_date";
+                    Type = "Date";
+                }
+                Field quantity_received
+                {
+                    DisplayName = "Quantity Received";
+                    LinkName = "quantity_received";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field extra_commission
+                {
+                    DisplayName = "Extra Commission";
+                    LinkName = "extra_commission";
+                    Type = "INR";
+                    HelpText = "Capture actual commission incurred";
+                }
+                Field agent_commission
+                {
+                    DisplayName = "Agent Commission";
+                    LinkName = "agent_commission";
+                    Type = "INR";
+                    HelpText = "Capture agent payouts associated with the receipt";
+                }
+                Field quantity_accepted
+                {
+                    DisplayName = "Quantity Accepted";
+                    LinkName = "quantity_accepted";
+                    Type = "Decimal";
+                    HelpText = "Post QC";
+                }
+                Field quantity_rejected
+                {
+                    DisplayName = "Quantity Rejected";
+                    LinkName = "quantity_rejected";
+                    Type = "Decimal";
+                }
+                Field godown_location
+                {
+                    DisplayName = "Godown Location";
+                    LinkName = "godown_location";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "godown";
+                    HelpText = "Filtered by parent warehouse";
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

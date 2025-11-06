@@ -1,0 +1,119 @@
+report comparison_table_report
+{
+    DisplayName = "Comparison Table Report";
+    LinkName = "comparison_table_report";
+    Type = "List";
+    SourceFormLinkName = "comparison_table";
+
+    ListView
+    {
+        Columns
+        {
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column total_cost
+            {
+                FieldLinkName = "total_cost";
+            }
+            Column lead_time
+            {
+                FieldLinkName = "lead_time";
+            }
+            Column freight_terms
+            {
+                FieldLinkName = "freight_terms";
+            }
+            Column payment_terms
+            {
+                FieldLinkName = "payment_terms";
+            }
+            Column score
+            {
+                FieldLinkName = "score";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column total_cost
+            {
+                FieldLinkName = "total_cost";
+            }
+            Column lead_time
+            {
+                FieldLinkName = "lead_time";
+            }
+            Column freight_terms
+            {
+                FieldLinkName = "freight_terms";
+            }
+            Column payment_terms
+            {
+                FieldLinkName = "payment_terms";
+            }
+            Column score
+            {
+                FieldLinkName = "score";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column vendor
+                    {
+                        FieldLinkName = "vendor";
+                    }
+                    Column total_cost
+                    {
+                        FieldLinkName = "total_cost";
+                    }
+                    Column lead_time
+                    {
+                        FieldLinkName = "lead_time";
+                    }
+                    Column freight_terms
+                    {
+                        FieldLinkName = "freight_terms";
+                    }
+                    Column payment_terms
+                    {
+                        FieldLinkName = "payment_terms";
+                    }
+                    Column score
+                    {
+                        FieldLinkName = "score";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                }
+            }
+        }
+    }
+}

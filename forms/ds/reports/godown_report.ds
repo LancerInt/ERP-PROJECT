@@ -1,0 +1,155 @@
+report godown_report
+{
+    DisplayName = "Godown Report";
+    LinkName = "godown_report";
+    Type = "List";
+    SourceFormLinkName = "godown";
+
+    ListView
+    {
+        Columns
+        {
+            Column godown_code
+            {
+                FieldLinkName = "godown_code";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column godown_name
+            {
+                FieldLinkName = "godown_name";
+            }
+            Column storage_condition
+            {
+                FieldLinkName = "storage_condition";
+            }
+            Column capacity_uom
+            {
+                FieldLinkName = "capacity_uom";
+            }
+            Column capacity_value
+            {
+                FieldLinkName = "capacity_value";
+            }
+            Column batch_tracking_enabled
+            {
+                FieldLinkName = "batch_tracking_enabled";
+            }
+            Column default_qc_hold_area
+            {
+                FieldLinkName = "default_qc_hold_area";
+            }
+            Column active_flag
+            {
+                FieldLinkName = "active_flag";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column godown_code
+            {
+                FieldLinkName = "godown_code";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column godown_name
+            {
+                FieldLinkName = "godown_name";
+            }
+            Column storage_condition
+            {
+                FieldLinkName = "storage_condition";
+            }
+            Column capacity_uom
+            {
+                FieldLinkName = "capacity_uom";
+            }
+            Column capacity_value
+            {
+                FieldLinkName = "capacity_value";
+            }
+            Column batch_tracking_enabled
+            {
+                FieldLinkName = "batch_tracking_enabled";
+            }
+            Column default_qc_hold_area
+            {
+                FieldLinkName = "default_qc_hold_area";
+            }
+            Column active_flag
+            {
+                FieldLinkName = "active_flag";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column godown_code
+                    {
+                        FieldLinkName = "godown_code";
+                    }
+                    Column warehouse
+                    {
+                        FieldLinkName = "warehouse";
+                    }
+                    Column godown_name
+                    {
+                        FieldLinkName = "godown_name";
+                    }
+                    Column storage_condition
+                    {
+                        FieldLinkName = "storage_condition";
+                    }
+                    Column capacity_uom
+                    {
+                        FieldLinkName = "capacity_uom";
+                    }
+                    Column capacity_value
+                    {
+                        FieldLinkName = "capacity_value";
+                    }
+                    Column batch_tracking_enabled
+                    {
+                        FieldLinkName = "batch_tracking_enabled";
+                    }
+                    Column default_qc_hold_area
+                    {
+                        FieldLinkName = "default_qc_hold_area";
+                    }
+                    Column active_flag
+                    {
+                        FieldLinkName = "active_flag";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

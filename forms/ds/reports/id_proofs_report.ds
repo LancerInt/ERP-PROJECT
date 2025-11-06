@@ -1,0 +1,83 @@
+report id_proofs_report
+{
+    DisplayName = "ID Proofs Report";
+    LinkName = "id_proofs_report";
+    Type = "List";
+    SourceFormLinkName = "id_proofs";
+
+    ListView
+    {
+        Columns
+        {
+            Column document_type
+            {
+                FieldLinkName = "document_type";
+            }
+            Column document_number
+            {
+                FieldLinkName = "document_number";
+            }
+            Column expiry_date
+            {
+                FieldLinkName = "expiry_date";
+            }
+            Column attachment
+            {
+                FieldLinkName = "attachment";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column document_type
+            {
+                FieldLinkName = "document_type";
+            }
+            Column document_number
+            {
+                FieldLinkName = "document_number";
+            }
+            Column expiry_date
+            {
+                FieldLinkName = "expiry_date";
+            }
+            Column attachment
+            {
+                FieldLinkName = "attachment";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column document_type
+                    {
+                        FieldLinkName = "document_type";
+                    }
+                    Column document_number
+                    {
+                        FieldLinkName = "document_number";
+                    }
+                    Column expiry_date
+                    {
+                        FieldLinkName = "expiry_date";
+                    }
+                    Column attachment
+                    {
+                        FieldLinkName = "attachment";
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,143 @@
+report job_work_dc_report
+{
+    DisplayName = "Job Work DC Report";
+    LinkName = "job_work_dc_report";
+    Type = "List";
+    SourceFormLinkName = "job_work_dc";
+
+    ListView
+    {
+        Columns
+        {
+            Column jw_dc_no
+            {
+                FieldLinkName = "jw_dc_no";
+            }
+            Column job_work_order
+            {
+                FieldLinkName = "job_work_order";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column dispatch_date
+            {
+                FieldLinkName = "dispatch_date";
+            }
+            Column transporter
+            {
+                FieldLinkName = "transporter";
+            }
+            Column freight_terms
+            {
+                FieldLinkName = "freight_terms";
+            }
+            Column issued_materials
+            {
+                FieldLinkName = "issued_materials";
+            }
+            Column documents
+            {
+                FieldLinkName = "documents";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column jw_dc_no
+            {
+                FieldLinkName = "jw_dc_no";
+            }
+            Column job_work_order
+            {
+                FieldLinkName = "job_work_order";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column dispatch_date
+            {
+                FieldLinkName = "dispatch_date";
+            }
+            Column transporter
+            {
+                FieldLinkName = "transporter";
+            }
+            Column freight_terms
+            {
+                FieldLinkName = "freight_terms";
+            }
+            Column issued_materials
+            {
+                FieldLinkName = "issued_materials";
+            }
+            Column documents
+            {
+                FieldLinkName = "documents";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column jw_dc_no
+                    {
+                        FieldLinkName = "jw_dc_no";
+                    }
+                    Column job_work_order
+                    {
+                        FieldLinkName = "job_work_order";
+                    }
+                    Column vendor
+                    {
+                        FieldLinkName = "vendor";
+                    }
+                    Column dispatch_date
+                    {
+                        FieldLinkName = "dispatch_date";
+                    }
+                    Column transporter
+                    {
+                        FieldLinkName = "transporter";
+                    }
+                    Column freight_terms
+                    {
+                        FieldLinkName = "freight_terms";
+                    }
+                    Column issued_materials
+                    {
+                        FieldLinkName = "issued_materials";
+                    }
+                    Column documents
+                    {
+                        FieldLinkName = "documents";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                }
+            }
+        }
+    }
+}

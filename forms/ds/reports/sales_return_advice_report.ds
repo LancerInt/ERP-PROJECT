@@ -1,0 +1,203 @@
+report sales_return_advice_report
+{
+    DisplayName = "Sales Return Advice Report";
+    LinkName = "sales_return_advice_report";
+    Type = "List";
+    SourceFormLinkName = "sales_return_advice";
+
+    ListView
+    {
+        Columns
+        {
+            Column return_no
+            {
+                FieldLinkName = "return_no";
+            }
+            Column return_date
+            {
+                FieldLinkName = "return_date";
+            }
+            Column customer
+            {
+                FieldLinkName = "customer";
+            }
+            Column original_invoice
+            {
+                FieldLinkName = "original_invoice";
+            }
+            Column returned_by
+            {
+                FieldLinkName = "returned_by";
+            }
+            Column received_warehouse
+            {
+                FieldLinkName = "received_warehouse";
+            }
+            Column return_lines
+            {
+                FieldLinkName = "return_lines";
+            }
+            Column freight_terms
+            {
+                FieldLinkName = "freight_terms";
+            }
+            Column freight_charges
+            {
+                FieldLinkName = "freight_charges";
+            }
+            Column loading_unloading_charges
+            {
+                FieldLinkName = "loading_unloading_charges";
+            }
+            Column qc_requirement
+            {
+                FieldLinkName = "qc_requirement";
+            }
+            Column approval_status
+            {
+                FieldLinkName = "approval_status";
+            }
+            Column approval_trail
+            {
+                FieldLinkName = "approval_trail";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column return_no
+            {
+                FieldLinkName = "return_no";
+            }
+            Column return_date
+            {
+                FieldLinkName = "return_date";
+            }
+            Column customer
+            {
+                FieldLinkName = "customer";
+            }
+            Column original_invoice
+            {
+                FieldLinkName = "original_invoice";
+            }
+            Column returned_by
+            {
+                FieldLinkName = "returned_by";
+            }
+            Column received_warehouse
+            {
+                FieldLinkName = "received_warehouse";
+            }
+            Column return_lines
+            {
+                FieldLinkName = "return_lines";
+            }
+            Column freight_terms
+            {
+                FieldLinkName = "freight_terms";
+            }
+            Column freight_charges
+            {
+                FieldLinkName = "freight_charges";
+            }
+            Column loading_unloading_charges
+            {
+                FieldLinkName = "loading_unloading_charges";
+            }
+            Column qc_requirement
+            {
+                FieldLinkName = "qc_requirement";
+            }
+            Column approval_status
+            {
+                FieldLinkName = "approval_status";
+            }
+            Column approval_trail
+            {
+                FieldLinkName = "approval_trail";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column return_no
+                    {
+                        FieldLinkName = "return_no";
+                    }
+                    Column return_date
+                    {
+                        FieldLinkName = "return_date";
+                    }
+                    Column customer
+                    {
+                        FieldLinkName = "customer";
+                    }
+                    Column original_invoice
+                    {
+                        FieldLinkName = "original_invoice";
+                    }
+                    Column returned_by
+                    {
+                        FieldLinkName = "returned_by";
+                    }
+                    Column received_warehouse
+                    {
+                        FieldLinkName = "received_warehouse";
+                    }
+                    Column return_lines
+                    {
+                        FieldLinkName = "return_lines";
+                    }
+                    Column freight_terms
+                    {
+                        FieldLinkName = "freight_terms";
+                    }
+                    Column freight_charges
+                    {
+                        FieldLinkName = "freight_charges";
+                    }
+                    Column loading_unloading_charges
+                    {
+                        FieldLinkName = "loading_unloading_charges";
+                    }
+                    Column qc_requirement
+                    {
+                        FieldLinkName = "qc_requirement";
+                    }
+                    Column approval_status
+                    {
+                        FieldLinkName = "approval_status";
+                    }
+                    Column approval_trail
+                    {
+                        FieldLinkName = "approval_trail";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                }
+            }
+        }
+    }
+}

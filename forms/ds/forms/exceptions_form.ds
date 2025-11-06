@@ -1,0 +1,72 @@
+// Module: 7. Finance Module
+form exceptions
+{
+    DisplayName = "Exceptions";
+    LinkName = "exceptions";
+    Module = "7. Finance Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field statement_line_id
+                {
+                    DisplayName = "Statement Line ID";
+                    LinkName = "statement_line_id";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field transaction_date
+                {
+                    DisplayName = "Transaction Date";
+                    LinkName = "transaction_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    Type = "INR";
+                    IsMandatory = true;
+                }
+                Field suggested_match
+                {
+                    DisplayName = "Suggested Match";
+                    LinkName = "suggested_match";
+                    Type = "Lookup";
+                    RelatedFormLinkNames = ["vendor_ledger", "customer_ledger", "freight_ledger", "wage_ledger"];
+                }
+                Field exception_notes
+                {
+                    DisplayName = "Exception Notes";
+                    LinkName = "exception_notes";
+                    Type = "MultiLine";
+                }
+                Field resolution_status
+                {
+                    DisplayName = "Resolution Status";
+                    LinkName = "resolution_status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Open / Resolved";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

@@ -1,0 +1,120 @@
+// Module: 3. Sales Module
+form sales_invoice_check
+{
+    DisplayName = "Sales Invoice Check";
+    LinkName = "sales_invoice_check";
+    Module = "3. Sales Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field invoice_check_id
+                {
+                    DisplayName = "Invoice Check ID";
+                    LinkName = "invoice_check_id";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field dc_reference
+                {
+                    DisplayName = "DC Reference";
+                    LinkName = "dc_reference";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "dispatch_challan";
+                }
+                Field statutory_invoice_upload
+                {
+                    DisplayName = "Statutory Invoice Upload";
+                    LinkName = "statutory_invoice_upload";
+                    Type = "UploadFile";
+                    IsMandatory = true;
+                    MaxFileCount = 10;
+                    AllowMultiple = true;
+                    FileSource = "LocalDrive";
+                    HelpText = "External invoice";
+                }
+                Field invoice_number
+                {
+                    DisplayName = "Invoice Number";
+                    LinkName = "invoice_number";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field invoice_date
+                {
+                    DisplayName = "Invoice Date";
+                    LinkName = "invoice_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field total_value_upload
+                {
+                    DisplayName = "Total Value (Upload)";
+                    LinkName = "total_value_upload";
+                    Type = "INR";
+                    IsMandatory = true;
+                    HelpText = "Parsed";
+                }
+                Field total_value_so
+                {
+                    DisplayName = "Total Value (SO)";
+                    LinkName = "total_value_so";
+                    Type = "INR";
+                    IsMandatory = true;
+                    HelpText = "Computed";
+                }
+                Field variance_amount
+                {
+                    DisplayName = "Variance Amount";
+                    LinkName = "variance_amount";
+                    Type = "INR";
+                    IsMandatory = true;
+                }
+                Field variance_flag
+                {
+                    DisplayName = "Variance Flag";
+                    LinkName = "variance_flag";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Within Tolerance / Requires Review";
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+                Field acceptance_timestamp
+                {
+                    DisplayName = "Acceptance Timestamp";
+                    LinkName = "acceptance_timestamp";
+                    Type = "DateTime";
+                }
+                Field accepted_by
+                {
+                    DisplayName = "Accepted By";
+                    LinkName = "accepted_by";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

@@ -1,0 +1,164 @@
+// Module: 2. Purchase Module
+form purchase_request
+{
+    DisplayName = "Purchase Request (PR)";
+    LinkName = "purchase_request";
+    Module = "2. Purchase Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field pr_no
+                {
+                    DisplayName = "PR No.";
+                    LinkName = "pr_no";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field request_date
+                {
+                    DisplayName = "Request Date";
+                    LinkName = "request_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field warehouse
+                {
+                    DisplayName = "Warehouse";
+                    LinkName = "warehouse";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                    HelpText = "Visibility restricted";
+                }
+                Field godown
+                {
+                    DisplayName = "Godown";
+                    LinkName = "godown";
+                    Type = "Lookup";
+                    ConditionalMandatory = true;
+                    RelatedFormLinkName = "godown";
+                    HelpText = "Filtered by selected warehouse";
+                }
+                Field requested_by
+                {
+                    DisplayName = "Requested By";
+                    LinkName = "requested_by";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field requestor_role
+                {
+                    DisplayName = "Requestor Role";
+                    LinkName = "requestor_role";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Warehouse Manager / Coordinator";
+                }
+                Field requirement_type
+                {
+                    DisplayName = "Requirement Type";
+                    LinkName = "requirement_type";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Goods / Services / Machinery";
+                }
+                Field lines
+                {
+                    DisplayName = "Lines";
+                    LinkName = "lines";
+                    Type = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "pr_lines";
+                    HelpText = "Detailed requirements";
+                }
+                Field priority
+                {
+                    DisplayName = "Priority";
+                    LinkName = "priority";
+                    Type = "Dropdown";
+                    HelpText = "Low / Medium / High";
+                }
+                Field required_by_date
+                {
+                    DisplayName = "Required By Date";
+                    LinkName = "required_by_date";
+                    Type = "Date";
+                    ConditionalMandatory = true;
+                    HelpText = "Mandatory when Requirement Type = Goods";
+                }
+                Field justification
+                {
+                    DisplayName = "Justification";
+                    LinkName = "justification";
+                    Type = "MultiLine";
+                }
+                Field attachments
+                {
+                    DisplayName = "Attachments";
+                    LinkName = "attachments";
+                    Type = "UploadFile";
+                    MaxFileCount = 10;
+                    AllowMultiple = true;
+                    FileSource = "LocalDrive";
+                    HelpText = "Specs, photos";
+                }
+                Field approval_status
+                {
+                    DisplayName = "Approval Status";
+                    LinkName = "approval_status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Draft / Pending / Approved / Rejected / Partially Approved";
+                }
+                Field approval_trail
+                {
+                    DisplayName = "Approval Trail";
+                    LinkName = "approval_trail";
+                    Type = "SubForm";
+                    SubFormLinkName = "approval_trail";
+                    HelpText = "Audit";
+                }
+                Field visibility_scope
+                {
+                    DisplayName = "Visibility Scope";
+                    LinkName = "visibility_scope";
+                    Type = "SingleLine";
+                    AllowMultiple = true;
+                    HelpText = "Auto-share";
+                }
+                Field created_from_bom_request
+                {
+                    DisplayName = "Created From BOM Request";
+                    LinkName = "created_from_bom_request";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "bom_request";
+                    HelpText = "Traceability";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

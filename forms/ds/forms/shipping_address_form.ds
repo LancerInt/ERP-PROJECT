@@ -1,0 +1,81 @@
+// Module: 1. Core & Shared Masters
+form shipping_address
+{
+    DisplayName = "Shipping Address";
+    LinkName = "shipping_address";
+    Module = "1. Core & Shared Masters";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field address_label
+                {
+                    DisplayName = "Address Label";
+                    LinkName = "address_label";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field address
+                {
+                    DisplayName = "Address";
+                    LinkName = "address";
+                    Type = "Address";
+                    IsMandatory = true;
+                    AddressFields
+                    {
+                        AddressLine1 = true;
+                        AddressLine2 = true;
+                        City = true;
+                        State = true;
+                        Country = true;
+                        PostalCode = true;
+                    }
+                }
+                Field delivery_region
+                {
+                    DisplayName = "Delivery Region";
+                    LinkName = "delivery_region";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "For price list mapping";
+                }
+                Field default_price_list
+                {
+                    DisplayName = "Default Price List";
+                    LinkName = "default_price_list";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "price_list";
+                    HelpText = "Auto-selection";
+                }
+                Field contact_person
+                {
+                    DisplayName = "Contact Person";
+                    LinkName = "contact_person";
+                    Type = "SingleLine";
+                }
+                Field contact_phone
+                {
+                    DisplayName = "Contact Phone";
+                    LinkName = "contact_phone";
+                    Type = "Phone";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

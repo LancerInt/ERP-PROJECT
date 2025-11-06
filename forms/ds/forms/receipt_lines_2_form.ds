@@ -1,0 +1,81 @@
+// Module: 6. Inventory, Logistics & Returns
+form receipt_lines_2
+{
+    DisplayName = "Receipt Lines";
+    LinkName = "receipt_lines_2";
+    Module = "6. Inventory, Logistics & Returns";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field batch
+                {
+                    DisplayName = "Batch";
+                    LinkName = "batch";
+                    Type = "SingleLine";
+                }
+                Field quantity_dispatched
+                {
+                    DisplayName = "Quantity Dispatched";
+                    LinkName = "quantity_dispatched";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field quantity_received
+                {
+                    DisplayName = "Quantity Received";
+                    LinkName = "quantity_received";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field received_godown
+                {
+                    DisplayName = "Received Godown";
+                    LinkName = "received_godown";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "godown";
+                    HelpText = "Filtered by receiving warehouse";
+                }
+                Field condition
+                {
+                    DisplayName = "Condition";
+                    LinkName = "condition";
+                    Type = "Dropdown";
+                    HelpText = "Good / Damaged";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

@@ -1,0 +1,77 @@
+// Module: 2. Purchase Module
+form comparison_table
+{
+    DisplayName = "Comparison Table";
+    LinkName = "comparison_table";
+    Module = "2. Purchase Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field vendor
+                {
+                    DisplayName = "Vendor";
+                    LinkName = "vendor";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "vendor";
+                }
+                Field total_cost
+                {
+                    DisplayName = "Total Cost";
+                    LinkName = "total_cost";
+                    Type = "INR";
+                    IsMandatory = true;
+                    HelpText = "Sum of lines";
+                }
+                Field lead_time
+                {
+                    DisplayName = "Lead Time";
+                    LinkName = "lead_time";
+                    Type = "Number";
+                }
+                Field freight_terms
+                {
+                    DisplayName = "Freight Terms";
+                    LinkName = "freight_terms";
+                    Type = "Dropdown";
+                }
+                Field payment_terms
+                {
+                    DisplayName = "Payment Terms";
+                    LinkName = "payment_terms";
+                    Type = "Dropdown";
+                }
+                Field score
+                {
+                    DisplayName = "Score";
+                    LinkName = "score";
+                    Type = "Decimal";
+                    HelpText = "Weighted";
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

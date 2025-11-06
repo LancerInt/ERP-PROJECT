@@ -1,0 +1,239 @@
+report qc_request_report
+{
+    DisplayName = "QC Request Report";
+    LinkName = "qc_request_report";
+    Type = "List";
+    SourceFormLinkName = "qc_request";
+
+    ListView
+    {
+        Columns
+        {
+            Column request_no
+            {
+                FieldLinkName = "request_no";
+            }
+            Column request_date
+            {
+                FieldLinkName = "request_date";
+            }
+            Column requested_by
+            {
+                FieldLinkName = "requested_by";
+            }
+            Column requestor_role
+            {
+                FieldLinkName = "requestor_role";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch
+            {
+                FieldLinkName = "batch";
+            }
+            Column stage
+            {
+                FieldLinkName = "stage";
+            }
+            Column qc_template
+            {
+                FieldLinkName = "qc_template";
+            }
+            Column selected_parameters
+            {
+                FieldLinkName = "selected_parameters";
+            }
+            Column sample_photo
+            {
+                FieldLinkName = "sample_photo";
+            }
+            Column sample_qty
+            {
+                FieldLinkName = "sample_qty";
+            }
+            Column priority
+            {
+                FieldLinkName = "priority";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column lab_code
+            {
+                FieldLinkName = "lab_code";
+            }
+            Column counter_sample_required
+            {
+                FieldLinkName = "counter_sample_required";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column request_no
+            {
+                FieldLinkName = "request_no";
+            }
+            Column request_date
+            {
+                FieldLinkName = "request_date";
+            }
+            Column requested_by
+            {
+                FieldLinkName = "requested_by";
+            }
+            Column requestor_role
+            {
+                FieldLinkName = "requestor_role";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch
+            {
+                FieldLinkName = "batch";
+            }
+            Column stage
+            {
+                FieldLinkName = "stage";
+            }
+            Column qc_template
+            {
+                FieldLinkName = "qc_template";
+            }
+            Column selected_parameters
+            {
+                FieldLinkName = "selected_parameters";
+            }
+            Column sample_photo
+            {
+                FieldLinkName = "sample_photo";
+            }
+            Column sample_qty
+            {
+                FieldLinkName = "sample_qty";
+            }
+            Column priority
+            {
+                FieldLinkName = "priority";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column lab_code
+            {
+                FieldLinkName = "lab_code";
+            }
+            Column counter_sample_required
+            {
+                FieldLinkName = "counter_sample_required";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column request_no
+                    {
+                        FieldLinkName = "request_no";
+                    }
+                    Column request_date
+                    {
+                        FieldLinkName = "request_date";
+                    }
+                    Column requested_by
+                    {
+                        FieldLinkName = "requested_by";
+                    }
+                    Column requestor_role
+                    {
+                        FieldLinkName = "requestor_role";
+                    }
+                    Column warehouse
+                    {
+                        FieldLinkName = "warehouse";
+                    }
+                    Column product
+                    {
+                        FieldLinkName = "product";
+                    }
+                    Column batch
+                    {
+                        FieldLinkName = "batch";
+                    }
+                    Column stage
+                    {
+                        FieldLinkName = "stage";
+                    }
+                    Column qc_template
+                    {
+                        FieldLinkName = "qc_template";
+                    }
+                    Column selected_parameters
+                    {
+                        FieldLinkName = "selected_parameters";
+                    }
+                    Column sample_photo
+                    {
+                        FieldLinkName = "sample_photo";
+                    }
+                    Column sample_qty
+                    {
+                        FieldLinkName = "sample_qty";
+                    }
+                    Column priority
+                    {
+                        FieldLinkName = "priority";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                    Column lab_code
+                    {
+                        FieldLinkName = "lab_code";
+                    }
+                    Column counter_sample_required
+                    {
+                        FieldLinkName = "counter_sample_required";
+                    }
+                }
+            }
+        }
+    }
+}

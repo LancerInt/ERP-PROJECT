@@ -1,0 +1,88 @@
+// Module: 5. Quality Control Module
+form qc_parameter_library
+{
+    DisplayName = "QC Parameter Library";
+    LinkName = "qc_parameter_library";
+    Module = "5. Quality Control Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field parameter_code
+                {
+                    DisplayName = "Parameter Code";
+                    LinkName = "parameter_code";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field parameter_name
+                {
+                    DisplayName = "Parameter Name";
+                    LinkName = "parameter_name";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field unit
+                {
+                    DisplayName = "Unit";
+                    LinkName = "unit";
+                    Type = "SingleLine";
+                }
+                Field applicable_template
+                {
+                    DisplayName = "Applicable Template";
+                    LinkName = "applicable_template";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "template_library";
+                }
+                Field applicable_product
+                {
+                    DisplayName = "Applicable Product";
+                    LinkName = "applicable_product";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "product_master";
+                }
+                Field acceptable_min
+                {
+                    DisplayName = "Acceptable Min";
+                    LinkName = "acceptable_min";
+                    Type = "Decimal";
+                }
+                Field acceptable_max
+                {
+                    DisplayName = "Acceptable Max";
+                    LinkName = "acceptable_max";
+                    Type = "Decimal";
+                }
+                Field critical_flag
+                {
+                    DisplayName = "Critical Flag";
+                    LinkName = "critical_flag";
+                    Type = "Checkbox";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}
