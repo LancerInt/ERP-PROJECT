@@ -1,0 +1,155 @@
+report quote_evaluation_report
+{
+    DisplayName = "Quote Evaluation Report";
+    LinkName = "quote_evaluation_report";
+    Type = "List";
+    SourceFormLinkName = "quote_evaluation";
+
+    ListView
+    {
+        Columns
+        {
+            Column evaluation_id
+            {
+                FieldLinkName = "evaluation_id";
+            }
+            Column rfq
+            {
+                FieldLinkName = "rfq";
+            }
+            Column evaluation_date
+            {
+                FieldLinkName = "evaluation_date";
+            }
+            Column evaluated_by
+            {
+                FieldLinkName = "evaluated_by";
+            }
+            Column comparison_table
+            {
+                FieldLinkName = "comparison_table";
+            }
+            Column best_quote_flag
+            {
+                FieldLinkName = "best_quote_flag";
+            }
+            Column recommended_vendor
+            {
+                FieldLinkName = "recommended_vendor";
+            }
+            Column justification_notes
+            {
+                FieldLinkName = "justification_notes";
+            }
+            Column approval_status
+            {
+                FieldLinkName = "approval_status";
+            }
+            Column approval_trail
+            {
+                FieldLinkName = "approval_trail";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column evaluation_id
+            {
+                FieldLinkName = "evaluation_id";
+            }
+            Column rfq
+            {
+                FieldLinkName = "rfq";
+            }
+            Column evaluation_date
+            {
+                FieldLinkName = "evaluation_date";
+            }
+            Column evaluated_by
+            {
+                FieldLinkName = "evaluated_by";
+            }
+            Column comparison_table
+            {
+                FieldLinkName = "comparison_table";
+            }
+            Column best_quote_flag
+            {
+                FieldLinkName = "best_quote_flag";
+            }
+            Column recommended_vendor
+            {
+                FieldLinkName = "recommended_vendor";
+            }
+            Column justification_notes
+            {
+                FieldLinkName = "justification_notes";
+            }
+            Column approval_status
+            {
+                FieldLinkName = "approval_status";
+            }
+            Column approval_trail
+            {
+                FieldLinkName = "approval_trail";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column evaluation_id
+                    {
+                        FieldLinkName = "evaluation_id";
+                    }
+                    Column rfq
+                    {
+                        FieldLinkName = "rfq";
+                    }
+                    Column evaluation_date
+                    {
+                        FieldLinkName = "evaluation_date";
+                    }
+                    Column evaluated_by
+                    {
+                        FieldLinkName = "evaluated_by";
+                    }
+                    Column comparison_table
+                    {
+                        FieldLinkName = "comparison_table";
+                    }
+                    Column best_quote_flag
+                    {
+                        FieldLinkName = "best_quote_flag";
+                    }
+                    Column recommended_vendor
+                    {
+                        FieldLinkName = "recommended_vendor";
+                    }
+                    Column justification_notes
+                    {
+                        FieldLinkName = "justification_notes";
+                    }
+                    Column approval_status
+                    {
+                        FieldLinkName = "approval_status";
+                    }
+                    Column approval_trail
+                    {
+                        FieldLinkName = "approval_trail";
+                    }
+                }
+            }
+        }
+    }
+}

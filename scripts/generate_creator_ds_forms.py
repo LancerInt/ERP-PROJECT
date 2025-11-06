@@ -6,11 +6,8 @@ import copy
 
 DATA_MODEL_PATH = Path('docs/data-models/zoho_creator_data_models.md')
 OUTPUT_ROOT = Path('forms/ds')
-APP_SLUG = 'erp_creator_suite'
-APP_DISPLAY_NAME = 'ERP Creator Suite'
-APP_DATE_FORMAT = 'dd-MMM-yyyy'
-APP_TIME_FORMAT = 'HH:mm'
-APP_TIME_ZONE = 'Asia/Kolkata'
+FORMS_OUTPUT = OUTPUT_ROOT / 'forms'
+REPORTS_OUTPUT = OUTPUT_ROOT / 'reports'
 UNMAPPED_LOOKUPS = defaultdict(list)
 
 LOOKUP_ALIAS_MAP = {
@@ -20,7 +17,6 @@ LOOKUP_ALIAS_MAP = {
     'shipping addresses': ['shipping_address'],
     'invoice': ['sales_invoice_check'],
     'ledger': ['vendor_ledger', 'customer_ledger', 'freight_ledger', 'wage_ledger'],
-    'lines': ['so_lines'],
     'machine': ['machinery'],
     'payment advice': ['vendor_payment_advice'],
     'payment schedule': ['freight_payment_schedule'],
@@ -224,6 +220,16 @@ def map_lookup_target(target: str, name_map: dict, form=None, field=None):
         if isinstance(alias, list):
             return alias
         return alias
+    if norm == 'lines' and form is not None:
+        form_name = (form.get('name') or '').lower()
+        if 'purchase request' in form_name:
+            return 'pr_lines'
+        if 'purchase order' in form_name:
+            return 'po_lines'
+        if 'quote' in form_name:
+            return 'quote_lines'
+        if 'sales order' in form_name:
+            return 'so_lines'
     matches = name_map.get(norm)
     if not matches:
         UNMAPPED_LOOKUPS[norm].append(target)
@@ -251,7 +257,6 @@ def map_lookup_target(target: str, name_map: dict, form=None, field=None):
 def map_field_type(field, form, name_map):
     text = field['type'].strip()
     props: dict[str, object] = {}
-    notes_lower = field['notes'].lower()
     if text.startswith('Single Line'):
         data_type = 'SingleLine'
         if 'unique' in text.lower():
@@ -265,9 +270,9 @@ def map_field_type(field, form, name_map):
     elif text == 'Dropdown':
         data_type = 'Dropdown'
     elif text == 'Multi-select':
-        data_type = 'MultiSelect'
+        data_type = 'Checkboxes'
     elif text == 'Multi-select Dropdown':
-        data_type = 'MultiSelectDropdown'
+        data_type = 'Checkboxes'
     elif text == 'Checkbox':
         data_type = 'Checkbox'
     elif text == 'Date':
@@ -279,7 +284,7 @@ def map_field_type(field, form, name_map):
     elif text == 'Time':
         data_type = 'Time'
     elif text == 'Currency':
-        data_type = 'Currency'
+        data_type = 'INR'
     elif text.startswith('Decimal'):
         data_type = 'Decimal'
         if 'formula' in text.lower():
@@ -291,9 +296,9 @@ def map_field_type(field, form, name_map):
     elif text == 'URL':
         data_type = 'URL'
     elif text == 'Image Upload':
-        data_type = 'Image'
+        data_type = 'UploadImage'
     elif text == 'File Upload':
-        data_type = 'FileUpload'
+        data_type = 'UploadFile'
     elif text == 'Auto Number':
         data_type = 'AutoNumber'
     elif text.startswith('Lookup'):
@@ -337,6 +342,10 @@ def map_field_type(field, form, name_map):
         props['AllowMultiple'] = True
     if data_type == 'Lookup' and 'AllowMultiple' not in props and 'Multi-select Lookup' in text:
         props['AllowMultiple'] = True
+    if data_type == 'UploadFile':
+        props.setdefault('MaxFileCount', 10)
+        props.setdefault('AllowMultiple', True)
+        props.setdefault('FileSource', 'LocalDrive')
     return data_type, props
 
 
@@ -353,92 +362,134 @@ def format_value(value):
     return f'"{value}"'
 
 
-def render_form_lines(form, name_map):
-    lines = []
-    display_name = form['display_name']
-    clean_display = re.sub(r"\s*\(subform\)", "", display_name, flags=re.IGNORECASE)
-    lines.append(f"        // Module: {form['module'] or 'General'}")
-    lines.append(f"        // Form: {clean_display}")
-    lines.append(f"        form {form['slug']}")
-    lines.append("        {")
-    lines.append(f"            DisplayName = {format_value(clean_display)};")
-    lines.append(f"            LinkName = {format_value(form['slug'])};")
-    lines.append(f"            Module = {format_value(form['module'] or 'General')};")
-    lines.append(f"            IsSubForm = {format_value(form['is_subform'])};")
-    success_message = f"{clean_display} Added Successfully"
-    lines.append(f"            SuccessMessage = {format_value(success_message)};")
-    lines.append("")
-    lines.append("            Sections")
-    lines.append("            {")
-    lines.append("                Section main")
-    lines.append("                {")
-    lines.append("                    DisplayName = \"Main\";")
-    lines.append("                    Type = \"Section\";")
-    lines.append("                    Column = 1;")
-    lines.append("                    Row = 1;")
-    lines.append("                    Width = \"Medium\";")
-    lines.append("                    Fields")
-    lines.append("                    {")
-    for field in form['fields']:
-        field_name = field['link_name'] or slugify(field['field_name'])
-        lines.append(f"                        Field {field_name}")
-        lines.append("                        {")
-        lines.append(f"                            DisplayName = {format_value(field['field_name'])};")
-        lines.append(f"                            LinkName = {format_value(field_name)};")
-        data_type, props = map_field_type(field, form, name_map)
-        lines.append(f"                            DataType = {format_value(data_type)};")
-        req = field['required'].strip().upper()
-        if req == 'Y':
-            lines.append("                            IsMandatory = true;")
-        elif req == 'C':
-            lines.append("                            ConditionalMandatory = true;")
-        for key, value in props.items():
-            lines.append(f"                            {key} = {format_value(value)};")
-        if data_type == 'Address':
-            lines.append("                            AddressFields")
-            lines.append("                            {")
-            for component in (
-                'AddressLine1',
-                'AddressLine2',
-                'City',
-                'State',
-                'Country',
-                'PostalCode',
-            ):
-                lines.append(f"                                {component} = true;")
-            lines.append("                            }")
-        if field['notes']:
-            lines.append(f"                            HelpText = {format_value(field['notes'])};")
-        lines.append("                        }")
-    lines.append("                    }")
-    lines.append("                }")
-    lines.append("            }")
-    lines.append("        }")
-    lines.append("")
+def format_address_block(indent='            '):
+    lines = [f"{indent}AddressFields", f"{indent}{{"]
+    for component in (
+        'AddressLine1',
+        'AddressLine2',
+        'City',
+        'State',
+        'Country',
+        'PostalCode',
+    ):
+        lines.append(f"{indent}    {component} = true;")
+    lines.append(f"{indent}}}")
     return lines
 
 
-def render_application(forms, name_map):
+def prepare_field_meta(form, name_map):
+    prepared = []
+    for field in form['fields']:
+        link_name = field['link_name'] or slugify(field['field_name'])
+        data_type, props = map_field_type(field, form, name_map)
+        prepared.append({
+            'field': field,
+            'link_name': link_name,
+            'data_type': data_type,
+            'props': props,
+        })
+    return prepared
+
+
+def render_form_ds(form, name_map):
+    display_name = re.sub(r"\s*\(subform\)", "", form['display_name'], flags=re.IGNORECASE)
+    field_meta = prepare_field_meta(form, name_map)
     lines = []
-    lines.append(f"% Author = Generated by scripts/generate_creator_ds_forms.py")
-    lines.append(f"% Version = 1.0")
-    lines.append(f"% DateFormat = {APP_DATE_FORMAT}")
-    lines.append(f"% TimeFormat = {APP_TIME_FORMAT}")
-    lines.append(f"% TimeZone = {APP_TIME_ZONE}")
-    lines.append("")
-    lines.append(f"application {APP_SLUG}")
+    lines.append(f"// Module: {form['module'] or 'General'}")
+    lines.append(f"form {form['slug']}")
     lines.append("{")
-    lines.append(f"    DisplayName = {format_value(APP_DISPLAY_NAME)};")
-    lines.append(f"    DateFormat = {format_value(APP_DATE_FORMAT)};")
-    lines.append(f"    TimeFormat = {format_value(APP_TIME_FORMAT)};")
-    lines.append(f"    TimeZone = {format_value(APP_TIME_ZONE)};")
-    lines.append("    Forms")
+    lines.append(f"    DisplayName = {format_value(display_name)};")
+    lines.append(f"    LinkName = {format_value(form['slug'])};")
+    lines.append(f"    Module = {format_value(form['module'] or 'General')};")
+    lines.append(f"    Type = \"Form\";")
+    lines.append("")
+    lines.append("    Sections")
     lines.append("    {")
-    for form in forms:
-        form_lines = render_form_lines(form, name_map)
-        lines.extend(form_lines)
-    if lines[-1] != "":
-        lines.append("")
+    lines.append("        Section main")
+    lines.append("        {")
+    lines.append("            DisplayName = \"Main\";")
+    lines.append("            Layout = \"OneColumn\";")
+    lines.append("            Fields")
+    lines.append("            {")
+    for meta in field_meta:
+        field = meta['field']
+        lines.append(f"                Field {meta['link_name']}")
+        lines.append("                {")
+        lines.append(f"                    DisplayName = {format_value(field['field_name'])};")
+        lines.append(f"                    LinkName = {format_value(meta['link_name'])};")
+        lines.append(f"                    Type = {format_value(meta['data_type'])};")
+        required = field['required'].strip().upper()
+        if required == 'Y':
+            lines.append("                    IsMandatory = true;")
+        elif required == 'C':
+            lines.append("                    ConditionalMandatory = true;")
+        for key, value in meta['props'].items():
+            lines.append(f"                    {key} = {format_value(value)};")
+        if meta['data_type'] == 'Address':
+            lines.extend(format_address_block('                    '))
+        if field['notes']:
+            lines.append(f"                    HelpText = {format_value(field['notes'])};")
+        lines.append("                }")
+    lines.append("            }")
+    lines.append("        }")
+    lines.append("    }")
+    lines.append("")
+    lines.append("    Actions")
+    lines.append("    {")
+    lines.append("        on add")
+    lines.append("        {")
+    lines.append("        }")
+    lines.append("        on edit")
+    lines.append("        {")
+    lines.append("        }")
+    lines.append("    }")
+    lines.append("}")
+    lines.append("")
+    return "\n".join(lines), field_meta
+
+
+def render_report_ds(form, field_meta):
+    display_name = re.sub(r"\s*\(subform\)", "", form['display_name'], flags=re.IGNORECASE)
+    report_slug = f"{form['slug']}_report"
+    column_links = [meta['link_name'] for meta in field_meta]
+    lines = []
+    lines.append(f"report {report_slug}")
+    lines.append("{")
+    lines.append(f"    DisplayName = {format_value(display_name + ' Report')};")
+    lines.append(f"    LinkName = {format_value(report_slug)};")
+    lines.append("    Type = \"List\";")
+    lines.append(f"    SourceFormLinkName = {format_value(form['slug'])};")
+    lines.append("")
+    def render_columns(indent):
+        col_lines = [f"{indent}Columns", f"{indent}{{"]
+        for link in column_links:
+            col_lines.append(f"{indent}    Column {link}")
+            col_lines.append(f"{indent}    {{")
+            col_lines.append(f"{indent}        FieldLinkName = {format_value(link)};")
+            col_lines.append(f"{indent}    }}")
+        col_lines.append(f"{indent}}}")
+        return col_lines
+
+    lines.append("    ListView")
+    lines.append("    {")
+    lines.extend(render_columns("        "))
+    lines.append("    }")
+    lines.append("")
+    lines.append("    QuickView")
+    lines.append("    {")
+    lines.extend(render_columns("        "))
+    lines.append("    }")
+    lines.append("")
+    lines.append("    DetailView")
+    lines.append("    {")
+    lines.append("        Sections")
+    lines.append("        {")
+    lines.append("            Section main")
+    lines.append("            {")
+    lines.append("                DisplayName = \"Main\";")
+    lines.extend(render_columns("                "))
+    lines.append("            }")
+    lines.append("        }")
     lines.append("    }")
     lines.append("}")
     lines.append("")
@@ -451,11 +502,17 @@ def main():
     name_map = build_name_maps(forms)
     if OUTPUT_ROOT.exists():
         shutil.rmtree(OUTPUT_ROOT)
-    OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
-    app_content = render_application(forms, name_map)
-    target_path = OUTPUT_ROOT / f"{APP_SLUG}.ds"
-    target_path.write_text(app_content)
-    print(f"Generated application script with {len(forms)} forms at {target_path}")
+    FORMS_OUTPUT.mkdir(parents=True, exist_ok=True)
+    REPORTS_OUTPUT.mkdir(parents=True, exist_ok=True)
+
+    for form in forms:
+        form_content, field_meta = render_form_ds(form, name_map)
+        form_path = FORMS_OUTPUT / f"{form['slug']}_form.ds"
+        form_path.write_text(form_content)
+        report_content = render_report_ds(form, field_meta)
+        report_path = REPORTS_OUTPUT / f"{form['slug']}_report.ds"
+        report_path.write_text(report_content)
+    print(f"Generated {len(forms)} forms and reports in {OUTPUT_ROOT}")
     if UNMAPPED_LOOKUPS:
         print("Unmapped lookup targets detected:")
         for key in sorted(UNMAPPED_LOOKUPS):

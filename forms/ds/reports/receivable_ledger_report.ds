@@ -1,0 +1,179 @@
+report receivable_ledger_report
+{
+    DisplayName = "Receivable Ledger Report";
+    LinkName = "receivable_ledger_report";
+    Type = "List";
+    SourceFormLinkName = "receivable_ledger";
+
+    ListView
+    {
+        Columns
+        {
+            Column ledger_id
+            {
+                FieldLinkName = "ledger_id";
+            }
+            Column customer
+            {
+                FieldLinkName = "customer";
+            }
+            Column invoice_reference
+            {
+                FieldLinkName = "invoice_reference";
+            }
+            Column invoice_date
+            {
+                FieldLinkName = "invoice_date";
+            }
+            Column due_date
+            {
+                FieldLinkName = "due_date";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column amount_paid
+            {
+                FieldLinkName = "amount_paid";
+            }
+            Column balance
+            {
+                FieldLinkName = "balance";
+            }
+            Column payment_status
+            {
+                FieldLinkName = "payment_status";
+            }
+            Column reminder_dates
+            {
+                FieldLinkName = "reminder_dates";
+            }
+            Column escalation_flag
+            {
+                FieldLinkName = "escalation_flag";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column ledger_id
+            {
+                FieldLinkName = "ledger_id";
+            }
+            Column customer
+            {
+                FieldLinkName = "customer";
+            }
+            Column invoice_reference
+            {
+                FieldLinkName = "invoice_reference";
+            }
+            Column invoice_date
+            {
+                FieldLinkName = "invoice_date";
+            }
+            Column due_date
+            {
+                FieldLinkName = "due_date";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column amount_paid
+            {
+                FieldLinkName = "amount_paid";
+            }
+            Column balance
+            {
+                FieldLinkName = "balance";
+            }
+            Column payment_status
+            {
+                FieldLinkName = "payment_status";
+            }
+            Column reminder_dates
+            {
+                FieldLinkName = "reminder_dates";
+            }
+            Column escalation_flag
+            {
+                FieldLinkName = "escalation_flag";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column ledger_id
+                    {
+                        FieldLinkName = "ledger_id";
+                    }
+                    Column customer
+                    {
+                        FieldLinkName = "customer";
+                    }
+                    Column invoice_reference
+                    {
+                        FieldLinkName = "invoice_reference";
+                    }
+                    Column invoice_date
+                    {
+                        FieldLinkName = "invoice_date";
+                    }
+                    Column due_date
+                    {
+                        FieldLinkName = "due_date";
+                    }
+                    Column amount
+                    {
+                        FieldLinkName = "amount";
+                    }
+                    Column amount_paid
+                    {
+                        FieldLinkName = "amount_paid";
+                    }
+                    Column balance
+                    {
+                        FieldLinkName = "balance";
+                    }
+                    Column payment_status
+                    {
+                        FieldLinkName = "payment_status";
+                    }
+                    Column reminder_dates
+                    {
+                        FieldLinkName = "reminder_dates";
+                    }
+                    Column escalation_flag
+                    {
+                        FieldLinkName = "escalation_flag";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

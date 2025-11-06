@@ -1,0 +1,179 @@
+report counter_sample_register_report
+{
+    DisplayName = "Counter Sample Register Report";
+    LinkName = "counter_sample_register_report";
+    Type = "List";
+    SourceFormLinkName = "counter_sample_register";
+
+    ListView
+    {
+        Columns
+        {
+            Column sample_id
+            {
+                FieldLinkName = "sample_id";
+            }
+            Column qc_request
+            {
+                FieldLinkName = "qc_request";
+            }
+            Column storage_location
+            {
+                FieldLinkName = "storage_location";
+            }
+            Column shelf
+            {
+                FieldLinkName = "shelf";
+            }
+            Column bin
+            {
+                FieldLinkName = "bin";
+            }
+            Column issued_to
+            {
+                FieldLinkName = "issued_to";
+            }
+            Column issue_date
+            {
+                FieldLinkName = "issue_date";
+            }
+            Column expected_return_date
+            {
+                FieldLinkName = "expected_return_date";
+            }
+            Column actual_return_date
+            {
+                FieldLinkName = "actual_return_date";
+            }
+            Column reminder_sent
+            {
+                FieldLinkName = "reminder_sent";
+            }
+            Column disposal_date
+            {
+                FieldLinkName = "disposal_date";
+            }
+            Column disposal_approved_by
+            {
+                FieldLinkName = "disposal_approved_by";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column sample_id
+            {
+                FieldLinkName = "sample_id";
+            }
+            Column qc_request
+            {
+                FieldLinkName = "qc_request";
+            }
+            Column storage_location
+            {
+                FieldLinkName = "storage_location";
+            }
+            Column shelf
+            {
+                FieldLinkName = "shelf";
+            }
+            Column bin
+            {
+                FieldLinkName = "bin";
+            }
+            Column issued_to
+            {
+                FieldLinkName = "issued_to";
+            }
+            Column issue_date
+            {
+                FieldLinkName = "issue_date";
+            }
+            Column expected_return_date
+            {
+                FieldLinkName = "expected_return_date";
+            }
+            Column actual_return_date
+            {
+                FieldLinkName = "actual_return_date";
+            }
+            Column reminder_sent
+            {
+                FieldLinkName = "reminder_sent";
+            }
+            Column disposal_date
+            {
+                FieldLinkName = "disposal_date";
+            }
+            Column disposal_approved_by
+            {
+                FieldLinkName = "disposal_approved_by";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column sample_id
+                    {
+                        FieldLinkName = "sample_id";
+                    }
+                    Column qc_request
+                    {
+                        FieldLinkName = "qc_request";
+                    }
+                    Column storage_location
+                    {
+                        FieldLinkName = "storage_location";
+                    }
+                    Column shelf
+                    {
+                        FieldLinkName = "shelf";
+                    }
+                    Column bin
+                    {
+                        FieldLinkName = "bin";
+                    }
+                    Column issued_to
+                    {
+                        FieldLinkName = "issued_to";
+                    }
+                    Column issue_date
+                    {
+                        FieldLinkName = "issue_date";
+                    }
+                    Column expected_return_date
+                    {
+                        FieldLinkName = "expected_return_date";
+                    }
+                    Column actual_return_date
+                    {
+                        FieldLinkName = "actual_return_date";
+                    }
+                    Column reminder_sent
+                    {
+                        FieldLinkName = "reminder_sent";
+                    }
+                    Column disposal_date
+                    {
+                        FieldLinkName = "disposal_date";
+                    }
+                    Column disposal_approved_by
+                    {
+                        FieldLinkName = "disposal_approved_by";
+                    }
+                }
+            }
+        }
+    }
+}

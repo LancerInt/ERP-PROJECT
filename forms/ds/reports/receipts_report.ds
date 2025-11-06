@@ -1,0 +1,119 @@
+report receipts_report
+{
+    DisplayName = "Receipts Report";
+    LinkName = "receipts_report";
+    Type = "List";
+    SourceFormLinkName = "receipts";
+
+    ListView
+    {
+        Columns
+        {
+            Column receipt_no
+            {
+                FieldLinkName = "receipt_no";
+            }
+            Column customer
+            {
+                FieldLinkName = "customer";
+            }
+            Column receipt_date
+            {
+                FieldLinkName = "receipt_date";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column payment_method
+            {
+                FieldLinkName = "payment_method";
+            }
+            Column reference_document
+            {
+                FieldLinkName = "reference_document";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column receipt_no
+            {
+                FieldLinkName = "receipt_no";
+            }
+            Column customer
+            {
+                FieldLinkName = "customer";
+            }
+            Column receipt_date
+            {
+                FieldLinkName = "receipt_date";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column payment_method
+            {
+                FieldLinkName = "payment_method";
+            }
+            Column reference_document
+            {
+                FieldLinkName = "reference_document";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column receipt_no
+                    {
+                        FieldLinkName = "receipt_no";
+                    }
+                    Column customer
+                    {
+                        FieldLinkName = "customer";
+                    }
+                    Column receipt_date
+                    {
+                        FieldLinkName = "receipt_date";
+                    }
+                    Column amount
+                    {
+                        FieldLinkName = "amount";
+                    }
+                    Column payment_method
+                    {
+                        FieldLinkName = "payment_method";
+                    }
+                    Column reference_document
+                    {
+                        FieldLinkName = "reference_document";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

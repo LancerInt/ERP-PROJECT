@@ -1,0 +1,59 @@
+// Module: 1. Core & Shared Masters
+form approval_levels
+{
+    DisplayName = "Approval Levels";
+    LinkName = "approval_levels";
+    Module = "1. Core & Shared Masters";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field module
+                {
+                    DisplayName = "Module";
+                    LinkName = "module";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Purchase / Sales / Production / etc.";
+                }
+                Field stage
+                {
+                    DisplayName = "Stage";
+                    LinkName = "stage";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Request / Evaluation / Payment";
+                }
+                Field min_amount
+                {
+                    DisplayName = "Min Amount";
+                    LinkName = "min_amount";
+                    Type = "INR";
+                    HelpText = "Threshold";
+                }
+                Field max_amount
+                {
+                    DisplayName = "Max Amount";
+                    LinkName = "max_amount";
+                    Type = "INR";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

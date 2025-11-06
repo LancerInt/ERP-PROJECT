@@ -1,0 +1,95 @@
+report damage_report_report
+{
+    DisplayName = "Damage Report Report";
+    LinkName = "damage_report_report";
+    Type = "List";
+    SourceFormLinkName = "damage_report";
+
+    ListView
+    {
+        Columns
+        {
+            Column stage
+            {
+                FieldLinkName = "stage";
+            }
+            Column description
+            {
+                FieldLinkName = "description";
+            }
+            Column quantity_lost
+            {
+                FieldLinkName = "quantity_lost";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column handling_action
+            {
+                FieldLinkName = "handling_action";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column stage
+            {
+                FieldLinkName = "stage";
+            }
+            Column description
+            {
+                FieldLinkName = "description";
+            }
+            Column quantity_lost
+            {
+                FieldLinkName = "quantity_lost";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column handling_action
+            {
+                FieldLinkName = "handling_action";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column stage
+                    {
+                        FieldLinkName = "stage";
+                    }
+                    Column description
+                    {
+                        FieldLinkName = "description";
+                    }
+                    Column quantity_lost
+                    {
+                        FieldLinkName = "quantity_lost";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                    Column handling_action
+                    {
+                        FieldLinkName = "handling_action";
+                    }
+                }
+            }
+        }
+    }
+}

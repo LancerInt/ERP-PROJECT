@@ -1,0 +1,60 @@
+// Module: 2. Purchase Module
+form packing_material_lines
+{
+    DisplayName = "Packing Material Lines";
+    LinkName = "packing_material_lines";
+    Module = "2. Purchase Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field packaging_sku
+                {
+                    DisplayName = "Packaging SKU";
+                    LinkName = "packaging_sku";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                    HelpText = "Must be PACKING_MATERIAL";
+                }
+                Field quantity
+                {
+                    DisplayName = "Quantity";
+                    LinkName = "quantity";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field condition
+                {
+                    DisplayName = "Condition";
+                    LinkName = "condition";
+                    Type = "Dropdown";
+                    HelpText = "New / Damaged";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

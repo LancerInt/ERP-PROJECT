@@ -1,0 +1,58 @@
+// Module: 7. Finance Module
+form tds_tcs_details
+{
+    DisplayName = "TDS/TCS Details";
+    LinkName = "tds_tcs_details";
+    Module = "7. Finance Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field tax_type
+                {
+                    DisplayName = "Tax Type";
+                    LinkName = "tax_type";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "TDS / TCS";
+                }
+                Field section
+                {
+                    DisplayName = "Section";
+                    LinkName = "section";
+                    Type = "SingleLine";
+                }
+                Field rate
+                {
+                    DisplayName = "Rate %";
+                    LinkName = "rate";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    Type = "INR";
+                    IsMandatory = true;
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

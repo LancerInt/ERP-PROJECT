@@ -1,0 +1,107 @@
+report transfer_lines_report
+{
+    DisplayName = "Transfer Lines Report";
+    LinkName = "transfer_lines_report";
+    Type = "List";
+    SourceFormLinkName = "transfer_lines";
+
+    ListView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch
+            {
+                FieldLinkName = "batch";
+            }
+            Column quantity
+            {
+                FieldLinkName = "quantity";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column source_godown
+            {
+                FieldLinkName = "source_godown";
+            }
+            Column destination_godown
+            {
+                FieldLinkName = "destination_godown";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch
+            {
+                FieldLinkName = "batch";
+            }
+            Column quantity
+            {
+                FieldLinkName = "quantity";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column source_godown
+            {
+                FieldLinkName = "source_godown";
+            }
+            Column destination_godown
+            {
+                FieldLinkName = "destination_godown";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column product
+                    {
+                        FieldLinkName = "product";
+                    }
+                    Column batch
+                    {
+                        FieldLinkName = "batch";
+                    }
+                    Column quantity
+                    {
+                        FieldLinkName = "quantity";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                    Column source_godown
+                    {
+                        FieldLinkName = "source_godown";
+                    }
+                    Column destination_godown
+                    {
+                        FieldLinkName = "destination_godown";
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,237 @@
+// Module: 1. Core & Shared Masters
+form vendor
+{
+    DisplayName = "Vendor";
+    LinkName = "vendor";
+    Module = "1. Core & Shared Masters";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field vendor_code
+                {
+                    DisplayName = "Vendor Code";
+                    LinkName = "vendor_code";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field vendor_name
+                {
+                    DisplayName = "Vendor Name";
+                    LinkName = "vendor_name";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field vendor_type
+                {
+                    DisplayName = "Vendor Type";
+                    LinkName = "vendor_type";
+                    Type = "Checkboxes";
+                    IsMandatory = true;
+                    HelpText = "Material / Service / Freight / Wages / Job Work / Contractor";
+                }
+                Field company
+                {
+                    DisplayName = "Company";
+                    LinkName = "company";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "company";
+                }
+                Field gstin
+                {
+                    DisplayName = "GSTIN";
+                    LinkName = "gstin";
+                    Type = "SingleLine";
+                    ConditionalMandatory = true;
+                    HelpText = "Mandatory if taxable";
+                }
+                Field pan
+                {
+                    DisplayName = "PAN";
+                    LinkName = "pan";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field address
+                {
+                    DisplayName = "Address";
+                    LinkName = "address";
+                    Type = "Address";
+                    IsMandatory = true;
+                    AddressFields
+                    {
+                        AddressLine1 = true;
+                        AddressLine2 = true;
+                        City = true;
+                        State = true;
+                        Country = true;
+                        PostalCode = true;
+                    }
+                }
+                Field city
+                {
+                    DisplayName = "City";
+                    LinkName = "city";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field state
+                {
+                    DisplayName = "State";
+                    LinkName = "state";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field country
+                {
+                    DisplayName = "Country";
+                    LinkName = "country";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field pincode
+                {
+                    DisplayName = "Pincode";
+                    LinkName = "pincode";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field contact_person
+                {
+                    DisplayName = "Contact Person";
+                    LinkName = "contact_person";
+                    Type = "SingleLine";
+                }
+                Field contact_email
+                {
+                    DisplayName = "Contact Email";
+                    LinkName = "contact_email";
+                    Type = "Email";
+                }
+                Field contact_phone
+                {
+                    DisplayName = "Contact Phone";
+                    LinkName = "contact_phone";
+                    Type = "Phone";
+                }
+                Field payment_terms
+                {
+                    DisplayName = "Payment Terms";
+                    LinkName = "payment_terms";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Net 15 / Net 30 / Custom";
+                }
+                Field custom_payment_days
+                {
+                    DisplayName = "Custom Payment Days";
+                    LinkName = "custom_payment_days";
+                    Type = "Number";
+                    ConditionalMandatory = true;
+                    HelpText = "Mandatory when Payment Terms = Custom";
+                }
+                Field freight_terms
+                {
+                    DisplayName = "Freight Terms";
+                    LinkName = "freight_terms";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Paid / To_Pay / Mixed";
+                }
+                Field freight_split_notes
+                {
+                    DisplayName = "Freight Split Notes";
+                    LinkName = "freight_split_notes";
+                    Type = "MultiLine";
+                }
+                Field credit_limit
+                {
+                    DisplayName = "Credit Limit";
+                    LinkName = "credit_limit";
+                    Type = "INR";
+                }
+                Field credit_days
+                {
+                    DisplayName = "Credit Days";
+                    LinkName = "credit_days";
+                    Type = "Number";
+                }
+                Field tds_rate
+                {
+                    DisplayName = "TDS Rate %";
+                    LinkName = "tds_rate";
+                    Type = "Decimal";
+                }
+                Field tcs_rate
+                {
+                    DisplayName = "TCS Rate %";
+                    LinkName = "tcs_rate";
+                    Type = "Decimal";
+                }
+                Field bank_details
+                {
+                    DisplayName = "Bank Details";
+                    LinkName = "bank_details";
+                    Type = "SubForm";
+                    SubFormLinkName = "vendor_bank_details";
+                    HelpText = "Multiple accounts";
+                }
+                Field preferred_transporters
+                {
+                    DisplayName = "Preferred Transporters";
+                    LinkName = "preferred_transporters";
+                    Type = "SingleLine";
+                    AllowMultiple = true;
+                }
+                Field allowed_warehouses
+                {
+                    DisplayName = "Allowed Warehouses";
+                    LinkName = "allowed_warehouses";
+                    Type = "SingleLine";
+                    AllowMultiple = true;
+                }
+                Field attachments
+                {
+                    DisplayName = "Attachments";
+                    LinkName = "attachments";
+                    Type = "UploadFile";
+                    MaxFileCount = 10;
+                    AllowMultiple = true;
+                    FileSource = "LocalDrive";
+                    HelpText = "Agreements";
+                }
+                Field active_flag
+                {
+                    DisplayName = "Active Flag";
+                    LinkName = "active_flag";
+                    Type = "Checkbox";
+                    IsMandatory = true;
+                }
+                Field created_date
+                {
+                    DisplayName = "Created Date";
+                    LinkName = "created_date";
+                    Type = "DateTime";
+                    IsMandatory = true;
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

@@ -1,0 +1,179 @@
+report sales_invoice_check_report
+{
+    DisplayName = "Sales Invoice Check Report";
+    LinkName = "sales_invoice_check_report";
+    Type = "List";
+    SourceFormLinkName = "sales_invoice_check";
+
+    ListView
+    {
+        Columns
+        {
+            Column invoice_check_id
+            {
+                FieldLinkName = "invoice_check_id";
+            }
+            Column dc_reference
+            {
+                FieldLinkName = "dc_reference";
+            }
+            Column statutory_invoice_upload
+            {
+                FieldLinkName = "statutory_invoice_upload";
+            }
+            Column invoice_number
+            {
+                FieldLinkName = "invoice_number";
+            }
+            Column invoice_date
+            {
+                FieldLinkName = "invoice_date";
+            }
+            Column total_value_upload
+            {
+                FieldLinkName = "total_value_upload";
+            }
+            Column total_value_so
+            {
+                FieldLinkName = "total_value_so";
+            }
+            Column variance_amount
+            {
+                FieldLinkName = "variance_amount";
+            }
+            Column variance_flag
+            {
+                FieldLinkName = "variance_flag";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+            Column acceptance_timestamp
+            {
+                FieldLinkName = "acceptance_timestamp";
+            }
+            Column accepted_by
+            {
+                FieldLinkName = "accepted_by";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column invoice_check_id
+            {
+                FieldLinkName = "invoice_check_id";
+            }
+            Column dc_reference
+            {
+                FieldLinkName = "dc_reference";
+            }
+            Column statutory_invoice_upload
+            {
+                FieldLinkName = "statutory_invoice_upload";
+            }
+            Column invoice_number
+            {
+                FieldLinkName = "invoice_number";
+            }
+            Column invoice_date
+            {
+                FieldLinkName = "invoice_date";
+            }
+            Column total_value_upload
+            {
+                FieldLinkName = "total_value_upload";
+            }
+            Column total_value_so
+            {
+                FieldLinkName = "total_value_so";
+            }
+            Column variance_amount
+            {
+                FieldLinkName = "variance_amount";
+            }
+            Column variance_flag
+            {
+                FieldLinkName = "variance_flag";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+            Column acceptance_timestamp
+            {
+                FieldLinkName = "acceptance_timestamp";
+            }
+            Column accepted_by
+            {
+                FieldLinkName = "accepted_by";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column invoice_check_id
+                    {
+                        FieldLinkName = "invoice_check_id";
+                    }
+                    Column dc_reference
+                    {
+                        FieldLinkName = "dc_reference";
+                    }
+                    Column statutory_invoice_upload
+                    {
+                        FieldLinkName = "statutory_invoice_upload";
+                    }
+                    Column invoice_number
+                    {
+                        FieldLinkName = "invoice_number";
+                    }
+                    Column invoice_date
+                    {
+                        FieldLinkName = "invoice_date";
+                    }
+                    Column total_value_upload
+                    {
+                        FieldLinkName = "total_value_upload";
+                    }
+                    Column total_value_so
+                    {
+                        FieldLinkName = "total_value_so";
+                    }
+                    Column variance_amount
+                    {
+                        FieldLinkName = "variance_amount";
+                    }
+                    Column variance_flag
+                    {
+                        FieldLinkName = "variance_flag";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                    Column acceptance_timestamp
+                    {
+                        FieldLinkName = "acceptance_timestamp";
+                    }
+                    Column accepted_by
+                    {
+                        FieldLinkName = "accepted_by";
+                    }
+                }
+            }
+        }
+    }
+}

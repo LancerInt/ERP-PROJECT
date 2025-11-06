@@ -1,0 +1,72 @@
+// Module: 9. Configuration & Audit
+form decision_log
+{
+    DisplayName = "Decision Log";
+    LinkName = "decision_log";
+    Module = "9. Configuration & Audit";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field decision_id
+                {
+                    DisplayName = "Decision ID";
+                    LinkName = "decision_id";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field topic
+                {
+                    DisplayName = "Topic";
+                    LinkName = "topic";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field stakeholders
+                {
+                    DisplayName = "Stakeholders";
+                    LinkName = "stakeholders";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                    AllowMultiple = true;
+                }
+                Field decision_details
+                {
+                    DisplayName = "Decision Details";
+                    LinkName = "decision_details";
+                    Type = "MultiLine";
+                    IsMandatory = true;
+                }
+                Field decision_date
+                {
+                    DisplayName = "Decision Date";
+                    LinkName = "decision_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field follow_up_actions
+                {
+                    DisplayName = "Follow-up Actions";
+                    LinkName = "follow_up_actions";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

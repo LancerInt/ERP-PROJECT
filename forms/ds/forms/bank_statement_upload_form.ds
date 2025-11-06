@@ -1,0 +1,104 @@
+// Module: 7. Finance Module
+form bank_statement_upload
+{
+    DisplayName = "Bank Statement Upload";
+    LinkName = "bank_statement_upload";
+    Module = "7. Finance Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field upload_id
+                {
+                    DisplayName = "Upload ID";
+                    LinkName = "upload_id";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field bank_account
+                {
+                    DisplayName = "Bank Account";
+                    LinkName = "bank_account";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field statement_period_start
+                {
+                    DisplayName = "Statement Period Start";
+                    LinkName = "statement_period_start";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field statement_period_end
+                {
+                    DisplayName = "Statement Period End";
+                    LinkName = "statement_period_end";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field upload_date
+                {
+                    DisplayName = "Upload Date";
+                    LinkName = "upload_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field statement_file
+                {
+                    DisplayName = "Statement File";
+                    LinkName = "statement_file";
+                    Type = "UploadFile";
+                    IsMandatory = true;
+                    MaxFileCount = 10;
+                    AllowMultiple = true;
+                    FileSource = "LocalDrive";
+                    HelpText = "PDF/CSV";
+                }
+                Field parsing_status
+                {
+                    DisplayName = "Parsing Status";
+                    LinkName = "parsing_status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Pending / Parsed / Error";
+                }
+                Field auto_matched_entries
+                {
+                    DisplayName = "Auto-Matched Entries";
+                    LinkName = "auto_matched_entries";
+                    Type = "SubForm";
+                    SubFormLinkName = "auto_matched_entries";
+                }
+                Field exceptions
+                {
+                    DisplayName = "Exceptions";
+                    LinkName = "exceptions";
+                    Type = "SubForm";
+                    SubFormLinkName = "exceptions";
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

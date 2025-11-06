@@ -1,0 +1,92 @@
+// Module: 5. Quality Control Module
+form qc_lab_job
+{
+    DisplayName = "QC Lab Job";
+    LinkName = "qc_lab_job";
+    Module = "5. Quality Control Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field job_no
+                {
+                    DisplayName = "Job No.";
+                    LinkName = "job_no";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field qc_request
+                {
+                    DisplayName = "QC Request";
+                    LinkName = "qc_request";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "qc_request";
+                }
+                Field analyst
+                {
+                    DisplayName = "Analyst";
+                    LinkName = "analyst";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field assigned_parameters
+                {
+                    DisplayName = "Assigned Parameters";
+                    LinkName = "assigned_parameters";
+                    Type = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "assigned_parameters";
+                }
+                Field sample_received_date
+                {
+                    DisplayName = "Sample Received Date";
+                    LinkName = "sample_received_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field results_attachment
+                {
+                    DisplayName = "Results Attachment";
+                    LinkName = "results_attachment";
+                    Type = "UploadFile";
+                    MaxFileCount = 10;
+                    AllowMultiple = true;
+                    FileSource = "LocalDrive";
+                    HelpText = "Raw data";
+                }
+                Field comments
+                {
+                    DisplayName = "Comments";
+                    LinkName = "comments";
+                    Type = "MultiLine";
+                }
+                Field status
+                {
+                    DisplayName = "Status";
+                    LinkName = "status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Assigned / In Progress / Completed";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

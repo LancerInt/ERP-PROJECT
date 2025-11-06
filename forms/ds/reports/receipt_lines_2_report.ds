@@ -1,0 +1,119 @@
+report receipt_lines_2_report
+{
+    DisplayName = "Receipt Lines Report";
+    LinkName = "receipt_lines_2_report";
+    Type = "List";
+    SourceFormLinkName = "receipt_lines_2";
+
+    ListView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch
+            {
+                FieldLinkName = "batch";
+            }
+            Column quantity_dispatched
+            {
+                FieldLinkName = "quantity_dispatched";
+            }
+            Column quantity_received
+            {
+                FieldLinkName = "quantity_received";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column received_godown
+            {
+                FieldLinkName = "received_godown";
+            }
+            Column condition
+            {
+                FieldLinkName = "condition";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch
+            {
+                FieldLinkName = "batch";
+            }
+            Column quantity_dispatched
+            {
+                FieldLinkName = "quantity_dispatched";
+            }
+            Column quantity_received
+            {
+                FieldLinkName = "quantity_received";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column received_godown
+            {
+                FieldLinkName = "received_godown";
+            }
+            Column condition
+            {
+                FieldLinkName = "condition";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column product
+                    {
+                        FieldLinkName = "product";
+                    }
+                    Column batch
+                    {
+                        FieldLinkName = "batch";
+                    }
+                    Column quantity_dispatched
+                    {
+                        FieldLinkName = "quantity_dispatched";
+                    }
+                    Column quantity_received
+                    {
+                        FieldLinkName = "quantity_received";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                    Column received_godown
+                    {
+                        FieldLinkName = "received_godown";
+                    }
+                    Column condition
+                    {
+                        FieldLinkName = "condition";
+                    }
+                }
+            }
+        }
+    }
+}

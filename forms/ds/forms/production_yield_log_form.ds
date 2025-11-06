@@ -1,0 +1,100 @@
+// Module: 4. Production Module
+form production_yield_log
+{
+    DisplayName = "Production Yield Log";
+    LinkName = "production_yield_log";
+    Module = "4. Production Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field log_id
+                {
+                    DisplayName = "Log ID";
+                    LinkName = "log_id";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field work_order
+                {
+                    DisplayName = "Work Order";
+                    LinkName = "work_order";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "work_order_production_batch";
+                }
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field planned_yield
+                {
+                    DisplayName = "Planned Yield %";
+                    LinkName = "planned_yield";
+                    Type = "Decimal";
+                }
+                Field actual_output_qty
+                {
+                    DisplayName = "Actual Output Qty";
+                    LinkName = "actual_output_qty";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field purity
+                {
+                    DisplayName = "Purity %";
+                    LinkName = "purity";
+                    Type = "Decimal";
+                    ConditionalMandatory = true;
+                }
+                Field ai_content
+                {
+                    DisplayName = "AI Content";
+                    LinkName = "ai_content";
+                    Type = "Decimal";
+                    ConditionalMandatory = true;
+                }
+                Field variance
+                {
+                    DisplayName = "Variance %";
+                    LinkName = "variance";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+                Field report_date
+                {
+                    DisplayName = "Report Date";
+                    LinkName = "report_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

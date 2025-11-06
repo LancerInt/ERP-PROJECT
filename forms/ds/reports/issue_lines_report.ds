@@ -1,0 +1,107 @@
+report issue_lines_report
+{
+    DisplayName = "Issue Lines Report";
+    LinkName = "issue_lines_report";
+    Type = "List";
+    SourceFormLinkName = "issue_lines";
+
+    ListView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch_out
+            {
+                FieldLinkName = "batch_out";
+            }
+            Column godown
+            {
+                FieldLinkName = "godown";
+            }
+            Column quantity_issued
+            {
+                FieldLinkName = "quantity_issued";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column reserved_for_template
+            {
+                FieldLinkName = "reserved_for_template";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch_out
+            {
+                FieldLinkName = "batch_out";
+            }
+            Column godown
+            {
+                FieldLinkName = "godown";
+            }
+            Column quantity_issued
+            {
+                FieldLinkName = "quantity_issued";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column reserved_for_template
+            {
+                FieldLinkName = "reserved_for_template";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column product
+                    {
+                        FieldLinkName = "product";
+                    }
+                    Column batch_out
+                    {
+                        FieldLinkName = "batch_out";
+                    }
+                    Column godown
+                    {
+                        FieldLinkName = "godown";
+                    }
+                    Column quantity_issued
+                    {
+                        FieldLinkName = "quantity_issued";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                    Column reserved_for_template
+                    {
+                        FieldLinkName = "reserved_for_template";
+                    }
+                }
+            }
+        }
+    }
+}

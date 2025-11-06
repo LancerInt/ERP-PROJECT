@@ -1,0 +1,119 @@
+// Module: 6. Inventory, Logistics & Returns
+form stock_transfer_dc
+{
+    DisplayName = "Stock Transfer DC";
+    LinkName = "stock_transfer_dc";
+    Module = "6. Inventory, Logistics & Returns";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field transfer_no
+                {
+                    DisplayName = "Transfer No.";
+                    LinkName = "transfer_no";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field created_date
+                {
+                    DisplayName = "Created Date";
+                    LinkName = "created_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field from_warehouse
+                {
+                    DisplayName = "From Warehouse";
+                    LinkName = "from_warehouse";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field to_warehouse
+                {
+                    DisplayName = "To Warehouse";
+                    LinkName = "to_warehouse";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field dispatch_date
+                {
+                    DisplayName = "Dispatch Date";
+                    LinkName = "dispatch_date";
+                    Type = "Date";
+                }
+                Field transporter
+                {
+                    DisplayName = "Transporter";
+                    LinkName = "transporter";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "transporter";
+                }
+                Field freight_terms
+                {
+                    DisplayName = "Freight Terms";
+                    LinkName = "freight_terms";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field loading_wages
+                {
+                    DisplayName = "Loading Wages";
+                    LinkName = "loading_wages";
+                    Type = "INR";
+                }
+                Field freight_amount
+                {
+                    DisplayName = "Freight Amount";
+                    LinkName = "freight_amount";
+                    Type = "INR";
+                }
+                Field transfer_lines
+                {
+                    DisplayName = "Transfer Lines";
+                    LinkName = "transfer_lines";
+                    Type = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "transfer_lines";
+                    HelpText = "Products";
+                }
+                Field status
+                {
+                    DisplayName = "Status";
+                    LinkName = "status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Draft / In Transit / Received / Closed";
+                }
+                Field documents
+                {
+                    DisplayName = "Documents";
+                    LinkName = "documents";
+                    Type = "UploadFile";
+                    MaxFileCount = 10;
+                    AllowMultiple = true;
+                    FileSource = "LocalDrive";
+                    HelpText = "DC";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

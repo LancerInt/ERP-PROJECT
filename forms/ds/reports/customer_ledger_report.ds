@@ -1,0 +1,167 @@
+report customer_ledger_report
+{
+    DisplayName = "Customer Ledger Report";
+    LinkName = "customer_ledger_report";
+    Type = "List";
+    SourceFormLinkName = "customer_ledger";
+
+    ListView
+    {
+        Columns
+        {
+            Column ledger_id
+            {
+                FieldLinkName = "ledger_id";
+            }
+            Column customer
+            {
+                FieldLinkName = "customer";
+            }
+            Column document_type
+            {
+                FieldLinkName = "document_type";
+            }
+            Column document_reference
+            {
+                FieldLinkName = "document_reference";
+            }
+            Column document_date
+            {
+                FieldLinkName = "document_date";
+            }
+            Column debit_amount
+            {
+                FieldLinkName = "debit_amount";
+            }
+            Column credit_amount
+            {
+                FieldLinkName = "credit_amount";
+            }
+            Column due_date
+            {
+                FieldLinkName = "due_date";
+            }
+            Column payment_status
+            {
+                FieldLinkName = "payment_status";
+            }
+            Column reminder_sent_flags
+            {
+                FieldLinkName = "reminder_sent_flags";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column ledger_id
+            {
+                FieldLinkName = "ledger_id";
+            }
+            Column customer
+            {
+                FieldLinkName = "customer";
+            }
+            Column document_type
+            {
+                FieldLinkName = "document_type";
+            }
+            Column document_reference
+            {
+                FieldLinkName = "document_reference";
+            }
+            Column document_date
+            {
+                FieldLinkName = "document_date";
+            }
+            Column debit_amount
+            {
+                FieldLinkName = "debit_amount";
+            }
+            Column credit_amount
+            {
+                FieldLinkName = "credit_amount";
+            }
+            Column due_date
+            {
+                FieldLinkName = "due_date";
+            }
+            Column payment_status
+            {
+                FieldLinkName = "payment_status";
+            }
+            Column reminder_sent_flags
+            {
+                FieldLinkName = "reminder_sent_flags";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column ledger_id
+                    {
+                        FieldLinkName = "ledger_id";
+                    }
+                    Column customer
+                    {
+                        FieldLinkName = "customer";
+                    }
+                    Column document_type
+                    {
+                        FieldLinkName = "document_type";
+                    }
+                    Column document_reference
+                    {
+                        FieldLinkName = "document_reference";
+                    }
+                    Column document_date
+                    {
+                        FieldLinkName = "document_date";
+                    }
+                    Column debit_amount
+                    {
+                        FieldLinkName = "debit_amount";
+                    }
+                    Column credit_amount
+                    {
+                        FieldLinkName = "credit_amount";
+                    }
+                    Column due_date
+                    {
+                        FieldLinkName = "due_date";
+                    }
+                    Column payment_status
+                    {
+                        FieldLinkName = "payment_status";
+                    }
+                    Column reminder_sent_flags
+                    {
+                        FieldLinkName = "reminder_sent_flags";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,107 @@
+report system_parameters_report
+{
+    DisplayName = "System Parameters Report";
+    LinkName = "system_parameters_report";
+    Type = "List";
+    SourceFormLinkName = "system_parameters";
+
+    ListView
+    {
+        Columns
+        {
+            Column parameter_name
+            {
+                FieldLinkName = "parameter_name";
+            }
+            Column parameter_value
+            {
+                FieldLinkName = "parameter_value";
+            }
+            Column module_scope
+            {
+                FieldLinkName = "module_scope";
+            }
+            Column description
+            {
+                FieldLinkName = "description";
+            }
+            Column last_updated_by
+            {
+                FieldLinkName = "last_updated_by";
+            }
+            Column effective_date
+            {
+                FieldLinkName = "effective_date";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column parameter_name
+            {
+                FieldLinkName = "parameter_name";
+            }
+            Column parameter_value
+            {
+                FieldLinkName = "parameter_value";
+            }
+            Column module_scope
+            {
+                FieldLinkName = "module_scope";
+            }
+            Column description
+            {
+                FieldLinkName = "description";
+            }
+            Column last_updated_by
+            {
+                FieldLinkName = "last_updated_by";
+            }
+            Column effective_date
+            {
+                FieldLinkName = "effective_date";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column parameter_name
+                    {
+                        FieldLinkName = "parameter_name";
+                    }
+                    Column parameter_value
+                    {
+                        FieldLinkName = "parameter_value";
+                    }
+                    Column module_scope
+                    {
+                        FieldLinkName = "module_scope";
+                    }
+                    Column description
+                    {
+                        FieldLinkName = "description";
+                    }
+                    Column last_updated_by
+                    {
+                        FieldLinkName = "last_updated_by";
+                    }
+                    Column effective_date
+                    {
+                        FieldLinkName = "effective_date";
+                    }
+                }
+            }
+        }
+    }
+}

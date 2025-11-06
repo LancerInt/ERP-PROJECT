@@ -1,0 +1,107 @@
+report loading_unloading_wages_report
+{
+    DisplayName = "Loading Unloading Wages Report";
+    LinkName = "loading_unloading_wages_report";
+    Type = "List";
+    SourceFormLinkName = "loading_unloading_wages";
+
+    ListView
+    {
+        Columns
+        {
+            Column wage_type
+            {
+                FieldLinkName = "wage_type";
+            }
+            Column contractor_vendor
+            {
+                FieldLinkName = "contractor_vendor";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column tds_applicable
+            {
+                FieldLinkName = "tds_applicable";
+            }
+            Column payable_by
+            {
+                FieldLinkName = "payable_by";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column wage_type
+            {
+                FieldLinkName = "wage_type";
+            }
+            Column contractor_vendor
+            {
+                FieldLinkName = "contractor_vendor";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column tds_applicable
+            {
+                FieldLinkName = "tds_applicable";
+            }
+            Column payable_by
+            {
+                FieldLinkName = "payable_by";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column wage_type
+                    {
+                        FieldLinkName = "wage_type";
+                    }
+                    Column contractor_vendor
+                    {
+                        FieldLinkName = "contractor_vendor";
+                    }
+                    Column amount
+                    {
+                        FieldLinkName = "amount";
+                    }
+                    Column tds_applicable
+                    {
+                        FieldLinkName = "tds_applicable";
+                    }
+                    Column payable_by
+                    {
+                        FieldLinkName = "payable_by";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                }
+            }
+        }
+    }
+}

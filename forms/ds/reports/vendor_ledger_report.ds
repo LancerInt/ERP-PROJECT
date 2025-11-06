@@ -1,0 +1,179 @@
+report vendor_ledger_report
+{
+    DisplayName = "Vendor Ledger Report";
+    LinkName = "vendor_ledger_report";
+    Type = "List";
+    SourceFormLinkName = "vendor_ledger";
+
+    ListView
+    {
+        Columns
+        {
+            Column ledger_id
+            {
+                FieldLinkName = "ledger_id";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column document_type
+            {
+                FieldLinkName = "document_type";
+            }
+            Column document_reference
+            {
+                FieldLinkName = "document_reference";
+            }
+            Column document_date
+            {
+                FieldLinkName = "document_date";
+            }
+            Column debit_amount
+            {
+                FieldLinkName = "debit_amount";
+            }
+            Column credit_amount
+            {
+                FieldLinkName = "credit_amount";
+            }
+            Column tax_breakdown
+            {
+                FieldLinkName = "tax_breakdown";
+            }
+            Column due_date
+            {
+                FieldLinkName = "due_date";
+            }
+            Column payment_status
+            {
+                FieldLinkName = "payment_status";
+            }
+            Column ageing_bucket
+            {
+                FieldLinkName = "ageing_bucket";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column ledger_id
+            {
+                FieldLinkName = "ledger_id";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column document_type
+            {
+                FieldLinkName = "document_type";
+            }
+            Column document_reference
+            {
+                FieldLinkName = "document_reference";
+            }
+            Column document_date
+            {
+                FieldLinkName = "document_date";
+            }
+            Column debit_amount
+            {
+                FieldLinkName = "debit_amount";
+            }
+            Column credit_amount
+            {
+                FieldLinkName = "credit_amount";
+            }
+            Column tax_breakdown
+            {
+                FieldLinkName = "tax_breakdown";
+            }
+            Column due_date
+            {
+                FieldLinkName = "due_date";
+            }
+            Column payment_status
+            {
+                FieldLinkName = "payment_status";
+            }
+            Column ageing_bucket
+            {
+                FieldLinkName = "ageing_bucket";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column ledger_id
+                    {
+                        FieldLinkName = "ledger_id";
+                    }
+                    Column vendor
+                    {
+                        FieldLinkName = "vendor";
+                    }
+                    Column document_type
+                    {
+                        FieldLinkName = "document_type";
+                    }
+                    Column document_reference
+                    {
+                        FieldLinkName = "document_reference";
+                    }
+                    Column document_date
+                    {
+                        FieldLinkName = "document_date";
+                    }
+                    Column debit_amount
+                    {
+                        FieldLinkName = "debit_amount";
+                    }
+                    Column credit_amount
+                    {
+                        FieldLinkName = "credit_amount";
+                    }
+                    Column tax_breakdown
+                    {
+                        FieldLinkName = "tax_breakdown";
+                    }
+                    Column due_date
+                    {
+                        FieldLinkName = "due_date";
+                    }
+                    Column payment_status
+                    {
+                        FieldLinkName = "payment_status";
+                    }
+                    Column ageing_bucket
+                    {
+                        FieldLinkName = "ageing_bucket";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

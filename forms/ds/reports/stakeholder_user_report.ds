@@ -1,0 +1,155 @@
+report stakeholder_user_report
+{
+    DisplayName = "Stakeholder User Report";
+    LinkName = "stakeholder_user_report";
+    Type = "List";
+    SourceFormLinkName = "stakeholder_user";
+
+    ListView
+    {
+        Columns
+        {
+            Column portal_user_id
+            {
+                FieldLinkName = "portal_user_id";
+            }
+            Column employee_record
+            {
+                FieldLinkName = "employee_record";
+            }
+            Column primary_email
+            {
+                FieldLinkName = "primary_email";
+            }
+            Column mobile
+            {
+                FieldLinkName = "mobile";
+            }
+            Column assigned_roles
+            {
+                FieldLinkName = "assigned_roles";
+            }
+            Column default_warehouse
+            {
+                FieldLinkName = "default_warehouse";
+            }
+            Column warehouse_scope
+            {
+                FieldLinkName = "warehouse_scope";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column last_accessed
+            {
+                FieldLinkName = "last_accessed";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column portal_user_id
+            {
+                FieldLinkName = "portal_user_id";
+            }
+            Column employee_record
+            {
+                FieldLinkName = "employee_record";
+            }
+            Column primary_email
+            {
+                FieldLinkName = "primary_email";
+            }
+            Column mobile
+            {
+                FieldLinkName = "mobile";
+            }
+            Column assigned_roles
+            {
+                FieldLinkName = "assigned_roles";
+            }
+            Column default_warehouse
+            {
+                FieldLinkName = "default_warehouse";
+            }
+            Column warehouse_scope
+            {
+                FieldLinkName = "warehouse_scope";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column last_accessed
+            {
+                FieldLinkName = "last_accessed";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column portal_user_id
+                    {
+                        FieldLinkName = "portal_user_id";
+                    }
+                    Column employee_record
+                    {
+                        FieldLinkName = "employee_record";
+                    }
+                    Column primary_email
+                    {
+                        FieldLinkName = "primary_email";
+                    }
+                    Column mobile
+                    {
+                        FieldLinkName = "mobile";
+                    }
+                    Column assigned_roles
+                    {
+                        FieldLinkName = "assigned_roles";
+                    }
+                    Column default_warehouse
+                    {
+                        FieldLinkName = "default_warehouse";
+                    }
+                    Column warehouse_scope
+                    {
+                        FieldLinkName = "warehouse_scope";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                    Column last_accessed
+                    {
+                        FieldLinkName = "last_accessed";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

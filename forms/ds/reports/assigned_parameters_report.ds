@@ -1,0 +1,95 @@
+report assigned_parameters_report
+{
+    DisplayName = "Assigned Parameters Report";
+    LinkName = "assigned_parameters_report";
+    Type = "List";
+    SourceFormLinkName = "assigned_parameters";
+
+    ListView
+    {
+        Columns
+        {
+            Column parameter
+            {
+                FieldLinkName = "parameter";
+            }
+            Column result_value
+            {
+                FieldLinkName = "result_value";
+            }
+            Column result_text
+            {
+                FieldLinkName = "result_text";
+            }
+            Column result_photo
+            {
+                FieldLinkName = "result_photo";
+            }
+            Column pass_fail
+            {
+                FieldLinkName = "pass_fail";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column parameter
+            {
+                FieldLinkName = "parameter";
+            }
+            Column result_value
+            {
+                FieldLinkName = "result_value";
+            }
+            Column result_text
+            {
+                FieldLinkName = "result_text";
+            }
+            Column result_photo
+            {
+                FieldLinkName = "result_photo";
+            }
+            Column pass_fail
+            {
+                FieldLinkName = "pass_fail";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column parameter
+                    {
+                        FieldLinkName = "parameter";
+                    }
+                    Column result_value
+                    {
+                        FieldLinkName = "result_value";
+                    }
+                    Column result_text
+                    {
+                        FieldLinkName = "result_text";
+                    }
+                    Column result_photo
+                    {
+                        FieldLinkName = "result_photo";
+                    }
+                    Column pass_fail
+                    {
+                        FieldLinkName = "pass_fail";
+                    }
+                }
+            }
+        }
+    }
+}

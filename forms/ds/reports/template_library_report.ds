@@ -1,0 +1,179 @@
+report template_library_report
+{
+    DisplayName = "Template Library Report";
+    LinkName = "template_library_report";
+    Type = "List";
+    SourceFormLinkName = "template_library";
+
+    ListView
+    {
+        Columns
+        {
+            Column template_id
+            {
+                FieldLinkName = "template_id";
+            }
+            Column template_type
+            {
+                FieldLinkName = "template_type";
+            }
+            Column name
+            {
+                FieldLinkName = "name";
+            }
+            Column warehouse_scope
+            {
+                FieldLinkName = "warehouse_scope";
+            }
+            Column revision_no
+            {
+                FieldLinkName = "revision_no";
+            }
+            Column effective_from
+            {
+                FieldLinkName = "effective_from";
+            }
+            Column effective_to
+            {
+                FieldLinkName = "effective_to";
+            }
+            Column layout_json_xml
+            {
+                FieldLinkName = "layout_json_xml";
+            }
+            Column requires_digital_signature
+            {
+                FieldLinkName = "requires_digital_signature";
+            }
+            Column created_by
+            {
+                FieldLinkName = "created_by";
+            }
+            Column approval_log
+            {
+                FieldLinkName = "approval_log";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column template_id
+            {
+                FieldLinkName = "template_id";
+            }
+            Column template_type
+            {
+                FieldLinkName = "template_type";
+            }
+            Column name
+            {
+                FieldLinkName = "name";
+            }
+            Column warehouse_scope
+            {
+                FieldLinkName = "warehouse_scope";
+            }
+            Column revision_no
+            {
+                FieldLinkName = "revision_no";
+            }
+            Column effective_from
+            {
+                FieldLinkName = "effective_from";
+            }
+            Column effective_to
+            {
+                FieldLinkName = "effective_to";
+            }
+            Column layout_json_xml
+            {
+                FieldLinkName = "layout_json_xml";
+            }
+            Column requires_digital_signature
+            {
+                FieldLinkName = "requires_digital_signature";
+            }
+            Column created_by
+            {
+                FieldLinkName = "created_by";
+            }
+            Column approval_log
+            {
+                FieldLinkName = "approval_log";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column template_id
+                    {
+                        FieldLinkName = "template_id";
+                    }
+                    Column template_type
+                    {
+                        FieldLinkName = "template_type";
+                    }
+                    Column name
+                    {
+                        FieldLinkName = "name";
+                    }
+                    Column warehouse_scope
+                    {
+                        FieldLinkName = "warehouse_scope";
+                    }
+                    Column revision_no
+                    {
+                        FieldLinkName = "revision_no";
+                    }
+                    Column effective_from
+                    {
+                        FieldLinkName = "effective_from";
+                    }
+                    Column effective_to
+                    {
+                        FieldLinkName = "effective_to";
+                    }
+                    Column layout_json_xml
+                    {
+                        FieldLinkName = "layout_json_xml";
+                    }
+                    Column requires_digital_signature
+                    {
+                        FieldLinkName = "requires_digital_signature";
+                    }
+                    Column created_by
+                    {
+                        FieldLinkName = "created_by";
+                    }
+                    Column approval_log
+                    {
+                        FieldLinkName = "approval_log";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                }
+            }
+        }
+    }
+}

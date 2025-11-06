@@ -1,0 +1,83 @@
+report hours_tasks_report
+{
+    DisplayName = "Hours / Tasks Report";
+    LinkName = "hours_tasks_report";
+    Type = "List";
+    SourceFormLinkName = "hours_tasks";
+
+    ListView
+    {
+        Columns
+        {
+            Column staff
+            {
+                FieldLinkName = "staff";
+            }
+            Column task_description
+            {
+                FieldLinkName = "task_description";
+            }
+            Column hours_worked
+            {
+                FieldLinkName = "hours_worked";
+            }
+            Column quantity_produced
+            {
+                FieldLinkName = "quantity_produced";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column staff
+            {
+                FieldLinkName = "staff";
+            }
+            Column task_description
+            {
+                FieldLinkName = "task_description";
+            }
+            Column hours_worked
+            {
+                FieldLinkName = "hours_worked";
+            }
+            Column quantity_produced
+            {
+                FieldLinkName = "quantity_produced";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column staff
+                    {
+                        FieldLinkName = "staff";
+                    }
+                    Column task_description
+                    {
+                        FieldLinkName = "task_description";
+                    }
+                    Column hours_worked
+                    {
+                        FieldLinkName = "hours_worked";
+                    }
+                    Column quantity_produced
+                    {
+                        FieldLinkName = "quantity_produced";
+                    }
+                }
+            }
+        }
+    }
+}

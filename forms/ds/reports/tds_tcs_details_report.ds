@@ -1,0 +1,83 @@
+report tds_tcs_details_report
+{
+    DisplayName = "TDS/TCS Details Report";
+    LinkName = "tds_tcs_details_report";
+    Type = "List";
+    SourceFormLinkName = "tds_tcs_details";
+
+    ListView
+    {
+        Columns
+        {
+            Column tax_type
+            {
+                FieldLinkName = "tax_type";
+            }
+            Column section
+            {
+                FieldLinkName = "section";
+            }
+            Column rate
+            {
+                FieldLinkName = "rate";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column tax_type
+            {
+                FieldLinkName = "tax_type";
+            }
+            Column section
+            {
+                FieldLinkName = "section";
+            }
+            Column rate
+            {
+                FieldLinkName = "rate";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column tax_type
+                    {
+                        FieldLinkName = "tax_type";
+                    }
+                    Column section
+                    {
+                        FieldLinkName = "section";
+                    }
+                    Column rate
+                    {
+                        FieldLinkName = "rate";
+                    }
+                    Column amount
+                    {
+                        FieldLinkName = "amount";
+                    }
+                }
+            }
+        }
+    }
+}

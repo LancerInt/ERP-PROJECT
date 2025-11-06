@@ -1,0 +1,64 @@
+// Module: 1. Core & Shared Masters
+form secondary_uoms
+{
+    DisplayName = "Secondary UOMs";
+    LinkName = "secondary_uoms";
+    Module = "1. Core & Shared Masters";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field to_uom
+                {
+                    DisplayName = "To UOM";
+                    LinkName = "to_uom";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field conversion_factor
+                {
+                    DisplayName = "Conversion Factor";
+                    LinkName = "conversion_factor";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                    HelpText = "Base to secondary";
+                }
+                Field specific_gravity_override
+                {
+                    DisplayName = "Specific Gravity Override";
+                    LinkName = "specific_gravity_override";
+                    Type = "Decimal";
+                    HelpText = "Optional";
+                }
+                Field valid_from
+                {
+                    DisplayName = "Valid From";
+                    LinkName = "valid_from";
+                    Type = "Date";
+                }
+                Field valid_to
+                {
+                    DisplayName = "Valid To";
+                    LinkName = "valid_to";
+                    Type = "Date";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

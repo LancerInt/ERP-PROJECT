@@ -1,0 +1,132 @@
+// Module: 2. Purchase Module
+form po_lines
+{
+    DisplayName = "PO Lines";
+    LinkName = "po_lines";
+    Module = "2. Purchase Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field line_no
+                {
+                    DisplayName = "Line No.";
+                    LinkName = "line_no";
+                    Type = "Number";
+                    IsMandatory = true;
+                }
+                Field product_service
+                {
+                    DisplayName = "Product/Service";
+                    LinkName = "product_service";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field description
+                {
+                    DisplayName = "Description";
+                    LinkName = "description";
+                    Type = "MultiLine";
+                }
+                Field quantity_ordered
+                {
+                    DisplayName = "Quantity Ordered";
+                    LinkName = "quantity_ordered";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field unit_price
+                {
+                    DisplayName = "Unit Price";
+                    LinkName = "unit_price";
+                    Type = "INR";
+                    IsMandatory = true;
+                }
+                Field discount
+                {
+                    DisplayName = "Discount %";
+                    LinkName = "discount";
+                    Type = "Decimal";
+                }
+                Field gst
+                {
+                    DisplayName = "GST %";
+                    LinkName = "gst";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field extra_commission
+                {
+                    DisplayName = "Extra Commission";
+                    LinkName = "extra_commission";
+                    Type = "INR";
+                    HelpText = "Applied for select products; included in landed cost";
+                }
+                Field agent_commission
+                {
+                    DisplayName = "Agent Commission";
+                    LinkName = "agent_commission";
+                    Type = "INR";
+                    HelpText = "Commission payable to external agents; included in landed cost";
+                }
+                Field freight_estimate
+                {
+                    DisplayName = "Freight Estimate";
+                    LinkName = "freight_estimate";
+                    Type = "INR";
+                    HelpText = "Tentative freight";
+                }
+                Field delivery_schedule
+                {
+                    DisplayName = "Delivery Schedule";
+                    LinkName = "delivery_schedule";
+                    Type = "Date";
+                }
+                Field linked_pr_line
+                {
+                    DisplayName = "Linked PR Line";
+                    LinkName = "linked_pr_line";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "pr_lines";
+                }
+                Field linked_rfq_line
+                {
+                    DisplayName = "Linked RFQ Line";
+                    LinkName = "linked_rfq_line";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "quote_lines";
+                }
+                Field batch_requirement_notes
+                {
+                    DisplayName = "Batch Requirement Notes";
+                    LinkName = "batch_requirement_notes";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

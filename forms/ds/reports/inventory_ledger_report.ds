@@ -1,0 +1,215 @@
+report inventory_ledger_report
+{
+    DisplayName = "Inventory Ledger Report";
+    LinkName = "inventory_ledger_report";
+    Type = "List";
+    SourceFormLinkName = "inventory_ledger";
+
+    ListView
+    {
+        Columns
+        {
+            Column ledger_entry_id
+            {
+                FieldLinkName = "ledger_entry_id";
+            }
+            Column transaction_date
+            {
+                FieldLinkName = "transaction_date";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column godown
+            {
+                FieldLinkName = "godown";
+            }
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch
+            {
+                FieldLinkName = "batch";
+            }
+            Column quantity_in
+            {
+                FieldLinkName = "quantity_in";
+            }
+            Column quantity_out
+            {
+                FieldLinkName = "quantity_out";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column transaction_type
+            {
+                FieldLinkName = "transaction_type";
+            }
+            Column source_document
+            {
+                FieldLinkName = "source_document";
+            }
+            Column cost
+            {
+                FieldLinkName = "cost";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column fifo_layer_id
+            {
+                FieldLinkName = "fifo_layer_id";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column ledger_entry_id
+            {
+                FieldLinkName = "ledger_entry_id";
+            }
+            Column transaction_date
+            {
+                FieldLinkName = "transaction_date";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column godown
+            {
+                FieldLinkName = "godown";
+            }
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch
+            {
+                FieldLinkName = "batch";
+            }
+            Column quantity_in
+            {
+                FieldLinkName = "quantity_in";
+            }
+            Column quantity_out
+            {
+                FieldLinkName = "quantity_out";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column transaction_type
+            {
+                FieldLinkName = "transaction_type";
+            }
+            Column source_document
+            {
+                FieldLinkName = "source_document";
+            }
+            Column cost
+            {
+                FieldLinkName = "cost";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column fifo_layer_id
+            {
+                FieldLinkName = "fifo_layer_id";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column ledger_entry_id
+                    {
+                        FieldLinkName = "ledger_entry_id";
+                    }
+                    Column transaction_date
+                    {
+                        FieldLinkName = "transaction_date";
+                    }
+                    Column warehouse
+                    {
+                        FieldLinkName = "warehouse";
+                    }
+                    Column godown
+                    {
+                        FieldLinkName = "godown";
+                    }
+                    Column product
+                    {
+                        FieldLinkName = "product";
+                    }
+                    Column batch
+                    {
+                        FieldLinkName = "batch";
+                    }
+                    Column quantity_in
+                    {
+                        FieldLinkName = "quantity_in";
+                    }
+                    Column quantity_out
+                    {
+                        FieldLinkName = "quantity_out";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                    Column transaction_type
+                    {
+                        FieldLinkName = "transaction_type";
+                    }
+                    Column source_document
+                    {
+                        FieldLinkName = "source_document";
+                    }
+                    Column cost
+                    {
+                        FieldLinkName = "cost";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                    Column fifo_layer_id
+                    {
+                        FieldLinkName = "fifo_layer_id";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                }
+            }
+        }
+    }
+}

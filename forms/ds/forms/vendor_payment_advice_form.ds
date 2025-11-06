@@ -1,0 +1,124 @@
+// Module: 2. Purchase Module
+form vendor_payment_advice
+{
+    DisplayName = "Vendor Payment Advice";
+    LinkName = "vendor_payment_advice";
+    Module = "2. Purchase Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field advice_no
+                {
+                    DisplayName = "Advice No.";
+                    LinkName = "advice_no";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field vendor
+                {
+                    DisplayName = "Vendor";
+                    LinkName = "vendor";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "vendor";
+                }
+                Field source_document_type
+                {
+                    DisplayName = "Source Document Type";
+                    LinkName = "source_document_type";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "PO / Receipt / Freight / Wage / Credit Note";
+                }
+                Field source_document
+                {
+                    DisplayName = "Source Document";
+                    LinkName = "source_document";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkNames = ["purchase_order", "receipt_advice", "freight_advice", "wage_voucher", "credit_debit_note"];
+                    HelpText = "Dynamic lookup";
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    Type = "INR";
+                    IsMandatory = true;
+                }
+                Field tax_components
+                {
+                    DisplayName = "Tax Components";
+                    LinkName = "tax_components";
+                    Type = "SubForm";
+                    SubFormLinkName = "tax_components";
+                    HelpText = "TDS/TCS";
+                }
+                Field due_date
+                {
+                    DisplayName = "Due Date";
+                    LinkName = "due_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field payment_method
+                {
+                    DisplayName = "Payment Method";
+                    LinkName = "payment_method";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Bank Transfer / Cash / Cheque / UPI";
+                }
+                Field prepared_by
+                {
+                    DisplayName = "Prepared By";
+                    LinkName = "prepared_by";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                    HelpText = "Warehouse Coordinator (Office) originator";
+                }
+                Field approval_workflow
+                {
+                    DisplayName = "Approval Workflow";
+                    LinkName = "approval_workflow";
+                    Type = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "approval_workflow";
+                    HelpText = "Finance Manager → Office Manager";
+                }
+                Field status
+                {
+                    DisplayName = "Status";
+                    LinkName = "status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Draft / Pending / Approved / Paid / On Hold";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

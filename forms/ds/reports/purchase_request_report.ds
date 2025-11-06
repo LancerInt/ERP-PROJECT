@@ -1,0 +1,239 @@
+report purchase_request_report
+{
+    DisplayName = "Purchase Request (PR) Report";
+    LinkName = "purchase_request_report";
+    Type = "List";
+    SourceFormLinkName = "purchase_request";
+
+    ListView
+    {
+        Columns
+        {
+            Column pr_no
+            {
+                FieldLinkName = "pr_no";
+            }
+            Column request_date
+            {
+                FieldLinkName = "request_date";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column godown
+            {
+                FieldLinkName = "godown";
+            }
+            Column requested_by
+            {
+                FieldLinkName = "requested_by";
+            }
+            Column requestor_role
+            {
+                FieldLinkName = "requestor_role";
+            }
+            Column requirement_type
+            {
+                FieldLinkName = "requirement_type";
+            }
+            Column lines
+            {
+                FieldLinkName = "lines";
+            }
+            Column priority
+            {
+                FieldLinkName = "priority";
+            }
+            Column required_by_date
+            {
+                FieldLinkName = "required_by_date";
+            }
+            Column justification
+            {
+                FieldLinkName = "justification";
+            }
+            Column attachments
+            {
+                FieldLinkName = "attachments";
+            }
+            Column approval_status
+            {
+                FieldLinkName = "approval_status";
+            }
+            Column approval_trail
+            {
+                FieldLinkName = "approval_trail";
+            }
+            Column visibility_scope
+            {
+                FieldLinkName = "visibility_scope";
+            }
+            Column created_from_bom_request
+            {
+                FieldLinkName = "created_from_bom_request";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column pr_no
+            {
+                FieldLinkName = "pr_no";
+            }
+            Column request_date
+            {
+                FieldLinkName = "request_date";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column godown
+            {
+                FieldLinkName = "godown";
+            }
+            Column requested_by
+            {
+                FieldLinkName = "requested_by";
+            }
+            Column requestor_role
+            {
+                FieldLinkName = "requestor_role";
+            }
+            Column requirement_type
+            {
+                FieldLinkName = "requirement_type";
+            }
+            Column lines
+            {
+                FieldLinkName = "lines";
+            }
+            Column priority
+            {
+                FieldLinkName = "priority";
+            }
+            Column required_by_date
+            {
+                FieldLinkName = "required_by_date";
+            }
+            Column justification
+            {
+                FieldLinkName = "justification";
+            }
+            Column attachments
+            {
+                FieldLinkName = "attachments";
+            }
+            Column approval_status
+            {
+                FieldLinkName = "approval_status";
+            }
+            Column approval_trail
+            {
+                FieldLinkName = "approval_trail";
+            }
+            Column visibility_scope
+            {
+                FieldLinkName = "visibility_scope";
+            }
+            Column created_from_bom_request
+            {
+                FieldLinkName = "created_from_bom_request";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column pr_no
+                    {
+                        FieldLinkName = "pr_no";
+                    }
+                    Column request_date
+                    {
+                        FieldLinkName = "request_date";
+                    }
+                    Column warehouse
+                    {
+                        FieldLinkName = "warehouse";
+                    }
+                    Column godown
+                    {
+                        FieldLinkName = "godown";
+                    }
+                    Column requested_by
+                    {
+                        FieldLinkName = "requested_by";
+                    }
+                    Column requestor_role
+                    {
+                        FieldLinkName = "requestor_role";
+                    }
+                    Column requirement_type
+                    {
+                        FieldLinkName = "requirement_type";
+                    }
+                    Column lines
+                    {
+                        FieldLinkName = "lines";
+                    }
+                    Column priority
+                    {
+                        FieldLinkName = "priority";
+                    }
+                    Column required_by_date
+                    {
+                        FieldLinkName = "required_by_date";
+                    }
+                    Column justification
+                    {
+                        FieldLinkName = "justification";
+                    }
+                    Column attachments
+                    {
+                        FieldLinkName = "attachments";
+                    }
+                    Column approval_status
+                    {
+                        FieldLinkName = "approval_status";
+                    }
+                    Column approval_trail
+                    {
+                        FieldLinkName = "approval_trail";
+                    }
+                    Column visibility_scope
+                    {
+                        FieldLinkName = "visibility_scope";
+                    }
+                    Column created_from_bom_request
+                    {
+                        FieldLinkName = "created_from_bom_request";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

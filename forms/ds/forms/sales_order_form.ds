@@ -1,0 +1,148 @@
+// Module: 3. Sales Module
+form sales_order
+{
+    DisplayName = "Sales Order (SO)";
+    LinkName = "sales_order";
+    Module = "3. Sales Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field so_no
+                {
+                    DisplayName = "SO No.";
+                    LinkName = "so_no";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field customer
+                {
+                    DisplayName = "Customer";
+                    LinkName = "customer";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "customer";
+                }
+                Field company
+                {
+                    DisplayName = "Company";
+                    LinkName = "company";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "company";
+                }
+                Field warehouse
+                {
+                    DisplayName = "Warehouse";
+                    LinkName = "warehouse";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field price_list
+                {
+                    DisplayName = "Price List";
+                    LinkName = "price_list";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "price_list";
+                    HelpText = "Filter by customer";
+                }
+                Field credit_terms
+                {
+                    DisplayName = "Credit Terms";
+                    LinkName = "credit_terms";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Inherit from customer";
+                }
+                Field freight_terms
+                {
+                    DisplayName = "Freight Terms";
+                    LinkName = "freight_terms";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field customer_po_reference
+                {
+                    DisplayName = "Customer PO Reference";
+                    LinkName = "customer_po_reference";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "customer_po_upload";
+                }
+                Field so_date
+                {
+                    DisplayName = "SO Date";
+                    LinkName = "so_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field required_ship_date
+                {
+                    DisplayName = "Required Ship Date";
+                    LinkName = "required_ship_date";
+                    Type = "Date";
+                }
+                Field lines
+                {
+                    DisplayName = "Lines";
+                    LinkName = "lines";
+                    Type = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "so_lines";
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+                Field approval_status
+                {
+                    DisplayName = "Approval Status";
+                    LinkName = "approval_status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Draft / Pending / Approved / Rejected";
+                }
+                Field approved_by
+                {
+                    DisplayName = "Approved By";
+                    LinkName = "approved_by";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field approval_date
+                {
+                    DisplayName = "Approval Date";
+                    LinkName = "approval_date";
+                    Type = "DateTime";
+                }
+                Field assigned_warehouse_stakeholders
+                {
+                    DisplayName = "Assigned Warehouse Stakeholders";
+                    LinkName = "assigned_warehouse_stakeholders";
+                    Type = "SingleLine";
+                    AllowMultiple = true;
+                    HelpText = "Auto-share";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

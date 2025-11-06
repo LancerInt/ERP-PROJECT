@@ -1,0 +1,58 @@
+// Module: 2. Purchase Module
+form dispatch_eta_updates
+{
+    DisplayName = "Dispatch ETA Updates";
+    LinkName = "dispatch_eta_updates";
+    Module = "2. Purchase Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field update_date
+                {
+                    DisplayName = "Update Date";
+                    LinkName = "update_date";
+                    Type = "DateTime";
+                    IsMandatory = true;
+                }
+                Field updated_by
+                {
+                    DisplayName = "Updated By";
+                    LinkName = "updated_by";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field expected_arrival
+                {
+                    DisplayName = "Expected Arrival";
+                    LinkName = "expected_arrival";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

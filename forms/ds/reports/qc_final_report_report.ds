@@ -1,0 +1,155 @@
+report qc_final_report_report
+{
+    DisplayName = "QC Final Report Report";
+    LinkName = "qc_final_report_report";
+    Type = "List";
+    SourceFormLinkName = "qc_final_report";
+
+    ListView
+    {
+        Columns
+        {
+            Column report_no
+            {
+                FieldLinkName = "report_no";
+            }
+            Column qc_request
+            {
+                FieldLinkName = "qc_request";
+            }
+            Column template_revision
+            {
+                FieldLinkName = "template_revision";
+            }
+            Column prepared_by
+            {
+                FieldLinkName = "prepared_by";
+            }
+            Column prepared_date
+            {
+                FieldLinkName = "prepared_date";
+            }
+            Column overall_result
+            {
+                FieldLinkName = "overall_result";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+            Column digital_signature
+            {
+                FieldLinkName = "digital_signature";
+            }
+            Column distribution_list
+            {
+                FieldLinkName = "distribution_list";
+            }
+            Column attachments
+            {
+                FieldLinkName = "attachments";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column report_no
+            {
+                FieldLinkName = "report_no";
+            }
+            Column qc_request
+            {
+                FieldLinkName = "qc_request";
+            }
+            Column template_revision
+            {
+                FieldLinkName = "template_revision";
+            }
+            Column prepared_by
+            {
+                FieldLinkName = "prepared_by";
+            }
+            Column prepared_date
+            {
+                FieldLinkName = "prepared_date";
+            }
+            Column overall_result
+            {
+                FieldLinkName = "overall_result";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+            Column digital_signature
+            {
+                FieldLinkName = "digital_signature";
+            }
+            Column distribution_list
+            {
+                FieldLinkName = "distribution_list";
+            }
+            Column attachments
+            {
+                FieldLinkName = "attachments";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column report_no
+                    {
+                        FieldLinkName = "report_no";
+                    }
+                    Column qc_request
+                    {
+                        FieldLinkName = "qc_request";
+                    }
+                    Column template_revision
+                    {
+                        FieldLinkName = "template_revision";
+                    }
+                    Column prepared_by
+                    {
+                        FieldLinkName = "prepared_by";
+                    }
+                    Column prepared_date
+                    {
+                        FieldLinkName = "prepared_date";
+                    }
+                    Column overall_result
+                    {
+                        FieldLinkName = "overall_result";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                    Column digital_signature
+                    {
+                        FieldLinkName = "digital_signature";
+                    }
+                    Column distribution_list
+                    {
+                        FieldLinkName = "distribution_list";
+                    }
+                    Column attachments
+                    {
+                        FieldLinkName = "attachments";
+                    }
+                }
+            }
+        }
+    }
+}

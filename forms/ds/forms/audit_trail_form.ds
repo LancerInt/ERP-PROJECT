@@ -1,0 +1,100 @@
+// Module: 9. Configuration & Audit
+form audit_trail
+{
+    DisplayName = "Audit Trail";
+    LinkName = "audit_trail";
+    Module = "9. Configuration & Audit";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field audit_id
+                {
+                    DisplayName = "Audit ID";
+                    LinkName = "audit_id";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field module
+                {
+                    DisplayName = "Module";
+                    LinkName = "module";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field record_id
+                {
+                    DisplayName = "Record ID";
+                    LinkName = "record_id";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field action
+                {
+                    DisplayName = "Action";
+                    LinkName = "action";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Create / Update / Delete / Approve";
+                }
+                Field user
+                {
+                    DisplayName = "User";
+                    LinkName = "user";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field timestamp
+                {
+                    DisplayName = "Timestamp";
+                    LinkName = "timestamp";
+                    Type = "DateTime";
+                    IsMandatory = true;
+                }
+                Field before_snapshot
+                {
+                    DisplayName = "Before Snapshot";
+                    LinkName = "before_snapshot";
+                    Type = "UploadFile";
+                    MaxFileCount = 10;
+                    AllowMultiple = true;
+                    FileSource = "LocalDrive";
+                    HelpText = "JSON export";
+                }
+                Field after_snapshot
+                {
+                    DisplayName = "After Snapshot";
+                    LinkName = "after_snapshot";
+                    Type = "UploadFile";
+                    MaxFileCount = 10;
+                    AllowMultiple = true;
+                    FileSource = "LocalDrive";
+                    HelpText = "JSON export";
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

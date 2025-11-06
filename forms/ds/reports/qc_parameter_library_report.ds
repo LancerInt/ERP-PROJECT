@@ -1,0 +1,143 @@
+report qc_parameter_library_report
+{
+    DisplayName = "QC Parameter Library Report";
+    LinkName = "qc_parameter_library_report";
+    Type = "List";
+    SourceFormLinkName = "qc_parameter_library";
+
+    ListView
+    {
+        Columns
+        {
+            Column parameter_code
+            {
+                FieldLinkName = "parameter_code";
+            }
+            Column parameter_name
+            {
+                FieldLinkName = "parameter_name";
+            }
+            Column unit
+            {
+                FieldLinkName = "unit";
+            }
+            Column applicable_template
+            {
+                FieldLinkName = "applicable_template";
+            }
+            Column applicable_product
+            {
+                FieldLinkName = "applicable_product";
+            }
+            Column acceptable_min
+            {
+                FieldLinkName = "acceptable_min";
+            }
+            Column acceptable_max
+            {
+                FieldLinkName = "acceptable_max";
+            }
+            Column critical_flag
+            {
+                FieldLinkName = "critical_flag";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column parameter_code
+            {
+                FieldLinkName = "parameter_code";
+            }
+            Column parameter_name
+            {
+                FieldLinkName = "parameter_name";
+            }
+            Column unit
+            {
+                FieldLinkName = "unit";
+            }
+            Column applicable_template
+            {
+                FieldLinkName = "applicable_template";
+            }
+            Column applicable_product
+            {
+                FieldLinkName = "applicable_product";
+            }
+            Column acceptable_min
+            {
+                FieldLinkName = "acceptable_min";
+            }
+            Column acceptable_max
+            {
+                FieldLinkName = "acceptable_max";
+            }
+            Column critical_flag
+            {
+                FieldLinkName = "critical_flag";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column parameter_code
+                    {
+                        FieldLinkName = "parameter_code";
+                    }
+                    Column parameter_name
+                    {
+                        FieldLinkName = "parameter_name";
+                    }
+                    Column unit
+                    {
+                        FieldLinkName = "unit";
+                    }
+                    Column applicable_template
+                    {
+                        FieldLinkName = "applicable_template";
+                    }
+                    Column applicable_product
+                    {
+                        FieldLinkName = "applicable_product";
+                    }
+                    Column acceptable_min
+                    {
+                        FieldLinkName = "acceptable_min";
+                    }
+                    Column acceptable_max
+                    {
+                        FieldLinkName = "acceptable_max";
+                    }
+                    Column critical_flag
+                    {
+                        FieldLinkName = "critical_flag";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,179 @@
+report stock_transfer_receipt_report
+{
+    DisplayName = "Stock Transfer Receipt Report";
+    LinkName = "stock_transfer_receipt_report";
+    Type = "List";
+    SourceFormLinkName = "stock_transfer_receipt";
+
+    ListView
+    {
+        Columns
+        {
+            Column receipt_no
+            {
+                FieldLinkName = "receipt_no";
+            }
+            Column receipt_date
+            {
+                FieldLinkName = "receipt_date";
+            }
+            Column from_warehouse
+            {
+                FieldLinkName = "from_warehouse";
+            }
+            Column to_warehouse
+            {
+                FieldLinkName = "to_warehouse";
+            }
+            Column linked_transfer
+            {
+                FieldLinkName = "linked_transfer";
+            }
+            Column received_by
+            {
+                FieldLinkName = "received_by";
+            }
+            Column receipt_lines
+            {
+                FieldLinkName = "receipt_lines";
+            }
+            Column qc_result
+            {
+                FieldLinkName = "qc_result";
+            }
+            Column variance_notes
+            {
+                FieldLinkName = "variance_notes";
+            }
+            Column freight_details
+            {
+                FieldLinkName = "freight_details";
+            }
+            Column loading_unloading_wages
+            {
+                FieldLinkName = "loading_unloading_wages";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column receipt_no
+            {
+                FieldLinkName = "receipt_no";
+            }
+            Column receipt_date
+            {
+                FieldLinkName = "receipt_date";
+            }
+            Column from_warehouse
+            {
+                FieldLinkName = "from_warehouse";
+            }
+            Column to_warehouse
+            {
+                FieldLinkName = "to_warehouse";
+            }
+            Column linked_transfer
+            {
+                FieldLinkName = "linked_transfer";
+            }
+            Column received_by
+            {
+                FieldLinkName = "received_by";
+            }
+            Column receipt_lines
+            {
+                FieldLinkName = "receipt_lines";
+            }
+            Column qc_result
+            {
+                FieldLinkName = "qc_result";
+            }
+            Column variance_notes
+            {
+                FieldLinkName = "variance_notes";
+            }
+            Column freight_details
+            {
+                FieldLinkName = "freight_details";
+            }
+            Column loading_unloading_wages
+            {
+                FieldLinkName = "loading_unloading_wages";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column receipt_no
+                    {
+                        FieldLinkName = "receipt_no";
+                    }
+                    Column receipt_date
+                    {
+                        FieldLinkName = "receipt_date";
+                    }
+                    Column from_warehouse
+                    {
+                        FieldLinkName = "from_warehouse";
+                    }
+                    Column to_warehouse
+                    {
+                        FieldLinkName = "to_warehouse";
+                    }
+                    Column linked_transfer
+                    {
+                        FieldLinkName = "linked_transfer";
+                    }
+                    Column received_by
+                    {
+                        FieldLinkName = "received_by";
+                    }
+                    Column receipt_lines
+                    {
+                        FieldLinkName = "receipt_lines";
+                    }
+                    Column qc_result
+                    {
+                        FieldLinkName = "qc_result";
+                    }
+                    Column variance_notes
+                    {
+                        FieldLinkName = "variance_notes";
+                    }
+                    Column freight_details
+                    {
+                        FieldLinkName = "freight_details";
+                    }
+                    Column loading_unloading_wages
+                    {
+                        FieldLinkName = "loading_unloading_wages";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                }
+            }
+        }
+    }
+}

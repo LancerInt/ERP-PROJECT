@@ -1,0 +1,59 @@
+report wage_vouchers_report
+{
+    DisplayName = "Wage Vouchers Report";
+    LinkName = "wage_vouchers_report";
+    Type = "List";
+    SourceFormLinkName = "wage_vouchers";
+
+    ListView
+    {
+        Columns
+        {
+            Column wage_voucher
+            {
+                FieldLinkName = "wage_voucher";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column wage_voucher
+            {
+                FieldLinkName = "wage_voucher";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column wage_voucher
+                    {
+                        FieldLinkName = "wage_voucher";
+                    }
+                    Column amount
+                    {
+                        FieldLinkName = "amount";
+                    }
+                }
+            }
+        }
+    }
+}

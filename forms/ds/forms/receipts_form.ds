@@ -1,0 +1,81 @@
+// Module: Generated Utility Forms
+form receipts
+{
+    DisplayName = "Receipts";
+    LinkName = "receipts";
+    Module = "Generated Utility Forms";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field receipt_no
+                {
+                    DisplayName = "Receipt No.";
+                    LinkName = "receipt_no";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field customer
+                {
+                    DisplayName = "Customer";
+                    LinkName = "customer";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "customer";
+                }
+                Field receipt_date
+                {
+                    DisplayName = "Receipt Date";
+                    LinkName = "receipt_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    Type = "INR";
+                    IsMandatory = true;
+                }
+                Field payment_method
+                {
+                    DisplayName = "Payment Method";
+                    LinkName = "payment_method";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Bank Transfer / Cash / Cheque / UPI";
+                }
+                Field reference_document
+                {
+                    DisplayName = "Reference Document";
+                    LinkName = "reference_document";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "sales_invoice_check";
+                    HelpText = "Original invoice reference";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

@@ -1,0 +1,61 @@
+// Module: 1. Core & Shared Masters
+form id_proofs
+{
+    DisplayName = "ID Proofs";
+    LinkName = "id_proofs";
+    Module = "1. Core & Shared Masters";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field document_type
+                {
+                    DisplayName = "Document Type";
+                    LinkName = "document_type";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Aadhaar / PAN / License / Other";
+                }
+                Field document_number
+                {
+                    DisplayName = "Document Number";
+                    LinkName = "document_number";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field expiry_date
+                {
+                    DisplayName = "Expiry Date";
+                    LinkName = "expiry_date";
+                    Type = "Date";
+                }
+                Field attachment
+                {
+                    DisplayName = "Attachment";
+                    LinkName = "attachment";
+                    Type = "UploadFile";
+                    IsMandatory = true;
+                    MaxFileCount = 10;
+                    AllowMultiple = true;
+                    FileSource = "LocalDrive";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

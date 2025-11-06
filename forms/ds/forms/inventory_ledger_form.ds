@@ -1,0 +1,137 @@
+// Module: 6. Inventory, Logistics & Returns
+form inventory_ledger
+{
+    DisplayName = "Inventory Ledger";
+    LinkName = "inventory_ledger";
+    Module = "6. Inventory, Logistics & Returns";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field ledger_entry_id
+                {
+                    DisplayName = "Ledger Entry ID";
+                    LinkName = "ledger_entry_id";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field transaction_date
+                {
+                    DisplayName = "Transaction Date";
+                    LinkName = "transaction_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field warehouse
+                {
+                    DisplayName = "Warehouse";
+                    LinkName = "warehouse";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field godown
+                {
+                    DisplayName = "Godown";
+                    LinkName = "godown";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "godown";
+                    HelpText = "Stock location";
+                }
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field batch
+                {
+                    DisplayName = "Batch";
+                    LinkName = "batch";
+                    Type = "SingleLine";
+                }
+                Field quantity_in
+                {
+                    DisplayName = "Quantity In";
+                    LinkName = "quantity_in";
+                    Type = "Decimal";
+                }
+                Field quantity_out
+                {
+                    DisplayName = "Quantity Out";
+                    LinkName = "quantity_out";
+                    Type = "Decimal";
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field transaction_type
+                {
+                    DisplayName = "Transaction Type";
+                    LinkName = "transaction_type";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Receipt / Issue / Transfer / Adjustment / Dispatch";
+                }
+                Field source_document
+                {
+                    DisplayName = "Source Document";
+                    LinkName = "source_document";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkNames = ["purchase_order", "receipt_advice", "freight_advice", "wage_voucher", "credit_debit_note"];
+                }
+                Field cost
+                {
+                    DisplayName = "Cost";
+                    LinkName = "cost";
+                    Type = "INR";
+                }
+                Field status
+                {
+                    DisplayName = "Status";
+                    LinkName = "status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Available / In Transit / Reserved";
+                }
+                Field fifo_layer_id
+                {
+                    DisplayName = "FIFO Layer ID";
+                    LinkName = "fifo_layer_id";
+                    Type = "SingleLine";
+                    HelpText = "Valuation";
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

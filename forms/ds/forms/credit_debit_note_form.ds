@@ -1,0 +1,109 @@
+// Module: 7. Finance Module
+form credit_debit_note
+{
+    DisplayName = "Credit/Debit Note";
+    LinkName = "credit_debit_note";
+    Module = "7. Finance Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field note_no
+                {
+                    DisplayName = "Note No.";
+                    LinkName = "note_no";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field note_type
+                {
+                    DisplayName = "Note Type";
+                    LinkName = "note_type";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Credit / Debit";
+                }
+                Field vendor_customer
+                {
+                    DisplayName = "Vendor/Customer";
+                    LinkName = "vendor_customer";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkNames = ["vendor", "customer"];
+                }
+                Field source_document
+                {
+                    DisplayName = "Source Document";
+                    LinkName = "source_document";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkNames = ["purchase_order", "sales_invoice_check"];
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    Type = "INR";
+                    IsMandatory = true;
+                }
+                Field tax
+                {
+                    DisplayName = "Tax";
+                    LinkName = "tax";
+                    Type = "INR";
+                }
+                Field reason
+                {
+                    DisplayName = "Reason";
+                    LinkName = "reason";
+                    Type = "MultiLine";
+                    IsMandatory = true;
+                }
+                Field approval_status
+                {
+                    DisplayName = "Approval Status";
+                    LinkName = "approval_status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Draft / Pending / Approved";
+                }
+                Field approved_by
+                {
+                    DisplayName = "Approved By";
+                    LinkName = "approved_by";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field approval_date
+                {
+                    DisplayName = "Approval Date";
+                    LinkName = "approval_date";
+                    Type = "DateTime";
+                }
+                Field ledger_posting_reference
+                {
+                    DisplayName = "Ledger Posting Reference";
+                    LinkName = "ledger_posting_reference";
+                    Type = "Lookup";
+                    RelatedFormLinkNames = ["vendor_ledger", "customer_ledger", "freight_ledger", "wage_ledger"];
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

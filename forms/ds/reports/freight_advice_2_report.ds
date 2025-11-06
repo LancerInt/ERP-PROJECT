@@ -1,0 +1,263 @@
+report freight_advice_2_report
+{
+    DisplayName = "Freight Advice (Outbound) Report";
+    LinkName = "freight_advice_2_report";
+    Type = "List";
+    SourceFormLinkName = "freight_advice_2";
+
+    ListView
+    {
+        Columns
+        {
+            Column advice_no
+            {
+                FieldLinkName = "advice_no";
+            }
+            Column direction
+            {
+                FieldLinkName = "direction";
+            }
+            Column dispatch_challan
+            {
+                FieldLinkName = "dispatch_challan";
+            }
+            Column transporter
+            {
+                FieldLinkName = "transporter";
+            }
+            Column freight_type
+            {
+                FieldLinkName = "freight_type";
+            }
+            Column created_by
+            {
+                FieldLinkName = "created_by";
+            }
+            Column created_date
+            {
+                FieldLinkName = "created_date";
+            }
+            Column base_amount
+            {
+                FieldLinkName = "base_amount";
+            }
+            Column discount
+            {
+                FieldLinkName = "discount";
+            }
+            Column loading_wages_amount
+            {
+                FieldLinkName = "loading_wages_amount";
+            }
+            Column unloading_wages_amount
+            {
+                FieldLinkName = "unloading_wages_amount";
+            }
+            Column shipment_quantity
+            {
+                FieldLinkName = "shipment_quantity";
+            }
+            Column quantity_uom
+            {
+                FieldLinkName = "quantity_uom";
+            }
+            Column cost_per_unit_calc
+            {
+                FieldLinkName = "cost_per_unit_calc";
+            }
+            Column destination_state
+            {
+                FieldLinkName = "destination_state";
+            }
+            Column payable_amount
+            {
+                FieldLinkName = "payable_amount";
+            }
+            Column payment_schedule
+            {
+                FieldLinkName = "payment_schedule";
+            }
+            Column approval_workflow
+            {
+                FieldLinkName = "approval_workflow";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column advice_no
+            {
+                FieldLinkName = "advice_no";
+            }
+            Column direction
+            {
+                FieldLinkName = "direction";
+            }
+            Column dispatch_challan
+            {
+                FieldLinkName = "dispatch_challan";
+            }
+            Column transporter
+            {
+                FieldLinkName = "transporter";
+            }
+            Column freight_type
+            {
+                FieldLinkName = "freight_type";
+            }
+            Column created_by
+            {
+                FieldLinkName = "created_by";
+            }
+            Column created_date
+            {
+                FieldLinkName = "created_date";
+            }
+            Column base_amount
+            {
+                FieldLinkName = "base_amount";
+            }
+            Column discount
+            {
+                FieldLinkName = "discount";
+            }
+            Column loading_wages_amount
+            {
+                FieldLinkName = "loading_wages_amount";
+            }
+            Column unloading_wages_amount
+            {
+                FieldLinkName = "unloading_wages_amount";
+            }
+            Column shipment_quantity
+            {
+                FieldLinkName = "shipment_quantity";
+            }
+            Column quantity_uom
+            {
+                FieldLinkName = "quantity_uom";
+            }
+            Column cost_per_unit_calc
+            {
+                FieldLinkName = "cost_per_unit_calc";
+            }
+            Column destination_state
+            {
+                FieldLinkName = "destination_state";
+            }
+            Column payable_amount
+            {
+                FieldLinkName = "payable_amount";
+            }
+            Column payment_schedule
+            {
+                FieldLinkName = "payment_schedule";
+            }
+            Column approval_workflow
+            {
+                FieldLinkName = "approval_workflow";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column advice_no
+                    {
+                        FieldLinkName = "advice_no";
+                    }
+                    Column direction
+                    {
+                        FieldLinkName = "direction";
+                    }
+                    Column dispatch_challan
+                    {
+                        FieldLinkName = "dispatch_challan";
+                    }
+                    Column transporter
+                    {
+                        FieldLinkName = "transporter";
+                    }
+                    Column freight_type
+                    {
+                        FieldLinkName = "freight_type";
+                    }
+                    Column created_by
+                    {
+                        FieldLinkName = "created_by";
+                    }
+                    Column created_date
+                    {
+                        FieldLinkName = "created_date";
+                    }
+                    Column base_amount
+                    {
+                        FieldLinkName = "base_amount";
+                    }
+                    Column discount
+                    {
+                        FieldLinkName = "discount";
+                    }
+                    Column loading_wages_amount
+                    {
+                        FieldLinkName = "loading_wages_amount";
+                    }
+                    Column unloading_wages_amount
+                    {
+                        FieldLinkName = "unloading_wages_amount";
+                    }
+                    Column shipment_quantity
+                    {
+                        FieldLinkName = "shipment_quantity";
+                    }
+                    Column quantity_uom
+                    {
+                        FieldLinkName = "quantity_uom";
+                    }
+                    Column cost_per_unit_calc
+                    {
+                        FieldLinkName = "cost_per_unit_calc";
+                    }
+                    Column destination_state
+                    {
+                        FieldLinkName = "destination_state";
+                    }
+                    Column payable_amount
+                    {
+                        FieldLinkName = "payable_amount";
+                    }
+                    Column payment_schedule
+                    {
+                        FieldLinkName = "payment_schedule";
+                    }
+                    Column approval_workflow
+                    {
+                        FieldLinkName = "approval_workflow";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                }
+            }
+        }
+    }
+}

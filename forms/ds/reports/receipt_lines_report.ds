@@ -1,0 +1,191 @@
+report receipt_lines_report
+{
+    DisplayName = "Receipt Lines Report";
+    LinkName = "receipt_lines_report";
+    Type = "List";
+    SourceFormLinkName = "receipt_lines";
+
+    ListView
+    {
+        Columns
+        {
+            Column line_no
+            {
+                FieldLinkName = "line_no";
+            }
+            Column po_line
+            {
+                FieldLinkName = "po_line";
+            }
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch_no
+            {
+                FieldLinkName = "batch_no";
+            }
+            Column expiry_date
+            {
+                FieldLinkName = "expiry_date";
+            }
+            Column quantity_received
+            {
+                FieldLinkName = "quantity_received";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column extra_commission
+            {
+                FieldLinkName = "extra_commission";
+            }
+            Column agent_commission
+            {
+                FieldLinkName = "agent_commission";
+            }
+            Column quantity_accepted
+            {
+                FieldLinkName = "quantity_accepted";
+            }
+            Column quantity_rejected
+            {
+                FieldLinkName = "quantity_rejected";
+            }
+            Column godown_location
+            {
+                FieldLinkName = "godown_location";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column line_no
+            {
+                FieldLinkName = "line_no";
+            }
+            Column po_line
+            {
+                FieldLinkName = "po_line";
+            }
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch_no
+            {
+                FieldLinkName = "batch_no";
+            }
+            Column expiry_date
+            {
+                FieldLinkName = "expiry_date";
+            }
+            Column quantity_received
+            {
+                FieldLinkName = "quantity_received";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column extra_commission
+            {
+                FieldLinkName = "extra_commission";
+            }
+            Column agent_commission
+            {
+                FieldLinkName = "agent_commission";
+            }
+            Column quantity_accepted
+            {
+                FieldLinkName = "quantity_accepted";
+            }
+            Column quantity_rejected
+            {
+                FieldLinkName = "quantity_rejected";
+            }
+            Column godown_location
+            {
+                FieldLinkName = "godown_location";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column line_no
+                    {
+                        FieldLinkName = "line_no";
+                    }
+                    Column po_line
+                    {
+                        FieldLinkName = "po_line";
+                    }
+                    Column product
+                    {
+                        FieldLinkName = "product";
+                    }
+                    Column batch_no
+                    {
+                        FieldLinkName = "batch_no";
+                    }
+                    Column expiry_date
+                    {
+                        FieldLinkName = "expiry_date";
+                    }
+                    Column quantity_received
+                    {
+                        FieldLinkName = "quantity_received";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                    Column extra_commission
+                    {
+                        FieldLinkName = "extra_commission";
+                    }
+                    Column agent_commission
+                    {
+                        FieldLinkName = "agent_commission";
+                    }
+                    Column quantity_accepted
+                    {
+                        FieldLinkName = "quantity_accepted";
+                    }
+                    Column quantity_rejected
+                    {
+                        FieldLinkName = "quantity_rejected";
+                    }
+                    Column godown_location
+                    {
+                        FieldLinkName = "godown_location";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                }
+            }
+        }
+    }
+}

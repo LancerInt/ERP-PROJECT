@@ -1,0 +1,179 @@
+report vendor_payment_advice_report
+{
+    DisplayName = "Vendor Payment Advice Report";
+    LinkName = "vendor_payment_advice_report";
+    Type = "List";
+    SourceFormLinkName = "vendor_payment_advice";
+
+    ListView
+    {
+        Columns
+        {
+            Column advice_no
+            {
+                FieldLinkName = "advice_no";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column source_document_type
+            {
+                FieldLinkName = "source_document_type";
+            }
+            Column source_document
+            {
+                FieldLinkName = "source_document";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column tax_components
+            {
+                FieldLinkName = "tax_components";
+            }
+            Column due_date
+            {
+                FieldLinkName = "due_date";
+            }
+            Column payment_method
+            {
+                FieldLinkName = "payment_method";
+            }
+            Column prepared_by
+            {
+                FieldLinkName = "prepared_by";
+            }
+            Column approval_workflow
+            {
+                FieldLinkName = "approval_workflow";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column advice_no
+            {
+                FieldLinkName = "advice_no";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column source_document_type
+            {
+                FieldLinkName = "source_document_type";
+            }
+            Column source_document
+            {
+                FieldLinkName = "source_document";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column tax_components
+            {
+                FieldLinkName = "tax_components";
+            }
+            Column due_date
+            {
+                FieldLinkName = "due_date";
+            }
+            Column payment_method
+            {
+                FieldLinkName = "payment_method";
+            }
+            Column prepared_by
+            {
+                FieldLinkName = "prepared_by";
+            }
+            Column approval_workflow
+            {
+                FieldLinkName = "approval_workflow";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column advice_no
+                    {
+                        FieldLinkName = "advice_no";
+                    }
+                    Column vendor
+                    {
+                        FieldLinkName = "vendor";
+                    }
+                    Column source_document_type
+                    {
+                        FieldLinkName = "source_document_type";
+                    }
+                    Column source_document
+                    {
+                        FieldLinkName = "source_document";
+                    }
+                    Column amount
+                    {
+                        FieldLinkName = "amount";
+                    }
+                    Column tax_components
+                    {
+                        FieldLinkName = "tax_components";
+                    }
+                    Column due_date
+                    {
+                        FieldLinkName = "due_date";
+                    }
+                    Column payment_method
+                    {
+                        FieldLinkName = "payment_method";
+                    }
+                    Column prepared_by
+                    {
+                        FieldLinkName = "prepared_by";
+                    }
+                    Column approval_workflow
+                    {
+                        FieldLinkName = "approval_workflow";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

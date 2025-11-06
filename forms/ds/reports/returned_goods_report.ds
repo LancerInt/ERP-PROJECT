@@ -1,0 +1,95 @@
+report returned_goods_report
+{
+    DisplayName = "Returned Goods Report";
+    LinkName = "returned_goods_report";
+    Type = "List";
+    SourceFormLinkName = "returned_goods";
+
+    ListView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch
+            {
+                FieldLinkName = "batch";
+            }
+            Column quantity_received
+            {
+                FieldLinkName = "quantity_received";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column viability
+            {
+                FieldLinkName = "viability";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch
+            {
+                FieldLinkName = "batch";
+            }
+            Column quantity_received
+            {
+                FieldLinkName = "quantity_received";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column viability
+            {
+                FieldLinkName = "viability";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column product
+                    {
+                        FieldLinkName = "product";
+                    }
+                    Column batch
+                    {
+                        FieldLinkName = "batch";
+                    }
+                    Column quantity_received
+                    {
+                        FieldLinkName = "quantity_received";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                    Column viability
+                    {
+                        FieldLinkName = "viability";
+                    }
+                }
+            }
+        }
+    }
+}

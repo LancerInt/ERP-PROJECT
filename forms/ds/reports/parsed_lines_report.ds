@@ -1,0 +1,107 @@
+report parsed_lines_report
+{
+    DisplayName = "Parsed Lines Report";
+    LinkName = "parsed_lines_report";
+    Type = "List";
+    SourceFormLinkName = "parsed_lines";
+
+    ListView
+    {
+        Columns
+        {
+            Column product_description
+            {
+                FieldLinkName = "product_description";
+            }
+            Column quantity
+            {
+                FieldLinkName = "quantity";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column price
+            {
+                FieldLinkName = "price";
+            }
+            Column parsed_sku
+            {
+                FieldLinkName = "parsed_sku";
+            }
+            Column confidence
+            {
+                FieldLinkName = "confidence";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column product_description
+            {
+                FieldLinkName = "product_description";
+            }
+            Column quantity
+            {
+                FieldLinkName = "quantity";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column price
+            {
+                FieldLinkName = "price";
+            }
+            Column parsed_sku
+            {
+                FieldLinkName = "parsed_sku";
+            }
+            Column confidence
+            {
+                FieldLinkName = "confidence";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column product_description
+                    {
+                        FieldLinkName = "product_description";
+                    }
+                    Column quantity
+                    {
+                        FieldLinkName = "quantity";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                    Column price
+                    {
+                        FieldLinkName = "price";
+                    }
+                    Column parsed_sku
+                    {
+                        FieldLinkName = "parsed_sku";
+                    }
+                    Column confidence
+                    {
+                        FieldLinkName = "confidence";
+                    }
+                }
+            }
+        }
+    }
+}

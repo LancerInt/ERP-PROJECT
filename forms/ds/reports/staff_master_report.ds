@@ -1,0 +1,347 @@
+report staff_master_report
+{
+    DisplayName = "Staff Master (Employees & Staff) Report";
+    LinkName = "staff_master_report";
+    Type = "List";
+    SourceFormLinkName = "staff_master";
+
+    ListView
+    {
+        Columns
+        {
+            Column staff_id
+            {
+                FieldLinkName = "staff_id";
+            }
+            Column staff_type
+            {
+                FieldLinkName = "staff_type";
+            }
+            Column first_name
+            {
+                FieldLinkName = "first_name";
+            }
+            Column last_name
+            {
+                FieldLinkName = "last_name";
+            }
+            Column gender
+            {
+                FieldLinkName = "gender";
+            }
+            Column date_of_birth
+            {
+                FieldLinkName = "date_of_birth";
+            }
+            Column company
+            {
+                FieldLinkName = "company";
+            }
+            Column primary_location
+            {
+                FieldLinkName = "primary_location";
+            }
+            Column department
+            {
+                FieldLinkName = "department";
+            }
+            Column designation
+            {
+                FieldLinkName = "designation";
+            }
+            Column employment_start_date
+            {
+                FieldLinkName = "employment_start_date";
+            }
+            Column employment_end_date
+            {
+                FieldLinkName = "employment_end_date";
+            }
+            Column employment_status
+            {
+                FieldLinkName = "employment_status";
+            }
+            Column hr_owner
+            {
+                FieldLinkName = "hr_owner";
+            }
+            Column shift_assignment
+            {
+                FieldLinkName = "shift_assignment";
+            }
+            Column overtime_eligible
+            {
+                FieldLinkName = "overtime_eligible";
+            }
+            Column contractor_flag
+            {
+                FieldLinkName = "contractor_flag";
+            }
+            Column contractor_vendor
+            {
+                FieldLinkName = "contractor_vendor";
+            }
+            Column bank_account
+            {
+                FieldLinkName = "bank_account";
+            }
+            Column id_proofs
+            {
+                FieldLinkName = "id_proofs";
+            }
+            Column face_template_id
+            {
+                FieldLinkName = "face_template_id";
+            }
+            Column photo_reference
+            {
+                FieldLinkName = "photo_reference";
+            }
+            Column contact_number
+            {
+                FieldLinkName = "contact_number";
+            }
+            Column emergency_contact
+            {
+                FieldLinkName = "emergency_contact";
+            }
+            Column address
+            {
+                FieldLinkName = "address";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column staff_id
+            {
+                FieldLinkName = "staff_id";
+            }
+            Column staff_type
+            {
+                FieldLinkName = "staff_type";
+            }
+            Column first_name
+            {
+                FieldLinkName = "first_name";
+            }
+            Column last_name
+            {
+                FieldLinkName = "last_name";
+            }
+            Column gender
+            {
+                FieldLinkName = "gender";
+            }
+            Column date_of_birth
+            {
+                FieldLinkName = "date_of_birth";
+            }
+            Column company
+            {
+                FieldLinkName = "company";
+            }
+            Column primary_location
+            {
+                FieldLinkName = "primary_location";
+            }
+            Column department
+            {
+                FieldLinkName = "department";
+            }
+            Column designation
+            {
+                FieldLinkName = "designation";
+            }
+            Column employment_start_date
+            {
+                FieldLinkName = "employment_start_date";
+            }
+            Column employment_end_date
+            {
+                FieldLinkName = "employment_end_date";
+            }
+            Column employment_status
+            {
+                FieldLinkName = "employment_status";
+            }
+            Column hr_owner
+            {
+                FieldLinkName = "hr_owner";
+            }
+            Column shift_assignment
+            {
+                FieldLinkName = "shift_assignment";
+            }
+            Column overtime_eligible
+            {
+                FieldLinkName = "overtime_eligible";
+            }
+            Column contractor_flag
+            {
+                FieldLinkName = "contractor_flag";
+            }
+            Column contractor_vendor
+            {
+                FieldLinkName = "contractor_vendor";
+            }
+            Column bank_account
+            {
+                FieldLinkName = "bank_account";
+            }
+            Column id_proofs
+            {
+                FieldLinkName = "id_proofs";
+            }
+            Column face_template_id
+            {
+                FieldLinkName = "face_template_id";
+            }
+            Column photo_reference
+            {
+                FieldLinkName = "photo_reference";
+            }
+            Column contact_number
+            {
+                FieldLinkName = "contact_number";
+            }
+            Column emergency_contact
+            {
+                FieldLinkName = "emergency_contact";
+            }
+            Column address
+            {
+                FieldLinkName = "address";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column staff_id
+                    {
+                        FieldLinkName = "staff_id";
+                    }
+                    Column staff_type
+                    {
+                        FieldLinkName = "staff_type";
+                    }
+                    Column first_name
+                    {
+                        FieldLinkName = "first_name";
+                    }
+                    Column last_name
+                    {
+                        FieldLinkName = "last_name";
+                    }
+                    Column gender
+                    {
+                        FieldLinkName = "gender";
+                    }
+                    Column date_of_birth
+                    {
+                        FieldLinkName = "date_of_birth";
+                    }
+                    Column company
+                    {
+                        FieldLinkName = "company";
+                    }
+                    Column primary_location
+                    {
+                        FieldLinkName = "primary_location";
+                    }
+                    Column department
+                    {
+                        FieldLinkName = "department";
+                    }
+                    Column designation
+                    {
+                        FieldLinkName = "designation";
+                    }
+                    Column employment_start_date
+                    {
+                        FieldLinkName = "employment_start_date";
+                    }
+                    Column employment_end_date
+                    {
+                        FieldLinkName = "employment_end_date";
+                    }
+                    Column employment_status
+                    {
+                        FieldLinkName = "employment_status";
+                    }
+                    Column hr_owner
+                    {
+                        FieldLinkName = "hr_owner";
+                    }
+                    Column shift_assignment
+                    {
+                        FieldLinkName = "shift_assignment";
+                    }
+                    Column overtime_eligible
+                    {
+                        FieldLinkName = "overtime_eligible";
+                    }
+                    Column contractor_flag
+                    {
+                        FieldLinkName = "contractor_flag";
+                    }
+                    Column contractor_vendor
+                    {
+                        FieldLinkName = "contractor_vendor";
+                    }
+                    Column bank_account
+                    {
+                        FieldLinkName = "bank_account";
+                    }
+                    Column id_proofs
+                    {
+                        FieldLinkName = "id_proofs";
+                    }
+                    Column face_template_id
+                    {
+                        FieldLinkName = "face_template_id";
+                    }
+                    Column photo_reference
+                    {
+                        FieldLinkName = "photo_reference";
+                    }
+                    Column contact_number
+                    {
+                        FieldLinkName = "contact_number";
+                    }
+                    Column emergency_contact
+                    {
+                        FieldLinkName = "emergency_contact";
+                    }
+                    Column address
+                    {
+                        FieldLinkName = "address";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                }
+            }
+        }
+    }
+}

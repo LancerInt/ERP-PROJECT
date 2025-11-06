@@ -1,0 +1,95 @@
+report materials_supplied_report
+{
+    DisplayName = "Materials Supplied Report";
+    LinkName = "materials_supplied_report";
+    Type = "List";
+    SourceFormLinkName = "materials_supplied";
+
+    ListView
+    {
+        Columns
+        {
+            Column material_type
+            {
+                FieldLinkName = "material_type";
+            }
+            Column product_machine
+            {
+                FieldLinkName = "product_machine";
+            }
+            Column batch
+            {
+                FieldLinkName = "batch";
+            }
+            Column quantity
+            {
+                FieldLinkName = "quantity";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column material_type
+            {
+                FieldLinkName = "material_type";
+            }
+            Column product_machine
+            {
+                FieldLinkName = "product_machine";
+            }
+            Column batch
+            {
+                FieldLinkName = "batch";
+            }
+            Column quantity
+            {
+                FieldLinkName = "quantity";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column material_type
+                    {
+                        FieldLinkName = "material_type";
+                    }
+                    Column product_machine
+                    {
+                        FieldLinkName = "product_machine";
+                    }
+                    Column batch
+                    {
+                        FieldLinkName = "batch";
+                    }
+                    Column quantity
+                    {
+                        FieldLinkName = "quantity";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                }
+            }
+        }
+    }
+}

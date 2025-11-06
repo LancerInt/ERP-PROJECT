@@ -1,0 +1,84 @@
+// Module: 4. Production Module
+form output_products
+{
+    DisplayName = "Output Products";
+    LinkName = "output_products";
+    Module = "4. Production Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field batch_id
+                {
+                    DisplayName = "Batch ID";
+                    LinkName = "batch_id";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                    HelpText = "Auto-generated";
+                }
+                Field quantity_produced
+                {
+                    DisplayName = "Quantity Produced";
+                    LinkName = "quantity_produced";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field purity
+                {
+                    DisplayName = "Purity %";
+                    LinkName = "purity";
+                    Type = "Decimal";
+                    ConditionalMandatory = true;
+                    HelpText = "Required when yield tracking includes purity";
+                }
+                Field ai_content
+                {
+                    DisplayName = "AI Content";
+                    LinkName = "ai_content";
+                    Type = "Decimal";
+                    ConditionalMandatory = true;
+                    HelpText = "Required when tracked";
+                }
+                Field qc_status
+                {
+                    DisplayName = "QC Status";
+                    LinkName = "qc_status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Pending / Pass / Fail / Hold";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

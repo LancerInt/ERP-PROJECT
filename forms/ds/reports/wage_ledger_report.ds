@@ -1,0 +1,143 @@
+report wage_ledger_report
+{
+    DisplayName = "Wage Ledger Report";
+    LinkName = "wage_ledger_report";
+    Type = "List";
+    SourceFormLinkName = "wage_ledger";
+
+    ListView
+    {
+        Columns
+        {
+            Column ledger_id
+            {
+                FieldLinkName = "ledger_id";
+            }
+            Column wage_voucher
+            {
+                FieldLinkName = "wage_voucher";
+            }
+            Column contractor_staff_group
+            {
+                FieldLinkName = "contractor_staff_group";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column tds
+            {
+                FieldLinkName = "tds";
+            }
+            Column payment_week
+            {
+                FieldLinkName = "payment_week";
+            }
+            Column approval_status
+            {
+                FieldLinkName = "approval_status";
+            }
+            Column settlement_method
+            {
+                FieldLinkName = "settlement_method";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column ledger_id
+            {
+                FieldLinkName = "ledger_id";
+            }
+            Column wage_voucher
+            {
+                FieldLinkName = "wage_voucher";
+            }
+            Column contractor_staff_group
+            {
+                FieldLinkName = "contractor_staff_group";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column tds
+            {
+                FieldLinkName = "tds";
+            }
+            Column payment_week
+            {
+                FieldLinkName = "payment_week";
+            }
+            Column approval_status
+            {
+                FieldLinkName = "approval_status";
+            }
+            Column settlement_method
+            {
+                FieldLinkName = "settlement_method";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column ledger_id
+                    {
+                        FieldLinkName = "ledger_id";
+                    }
+                    Column wage_voucher
+                    {
+                        FieldLinkName = "wage_voucher";
+                    }
+                    Column contractor_staff_group
+                    {
+                        FieldLinkName = "contractor_staff_group";
+                    }
+                    Column amount
+                    {
+                        FieldLinkName = "amount";
+                    }
+                    Column tds
+                    {
+                        FieldLinkName = "tds";
+                    }
+                    Column payment_week
+                    {
+                        FieldLinkName = "payment_week";
+                    }
+                    Column approval_status
+                    {
+                        FieldLinkName = "approval_status";
+                    }
+                    Column settlement_method
+                    {
+                        FieldLinkName = "settlement_method";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

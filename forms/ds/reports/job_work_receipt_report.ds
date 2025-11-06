@@ -1,0 +1,167 @@
+report job_work_receipt_report
+{
+    DisplayName = "Job Work Receipt Report";
+    LinkName = "job_work_receipt_report";
+    Type = "List";
+    SourceFormLinkName = "job_work_receipt";
+
+    ListView
+    {
+        Columns
+        {
+            Column receipt_no
+            {
+                FieldLinkName = "receipt_no";
+            }
+            Column receipt_date
+            {
+                FieldLinkName = "receipt_date";
+            }
+            Column job_work_order
+            {
+                FieldLinkName = "job_work_order";
+            }
+            Column jw_dc_reference
+            {
+                FieldLinkName = "jw_dc_reference";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column returned_goods
+            {
+                FieldLinkName = "returned_goods";
+            }
+            Column new_batch_id
+            {
+                FieldLinkName = "new_batch_id";
+            }
+            Column qc_result
+            {
+                FieldLinkName = "qc_result";
+            }
+            Column pending_quantity
+            {
+                FieldLinkName = "pending_quantity";
+            }
+            Column charges
+            {
+                FieldLinkName = "charges";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column receipt_no
+            {
+                FieldLinkName = "receipt_no";
+            }
+            Column receipt_date
+            {
+                FieldLinkName = "receipt_date";
+            }
+            Column job_work_order
+            {
+                FieldLinkName = "job_work_order";
+            }
+            Column jw_dc_reference
+            {
+                FieldLinkName = "jw_dc_reference";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column returned_goods
+            {
+                FieldLinkName = "returned_goods";
+            }
+            Column new_batch_id
+            {
+                FieldLinkName = "new_batch_id";
+            }
+            Column qc_result
+            {
+                FieldLinkName = "qc_result";
+            }
+            Column pending_quantity
+            {
+                FieldLinkName = "pending_quantity";
+            }
+            Column charges
+            {
+                FieldLinkName = "charges";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column receipt_no
+                    {
+                        FieldLinkName = "receipt_no";
+                    }
+                    Column receipt_date
+                    {
+                        FieldLinkName = "receipt_date";
+                    }
+                    Column job_work_order
+                    {
+                        FieldLinkName = "job_work_order";
+                    }
+                    Column jw_dc_reference
+                    {
+                        FieldLinkName = "jw_dc_reference";
+                    }
+                    Column vendor
+                    {
+                        FieldLinkName = "vendor";
+                    }
+                    Column returned_goods
+                    {
+                        FieldLinkName = "returned_goods";
+                    }
+                    Column new_batch_id
+                    {
+                        FieldLinkName = "new_batch_id";
+                    }
+                    Column qc_result
+                    {
+                        FieldLinkName = "qc_result";
+                    }
+                    Column pending_quantity
+                    {
+                        FieldLinkName = "pending_quantity";
+                    }
+                    Column charges
+                    {
+                        FieldLinkName = "charges";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                }
+            }
+        }
+    }
+}

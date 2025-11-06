@@ -1,0 +1,167 @@
+report so_lines_report
+{
+    DisplayName = "SO Lines Report";
+    LinkName = "so_lines_report";
+    Type = "List";
+    SourceFormLinkName = "so_lines";
+
+    ListView
+    {
+        Columns
+        {
+            Column line_no
+            {
+                FieldLinkName = "line_no";
+            }
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch_preference
+            {
+                FieldLinkName = "batch_preference";
+            }
+            Column quantity_ordered
+            {
+                FieldLinkName = "quantity_ordered";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column unit_price
+            {
+                FieldLinkName = "unit_price";
+            }
+            Column discount
+            {
+                FieldLinkName = "discount";
+            }
+            Column gst
+            {
+                FieldLinkName = "gst";
+            }
+            Column delivery_schedule_date
+            {
+                FieldLinkName = "delivery_schedule_date";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+            Column reserved_qty
+            {
+                FieldLinkName = "reserved_qty";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column line_no
+            {
+                FieldLinkName = "line_no";
+            }
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch_preference
+            {
+                FieldLinkName = "batch_preference";
+            }
+            Column quantity_ordered
+            {
+                FieldLinkName = "quantity_ordered";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column unit_price
+            {
+                FieldLinkName = "unit_price";
+            }
+            Column discount
+            {
+                FieldLinkName = "discount";
+            }
+            Column gst
+            {
+                FieldLinkName = "gst";
+            }
+            Column delivery_schedule_date
+            {
+                FieldLinkName = "delivery_schedule_date";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+            Column reserved_qty
+            {
+                FieldLinkName = "reserved_qty";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column line_no
+                    {
+                        FieldLinkName = "line_no";
+                    }
+                    Column product
+                    {
+                        FieldLinkName = "product";
+                    }
+                    Column batch_preference
+                    {
+                        FieldLinkName = "batch_preference";
+                    }
+                    Column quantity_ordered
+                    {
+                        FieldLinkName = "quantity_ordered";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                    Column unit_price
+                    {
+                        FieldLinkName = "unit_price";
+                    }
+                    Column discount
+                    {
+                        FieldLinkName = "discount";
+                    }
+                    Column gst
+                    {
+                        FieldLinkName = "gst";
+                    }
+                    Column delivery_schedule_date
+                    {
+                        FieldLinkName = "delivery_schedule_date";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                    Column reserved_qty
+                    {
+                        FieldLinkName = "reserved_qty";
+                    }
+                }
+            }
+        }
+    }
+}

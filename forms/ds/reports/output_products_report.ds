@@ -1,0 +1,119 @@
+report output_products_report
+{
+    DisplayName = "Output Products Report";
+    LinkName = "output_products_report";
+    Type = "List";
+    SourceFormLinkName = "output_products";
+
+    ListView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch_id
+            {
+                FieldLinkName = "batch_id";
+            }
+            Column quantity_produced
+            {
+                FieldLinkName = "quantity_produced";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column purity
+            {
+                FieldLinkName = "purity";
+            }
+            Column ai_content
+            {
+                FieldLinkName = "ai_content";
+            }
+            Column qc_status
+            {
+                FieldLinkName = "qc_status";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column batch_id
+            {
+                FieldLinkName = "batch_id";
+            }
+            Column quantity_produced
+            {
+                FieldLinkName = "quantity_produced";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column purity
+            {
+                FieldLinkName = "purity";
+            }
+            Column ai_content
+            {
+                FieldLinkName = "ai_content";
+            }
+            Column qc_status
+            {
+                FieldLinkName = "qc_status";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column product
+                    {
+                        FieldLinkName = "product";
+                    }
+                    Column batch_id
+                    {
+                        FieldLinkName = "batch_id";
+                    }
+                    Column quantity_produced
+                    {
+                        FieldLinkName = "quantity_produced";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                    Column purity
+                    {
+                        FieldLinkName = "purity";
+                    }
+                    Column ai_content
+                    {
+                        FieldLinkName = "ai_content";
+                    }
+                    Column qc_status
+                    {
+                        FieldLinkName = "qc_status";
+                    }
+                }
+            }
+        }
+    }
+}

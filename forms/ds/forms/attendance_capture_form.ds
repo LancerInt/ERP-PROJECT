@@ -1,0 +1,139 @@
+// Module: 8. Attendance & HR Module
+form attendance_capture
+{
+    DisplayName = "Attendance Capture";
+    LinkName = "attendance_capture";
+    Module = "8. Attendance & HR Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field record_id
+                {
+                    DisplayName = "Record ID";
+                    LinkName = "record_id";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field staff
+                {
+                    DisplayName = "Staff";
+                    LinkName = "staff";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "staff_master";
+                }
+                Field date
+                {
+                    DisplayName = "Date";
+                    LinkName = "date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field check_in_time
+                {
+                    DisplayName = "Check-in Time";
+                    LinkName = "check_in_time";
+                    Type = "DateTime";
+                    IsMandatory = true;
+                }
+                Field check_out_time
+                {
+                    DisplayName = "Check-out Time";
+                    LinkName = "check_out_time";
+                    Type = "DateTime";
+                }
+                Field entry_photo
+                {
+                    DisplayName = "Entry Photo";
+                    LinkName = "entry_photo";
+                    Type = "UploadImage";
+                    IsMandatory = true;
+                    HelpText = "Retained 7 days";
+                }
+                Field exit_photo
+                {
+                    DisplayName = "Exit Photo";
+                    LinkName = "exit_photo";
+                    Type = "UploadImage";
+                    HelpText = "Retained 7 days";
+                }
+                Field geo_latitude
+                {
+                    DisplayName = "Geo Latitude";
+                    LinkName = "geo_latitude";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                    HelpText = "Must fall within warehouse geofence";
+                }
+                Field geo_longitude
+                {
+                    DisplayName = "Geo Longitude";
+                    LinkName = "geo_longitude";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field face_match_confidence
+                {
+                    DisplayName = "Face Match Confidence";
+                    LinkName = "face_match_confidence";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                    HelpText = "From external API";
+                }
+                Field device_id
+                {
+                    DisplayName = "Device ID";
+                    LinkName = "device_id";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                    HelpText = "HR device";
+                }
+                Field shift
+                {
+                    DisplayName = "Shift";
+                    LinkName = "shift";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "shift_definition";
+                }
+                Field attendance_status
+                {
+                    DisplayName = "Attendance Status";
+                    LinkName = "attendance_status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Present / Absent / Half Day / Permission";
+                }
+                Field overtime_hours
+                {
+                    DisplayName = "Overtime Hours";
+                    LinkName = "overtime_hours";
+                    Type = "Decimal";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

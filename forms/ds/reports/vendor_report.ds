@@ -1,0 +1,371 @@
+report vendor_report
+{
+    DisplayName = "Vendor Report";
+    LinkName = "vendor_report";
+    Type = "List";
+    SourceFormLinkName = "vendor";
+
+    ListView
+    {
+        Columns
+        {
+            Column vendor_code
+            {
+                FieldLinkName = "vendor_code";
+            }
+            Column vendor_name
+            {
+                FieldLinkName = "vendor_name";
+            }
+            Column vendor_type
+            {
+                FieldLinkName = "vendor_type";
+            }
+            Column company
+            {
+                FieldLinkName = "company";
+            }
+            Column gstin
+            {
+                FieldLinkName = "gstin";
+            }
+            Column pan
+            {
+                FieldLinkName = "pan";
+            }
+            Column address
+            {
+                FieldLinkName = "address";
+            }
+            Column city
+            {
+                FieldLinkName = "city";
+            }
+            Column state
+            {
+                FieldLinkName = "state";
+            }
+            Column country
+            {
+                FieldLinkName = "country";
+            }
+            Column pincode
+            {
+                FieldLinkName = "pincode";
+            }
+            Column contact_person
+            {
+                FieldLinkName = "contact_person";
+            }
+            Column contact_email
+            {
+                FieldLinkName = "contact_email";
+            }
+            Column contact_phone
+            {
+                FieldLinkName = "contact_phone";
+            }
+            Column payment_terms
+            {
+                FieldLinkName = "payment_terms";
+            }
+            Column custom_payment_days
+            {
+                FieldLinkName = "custom_payment_days";
+            }
+            Column freight_terms
+            {
+                FieldLinkName = "freight_terms";
+            }
+            Column freight_split_notes
+            {
+                FieldLinkName = "freight_split_notes";
+            }
+            Column credit_limit
+            {
+                FieldLinkName = "credit_limit";
+            }
+            Column credit_days
+            {
+                FieldLinkName = "credit_days";
+            }
+            Column tds_rate
+            {
+                FieldLinkName = "tds_rate";
+            }
+            Column tcs_rate
+            {
+                FieldLinkName = "tcs_rate";
+            }
+            Column bank_details
+            {
+                FieldLinkName = "bank_details";
+            }
+            Column preferred_transporters
+            {
+                FieldLinkName = "preferred_transporters";
+            }
+            Column allowed_warehouses
+            {
+                FieldLinkName = "allowed_warehouses";
+            }
+            Column attachments
+            {
+                FieldLinkName = "attachments";
+            }
+            Column active_flag
+            {
+                FieldLinkName = "active_flag";
+            }
+            Column created_date
+            {
+                FieldLinkName = "created_date";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column vendor_code
+            {
+                FieldLinkName = "vendor_code";
+            }
+            Column vendor_name
+            {
+                FieldLinkName = "vendor_name";
+            }
+            Column vendor_type
+            {
+                FieldLinkName = "vendor_type";
+            }
+            Column company
+            {
+                FieldLinkName = "company";
+            }
+            Column gstin
+            {
+                FieldLinkName = "gstin";
+            }
+            Column pan
+            {
+                FieldLinkName = "pan";
+            }
+            Column address
+            {
+                FieldLinkName = "address";
+            }
+            Column city
+            {
+                FieldLinkName = "city";
+            }
+            Column state
+            {
+                FieldLinkName = "state";
+            }
+            Column country
+            {
+                FieldLinkName = "country";
+            }
+            Column pincode
+            {
+                FieldLinkName = "pincode";
+            }
+            Column contact_person
+            {
+                FieldLinkName = "contact_person";
+            }
+            Column contact_email
+            {
+                FieldLinkName = "contact_email";
+            }
+            Column contact_phone
+            {
+                FieldLinkName = "contact_phone";
+            }
+            Column payment_terms
+            {
+                FieldLinkName = "payment_terms";
+            }
+            Column custom_payment_days
+            {
+                FieldLinkName = "custom_payment_days";
+            }
+            Column freight_terms
+            {
+                FieldLinkName = "freight_terms";
+            }
+            Column freight_split_notes
+            {
+                FieldLinkName = "freight_split_notes";
+            }
+            Column credit_limit
+            {
+                FieldLinkName = "credit_limit";
+            }
+            Column credit_days
+            {
+                FieldLinkName = "credit_days";
+            }
+            Column tds_rate
+            {
+                FieldLinkName = "tds_rate";
+            }
+            Column tcs_rate
+            {
+                FieldLinkName = "tcs_rate";
+            }
+            Column bank_details
+            {
+                FieldLinkName = "bank_details";
+            }
+            Column preferred_transporters
+            {
+                FieldLinkName = "preferred_transporters";
+            }
+            Column allowed_warehouses
+            {
+                FieldLinkName = "allowed_warehouses";
+            }
+            Column attachments
+            {
+                FieldLinkName = "attachments";
+            }
+            Column active_flag
+            {
+                FieldLinkName = "active_flag";
+            }
+            Column created_date
+            {
+                FieldLinkName = "created_date";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column vendor_code
+                    {
+                        FieldLinkName = "vendor_code";
+                    }
+                    Column vendor_name
+                    {
+                        FieldLinkName = "vendor_name";
+                    }
+                    Column vendor_type
+                    {
+                        FieldLinkName = "vendor_type";
+                    }
+                    Column company
+                    {
+                        FieldLinkName = "company";
+                    }
+                    Column gstin
+                    {
+                        FieldLinkName = "gstin";
+                    }
+                    Column pan
+                    {
+                        FieldLinkName = "pan";
+                    }
+                    Column address
+                    {
+                        FieldLinkName = "address";
+                    }
+                    Column city
+                    {
+                        FieldLinkName = "city";
+                    }
+                    Column state
+                    {
+                        FieldLinkName = "state";
+                    }
+                    Column country
+                    {
+                        FieldLinkName = "country";
+                    }
+                    Column pincode
+                    {
+                        FieldLinkName = "pincode";
+                    }
+                    Column contact_person
+                    {
+                        FieldLinkName = "contact_person";
+                    }
+                    Column contact_email
+                    {
+                        FieldLinkName = "contact_email";
+                    }
+                    Column contact_phone
+                    {
+                        FieldLinkName = "contact_phone";
+                    }
+                    Column payment_terms
+                    {
+                        FieldLinkName = "payment_terms";
+                    }
+                    Column custom_payment_days
+                    {
+                        FieldLinkName = "custom_payment_days";
+                    }
+                    Column freight_terms
+                    {
+                        FieldLinkName = "freight_terms";
+                    }
+                    Column freight_split_notes
+                    {
+                        FieldLinkName = "freight_split_notes";
+                    }
+                    Column credit_limit
+                    {
+                        FieldLinkName = "credit_limit";
+                    }
+                    Column credit_days
+                    {
+                        FieldLinkName = "credit_days";
+                    }
+                    Column tds_rate
+                    {
+                        FieldLinkName = "tds_rate";
+                    }
+                    Column tcs_rate
+                    {
+                        FieldLinkName = "tcs_rate";
+                    }
+                    Column bank_details
+                    {
+                        FieldLinkName = "bank_details";
+                    }
+                    Column preferred_transporters
+                    {
+                        FieldLinkName = "preferred_transporters";
+                    }
+                    Column allowed_warehouses
+                    {
+                        FieldLinkName = "allowed_warehouses";
+                    }
+                    Column attachments
+                    {
+                        FieldLinkName = "attachments";
+                    }
+                    Column active_flag
+                    {
+                        FieldLinkName = "active_flag";
+                    }
+                    Column created_date
+                    {
+                        FieldLinkName = "created_date";
+                    }
+                }
+            }
+        }
+    }
+}

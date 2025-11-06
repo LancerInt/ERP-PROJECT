@@ -1,0 +1,92 @@
+// Module: 1. Core & Shared Masters
+form service_catalogue
+{
+    DisplayName = "Service Catalogue";
+    LinkName = "service_catalogue";
+    Module = "1. Core & Shared Masters";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field service_code
+                {
+                    DisplayName = "Service Code";
+                    LinkName = "service_code";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field name
+                {
+                    DisplayName = "Name";
+                    LinkName = "name";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field category
+                {
+                    DisplayName = "Category";
+                    LinkName = "category";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Warehouse Expense / Wages / Freight / Misc / Custom";
+                }
+                Field direction
+                {
+                    DisplayName = "Direction";
+                    LinkName = "direction";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Inbound / Outbound / Both";
+                }
+                Field default_tds
+                {
+                    DisplayName = "Default TDS %";
+                    LinkName = "default_tds";
+                    Type = "Decimal";
+                }
+                Field default_tcs
+                {
+                    DisplayName = "Default TCS %";
+                    LinkName = "default_tcs";
+                    Type = "Decimal";
+                }
+                Field warehouse_availability
+                {
+                    DisplayName = "Warehouse Availability";
+                    LinkName = "warehouse_availability";
+                    Type = "SingleLine";
+                    AllowMultiple = true;
+                }
+                Field description
+                {
+                    DisplayName = "Description";
+                    LinkName = "description";
+                    Type = "MultiLine";
+                }
+                Field active_flag
+                {
+                    DisplayName = "Active Flag";
+                    LinkName = "active_flag";
+                    Type = "Checkbox";
+                    IsMandatory = true;
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

@@ -1,0 +1,89 @@
+// Module: 4. Production Module
+form material_issue
+{
+    DisplayName = "Material Issue";
+    LinkName = "material_issue";
+    Module = "4. Production Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field issue_no
+                {
+                    DisplayName = "Issue No.";
+                    LinkName = "issue_no";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field issue_date
+                {
+                    DisplayName = "Issue Date";
+                    LinkName = "issue_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field warehouse
+                {
+                    DisplayName = "Warehouse";
+                    LinkName = "warehouse";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field work_order
+                {
+                    DisplayName = "Work Order";
+                    LinkName = "work_order";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "work_order_production_batch";
+                }
+                Field issued_by
+                {
+                    DisplayName = "Issued By";
+                    LinkName = "issued_by";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field approved_by
+                {
+                    DisplayName = "Approved By";
+                    LinkName = "approved_by";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field issue_lines
+                {
+                    DisplayName = "Issue Lines";
+                    LinkName = "issue_lines";
+                    Type = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "issue_lines";
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

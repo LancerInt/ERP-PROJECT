@@ -1,0 +1,113 @@
+// Module: 6. Inventory, Logistics & Returns
+form job_work_receipt
+{
+    DisplayName = "Job Work Receipt";
+    LinkName = "job_work_receipt";
+    Module = "6. Inventory, Logistics & Returns";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field receipt_no
+                {
+                    DisplayName = "Receipt No.";
+                    LinkName = "receipt_no";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field receipt_date
+                {
+                    DisplayName = "Receipt Date";
+                    LinkName = "receipt_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field job_work_order
+                {
+                    DisplayName = "Job Work Order";
+                    LinkName = "job_work_order";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "job_work_order";
+                }
+                Field jw_dc_reference
+                {
+                    DisplayName = "JW DC Reference";
+                    LinkName = "jw_dc_reference";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "job_work_dc";
+                }
+                Field vendor
+                {
+                    DisplayName = "Vendor";
+                    LinkName = "vendor";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "vendor";
+                }
+                Field returned_goods
+                {
+                    DisplayName = "Returned Goods";
+                    LinkName = "returned_goods";
+                    Type = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "returned_goods";
+                }
+                Field new_batch_id
+                {
+                    DisplayName = "New Batch ID";
+                    LinkName = "new_batch_id";
+                    Type = "SingleLine";
+                    HelpText = "Distinct batch";
+                }
+                Field qc_result
+                {
+                    DisplayName = "QC Result";
+                    LinkName = "qc_result";
+                    Type = "Dropdown";
+                    HelpText = "Pass / Fail";
+                }
+                Field pending_quantity
+                {
+                    DisplayName = "Pending Quantity";
+                    LinkName = "pending_quantity";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field charges
+                {
+                    DisplayName = "Charges";
+                    LinkName = "charges";
+                    Type = "SubForm";
+                    SubFormLinkName = "charges";
+                    HelpText = "Job work + freight";
+                }
+                Field status
+                {
+                    DisplayName = "Status";
+                    LinkName = "status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Draft / Completed";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

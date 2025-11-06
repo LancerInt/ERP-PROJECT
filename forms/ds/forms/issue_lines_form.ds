@@ -1,0 +1,76 @@
+// Module: 4. Production Module
+form issue_lines
+{
+    DisplayName = "Issue Lines";
+    LinkName = "issue_lines";
+    Module = "4. Production Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field batch_out
+                {
+                    DisplayName = "Batch Out";
+                    LinkName = "batch_out";
+                    Type = "SingleLine";
+                    ConditionalMandatory = true;
+                    HelpText = "Required when batch tracking";
+                }
+                Field godown
+                {
+                    DisplayName = "Godown";
+                    LinkName = "godown";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "godown";
+                    HelpText = "Filtered by issue warehouse";
+                }
+                Field quantity_issued
+                {
+                    DisplayName = "Quantity Issued";
+                    LinkName = "quantity_issued";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field reserved_for_template
+                {
+                    DisplayName = "Reserved for Template";
+                    LinkName = "reserved_for_template";
+                    Type = "Checkbox";
+                    HelpText = "Packing material reservation";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

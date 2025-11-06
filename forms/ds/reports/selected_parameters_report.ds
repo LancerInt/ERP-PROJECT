@@ -1,0 +1,83 @@
+report selected_parameters_report
+{
+    DisplayName = "Selected Parameters Report";
+    LinkName = "selected_parameters_report";
+    Type = "List";
+    SourceFormLinkName = "selected_parameters";
+
+    ListView
+    {
+        Columns
+        {
+            Column parameter
+            {
+                FieldLinkName = "parameter";
+            }
+            Column override_range_min
+            {
+                FieldLinkName = "override_range_min";
+            }
+            Column override_range_max
+            {
+                FieldLinkName = "override_range_max";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column parameter
+            {
+                FieldLinkName = "parameter";
+            }
+            Column override_range_min
+            {
+                FieldLinkName = "override_range_min";
+            }
+            Column override_range_max
+            {
+                FieldLinkName = "override_range_max";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column parameter
+                    {
+                        FieldLinkName = "parameter";
+                    }
+                    Column override_range_min
+                    {
+                        FieldLinkName = "override_range_min";
+                    }
+                    Column override_range_max
+                    {
+                        FieldLinkName = "override_range_max";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

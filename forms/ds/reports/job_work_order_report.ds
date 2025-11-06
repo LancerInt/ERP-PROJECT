@@ -1,0 +1,191 @@
+report job_work_order_report
+{
+    DisplayName = "Job Work Order Report";
+    LinkName = "job_work_order_report";
+    Type = "List";
+    SourceFormLinkName = "job_work_order";
+
+    ListView
+    {
+        Columns
+        {
+            Column order_no
+            {
+                FieldLinkName = "order_no";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column template
+            {
+                FieldLinkName = "template";
+            }
+            Column template_revision
+            {
+                FieldLinkName = "template_revision";
+            }
+            Column start_date
+            {
+                FieldLinkName = "start_date";
+            }
+            Column expected_completion_date
+            {
+                FieldLinkName = "expected_completion_date";
+            }
+            Column turnaround_threshold
+            {
+                FieldLinkName = "turnaround_threshold";
+            }
+            Column materials_supplied
+            {
+                FieldLinkName = "materials_supplied";
+            }
+            Column outputs_expected
+            {
+                FieldLinkName = "outputs_expected";
+            }
+            Column freight_terms
+            {
+                FieldLinkName = "freight_terms";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column alerts_enabled
+            {
+                FieldLinkName = "alerts_enabled";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column order_no
+            {
+                FieldLinkName = "order_no";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column template
+            {
+                FieldLinkName = "template";
+            }
+            Column template_revision
+            {
+                FieldLinkName = "template_revision";
+            }
+            Column start_date
+            {
+                FieldLinkName = "start_date";
+            }
+            Column expected_completion_date
+            {
+                FieldLinkName = "expected_completion_date";
+            }
+            Column turnaround_threshold
+            {
+                FieldLinkName = "turnaround_threshold";
+            }
+            Column materials_supplied
+            {
+                FieldLinkName = "materials_supplied";
+            }
+            Column outputs_expected
+            {
+                FieldLinkName = "outputs_expected";
+            }
+            Column freight_terms
+            {
+                FieldLinkName = "freight_terms";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column alerts_enabled
+            {
+                FieldLinkName = "alerts_enabled";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column order_no
+                    {
+                        FieldLinkName = "order_no";
+                    }
+                    Column warehouse
+                    {
+                        FieldLinkName = "warehouse";
+                    }
+                    Column vendor
+                    {
+                        FieldLinkName = "vendor";
+                    }
+                    Column template
+                    {
+                        FieldLinkName = "template";
+                    }
+                    Column template_revision
+                    {
+                        FieldLinkName = "template_revision";
+                    }
+                    Column start_date
+                    {
+                        FieldLinkName = "start_date";
+                    }
+                    Column expected_completion_date
+                    {
+                        FieldLinkName = "expected_completion_date";
+                    }
+                    Column turnaround_threshold
+                    {
+                        FieldLinkName = "turnaround_threshold";
+                    }
+                    Column materials_supplied
+                    {
+                        FieldLinkName = "materials_supplied";
+                    }
+                    Column outputs_expected
+                    {
+                        FieldLinkName = "outputs_expected";
+                    }
+                    Column freight_terms
+                    {
+                        FieldLinkName = "freight_terms";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                    Column alerts_enabled
+                    {
+                        FieldLinkName = "alerts_enabled";
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,143 @@
+report payroll_export_report
+{
+    DisplayName = "Payroll Export Report";
+    LinkName = "payroll_export_report";
+    Type = "List";
+    SourceFormLinkName = "payroll_export";
+
+    ListView
+    {
+        Columns
+        {
+            Column export_id
+            {
+                FieldLinkName = "export_id";
+            }
+            Column period_start
+            {
+                FieldLinkName = "period_start";
+            }
+            Column period_end
+            {
+                FieldLinkName = "period_end";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column staff_summary
+            {
+                FieldLinkName = "staff_summary";
+            }
+            Column attendance_metrics
+            {
+                FieldLinkName = "attendance_metrics";
+            }
+            Column overtime_hours_total
+            {
+                FieldLinkName = "overtime_hours_total";
+            }
+            Column exceptions
+            {
+                FieldLinkName = "exceptions";
+            }
+            Column export_file
+            {
+                FieldLinkName = "export_file";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column export_id
+            {
+                FieldLinkName = "export_id";
+            }
+            Column period_start
+            {
+                FieldLinkName = "period_start";
+            }
+            Column period_end
+            {
+                FieldLinkName = "period_end";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column staff_summary
+            {
+                FieldLinkName = "staff_summary";
+            }
+            Column attendance_metrics
+            {
+                FieldLinkName = "attendance_metrics";
+            }
+            Column overtime_hours_total
+            {
+                FieldLinkName = "overtime_hours_total";
+            }
+            Column exceptions
+            {
+                FieldLinkName = "exceptions";
+            }
+            Column export_file
+            {
+                FieldLinkName = "export_file";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column export_id
+                    {
+                        FieldLinkName = "export_id";
+                    }
+                    Column period_start
+                    {
+                        FieldLinkName = "period_start";
+                    }
+                    Column period_end
+                    {
+                        FieldLinkName = "period_end";
+                    }
+                    Column warehouse
+                    {
+                        FieldLinkName = "warehouse";
+                    }
+                    Column staff_summary
+                    {
+                        FieldLinkName = "staff_summary";
+                    }
+                    Column attendance_metrics
+                    {
+                        FieldLinkName = "attendance_metrics";
+                    }
+                    Column overtime_hours_total
+                    {
+                        FieldLinkName = "overtime_hours_total";
+                    }
+                    Column exceptions
+                    {
+                        FieldLinkName = "exceptions";
+                    }
+                    Column export_file
+                    {
+                        FieldLinkName = "export_file";
+                    }
+                }
+            }
+        }
+    }
+}

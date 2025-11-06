@@ -1,0 +1,131 @@
+report price_lines_report
+{
+    DisplayName = "Price Lines Report";
+    LinkName = "price_lines_report";
+    Type = "List";
+    SourceFormLinkName = "price_lines";
+
+    ListView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column rate
+            {
+                FieldLinkName = "rate";
+            }
+            Column discount
+            {
+                FieldLinkName = "discount";
+            }
+            Column gst
+            {
+                FieldLinkName = "gst";
+            }
+            Column freight_component
+            {
+                FieldLinkName = "freight_component";
+            }
+            Column valid_from
+            {
+                FieldLinkName = "valid_from";
+            }
+            Column valid_to
+            {
+                FieldLinkName = "valid_to";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column product
+            {
+                FieldLinkName = "product";
+            }
+            Column uom
+            {
+                FieldLinkName = "uom";
+            }
+            Column rate
+            {
+                FieldLinkName = "rate";
+            }
+            Column discount
+            {
+                FieldLinkName = "discount";
+            }
+            Column gst
+            {
+                FieldLinkName = "gst";
+            }
+            Column freight_component
+            {
+                FieldLinkName = "freight_component";
+            }
+            Column valid_from
+            {
+                FieldLinkName = "valid_from";
+            }
+            Column valid_to
+            {
+                FieldLinkName = "valid_to";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column product
+                    {
+                        FieldLinkName = "product";
+                    }
+                    Column uom
+                    {
+                        FieldLinkName = "uom";
+                    }
+                    Column rate
+                    {
+                        FieldLinkName = "rate";
+                    }
+                    Column discount
+                    {
+                        FieldLinkName = "discount";
+                    }
+                    Column gst
+                    {
+                        FieldLinkName = "gst";
+                    }
+                    Column freight_component
+                    {
+                        FieldLinkName = "freight_component";
+                    }
+                    Column valid_from
+                    {
+                        FieldLinkName = "valid_from";
+                    }
+                    Column valid_to
+                    {
+                        FieldLinkName = "valid_to";
+                    }
+                }
+            }
+        }
+    }
+}

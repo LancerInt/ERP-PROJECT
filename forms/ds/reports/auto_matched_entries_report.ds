@@ -1,0 +1,95 @@
+report auto_matched_entries_report
+{
+    DisplayName = "Auto-Matched Entries Report";
+    LinkName = "auto_matched_entries_report";
+    Type = "List";
+    SourceFormLinkName = "auto_matched_entries";
+
+    ListView
+    {
+        Columns
+        {
+            Column statement_line_id
+            {
+                FieldLinkName = "statement_line_id";
+            }
+            Column match_type
+            {
+                FieldLinkName = "match_type";
+            }
+            Column linked_document
+            {
+                FieldLinkName = "linked_document";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column statement_line_id
+            {
+                FieldLinkName = "statement_line_id";
+            }
+            Column match_type
+            {
+                FieldLinkName = "match_type";
+            }
+            Column linked_document
+            {
+                FieldLinkName = "linked_document";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column statement_line_id
+                    {
+                        FieldLinkName = "statement_line_id";
+                    }
+                    Column match_type
+                    {
+                        FieldLinkName = "match_type";
+                    }
+                    Column linked_document
+                    {
+                        FieldLinkName = "linked_document";
+                    }
+                    Column amount
+                    {
+                        FieldLinkName = "amount";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                }
+            }
+        }
+    }
+}

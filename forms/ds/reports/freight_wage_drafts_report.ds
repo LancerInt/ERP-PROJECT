@@ -1,0 +1,95 @@
+report freight_wage_drafts_report
+{
+    DisplayName = "Freight/Wage Drafts Report";
+    LinkName = "freight_wage_drafts_report";
+    Type = "List";
+    SourceFormLinkName = "freight_wage_drafts";
+
+    ListView
+    {
+        Columns
+        {
+            Column expense_type
+            {
+                FieldLinkName = "expense_type";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column payable_by
+            {
+                FieldLinkName = "payable_by";
+            }
+            Column approval_status
+            {
+                FieldLinkName = "approval_status";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column expense_type
+            {
+                FieldLinkName = "expense_type";
+            }
+            Column vendor
+            {
+                FieldLinkName = "vendor";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column payable_by
+            {
+                FieldLinkName = "payable_by";
+            }
+            Column approval_status
+            {
+                FieldLinkName = "approval_status";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column expense_type
+                    {
+                        FieldLinkName = "expense_type";
+                    }
+                    Column vendor
+                    {
+                        FieldLinkName = "vendor";
+                    }
+                    Column amount
+                    {
+                        FieldLinkName = "amount";
+                    }
+                    Column payable_by
+                    {
+                        FieldLinkName = "payable_by";
+                    }
+                    Column approval_status
+                    {
+                        FieldLinkName = "approval_status";
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,52 @@
+// Module: 2. Purchase Module
+form tax_components
+{
+    DisplayName = "Tax Components";
+    LinkName = "tax_components";
+    Module = "2. Purchase Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field tax_type
+                {
+                    DisplayName = "Tax Type";
+                    LinkName = "tax_type";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "TDS / TCS";
+                }
+                Field rate
+                {
+                    DisplayName = "Rate %";
+                    LinkName = "rate";
+                    Type = "Decimal";
+                    IsMandatory = true;
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    Type = "INR";
+                    IsMandatory = true;
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

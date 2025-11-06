@@ -1,0 +1,107 @@
+report gst_reconciliation_report_report
+{
+    DisplayName = "GST Reconciliation Report Report";
+    LinkName = "gst_reconciliation_report_report";
+    Type = "List";
+    SourceFormLinkName = "gst_reconciliation_report";
+
+    ListView
+    {
+        Columns
+        {
+            Column report_id
+            {
+                FieldLinkName = "report_id";
+            }
+            Column reporting_period
+            {
+                FieldLinkName = "reporting_period";
+            }
+            Column data_source
+            {
+                FieldLinkName = "data_source";
+            }
+            Column variance_summary
+            {
+                FieldLinkName = "variance_summary";
+            }
+            Column adjustments
+            {
+                FieldLinkName = "adjustments";
+            }
+            Column export_file
+            {
+                FieldLinkName = "export_file";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column report_id
+            {
+                FieldLinkName = "report_id";
+            }
+            Column reporting_period
+            {
+                FieldLinkName = "reporting_period";
+            }
+            Column data_source
+            {
+                FieldLinkName = "data_source";
+            }
+            Column variance_summary
+            {
+                FieldLinkName = "variance_summary";
+            }
+            Column adjustments
+            {
+                FieldLinkName = "adjustments";
+            }
+            Column export_file
+            {
+                FieldLinkName = "export_file";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column report_id
+                    {
+                        FieldLinkName = "report_id";
+                    }
+                    Column reporting_period
+                    {
+                        FieldLinkName = "reporting_period";
+                    }
+                    Column data_source
+                    {
+                        FieldLinkName = "data_source";
+                    }
+                    Column variance_summary
+                    {
+                        FieldLinkName = "variance_summary";
+                    }
+                    Column adjustments
+                    {
+                        FieldLinkName = "adjustments";
+                    }
+                    Column export_file
+                    {
+                        FieldLinkName = "export_file";
+                    }
+                }
+            }
+        }
+    }
+}

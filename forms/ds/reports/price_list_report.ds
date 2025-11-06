@@ -1,0 +1,167 @@
+report price_list_report
+{
+    DisplayName = "Price List Report";
+    LinkName = "price_list_report";
+    Type = "List";
+    SourceFormLinkName = "price_list";
+
+    ListView
+    {
+        Columns
+        {
+            Column price_list_id
+            {
+                FieldLinkName = "price_list_id";
+            }
+            Column company
+            {
+                FieldLinkName = "company";
+            }
+            Column customer
+            {
+                FieldLinkName = "customer";
+            }
+            Column delivery_region
+            {
+                FieldLinkName = "delivery_region";
+            }
+            Column currency
+            {
+                FieldLinkName = "currency";
+            }
+            Column effective_from
+            {
+                FieldLinkName = "effective_from";
+            }
+            Column effective_to
+            {
+                FieldLinkName = "effective_to";
+            }
+            Column default_freight_terms
+            {
+                FieldLinkName = "default_freight_terms";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column price_lines
+            {
+                FieldLinkName = "price_lines";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column price_list_id
+            {
+                FieldLinkName = "price_list_id";
+            }
+            Column company
+            {
+                FieldLinkName = "company";
+            }
+            Column customer
+            {
+                FieldLinkName = "customer";
+            }
+            Column delivery_region
+            {
+                FieldLinkName = "delivery_region";
+            }
+            Column currency
+            {
+                FieldLinkName = "currency";
+            }
+            Column effective_from
+            {
+                FieldLinkName = "effective_from";
+            }
+            Column effective_to
+            {
+                FieldLinkName = "effective_to";
+            }
+            Column default_freight_terms
+            {
+                FieldLinkName = "default_freight_terms";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column price_lines
+            {
+                FieldLinkName = "price_lines";
+            }
+            Column notes
+            {
+                FieldLinkName = "notes";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column price_list_id
+                    {
+                        FieldLinkName = "price_list_id";
+                    }
+                    Column company
+                    {
+                        FieldLinkName = "company";
+                    }
+                    Column customer
+                    {
+                        FieldLinkName = "customer";
+                    }
+                    Column delivery_region
+                    {
+                        FieldLinkName = "delivery_region";
+                    }
+                    Column currency
+                    {
+                        FieldLinkName = "currency";
+                    }
+                    Column effective_from
+                    {
+                        FieldLinkName = "effective_from";
+                    }
+                    Column effective_to
+                    {
+                        FieldLinkName = "effective_to";
+                    }
+                    Column default_freight_terms
+                    {
+                        FieldLinkName = "default_freight_terms";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                    Column price_lines
+                    {
+                        FieldLinkName = "price_lines";
+                    }
+                    Column notes
+                    {
+                        FieldLinkName = "notes";
+                    }
+                }
+            }
+        }
+    }
+}

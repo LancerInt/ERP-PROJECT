@@ -1,0 +1,131 @@
+report qc_lab_job_report
+{
+    DisplayName = "QC Lab Job Report";
+    LinkName = "qc_lab_job_report";
+    Type = "List";
+    SourceFormLinkName = "qc_lab_job";
+
+    ListView
+    {
+        Columns
+        {
+            Column job_no
+            {
+                FieldLinkName = "job_no";
+            }
+            Column qc_request
+            {
+                FieldLinkName = "qc_request";
+            }
+            Column analyst
+            {
+                FieldLinkName = "analyst";
+            }
+            Column assigned_parameters
+            {
+                FieldLinkName = "assigned_parameters";
+            }
+            Column sample_received_date
+            {
+                FieldLinkName = "sample_received_date";
+            }
+            Column results_attachment
+            {
+                FieldLinkName = "results_attachment";
+            }
+            Column comments
+            {
+                FieldLinkName = "comments";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column job_no
+            {
+                FieldLinkName = "job_no";
+            }
+            Column qc_request
+            {
+                FieldLinkName = "qc_request";
+            }
+            Column analyst
+            {
+                FieldLinkName = "analyst";
+            }
+            Column assigned_parameters
+            {
+                FieldLinkName = "assigned_parameters";
+            }
+            Column sample_received_date
+            {
+                FieldLinkName = "sample_received_date";
+            }
+            Column results_attachment
+            {
+                FieldLinkName = "results_attachment";
+            }
+            Column comments
+            {
+                FieldLinkName = "comments";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column job_no
+                    {
+                        FieldLinkName = "job_no";
+                    }
+                    Column qc_request
+                    {
+                        FieldLinkName = "qc_request";
+                    }
+                    Column analyst
+                    {
+                        FieldLinkName = "analyst";
+                    }
+                    Column assigned_parameters
+                    {
+                        FieldLinkName = "assigned_parameters";
+                    }
+                    Column sample_received_date
+                    {
+                        FieldLinkName = "sample_received_date";
+                    }
+                    Column results_attachment
+                    {
+                        FieldLinkName = "results_attachment";
+                    }
+                    Column comments
+                    {
+                        FieldLinkName = "comments";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                }
+            }
+        }
+    }
+}

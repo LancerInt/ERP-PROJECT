@@ -1,0 +1,107 @@
+report shipping_address_report
+{
+    DisplayName = "Shipping Address Report";
+    LinkName = "shipping_address_report";
+    Type = "List";
+    SourceFormLinkName = "shipping_address";
+
+    ListView
+    {
+        Columns
+        {
+            Column address_label
+            {
+                FieldLinkName = "address_label";
+            }
+            Column address
+            {
+                FieldLinkName = "address";
+            }
+            Column delivery_region
+            {
+                FieldLinkName = "delivery_region";
+            }
+            Column default_price_list
+            {
+                FieldLinkName = "default_price_list";
+            }
+            Column contact_person
+            {
+                FieldLinkName = "contact_person";
+            }
+            Column contact_phone
+            {
+                FieldLinkName = "contact_phone";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column address_label
+            {
+                FieldLinkName = "address_label";
+            }
+            Column address
+            {
+                FieldLinkName = "address";
+            }
+            Column delivery_region
+            {
+                FieldLinkName = "delivery_region";
+            }
+            Column default_price_list
+            {
+                FieldLinkName = "default_price_list";
+            }
+            Column contact_person
+            {
+                FieldLinkName = "contact_person";
+            }
+            Column contact_phone
+            {
+                FieldLinkName = "contact_phone";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column address_label
+                    {
+                        FieldLinkName = "address_label";
+                    }
+                    Column address
+                    {
+                        FieldLinkName = "address";
+                    }
+                    Column delivery_region
+                    {
+                        FieldLinkName = "delivery_region";
+                    }
+                    Column default_price_list
+                    {
+                        FieldLinkName = "default_price_list";
+                    }
+                    Column contact_person
+                    {
+                        FieldLinkName = "contact_person";
+                    }
+                    Column contact_phone
+                    {
+                        FieldLinkName = "contact_phone";
+                    }
+                }
+            }
+        }
+    }
+}

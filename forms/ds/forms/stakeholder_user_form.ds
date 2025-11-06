@@ -1,0 +1,104 @@
+// Module: 1. Core & Shared Masters
+form stakeholder_user
+{
+    DisplayName = "Stakeholder User";
+    LinkName = "stakeholder_user";
+    Module = "1. Core & Shared Masters";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field portal_user_id
+                {
+                    DisplayName = "Portal User ID";
+                    LinkName = "portal_user_id";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                    HelpText = "Zoho portal identifier";
+                }
+                Field employee_record
+                {
+                    DisplayName = "Employee Record";
+                    LinkName = "employee_record";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "staff_master";
+                    HelpText = "Links to staff";
+                }
+                Field primary_email
+                {
+                    DisplayName = "Primary Email";
+                    LinkName = "primary_email";
+                    Type = "Email";
+                    IsMandatory = true;
+                }
+                Field mobile
+                {
+                    DisplayName = "Mobile";
+                    LinkName = "mobile";
+                    Type = "Phone";
+                }
+                Field assigned_roles
+                {
+                    DisplayName = "Assigned Roles";
+                    LinkName = "assigned_roles";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                    AllowMultiple = true;
+                    HelpText = "Supports multi-role users";
+                }
+                Field default_warehouse
+                {
+                    DisplayName = "Default Warehouse";
+                    LinkName = "default_warehouse";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field warehouse_scope
+                {
+                    DisplayName = "Warehouse Scope";
+                    LinkName = "warehouse_scope";
+                    Type = "SingleLine";
+                    AllowMultiple = true;
+                    HelpText = "Overrides default";
+                }
+                Field status
+                {
+                    DisplayName = "Status";
+                    LinkName = "status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Active / Suspended";
+                }
+                Field last_accessed
+                {
+                    DisplayName = "Last Accessed";
+                    LinkName = "last_accessed";
+                    Type = "DateTime";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

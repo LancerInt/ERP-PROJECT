@@ -1,0 +1,228 @@
+// Module: 1. Core & Shared Masters
+form staff_master
+{
+    DisplayName = "Staff Master (Employees & Staff)";
+    LinkName = "staff_master";
+    Module = "1. Core & Shared Masters";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field staff_id
+                {
+                    DisplayName = "Staff ID";
+                    LinkName = "staff_id";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                    IsUnique = true;
+                    HelpText = "Official staff number";
+                }
+                Field staff_type
+                {
+                    DisplayName = "Staff Type";
+                    LinkName = "staff_type";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Employee (Stakeholder) / Staff";
+                }
+                Field first_name
+                {
+                    DisplayName = "First Name";
+                    LinkName = "first_name";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field last_name
+                {
+                    DisplayName = "Last Name";
+                    LinkName = "last_name";
+                    Type = "SingleLine";
+                }
+                Field gender
+                {
+                    DisplayName = "Gender";
+                    LinkName = "gender";
+                    Type = "Dropdown";
+                }
+                Field date_of_birth
+                {
+                    DisplayName = "Date of Birth";
+                    LinkName = "date_of_birth";
+                    Type = "Date";
+                }
+                Field company
+                {
+                    DisplayName = "Company";
+                    LinkName = "company";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "company";
+                    HelpText = "Employer entity";
+                }
+                Field primary_location
+                {
+                    DisplayName = "Primary Location";
+                    LinkName = "primary_location";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                    HelpText = "For attendance";
+                }
+                Field department
+                {
+                    DisplayName = "Department";
+                    LinkName = "department";
+                    Type = "Dropdown";
+                }
+                Field designation
+                {
+                    DisplayName = "Designation";
+                    LinkName = "designation";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field employment_start_date
+                {
+                    DisplayName = "Employment Start Date";
+                    LinkName = "employment_start_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field employment_end_date
+                {
+                    DisplayName = "Employment End Date";
+                    LinkName = "employment_end_date";
+                    Type = "Date";
+                }
+                Field employment_status
+                {
+                    DisplayName = "Employment Status";
+                    LinkName = "employment_status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Active / On Leave / Resigned";
+                }
+                Field hr_owner
+                {
+                    DisplayName = "HR Owner";
+                    LinkName = "hr_owner";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                    HelpText = "Controls approvals";
+                }
+                Field shift_assignment
+                {
+                    DisplayName = "Shift Assignment";
+                    LinkName = "shift_assignment";
+                    Type = "Lookup";
+                    RelatedFormLinkName = "shift_definition";
+                    HelpText = "Defaults attendance";
+                }
+                Field overtime_eligible
+                {
+                    DisplayName = "Overtime Eligible";
+                    LinkName = "overtime_eligible";
+                    Type = "Checkbox";
+                }
+                Field contractor_flag
+                {
+                    DisplayName = "Contractor Flag";
+                    LinkName = "contractor_flag";
+                    Type = "Checkbox";
+                    HelpText = "For wages via vendor";
+                }
+                Field contractor_vendor
+                {
+                    DisplayName = "Contractor Vendor";
+                    LinkName = "contractor_vendor";
+                    Type = "Lookup";
+                    ConditionalMandatory = true;
+                    RelatedFormLinkName = "vendor";
+                    HelpText = "Mandatory if contractor flag checked";
+                }
+                Field bank_account
+                {
+                    DisplayName = "Bank Account";
+                    LinkName = "bank_account";
+                    Type = "SubForm";
+                    SubFormLinkName = "bank_account";
+                    HelpText = "Payment details";
+                }
+                Field id_proofs
+                {
+                    DisplayName = "ID Proofs";
+                    LinkName = "id_proofs";
+                    Type = "SubForm";
+                    SubFormLinkName = "id_proofs";
+                    HelpText = "Attachments";
+                }
+                Field face_template_id
+                {
+                    DisplayName = "Face Template ID";
+                    LinkName = "face_template_id";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                    HelpText = "External face recognition ID";
+                }
+                Field photo_reference
+                {
+                    DisplayName = "Photo Reference";
+                    LinkName = "photo_reference";
+                    Type = "UploadImage";
+                    IsMandatory = true;
+                    HelpText = "Stored for 7 days";
+                }
+                Field contact_number
+                {
+                    DisplayName = "Contact Number";
+                    LinkName = "contact_number";
+                    Type = "Phone";
+                }
+                Field emergency_contact
+                {
+                    DisplayName = "Emergency Contact";
+                    LinkName = "emergency_contact";
+                    Type = "Phone";
+                }
+                Field address
+                {
+                    DisplayName = "Address";
+                    LinkName = "address";
+                    Type = "Address";
+                    AddressFields
+                    {
+                        AddressLine1 = true;
+                        AddressLine2 = true;
+                        City = true;
+                        State = true;
+                        Country = true;
+                        PostalCode = true;
+                    }
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

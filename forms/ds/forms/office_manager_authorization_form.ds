@@ -1,0 +1,51 @@
+// Module: 7. Finance Module
+form office_manager_authorization
+{
+    DisplayName = "Office Manager Authorization";
+    LinkName = "office_manager_authorization";
+    Module = "7. Finance Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field authorized_by
+                {
+                    DisplayName = "Authorized By";
+                    LinkName = "authorized_by";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field authorization_date
+                {
+                    DisplayName = "Authorization Date";
+                    LinkName = "authorization_date";
+                    Type = "DateTime";
+                    IsMandatory = true;
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

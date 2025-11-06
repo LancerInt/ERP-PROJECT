@@ -1,0 +1,143 @@
+report audit_trail_report
+{
+    DisplayName = "Audit Trail Report";
+    LinkName = "audit_trail_report";
+    Type = "List";
+    SourceFormLinkName = "audit_trail";
+
+    ListView
+    {
+        Columns
+        {
+            Column audit_id
+            {
+                FieldLinkName = "audit_id";
+            }
+            Column module
+            {
+                FieldLinkName = "module";
+            }
+            Column record_id
+            {
+                FieldLinkName = "record_id";
+            }
+            Column action
+            {
+                FieldLinkName = "action";
+            }
+            Column user
+            {
+                FieldLinkName = "user";
+            }
+            Column timestamp
+            {
+                FieldLinkName = "timestamp";
+            }
+            Column before_snapshot
+            {
+                FieldLinkName = "before_snapshot";
+            }
+            Column after_snapshot
+            {
+                FieldLinkName = "after_snapshot";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column audit_id
+            {
+                FieldLinkName = "audit_id";
+            }
+            Column module
+            {
+                FieldLinkName = "module";
+            }
+            Column record_id
+            {
+                FieldLinkName = "record_id";
+            }
+            Column action
+            {
+                FieldLinkName = "action";
+            }
+            Column user
+            {
+                FieldLinkName = "user";
+            }
+            Column timestamp
+            {
+                FieldLinkName = "timestamp";
+            }
+            Column before_snapshot
+            {
+                FieldLinkName = "before_snapshot";
+            }
+            Column after_snapshot
+            {
+                FieldLinkName = "after_snapshot";
+            }
+            Column remarks
+            {
+                FieldLinkName = "remarks";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column audit_id
+                    {
+                        FieldLinkName = "audit_id";
+                    }
+                    Column module
+                    {
+                        FieldLinkName = "module";
+                    }
+                    Column record_id
+                    {
+                        FieldLinkName = "record_id";
+                    }
+                    Column action
+                    {
+                        FieldLinkName = "action";
+                    }
+                    Column user
+                    {
+                        FieldLinkName = "user";
+                    }
+                    Column timestamp
+                    {
+                        FieldLinkName = "timestamp";
+                    }
+                    Column before_snapshot
+                    {
+                        FieldLinkName = "before_snapshot";
+                    }
+                    Column after_snapshot
+                    {
+                        FieldLinkName = "after_snapshot";
+                    }
+                    Column remarks
+                    {
+                        FieldLinkName = "remarks";
+                    }
+                }
+            }
+        }
+    }
+}

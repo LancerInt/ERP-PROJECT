@@ -1,0 +1,73 @@
+// Module: 8. Attendance & HR Module
+form attendance_device_log
+{
+    DisplayName = "Attendance Device Log";
+    LinkName = "attendance_device_log";
+    Module = "8. Attendance & HR Module";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field log_id
+                {
+                    DisplayName = "Log ID";
+                    LinkName = "log_id";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field device_id
+                {
+                    DisplayName = "Device ID";
+                    LinkName = "device_id";
+                    Type = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field event_time
+                {
+                    DisplayName = "Event Time";
+                    LinkName = "event_time";
+                    Type = "DateTime";
+                    IsMandatory = true;
+                }
+                Field event_type
+                {
+                    DisplayName = "Event Type";
+                    LinkName = "event_type";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Capture / Sync";
+                }
+                Field status
+                {
+                    DisplayName = "Status";
+                    LinkName = "status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Success / Failed";
+                }
+                Field error_message
+                {
+                    DisplayName = "Error Message";
+                    LinkName = "error_message";
+                    Type = "MultiLine";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

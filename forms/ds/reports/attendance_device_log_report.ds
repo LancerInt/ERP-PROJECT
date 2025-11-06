@@ -1,0 +1,107 @@
+report attendance_device_log_report
+{
+    DisplayName = "Attendance Device Log Report";
+    LinkName = "attendance_device_log_report";
+    Type = "List";
+    SourceFormLinkName = "attendance_device_log";
+
+    ListView
+    {
+        Columns
+        {
+            Column log_id
+            {
+                FieldLinkName = "log_id";
+            }
+            Column device_id
+            {
+                FieldLinkName = "device_id";
+            }
+            Column event_time
+            {
+                FieldLinkName = "event_time";
+            }
+            Column event_type
+            {
+                FieldLinkName = "event_type";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column error_message
+            {
+                FieldLinkName = "error_message";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column log_id
+            {
+                FieldLinkName = "log_id";
+            }
+            Column device_id
+            {
+                FieldLinkName = "device_id";
+            }
+            Column event_time
+            {
+                FieldLinkName = "event_time";
+            }
+            Column event_type
+            {
+                FieldLinkName = "event_type";
+            }
+            Column status
+            {
+                FieldLinkName = "status";
+            }
+            Column error_message
+            {
+                FieldLinkName = "error_message";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column log_id
+                    {
+                        FieldLinkName = "log_id";
+                    }
+                    Column device_id
+                    {
+                        FieldLinkName = "device_id";
+                    }
+                    Column event_time
+                    {
+                        FieldLinkName = "event_time";
+                    }
+                    Column event_type
+                    {
+                        FieldLinkName = "event_type";
+                    }
+                    Column status
+                    {
+                        FieldLinkName = "status";
+                    }
+                    Column error_message
+                    {
+                        FieldLinkName = "error_message";
+                    }
+                }
+            }
+        }
+    }
+}

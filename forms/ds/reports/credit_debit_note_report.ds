@@ -1,0 +1,167 @@
+report credit_debit_note_report
+{
+    DisplayName = "Credit/Debit Note Report";
+    LinkName = "credit_debit_note_report";
+    Type = "List";
+    SourceFormLinkName = "credit_debit_note";
+
+    ListView
+    {
+        Columns
+        {
+            Column note_no
+            {
+                FieldLinkName = "note_no";
+            }
+            Column note_type
+            {
+                FieldLinkName = "note_type";
+            }
+            Column vendor_customer
+            {
+                FieldLinkName = "vendor_customer";
+            }
+            Column source_document
+            {
+                FieldLinkName = "source_document";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column tax
+            {
+                FieldLinkName = "tax";
+            }
+            Column reason
+            {
+                FieldLinkName = "reason";
+            }
+            Column approval_status
+            {
+                FieldLinkName = "approval_status";
+            }
+            Column approved_by
+            {
+                FieldLinkName = "approved_by";
+            }
+            Column approval_date
+            {
+                FieldLinkName = "approval_date";
+            }
+            Column ledger_posting_reference
+            {
+                FieldLinkName = "ledger_posting_reference";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column note_no
+            {
+                FieldLinkName = "note_no";
+            }
+            Column note_type
+            {
+                FieldLinkName = "note_type";
+            }
+            Column vendor_customer
+            {
+                FieldLinkName = "vendor_customer";
+            }
+            Column source_document
+            {
+                FieldLinkName = "source_document";
+            }
+            Column amount
+            {
+                FieldLinkName = "amount";
+            }
+            Column tax
+            {
+                FieldLinkName = "tax";
+            }
+            Column reason
+            {
+                FieldLinkName = "reason";
+            }
+            Column approval_status
+            {
+                FieldLinkName = "approval_status";
+            }
+            Column approved_by
+            {
+                FieldLinkName = "approved_by";
+            }
+            Column approval_date
+            {
+                FieldLinkName = "approval_date";
+            }
+            Column ledger_posting_reference
+            {
+                FieldLinkName = "ledger_posting_reference";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column note_no
+                    {
+                        FieldLinkName = "note_no";
+                    }
+                    Column note_type
+                    {
+                        FieldLinkName = "note_type";
+                    }
+                    Column vendor_customer
+                    {
+                        FieldLinkName = "vendor_customer";
+                    }
+                    Column source_document
+                    {
+                        FieldLinkName = "source_document";
+                    }
+                    Column amount
+                    {
+                        FieldLinkName = "amount";
+                    }
+                    Column tax
+                    {
+                        FieldLinkName = "tax";
+                    }
+                    Column reason
+                    {
+                        FieldLinkName = "reason";
+                    }
+                    Column approval_status
+                    {
+                        FieldLinkName = "approval_status";
+                    }
+                    Column approved_by
+                    {
+                        FieldLinkName = "approved_by";
+                    }
+                    Column approval_date
+                    {
+                        FieldLinkName = "approval_date";
+                    }
+                    Column ledger_posting_reference
+                    {
+                        FieldLinkName = "ledger_posting_reference";
+                    }
+                }
+            }
+        }
+    }
+}

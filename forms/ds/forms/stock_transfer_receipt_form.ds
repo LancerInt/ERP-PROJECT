@@ -1,0 +1,120 @@
+// Module: 6. Inventory, Logistics & Returns
+form stock_transfer_receipt
+{
+    DisplayName = "Stock Transfer Receipt";
+    LinkName = "stock_transfer_receipt";
+    Module = "6. Inventory, Logistics & Returns";
+    Type = "Form";
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Layout = "OneColumn";
+            Fields
+            {
+                Field receipt_no
+                {
+                    DisplayName = "Receipt No.";
+                    LinkName = "receipt_no";
+                    Type = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field receipt_date
+                {
+                    DisplayName = "Receipt Date";
+                    LinkName = "receipt_date";
+                    Type = "Date";
+                    IsMandatory = true;
+                }
+                Field from_warehouse
+                {
+                    DisplayName = "From Warehouse";
+                    LinkName = "from_warehouse";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field to_warehouse
+                {
+                    DisplayName = "To Warehouse";
+                    LinkName = "to_warehouse";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field linked_transfer
+                {
+                    DisplayName = "Linked Transfer";
+                    LinkName = "linked_transfer";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stock_transfer_dc";
+                }
+                Field received_by
+                {
+                    DisplayName = "Received By";
+                    LinkName = "received_by";
+                    Type = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field receipt_lines
+                {
+                    DisplayName = "Receipt Lines";
+                    LinkName = "receipt_lines";
+                    Type = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "receipt_lines";
+                }
+                Field qc_result
+                {
+                    DisplayName = "QC Result";
+                    LinkName = "qc_result";
+                    Type = "Dropdown";
+                    HelpText = "Pass / Fail";
+                }
+                Field variance_notes
+                {
+                    DisplayName = "Variance Notes";
+                    LinkName = "variance_notes";
+                    Type = "MultiLine";
+                }
+                Field freight_details
+                {
+                    DisplayName = "Freight Details";
+                    LinkName = "freight_details";
+                    Type = "SubForm";
+                    SubFormLinkName = "freight_details";
+                    HelpText = "Local drayage";
+                }
+                Field loading_unloading_wages
+                {
+                    DisplayName = "Loading Unloading Wages";
+                    LinkName = "loading_unloading_wages";
+                    Type = "SubForm";
+                    SubFormLinkName = "loading_unloading_wages";
+                }
+                Field status
+                {
+                    DisplayName = "Status";
+                    LinkName = "status";
+                    Type = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Draft / Completed";
+                }
+            }
+        }
+    }
+
+    Actions
+    {
+        on add
+        {
+        }
+        on edit
+        {
+        }
+    }
+}

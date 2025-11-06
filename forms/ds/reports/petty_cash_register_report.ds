@@ -1,0 +1,119 @@
+report petty_cash_register_report
+{
+    DisplayName = "Petty Cash Register Report";
+    LinkName = "petty_cash_register_report";
+    Type = "List";
+    SourceFormLinkName = "petty_cash_register";
+
+    ListView
+    {
+        Columns
+        {
+            Column register_id
+            {
+                FieldLinkName = "register_id";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column coordinator
+            {
+                FieldLinkName = "coordinator";
+            }
+            Column opening_balance
+            {
+                FieldLinkName = "opening_balance";
+            }
+            Column transactions
+            {
+                FieldLinkName = "transactions";
+            }
+            Column current_balance
+            {
+                FieldLinkName = "current_balance";
+            }
+            Column last_reconciled_date
+            {
+                FieldLinkName = "last_reconciled_date";
+            }
+        }
+    }
+
+    QuickView
+    {
+        Columns
+        {
+            Column register_id
+            {
+                FieldLinkName = "register_id";
+            }
+            Column warehouse
+            {
+                FieldLinkName = "warehouse";
+            }
+            Column coordinator
+            {
+                FieldLinkName = "coordinator";
+            }
+            Column opening_balance
+            {
+                FieldLinkName = "opening_balance";
+            }
+            Column transactions
+            {
+                FieldLinkName = "transactions";
+            }
+            Column current_balance
+            {
+                FieldLinkName = "current_balance";
+            }
+            Column last_reconciled_date
+            {
+                FieldLinkName = "last_reconciled_date";
+            }
+        }
+    }
+
+    DetailView
+    {
+        Sections
+        {
+            Section main
+            {
+                DisplayName = "Main";
+                Columns
+                {
+                    Column register_id
+                    {
+                        FieldLinkName = "register_id";
+                    }
+                    Column warehouse
+                    {
+                        FieldLinkName = "warehouse";
+                    }
+                    Column coordinator
+                    {
+                        FieldLinkName = "coordinator";
+                    }
+                    Column opening_balance
+                    {
+                        FieldLinkName = "opening_balance";
+                    }
+                    Column transactions
+                    {
+                        FieldLinkName = "transactions";
+                    }
+                    Column current_balance
+                    {
+                        FieldLinkName = "current_balance";
+                    }
+                    Column last_reconciled_date
+                    {
+                        FieldLinkName = "last_reconciled_date";
+                    }
+                }
+            }
+        }
+    }
+}
