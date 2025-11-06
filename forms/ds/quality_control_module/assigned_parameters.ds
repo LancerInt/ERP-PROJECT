@@ -1,0 +1,52 @@
+// Module: 5. Quality Control Module
+// Form: Assigned Parameters
+form assigned_parameters
+{
+    DisplayName = "Assigned Parameters";
+    LinkName = "assigned_parameters";
+    Module = "5. Quality Control Module";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field parameter
+                {
+                    DisplayName = "Parameter";
+                    LinkName = "parameter";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "qc_parameter_library";
+                }
+                Field result_value
+                {
+                    DisplayName = "Result Value";
+                    LinkName = "result_value";
+                    DataType = "Decimal";
+                }
+                Field result_text
+                {
+                    DisplayName = "Result Text";
+                    LinkName = "result_text";
+                    DataType = "MultiLine";
+                }
+                Field result_photo
+                {
+                    DisplayName = "Result Photo";
+                    LinkName = "result_photo";
+                    DataType = "Image";
+                }
+                Field pass_fail
+                {
+                    DisplayName = "Pass/Fail";
+                    LinkName = "pass_fail";
+                    DataType = "Dropdown";
+                }
+            }
+        }
+    }
+}

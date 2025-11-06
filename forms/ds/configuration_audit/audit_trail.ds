@@ -1,0 +1,84 @@
+// Module: 9. Configuration & Audit
+// Form: Audit Trail
+form audit_trail
+{
+    DisplayName = "Audit Trail";
+    LinkName = "audit_trail";
+    Module = "9. Configuration & Audit";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field audit_id
+                {
+                    DisplayName = "Audit ID";
+                    LinkName = "audit_id";
+                    DataType = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field module
+                {
+                    DisplayName = "Module";
+                    LinkName = "module";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field record_id
+                {
+                    DisplayName = "Record ID";
+                    LinkName = "record_id";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field action
+                {
+                    DisplayName = "Action";
+                    LinkName = "action";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Create / Update / Delete / Approve";
+                }
+                Field user
+                {
+                    DisplayName = "User";
+                    LinkName = "user";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field timestamp
+                {
+                    DisplayName = "Timestamp";
+                    LinkName = "timestamp";
+                    DataType = "DateTime";
+                    IsMandatory = true;
+                }
+                Field before_snapshot
+                {
+                    DisplayName = "Before Snapshot";
+                    LinkName = "before_snapshot";
+                    DataType = "FileUpload";
+                    HelpText = "JSON export";
+                }
+                Field after_snapshot
+                {
+                    DisplayName = "After Snapshot";
+                    LinkName = "after_snapshot";
+                    DataType = "FileUpload";
+                    HelpText = "JSON export";
+                }
+                Field remarks
+                {
+                    DisplayName = "Remarks";
+                    LinkName = "remarks";
+                    DataType = "MultiLine";
+                }
+            }
+        }
+    }
+}

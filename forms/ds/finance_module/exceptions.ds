@@ -1,0 +1,62 @@
+// Module: 7. Finance Module
+// Form: Exceptions
+form exceptions
+{
+    DisplayName = "Exceptions";
+    LinkName = "exceptions";
+    Module = "7. Finance Module";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field statement_line_id
+                {
+                    DisplayName = "Statement Line ID";
+                    LinkName = "statement_line_id";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field transaction_date
+                {
+                    DisplayName = "Transaction Date";
+                    LinkName = "transaction_date";
+                    DataType = "Date";
+                    IsMandatory = true;
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    DataType = "Currency";
+                    IsMandatory = true;
+                }
+                Field suggested_match
+                {
+                    DisplayName = "Suggested Match";
+                    LinkName = "suggested_match";
+                    DataType = "Lookup";
+                    RelatedFormLinkNames = ["vendor_ledger", "customer_ledger", "freight_ledger", "wage_ledger"];
+                }
+                Field exception_notes
+                {
+                    DisplayName = "Exception Notes";
+                    LinkName = "exception_notes";
+                    DataType = "MultiLine";
+                }
+                Field resolution_status
+                {
+                    DisplayName = "Resolution Status";
+                    LinkName = "resolution_status";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Open / Resolved";
+                }
+            }
+        }
+    }
+}

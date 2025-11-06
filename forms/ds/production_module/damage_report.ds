@@ -1,0 +1,54 @@
+// Module: 4. Production Module
+// Form: Damage Report
+form damage_report
+{
+    DisplayName = "Damage Report";
+    LinkName = "damage_report";
+    Module = "4. Production Module";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field stage
+                {
+                    DisplayName = "Stage";
+                    LinkName = "stage";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Mixing / Packing / QC";
+                }
+                Field description
+                {
+                    DisplayName = "Description";
+                    LinkName = "description";
+                    DataType = "MultiLine";
+                    IsMandatory = true;
+                }
+                Field quantity_lost
+                {
+                    DisplayName = "Quantity Lost";
+                    LinkName = "quantity_lost";
+                    DataType = "Decimal";
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    DataType = "Dropdown";
+                }
+                Field handling_action
+                {
+                    DisplayName = "Handling Action";
+                    LinkName = "handling_action";
+                    DataType = "Dropdown";
+                    HelpText = "Scrap / Rework";
+                }
+            }
+        }
+    }
+}

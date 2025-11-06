@@ -1,0 +1,95 @@
+// Module: 1. Core & Shared Masters
+// Form: Godown
+form godown
+{
+    DisplayName = "Godown";
+    LinkName = "godown";
+    Module = "1. Core & Shared Masters";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field godown_code
+                {
+                    DisplayName = "Godown Code";
+                    LinkName = "godown_code";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                    IsUnique = true;
+                    HelpText = "Unique within company";
+                }
+                Field warehouse
+                {
+                    DisplayName = "Warehouse";
+                    LinkName = "warehouse";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                    HelpText = "Owning warehouse";
+                }
+                Field godown_name
+                {
+                    DisplayName = "Godown Name";
+                    LinkName = "godown_name";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                    HelpText = "Display name";
+                }
+                Field storage_condition
+                {
+                    DisplayName = "Storage Condition";
+                    LinkName = "storage_condition";
+                    DataType = "Dropdown";
+                    HelpText = "Ambient / Cold / Hazardous";
+                }
+                Field capacity_uom
+                {
+                    DisplayName = "Capacity UOM";
+                    LinkName = "capacity_uom";
+                    DataType = "Dropdown";
+                }
+                Field capacity_value
+                {
+                    DisplayName = "Capacity Value";
+                    LinkName = "capacity_value";
+                    DataType = "Decimal";
+                    HelpText = "Maximum storage capacity";
+                }
+                Field batch_tracking_enabled
+                {
+                    DisplayName = "Batch Tracking Enabled";
+                    LinkName = "batch_tracking_enabled";
+                    DataType = "Checkbox";
+                    IsMandatory = true;
+                    HelpText = "Controls batch-level location";
+                }
+                Field default_qc_hold_area
+                {
+                    DisplayName = "Default QC Hold Area";
+                    LinkName = "default_qc_hold_area";
+                    DataType = "Checkbox";
+                    HelpText = "Flags quarantine locations";
+                }
+                Field active_flag
+                {
+                    DisplayName = "Active Flag";
+                    LinkName = "active_flag";
+                    DataType = "Checkbox";
+                    IsMandatory = true;
+                    HelpText = "Hide from selection when inactive";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    DataType = "MultiLine";
+                }
+            }
+        }
+    }
+}

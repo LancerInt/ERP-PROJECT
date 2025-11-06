@@ -1,0 +1,65 @@
+// Module: 3. Sales Module
+// Form: DC Lines
+form dc_lines
+{
+    DisplayName = "DC Lines";
+    LinkName = "dc_lines";
+    Module = "3. Sales Module";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field product
+                {
+                    DisplayName = "Product";
+                    LinkName = "product";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "product_master";
+                }
+                Field batch
+                {
+                    DisplayName = "Batch";
+                    LinkName = "batch";
+                    DataType = "SingleLine";
+                    ConditionalMandatory = true;
+                    HelpText = "Required if batch tracking";
+                }
+                Field quantity_dispatched
+                {
+                    DisplayName = "Quantity Dispatched";
+                    LinkName = "quantity_dispatched";
+                    DataType = "Decimal";
+                    IsMandatory = true;
+                }
+                Field uom
+                {
+                    DisplayName = "UOM";
+                    LinkName = "uom";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                }
+                Field linked_so_line
+                {
+                    DisplayName = "Linked SO Line";
+                    LinkName = "linked_so_line";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "so_lines";
+                }
+                Field weight
+                {
+                    DisplayName = "Weight";
+                    LinkName = "weight";
+                    DataType = "Decimal";
+                    HelpText = "Optional for weighment";
+                }
+            }
+        }
+    }
+}

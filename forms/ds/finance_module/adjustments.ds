@@ -1,0 +1,48 @@
+// Module: 7. Finance Module
+// Form: Adjustments
+form adjustments
+{
+    DisplayName = "Adjustments";
+    LinkName = "adjustments";
+    Module = "7. Finance Module";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field adjustment_type
+                {
+                    DisplayName = "Adjustment Type";
+                    LinkName = "adjustment_type";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "ITC Reversal / Additional Claim";
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    DataType = "Currency";
+                    IsMandatory = true;
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    DataType = "MultiLine";
+                }
+                Field approved_by
+                {
+                    DisplayName = "Approved By";
+                    LinkName = "approved_by";
+                    DataType = "Lookup";
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+            }
+        }
+    }
+}

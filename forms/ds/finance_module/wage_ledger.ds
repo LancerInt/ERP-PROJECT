@@ -1,0 +1,86 @@
+// Module: 7. Finance Module
+// Form: Wage Ledger
+form wage_ledger
+{
+    DisplayName = "Wage Ledger";
+    LinkName = "wage_ledger";
+    Module = "7. Finance Module";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field ledger_id
+                {
+                    DisplayName = "Ledger ID";
+                    LinkName = "ledger_id";
+                    DataType = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field wage_voucher
+                {
+                    DisplayName = "Wage Voucher";
+                    LinkName = "wage_voucher";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "wage_voucher";
+                }
+                Field contractor_staff_group
+                {
+                    DisplayName = "Contractor/Staff Group";
+                    LinkName = "contractor_staff_group";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkNames = ["vendor", "staff_master"];
+                }
+                Field amount
+                {
+                    DisplayName = "Amount";
+                    LinkName = "amount";
+                    DataType = "Currency";
+                    IsMandatory = true;
+                }
+                Field tds
+                {
+                    DisplayName = "TDS %";
+                    LinkName = "tds";
+                    DataType = "Decimal";
+                }
+                Field payment_week
+                {
+                    DisplayName = "Payment Week";
+                    LinkName = "payment_week";
+                    DataType = "Date";
+                    IsMandatory = true;
+                    HelpText = "Week ending date";
+                }
+                Field approval_status
+                {
+                    DisplayName = "Approval Status";
+                    LinkName = "approval_status";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Draft / Pending / Approved / Paid";
+                }
+                Field settlement_method
+                {
+                    DisplayName = "Settlement Method";
+                    LinkName = "settlement_method";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "Bank Transfer / Cash";
+                }
+                Field notes
+                {
+                    DisplayName = "Notes";
+                    LinkName = "notes";
+                    DataType = "MultiLine";
+                }
+            }
+        }
+    }
+}

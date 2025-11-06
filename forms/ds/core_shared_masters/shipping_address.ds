@@ -1,0 +1,62 @@
+// Module: 1. Core & Shared Masters
+// Form: Shipping Address
+form shipping_address
+{
+    DisplayName = "Shipping Address";
+    LinkName = "shipping_address";
+    Module = "1. Core & Shared Masters";
+    IsSubForm = true;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field address_label
+                {
+                    DisplayName = "Address Label";
+                    LinkName = "address_label";
+                    DataType = "SingleLine";
+                    IsMandatory = true;
+                }
+                Field address
+                {
+                    DisplayName = "Address";
+                    LinkName = "address";
+                    DataType = "Address";
+                    IsMandatory = true;
+                }
+                Field delivery_region
+                {
+                    DisplayName = "Delivery Region";
+                    LinkName = "delivery_region";
+                    DataType = "Dropdown";
+                    IsMandatory = true;
+                    HelpText = "For price list mapping";
+                }
+                Field default_price_list
+                {
+                    DisplayName = "Default Price List";
+                    LinkName = "default_price_list";
+                    DataType = "Lookup";
+                    RelatedFormLinkName = "price_list";
+                    HelpText = "Auto-selection";
+                }
+                Field contact_person
+                {
+                    DisplayName = "Contact Person";
+                    LinkName = "contact_person";
+                    DataType = "SingleLine";
+                }
+                Field contact_phone
+                {
+                    DisplayName = "Contact Phone";
+                    LinkName = "contact_phone";
+                    DataType = "Phone";
+                }
+            }
+        }
+    }
+}

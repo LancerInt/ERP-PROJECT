@@ -1,0 +1,72 @@
+// Module: 7. Finance Module
+// Form: Petty Cash Register
+form petty_cash_register
+{
+    DisplayName = "Petty Cash Register";
+    LinkName = "petty_cash_register";
+    Module = "7. Finance Module";
+    IsSubForm = false;
+
+    Sections
+    {
+        Section main
+        {
+            DisplayName = "Main";
+            Fields
+            {
+                Field register_id
+                {
+                    DisplayName = "Register ID";
+                    LinkName = "register_id";
+                    DataType = "AutoNumber";
+                    IsMandatory = true;
+                }
+                Field warehouse
+                {
+                    DisplayName = "Warehouse";
+                    LinkName = "warehouse";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "warehouse";
+                }
+                Field coordinator
+                {
+                    DisplayName = "Coordinator";
+                    LinkName = "coordinator";
+                    DataType = "Lookup";
+                    IsMandatory = true;
+                    RelatedFormLinkName = "stakeholder_user";
+                }
+                Field opening_balance
+                {
+                    DisplayName = "Opening Balance";
+                    LinkName = "opening_balance";
+                    DataType = "Currency";
+                    IsMandatory = true;
+                }
+                Field transactions
+                {
+                    DisplayName = "Transactions";
+                    LinkName = "transactions";
+                    DataType = "SubForm";
+                    IsMandatory = true;
+                    SubFormLinkName = "transactions";
+                }
+                Field current_balance
+                {
+                    DisplayName = "Current Balance";
+                    LinkName = "current_balance";
+                    DataType = "Currency";
+                    IsMandatory = true;
+                    HelpText = "Auto-calculated";
+                }
+                Field last_reconciled_date
+                {
+                    DisplayName = "Last Reconciled Date";
+                    LinkName = "last_reconciled_date";
+                    DataType = "Date";
+                }
+            }
+        }
+    }
+}
