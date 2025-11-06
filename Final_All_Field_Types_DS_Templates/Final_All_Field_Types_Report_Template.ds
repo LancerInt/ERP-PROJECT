@@ -1,0 +1,125 @@
+list <form_linkname_lowercase>_Report
+{
+	displayName = "<Form Display Name> Report"
+	show all rows from <form_linkname_lowercase>
+	(
+		single_line_field as "Single Line"
+		multiline_field as "Multi-line"
+		dropdown_field as "Dropdown"
+		checkbox_field as "Checkbox"
+		radio_field as "Radio"
+		time_field as "Time"
+		auto_number_field as "Auto Number"
+		percent_field as "Percent"
+		name_field as "Name"
+		date_field as "Date"
+		datetime_field as "Date-Time"
+		decimal_field as "Decimal"
+		currency_field as "Currency"
+		email_field as "Email"
+		phone_field as "Phone"
+		file_upload_field as "File Upload"
+		address_field as "Address"
+		grid_field as "Grid / Subform"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "<Form Display Name> Overview"
+				fields
+				(
+					single_line_field as "Single Line"
+					multiline_field as "Multi-line"
+					dropdown_field as "Dropdown"
+					checkbox_field as "Checkbox"
+					radio_field as "Radio"
+					time_field as "Time"
+					auto_number_field as "Auto Number"
+					percent_field as "Percent"
+					name_field as "Name"
+					date_field as "Date"
+					datetime_field as "Date-Time"
+					decimal_field as "Decimal"
+					currency_field as "Currency"
+					email_field as "Email"
+					phone_field as "Phone"
+					file_upload_field as "File Upload"
+					address_field as "Address"
+					grid_field as "Grid / Subform"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "<Form Display Name> Overview"
+				fields
+				(
+					single_line_field as "Single Line"
+					multiline_field as "Multi-line"
+					dropdown_field as "Dropdown"
+					checkbox_field as "Checkbox"
+					radio_field as "Radio"
+					time_field as "Time"
+					auto_number_field as "Auto Number"
+					percent_field as "Percent"
+					name_field as "Name"
+					date_field as "Date"
+					datetime_field as "Date-Time"
+					decimal_field as "Decimal"
+					currency_field as "Currency"
+					email_field as "Email"
+					phone_field as "Phone"
+					file_upload_field as "File Upload"
+					address_field as "Address"
+					grid_field as "Grid / Subform"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
+}

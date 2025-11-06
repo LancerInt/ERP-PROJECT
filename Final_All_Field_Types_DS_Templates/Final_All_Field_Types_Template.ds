@@ -1,0 +1,314 @@
+form <form_linkname_lowercase>
+{
+	displayname = "<Form Display Name>"
+	success message = "<Form Display Name> added successfully"
+
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
+
+	must have single_line_field
+	(
+		type = text
+		displayname = "Single Line Field"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	multiline_field
+	(
+		type = textarea
+		displayname = "Multi-line Field"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	dropdown_field
+	(
+		type = picklist
+		displayname = "Dropdown Field"
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	checkbox_field
+	(
+		type = checkboxes
+		displayname = "Checkbox Field"
+		values = {"Choice 1","Choice 2","Choice 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	radio_field
+	(
+		type = radiobuttons
+		displayname = "Radio Field"
+		maxchar = 100
+		values = {"Choice 1","Choice 2","Choice 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	time_field
+	(
+		type = time
+		displayname = "Time Field"
+		timedisplayoptions = "hh:mm:ss"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	auto_number_field
+	(
+		type = autonumber
+		displayname = "Auto Number"
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	percent_field
+	(
+		type = percentage
+		displayname = "Percent Field"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	name_field
+	(
+		type = name
+		displayname = "Name Field"
+		prefix
+		(
+			type = prefix
+			displayname = "Prefix"
+			visibility = false
+			value = {"Mr.","Mrs.","Ms."}
+		)
+		first_name
+		(
+			type = first_name
+			displayname = "First Name"
+		)
+		last_name
+		(
+			type = last_name
+			displayname = "Last Name"
+		)
+		suffix
+		(
+			type = suffix
+			displayname = "Suffix"
+			visibility = false
+		)
+		row = 1
+		column = 1
+		width = medium
+		personal data = true
+	)
+
+	date_field
+	(
+		type = date
+		displayname = "Date Field"
+		alloweddays = 0,1,2,3,4,5,6
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	datetime_field
+	(
+		type = datetime
+		displayname = "Date-Time Field"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	decimal_field
+	(
+		type = number
+		displayname = "Decimal Field"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	currency_field
+	(
+		type = INR
+		format = commadotindian
+		displayname = "Currency Field"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	email_field
+	(
+		type = email
+		displayname = "Email Field"
+		maxchar = 80
+		row = 1
+		column = 1
+		width = medium
+		personal data = true
+	)
+
+	phone_field
+	(
+		type = phonenumber
+		displayname = "Phone Field"
+		row = 1
+		column = 1
+		width = medium
+		personal data = true
+	)
+
+	file_upload_field
+	(
+		type = upload file
+		displayname = "File Upload"
+		file count = 10
+		browse = local_drive
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	address_field
+	(
+		type = address
+		displayname = "Address Field"
+		capture_coordinates = true
+		adjust_using_map = false
+		address_line_1
+		(
+			type = address_line_1
+			displayname = "Address Line 1"
+		)
+		address_line_2
+		(
+			type = address_line_2
+			displayname = "Address Line 2"
+		)
+		district_city
+		(
+			type = district_city
+			displayname = "City / District"
+		)
+		state_province
+		(
+			type = state_province
+			displayname = "State / Province"
+		)
+		postal_Code
+		(
+			type = postal_Code
+			displayname = "Postal Code"
+		)
+		country
+		(
+			type = country
+			displayname = "Country"
+		)
+		latitude
+		(
+			type = latitude
+			displayname = "Latitude"
+			visibility = false
+		)
+		longitude
+		(
+			type = longitude
+			displayname = "Longitude"
+			visibility = false
+		)
+		row = 1
+		column = 1
+		width = medium
+		personal data = true
+	)
+
+	grid_field
+	(
+		type = grid
+		displayname = "Grid / Subform Example"
+		must have grid_text
+		(
+			type = text
+			displayname = "Grid Text Field"
+			width = medium
+		)
+		grid_number
+		(
+			type = number
+			displayname = "Grid Number Field"
+			width = medium
+		)
+		grid_checkbox
+		(
+			type = checkboxes
+			displayname = "Grid Checkbox"
+			values = {"Choice 1","Choice 2","Choice 3"}
+			width = medium
+		)
+		grid_currency
+		(
+			type = INR
+			format = commadotindian
+			displayname = "Grid Currency"
+			width = medium
+		)
+		row = 2
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
+}
