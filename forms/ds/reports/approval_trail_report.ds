@@ -1,83 +1,83 @@
-report approval_trail_report
+list approval_trail_report
 {
-    DisplayName = "Approval Trail Report";
-    LinkName = "approval_trail_report";
-    Type = "List";
-    SourceFormLinkName = "approval_trail";
-
-    ListView
-    {
-        Columns
-        {
-            Column action
-            {
-                FieldLinkName = "action";
-            }
-            Column actor
-            {
-                FieldLinkName = "actor";
-            }
-            Column action_date
-            {
-                FieldLinkName = "action_date";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column action
-            {
-                FieldLinkName = "action";
-            }
-            Column actor
-            {
-                FieldLinkName = "actor";
-            }
-            Column action_date
-            {
-                FieldLinkName = "action_date";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column action
-                    {
-                        FieldLinkName = "action";
-                    }
-                    Column actor
-                    {
-                        FieldLinkName = "actor";
-                    }
-                    Column action_date
-                    {
-                        FieldLinkName = "action_date";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Approval Trail Report"
+	show all rows from approval_trail
+	(
+		action as "Action"
+		actor as "Actor"
+		action_date as "Action Date"
+		remarks as "Remarks"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Approval Trail Overview"
+				fields
+				(
+					action as "Action"
+					actor as "Actor"
+					action_date as "Action Date"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Approval Trail Overview"
+				fields
+				(
+					action as "Action"
+					actor as "Actor"
+					action_date as "Action Date"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

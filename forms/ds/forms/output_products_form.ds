@@ -1,84 +1,107 @@
-// Module: 4. Production Module
 form output_products
 {
-    DisplayName = "Output Products";
-    LinkName = "output_products";
-    Module = "4. Production Module";
-    Type = "Form";
+	displayname = "Output Products"
+	success message = "Output Products added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field product
-                {
-                    DisplayName = "Product";
-                    LinkName = "product";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                }
-                Field batch_id
-                {
-                    DisplayName = "Batch ID";
-                    LinkName = "batch_id";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    HelpText = "Auto-generated";
-                }
-                Field quantity_produced
-                {
-                    DisplayName = "Quantity Produced";
-                    LinkName = "quantity_produced";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field purity
-                {
-                    DisplayName = "Purity %";
-                    LinkName = "purity";
-                    Type = "Decimal";
-                    ConditionalMandatory = true;
-                    HelpText = "Required when yield tracking includes purity";
-                }
-                Field ai_content
-                {
-                    DisplayName = "AI Content";
-                    LinkName = "ai_content";
-                    Type = "Decimal";
-                    ConditionalMandatory = true;
-                    HelpText = "Required when tracked";
-                }
-                Field qc_status
-                {
-                    DisplayName = "QC Status";
-                    LinkName = "qc_status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Pending / Pass / Fail / Hold";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have product
+	(
+		type = lookup
+		displayname = "Product"
+		row = 1
+		column = 1
+		width = medium
+		related form = product_master
+	)
+
+	must have batch_id
+	(
+		type = text
+		displayname = "Batch ID"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have quantity_produced
+	(
+		type = number
+		displayname = "Quantity Produced"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have purity
+	(
+		type = number
+		displayname = "Purity %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have ai_content
+	(
+		type = number
+		displayname = "AI Content"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have qc_status
+	(
+		type = picklist
+		displayname = "QC Status"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

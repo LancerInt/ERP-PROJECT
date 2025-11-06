@@ -1,179 +1,107 @@
-report counter_sample_register_report
+list counter_sample_register_report
 {
-    DisplayName = "Counter Sample Register Report";
-    LinkName = "counter_sample_register_report";
-    Type = "List";
-    SourceFormLinkName = "counter_sample_register";
-
-    ListView
-    {
-        Columns
-        {
-            Column sample_id
-            {
-                FieldLinkName = "sample_id";
-            }
-            Column qc_request
-            {
-                FieldLinkName = "qc_request";
-            }
-            Column storage_location
-            {
-                FieldLinkName = "storage_location";
-            }
-            Column shelf
-            {
-                FieldLinkName = "shelf";
-            }
-            Column bin
-            {
-                FieldLinkName = "bin";
-            }
-            Column issued_to
-            {
-                FieldLinkName = "issued_to";
-            }
-            Column issue_date
-            {
-                FieldLinkName = "issue_date";
-            }
-            Column expected_return_date
-            {
-                FieldLinkName = "expected_return_date";
-            }
-            Column actual_return_date
-            {
-                FieldLinkName = "actual_return_date";
-            }
-            Column reminder_sent
-            {
-                FieldLinkName = "reminder_sent";
-            }
-            Column disposal_date
-            {
-                FieldLinkName = "disposal_date";
-            }
-            Column disposal_approved_by
-            {
-                FieldLinkName = "disposal_approved_by";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column sample_id
-            {
-                FieldLinkName = "sample_id";
-            }
-            Column qc_request
-            {
-                FieldLinkName = "qc_request";
-            }
-            Column storage_location
-            {
-                FieldLinkName = "storage_location";
-            }
-            Column shelf
-            {
-                FieldLinkName = "shelf";
-            }
-            Column bin
-            {
-                FieldLinkName = "bin";
-            }
-            Column issued_to
-            {
-                FieldLinkName = "issued_to";
-            }
-            Column issue_date
-            {
-                FieldLinkName = "issue_date";
-            }
-            Column expected_return_date
-            {
-                FieldLinkName = "expected_return_date";
-            }
-            Column actual_return_date
-            {
-                FieldLinkName = "actual_return_date";
-            }
-            Column reminder_sent
-            {
-                FieldLinkName = "reminder_sent";
-            }
-            Column disposal_date
-            {
-                FieldLinkName = "disposal_date";
-            }
-            Column disposal_approved_by
-            {
-                FieldLinkName = "disposal_approved_by";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column sample_id
-                    {
-                        FieldLinkName = "sample_id";
-                    }
-                    Column qc_request
-                    {
-                        FieldLinkName = "qc_request";
-                    }
-                    Column storage_location
-                    {
-                        FieldLinkName = "storage_location";
-                    }
-                    Column shelf
-                    {
-                        FieldLinkName = "shelf";
-                    }
-                    Column bin
-                    {
-                        FieldLinkName = "bin";
-                    }
-                    Column issued_to
-                    {
-                        FieldLinkName = "issued_to";
-                    }
-                    Column issue_date
-                    {
-                        FieldLinkName = "issue_date";
-                    }
-                    Column expected_return_date
-                    {
-                        FieldLinkName = "expected_return_date";
-                    }
-                    Column actual_return_date
-                    {
-                        FieldLinkName = "actual_return_date";
-                    }
-                    Column reminder_sent
-                    {
-                        FieldLinkName = "reminder_sent";
-                    }
-                    Column disposal_date
-                    {
-                        FieldLinkName = "disposal_date";
-                    }
-                    Column disposal_approved_by
-                    {
-                        FieldLinkName = "disposal_approved_by";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Counter Sample Register Report"
+	show all rows from counter_sample_register
+	(
+		sample_id as "Sample ID"
+		qc_request as "QC Request"
+		storage_location as "Storage Location"
+		shelf as "Shelf"
+		bin as "Bin"
+		issued_to as "Issued To"
+		issue_date as "Issue Date"
+		expected_return_date as "Expected Return Date"
+		actual_return_date as "Actual Return Date"
+		reminder_sent as "Reminder Sent"
+		disposal_date as "Disposal Date"
+		disposal_approved_by as "Disposal Approved By"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Counter Sample Register Overview"
+				fields
+				(
+					sample_id as "Sample ID"
+					qc_request as "QC Request"
+					storage_location as "Storage Location"
+					shelf as "Shelf"
+					bin as "Bin"
+					issued_to as "Issued To"
+					issue_date as "Issue Date"
+					expected_return_date as "Expected Return Date"
+					actual_return_date as "Actual Return Date"
+					reminder_sent as "Reminder Sent"
+					disposal_date as "Disposal Date"
+					disposal_approved_by as "Disposal Approved By"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Counter Sample Register Overview"
+				fields
+				(
+					sample_id as "Sample ID"
+					qc_request as "QC Request"
+					storage_location as "Storage Location"
+					shelf as "Shelf"
+					bin as "Bin"
+					issued_to as "Issued To"
+					issue_date as "Issue Date"
+					expected_return_date as "Expected Return Date"
+					actual_return_date as "Actual Return Date"
+					reminder_sent as "Reminder Sent"
+					disposal_date as "Disposal Date"
+					disposal_approved_by as "Disposal Approved By"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

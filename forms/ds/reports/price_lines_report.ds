@@ -1,131 +1,95 @@
-report price_lines_report
+list price_lines_report
 {
-    DisplayName = "Price Lines Report";
-    LinkName = "price_lines_report";
-    Type = "List";
-    SourceFormLinkName = "price_lines";
-
-    ListView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column rate
-            {
-                FieldLinkName = "rate";
-            }
-            Column discount
-            {
-                FieldLinkName = "discount";
-            }
-            Column gst
-            {
-                FieldLinkName = "gst";
-            }
-            Column freight_component
-            {
-                FieldLinkName = "freight_component";
-            }
-            Column valid_from
-            {
-                FieldLinkName = "valid_from";
-            }
-            Column valid_to
-            {
-                FieldLinkName = "valid_to";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column rate
-            {
-                FieldLinkName = "rate";
-            }
-            Column discount
-            {
-                FieldLinkName = "discount";
-            }
-            Column gst
-            {
-                FieldLinkName = "gst";
-            }
-            Column freight_component
-            {
-                FieldLinkName = "freight_component";
-            }
-            Column valid_from
-            {
-                FieldLinkName = "valid_from";
-            }
-            Column valid_to
-            {
-                FieldLinkName = "valid_to";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column product
-                    {
-                        FieldLinkName = "product";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column rate
-                    {
-                        FieldLinkName = "rate";
-                    }
-                    Column discount
-                    {
-                        FieldLinkName = "discount";
-                    }
-                    Column gst
-                    {
-                        FieldLinkName = "gst";
-                    }
-                    Column freight_component
-                    {
-                        FieldLinkName = "freight_component";
-                    }
-                    Column valid_from
-                    {
-                        FieldLinkName = "valid_from";
-                    }
-                    Column valid_to
-                    {
-                        FieldLinkName = "valid_to";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Price Lines Report"
+	show all rows from price_lines
+	(
+		product as "Product"
+		uom as "UOM"
+		rate as "Rate"
+		discount as "Discount %"
+		gst as "GST %"
+		freight_component as "Freight Component"
+		valid_from as "Valid From"
+		valid_to as "Valid To"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Price Lines Overview"
+				fields
+				(
+					product as "Product"
+					uom as "UOM"
+					rate as "Rate"
+					discount as "Discount %"
+					gst as "GST %"
+					freight_component as "Freight Component"
+					valid_from as "Valid From"
+					valid_to as "Valid To"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Price Lines Overview"
+				fields
+				(
+					product as "Product"
+					uom as "UOM"
+					rate as "Rate"
+					discount as "Discount %"
+					gst as "GST %"
+					freight_component as "Freight Component"
+					valid_from as "Valid From"
+					valid_to as "Valid To"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

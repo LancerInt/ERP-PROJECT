@@ -1,71 +1,80 @@
-report tax_breakdown_report
+list tax_breakdown_report
 {
-    DisplayName = "Tax Breakdown Report";
-    LinkName = "tax_breakdown_report";
-    Type = "List";
-    SourceFormLinkName = "tax_breakdown";
-
-    ListView
-    {
-        Columns
-        {
-            Column tax_type
-            {
-                FieldLinkName = "tax_type";
-            }
-            Column rate
-            {
-                FieldLinkName = "rate";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column tax_type
-            {
-                FieldLinkName = "tax_type";
-            }
-            Column rate
-            {
-                FieldLinkName = "rate";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column tax_type
-                    {
-                        FieldLinkName = "tax_type";
-                    }
-                    Column rate
-                    {
-                        FieldLinkName = "rate";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Tax Breakdown Report"
+	show all rows from tax_breakdown
+	(
+		tax_type as "Tax Type"
+		rate as "Rate %"
+		amount as "Amount"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Tax Breakdown Overview"
+				fields
+				(
+					tax_type as "Tax Type"
+					rate as "Rate %"
+					amount as "Amount"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Tax Breakdown Overview"
+				fields
+				(
+					tax_type as "Tax Type"
+					rate as "Rate %"
+					amount as "Amount"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

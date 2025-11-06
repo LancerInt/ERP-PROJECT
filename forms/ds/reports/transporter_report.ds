@@ -1,191 +1,110 @@
-report transporter_report
+list transporter_report
 {
-    DisplayName = "Transporter Report";
-    LinkName = "transporter_report";
-    Type = "List";
-    SourceFormLinkName = "transporter";
-
-    ListView
-    {
-        Columns
-        {
-            Column transporter_code
-            {
-                FieldLinkName = "transporter_code";
-            }
-            Column name
-            {
-                FieldLinkName = "name";
-            }
-            Column gstin
-            {
-                FieldLinkName = "gstin";
-            }
-            Column contact_person
-            {
-                FieldLinkName = "contact_person";
-            }
-            Column contact_email
-            {
-                FieldLinkName = "contact_email";
-            }
-            Column contact_phone
-            {
-                FieldLinkName = "contact_phone";
-            }
-            Column freight_modes
-            {
-                FieldLinkName = "freight_modes";
-            }
-            Column coverage_routes
-            {
-                FieldLinkName = "coverage_routes";
-            }
-            Column tds_rate
-            {
-                FieldLinkName = "tds_rate";
-            }
-            Column payment_terms
-            {
-                FieldLinkName = "payment_terms";
-            }
-            Column rating
-            {
-                FieldLinkName = "rating";
-            }
-            Column documents
-            {
-                FieldLinkName = "documents";
-            }
-            Column active_flag
-            {
-                FieldLinkName = "active_flag";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column transporter_code
-            {
-                FieldLinkName = "transporter_code";
-            }
-            Column name
-            {
-                FieldLinkName = "name";
-            }
-            Column gstin
-            {
-                FieldLinkName = "gstin";
-            }
-            Column contact_person
-            {
-                FieldLinkName = "contact_person";
-            }
-            Column contact_email
-            {
-                FieldLinkName = "contact_email";
-            }
-            Column contact_phone
-            {
-                FieldLinkName = "contact_phone";
-            }
-            Column freight_modes
-            {
-                FieldLinkName = "freight_modes";
-            }
-            Column coverage_routes
-            {
-                FieldLinkName = "coverage_routes";
-            }
-            Column tds_rate
-            {
-                FieldLinkName = "tds_rate";
-            }
-            Column payment_terms
-            {
-                FieldLinkName = "payment_terms";
-            }
-            Column rating
-            {
-                FieldLinkName = "rating";
-            }
-            Column documents
-            {
-                FieldLinkName = "documents";
-            }
-            Column active_flag
-            {
-                FieldLinkName = "active_flag";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column transporter_code
-                    {
-                        FieldLinkName = "transporter_code";
-                    }
-                    Column name
-                    {
-                        FieldLinkName = "name";
-                    }
-                    Column gstin
-                    {
-                        FieldLinkName = "gstin";
-                    }
-                    Column contact_person
-                    {
-                        FieldLinkName = "contact_person";
-                    }
-                    Column contact_email
-                    {
-                        FieldLinkName = "contact_email";
-                    }
-                    Column contact_phone
-                    {
-                        FieldLinkName = "contact_phone";
-                    }
-                    Column freight_modes
-                    {
-                        FieldLinkName = "freight_modes";
-                    }
-                    Column coverage_routes
-                    {
-                        FieldLinkName = "coverage_routes";
-                    }
-                    Column tds_rate
-                    {
-                        FieldLinkName = "tds_rate";
-                    }
-                    Column payment_terms
-                    {
-                        FieldLinkName = "payment_terms";
-                    }
-                    Column rating
-                    {
-                        FieldLinkName = "rating";
-                    }
-                    Column documents
-                    {
-                        FieldLinkName = "documents";
-                    }
-                    Column active_flag
-                    {
-                        FieldLinkName = "active_flag";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Transporter Report"
+	show all rows from transporter
+	(
+		transporter_code as "Transporter Code"
+		name as "Name"
+		gstin as "GSTIN"
+		contact_person as "Contact Person"
+		contact_email as "Contact Email"
+		contact_phone as "Contact Phone"
+		freight_modes as "Freight Modes"
+		coverage_routes as "Coverage Routes"
+		tds_rate as "TDS Rate %"
+		payment_terms as "Payment Terms"
+		rating as "Rating"
+		documents as "Documents"
+		active_flag as "Active Flag"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Transporter Overview"
+				fields
+				(
+					transporter_code as "Transporter Code"
+					name as "Name"
+					gstin as "GSTIN"
+					contact_person as "Contact Person"
+					contact_email as "Contact Email"
+					contact_phone as "Contact Phone"
+					freight_modes as "Freight Modes"
+					coverage_routes as "Coverage Routes"
+					tds_rate as "TDS Rate %"
+					payment_terms as "Payment Terms"
+					rating as "Rating"
+					documents as "Documents"
+					active_flag as "Active Flag"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Transporter Overview"
+				fields
+				(
+					transporter_code as "Transporter Code"
+					name as "Name"
+					gstin as "GSTIN"
+					contact_person as "Contact Person"
+					contact_email as "Contact Email"
+					contact_phone as "Contact Phone"
+					freight_modes as "Freight Modes"
+					coverage_routes as "Coverage Routes"
+					tds_rate as "TDS Rate %"
+					payment_terms as "Payment Terms"
+					rating as "Rating"
+					documents as "Documents"
+					active_flag as "Active Flag"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

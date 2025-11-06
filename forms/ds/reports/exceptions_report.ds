@@ -1,107 +1,89 @@
-report exceptions_report
+list exceptions_report
 {
-    DisplayName = "Exceptions Report";
-    LinkName = "exceptions_report";
-    Type = "List";
-    SourceFormLinkName = "exceptions";
-
-    ListView
-    {
-        Columns
-        {
-            Column statement_line_id
-            {
-                FieldLinkName = "statement_line_id";
-            }
-            Column transaction_date
-            {
-                FieldLinkName = "transaction_date";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column suggested_match
-            {
-                FieldLinkName = "suggested_match";
-            }
-            Column exception_notes
-            {
-                FieldLinkName = "exception_notes";
-            }
-            Column resolution_status
-            {
-                FieldLinkName = "resolution_status";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column statement_line_id
-            {
-                FieldLinkName = "statement_line_id";
-            }
-            Column transaction_date
-            {
-                FieldLinkName = "transaction_date";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column suggested_match
-            {
-                FieldLinkName = "suggested_match";
-            }
-            Column exception_notes
-            {
-                FieldLinkName = "exception_notes";
-            }
-            Column resolution_status
-            {
-                FieldLinkName = "resolution_status";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column statement_line_id
-                    {
-                        FieldLinkName = "statement_line_id";
-                    }
-                    Column transaction_date
-                    {
-                        FieldLinkName = "transaction_date";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                    Column suggested_match
-                    {
-                        FieldLinkName = "suggested_match";
-                    }
-                    Column exception_notes
-                    {
-                        FieldLinkName = "exception_notes";
-                    }
-                    Column resolution_status
-                    {
-                        FieldLinkName = "resolution_status";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Exceptions Report"
+	show all rows from exceptions
+	(
+		statement_line_id as "Statement Line ID"
+		transaction_date as "Transaction Date"
+		amount as "Amount"
+		suggested_match as "Suggested Match"
+		exception_notes as "Exception Notes"
+		resolution_status as "Resolution Status"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Exceptions Overview"
+				fields
+				(
+					statement_line_id as "Statement Line ID"
+					transaction_date as "Transaction Date"
+					amount as "Amount"
+					suggested_match as "Suggested Match"
+					exception_notes as "Exception Notes"
+					resolution_status as "Resolution Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Exceptions Overview"
+				fields
+				(
+					statement_line_id as "Statement Line ID"
+					transaction_date as "Transaction Date"
+					amount as "Amount"
+					suggested_match as "Suggested Match"
+					exception_notes as "Exception Notes"
+					resolution_status as "Resolution Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

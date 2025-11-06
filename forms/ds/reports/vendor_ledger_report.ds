@@ -1,179 +1,107 @@
-report vendor_ledger_report
+list vendor_ledger_report
 {
-    DisplayName = "Vendor Ledger Report";
-    LinkName = "vendor_ledger_report";
-    Type = "List";
-    SourceFormLinkName = "vendor_ledger";
-
-    ListView
-    {
-        Columns
-        {
-            Column ledger_id
-            {
-                FieldLinkName = "ledger_id";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column document_type
-            {
-                FieldLinkName = "document_type";
-            }
-            Column document_reference
-            {
-                FieldLinkName = "document_reference";
-            }
-            Column document_date
-            {
-                FieldLinkName = "document_date";
-            }
-            Column debit_amount
-            {
-                FieldLinkName = "debit_amount";
-            }
-            Column credit_amount
-            {
-                FieldLinkName = "credit_amount";
-            }
-            Column tax_breakdown
-            {
-                FieldLinkName = "tax_breakdown";
-            }
-            Column due_date
-            {
-                FieldLinkName = "due_date";
-            }
-            Column payment_status
-            {
-                FieldLinkName = "payment_status";
-            }
-            Column ageing_bucket
-            {
-                FieldLinkName = "ageing_bucket";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column ledger_id
-            {
-                FieldLinkName = "ledger_id";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column document_type
-            {
-                FieldLinkName = "document_type";
-            }
-            Column document_reference
-            {
-                FieldLinkName = "document_reference";
-            }
-            Column document_date
-            {
-                FieldLinkName = "document_date";
-            }
-            Column debit_amount
-            {
-                FieldLinkName = "debit_amount";
-            }
-            Column credit_amount
-            {
-                FieldLinkName = "credit_amount";
-            }
-            Column tax_breakdown
-            {
-                FieldLinkName = "tax_breakdown";
-            }
-            Column due_date
-            {
-                FieldLinkName = "due_date";
-            }
-            Column payment_status
-            {
-                FieldLinkName = "payment_status";
-            }
-            Column ageing_bucket
-            {
-                FieldLinkName = "ageing_bucket";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column ledger_id
-                    {
-                        FieldLinkName = "ledger_id";
-                    }
-                    Column vendor
-                    {
-                        FieldLinkName = "vendor";
-                    }
-                    Column document_type
-                    {
-                        FieldLinkName = "document_type";
-                    }
-                    Column document_reference
-                    {
-                        FieldLinkName = "document_reference";
-                    }
-                    Column document_date
-                    {
-                        FieldLinkName = "document_date";
-                    }
-                    Column debit_amount
-                    {
-                        FieldLinkName = "debit_amount";
-                    }
-                    Column credit_amount
-                    {
-                        FieldLinkName = "credit_amount";
-                    }
-                    Column tax_breakdown
-                    {
-                        FieldLinkName = "tax_breakdown";
-                    }
-                    Column due_date
-                    {
-                        FieldLinkName = "due_date";
-                    }
-                    Column payment_status
-                    {
-                        FieldLinkName = "payment_status";
-                    }
-                    Column ageing_bucket
-                    {
-                        FieldLinkName = "ageing_bucket";
-                    }
-                    Column notes
-                    {
-                        FieldLinkName = "notes";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Vendor Ledger Report"
+	show all rows from vendor_ledger
+	(
+		ledger_id as "Ledger ID"
+		vendor as "Vendor"
+		document_type as "Document Type"
+		document_reference as "Document Reference"
+		document_date as "Document Date"
+		debit_amount as "Debit Amount"
+		credit_amount as "Credit Amount"
+		tax_breakdown as "Tax Breakdown"
+		due_date as "Due Date"
+		payment_status as "Payment Status"
+		ageing_bucket as "Ageing Bucket"
+		notes as "Notes"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Vendor Ledger Overview"
+				fields
+				(
+					ledger_id as "Ledger ID"
+					vendor as "Vendor"
+					document_type as "Document Type"
+					document_reference as "Document Reference"
+					document_date as "Document Date"
+					debit_amount as "Debit Amount"
+					credit_amount as "Credit Amount"
+					tax_breakdown as "Tax Breakdown"
+					due_date as "Due Date"
+					payment_status as "Payment Status"
+					ageing_bucket as "Ageing Bucket"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Vendor Ledger Overview"
+				fields
+				(
+					ledger_id as "Ledger ID"
+					vendor as "Vendor"
+					document_type as "Document Type"
+					document_reference as "Document Reference"
+					document_date as "Document Date"
+					debit_amount as "Debit Amount"
+					credit_amount as "Credit Amount"
+					tax_breakdown as "Tax Breakdown"
+					due_date as "Due Date"
+					payment_status as "Payment Status"
+					ageing_bucket as "Ageing Bucket"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

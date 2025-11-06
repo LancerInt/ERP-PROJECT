@@ -1,160 +1,286 @@
-// Module: 1. Core & Shared Masters
 form company
 {
-    DisplayName = "Company";
-    LinkName = "company";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "Company"
+	success message = "Company added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field company_code
-                {
-                    DisplayName = "Company Code";
-                    LinkName = "company_code";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    IsUnique = true;
-                    HelpText = "Short code used across modules and exports";
-                }
-                Field legal_name
-                {
-                    DisplayName = "Legal Name";
-                    LinkName = "legal_name";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    HelpText = "Registered legal entity name";
-                }
-                Field trade_name
-                {
-                    DisplayName = "Trade Name";
-                    LinkName = "trade_name";
-                    Type = "SingleLine";
-                    HelpText = "Optional doing-business-as name";
-                }
-                Field gstin
-                {
-                    DisplayName = "GSTIN";
-                    LinkName = "gstin";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    HelpText = "GST registration; validate 15-character format";
-                }
-                Field pan
-                {
-                    DisplayName = "PAN";
-                    LinkName = "pan";
-                    Type = "SingleLine";
-                    HelpText = "For TDS/TCS calculations";
-                }
-                Field cin
-                {
-                    DisplayName = "CIN";
-                    LinkName = "cin";
-                    Type = "SingleLine";
-                    HelpText = "Corporate Identification Number";
-                }
-                Field registered_address
-                {
-                    DisplayName = "Registered Address";
-                    LinkName = "registered_address";
-                    Type = "Address";
-                    IsMandatory = true;
-                    AddressFields
-                    {
-                        AddressLine1 = true;
-                        AddressLine2 = true;
-                        City = true;
-                        State = true;
-                        Country = true;
-                        PostalCode = true;
-                    }
-                    HelpText = "Multi-line address";
-                }
-                Field billing_address
-                {
-                    DisplayName = "Billing Address";
-                    LinkName = "billing_address";
-                    Type = "Address";
-                    IsMandatory = true;
-                    AddressFields
-                    {
-                        AddressLine1 = true;
-                        AddressLine2 = true;
-                        City = true;
-                        State = true;
-                        Country = true;
-                        PostalCode = true;
-                    }
-                    HelpText = "Defaults on invoices";
-                }
-                Field contact_email
-                {
-                    DisplayName = "Contact Email";
-                    LinkName = "contact_email";
-                    Type = "Email";
-                    HelpText = "Finance escalation";
-                }
-                Field contact_phone
-                {
-                    DisplayName = "Contact Phone";
-                    LinkName = "contact_phone";
-                    Type = "Phone";
-                }
-                Field default_currency
-                {
-                    DisplayName = "Default Currency";
-                    LinkName = "default_currency";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Values maintained in system parameters";
-                }
-                Field books_export_flag
-                {
-                    DisplayName = "Books Export Flag";
-                    LinkName = "books_export_flag";
-                    Type = "Checkbox";
-                    HelpText = "Toggle for Tally integration";
-                }
-                Field active_from
-                {
-                    DisplayName = "Active From";
-                    LinkName = "active_from";
-                    Type = "Date";
-                    IsMandatory = true;
-                    HelpText = "Effective start date";
-                }
-                Field active_to
-                {
-                    DisplayName = "Active To";
-                    LinkName = "active_to";
-                    Type = "Date";
-                    HelpText = "Optional sunset";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                    HelpText = "Additional remarks";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have company_code
+	(
+		type = text
+		displayname = "Company Code"
+		row = 1
+		column = 1
+		width = medium
+		is unique = true
+	)
+
+	must have legal_name
+	(
+		type = text
+		displayname = "Legal Name"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	trade_name
+	(
+		type = text
+		displayname = "Trade Name"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have gstin
+	(
+		type = text
+		displayname = "GSTIN"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	pan
+	(
+		type = text
+		displayname = "PAN"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	cin
+	(
+		type = text
+		displayname = "CIN"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have registered_address
+	(
+		type = address
+		displayname = "Registered Address"
+		row = 1
+		column = 1
+		width = medium
+		capture_coordinates = true
+		adjust_using_map = false
+		personal data = true
+		address_line_1
+		(
+			type = address_line_1
+			displayname = "Address Line 1"
+		)
+
+		address_line_2
+		(
+			type = address_line_2
+			displayname = "Address Line 2"
+		)
+
+		district_city
+		(
+			type = district_city
+			displayname = "City / District"
+		)
+
+		state_province
+		(
+			type = state_province
+			displayname = "State / Province"
+		)
+
+		postal_code
+		(
+			type = postal_code
+			displayname = "Postal Code"
+		)
+
+		country
+		(
+			type = country
+			displayname = "Country"
+		)
+
+		latitude
+		(
+			type = latitude
+			displayname = "Latitude"
+			visibility = false
+		)
+
+		longitude
+		(
+			type = longitude
+			displayname = "Longitude"
+			visibility = false
+		)
+	)
+
+	must have billing_address
+	(
+		type = address
+		displayname = "Billing Address"
+		row = 1
+		column = 1
+		width = medium
+		capture_coordinates = true
+		adjust_using_map = false
+		personal data = true
+		address_line_1
+		(
+			type = address_line_1
+			displayname = "Address Line 1"
+		)
+
+		address_line_2
+		(
+			type = address_line_2
+			displayname = "Address Line 2"
+		)
+
+		district_city
+		(
+			type = district_city
+			displayname = "City / District"
+		)
+
+		state_province
+		(
+			type = state_province
+			displayname = "State / Province"
+		)
+
+		postal_code
+		(
+			type = postal_code
+			displayname = "Postal Code"
+		)
+
+		country
+		(
+			type = country
+			displayname = "Country"
+		)
+
+		latitude
+		(
+			type = latitude
+			displayname = "Latitude"
+			visibility = false
+		)
+
+		longitude
+		(
+			type = longitude
+			displayname = "Longitude"
+			visibility = false
+		)
+	)
+
+	contact_email
+	(
+		type = email
+		displayname = "Contact Email"
+		row = 1
+		column = 1
+		width = medium
+		personal data = true
+	)
+
+	contact_phone
+	(
+		type = phonenumber
+		displayname = "Contact Phone"
+		row = 1
+		column = 1
+		width = medium
+		personal data = true
+	)
+
+	must have default_currency
+	(
+		type = picklist
+		displayname = "Default Currency"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	books_export_flag
+	(
+		type = checkbox
+		displayname = "Books Export Flag"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have active_from
+	(
+		type = date
+		displayname = "Active From"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	active_to
+	(
+		type = date
+		displayname = "Active To"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

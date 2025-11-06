@@ -1,83 +1,83 @@
-report hours_tasks_report
+list hours_tasks_report
 {
-    DisplayName = "Hours / Tasks Report";
-    LinkName = "hours_tasks_report";
-    Type = "List";
-    SourceFormLinkName = "hours_tasks";
-
-    ListView
-    {
-        Columns
-        {
-            Column staff
-            {
-                FieldLinkName = "staff";
-            }
-            Column task_description
-            {
-                FieldLinkName = "task_description";
-            }
-            Column hours_worked
-            {
-                FieldLinkName = "hours_worked";
-            }
-            Column quantity_produced
-            {
-                FieldLinkName = "quantity_produced";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column staff
-            {
-                FieldLinkName = "staff";
-            }
-            Column task_description
-            {
-                FieldLinkName = "task_description";
-            }
-            Column hours_worked
-            {
-                FieldLinkName = "hours_worked";
-            }
-            Column quantity_produced
-            {
-                FieldLinkName = "quantity_produced";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column staff
-                    {
-                        FieldLinkName = "staff";
-                    }
-                    Column task_description
-                    {
-                        FieldLinkName = "task_description";
-                    }
-                    Column hours_worked
-                    {
-                        FieldLinkName = "hours_worked";
-                    }
-                    Column quantity_produced
-                    {
-                        FieldLinkName = "quantity_produced";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Hours / Tasks Report"
+	show all rows from hours_tasks
+	(
+		staff as "Staff"
+		task_description as "Task Description"
+		hours_worked as "Hours Worked"
+		quantity_produced as "Quantity Produced"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Hours / Tasks Overview"
+				fields
+				(
+					staff as "Staff"
+					task_description as "Task Description"
+					hours_worked as "Hours Worked"
+					quantity_produced as "Quantity Produced"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Hours / Tasks Overview"
+				fields
+				(
+					staff as "Staff"
+					task_description as "Task Description"
+					hours_worked as "Hours Worked"
+					quantity_produced as "Quantity Produced"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

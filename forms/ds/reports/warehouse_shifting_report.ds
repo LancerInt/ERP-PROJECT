@@ -1,179 +1,107 @@
-report warehouse_shifting_report
+list warehouse_shifting_report
 {
-    DisplayName = "Warehouse Shifting Report";
-    LinkName = "warehouse_shifting_report";
-    Type = "List";
-    SourceFormLinkName = "warehouse_shifting";
-
-    ListView
-    {
-        Columns
-        {
-            Column shifting_no
-            {
-                FieldLinkName = "shifting_no";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column request_date
-            {
-                FieldLinkName = "request_date";
-            }
-            Column from_godown
-            {
-                FieldLinkName = "from_godown";
-            }
-            Column to_godown
-            {
-                FieldLinkName = "to_godown";
-            }
-            Column reason_code
-            {
-                FieldLinkName = "reason_code";
-            }
-            Column other_reason
-            {
-                FieldLinkName = "other_reason";
-            }
-            Column products
-            {
-                FieldLinkName = "products";
-            }
-            Column freight_wage_drafts
-            {
-                FieldLinkName = "freight_wage_drafts";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column in_transit_flag
-            {
-                FieldLinkName = "in_transit_flag";
-            }
-            Column attachments
-            {
-                FieldLinkName = "attachments";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column shifting_no
-            {
-                FieldLinkName = "shifting_no";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column request_date
-            {
-                FieldLinkName = "request_date";
-            }
-            Column from_godown
-            {
-                FieldLinkName = "from_godown";
-            }
-            Column to_godown
-            {
-                FieldLinkName = "to_godown";
-            }
-            Column reason_code
-            {
-                FieldLinkName = "reason_code";
-            }
-            Column other_reason
-            {
-                FieldLinkName = "other_reason";
-            }
-            Column products
-            {
-                FieldLinkName = "products";
-            }
-            Column freight_wage_drafts
-            {
-                FieldLinkName = "freight_wage_drafts";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column in_transit_flag
-            {
-                FieldLinkName = "in_transit_flag";
-            }
-            Column attachments
-            {
-                FieldLinkName = "attachments";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column shifting_no
-                    {
-                        FieldLinkName = "shifting_no";
-                    }
-                    Column warehouse
-                    {
-                        FieldLinkName = "warehouse";
-                    }
-                    Column request_date
-                    {
-                        FieldLinkName = "request_date";
-                    }
-                    Column from_godown
-                    {
-                        FieldLinkName = "from_godown";
-                    }
-                    Column to_godown
-                    {
-                        FieldLinkName = "to_godown";
-                    }
-                    Column reason_code
-                    {
-                        FieldLinkName = "reason_code";
-                    }
-                    Column other_reason
-                    {
-                        FieldLinkName = "other_reason";
-                    }
-                    Column products
-                    {
-                        FieldLinkName = "products";
-                    }
-                    Column freight_wage_drafts
-                    {
-                        FieldLinkName = "freight_wage_drafts";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                    Column in_transit_flag
-                    {
-                        FieldLinkName = "in_transit_flag";
-                    }
-                    Column attachments
-                    {
-                        FieldLinkName = "attachments";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Warehouse Shifting Report"
+	show all rows from warehouse_shifting
+	(
+		shifting_no as "Shifting No."
+		warehouse as "Warehouse"
+		request_date as "Request Date"
+		from_godown as "From Godown"
+		to_godown as "To Godown"
+		reason_code as "Reason Code"
+		other_reason as "Other Reason"
+		products as "Products"
+		freight_wage_drafts as "Freight/Wage Drafts"
+		status as "Status"
+		in_transit_flag as "In-Transit Flag"
+		attachments as "Attachments"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Warehouse Shifting Overview"
+				fields
+				(
+					shifting_no as "Shifting No."
+					warehouse as "Warehouse"
+					request_date as "Request Date"
+					from_godown as "From Godown"
+					to_godown as "To Godown"
+					reason_code as "Reason Code"
+					other_reason as "Other Reason"
+					products as "Products"
+					freight_wage_drafts as "Freight/Wage Drafts"
+					status as "Status"
+					in_transit_flag as "In-Transit Flag"
+					attachments as "Attachments"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Warehouse Shifting Overview"
+				fields
+				(
+					shifting_no as "Shifting No."
+					warehouse as "Warehouse"
+					request_date as "Request Date"
+					from_godown as "From Godown"
+					to_godown as "To Godown"
+					reason_code as "Reason Code"
+					other_reason as "Other Reason"
+					products as "Products"
+					freight_wage_drafts as "Freight/Wage Drafts"
+					status as "Status"
+					in_transit_flag as "In-Transit Flag"
+					attachments as "Attachments"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

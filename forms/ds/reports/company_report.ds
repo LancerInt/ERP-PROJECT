@@ -1,215 +1,116 @@
-report company_report
+list company_report
 {
-    DisplayName = "Company Report";
-    LinkName = "company_report";
-    Type = "List";
-    SourceFormLinkName = "company";
-
-    ListView
-    {
-        Columns
-        {
-            Column company_code
-            {
-                FieldLinkName = "company_code";
-            }
-            Column legal_name
-            {
-                FieldLinkName = "legal_name";
-            }
-            Column trade_name
-            {
-                FieldLinkName = "trade_name";
-            }
-            Column gstin
-            {
-                FieldLinkName = "gstin";
-            }
-            Column pan
-            {
-                FieldLinkName = "pan";
-            }
-            Column cin
-            {
-                FieldLinkName = "cin";
-            }
-            Column registered_address
-            {
-                FieldLinkName = "registered_address";
-            }
-            Column billing_address
-            {
-                FieldLinkName = "billing_address";
-            }
-            Column contact_email
-            {
-                FieldLinkName = "contact_email";
-            }
-            Column contact_phone
-            {
-                FieldLinkName = "contact_phone";
-            }
-            Column default_currency
-            {
-                FieldLinkName = "default_currency";
-            }
-            Column books_export_flag
-            {
-                FieldLinkName = "books_export_flag";
-            }
-            Column active_from
-            {
-                FieldLinkName = "active_from";
-            }
-            Column active_to
-            {
-                FieldLinkName = "active_to";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column company_code
-            {
-                FieldLinkName = "company_code";
-            }
-            Column legal_name
-            {
-                FieldLinkName = "legal_name";
-            }
-            Column trade_name
-            {
-                FieldLinkName = "trade_name";
-            }
-            Column gstin
-            {
-                FieldLinkName = "gstin";
-            }
-            Column pan
-            {
-                FieldLinkName = "pan";
-            }
-            Column cin
-            {
-                FieldLinkName = "cin";
-            }
-            Column registered_address
-            {
-                FieldLinkName = "registered_address";
-            }
-            Column billing_address
-            {
-                FieldLinkName = "billing_address";
-            }
-            Column contact_email
-            {
-                FieldLinkName = "contact_email";
-            }
-            Column contact_phone
-            {
-                FieldLinkName = "contact_phone";
-            }
-            Column default_currency
-            {
-                FieldLinkName = "default_currency";
-            }
-            Column books_export_flag
-            {
-                FieldLinkName = "books_export_flag";
-            }
-            Column active_from
-            {
-                FieldLinkName = "active_from";
-            }
-            Column active_to
-            {
-                FieldLinkName = "active_to";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column company_code
-                    {
-                        FieldLinkName = "company_code";
-                    }
-                    Column legal_name
-                    {
-                        FieldLinkName = "legal_name";
-                    }
-                    Column trade_name
-                    {
-                        FieldLinkName = "trade_name";
-                    }
-                    Column gstin
-                    {
-                        FieldLinkName = "gstin";
-                    }
-                    Column pan
-                    {
-                        FieldLinkName = "pan";
-                    }
-                    Column cin
-                    {
-                        FieldLinkName = "cin";
-                    }
-                    Column registered_address
-                    {
-                        FieldLinkName = "registered_address";
-                    }
-                    Column billing_address
-                    {
-                        FieldLinkName = "billing_address";
-                    }
-                    Column contact_email
-                    {
-                        FieldLinkName = "contact_email";
-                    }
-                    Column contact_phone
-                    {
-                        FieldLinkName = "contact_phone";
-                    }
-                    Column default_currency
-                    {
-                        FieldLinkName = "default_currency";
-                    }
-                    Column books_export_flag
-                    {
-                        FieldLinkName = "books_export_flag";
-                    }
-                    Column active_from
-                    {
-                        FieldLinkName = "active_from";
-                    }
-                    Column active_to
-                    {
-                        FieldLinkName = "active_to";
-                    }
-                    Column notes
-                    {
-                        FieldLinkName = "notes";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Company Report"
+	show all rows from company
+	(
+		company_code as "Company Code"
+		legal_name as "Legal Name"
+		trade_name as "Trade Name"
+		gstin as "GSTIN"
+		pan as "PAN"
+		cin as "CIN"
+		registered_address as "Registered Address"
+		billing_address as "Billing Address"
+		contact_email as "Contact Email"
+		contact_phone as "Contact Phone"
+		default_currency as "Default Currency"
+		books_export_flag as "Books Export Flag"
+		active_from as "Active From"
+		active_to as "Active To"
+		notes as "Notes"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Company Overview"
+				fields
+				(
+					company_code as "Company Code"
+					legal_name as "Legal Name"
+					trade_name as "Trade Name"
+					gstin as "GSTIN"
+					pan as "PAN"
+					cin as "CIN"
+					registered_address as "Registered Address"
+					billing_address as "Billing Address"
+					contact_email as "Contact Email"
+					contact_phone as "Contact Phone"
+					default_currency as "Default Currency"
+					books_export_flag as "Books Export Flag"
+					active_from as "Active From"
+					active_to as "Active To"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Company Overview"
+				fields
+				(
+					company_code as "Company Code"
+					legal_name as "Legal Name"
+					trade_name as "Trade Name"
+					gstin as "GSTIN"
+					pan as "PAN"
+					cin as "CIN"
+					registered_address as "Registered Address"
+					billing_address as "Billing Address"
+					contact_email as "Contact Email"
+					contact_phone as "Contact Phone"
+					default_currency as "Default Currency"
+					books_export_flag as "Books Export Flag"
+					active_from as "Active From"
+					active_to as "Active To"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

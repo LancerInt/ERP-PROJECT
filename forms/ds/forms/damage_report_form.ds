@@ -1,64 +1,89 @@
-// Module: 4. Production Module
 form damage_report
 {
-    DisplayName = "Damage Report";
-    LinkName = "damage_report";
-    Module = "4. Production Module";
-    Type = "Form";
+	displayname = "Damage Report"
+	success message = "Damage Report added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field stage
-                {
-                    DisplayName = "Stage";
-                    LinkName = "stage";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Mixing / Packing / QC";
-                }
-                Field description
-                {
-                    DisplayName = "Description";
-                    LinkName = "description";
-                    Type = "MultiLine";
-                    IsMandatory = true;
-                }
-                Field quantity_lost
-                {
-                    DisplayName = "Quantity Lost";
-                    LinkName = "quantity_lost";
-                    Type = "Decimal";
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                }
-                Field handling_action
-                {
-                    DisplayName = "Handling Action";
-                    LinkName = "handling_action";
-                    Type = "Dropdown";
-                    HelpText = "Scrap / Rework";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have stage
+	(
+		type = picklist
+		displayname = "Stage"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have description
+	(
+		type = textarea
+		displayname = "Description"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	quantity_lost
+	(
+		type = number
+		displayname = "Quantity Lost"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	uom
+	(
+		type = picklist
+		displayname = "UOM"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	handling_action
+	(
+		type = picklist
+		displayname = "Handling Action"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

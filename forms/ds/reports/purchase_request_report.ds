@@ -1,239 +1,122 @@
-report purchase_request_report
+list purchase_request_report
 {
-    DisplayName = "Purchase Request (PR) Report";
-    LinkName = "purchase_request_report";
-    Type = "List";
-    SourceFormLinkName = "purchase_request";
-
-    ListView
-    {
-        Columns
-        {
-            Column pr_no
-            {
-                FieldLinkName = "pr_no";
-            }
-            Column request_date
-            {
-                FieldLinkName = "request_date";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column godown
-            {
-                FieldLinkName = "godown";
-            }
-            Column requested_by
-            {
-                FieldLinkName = "requested_by";
-            }
-            Column requestor_role
-            {
-                FieldLinkName = "requestor_role";
-            }
-            Column requirement_type
-            {
-                FieldLinkName = "requirement_type";
-            }
-            Column lines
-            {
-                FieldLinkName = "lines";
-            }
-            Column priority
-            {
-                FieldLinkName = "priority";
-            }
-            Column required_by_date
-            {
-                FieldLinkName = "required_by_date";
-            }
-            Column justification
-            {
-                FieldLinkName = "justification";
-            }
-            Column attachments
-            {
-                FieldLinkName = "attachments";
-            }
-            Column approval_status
-            {
-                FieldLinkName = "approval_status";
-            }
-            Column approval_trail
-            {
-                FieldLinkName = "approval_trail";
-            }
-            Column visibility_scope
-            {
-                FieldLinkName = "visibility_scope";
-            }
-            Column created_from_bom_request
-            {
-                FieldLinkName = "created_from_bom_request";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column pr_no
-            {
-                FieldLinkName = "pr_no";
-            }
-            Column request_date
-            {
-                FieldLinkName = "request_date";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column godown
-            {
-                FieldLinkName = "godown";
-            }
-            Column requested_by
-            {
-                FieldLinkName = "requested_by";
-            }
-            Column requestor_role
-            {
-                FieldLinkName = "requestor_role";
-            }
-            Column requirement_type
-            {
-                FieldLinkName = "requirement_type";
-            }
-            Column lines
-            {
-                FieldLinkName = "lines";
-            }
-            Column priority
-            {
-                FieldLinkName = "priority";
-            }
-            Column required_by_date
-            {
-                FieldLinkName = "required_by_date";
-            }
-            Column justification
-            {
-                FieldLinkName = "justification";
-            }
-            Column attachments
-            {
-                FieldLinkName = "attachments";
-            }
-            Column approval_status
-            {
-                FieldLinkName = "approval_status";
-            }
-            Column approval_trail
-            {
-                FieldLinkName = "approval_trail";
-            }
-            Column visibility_scope
-            {
-                FieldLinkName = "visibility_scope";
-            }
-            Column created_from_bom_request
-            {
-                FieldLinkName = "created_from_bom_request";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column pr_no
-                    {
-                        FieldLinkName = "pr_no";
-                    }
-                    Column request_date
-                    {
-                        FieldLinkName = "request_date";
-                    }
-                    Column warehouse
-                    {
-                        FieldLinkName = "warehouse";
-                    }
-                    Column godown
-                    {
-                        FieldLinkName = "godown";
-                    }
-                    Column requested_by
-                    {
-                        FieldLinkName = "requested_by";
-                    }
-                    Column requestor_role
-                    {
-                        FieldLinkName = "requestor_role";
-                    }
-                    Column requirement_type
-                    {
-                        FieldLinkName = "requirement_type";
-                    }
-                    Column lines
-                    {
-                        FieldLinkName = "lines";
-                    }
-                    Column priority
-                    {
-                        FieldLinkName = "priority";
-                    }
-                    Column required_by_date
-                    {
-                        FieldLinkName = "required_by_date";
-                    }
-                    Column justification
-                    {
-                        FieldLinkName = "justification";
-                    }
-                    Column attachments
-                    {
-                        FieldLinkName = "attachments";
-                    }
-                    Column approval_status
-                    {
-                        FieldLinkName = "approval_status";
-                    }
-                    Column approval_trail
-                    {
-                        FieldLinkName = "approval_trail";
-                    }
-                    Column visibility_scope
-                    {
-                        FieldLinkName = "visibility_scope";
-                    }
-                    Column created_from_bom_request
-                    {
-                        FieldLinkName = "created_from_bom_request";
-                    }
-                    Column notes
-                    {
-                        FieldLinkName = "notes";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Purchase Request (PR) Report"
+	show all rows from purchase_request
+	(
+		pr_no as "PR No."
+		request_date as "Request Date"
+		warehouse as "Warehouse"
+		godown as "Godown"
+		requested_by as "Requested By"
+		requestor_role as "Requestor Role"
+		requirement_type as "Requirement Type"
+		lines as "Lines"
+		priority as "Priority"
+		required_by_date as "Required By Date"
+		justification as "Justification"
+		attachments as "Attachments"
+		approval_status as "Approval Status"
+		approval_trail as "Approval Trail"
+		visibility_scope as "Visibility Scope"
+		created_from_bom_request as "Created From BOM Request"
+		notes as "Notes"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Purchase Request (PR) Overview"
+				fields
+				(
+					pr_no as "PR No."
+					request_date as "Request Date"
+					warehouse as "Warehouse"
+					godown as "Godown"
+					requested_by as "Requested By"
+					requestor_role as "Requestor Role"
+					requirement_type as "Requirement Type"
+					lines as "Lines"
+					priority as "Priority"
+					required_by_date as "Required By Date"
+					justification as "Justification"
+					attachments as "Attachments"
+					approval_status as "Approval Status"
+					approval_trail as "Approval Trail"
+					visibility_scope as "Visibility Scope"
+					created_from_bom_request as "Created From BOM Request"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Purchase Request (PR) Overview"
+				fields
+				(
+					pr_no as "PR No."
+					request_date as "Request Date"
+					warehouse as "Warehouse"
+					godown as "Godown"
+					requested_by as "Requested By"
+					requestor_role as "Requestor Role"
+					requirement_type as "Requirement Type"
+					lines as "Lines"
+					priority as "Priority"
+					required_by_date as "Required By Date"
+					justification as "Justification"
+					attachments as "Attachments"
+					approval_status as "Approval Status"
+					approval_trail as "Approval Trail"
+					visibility_scope as "Visibility Scope"
+					created_from_bom_request as "Created From BOM Request"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

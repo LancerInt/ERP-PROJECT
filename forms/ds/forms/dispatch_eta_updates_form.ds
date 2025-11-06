@@ -1,58 +1,81 @@
-// Module: 2. Purchase Module
 form dispatch_eta_updates
 {
-    DisplayName = "Dispatch ETA Updates";
-    LinkName = "dispatch_eta_updates";
-    Module = "2. Purchase Module";
-    Type = "Form";
+	displayname = "Dispatch ETA Updates"
+	success message = "Dispatch ETA Updates added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field update_date
-                {
-                    DisplayName = "Update Date";
-                    LinkName = "update_date";
-                    Type = "DateTime";
-                    IsMandatory = true;
-                }
-                Field updated_by
-                {
-                    DisplayName = "Updated By";
-                    LinkName = "updated_by";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field expected_arrival
-                {
-                    DisplayName = "Expected Arrival";
-                    LinkName = "expected_arrival";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have update_date
+	(
+		type = datetime
+		displayname = "Update Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have updated_by
+	(
+		type = lookup
+		displayname = "Updated By"
+		row = 1
+		column = 1
+		width = medium
+		related form = stakeholder_user
+	)
+
+	must have expected_arrival
+	(
+		type = date
+		displayname = "Expected Arrival"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

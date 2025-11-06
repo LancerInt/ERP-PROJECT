@@ -1,104 +1,138 @@
-// Module: 1. Core & Shared Masters
 form stakeholder_user
 {
-    DisplayName = "Stakeholder User";
-    LinkName = "stakeholder_user";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "Stakeholder User"
+	success message = "Stakeholder User added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field portal_user_id
-                {
-                    DisplayName = "Portal User ID";
-                    LinkName = "portal_user_id";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    HelpText = "Zoho portal identifier";
-                }
-                Field employee_record
-                {
-                    DisplayName = "Employee Record";
-                    LinkName = "employee_record";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "staff_master";
-                    HelpText = "Links to staff";
-                }
-                Field primary_email
-                {
-                    DisplayName = "Primary Email";
-                    LinkName = "primary_email";
-                    Type = "Email";
-                    IsMandatory = true;
-                }
-                Field mobile
-                {
-                    DisplayName = "Mobile";
-                    LinkName = "mobile";
-                    Type = "Phone";
-                }
-                Field assigned_roles
-                {
-                    DisplayName = "Assigned Roles";
-                    LinkName = "assigned_roles";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    AllowMultiple = true;
-                    HelpText = "Supports multi-role users";
-                }
-                Field default_warehouse
-                {
-                    DisplayName = "Default Warehouse";
-                    LinkName = "default_warehouse";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "warehouse";
-                }
-                Field warehouse_scope
-                {
-                    DisplayName = "Warehouse Scope";
-                    LinkName = "warehouse_scope";
-                    Type = "SingleLine";
-                    AllowMultiple = true;
-                    HelpText = "Overrides default";
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Active / Suspended";
-                }
-                Field last_accessed
-                {
-                    DisplayName = "Last Accessed";
-                    LinkName = "last_accessed";
-                    Type = "DateTime";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have portal_user_id
+	(
+		type = text
+		displayname = "Portal User ID"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have employee_record
+	(
+		type = lookup
+		displayname = "Employee Record"
+		row = 1
+		column = 1
+		width = medium
+		related form = staff_master
+	)
+
+	must have primary_email
+	(
+		type = email
+		displayname = "Primary Email"
+		row = 1
+		column = 1
+		width = medium
+		personal data = true
+	)
+
+	mobile
+	(
+		type = phonenumber
+		displayname = "Mobile"
+		row = 1
+		column = 1
+		width = medium
+		personal data = true
+	)
+
+	must have assigned_roles
+	(
+		type = text
+		displayname = "Assigned Roles"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	default_warehouse
+	(
+		type = lookup
+		displayname = "Default Warehouse"
+		row = 1
+		column = 1
+		width = medium
+		related form = warehouse
+	)
+
+	warehouse_scope
+	(
+		type = text
+		displayname = "Warehouse Scope"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	last_accessed
+	(
+		type = datetime
+		displayname = "Last Accessed"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

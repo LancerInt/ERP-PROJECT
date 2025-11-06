@@ -1,143 +1,98 @@
-report audit_trail_report
+list audit_trail_report
 {
-    DisplayName = "Audit Trail Report";
-    LinkName = "audit_trail_report";
-    Type = "List";
-    SourceFormLinkName = "audit_trail";
-
-    ListView
-    {
-        Columns
-        {
-            Column audit_id
-            {
-                FieldLinkName = "audit_id";
-            }
-            Column module
-            {
-                FieldLinkName = "module";
-            }
-            Column record_id
-            {
-                FieldLinkName = "record_id";
-            }
-            Column action
-            {
-                FieldLinkName = "action";
-            }
-            Column user
-            {
-                FieldLinkName = "user";
-            }
-            Column timestamp
-            {
-                FieldLinkName = "timestamp";
-            }
-            Column before_snapshot
-            {
-                FieldLinkName = "before_snapshot";
-            }
-            Column after_snapshot
-            {
-                FieldLinkName = "after_snapshot";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column audit_id
-            {
-                FieldLinkName = "audit_id";
-            }
-            Column module
-            {
-                FieldLinkName = "module";
-            }
-            Column record_id
-            {
-                FieldLinkName = "record_id";
-            }
-            Column action
-            {
-                FieldLinkName = "action";
-            }
-            Column user
-            {
-                FieldLinkName = "user";
-            }
-            Column timestamp
-            {
-                FieldLinkName = "timestamp";
-            }
-            Column before_snapshot
-            {
-                FieldLinkName = "before_snapshot";
-            }
-            Column after_snapshot
-            {
-                FieldLinkName = "after_snapshot";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column audit_id
-                    {
-                        FieldLinkName = "audit_id";
-                    }
-                    Column module
-                    {
-                        FieldLinkName = "module";
-                    }
-                    Column record_id
-                    {
-                        FieldLinkName = "record_id";
-                    }
-                    Column action
-                    {
-                        FieldLinkName = "action";
-                    }
-                    Column user
-                    {
-                        FieldLinkName = "user";
-                    }
-                    Column timestamp
-                    {
-                        FieldLinkName = "timestamp";
-                    }
-                    Column before_snapshot
-                    {
-                        FieldLinkName = "before_snapshot";
-                    }
-                    Column after_snapshot
-                    {
-                        FieldLinkName = "after_snapshot";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Audit Trail Report"
+	show all rows from audit_trail
+	(
+		audit_id as "Audit ID"
+		module as "Module"
+		record_id as "Record ID"
+		action as "Action"
+		user as "User"
+		timestamp as "Timestamp"
+		before_snapshot as "Before Snapshot"
+		after_snapshot as "After Snapshot"
+		remarks as "Remarks"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Audit Trail Overview"
+				fields
+				(
+					audit_id as "Audit ID"
+					module as "Module"
+					record_id as "Record ID"
+					action as "Action"
+					user as "User"
+					timestamp as "Timestamp"
+					before_snapshot as "Before Snapshot"
+					after_snapshot as "After Snapshot"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Audit Trail Overview"
+				fields
+				(
+					audit_id as "Audit ID"
+					module as "Module"
+					record_id as "Record ID"
+					action as "Action"
+					user as "User"
+					timestamp as "Timestamp"
+					before_snapshot as "Before Snapshot"
+					after_snapshot as "After Snapshot"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

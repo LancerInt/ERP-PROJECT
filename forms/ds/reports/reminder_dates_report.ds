@@ -1,71 +1,80 @@
-report reminder_dates_report
+list reminder_dates_report
 {
-    DisplayName = "Reminder Dates Report";
-    LinkName = "reminder_dates_report";
-    Type = "List";
-    SourceFormLinkName = "reminder_dates";
-
-    ListView
-    {
-        Columns
-        {
-            Column reminder_date
-            {
-                FieldLinkName = "reminder_date";
-            }
-            Column reminder_sent_by
-            {
-                FieldLinkName = "reminder_sent_by";
-            }
-            Column reminder_method
-            {
-                FieldLinkName = "reminder_method";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column reminder_date
-            {
-                FieldLinkName = "reminder_date";
-            }
-            Column reminder_sent_by
-            {
-                FieldLinkName = "reminder_sent_by";
-            }
-            Column reminder_method
-            {
-                FieldLinkName = "reminder_method";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column reminder_date
-                    {
-                        FieldLinkName = "reminder_date";
-                    }
-                    Column reminder_sent_by
-                    {
-                        FieldLinkName = "reminder_sent_by";
-                    }
-                    Column reminder_method
-                    {
-                        FieldLinkName = "reminder_method";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Reminder Dates Report"
+	show all rows from reminder_dates
+	(
+		reminder_date as "Reminder Date"
+		reminder_sent_by as "Reminder Sent By"
+		reminder_method as "Reminder Method"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Reminder Dates Overview"
+				fields
+				(
+					reminder_date as "Reminder Date"
+					reminder_sent_by as "Reminder Sent By"
+					reminder_method as "Reminder Method"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Reminder Dates Overview"
+				fields
+				(
+					reminder_date as "Reminder Date"
+					reminder_sent_by as "Reminder Sent By"
+					reminder_method as "Reminder Method"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

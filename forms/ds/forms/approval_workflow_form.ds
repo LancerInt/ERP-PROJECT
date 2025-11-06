@@ -1,70 +1,90 @@
-// Module: Generated Utility Subforms
 form approval_workflow
 {
-    DisplayName = "Approval Workflow";
-    LinkName = "approval_workflow";
-    Module = "Generated Utility Subforms";
-    Type = "Form";
+	displayname = "Approval Workflow"
+	success message = "Approval Workflow added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field stage
-                {
-                    DisplayName = "Stage";
-                    LinkName = "stage";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Draft Review / Finance Manager Review / Office Manager Authorization";
-                }
-                Field approver
-                {
-                    DisplayName = "Approver";
-                    LinkName = "approver";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                    HelpText = "Approving stakeholder";
-                }
-                Field decision
-                {
-                    DisplayName = "Decision";
-                    LinkName = "decision";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Pending / Approved / Rejected";
-                }
-                Field decision_date
-                {
-                    DisplayName = "Decision Date";
-                    LinkName = "decision_date";
-                    Type = "DateTime";
-                    ConditionalMandatory = true;
-                    HelpText = "Required when decision is approved/rejected";
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                    HelpText = "Approval comments";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have stage
+	(
+		type = picklist
+		displayname = "Stage"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have approver
+	(
+		type = lookup
+		displayname = "Approver"
+		row = 1
+		column = 1
+		width = medium
+		related form = stakeholder_user
+	)
+
+	must have decision
+	(
+		type = picklist
+		displayname = "Decision"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have decision_date
+	(
+		type = datetime
+		displayname = "Decision Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

@@ -1,118 +1,176 @@
-// Module: 1. Core & Shared Masters
 form template_library
 {
-    DisplayName = "Template Library";
-    LinkName = "template_library";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "Template Library"
+	success message = "Template Library added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field template_id
-                {
-                    DisplayName = "Template ID";
-                    LinkName = "template_id";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field template_type
-                {
-                    DisplayName = "Template Type";
-                    LinkName = "template_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Production / QC Report / Job Work / Packing / Invoice";
-                }
-                Field name
-                {
-                    DisplayName = "Name";
-                    LinkName = "name";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field warehouse_scope
-                {
-                    DisplayName = "Warehouse Scope";
-                    LinkName = "warehouse_scope";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    AllowMultiple = true;
-                }
-                Field revision_no
-                {
-                    DisplayName = "Revision No.";
-                    LinkName = "revision_no";
-                    Type = "Number";
-                    IsMandatory = true;
-                    HelpText = "Rev 1, Rev 2, etc.";
-                }
-                Field effective_from
-                {
-                    DisplayName = "Effective From";
-                    LinkName = "effective_from";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field effective_to
-                {
-                    DisplayName = "Effective To";
-                    LinkName = "effective_to";
-                    Type = "Date";
-                }
-                Field layout_json_xml
-                {
-                    DisplayName = "Layout JSON/XML";
-                    LinkName = "layout_json_xml";
-                    Type = "MultiLine";
-                    IsMandatory = true;
-                    HelpText = "Stores dynamic layout";
-                }
-                Field requires_digital_signature
-                {
-                    DisplayName = "Requires Digital Signature";
-                    LinkName = "requires_digital_signature";
-                    Type = "Checkbox";
-                }
-                Field created_by
-                {
-                    DisplayName = "Created By";
-                    LinkName = "created_by";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field approval_log
-                {
-                    DisplayName = "Approval Log";
-                    LinkName = "approval_log";
-                    Type = "SubForm";
-                    SubFormLinkName = "approval_log";
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Draft / Active / Retired";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have template_id
+	(
+		type = text
+		displayname = "Template ID"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have template_type
+	(
+		type = picklist
+		displayname = "Template Type"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have name
+	(
+		type = text
+		displayname = "Name"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have warehouse_scope
+	(
+		type = text
+		displayname = "Warehouse Scope"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have revision_no
+	(
+		type = number
+		displayname = "Revision No."
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have effective_from
+	(
+		type = date
+		displayname = "Effective From"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	effective_to
+	(
+		type = date
+		displayname = "Effective To"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have layout_json_xml
+	(
+		type = textarea
+		displayname = "Layout JSON/XML"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	requires_digital_signature
+	(
+		type = checkbox
+		displayname = "Requires Digital Signature"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have created_by
+	(
+		type = lookup
+		displayname = "Created By"
+		row = 1
+		column = 1
+		width = medium
+		related form = stakeholder_user
+	)
+
+	approval_log
+	(
+		type = grid
+		displayname = "Approval Log"
+		row = 1
+		column = 1
+		width = medium
+		must have approved_by
+		(
+			type = lookup
+			displayname = "Approved By"
+			width = medium
+			related form = stakeholder_user
+		)
+
+		must have approval_date
+		(
+			type = datetime
+			displayname = "Approval Date"
+			width = medium
+		)
+
+		remarks
+		(
+			type = textarea
+			displayname = "Remarks"
+			width = medium
+			height = 100px
+		)
+
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

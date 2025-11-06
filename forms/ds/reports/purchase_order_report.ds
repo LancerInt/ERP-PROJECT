@@ -1,263 +1,128 @@
-report purchase_order_report
+list purchase_order_report
 {
-    DisplayName = "Purchase Order (PO) Report";
-    LinkName = "purchase_order_report";
-    Type = "List";
-    SourceFormLinkName = "purchase_order";
-
-    ListView
-    {
-        Columns
-        {
-            Column po_no
-            {
-                FieldLinkName = "po_no";
-            }
-            Column revision_no
-            {
-                FieldLinkName = "revision_no";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column company
-            {
-                FieldLinkName = "company";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column linked_prs
-            {
-                FieldLinkName = "linked_prs";
-            }
-            Column linked_rfq
-            {
-                FieldLinkName = "linked_rfq";
-            }
-            Column po_date
-            {
-                FieldLinkName = "po_date";
-            }
-            Column expected_delivery_start
-            {
-                FieldLinkName = "expected_delivery_start";
-            }
-            Column expected_delivery_end
-            {
-                FieldLinkName = "expected_delivery_end";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column payment_terms
-            {
-                FieldLinkName = "payment_terms";
-            }
-            Column currency
-            {
-                FieldLinkName = "currency";
-            }
-            Column po_lines
-            {
-                FieldLinkName = "po_lines";
-            }
-            Column attachments
-            {
-                FieldLinkName = "attachments";
-            }
-            Column terms_and_conditions
-            {
-                FieldLinkName = "terms_and_conditions";
-            }
-            Column approval_trail
-            {
-                FieldLinkName = "approval_trail";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column partial_receipt_flag
-            {
-                FieldLinkName = "partial_receipt_flag";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column po_no
-            {
-                FieldLinkName = "po_no";
-            }
-            Column revision_no
-            {
-                FieldLinkName = "revision_no";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column company
-            {
-                FieldLinkName = "company";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column linked_prs
-            {
-                FieldLinkName = "linked_prs";
-            }
-            Column linked_rfq
-            {
-                FieldLinkName = "linked_rfq";
-            }
-            Column po_date
-            {
-                FieldLinkName = "po_date";
-            }
-            Column expected_delivery_start
-            {
-                FieldLinkName = "expected_delivery_start";
-            }
-            Column expected_delivery_end
-            {
-                FieldLinkName = "expected_delivery_end";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column payment_terms
-            {
-                FieldLinkName = "payment_terms";
-            }
-            Column currency
-            {
-                FieldLinkName = "currency";
-            }
-            Column po_lines
-            {
-                FieldLinkName = "po_lines";
-            }
-            Column attachments
-            {
-                FieldLinkName = "attachments";
-            }
-            Column terms_and_conditions
-            {
-                FieldLinkName = "terms_and_conditions";
-            }
-            Column approval_trail
-            {
-                FieldLinkName = "approval_trail";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column partial_receipt_flag
-            {
-                FieldLinkName = "partial_receipt_flag";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column po_no
-                    {
-                        FieldLinkName = "po_no";
-                    }
-                    Column revision_no
-                    {
-                        FieldLinkName = "revision_no";
-                    }
-                    Column vendor
-                    {
-                        FieldLinkName = "vendor";
-                    }
-                    Column company
-                    {
-                        FieldLinkName = "company";
-                    }
-                    Column warehouse
-                    {
-                        FieldLinkName = "warehouse";
-                    }
-                    Column linked_prs
-                    {
-                        FieldLinkName = "linked_prs";
-                    }
-                    Column linked_rfq
-                    {
-                        FieldLinkName = "linked_rfq";
-                    }
-                    Column po_date
-                    {
-                        FieldLinkName = "po_date";
-                    }
-                    Column expected_delivery_start
-                    {
-                        FieldLinkName = "expected_delivery_start";
-                    }
-                    Column expected_delivery_end
-                    {
-                        FieldLinkName = "expected_delivery_end";
-                    }
-                    Column freight_terms
-                    {
-                        FieldLinkName = "freight_terms";
-                    }
-                    Column payment_terms
-                    {
-                        FieldLinkName = "payment_terms";
-                    }
-                    Column currency
-                    {
-                        FieldLinkName = "currency";
-                    }
-                    Column po_lines
-                    {
-                        FieldLinkName = "po_lines";
-                    }
-                    Column attachments
-                    {
-                        FieldLinkName = "attachments";
-                    }
-                    Column terms_and_conditions
-                    {
-                        FieldLinkName = "terms_and_conditions";
-                    }
-                    Column approval_trail
-                    {
-                        FieldLinkName = "approval_trail";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                    Column partial_receipt_flag
-                    {
-                        FieldLinkName = "partial_receipt_flag";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Purchase Order (PO) Report"
+	show all rows from purchase_order
+	(
+		po_no as "PO No."
+		revision_no as "Revision No."
+		vendor as "Vendor"
+		company as "Company"
+		warehouse as "Warehouse"
+		linked_prs as "Linked PRs"
+		linked_rfq as "Linked RFQ"
+		po_date as "PO Date"
+		expected_delivery_start as "Expected Delivery Start"
+		expected_delivery_end as "Expected Delivery End"
+		freight_terms as "Freight Terms"
+		payment_terms as "Payment Terms"
+		currency as "Currency"
+		po_lines as "PO Lines"
+		attachments as "Attachments"
+		terms_and_conditions as "Terms & Conditions"
+		approval_trail as "Approval Trail"
+		status as "Status"
+		partial_receipt_flag as "Partial Receipt Flag"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Purchase Order (PO) Overview"
+				fields
+				(
+					po_no as "PO No."
+					revision_no as "Revision No."
+					vendor as "Vendor"
+					company as "Company"
+					warehouse as "Warehouse"
+					linked_prs as "Linked PRs"
+					linked_rfq as "Linked RFQ"
+					po_date as "PO Date"
+					expected_delivery_start as "Expected Delivery Start"
+					expected_delivery_end as "Expected Delivery End"
+					freight_terms as "Freight Terms"
+					payment_terms as "Payment Terms"
+					currency as "Currency"
+					po_lines as "PO Lines"
+					attachments as "Attachments"
+					terms_and_conditions as "Terms & Conditions"
+					approval_trail as "Approval Trail"
+					status as "Status"
+					partial_receipt_flag as "Partial Receipt Flag"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Purchase Order (PO) Overview"
+				fields
+				(
+					po_no as "PO No."
+					revision_no as "Revision No."
+					vendor as "Vendor"
+					company as "Company"
+					warehouse as "Warehouse"
+					linked_prs as "Linked PRs"
+					linked_rfq as "Linked RFQ"
+					po_date as "PO Date"
+					expected_delivery_start as "Expected Delivery Start"
+					expected_delivery_end as "Expected Delivery End"
+					freight_terms as "Freight Terms"
+					payment_terms as "Payment Terms"
+					currency as "Currency"
+					po_lines as "PO Lines"
+					attachments as "Attachments"
+					terms_and_conditions as "Terms & Conditions"
+					approval_trail as "Approval Trail"
+					status as "Status"
+					partial_receipt_flag as "Partial Receipt Flag"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

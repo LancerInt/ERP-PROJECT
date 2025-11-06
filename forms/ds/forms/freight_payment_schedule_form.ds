@@ -1,77 +1,98 @@
-// Module: 2. Purchase Module
 form freight_payment_schedule
 {
-    DisplayName = "Freight Payment Schedule";
-    LinkName = "freight_payment_schedule";
-    Module = "2. Purchase Module";
-    Type = "Form";
+	displayname = "Freight Payment Schedule"
+	success message = "Freight Payment Schedule added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field freight_type
-                {
-                    DisplayName = "Freight Type";
-                    LinkName = "freight_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Local Drayage / Linehaul";
-                }
-                Field transporter
-                {
-                    DisplayName = "Transporter";
-                    LinkName = "transporter";
-                    Type = "Lookup";
-                    ConditionalMandatory = true;
-                    RelatedFormLinkName = "transporter";
-                    HelpText = "Required when company pays";
-                }
-                Field due_date
-                {
-                    DisplayName = "Due Date";
-                    LinkName = "due_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                    HelpText = "Instalment due date";
-                }
-                Field amount
-                {
-                    DisplayName = "Amount";
-                    LinkName = "amount";
-                    Type = "INR";
-                    IsMandatory = true;
-                    HelpText = "Instalment amount";
-                }
-                Field tds
-                {
-                    DisplayName = "TDS %";
-                    LinkName = "tds";
-                    Type = "Decimal";
-                    HelpText = "Apply for freight TDS when relevant";
-                }
-                Field reminder_flag
-                {
-                    DisplayName = "Reminder Flag";
-                    LinkName = "reminder_flag";
-                    Type = "Checkbox";
-                    HelpText = "Triggers auto reminders";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have freight_type
+	(
+		type = picklist
+		displayname = "Freight Type"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have transporter
+	(
+		type = lookup
+		displayname = "Transporter"
+		row = 1
+		column = 1
+		width = medium
+		related form = transporter
+	)
+
+	must have due_date
+	(
+		type = date
+		displayname = "Due Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have amount
+	(
+		type = INR
+		displayname = "Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	tds
+	(
+		type = number
+		displayname = "TDS %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	reminder_flag
+	(
+		type = checkbox
+		displayname = "Reminder Flag"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

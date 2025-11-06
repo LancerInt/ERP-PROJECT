@@ -1,71 +1,80 @@
-report approval_log_report
+list approval_log_report
 {
-    DisplayName = "Approval Log Report";
-    LinkName = "approval_log_report";
-    Type = "List";
-    SourceFormLinkName = "approval_log";
-
-    ListView
-    {
-        Columns
-        {
-            Column approved_by
-            {
-                FieldLinkName = "approved_by";
-            }
-            Column approval_date
-            {
-                FieldLinkName = "approval_date";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column approved_by
-            {
-                FieldLinkName = "approved_by";
-            }
-            Column approval_date
-            {
-                FieldLinkName = "approval_date";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column approved_by
-                    {
-                        FieldLinkName = "approved_by";
-                    }
-                    Column approval_date
-                    {
-                        FieldLinkName = "approval_date";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Approval Log Report"
+	show all rows from approval_log
+	(
+		approved_by as "Approved By"
+		approval_date as "Approval Date"
+		remarks as "Remarks"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Approval Log Overview"
+				fields
+				(
+					approved_by as "Approved By"
+					approval_date as "Approval Date"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Approval Log Overview"
+				fields
+				(
+					approved_by as "Approved By"
+					approval_date as "Approval Date"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

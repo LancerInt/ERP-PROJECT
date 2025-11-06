@@ -1,179 +1,107 @@
-report sales_invoice_check_report
+list sales_invoice_check_report
 {
-    DisplayName = "Sales Invoice Check Report";
-    LinkName = "sales_invoice_check_report";
-    Type = "List";
-    SourceFormLinkName = "sales_invoice_check";
-
-    ListView
-    {
-        Columns
-        {
-            Column invoice_check_id
-            {
-                FieldLinkName = "invoice_check_id";
-            }
-            Column dc_reference
-            {
-                FieldLinkName = "dc_reference";
-            }
-            Column statutory_invoice_upload
-            {
-                FieldLinkName = "statutory_invoice_upload";
-            }
-            Column invoice_number
-            {
-                FieldLinkName = "invoice_number";
-            }
-            Column invoice_date
-            {
-                FieldLinkName = "invoice_date";
-            }
-            Column total_value_upload
-            {
-                FieldLinkName = "total_value_upload";
-            }
-            Column total_value_so
-            {
-                FieldLinkName = "total_value_so";
-            }
-            Column variance_amount
-            {
-                FieldLinkName = "variance_amount";
-            }
-            Column variance_flag
-            {
-                FieldLinkName = "variance_flag";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-            Column acceptance_timestamp
-            {
-                FieldLinkName = "acceptance_timestamp";
-            }
-            Column accepted_by
-            {
-                FieldLinkName = "accepted_by";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column invoice_check_id
-            {
-                FieldLinkName = "invoice_check_id";
-            }
-            Column dc_reference
-            {
-                FieldLinkName = "dc_reference";
-            }
-            Column statutory_invoice_upload
-            {
-                FieldLinkName = "statutory_invoice_upload";
-            }
-            Column invoice_number
-            {
-                FieldLinkName = "invoice_number";
-            }
-            Column invoice_date
-            {
-                FieldLinkName = "invoice_date";
-            }
-            Column total_value_upload
-            {
-                FieldLinkName = "total_value_upload";
-            }
-            Column total_value_so
-            {
-                FieldLinkName = "total_value_so";
-            }
-            Column variance_amount
-            {
-                FieldLinkName = "variance_amount";
-            }
-            Column variance_flag
-            {
-                FieldLinkName = "variance_flag";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-            Column acceptance_timestamp
-            {
-                FieldLinkName = "acceptance_timestamp";
-            }
-            Column accepted_by
-            {
-                FieldLinkName = "accepted_by";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column invoice_check_id
-                    {
-                        FieldLinkName = "invoice_check_id";
-                    }
-                    Column dc_reference
-                    {
-                        FieldLinkName = "dc_reference";
-                    }
-                    Column statutory_invoice_upload
-                    {
-                        FieldLinkName = "statutory_invoice_upload";
-                    }
-                    Column invoice_number
-                    {
-                        FieldLinkName = "invoice_number";
-                    }
-                    Column invoice_date
-                    {
-                        FieldLinkName = "invoice_date";
-                    }
-                    Column total_value_upload
-                    {
-                        FieldLinkName = "total_value_upload";
-                    }
-                    Column total_value_so
-                    {
-                        FieldLinkName = "total_value_so";
-                    }
-                    Column variance_amount
-                    {
-                        FieldLinkName = "variance_amount";
-                    }
-                    Column variance_flag
-                    {
-                        FieldLinkName = "variance_flag";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                    Column acceptance_timestamp
-                    {
-                        FieldLinkName = "acceptance_timestamp";
-                    }
-                    Column accepted_by
-                    {
-                        FieldLinkName = "accepted_by";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Sales Invoice Check Report"
+	show all rows from sales_invoice_check
+	(
+		invoice_check_id as "Invoice Check ID"
+		dc_reference as "DC Reference"
+		statutory_invoice_upload as "Statutory Invoice Upload"
+		invoice_number as "Invoice Number"
+		invoice_date as "Invoice Date"
+		total_value_upload as "Total Value (Upload)"
+		total_value_so as "Total Value (SO)"
+		variance_amount as "Variance Amount"
+		variance_flag as "Variance Flag"
+		remarks as "Remarks"
+		acceptance_timestamp as "Acceptance Timestamp"
+		accepted_by as "Accepted By"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Sales Invoice Check Overview"
+				fields
+				(
+					invoice_check_id as "Invoice Check ID"
+					dc_reference as "DC Reference"
+					statutory_invoice_upload as "Statutory Invoice Upload"
+					invoice_number as "Invoice Number"
+					invoice_date as "Invoice Date"
+					total_value_upload as "Total Value (Upload)"
+					total_value_so as "Total Value (SO)"
+					variance_amount as "Variance Amount"
+					variance_flag as "Variance Flag"
+					remarks as "Remarks"
+					acceptance_timestamp as "Acceptance Timestamp"
+					accepted_by as "Accepted By"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Sales Invoice Check Overview"
+				fields
+				(
+					invoice_check_id as "Invoice Check ID"
+					dc_reference as "DC Reference"
+					statutory_invoice_upload as "Statutory Invoice Upload"
+					invoice_number as "Invoice Number"
+					invoice_date as "Invoice Date"
+					total_value_upload as "Total Value (Upload)"
+					total_value_so as "Total Value (SO)"
+					variance_amount as "Variance Amount"
+					variance_flag as "Variance Flag"
+					remarks as "Remarks"
+					acceptance_timestamp as "Acceptance Timestamp"
+					accepted_by as "Accepted By"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

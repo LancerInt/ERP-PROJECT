@@ -1,155 +1,101 @@
-report production_yield_log_report
+list production_yield_log_report
 {
-    DisplayName = "Production Yield Log Report";
-    LinkName = "production_yield_log_report";
-    Type = "List";
-    SourceFormLinkName = "production_yield_log";
-
-    ListView
-    {
-        Columns
-        {
-            Column log_id
-            {
-                FieldLinkName = "log_id";
-            }
-            Column work_order
-            {
-                FieldLinkName = "work_order";
-            }
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column planned_yield
-            {
-                FieldLinkName = "planned_yield";
-            }
-            Column actual_output_qty
-            {
-                FieldLinkName = "actual_output_qty";
-            }
-            Column purity
-            {
-                FieldLinkName = "purity";
-            }
-            Column ai_content
-            {
-                FieldLinkName = "ai_content";
-            }
-            Column variance
-            {
-                FieldLinkName = "variance";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-            Column report_date
-            {
-                FieldLinkName = "report_date";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column log_id
-            {
-                FieldLinkName = "log_id";
-            }
-            Column work_order
-            {
-                FieldLinkName = "work_order";
-            }
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column planned_yield
-            {
-                FieldLinkName = "planned_yield";
-            }
-            Column actual_output_qty
-            {
-                FieldLinkName = "actual_output_qty";
-            }
-            Column purity
-            {
-                FieldLinkName = "purity";
-            }
-            Column ai_content
-            {
-                FieldLinkName = "ai_content";
-            }
-            Column variance
-            {
-                FieldLinkName = "variance";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-            Column report_date
-            {
-                FieldLinkName = "report_date";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column log_id
-                    {
-                        FieldLinkName = "log_id";
-                    }
-                    Column work_order
-                    {
-                        FieldLinkName = "work_order";
-                    }
-                    Column product
-                    {
-                        FieldLinkName = "product";
-                    }
-                    Column planned_yield
-                    {
-                        FieldLinkName = "planned_yield";
-                    }
-                    Column actual_output_qty
-                    {
-                        FieldLinkName = "actual_output_qty";
-                    }
-                    Column purity
-                    {
-                        FieldLinkName = "purity";
-                    }
-                    Column ai_content
-                    {
-                        FieldLinkName = "ai_content";
-                    }
-                    Column variance
-                    {
-                        FieldLinkName = "variance";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                    Column report_date
-                    {
-                        FieldLinkName = "report_date";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Production Yield Log Report"
+	show all rows from production_yield_log
+	(
+		log_id as "Log ID"
+		work_order as "Work Order"
+		product as "Product"
+		planned_yield as "Planned Yield %"
+		actual_output_qty as "Actual Output Qty"
+		purity as "Purity %"
+		ai_content as "AI Content"
+		variance as "Variance %"
+		remarks as "Remarks"
+		report_date as "Report Date"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Production Yield Log Overview"
+				fields
+				(
+					log_id as "Log ID"
+					work_order as "Work Order"
+					product as "Product"
+					planned_yield as "Planned Yield %"
+					actual_output_qty as "Actual Output Qty"
+					purity as "Purity %"
+					ai_content as "AI Content"
+					variance as "Variance %"
+					remarks as "Remarks"
+					report_date as "Report Date"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Production Yield Log Overview"
+				fields
+				(
+					log_id as "Log ID"
+					work_order as "Work Order"
+					product as "Product"
+					planned_yield as "Planned Yield %"
+					actual_output_qty as "Actual Output Qty"
+					purity as "Purity %"
+					ai_content as "AI Content"
+					variance as "Variance %"
+					remarks as "Remarks"
+					report_date as "Report Date"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

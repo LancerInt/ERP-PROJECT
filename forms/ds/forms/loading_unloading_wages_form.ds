@@ -1,75 +1,99 @@
-// Module: 2. Purchase Module
 form loading_unloading_wages
 {
-    DisplayName = "Loading Unloading Wages";
-    LinkName = "loading_unloading_wages";
-    Module = "2. Purchase Module";
-    Type = "Form";
+	displayname = "Loading Unloading Wages"
+	success message = "Loading Unloading Wages added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field wage_type
-                {
-                    DisplayName = "Wage Type";
-                    LinkName = "wage_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Loading / Unloading";
-                }
-                Field contractor_vendor
-                {
-                    DisplayName = "Contractor Vendor";
-                    LinkName = "contractor_vendor";
-                    Type = "Lookup";
-                    ConditionalMandatory = true;
-                    RelatedFormLinkName = "vendor";
-                    HelpText = "Mandatory if payable by company";
-                }
-                Field amount
-                {
-                    DisplayName = "Amount";
-                    LinkName = "amount";
-                    Type = "INR";
-                    IsMandatory = true;
-                    HelpText = "Includes product value plus extra/agent commissions when applicable";
-                }
-                Field tds_applicable
-                {
-                    DisplayName = "TDS Applicable %";
-                    LinkName = "tds_applicable";
-                    Type = "Decimal";
-                }
-                Field payable_by
-                {
-                    DisplayName = "Payable By";
-                    LinkName = "payable_by";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Company / Vendor";
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have wage_type
+	(
+		type = picklist
+		displayname = "Wage Type"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have contractor_vendor
+	(
+		type = lookup
+		displayname = "Contractor Vendor"
+		row = 1
+		column = 1
+		width = medium
+		related form = vendor
+	)
+
+	must have amount
+	(
+		type = INR
+		displayname = "Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	tds_applicable
+	(
+		type = number
+		displayname = "TDS Applicable %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have payable_by
+	(
+		type = picklist
+		displayname = "Payable By"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

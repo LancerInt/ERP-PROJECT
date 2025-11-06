@@ -1,138 +1,258 @@
-// Module: 2. Purchase Module
 form quote_response
 {
-    DisplayName = "Quote Response";
-    LinkName = "quote_response";
-    Module = "2. Purchase Module";
-    Type = "Form";
+	displayname = "Quote Response"
+	success message = "Quote Response added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field quote_id
-                {
-                    DisplayName = "Quote ID";
-                    LinkName = "quote_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field rfq
-                {
-                    DisplayName = "RFQ";
-                    LinkName = "rfq";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "rfq_header";
-                }
-                Field vendor
-                {
-                    DisplayName = "Vendor";
-                    LinkName = "vendor";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "vendor";
-                }
-                Field quote_date
-                {
-                    DisplayName = "Quote Date";
-                    LinkName = "quote_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field price_valid_till
-                {
-                    DisplayName = "Price Valid Till";
-                    LinkName = "price_valid_till";
-                    Type = "Date";
-                }
-                Field currency
-                {
-                    DisplayName = "Currency";
-                    LinkName = "currency";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field quote_lines
-                {
-                    DisplayName = "Quote Lines";
-                    LinkName = "quote_lines";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "quote_lines";
-                }
-                Field freight_terms
-                {
-                    DisplayName = "Freight Terms";
-                    LinkName = "freight_terms";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Paid / To_Pay / Mixed";
-                }
-                Field payment_terms
-                {
-                    DisplayName = "Payment Terms";
-                    LinkName = "payment_terms";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Inherit from vendor but editable";
-                }
-                Field delivery_terms
-                {
-                    DisplayName = "Delivery Terms";
-                    LinkName = "delivery_terms";
-                    Type = "MultiLine";
-                }
-                Field lead_time_days
-                {
-                    DisplayName = "Lead Time (Days)";
-                    LinkName = "lead_time_days";
-                    Type = "Number";
-                }
-                Field attachments
-                {
-                    DisplayName = "Attachments";
-                    LinkName = "attachments";
-                    Type = "UploadFile";
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "Vendor quote";
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                }
-                Field evaluation_score
-                {
-                    DisplayName = "Evaluation Score";
-                    LinkName = "evaluation_score";
-                    Type = "Decimal";
-                    HelpText = "Computed";
-                }
-                Field chosen_flag
-                {
-                    DisplayName = "Chosen Flag";
-                    LinkName = "chosen_flag";
-                    Type = "Checkbox";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have quote_id
+	(
+		type = autonumber
+		displayname = "Quote ID"
+		row = 1
+		column = 1
+		width = medium
+		start index = 1
+	)
+
+	must have rfq
+	(
+		type = lookup
+		displayname = "RFQ"
+		row = 1
+		column = 1
+		width = medium
+		related form = rfq_header
+	)
+
+	must have vendor
+	(
+		type = lookup
+		displayname = "Vendor"
+		row = 1
+		column = 1
+		width = medium
+		related form = vendor
+	)
+
+	must have quote_date
+	(
+		type = date
+		displayname = "Quote Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	price_valid_till
+	(
+		type = date
+		displayname = "Price Valid Till"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have currency
+	(
+		type = picklist
+		displayname = "Currency"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have quote_lines
+	(
+		type = grid
+		displayname = "Quote Lines"
+		row = 1
+		column = 1
+		width = medium
+		must have pr_line
+		(
+			type = lookup
+			displayname = "PR Line"
+			width = medium
+			related form = pr_lines
+		)
+
+		must have product_service
+		(
+			type = lookup
+			displayname = "Product/Service"
+			width = medium
+			related form = product_master
+		)
+
+		specification
+		(
+			type = textarea
+			displayname = "Specification"
+			width = medium
+			height = 100px
+		)
+
+		must have quantity_offered
+		(
+			type = number
+			displayname = "Quantity Offered"
+			width = medium
+		)
+
+		must have uom
+		(
+			type = picklist
+			displayname = "UOM"
+			width = medium
+		)
+
+		must have unit_price
+		(
+			type = INR
+			displayname = "Unit Price"
+			width = medium
+		)
+
+		discount
+		(
+			type = number
+			displayname = "Discount %"
+			width = medium
+		)
+
+		must have gst
+		(
+			type = number
+			displayname = "GST %"
+			width = medium
+		)
+
+		freight_charge
+		(
+			type = INR
+			displayname = "Freight Charge"
+			width = medium
+		)
+
+		delivery_timeline
+		(
+			type = number
+			displayname = "Delivery Timeline"
+			width = medium
+		)
+
+	)
+
+	must have freight_terms
+	(
+		type = picklist
+		displayname = "Freight Terms"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have payment_terms
+	(
+		type = picklist
+		displayname = "Payment Terms"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	delivery_terms
+	(
+		type = textarea
+		displayname = "Delivery Terms"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	lead_time_days
+	(
+		type = number
+		displayname = "Lead Time (Days)"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	attachments
+	(
+		type = upload file
+		displayname = "Attachments"
+		row = 1
+		column = 1
+		width = medium
+		file count = 10
+		browse = localdrive
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	evaluation_score
+	(
+		type = number
+		displayname = "Evaluation Score"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	chosen_flag
+	(
+		type = checkbox
+		displayname = "Chosen Flag"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

@@ -1,107 +1,89 @@
-report issued_materials_report
+list issued_materials_report
 {
-    DisplayName = "Issued Materials Report";
-    LinkName = "issued_materials_report";
-    Type = "List";
-    SourceFormLinkName = "issued_materials";
-
-    ListView
-    {
-        Columns
-        {
-            Column material_type
-            {
-                FieldLinkName = "material_type";
-            }
-            Column product_machine
-            {
-                FieldLinkName = "product_machine";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column quantity
-            {
-                FieldLinkName = "quantity";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column expected_return_date
-            {
-                FieldLinkName = "expected_return_date";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column material_type
-            {
-                FieldLinkName = "material_type";
-            }
-            Column product_machine
-            {
-                FieldLinkName = "product_machine";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column quantity
-            {
-                FieldLinkName = "quantity";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column expected_return_date
-            {
-                FieldLinkName = "expected_return_date";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column material_type
-                    {
-                        FieldLinkName = "material_type";
-                    }
-                    Column product_machine
-                    {
-                        FieldLinkName = "product_machine";
-                    }
-                    Column batch
-                    {
-                        FieldLinkName = "batch";
-                    }
-                    Column quantity
-                    {
-                        FieldLinkName = "quantity";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column expected_return_date
-                    {
-                        FieldLinkName = "expected_return_date";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Issued Materials Report"
+	show all rows from issued_materials
+	(
+		material_type as "Material Type"
+		product_machine as "Product/Machine"
+		batch as "Batch"
+		quantity as "Quantity"
+		uom as "UOM"
+		expected_return_date as "Expected Return Date"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Issued Materials Overview"
+				fields
+				(
+					material_type as "Material Type"
+					product_machine as "Product/Machine"
+					batch as "Batch"
+					quantity as "Quantity"
+					uom as "UOM"
+					expected_return_date as "Expected Return Date"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Issued Materials Overview"
+				fields
+				(
+					material_type as "Material Type"
+					product_machine as "Product/Machine"
+					batch as "Batch"
+					quantity as "Quantity"
+					uom as "UOM"
+					expected_return_date as "Expected Return Date"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

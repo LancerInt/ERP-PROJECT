@@ -1,203 +1,113 @@
-report sales_return_advice_report
+list sales_return_advice_report
 {
-    DisplayName = "Sales Return Advice Report";
-    LinkName = "sales_return_advice_report";
-    Type = "List";
-    SourceFormLinkName = "sales_return_advice";
-
-    ListView
-    {
-        Columns
-        {
-            Column return_no
-            {
-                FieldLinkName = "return_no";
-            }
-            Column return_date
-            {
-                FieldLinkName = "return_date";
-            }
-            Column customer
-            {
-                FieldLinkName = "customer";
-            }
-            Column original_invoice
-            {
-                FieldLinkName = "original_invoice";
-            }
-            Column returned_by
-            {
-                FieldLinkName = "returned_by";
-            }
-            Column received_warehouse
-            {
-                FieldLinkName = "received_warehouse";
-            }
-            Column return_lines
-            {
-                FieldLinkName = "return_lines";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column freight_charges
-            {
-                FieldLinkName = "freight_charges";
-            }
-            Column loading_unloading_charges
-            {
-                FieldLinkName = "loading_unloading_charges";
-            }
-            Column qc_requirement
-            {
-                FieldLinkName = "qc_requirement";
-            }
-            Column approval_status
-            {
-                FieldLinkName = "approval_status";
-            }
-            Column approval_trail
-            {
-                FieldLinkName = "approval_trail";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column return_no
-            {
-                FieldLinkName = "return_no";
-            }
-            Column return_date
-            {
-                FieldLinkName = "return_date";
-            }
-            Column customer
-            {
-                FieldLinkName = "customer";
-            }
-            Column original_invoice
-            {
-                FieldLinkName = "original_invoice";
-            }
-            Column returned_by
-            {
-                FieldLinkName = "returned_by";
-            }
-            Column received_warehouse
-            {
-                FieldLinkName = "received_warehouse";
-            }
-            Column return_lines
-            {
-                FieldLinkName = "return_lines";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column freight_charges
-            {
-                FieldLinkName = "freight_charges";
-            }
-            Column loading_unloading_charges
-            {
-                FieldLinkName = "loading_unloading_charges";
-            }
-            Column qc_requirement
-            {
-                FieldLinkName = "qc_requirement";
-            }
-            Column approval_status
-            {
-                FieldLinkName = "approval_status";
-            }
-            Column approval_trail
-            {
-                FieldLinkName = "approval_trail";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column return_no
-                    {
-                        FieldLinkName = "return_no";
-                    }
-                    Column return_date
-                    {
-                        FieldLinkName = "return_date";
-                    }
-                    Column customer
-                    {
-                        FieldLinkName = "customer";
-                    }
-                    Column original_invoice
-                    {
-                        FieldLinkName = "original_invoice";
-                    }
-                    Column returned_by
-                    {
-                        FieldLinkName = "returned_by";
-                    }
-                    Column received_warehouse
-                    {
-                        FieldLinkName = "received_warehouse";
-                    }
-                    Column return_lines
-                    {
-                        FieldLinkName = "return_lines";
-                    }
-                    Column freight_terms
-                    {
-                        FieldLinkName = "freight_terms";
-                    }
-                    Column freight_charges
-                    {
-                        FieldLinkName = "freight_charges";
-                    }
-                    Column loading_unloading_charges
-                    {
-                        FieldLinkName = "loading_unloading_charges";
-                    }
-                    Column qc_requirement
-                    {
-                        FieldLinkName = "qc_requirement";
-                    }
-                    Column approval_status
-                    {
-                        FieldLinkName = "approval_status";
-                    }
-                    Column approval_trail
-                    {
-                        FieldLinkName = "approval_trail";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Sales Return Advice Report"
+	show all rows from sales_return_advice
+	(
+		return_no as "Return No."
+		return_date as "Return Date"
+		customer as "Customer"
+		original_invoice as "Original Invoice"
+		returned_by as "Returned By"
+		received_warehouse as "Received Warehouse"
+		return_lines as "Return Lines"
+		freight_terms as "Freight Terms"
+		freight_charges as "Freight Charges"
+		loading_unloading_charges as "Loading/Unloading Charges"
+		qc_requirement as "QC Requirement"
+		approval_status as "Approval Status"
+		approval_trail as "Approval Trail"
+		remarks as "Remarks"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Sales Return Advice Overview"
+				fields
+				(
+					return_no as "Return No."
+					return_date as "Return Date"
+					customer as "Customer"
+					original_invoice as "Original Invoice"
+					returned_by as "Returned By"
+					received_warehouse as "Received Warehouse"
+					return_lines as "Return Lines"
+					freight_terms as "Freight Terms"
+					freight_charges as "Freight Charges"
+					loading_unloading_charges as "Loading/Unloading Charges"
+					qc_requirement as "QC Requirement"
+					approval_status as "Approval Status"
+					approval_trail as "Approval Trail"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Sales Return Advice Overview"
+				fields
+				(
+					return_no as "Return No."
+					return_date as "Return Date"
+					customer as "Customer"
+					original_invoice as "Original Invoice"
+					returned_by as "Returned By"
+					received_warehouse as "Received Warehouse"
+					return_lines as "Return Lines"
+					freight_terms as "Freight Terms"
+					freight_charges as "Freight Charges"
+					loading_unloading_charges as "Loading/Unloading Charges"
+					qc_requirement as "QC Requirement"
+					approval_status as "Approval Status"
+					approval_trail as "Approval Trail"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

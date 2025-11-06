@@ -1,69 +1,89 @@
-// Module: 4. Production Module
 form auto_calculated_inputs
 {
-    DisplayName = "Auto-calculated Inputs";
-    LinkName = "auto_calculated_inputs";
-    Module = "4. Production Module";
-    Type = "Form";
+	displayname = "Auto-calculated Inputs"
+	success message = "Auto-calculated Inputs added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field product
-                {
-                    DisplayName = "Product";
-                    LinkName = "product";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                }
-                Field required_qty
-                {
-                    DisplayName = "Required Qty";
-                    LinkName = "required_qty";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field available_qty
-                {
-                    DisplayName = "Available Qty";
-                    LinkName = "available_qty";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                    HelpText = "From stock";
-                }
-                Field shortfall_qty
-                {
-                    DisplayName = "Shortfall Qty";
-                    LinkName = "shortfall_qty";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                    HelpText = "Negative allowed";
-                }
-                Field purpose
-                {
-                    DisplayName = "Purpose";
-                    LinkName = "purpose";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "RM / PM / Wage";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have product
+	(
+		type = lookup
+		displayname = "Product"
+		row = 1
+		column = 1
+		width = medium
+		related form = product_master
+	)
+
+	must have required_qty
+	(
+		type = number
+		displayname = "Required Qty"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have available_qty
+	(
+		type = number
+		displayname = "Available Qty"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have shortfall_qty
+	(
+		type = number
+		displayname = "Shortfall Qty"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have purpose
+	(
+		type = picklist
+		displayname = "Purpose"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

@@ -1,139 +1,222 @@
-// Module: 4. Production Module
 form bom_request
 {
-    DisplayName = "BOM Request";
-    LinkName = "bom_request";
-    Module = "4. Production Module";
-    Type = "Form";
+	displayname = "BOM Request"
+	success message = "BOM Request added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field request_no
-                {
-                    DisplayName = "Request No.";
-                    LinkName = "request_no";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field request_date
-                {
-                    DisplayName = "Request Date";
-                    LinkName = "request_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field warehouse
-                {
-                    DisplayName = "Warehouse";
-                    LinkName = "warehouse";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "warehouse";
-                }
-                Field requested_by
-                {
-                    DisplayName = "Requested By";
-                    LinkName = "requested_by";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                    HelpText = "Warehouse Coordinator";
-                }
-                Field production_template
-                {
-                    DisplayName = "Production Template";
-                    LinkName = "production_template";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "template_library";
-                }
-                Field output_product
-                {
-                    DisplayName = "Output Product";
-                    LinkName = "output_product";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                }
-                Field output_quantity
-                {
-                    DisplayName = "Output Quantity";
-                    LinkName = "output_quantity";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field required_completion_date
-                {
-                    DisplayName = "Required Completion Date";
-                    LinkName = "required_completion_date";
-                    Type = "Date";
-                }
-                Field auto_calculated_inputs
-                {
-                    DisplayName = "Auto-calculated Inputs";
-                    LinkName = "auto_calculated_inputs";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "auto_calculated_inputs";
-                    HelpText = "Computed from template";
-                }
-                Field shortfall_summary
-                {
-                    DisplayName = "Shortfall Summary";
-                    LinkName = "shortfall_summary";
-                    Type = "MultiLine";
-                }
-                Field approval_status
-                {
-                    DisplayName = "Approval Status";
-                    LinkName = "approval_status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Draft / Pending / Approved / Rejected";
-                }
-                Field approved_by
-                {
-                    DisplayName = "Approved By";
-                    LinkName = "approved_by";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field approved_date
-                {
-                    DisplayName = "Approved Date";
-                    LinkName = "approved_date";
-                    Type = "DateTime";
-                }
-                Field excel_export_link
-                {
-                    DisplayName = "Excel Export Link";
-                    LinkName = "excel_export_link";
-                    Type = "URL";
-                    HelpText = "Download BOM";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have request_no
+	(
+		type = autonumber
+		displayname = "Request No."
+		row = 1
+		column = 1
+		width = medium
+		start index = 1
+	)
+
+	must have request_date
+	(
+		type = date
+		displayname = "Request Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have warehouse
+	(
+		type = lookup
+		displayname = "Warehouse"
+		row = 1
+		column = 1
+		width = medium
+		related form = warehouse
+	)
+
+	must have requested_by
+	(
+		type = lookup
+		displayname = "Requested By"
+		row = 1
+		column = 1
+		width = medium
+		related form = stakeholder_user
+	)
+
+	must have production_template
+	(
+		type = lookup
+		displayname = "Production Template"
+		row = 1
+		column = 1
+		width = medium
+		related form = template_library
+	)
+
+	must have output_product
+	(
+		type = lookup
+		displayname = "Output Product"
+		row = 1
+		column = 1
+		width = medium
+		related form = product_master
+	)
+
+	must have output_quantity
+	(
+		type = number
+		displayname = "Output Quantity"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	required_completion_date
+	(
+		type = date
+		displayname = "Required Completion Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have auto_calculated_inputs
+	(
+		type = grid
+		displayname = "Auto-calculated Inputs"
+		row = 1
+		column = 1
+		width = medium
+		must have product
+		(
+			type = lookup
+			displayname = "Product"
+			width = medium
+			related form = product_master
+		)
+
+		must have required_qty
+		(
+			type = number
+			displayname = "Required Qty"
+			width = medium
+		)
+
+		must have available_qty
+		(
+			type = number
+			displayname = "Available Qty"
+			width = medium
+		)
+
+		must have shortfall_qty
+		(
+			type = number
+			displayname = "Shortfall Qty"
+			width = medium
+		)
+
+		must have purpose
+		(
+			type = picklist
+			displayname = "Purpose"
+			width = medium
+		)
+
+	)
+
+	shortfall_summary
+	(
+		type = textarea
+		displayname = "Shortfall Summary"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	must have approval_status
+	(
+		type = picklist
+		displayname = "Approval Status"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	approved_by
+	(
+		type = lookup
+		displayname = "Approved By"
+		row = 1
+		column = 1
+		width = medium
+		related form = stakeholder_user
+	)
+
+	approved_date
+	(
+		type = datetime
+		displayname = "Approved Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	excel_export_link
+	(
+		type = url
+		displayname = "Excel Export Link"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

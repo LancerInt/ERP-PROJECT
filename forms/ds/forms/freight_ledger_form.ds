@@ -1,134 +1,225 @@
-// Module: 7. Finance Module
 form freight_ledger
 {
-    DisplayName = "Freight Ledger";
-    LinkName = "freight_ledger";
-    Module = "7. Finance Module";
-    Type = "Form";
+	displayname = "Freight Ledger"
+	success message = "Freight Ledger added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field ledger_id
-                {
-                    DisplayName = "Ledger ID";
-                    LinkName = "ledger_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field direction
-                {
-                    DisplayName = "Direction";
-                    LinkName = "direction";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Inbound / Outbound / Transfer";
-                }
-                Field transporter
-                {
-                    DisplayName = "Transporter";
-                    LinkName = "transporter";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "transporter";
-                }
-                Field freight_advice
-                {
-                    DisplayName = "Freight Advice";
-                    LinkName = "freight_advice";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkNames = ["freight_advice", "freight_advice_2"];
-                }
-                Field amount
-                {
-                    DisplayName = "Amount";
-                    LinkName = "amount";
-                    Type = "INR";
-                    IsMandatory = true;
-                }
-                Field discount
-                {
-                    DisplayName = "Discount";
-                    LinkName = "discount";
-                    Type = "INR";
-                }
-                Field shipment_quantity
-                {
-                    DisplayName = "Shipment Quantity";
-                    LinkName = "shipment_quantity";
-                    Type = "Decimal";
-                    HelpText = "Pulled from freight advice";
-                }
-                Field quantity_uom
-                {
-                    DisplayName = "Quantity UOM";
-                    LinkName = "quantity_uom";
-                    Type = "Dropdown";
-                }
-                Field cost_per_unit
-                {
-                    DisplayName = "Cost Per Unit";
-                    LinkName = "cost_per_unit";
-                    Type = "Decimal";
-                    HelpText = "Stored for reporting";
-                }
-                Field destination_state
-                {
-                    DisplayName = "Destination State";
-                    LinkName = "destination_state";
-                    Type = "Dropdown";
-                    HelpText = "Enables cost-per-destination analytics";
-                }
-                Field payment_schedule
-                {
-                    DisplayName = "Payment Schedule";
-                    LinkName = "payment_schedule";
-                    Type = "SubForm";
-                    SubFormLinkName = "freight_payment_schedule";
-                }
-                Field amount_paid
-                {
-                    DisplayName = "Amount Paid";
-                    LinkName = "amount_paid";
-                    Type = "INR";
-                }
-                Field balance
-                {
-                    DisplayName = "Balance";
-                    LinkName = "balance";
-                    Type = "INR";
-                    IsMandatory = true;
-                }
-                Field reminder_flag
-                {
-                    DisplayName = "Reminder Flag";
-                    LinkName = "reminder_flag";
-                    Type = "Checkbox";
-                    HelpText = "Auto reminder on due date";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have ledger_id
+	(
+		type = autonumber
+		displayname = "Ledger ID"
+		row = 1
+		column = 1
+		width = medium
+		start index = 1
+	)
+
+	must have direction
+	(
+		type = picklist
+		displayname = "Direction"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have transporter
+	(
+		type = lookup
+		displayname = "Transporter"
+		row = 1
+		column = 1
+		width = medium
+		related form = transporter
+	)
+
+	must have freight_advice
+	(
+		type = lookup
+		displayname = "Freight Advice"
+		row = 1
+		column = 1
+		width = medium
+		related forms = {"freight_advice","freight_advice_2"}
+	)
+
+	must have amount
+	(
+		type = INR
+		displayname = "Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	discount
+	(
+		type = INR
+		displayname = "Discount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	shipment_quantity
+	(
+		type = number
+		displayname = "Shipment Quantity"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	quantity_uom
+	(
+		type = picklist
+		displayname = "Quantity UOM"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	cost_per_unit
+	(
+		type = number
+		displayname = "Cost Per Unit"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	destination_state
+	(
+		type = picklist
+		displayname = "Destination State"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	payment_schedule
+	(
+		type = grid
+		displayname = "Payment Schedule"
+		row = 1
+		column = 1
+		width = medium
+		must have freight_type
+		(
+			type = picklist
+			displayname = "Freight Type"
+			width = medium
+		)
+
+		must have transporter
+		(
+			type = lookup
+			displayname = "Transporter"
+			width = medium
+			related form = transporter
+		)
+
+		must have due_date
+		(
+			type = date
+			displayname = "Due Date"
+			width = medium
+		)
+
+		must have amount
+		(
+			type = INR
+			displayname = "Amount"
+			width = medium
+		)
+
+		tds
+		(
+			type = number
+			displayname = "TDS %"
+			width = medium
+		)
+
+		reminder_flag
+		(
+			type = checkbox
+			displayname = "Reminder Flag"
+			width = medium
+		)
+
+	)
+
+	amount_paid
+	(
+		type = INR
+		displayname = "Amount Paid"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have balance
+	(
+		type = INR
+		displayname = "Balance"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	reminder_flag
+	(
+		type = checkbox
+		displayname = "Reminder Flag"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

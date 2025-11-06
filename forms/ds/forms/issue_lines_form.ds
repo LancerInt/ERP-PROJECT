@@ -1,76 +1,99 @@
-// Module: 4. Production Module
 form issue_lines
 {
-    DisplayName = "Issue Lines";
-    LinkName = "issue_lines";
-    Module = "4. Production Module";
-    Type = "Form";
+	displayname = "Issue Lines"
+	success message = "Issue Lines added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field product
-                {
-                    DisplayName = "Product";
-                    LinkName = "product";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                }
-                Field batch_out
-                {
-                    DisplayName = "Batch Out";
-                    LinkName = "batch_out";
-                    Type = "SingleLine";
-                    ConditionalMandatory = true;
-                    HelpText = "Required when batch tracking";
-                }
-                Field godown
-                {
-                    DisplayName = "Godown";
-                    LinkName = "godown";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "godown";
-                    HelpText = "Filtered by issue warehouse";
-                }
-                Field quantity_issued
-                {
-                    DisplayName = "Quantity Issued";
-                    LinkName = "quantity_issued";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field reserved_for_template
-                {
-                    DisplayName = "Reserved for Template";
-                    LinkName = "reserved_for_template";
-                    Type = "Checkbox";
-                    HelpText = "Packing material reservation";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have product
+	(
+		type = lookup
+		displayname = "Product"
+		row = 1
+		column = 1
+		width = medium
+		related form = product_master
+	)
+
+	must have batch_out
+	(
+		type = text
+		displayname = "Batch Out"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have godown
+	(
+		type = lookup
+		displayname = "Godown"
+		row = 1
+		column = 1
+		width = medium
+		related form = godown
+	)
+
+	must have quantity_issued
+	(
+		type = number
+		displayname = "Quantity Issued"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	reserved_for_template
+	(
+		type = checkbox
+		displayname = "Reserved for Template"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

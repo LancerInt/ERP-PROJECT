@@ -1,95 +1,86 @@
-report secondary_uoms_report
+list secondary_uoms_report
 {
-    DisplayName = "Secondary UOMs Report";
-    LinkName = "secondary_uoms_report";
-    Type = "List";
-    SourceFormLinkName = "secondary_uoms";
-
-    ListView
-    {
-        Columns
-        {
-            Column to_uom
-            {
-                FieldLinkName = "to_uom";
-            }
-            Column conversion_factor
-            {
-                FieldLinkName = "conversion_factor";
-            }
-            Column specific_gravity_override
-            {
-                FieldLinkName = "specific_gravity_override";
-            }
-            Column valid_from
-            {
-                FieldLinkName = "valid_from";
-            }
-            Column valid_to
-            {
-                FieldLinkName = "valid_to";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column to_uom
-            {
-                FieldLinkName = "to_uom";
-            }
-            Column conversion_factor
-            {
-                FieldLinkName = "conversion_factor";
-            }
-            Column specific_gravity_override
-            {
-                FieldLinkName = "specific_gravity_override";
-            }
-            Column valid_from
-            {
-                FieldLinkName = "valid_from";
-            }
-            Column valid_to
-            {
-                FieldLinkName = "valid_to";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column to_uom
-                    {
-                        FieldLinkName = "to_uom";
-                    }
-                    Column conversion_factor
-                    {
-                        FieldLinkName = "conversion_factor";
-                    }
-                    Column specific_gravity_override
-                    {
-                        FieldLinkName = "specific_gravity_override";
-                    }
-                    Column valid_from
-                    {
-                        FieldLinkName = "valid_from";
-                    }
-                    Column valid_to
-                    {
-                        FieldLinkName = "valid_to";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Secondary UOMs Report"
+	show all rows from secondary_uoms
+	(
+		to_uom as "To UOM"
+		conversion_factor as "Conversion Factor"
+		specific_gravity_override as "Specific Gravity Override"
+		valid_from as "Valid From"
+		valid_to as "Valid To"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Secondary UOMs Overview"
+				fields
+				(
+					to_uom as "To UOM"
+					conversion_factor as "Conversion Factor"
+					specific_gravity_override as "Specific Gravity Override"
+					valid_from as "Valid From"
+					valid_to as "Valid To"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Secondary UOMs Overview"
+				fields
+				(
+					to_uom as "To UOM"
+					conversion_factor as "Conversion Factor"
+					specific_gravity_override as "Specific Gravity Override"
+					valid_from as "Valid From"
+					valid_to as "Valid To"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }
