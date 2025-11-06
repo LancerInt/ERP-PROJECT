@@ -1,214 +1,311 @@
-// Module: 1. Core & Shared Masters
 form product_master
 {
-    DisplayName = "Product Master";
-    LinkName = "product_master";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "Product Master"
+	success message = "Product Master added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field sku_code
-                {
-                    DisplayName = "SKU Code";
-                    LinkName = "sku_code";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    IsUnique = true;
-                    HelpText = "Cross-module identifier";
-                }
-                Field product_name
-                {
-                    DisplayName = "Product Name";
-                    LinkName = "product_name";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field product_type
-                {
-                    DisplayName = "Product Type";
-                    LinkName = "product_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Goods / Services";
-                }
-                Field goods_sub_type
-                {
-                    DisplayName = "Goods Sub-Type";
-                    LinkName = "goods_sub_type";
-                    Type = "Dropdown";
-                    ConditionalMandatory = true;
-                    HelpText = "RAW_MATERIAL / PACKING_MATERIAL / FINISHED_GOOD / SEMI_FINISHED / TRADED_PRODUCTS / CAPITAL_GOOD / MACHINE_SPARES / CONSUMABLES";
-                }
-                Field service_sub_type
-                {
-                    DisplayName = "Service Sub-Type";
-                    LinkName = "service_sub_type";
-                    Type = "Dropdown";
-                    ConditionalMandatory = true;
-                    HelpText = "Warehouse Expense / Wages / Freight / Miscellaneous / Staff Welfare / Vehicle / Custom";
-                }
-                Field custom_service_category
-                {
-                    DisplayName = "Custom Service Category";
-                    LinkName = "custom_service_category";
-                    Type = "Lookup";
-                    ConditionalMandatory = true;
-                    RelatedFormLinkName = "service_catalogue";
-                    HelpText = "For IT-admin defined services";
-                }
-                Field description
-                {
-                    DisplayName = "Description";
-                    LinkName = "description";
-                    Type = "MultiLine";
-                }
-                Field batch_tracking_required
-                {
-                    DisplayName = "Batch Tracking Required";
-                    LinkName = "batch_tracking_required";
-                    Type = "Checkbox";
-                    ConditionalMandatory = true;
-                    HelpText = "Required for goods";
-                }
-                Field shelf_life_days
-                {
-                    DisplayName = "Shelf Life (Days)";
-                    LinkName = "shelf_life_days";
-                    Type = "Number";
-                    HelpText = "For expiry";
-                }
-                Field qc_responsibility
-                {
-                    DisplayName = "QC Responsibility";
-                    LinkName = "qc_responsibility";
-                    Type = "Dropdown";
-                    HelpText = "Warehouse Coordinator / QC Coordinator / QC Manager";
-                }
-                Field qc_template
-                {
-                    DisplayName = "QC Template";
-                    LinkName = "qc_template";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "template_library";
-                    HelpText = "Default QC parameters";
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Base unit";
-                }
-                Field secondary_uoms
-                {
-                    DisplayName = "Secondary UOMs";
-                    LinkName = "secondary_uoms";
-                    Type = "SubForm";
-                    SubFormLinkName = "secondary_uoms";
-                    HelpText = "For conversions";
-                }
-                Field specific_gravity
-                {
-                    DisplayName = "Specific Gravity";
-                    LinkName = "specific_gravity";
-                    Type = "Decimal";
-                    HelpText = "Used for kg ↔ litre";
-                }
-                Field conversion_notes
-                {
-                    DisplayName = "Conversion Notes";
-                    LinkName = "conversion_notes";
-                    Type = "MultiLine";
-                }
-                Field packing_material_default
-                {
-                    DisplayName = "Packing Material Default";
-                    LinkName = "packing_material_default";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "product_master";
-                    HelpText = "Default packaging";
-                }
-                Field yield_tracking_required
-                {
-                    DisplayName = "Yield Tracking Required";
-                    LinkName = "yield_tracking_required";
-                    Type = "Checkbox";
-                }
-                Field yield_parameters
-                {
-                    DisplayName = "Yield Parameters";
-                    LinkName = "yield_parameters";
-                    Type = "Checkboxes";
-                    HelpText = "Physical Qty / Purity % / AI Content";
-                }
-                Field wage_method
-                {
-                    DisplayName = "Wage Method";
-                    LinkName = "wage_method";
-                    Type = "Dropdown";
-                    HelpText = "Template Rate / Headcount / None";
-                }
-                Field freight_class
-                {
-                    DisplayName = "Freight Class";
-                    LinkName = "freight_class";
-                    Type = "Dropdown";
-                    HelpText = "Logistics reference";
-                }
-                Field active_flag
-                {
-                    DisplayName = "Active Flag";
-                    LinkName = "active_flag";
-                    Type = "Checkbox";
-                    IsMandatory = true;
-                }
-                Field created_by
-                {
-                    DisplayName = "Created By";
-                    LinkName = "created_by";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field created_date
-                {
-                    DisplayName = "Created Date";
-                    LinkName = "created_date";
-                    Type = "DateTime";
-                    IsMandatory = true;
-                }
-                Field last_modified_by
-                {
-                    DisplayName = "Last Modified By";
-                    LinkName = "last_modified_by";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field last_modified_date
-                {
-                    DisplayName = "Last Modified Date";
-                    LinkName = "last_modified_date";
-                    Type = "DateTime";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have sku_code
+	(
+		type = text
+		displayname = "SKU Code"
+		row = 1
+		column = 1
+		width = medium
+		is unique = true
+	)
+
+	must have product_name
+	(
+		type = text
+		displayname = "Product Name"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have product_type
+	(
+		type = picklist
+		displayname = "Product Type"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have goods_sub_type
+	(
+		type = picklist
+		displayname = "Goods Sub-Type"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have service_sub_type
+	(
+		type = picklist
+		displayname = "Service Sub-Type"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have custom_service_category
+	(
+		type = lookup
+		displayname = "Custom Service Category"
+		row = 1
+		column = 1
+		width = medium
+		related form = service_catalogue
+	)
+
+	description
+	(
+		type = textarea
+		displayname = "Description"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	must have batch_tracking_required
+	(
+		type = checkbox
+		displayname = "Batch Tracking Required"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	shelf_life_days
+	(
+		type = number
+		displayname = "Shelf Life (Days)"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	qc_responsibility
+	(
+		type = picklist
+		displayname = "QC Responsibility"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	qc_template
+	(
+		type = lookup
+		displayname = "QC Template"
+		row = 1
+		column = 1
+		width = medium
+		related form = template_library
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	secondary_uoms
+	(
+		type = grid
+		displayname = "Secondary UOMs"
+		row = 1
+		column = 1
+		width = medium
+		must have to_uom
+		(
+			type = picklist
+			displayname = "To UOM"
+			width = medium
+		)
+
+		must have conversion_factor
+		(
+			type = number
+			displayname = "Conversion Factor"
+			width = medium
+		)
+
+		specific_gravity_override
+		(
+			type = number
+			displayname = "Specific Gravity Override"
+			width = medium
+		)
+
+		valid_from
+		(
+			type = date
+			displayname = "Valid From"
+			width = medium
+		)
+
+		valid_to
+		(
+			type = date
+			displayname = "Valid To"
+			width = medium
+		)
+
+	)
+
+	specific_gravity
+	(
+		type = number
+		displayname = "Specific Gravity"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	conversion_notes
+	(
+		type = textarea
+		displayname = "Conversion Notes"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	packing_material_default
+	(
+		type = lookup
+		displayname = "Packing Material Default"
+		row = 1
+		column = 1
+		width = medium
+		related form = product_master
+	)
+
+	yield_tracking_required
+	(
+		type = checkbox
+		displayname = "Yield Tracking Required"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	yield_parameters
+	(
+		type = list
+		displayname = "Yield Parameters"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	wage_method
+	(
+		type = picklist
+		displayname = "Wage Method"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	freight_class
+	(
+		type = picklist
+		displayname = "Freight Class"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have active_flag
+	(
+		type = checkbox
+		displayname = "Active Flag"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have created_by
+	(
+		type = lookup
+		displayname = "Created By"
+		row = 1
+		column = 1
+		width = medium
+		related form = stakeholder_user
+	)
+
+	must have created_date
+	(
+		type = datetime
+		displayname = "Created Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	last_modified_by
+	(
+		type = lookup
+		displayname = "Last Modified By"
+		row = 1
+		column = 1
+		width = medium
+		related form = stakeholder_user
+	)
+
+	last_modified_date
+	(
+		type = datetime
+		displayname = "Last Modified Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

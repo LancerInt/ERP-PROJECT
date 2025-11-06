@@ -1,95 +1,86 @@
-report loading_unloading_charges_report
+list loading_unloading_charges_report
 {
-    DisplayName = "Loading/Unloading Charges Report";
-    LinkName = "loading_unloading_charges_report";
-    Type = "List";
-    SourceFormLinkName = "loading_unloading_charges";
-
-    ListView
-    {
-        Columns
-        {
-            Column charge_type
-            {
-                FieldLinkName = "charge_type";
-            }
-            Column contractor_vendor
-            {
-                FieldLinkName = "contractor_vendor";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column tds
-            {
-                FieldLinkName = "tds";
-            }
-            Column payable_by
-            {
-                FieldLinkName = "payable_by";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column charge_type
-            {
-                FieldLinkName = "charge_type";
-            }
-            Column contractor_vendor
-            {
-                FieldLinkName = "contractor_vendor";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column tds
-            {
-                FieldLinkName = "tds";
-            }
-            Column payable_by
-            {
-                FieldLinkName = "payable_by";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column charge_type
-                    {
-                        FieldLinkName = "charge_type";
-                    }
-                    Column contractor_vendor
-                    {
-                        FieldLinkName = "contractor_vendor";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                    Column tds
-                    {
-                        FieldLinkName = "tds";
-                    }
-                    Column payable_by
-                    {
-                        FieldLinkName = "payable_by";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Loading/Unloading Charges Report"
+	show all rows from loading_unloading_charges
+	(
+		charge_type as "Charge Type"
+		contractor_vendor as "Contractor Vendor"
+		amount as "Amount"
+		tds as "TDS %"
+		payable_by as "Payable By"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Loading/Unloading Charges Overview"
+				fields
+				(
+					charge_type as "Charge Type"
+					contractor_vendor as "Contractor Vendor"
+					amount as "Amount"
+					tds as "TDS %"
+					payable_by as "Payable By"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Loading/Unloading Charges Overview"
+				fields
+				(
+					charge_type as "Charge Type"
+					contractor_vendor as "Contractor Vendor"
+					amount as "Amount"
+					tds as "TDS %"
+					payable_by as "Payable By"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

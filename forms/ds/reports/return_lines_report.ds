@@ -1,119 +1,92 @@
-report return_lines_report
+list return_lines_report
 {
-    DisplayName = "Return Lines Report";
-    LinkName = "return_lines_report";
-    Type = "List";
-    SourceFormLinkName = "return_lines";
-
-    ListView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column quantity_returned
-            {
-                FieldLinkName = "quantity_returned";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column condition
-            {
-                FieldLinkName = "condition";
-            }
-            Column viability_notes
-            {
-                FieldLinkName = "viability_notes";
-            }
-            Column packing_material_captured
-            {
-                FieldLinkName = "packing_material_captured";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column quantity_returned
-            {
-                FieldLinkName = "quantity_returned";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column condition
-            {
-                FieldLinkName = "condition";
-            }
-            Column viability_notes
-            {
-                FieldLinkName = "viability_notes";
-            }
-            Column packing_material_captured
-            {
-                FieldLinkName = "packing_material_captured";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column product
-                    {
-                        FieldLinkName = "product";
-                    }
-                    Column batch
-                    {
-                        FieldLinkName = "batch";
-                    }
-                    Column quantity_returned
-                    {
-                        FieldLinkName = "quantity_returned";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column condition
-                    {
-                        FieldLinkName = "condition";
-                    }
-                    Column viability_notes
-                    {
-                        FieldLinkName = "viability_notes";
-                    }
-                    Column packing_material_captured
-                    {
-                        FieldLinkName = "packing_material_captured";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Return Lines Report"
+	show all rows from return_lines
+	(
+		product as "Product"
+		batch as "Batch"
+		quantity_returned as "Quantity Returned"
+		uom as "UOM"
+		condition as "Condition"
+		viability_notes as "Viability Notes"
+		packing_material_captured as "Packing Material Captured"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Return Lines Overview"
+				fields
+				(
+					product as "Product"
+					batch as "Batch"
+					quantity_returned as "Quantity Returned"
+					uom as "UOM"
+					condition as "Condition"
+					viability_notes as "Viability Notes"
+					packing_material_captured as "Packing Material Captured"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Return Lines Overview"
+				fields
+				(
+					product as "Product"
+					batch as "Batch"
+					quantity_returned as "Quantity Returned"
+					uom as "UOM"
+					condition as "Condition"
+					viability_notes as "Viability Notes"
+					packing_material_captured as "Packing Material Captured"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

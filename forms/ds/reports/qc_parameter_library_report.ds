@@ -1,143 +1,98 @@
-report qc_parameter_library_report
+list qc_parameter_library_report
 {
-    DisplayName = "QC Parameter Library Report";
-    LinkName = "qc_parameter_library_report";
-    Type = "List";
-    SourceFormLinkName = "qc_parameter_library";
-
-    ListView
-    {
-        Columns
-        {
-            Column parameter_code
-            {
-                FieldLinkName = "parameter_code";
-            }
-            Column parameter_name
-            {
-                FieldLinkName = "parameter_name";
-            }
-            Column unit
-            {
-                FieldLinkName = "unit";
-            }
-            Column applicable_template
-            {
-                FieldLinkName = "applicable_template";
-            }
-            Column applicable_product
-            {
-                FieldLinkName = "applicable_product";
-            }
-            Column acceptable_min
-            {
-                FieldLinkName = "acceptable_min";
-            }
-            Column acceptable_max
-            {
-                FieldLinkName = "acceptable_max";
-            }
-            Column critical_flag
-            {
-                FieldLinkName = "critical_flag";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column parameter_code
-            {
-                FieldLinkName = "parameter_code";
-            }
-            Column parameter_name
-            {
-                FieldLinkName = "parameter_name";
-            }
-            Column unit
-            {
-                FieldLinkName = "unit";
-            }
-            Column applicable_template
-            {
-                FieldLinkName = "applicable_template";
-            }
-            Column applicable_product
-            {
-                FieldLinkName = "applicable_product";
-            }
-            Column acceptable_min
-            {
-                FieldLinkName = "acceptable_min";
-            }
-            Column acceptable_max
-            {
-                FieldLinkName = "acceptable_max";
-            }
-            Column critical_flag
-            {
-                FieldLinkName = "critical_flag";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column parameter_code
-                    {
-                        FieldLinkName = "parameter_code";
-                    }
-                    Column parameter_name
-                    {
-                        FieldLinkName = "parameter_name";
-                    }
-                    Column unit
-                    {
-                        FieldLinkName = "unit";
-                    }
-                    Column applicable_template
-                    {
-                        FieldLinkName = "applicable_template";
-                    }
-                    Column applicable_product
-                    {
-                        FieldLinkName = "applicable_product";
-                    }
-                    Column acceptable_min
-                    {
-                        FieldLinkName = "acceptable_min";
-                    }
-                    Column acceptable_max
-                    {
-                        FieldLinkName = "acceptable_max";
-                    }
-                    Column critical_flag
-                    {
-                        FieldLinkName = "critical_flag";
-                    }
-                    Column notes
-                    {
-                        FieldLinkName = "notes";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "QC Parameter Library Report"
+	show all rows from qc_parameter_library
+	(
+		parameter_code as "Parameter Code"
+		parameter_name as "Parameter Name"
+		unit as "Unit"
+		applicable_template as "Applicable Template"
+		applicable_product as "Applicable Product"
+		acceptable_min as "Acceptable Min"
+		acceptable_max as "Acceptable Max"
+		critical_flag as "Critical Flag"
+		notes as "Notes"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "QC Parameter Library Overview"
+				fields
+				(
+					parameter_code as "Parameter Code"
+					parameter_name as "Parameter Name"
+					unit as "Unit"
+					applicable_template as "Applicable Template"
+					applicable_product as "Applicable Product"
+					acceptable_min as "Acceptable Min"
+					acceptable_max as "Acceptable Max"
+					critical_flag as "Critical Flag"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "QC Parameter Library Overview"
+				fields
+				(
+					parameter_code as "Parameter Code"
+					parameter_name as "Parameter Name"
+					unit as "Unit"
+					applicable_template as "Applicable Template"
+					applicable_product as "Applicable Product"
+					acceptable_min as "Acceptable Min"
+					acceptable_max as "Acceptable Max"
+					critical_flag as "Critical Flag"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

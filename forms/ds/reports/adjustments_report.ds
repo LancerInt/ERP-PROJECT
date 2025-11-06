@@ -1,83 +1,83 @@
-report adjustments_report
+list adjustments_report
 {
-    DisplayName = "Adjustments Report";
-    LinkName = "adjustments_report";
-    Type = "List";
-    SourceFormLinkName = "adjustments";
-
-    ListView
-    {
-        Columns
-        {
-            Column adjustment_type
-            {
-                FieldLinkName = "adjustment_type";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-            Column approved_by
-            {
-                FieldLinkName = "approved_by";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column adjustment_type
-            {
-                FieldLinkName = "adjustment_type";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-            Column approved_by
-            {
-                FieldLinkName = "approved_by";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column adjustment_type
-                    {
-                        FieldLinkName = "adjustment_type";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                    Column notes
-                    {
-                        FieldLinkName = "notes";
-                    }
-                    Column approved_by
-                    {
-                        FieldLinkName = "approved_by";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Adjustments Report"
+	show all rows from adjustments
+	(
+		adjustment_type as "Adjustment Type"
+		amount as "Amount"
+		notes as "Notes"
+		approved_by as "Approved By"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Adjustments Overview"
+				fields
+				(
+					adjustment_type as "Adjustment Type"
+					amount as "Amount"
+					notes as "Notes"
+					approved_by as "Approved By"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Adjustments Overview"
+				fields
+				(
+					adjustment_type as "Adjustment Type"
+					amount as "Amount"
+					notes as "Notes"
+					approved_by as "Approved By"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

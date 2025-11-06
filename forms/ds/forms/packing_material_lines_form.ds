@@ -1,60 +1,80 @@
-// Module: 2. Purchase Module
 form packing_material_lines
 {
-    DisplayName = "Packing Material Lines";
-    LinkName = "packing_material_lines";
-    Module = "2. Purchase Module";
-    Type = "Form";
+	displayname = "Packing Material Lines"
+	success message = "Packing Material Lines added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field packaging_sku
-                {
-                    DisplayName = "Packaging SKU";
-                    LinkName = "packaging_sku";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                    HelpText = "Must be PACKING_MATERIAL";
-                }
-                Field quantity
-                {
-                    DisplayName = "Quantity";
-                    LinkName = "quantity";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field condition
-                {
-                    DisplayName = "Condition";
-                    LinkName = "condition";
-                    Type = "Dropdown";
-                    HelpText = "New / Damaged";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have packaging_sku
+	(
+		type = lookup
+		displayname = "Packaging SKU"
+		row = 1
+		column = 1
+		width = medium
+		related form = product_master
+	)
+
+	must have quantity
+	(
+		type = number
+		displayname = "Quantity"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	condition
+	(
+		type = picklist
+		displayname = "Condition"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

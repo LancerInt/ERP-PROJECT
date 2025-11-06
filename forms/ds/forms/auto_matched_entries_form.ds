@@ -1,68 +1,89 @@
-// Module: 7. Finance Module
 form auto_matched_entries
 {
-    DisplayName = "Auto-Matched Entries";
-    LinkName = "auto_matched_entries";
-    Module = "7. Finance Module";
-    Type = "Form";
+	displayname = "Auto-Matched Entries"
+	success message = "Auto-Matched Entries added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field statement_line_id
-                {
-                    DisplayName = "Statement Line ID";
-                    LinkName = "statement_line_id";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field match_type
-                {
-                    DisplayName = "Match Type";
-                    LinkName = "match_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Payable / Receivable";
-                }
-                Field linked_document
-                {
-                    DisplayName = "Linked Document";
-                    LinkName = "linked_document";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkNames = ["vendor_ledger", "customer_ledger"];
-                }
-                Field amount
-                {
-                    DisplayName = "Amount";
-                    LinkName = "amount";
-                    Type = "INR";
-                    IsMandatory = true;
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Confirmed / Pending";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have statement_line_id
+	(
+		type = text
+		displayname = "Statement Line ID"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have match_type
+	(
+		type = picklist
+		displayname = "Match Type"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have linked_document
+	(
+		type = lookup
+		displayname = "Linked Document"
+		row = 1
+		column = 1
+		width = medium
+		related forms = {"vendor_ledger","customer_ledger"}
+	)
+
+	must have amount
+	(
+		type = INR
+		displayname = "Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

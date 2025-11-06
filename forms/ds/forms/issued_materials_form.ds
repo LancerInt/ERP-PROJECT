@@ -1,72 +1,98 @@
-// Module: 6. Inventory, Logistics & Returns
 form issued_materials
 {
-    DisplayName = "Issued Materials";
-    LinkName = "issued_materials";
-    Module = "6. Inventory, Logistics & Returns";
-    Type = "Form";
+	displayname = "Issued Materials"
+	success message = "Issued Materials added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field material_type
-                {
-                    DisplayName = "Material Type";
-                    LinkName = "material_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "RM / PM / Machine";
-                }
-                Field product_machine
-                {
-                    DisplayName = "Product/Machine";
-                    LinkName = "product_machine";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkNames = ["product_master", "machinery"];
-                }
-                Field batch
-                {
-                    DisplayName = "Batch";
-                    LinkName = "batch";
-                    Type = "SingleLine";
-                }
-                Field quantity
-                {
-                    DisplayName = "Quantity";
-                    LinkName = "quantity";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field expected_return_date
-                {
-                    DisplayName = "Expected Return Date";
-                    LinkName = "expected_return_date";
-                    Type = "Date";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have material_type
+	(
+		type = picklist
+		displayname = "Material Type"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have product_machine
+	(
+		type = lookup
+		displayname = "Product/Machine"
+		row = 1
+		column = 1
+		width = medium
+		related forms = {"product_master","machinery"}
+	)
+
+	batch
+	(
+		type = text
+		displayname = "Batch"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have quantity
+	(
+		type = number
+		displayname = "Quantity"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	expected_return_date
+	(
+		type = date
+		displayname = "Expected Return Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

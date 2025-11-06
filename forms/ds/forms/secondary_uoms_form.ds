@@ -1,64 +1,88 @@
-// Module: 1. Core & Shared Masters
 form secondary_uoms
 {
-    DisplayName = "Secondary UOMs";
-    LinkName = "secondary_uoms";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "Secondary UOMs"
+	success message = "Secondary UOMs added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field to_uom
-                {
-                    DisplayName = "To UOM";
-                    LinkName = "to_uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field conversion_factor
-                {
-                    DisplayName = "Conversion Factor";
-                    LinkName = "conversion_factor";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                    HelpText = "Base to secondary";
-                }
-                Field specific_gravity_override
-                {
-                    DisplayName = "Specific Gravity Override";
-                    LinkName = "specific_gravity_override";
-                    Type = "Decimal";
-                    HelpText = "Optional";
-                }
-                Field valid_from
-                {
-                    DisplayName = "Valid From";
-                    LinkName = "valid_from";
-                    Type = "Date";
-                }
-                Field valid_to
-                {
-                    DisplayName = "Valid To";
-                    LinkName = "valid_to";
-                    Type = "Date";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have to_uom
+	(
+		type = picklist
+		displayname = "To UOM"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have conversion_factor
+	(
+		type = number
+		displayname = "Conversion Factor"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	specific_gravity_override
+	(
+		type = number
+		displayname = "Specific Gravity Override"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	valid_from
+	(
+		type = date
+		displayname = "Valid From"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	valid_to
+	(
+		type = date
+		displayname = "Valid To"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

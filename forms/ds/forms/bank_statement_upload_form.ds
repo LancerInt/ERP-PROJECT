@@ -1,104 +1,217 @@
-// Module: 7. Finance Module
 form bank_statement_upload
 {
-    DisplayName = "Bank Statement Upload";
-    LinkName = "bank_statement_upload";
-    Module = "7. Finance Module";
-    Type = "Form";
+	displayname = "Bank Statement Upload"
+	success message = "Bank Statement Upload added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field upload_id
-                {
-                    DisplayName = "Upload ID";
-                    LinkName = "upload_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field bank_account
-                {
-                    DisplayName = "Bank Account";
-                    LinkName = "bank_account";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field statement_period_start
-                {
-                    DisplayName = "Statement Period Start";
-                    LinkName = "statement_period_start";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field statement_period_end
-                {
-                    DisplayName = "Statement Period End";
-                    LinkName = "statement_period_end";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field upload_date
-                {
-                    DisplayName = "Upload Date";
-                    LinkName = "upload_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field statement_file
-                {
-                    DisplayName = "Statement File";
-                    LinkName = "statement_file";
-                    Type = "UploadFile";
-                    IsMandatory = true;
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "PDF/CSV";
-                }
-                Field parsing_status
-                {
-                    DisplayName = "Parsing Status";
-                    LinkName = "parsing_status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Pending / Parsed / Error";
-                }
-                Field auto_matched_entries
-                {
-                    DisplayName = "Auto-Matched Entries";
-                    LinkName = "auto_matched_entries";
-                    Type = "SubForm";
-                    SubFormLinkName = "auto_matched_entries";
-                }
-                Field exceptions
-                {
-                    DisplayName = "Exceptions";
-                    LinkName = "exceptions";
-                    Type = "SubForm";
-                    SubFormLinkName = "exceptions";
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have upload_id
+	(
+		type = autonumber
+		displayname = "Upload ID"
+		row = 1
+		column = 1
+		width = medium
+		start index = 1
+	)
+
+	must have bank_account
+	(
+		type = picklist
+		displayname = "Bank Account"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have statement_period_start
+	(
+		type = date
+		displayname = "Statement Period Start"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have statement_period_end
+	(
+		type = date
+		displayname = "Statement Period End"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have upload_date
+	(
+		type = date
+		displayname = "Upload Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have statement_file
+	(
+		type = upload file
+		displayname = "Statement File"
+		row = 1
+		column = 1
+		width = medium
+		file count = 10
+		browse = localdrive
+	)
+
+	must have parsing_status
+	(
+		type = picklist
+		displayname = "Parsing Status"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	auto_matched_entries
+	(
+		type = grid
+		displayname = "Auto-Matched Entries"
+		row = 1
+		column = 1
+		width = medium
+		must have statement_line_id
+		(
+			type = text
+			displayname = "Statement Line ID"
+			width = medium
+		)
+
+		must have match_type
+		(
+			type = picklist
+			displayname = "Match Type"
+			width = medium
+		)
+
+		must have linked_document
+		(
+			type = lookup
+			displayname = "Linked Document"
+			width = medium
+			related forms = {"vendor_ledger","customer_ledger"}
+		)
+
+		must have amount
+		(
+			type = INR
+			displayname = "Amount"
+			width = medium
+		)
+
+		must have status
+		(
+			type = picklist
+			displayname = "Status"
+			width = medium
+		)
+
+	)
+
+	exceptions
+	(
+		type = grid
+		displayname = "Exceptions"
+		row = 1
+		column = 1
+		width = medium
+		must have statement_line_id
+		(
+			type = text
+			displayname = "Statement Line ID"
+			width = medium
+		)
+
+		must have transaction_date
+		(
+			type = date
+			displayname = "Transaction Date"
+			width = medium
+		)
+
+		must have amount
+		(
+			type = INR
+			displayname = "Amount"
+			width = medium
+		)
+
+		suggested_match
+		(
+			type = lookup
+			displayname = "Suggested Match"
+			width = medium
+			related forms = {"vendor_ledger","customer_ledger","freight_ledger","wage_ledger"}
+		)
+
+		exception_notes
+		(
+			type = textarea
+			displayname = "Exception Notes"
+			width = medium
+			height = 100px
+		)
+
+		must have resolution_status
+		(
+			type = picklist
+			displayname = "Resolution Status"
+			width = medium
+		)
+
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

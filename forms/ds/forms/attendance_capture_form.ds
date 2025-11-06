@@ -1,139 +1,186 @@
-// Module: 8. Attendance & HR Module
 form attendance_capture
 {
-    DisplayName = "Attendance Capture";
-    LinkName = "attendance_capture";
-    Module = "8. Attendance & HR Module";
-    Type = "Form";
+	displayname = "Attendance Capture"
+	success message = "Attendance Capture added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field record_id
-                {
-                    DisplayName = "Record ID";
-                    LinkName = "record_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field staff
-                {
-                    DisplayName = "Staff";
-                    LinkName = "staff";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "staff_master";
-                }
-                Field date
-                {
-                    DisplayName = "Date";
-                    LinkName = "date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field check_in_time
-                {
-                    DisplayName = "Check-in Time";
-                    LinkName = "check_in_time";
-                    Type = "DateTime";
-                    IsMandatory = true;
-                }
-                Field check_out_time
-                {
-                    DisplayName = "Check-out Time";
-                    LinkName = "check_out_time";
-                    Type = "DateTime";
-                }
-                Field entry_photo
-                {
-                    DisplayName = "Entry Photo";
-                    LinkName = "entry_photo";
-                    Type = "UploadImage";
-                    IsMandatory = true;
-                    HelpText = "Retained 7 days";
-                }
-                Field exit_photo
-                {
-                    DisplayName = "Exit Photo";
-                    LinkName = "exit_photo";
-                    Type = "UploadImage";
-                    HelpText = "Retained 7 days";
-                }
-                Field geo_latitude
-                {
-                    DisplayName = "Geo Latitude";
-                    LinkName = "geo_latitude";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                    HelpText = "Must fall within warehouse geofence";
-                }
-                Field geo_longitude
-                {
-                    DisplayName = "Geo Longitude";
-                    LinkName = "geo_longitude";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field face_match_confidence
-                {
-                    DisplayName = "Face Match Confidence";
-                    LinkName = "face_match_confidence";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                    HelpText = "From external API";
-                }
-                Field device_id
-                {
-                    DisplayName = "Device ID";
-                    LinkName = "device_id";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    HelpText = "HR device";
-                }
-                Field shift
-                {
-                    DisplayName = "Shift";
-                    LinkName = "shift";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "shift_definition";
-                }
-                Field attendance_status
-                {
-                    DisplayName = "Attendance Status";
-                    LinkName = "attendance_status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Present / Absent / Half Day / Permission";
-                }
-                Field overtime_hours
-                {
-                    DisplayName = "Overtime Hours";
-                    LinkName = "overtime_hours";
-                    Type = "Decimal";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have record_id
+	(
+		type = autonumber
+		displayname = "Record ID"
+		row = 1
+		column = 1
+		width = medium
+		start index = 1
+	)
+
+	must have staff
+	(
+		type = lookup
+		displayname = "Staff"
+		row = 1
+		column = 1
+		width = medium
+		related form = staff_master
+	)
+
+	must have date
+	(
+		type = date
+		displayname = "Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have check_in_time
+	(
+		type = datetime
+		displayname = "Check-in Time"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	check_out_time
+	(
+		type = datetime
+		displayname = "Check-out Time"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have entry_photo
+	(
+		type = upload file
+		displayname = "Entry Photo"
+		row = 1
+		column = 1
+		width = medium
+		file count = 10
+		browse = local_drive
+	)
+
+	exit_photo
+	(
+		type = upload file
+		displayname = "Exit Photo"
+		row = 1
+		column = 1
+		width = medium
+		file count = 10
+		browse = local_drive
+	)
+
+	must have geo_latitude
+	(
+		type = number
+		displayname = "Geo Latitude"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have geo_longitude
+	(
+		type = number
+		displayname = "Geo Longitude"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have face_match_confidence
+	(
+		type = number
+		displayname = "Face Match Confidence"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have device_id
+	(
+		type = text
+		displayname = "Device ID"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have shift
+	(
+		type = lookup
+		displayname = "Shift"
+		row = 1
+		column = 1
+		width = medium
+		related form = shift_definition
+	)
+
+	must have attendance_status
+	(
+		type = picklist
+		displayname = "Attendance Status"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	overtime_hours
+	(
+		type = number
+		displayname = "Overtime Hours"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

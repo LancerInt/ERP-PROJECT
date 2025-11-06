@@ -1,215 +1,116 @@
-report inventory_ledger_report
+list inventory_ledger_report
 {
-    DisplayName = "Inventory Ledger Report";
-    LinkName = "inventory_ledger_report";
-    Type = "List";
-    SourceFormLinkName = "inventory_ledger";
-
-    ListView
-    {
-        Columns
-        {
-            Column ledger_entry_id
-            {
-                FieldLinkName = "ledger_entry_id";
-            }
-            Column transaction_date
-            {
-                FieldLinkName = "transaction_date";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column godown
-            {
-                FieldLinkName = "godown";
-            }
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column quantity_in
-            {
-                FieldLinkName = "quantity_in";
-            }
-            Column quantity_out
-            {
-                FieldLinkName = "quantity_out";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column transaction_type
-            {
-                FieldLinkName = "transaction_type";
-            }
-            Column source_document
-            {
-                FieldLinkName = "source_document";
-            }
-            Column cost
-            {
-                FieldLinkName = "cost";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column fifo_layer_id
-            {
-                FieldLinkName = "fifo_layer_id";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column ledger_entry_id
-            {
-                FieldLinkName = "ledger_entry_id";
-            }
-            Column transaction_date
-            {
-                FieldLinkName = "transaction_date";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column godown
-            {
-                FieldLinkName = "godown";
-            }
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column quantity_in
-            {
-                FieldLinkName = "quantity_in";
-            }
-            Column quantity_out
-            {
-                FieldLinkName = "quantity_out";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column transaction_type
-            {
-                FieldLinkName = "transaction_type";
-            }
-            Column source_document
-            {
-                FieldLinkName = "source_document";
-            }
-            Column cost
-            {
-                FieldLinkName = "cost";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column fifo_layer_id
-            {
-                FieldLinkName = "fifo_layer_id";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column ledger_entry_id
-                    {
-                        FieldLinkName = "ledger_entry_id";
-                    }
-                    Column transaction_date
-                    {
-                        FieldLinkName = "transaction_date";
-                    }
-                    Column warehouse
-                    {
-                        FieldLinkName = "warehouse";
-                    }
-                    Column godown
-                    {
-                        FieldLinkName = "godown";
-                    }
-                    Column product
-                    {
-                        FieldLinkName = "product";
-                    }
-                    Column batch
-                    {
-                        FieldLinkName = "batch";
-                    }
-                    Column quantity_in
-                    {
-                        FieldLinkName = "quantity_in";
-                    }
-                    Column quantity_out
-                    {
-                        FieldLinkName = "quantity_out";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column transaction_type
-                    {
-                        FieldLinkName = "transaction_type";
-                    }
-                    Column source_document
-                    {
-                        FieldLinkName = "source_document";
-                    }
-                    Column cost
-                    {
-                        FieldLinkName = "cost";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                    Column fifo_layer_id
-                    {
-                        FieldLinkName = "fifo_layer_id";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Inventory Ledger Report"
+	show all rows from inventory_ledger
+	(
+		ledger_entry_id as "Ledger Entry ID"
+		transaction_date as "Transaction Date"
+		warehouse as "Warehouse"
+		godown as "Godown"
+		product as "Product"
+		batch as "Batch"
+		quantity_in as "Quantity In"
+		quantity_out as "Quantity Out"
+		uom as "UOM"
+		transaction_type as "Transaction Type"
+		source_document as "Source Document"
+		cost as "Cost"
+		status as "Status"
+		fifo_layer_id as "FIFO Layer ID"
+		remarks as "Remarks"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Inventory Ledger Overview"
+				fields
+				(
+					ledger_entry_id as "Ledger Entry ID"
+					transaction_date as "Transaction Date"
+					warehouse as "Warehouse"
+					godown as "Godown"
+					product as "Product"
+					batch as "Batch"
+					quantity_in as "Quantity In"
+					quantity_out as "Quantity Out"
+					uom as "UOM"
+					transaction_type as "Transaction Type"
+					source_document as "Source Document"
+					cost as "Cost"
+					status as "Status"
+					fifo_layer_id as "FIFO Layer ID"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Inventory Ledger Overview"
+				fields
+				(
+					ledger_entry_id as "Ledger Entry ID"
+					transaction_date as "Transaction Date"
+					warehouse as "Warehouse"
+					godown as "Godown"
+					product as "Product"
+					batch as "Batch"
+					quantity_in as "Quantity In"
+					quantity_out as "Quantity Out"
+					uom as "UOM"
+					transaction_type as "Transaction Type"
+					source_document as "Source Document"
+					cost as "Cost"
+					status as "Status"
+					fifo_layer_id as "FIFO Layer ID"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

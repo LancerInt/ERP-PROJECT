@@ -1,119 +1,92 @@
-report receipts_report
+list receipts_report
 {
-    DisplayName = "Receipts Report";
-    LinkName = "receipts_report";
-    Type = "List";
-    SourceFormLinkName = "receipts";
-
-    ListView
-    {
-        Columns
-        {
-            Column receipt_no
-            {
-                FieldLinkName = "receipt_no";
-            }
-            Column customer
-            {
-                FieldLinkName = "customer";
-            }
-            Column receipt_date
-            {
-                FieldLinkName = "receipt_date";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column payment_method
-            {
-                FieldLinkName = "payment_method";
-            }
-            Column reference_document
-            {
-                FieldLinkName = "reference_document";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column receipt_no
-            {
-                FieldLinkName = "receipt_no";
-            }
-            Column customer
-            {
-                FieldLinkName = "customer";
-            }
-            Column receipt_date
-            {
-                FieldLinkName = "receipt_date";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column payment_method
-            {
-                FieldLinkName = "payment_method";
-            }
-            Column reference_document
-            {
-                FieldLinkName = "reference_document";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column receipt_no
-                    {
-                        FieldLinkName = "receipt_no";
-                    }
-                    Column customer
-                    {
-                        FieldLinkName = "customer";
-                    }
-                    Column receipt_date
-                    {
-                        FieldLinkName = "receipt_date";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                    Column payment_method
-                    {
-                        FieldLinkName = "payment_method";
-                    }
-                    Column reference_document
-                    {
-                        FieldLinkName = "reference_document";
-                    }
-                    Column notes
-                    {
-                        FieldLinkName = "notes";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Receipts Report"
+	show all rows from receipts
+	(
+		receipt_no as "Receipt No."
+		customer as "Customer"
+		receipt_date as "Receipt Date"
+		amount as "Amount"
+		payment_method as "Payment Method"
+		reference_document as "Reference Document"
+		notes as "Notes"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Receipts Overview"
+				fields
+				(
+					receipt_no as "Receipt No."
+					customer as "Customer"
+					receipt_date as "Receipt Date"
+					amount as "Amount"
+					payment_method as "Payment Method"
+					reference_document as "Reference Document"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Receipts Overview"
+				fields
+				(
+					receipt_no as "Receipt No."
+					customer as "Customer"
+					receipt_date as "Receipt Date"
+					amount as "Amount"
+					payment_method as "Payment Method"
+					reference_document as "Reference Document"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

@@ -1,66 +1,89 @@
-// Module: 6. Inventory, Logistics & Returns
 form freight_charges
 {
-    DisplayName = "Freight Charges";
-    LinkName = "freight_charges";
-    Module = "6. Inventory, Logistics & Returns";
-    Type = "Form";
+	displayname = "Freight Charges"
+	success message = "Freight Charges added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field freight_type
-                {
-                    DisplayName = "Freight Type";
-                    LinkName = "freight_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Local Drayage / Linehaul";
-                }
-                Field transporter
-                {
-                    DisplayName = "Transporter";
-                    LinkName = "transporter";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "transporter";
-                }
-                Field amount
-                {
-                    DisplayName = "Amount";
-                    LinkName = "amount";
-                    Type = "INR";
-                    IsMandatory = true;
-                }
-                Field discount
-                {
-                    DisplayName = "Discount";
-                    LinkName = "discount";
-                    Type = "INR";
-                }
-                Field payable_by
-                {
-                    DisplayName = "Payable By";
-                    LinkName = "payable_by";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Company / Customer";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have freight_type
+	(
+		type = picklist
+		displayname = "Freight Type"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	transporter
+	(
+		type = lookup
+		displayname = "Transporter"
+		row = 1
+		column = 1
+		width = medium
+		related form = transporter
+	)
+
+	must have amount
+	(
+		type = INR
+		displayname = "Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	discount
+	(
+		type = INR
+		displayname = "Discount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have payable_by
+	(
+		type = picklist
+		displayname = "Payable By"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

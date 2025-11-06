@@ -1,83 +1,83 @@
-report packing_material_lines_report
+list packing_material_lines_report
 {
-    DisplayName = "Packing Material Lines Report";
-    LinkName = "packing_material_lines_report";
-    Type = "List";
-    SourceFormLinkName = "packing_material_lines";
-
-    ListView
-    {
-        Columns
-        {
-            Column packaging_sku
-            {
-                FieldLinkName = "packaging_sku";
-            }
-            Column quantity
-            {
-                FieldLinkName = "quantity";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column condition
-            {
-                FieldLinkName = "condition";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column packaging_sku
-            {
-                FieldLinkName = "packaging_sku";
-            }
-            Column quantity
-            {
-                FieldLinkName = "quantity";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column condition
-            {
-                FieldLinkName = "condition";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column packaging_sku
-                    {
-                        FieldLinkName = "packaging_sku";
-                    }
-                    Column quantity
-                    {
-                        FieldLinkName = "quantity";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column condition
-                    {
-                        FieldLinkName = "condition";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Packing Material Lines Report"
+	show all rows from packing_material_lines
+	(
+		packaging_sku as "Packaging SKU"
+		quantity as "Quantity"
+		uom as "UOM"
+		condition as "Condition"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Packing Material Lines Overview"
+				fields
+				(
+					packaging_sku as "Packaging SKU"
+					quantity as "Quantity"
+					uom as "UOM"
+					condition as "Condition"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Packing Material Lines Overview"
+				fields
+				(
+					packaging_sku as "Packaging SKU"
+					quantity as "Quantity"
+					uom as "UOM"
+					condition as "Condition"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

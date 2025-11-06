@@ -1,107 +1,89 @@
-report gst_reconciliation_report_report
+list gst_reconciliation_report_report
 {
-    DisplayName = "GST Reconciliation Report Report";
-    LinkName = "gst_reconciliation_report_report";
-    Type = "List";
-    SourceFormLinkName = "gst_reconciliation_report";
-
-    ListView
-    {
-        Columns
-        {
-            Column report_id
-            {
-                FieldLinkName = "report_id";
-            }
-            Column reporting_period
-            {
-                FieldLinkName = "reporting_period";
-            }
-            Column data_source
-            {
-                FieldLinkName = "data_source";
-            }
-            Column variance_summary
-            {
-                FieldLinkName = "variance_summary";
-            }
-            Column adjustments
-            {
-                FieldLinkName = "adjustments";
-            }
-            Column export_file
-            {
-                FieldLinkName = "export_file";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column report_id
-            {
-                FieldLinkName = "report_id";
-            }
-            Column reporting_period
-            {
-                FieldLinkName = "reporting_period";
-            }
-            Column data_source
-            {
-                FieldLinkName = "data_source";
-            }
-            Column variance_summary
-            {
-                FieldLinkName = "variance_summary";
-            }
-            Column adjustments
-            {
-                FieldLinkName = "adjustments";
-            }
-            Column export_file
-            {
-                FieldLinkName = "export_file";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column report_id
-                    {
-                        FieldLinkName = "report_id";
-                    }
-                    Column reporting_period
-                    {
-                        FieldLinkName = "reporting_period";
-                    }
-                    Column data_source
-                    {
-                        FieldLinkName = "data_source";
-                    }
-                    Column variance_summary
-                    {
-                        FieldLinkName = "variance_summary";
-                    }
-                    Column adjustments
-                    {
-                        FieldLinkName = "adjustments";
-                    }
-                    Column export_file
-                    {
-                        FieldLinkName = "export_file";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "GST Reconciliation Report Report"
+	show all rows from gst_reconciliation_report
+	(
+		report_id as "Report ID"
+		reporting_period as "Reporting Period"
+		data_source as "Data Source"
+		variance_summary as "Variance Summary"
+		adjustments as "Adjustments"
+		export_file as "Export File"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "GST Reconciliation Report Overview"
+				fields
+				(
+					report_id as "Report ID"
+					reporting_period as "Reporting Period"
+					data_source as "Data Source"
+					variance_summary as "Variance Summary"
+					adjustments as "Adjustments"
+					export_file as "Export File"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "GST Reconciliation Report Overview"
+				fields
+				(
+					report_id as "Report ID"
+					reporting_period as "Reporting Period"
+					data_source as "Data Source"
+					variance_summary as "Variance Summary"
+					adjustments as "Adjustments"
+					export_file as "Export File"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

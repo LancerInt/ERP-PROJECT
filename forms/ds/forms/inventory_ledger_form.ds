@@ -1,137 +1,184 @@
-// Module: 6. Inventory, Logistics & Returns
 form inventory_ledger
 {
-    DisplayName = "Inventory Ledger";
-    LinkName = "inventory_ledger";
-    Module = "6. Inventory, Logistics & Returns";
-    Type = "Form";
+	displayname = "Inventory Ledger"
+	success message = "Inventory Ledger added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field ledger_entry_id
-                {
-                    DisplayName = "Ledger Entry ID";
-                    LinkName = "ledger_entry_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field transaction_date
-                {
-                    DisplayName = "Transaction Date";
-                    LinkName = "transaction_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field warehouse
-                {
-                    DisplayName = "Warehouse";
-                    LinkName = "warehouse";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "warehouse";
-                }
-                Field godown
-                {
-                    DisplayName = "Godown";
-                    LinkName = "godown";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "godown";
-                    HelpText = "Stock location";
-                }
-                Field product
-                {
-                    DisplayName = "Product";
-                    LinkName = "product";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                }
-                Field batch
-                {
-                    DisplayName = "Batch";
-                    LinkName = "batch";
-                    Type = "SingleLine";
-                }
-                Field quantity_in
-                {
-                    DisplayName = "Quantity In";
-                    LinkName = "quantity_in";
-                    Type = "Decimal";
-                }
-                Field quantity_out
-                {
-                    DisplayName = "Quantity Out";
-                    LinkName = "quantity_out";
-                    Type = "Decimal";
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field transaction_type
-                {
-                    DisplayName = "Transaction Type";
-                    LinkName = "transaction_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Receipt / Issue / Transfer / Adjustment / Dispatch";
-                }
-                Field source_document
-                {
-                    DisplayName = "Source Document";
-                    LinkName = "source_document";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkNames = ["purchase_order", "receipt_advice", "freight_advice", "wage_voucher", "credit_debit_note"];
-                }
-                Field cost
-                {
-                    DisplayName = "Cost";
-                    LinkName = "cost";
-                    Type = "INR";
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Available / In Transit / Reserved";
-                }
-                Field fifo_layer_id
-                {
-                    DisplayName = "FIFO Layer ID";
-                    LinkName = "fifo_layer_id";
-                    Type = "SingleLine";
-                    HelpText = "Valuation";
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have ledger_entry_id
+	(
+		type = autonumber
+		displayname = "Ledger Entry ID"
+		row = 1
+		column = 1
+		width = medium
+		start index = 1
+	)
+
+	must have transaction_date
+	(
+		type = date
+		displayname = "Transaction Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have warehouse
+	(
+		type = lookup
+		displayname = "Warehouse"
+		row = 1
+		column = 1
+		width = medium
+		related form = warehouse
+	)
+
+	must have godown
+	(
+		type = lookup
+		displayname = "Godown"
+		row = 1
+		column = 1
+		width = medium
+		related form = godown
+	)
+
+	must have product
+	(
+		type = lookup
+		displayname = "Product"
+		row = 1
+		column = 1
+		width = medium
+		related form = product_master
+	)
+
+	batch
+	(
+		type = text
+		displayname = "Batch"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	quantity_in
+	(
+		type = number
+		displayname = "Quantity In"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	quantity_out
+	(
+		type = number
+		displayname = "Quantity Out"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have transaction_type
+	(
+		type = picklist
+		displayname = "Transaction Type"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have source_document
+	(
+		type = lookup
+		displayname = "Source Document"
+		row = 1
+		column = 1
+		width = medium
+		related forms = {"purchase_order","receipt_advice","freight_advice","wage_voucher","credit_debit_note"}
+	)
+
+	cost
+	(
+		type = INR
+		displayname = "Cost"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	fifo_layer_id
+	(
+		type = text
+		displayname = "FIFO Layer ID"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

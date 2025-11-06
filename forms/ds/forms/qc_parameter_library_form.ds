@@ -1,88 +1,127 @@
-// Module: 5. Quality Control Module
 form qc_parameter_library
 {
-    DisplayName = "QC Parameter Library";
-    LinkName = "qc_parameter_library";
-    Module = "5. Quality Control Module";
-    Type = "Form";
+	displayname = "QC Parameter Library"
+	success message = "QC Parameter Library added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field parameter_code
-                {
-                    DisplayName = "Parameter Code";
-                    LinkName = "parameter_code";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field parameter_name
-                {
-                    DisplayName = "Parameter Name";
-                    LinkName = "parameter_name";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field unit
-                {
-                    DisplayName = "Unit";
-                    LinkName = "unit";
-                    Type = "SingleLine";
-                }
-                Field applicable_template
-                {
-                    DisplayName = "Applicable Template";
-                    LinkName = "applicable_template";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "template_library";
-                }
-                Field applicable_product
-                {
-                    DisplayName = "Applicable Product";
-                    LinkName = "applicable_product";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "product_master";
-                }
-                Field acceptable_min
-                {
-                    DisplayName = "Acceptable Min";
-                    LinkName = "acceptable_min";
-                    Type = "Decimal";
-                }
-                Field acceptable_max
-                {
-                    DisplayName = "Acceptable Max";
-                    LinkName = "acceptable_max";
-                    Type = "Decimal";
-                }
-                Field critical_flag
-                {
-                    DisplayName = "Critical Flag";
-                    LinkName = "critical_flag";
-                    Type = "Checkbox";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have parameter_code
+	(
+		type = text
+		displayname = "Parameter Code"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have parameter_name
+	(
+		type = text
+		displayname = "Parameter Name"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	unit
+	(
+		type = text
+		displayname = "Unit"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	applicable_template
+	(
+		type = lookup
+		displayname = "Applicable Template"
+		row = 1
+		column = 1
+		width = medium
+		related form = template_library
+	)
+
+	applicable_product
+	(
+		type = lookup
+		displayname = "Applicable Product"
+		row = 1
+		column = 1
+		width = medium
+		related form = product_master
+	)
+
+	acceptable_min
+	(
+		type = number
+		displayname = "Acceptable Min"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	acceptable_max
+	(
+		type = number
+		displayname = "Acceptable Max"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	critical_flag
+	(
+		type = checkbox
+		displayname = "Critical Flag"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

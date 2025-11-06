@@ -1,83 +1,136 @@
-// Module: 1. Core & Shared Masters
 form role_definition
 {
-    DisplayName = "Role Definition";
-    LinkName = "role_definition";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "Role Definition"
+	success message = "Role Definition added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field role_code
-                {
-                    DisplayName = "Role Code";
-                    LinkName = "role_code";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    HelpText = "Unique role identifier";
-                }
-                Field role_name
-                {
-                    DisplayName = "Role Name";
-                    LinkName = "role_name";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field module_permissions
-                {
-                    DisplayName = "Module Permissions";
-                    LinkName = "module_permissions";
-                    Type = "MultiLine";
-                    IsMandatory = true;
-                    HelpText = "CRUD/approval rights per module";
-                }
-                Field data_scope
-                {
-                    DisplayName = "Data Scope";
-                    LinkName = "data_scope";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Global / Company / Warehouse";
-                }
-                Field approval_levels
-                {
-                    DisplayName = "Approval Levels";
-                    LinkName = "approval_levels";
-                    Type = "SubForm";
-                    SubFormLinkName = "approval_levels";
-                    HelpText = "Specifies approvals handled";
-                }
-                Field default_share_rules
-                {
-                    DisplayName = "Default Share Rules";
-                    LinkName = "default_share_rules";
-                    Type = "MultiLine";
-                    HelpText = "Creator share settings template";
-                }
-                Field active_flag
-                {
-                    DisplayName = "Active Flag";
-                    LinkName = "active_flag";
-                    Type = "Checkbox";
-                    IsMandatory = true;
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have role_code
+	(
+		type = text
+		displayname = "Role Code"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have role_name
+	(
+		type = text
+		displayname = "Role Name"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have module_permissions
+	(
+		type = textarea
+		displayname = "Module Permissions"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	must have data_scope
+	(
+		type = picklist
+		displayname = "Data Scope"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	approval_levels
+	(
+		type = grid
+		displayname = "Approval Levels"
+		row = 1
+		column = 1
+		width = medium
+		must have module
+		(
+			type = picklist
+			displayname = "Module"
+			width = medium
+		)
+
+		must have stage
+		(
+			type = picklist
+			displayname = "Stage"
+			width = medium
+		)
+
+		min_amount
+		(
+			type = INR
+			displayname = "Min Amount"
+			width = medium
+		)
+
+		max_amount
+		(
+			type = INR
+			displayname = "Max Amount"
+			width = medium
+		)
+
+	)
+
+	default_share_rules
+	(
+		type = textarea
+		displayname = "Default Share Rules"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	must have active_flag
+	(
+		type = checkbox
+		displayname = "Active Flag"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

@@ -1,143 +1,98 @@
-report payroll_export_report
+list payroll_export_report
 {
-    DisplayName = "Payroll Export Report";
-    LinkName = "payroll_export_report";
-    Type = "List";
-    SourceFormLinkName = "payroll_export";
-
-    ListView
-    {
-        Columns
-        {
-            Column export_id
-            {
-                FieldLinkName = "export_id";
-            }
-            Column period_start
-            {
-                FieldLinkName = "period_start";
-            }
-            Column period_end
-            {
-                FieldLinkName = "period_end";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column staff_summary
-            {
-                FieldLinkName = "staff_summary";
-            }
-            Column attendance_metrics
-            {
-                FieldLinkName = "attendance_metrics";
-            }
-            Column overtime_hours_total
-            {
-                FieldLinkName = "overtime_hours_total";
-            }
-            Column exceptions
-            {
-                FieldLinkName = "exceptions";
-            }
-            Column export_file
-            {
-                FieldLinkName = "export_file";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column export_id
-            {
-                FieldLinkName = "export_id";
-            }
-            Column period_start
-            {
-                FieldLinkName = "period_start";
-            }
-            Column period_end
-            {
-                FieldLinkName = "period_end";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column staff_summary
-            {
-                FieldLinkName = "staff_summary";
-            }
-            Column attendance_metrics
-            {
-                FieldLinkName = "attendance_metrics";
-            }
-            Column overtime_hours_total
-            {
-                FieldLinkName = "overtime_hours_total";
-            }
-            Column exceptions
-            {
-                FieldLinkName = "exceptions";
-            }
-            Column export_file
-            {
-                FieldLinkName = "export_file";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column export_id
-                    {
-                        FieldLinkName = "export_id";
-                    }
-                    Column period_start
-                    {
-                        FieldLinkName = "period_start";
-                    }
-                    Column period_end
-                    {
-                        FieldLinkName = "period_end";
-                    }
-                    Column warehouse
-                    {
-                        FieldLinkName = "warehouse";
-                    }
-                    Column staff_summary
-                    {
-                        FieldLinkName = "staff_summary";
-                    }
-                    Column attendance_metrics
-                    {
-                        FieldLinkName = "attendance_metrics";
-                    }
-                    Column overtime_hours_total
-                    {
-                        FieldLinkName = "overtime_hours_total";
-                    }
-                    Column exceptions
-                    {
-                        FieldLinkName = "exceptions";
-                    }
-                    Column export_file
-                    {
-                        FieldLinkName = "export_file";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Payroll Export Report"
+	show all rows from payroll_export
+	(
+		export_id as "Export ID"
+		period_start as "Period Start"
+		period_end as "Period End"
+		warehouse as "Warehouse"
+		staff_summary as "Staff Summary"
+		attendance_metrics as "Attendance Metrics"
+		overtime_hours_total as "Overtime Hours Total"
+		exceptions as "Exceptions"
+		export_file as "Export File"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Payroll Export Overview"
+				fields
+				(
+					export_id as "Export ID"
+					period_start as "Period Start"
+					period_end as "Period End"
+					warehouse as "Warehouse"
+					staff_summary as "Staff Summary"
+					attendance_metrics as "Attendance Metrics"
+					overtime_hours_total as "Overtime Hours Total"
+					exceptions as "Exceptions"
+					export_file as "Export File"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Payroll Export Overview"
+				fields
+				(
+					export_id as "Export ID"
+					period_start as "Period Start"
+					period_end as "Period End"
+					warehouse as "Warehouse"
+					staff_summary as "Staff Summary"
+					attendance_metrics as "Attendance Metrics"
+					overtime_hours_total as "Overtime Hours Total"
+					exceptions as "Exceptions"
+					export_file as "Export File"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

@@ -1,227 +1,119 @@
-report dispatch_challan_report
+list dispatch_challan_report
 {
-    DisplayName = "Dispatch Challan (DC) Report";
-    LinkName = "dispatch_challan_report";
-    Type = "List";
-    SourceFormLinkName = "dispatch_challan";
-
-    ListView
-    {
-        Columns
-        {
-            Column dc_no
-            {
-                FieldLinkName = "dc_no";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column dispatch_date
-            {
-                FieldLinkName = "dispatch_date";
-            }
-            Column transporter
-            {
-                FieldLinkName = "transporter";
-            }
-            Column freight_rate_type
-            {
-                FieldLinkName = "freight_rate_type";
-            }
-            Column freight_rate_value
-            {
-                FieldLinkName = "freight_rate_value";
-            }
-            Column freight_amount_total
-            {
-                FieldLinkName = "freight_amount_total";
-            }
-            Column lorry_no
-            {
-                FieldLinkName = "lorry_no";
-            }
-            Column driver_contact
-            {
-                FieldLinkName = "driver_contact";
-            }
-            Column linked_so_lines
-            {
-                FieldLinkName = "linked_so_lines";
-            }
-            Column dc_lines
-            {
-                FieldLinkName = "dc_lines";
-            }
-            Column delivery_locations
-            {
-                FieldLinkName = "delivery_locations";
-            }
-            Column documents
-            {
-                FieldLinkName = "documents";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column created_by
-            {
-                FieldLinkName = "created_by";
-            }
-            Column freight_advice_link
-            {
-                FieldLinkName = "freight_advice_link";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column dc_no
-            {
-                FieldLinkName = "dc_no";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column dispatch_date
-            {
-                FieldLinkName = "dispatch_date";
-            }
-            Column transporter
-            {
-                FieldLinkName = "transporter";
-            }
-            Column freight_rate_type
-            {
-                FieldLinkName = "freight_rate_type";
-            }
-            Column freight_rate_value
-            {
-                FieldLinkName = "freight_rate_value";
-            }
-            Column freight_amount_total
-            {
-                FieldLinkName = "freight_amount_total";
-            }
-            Column lorry_no
-            {
-                FieldLinkName = "lorry_no";
-            }
-            Column driver_contact
-            {
-                FieldLinkName = "driver_contact";
-            }
-            Column linked_so_lines
-            {
-                FieldLinkName = "linked_so_lines";
-            }
-            Column dc_lines
-            {
-                FieldLinkName = "dc_lines";
-            }
-            Column delivery_locations
-            {
-                FieldLinkName = "delivery_locations";
-            }
-            Column documents
-            {
-                FieldLinkName = "documents";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column created_by
-            {
-                FieldLinkName = "created_by";
-            }
-            Column freight_advice_link
-            {
-                FieldLinkName = "freight_advice_link";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column dc_no
-                    {
-                        FieldLinkName = "dc_no";
-                    }
-                    Column warehouse
-                    {
-                        FieldLinkName = "warehouse";
-                    }
-                    Column dispatch_date
-                    {
-                        FieldLinkName = "dispatch_date";
-                    }
-                    Column transporter
-                    {
-                        FieldLinkName = "transporter";
-                    }
-                    Column freight_rate_type
-                    {
-                        FieldLinkName = "freight_rate_type";
-                    }
-                    Column freight_rate_value
-                    {
-                        FieldLinkName = "freight_rate_value";
-                    }
-                    Column freight_amount_total
-                    {
-                        FieldLinkName = "freight_amount_total";
-                    }
-                    Column lorry_no
-                    {
-                        FieldLinkName = "lorry_no";
-                    }
-                    Column driver_contact
-                    {
-                        FieldLinkName = "driver_contact";
-                    }
-                    Column linked_so_lines
-                    {
-                        FieldLinkName = "linked_so_lines";
-                    }
-                    Column dc_lines
-                    {
-                        FieldLinkName = "dc_lines";
-                    }
-                    Column delivery_locations
-                    {
-                        FieldLinkName = "delivery_locations";
-                    }
-                    Column documents
-                    {
-                        FieldLinkName = "documents";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                    Column created_by
-                    {
-                        FieldLinkName = "created_by";
-                    }
-                    Column freight_advice_link
-                    {
-                        FieldLinkName = "freight_advice_link";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Dispatch Challan (DC) Report"
+	show all rows from dispatch_challan
+	(
+		dc_no as "DC No."
+		warehouse as "Warehouse"
+		dispatch_date as "Dispatch Date"
+		transporter as "Transporter"
+		freight_rate_type as "Freight Rate Type"
+		freight_rate_value as "Freight Rate Value"
+		freight_amount_total as "Freight Amount Total"
+		lorry_no as "Lorry No."
+		driver_contact as "Driver Contact"
+		linked_so_lines as "Linked SO Lines"
+		dc_lines as "DC Lines"
+		delivery_locations as "Delivery Locations"
+		documents as "Documents"
+		status as "Status"
+		created_by as "Created By"
+		freight_advice_link as "Freight Advice Link"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Dispatch Challan (DC) Overview"
+				fields
+				(
+					dc_no as "DC No."
+					warehouse as "Warehouse"
+					dispatch_date as "Dispatch Date"
+					transporter as "Transporter"
+					freight_rate_type as "Freight Rate Type"
+					freight_rate_value as "Freight Rate Value"
+					freight_amount_total as "Freight Amount Total"
+					lorry_no as "Lorry No."
+					driver_contact as "Driver Contact"
+					linked_so_lines as "Linked SO Lines"
+					dc_lines as "DC Lines"
+					delivery_locations as "Delivery Locations"
+					documents as "Documents"
+					status as "Status"
+					created_by as "Created By"
+					freight_advice_link as "Freight Advice Link"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Dispatch Challan (DC) Overview"
+				fields
+				(
+					dc_no as "DC No."
+					warehouse as "Warehouse"
+					dispatch_date as "Dispatch Date"
+					transporter as "Transporter"
+					freight_rate_type as "Freight Rate Type"
+					freight_rate_value as "Freight Rate Value"
+					freight_amount_total as "Freight Amount Total"
+					lorry_no as "Lorry No."
+					driver_contact as "Driver Contact"
+					linked_so_lines as "Linked SO Lines"
+					dc_lines as "DC Lines"
+					delivery_locations as "Delivery Locations"
+					documents as "Documents"
+					status as "Status"
+					created_by as "Created By"
+					freight_advice_link as "Freight Advice Link"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

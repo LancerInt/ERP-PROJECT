@@ -1,123 +1,164 @@
-// Module: 2. Purchase Module
 form receipt_lines
 {
-    DisplayName = "Receipt Lines";
-    LinkName = "receipt_lines";
-    Module = "2. Purchase Module";
-    Type = "Form";
+	displayname = "Receipt Lines"
+	success message = "Receipt Lines added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field line_no
-                {
-                    DisplayName = "Line No.";
-                    LinkName = "line_no";
-                    Type = "Number";
-                    IsMandatory = true;
-                }
-                Field po_line
-                {
-                    DisplayName = "PO Line";
-                    LinkName = "po_line";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "po_lines";
-                }
-                Field product
-                {
-                    DisplayName = "Product";
-                    LinkName = "product";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                }
-                Field batch_no
-                {
-                    DisplayName = "Batch No.";
-                    LinkName = "batch_no";
-                    Type = "SingleLine";
-                    ConditionalMandatory = true;
-                    HelpText = "Mandatory when batch tracking enabled";
-                }
-                Field expiry_date
-                {
-                    DisplayName = "Expiry Date";
-                    LinkName = "expiry_date";
-                    Type = "Date";
-                }
-                Field quantity_received
-                {
-                    DisplayName = "Quantity Received";
-                    LinkName = "quantity_received";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field extra_commission
-                {
-                    DisplayName = "Extra Commission";
-                    LinkName = "extra_commission";
-                    Type = "INR";
-                    HelpText = "Capture actual commission incurred";
-                }
-                Field agent_commission
-                {
-                    DisplayName = "Agent Commission";
-                    LinkName = "agent_commission";
-                    Type = "INR";
-                    HelpText = "Capture agent payouts associated with the receipt";
-                }
-                Field quantity_accepted
-                {
-                    DisplayName = "Quantity Accepted";
-                    LinkName = "quantity_accepted";
-                    Type = "Decimal";
-                    HelpText = "Post QC";
-                }
-                Field quantity_rejected
-                {
-                    DisplayName = "Quantity Rejected";
-                    LinkName = "quantity_rejected";
-                    Type = "Decimal";
-                }
-                Field godown_location
-                {
-                    DisplayName = "Godown Location";
-                    LinkName = "godown_location";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "godown";
-                    HelpText = "Filtered by parent warehouse";
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have line_no
+	(
+		type = number
+		displayname = "Line No."
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have po_line
+	(
+		type = lookup
+		displayname = "PO Line"
+		row = 1
+		column = 1
+		width = medium
+		related form = po_lines
+	)
+
+	must have product
+	(
+		type = lookup
+		displayname = "Product"
+		row = 1
+		column = 1
+		width = medium
+		related form = product_master
+	)
+
+	must have batch_no
+	(
+		type = text
+		displayname = "Batch No."
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	expiry_date
+	(
+		type = date
+		displayname = "Expiry Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have quantity_received
+	(
+		type = number
+		displayname = "Quantity Received"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	extra_commission
+	(
+		type = INR
+		displayname = "Extra Commission"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	agent_commission
+	(
+		type = INR
+		displayname = "Agent Commission"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	quantity_accepted
+	(
+		type = number
+		displayname = "Quantity Accepted"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	quantity_rejected
+	(
+		type = number
+		displayname = "Quantity Rejected"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have godown_location
+	(
+		type = lookup
+		displayname = "Godown Location"
+		row = 1
+		column = 1
+		width = medium
+		related form = godown
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

@@ -1,95 +1,86 @@
-report transactions_report
+list transactions_report
 {
-    DisplayName = "Transactions Report";
-    LinkName = "transactions_report";
-    Type = "List";
-    SourceFormLinkName = "transactions";
-
-    ListView
-    {
-        Columns
-        {
-            Column transaction_date
-            {
-                FieldLinkName = "transaction_date";
-            }
-            Column voucher_reference
-            {
-                FieldLinkName = "voucher_reference";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column type
-            {
-                FieldLinkName = "type";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column transaction_date
-            {
-                FieldLinkName = "transaction_date";
-            }
-            Column voucher_reference
-            {
-                FieldLinkName = "voucher_reference";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column type
-            {
-                FieldLinkName = "type";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column transaction_date
-                    {
-                        FieldLinkName = "transaction_date";
-                    }
-                    Column voucher_reference
-                    {
-                        FieldLinkName = "voucher_reference";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                    Column type
-                    {
-                        FieldLinkName = "type";
-                    }
-                    Column notes
-                    {
-                        FieldLinkName = "notes";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Transactions Report"
+	show all rows from transactions
+	(
+		transaction_date as "Transaction Date"
+		voucher_reference as "Voucher Reference"
+		amount as "Amount"
+		type as "Type"
+		notes as "Notes"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Transactions Overview"
+				fields
+				(
+					transaction_date as "Transaction Date"
+					voucher_reference as "Voucher Reference"
+					amount as "Amount"
+					type as "Type"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Transactions Overview"
+				fields
+				(
+					transaction_date as "Transaction Date"
+					voucher_reference as "Voucher Reference"
+					amount as "Amount"
+					type as "Type"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

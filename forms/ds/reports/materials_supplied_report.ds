@@ -1,95 +1,86 @@
-report materials_supplied_report
+list materials_supplied_report
 {
-    DisplayName = "Materials Supplied Report";
-    LinkName = "materials_supplied_report";
-    Type = "List";
-    SourceFormLinkName = "materials_supplied";
-
-    ListView
-    {
-        Columns
-        {
-            Column material_type
-            {
-                FieldLinkName = "material_type";
-            }
-            Column product_machine
-            {
-                FieldLinkName = "product_machine";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column quantity
-            {
-                FieldLinkName = "quantity";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column material_type
-            {
-                FieldLinkName = "material_type";
-            }
-            Column product_machine
-            {
-                FieldLinkName = "product_machine";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column quantity
-            {
-                FieldLinkName = "quantity";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column material_type
-                    {
-                        FieldLinkName = "material_type";
-                    }
-                    Column product_machine
-                    {
-                        FieldLinkName = "product_machine";
-                    }
-                    Column batch
-                    {
-                        FieldLinkName = "batch";
-                    }
-                    Column quantity
-                    {
-                        FieldLinkName = "quantity";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Materials Supplied Report"
+	show all rows from materials_supplied
+	(
+		material_type as "Material Type"
+		product_machine as "Product/Machine"
+		batch as "Batch"
+		quantity as "Quantity"
+		uom as "UOM"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Materials Supplied Overview"
+				fields
+				(
+					material_type as "Material Type"
+					product_machine as "Product/Machine"
+					batch as "Batch"
+					quantity as "Quantity"
+					uom as "UOM"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Materials Supplied Overview"
+				fields
+				(
+					material_type as "Material Type"
+					product_machine as "Product/Machine"
+					batch as "Batch"
+					quantity as "Quantity"
+					uom as "UOM"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

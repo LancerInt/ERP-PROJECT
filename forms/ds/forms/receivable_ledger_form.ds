@@ -1,116 +1,177 @@
-// Module: 3. Sales Module
 form receivable_ledger
 {
-    DisplayName = "Receivable Ledger";
-    LinkName = "receivable_ledger";
-    Module = "3. Sales Module";
-    Type = "Form";
+	displayname = "Receivable Ledger"
+	success message = "Receivable Ledger added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field ledger_id
-                {
-                    DisplayName = "Ledger ID";
-                    LinkName = "ledger_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field customer
-                {
-                    DisplayName = "Customer";
-                    LinkName = "customer";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "customer";
-                }
-                Field invoice_reference
-                {
-                    DisplayName = "Invoice Reference";
-                    LinkName = "invoice_reference";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "sales_invoice_check";
-                }
-                Field invoice_date
-                {
-                    DisplayName = "Invoice Date";
-                    LinkName = "invoice_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field due_date
-                {
-                    DisplayName = "Due Date";
-                    LinkName = "due_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field amount
-                {
-                    DisplayName = "Amount";
-                    LinkName = "amount";
-                    Type = "INR";
-                    IsMandatory = true;
-                }
-                Field amount_paid
-                {
-                    DisplayName = "Amount Paid";
-                    LinkName = "amount_paid";
-                    Type = "INR";
-                }
-                Field balance
-                {
-                    DisplayName = "Balance";
-                    LinkName = "balance";
-                    Type = "INR";
-                    IsMandatory = true;
-                }
-                Field payment_status
-                {
-                    DisplayName = "Payment Status";
-                    LinkName = "payment_status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Not Due / Partially Paid / Paid / Overdue";
-                }
-                Field reminder_dates
-                {
-                    DisplayName = "Reminder Dates";
-                    LinkName = "reminder_dates";
-                    Type = "SubForm";
-                    SubFormLinkName = "reminder_dates";
-                    HelpText = "Auto reminders";
-                }
-                Field escalation_flag
-                {
-                    DisplayName = "Escalation Flag";
-                    LinkName = "escalation_flag";
-                    Type = "Checkbox";
-                    HelpText = "Trigger after 2 weeks";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have ledger_id
+	(
+		type = autonumber
+		displayname = "Ledger ID"
+		row = 1
+		column = 1
+		width = medium
+		start index = 1
+	)
+
+	must have customer
+	(
+		type = lookup
+		displayname = "Customer"
+		row = 1
+		column = 1
+		width = medium
+		related form = customer
+	)
+
+	must have invoice_reference
+	(
+		type = lookup
+		displayname = "Invoice Reference"
+		row = 1
+		column = 1
+		width = medium
+		related form = sales_invoice_check
+	)
+
+	must have invoice_date
+	(
+		type = date
+		displayname = "Invoice Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have due_date
+	(
+		type = date
+		displayname = "Due Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have amount
+	(
+		type = INR
+		displayname = "Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	amount_paid
+	(
+		type = INR
+		displayname = "Amount Paid"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have balance
+	(
+		type = INR
+		displayname = "Balance"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have payment_status
+	(
+		type = picklist
+		displayname = "Payment Status"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	reminder_dates
+	(
+		type = grid
+		displayname = "Reminder Dates"
+		row = 1
+		column = 1
+		width = medium
+		must have reminder_date
+		(
+			type = date
+			displayname = "Reminder Date"
+			width = medium
+		)
+
+		reminder_sent_by
+		(
+			type = lookup
+			displayname = "Reminder Sent By"
+			width = medium
+			related form = stakeholder_user
+		)
+
+		reminder_method
+		(
+			type = picklist
+			displayname = "Reminder Method"
+			width = medium
+		)
+
+	)
+
+	escalation_flag
+	(
+		type = checkbox
+		displayname = "Escalation Flag"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

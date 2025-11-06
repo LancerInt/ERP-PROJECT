@@ -1,107 +1,89 @@
-report transfer_lines_report
+list transfer_lines_report
 {
-    DisplayName = "Transfer Lines Report";
-    LinkName = "transfer_lines_report";
-    Type = "List";
-    SourceFormLinkName = "transfer_lines";
-
-    ListView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column quantity
-            {
-                FieldLinkName = "quantity";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column source_godown
-            {
-                FieldLinkName = "source_godown";
-            }
-            Column destination_godown
-            {
-                FieldLinkName = "destination_godown";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column quantity
-            {
-                FieldLinkName = "quantity";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column source_godown
-            {
-                FieldLinkName = "source_godown";
-            }
-            Column destination_godown
-            {
-                FieldLinkName = "destination_godown";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column product
-                    {
-                        FieldLinkName = "product";
-                    }
-                    Column batch
-                    {
-                        FieldLinkName = "batch";
-                    }
-                    Column quantity
-                    {
-                        FieldLinkName = "quantity";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column source_godown
-                    {
-                        FieldLinkName = "source_godown";
-                    }
-                    Column destination_godown
-                    {
-                        FieldLinkName = "destination_godown";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Transfer Lines Report"
+	show all rows from transfer_lines
+	(
+		product as "Product"
+		batch as "Batch"
+		quantity as "Quantity"
+		uom as "UOM"
+		source_godown as "Source Godown"
+		destination_godown as "Destination Godown"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Transfer Lines Overview"
+				fields
+				(
+					product as "Product"
+					batch as "Batch"
+					quantity as "Quantity"
+					uom as "UOM"
+					source_godown as "Source Godown"
+					destination_godown as "Destination Godown"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Transfer Lines Overview"
+				fields
+				(
+					product as "Product"
+					batch as "Batch"
+					quantity as "Quantity"
+					uom as "UOM"
+					source_godown as "Source Godown"
+					destination_godown as "Destination Godown"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

@@ -1,71 +1,80 @@
-report office_manager_authorization_report
+list office_manager_authorization_report
 {
-    DisplayName = "Office Manager Authorization Report";
-    LinkName = "office_manager_authorization_report";
-    Type = "List";
-    SourceFormLinkName = "office_manager_authorization";
-
-    ListView
-    {
-        Columns
-        {
-            Column authorized_by
-            {
-                FieldLinkName = "authorized_by";
-            }
-            Column authorization_date
-            {
-                FieldLinkName = "authorization_date";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column authorized_by
-            {
-                FieldLinkName = "authorized_by";
-            }
-            Column authorization_date
-            {
-                FieldLinkName = "authorization_date";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column authorized_by
-                    {
-                        FieldLinkName = "authorized_by";
-                    }
-                    Column authorization_date
-                    {
-                        FieldLinkName = "authorization_date";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Office Manager Authorization Report"
+	show all rows from office_manager_authorization
+	(
+		authorized_by as "Authorized By"
+		authorization_date as "Authorization Date"
+		remarks as "Remarks"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Office Manager Authorization Overview"
+				fields
+				(
+					authorized_by as "Authorized By"
+					authorization_date as "Authorization Date"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Office Manager Authorization Overview"
+				fields
+				(
+					authorized_by as "Authorized By"
+					authorization_date as "Authorization Date"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

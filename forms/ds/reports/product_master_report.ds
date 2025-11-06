@@ -1,335 +1,146 @@
-report product_master_report
+list product_master_report
 {
-    DisplayName = "Product Master Report";
-    LinkName = "product_master_report";
-    Type = "List";
-    SourceFormLinkName = "product_master";
-
-    ListView
-    {
-        Columns
-        {
-            Column sku_code
-            {
-                FieldLinkName = "sku_code";
-            }
-            Column product_name
-            {
-                FieldLinkName = "product_name";
-            }
-            Column product_type
-            {
-                FieldLinkName = "product_type";
-            }
-            Column goods_sub_type
-            {
-                FieldLinkName = "goods_sub_type";
-            }
-            Column service_sub_type
-            {
-                FieldLinkName = "service_sub_type";
-            }
-            Column custom_service_category
-            {
-                FieldLinkName = "custom_service_category";
-            }
-            Column description
-            {
-                FieldLinkName = "description";
-            }
-            Column batch_tracking_required
-            {
-                FieldLinkName = "batch_tracking_required";
-            }
-            Column shelf_life_days
-            {
-                FieldLinkName = "shelf_life_days";
-            }
-            Column qc_responsibility
-            {
-                FieldLinkName = "qc_responsibility";
-            }
-            Column qc_template
-            {
-                FieldLinkName = "qc_template";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column secondary_uoms
-            {
-                FieldLinkName = "secondary_uoms";
-            }
-            Column specific_gravity
-            {
-                FieldLinkName = "specific_gravity";
-            }
-            Column conversion_notes
-            {
-                FieldLinkName = "conversion_notes";
-            }
-            Column packing_material_default
-            {
-                FieldLinkName = "packing_material_default";
-            }
-            Column yield_tracking_required
-            {
-                FieldLinkName = "yield_tracking_required";
-            }
-            Column yield_parameters
-            {
-                FieldLinkName = "yield_parameters";
-            }
-            Column wage_method
-            {
-                FieldLinkName = "wage_method";
-            }
-            Column freight_class
-            {
-                FieldLinkName = "freight_class";
-            }
-            Column active_flag
-            {
-                FieldLinkName = "active_flag";
-            }
-            Column created_by
-            {
-                FieldLinkName = "created_by";
-            }
-            Column created_date
-            {
-                FieldLinkName = "created_date";
-            }
-            Column last_modified_by
-            {
-                FieldLinkName = "last_modified_by";
-            }
-            Column last_modified_date
-            {
-                FieldLinkName = "last_modified_date";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column sku_code
-            {
-                FieldLinkName = "sku_code";
-            }
-            Column product_name
-            {
-                FieldLinkName = "product_name";
-            }
-            Column product_type
-            {
-                FieldLinkName = "product_type";
-            }
-            Column goods_sub_type
-            {
-                FieldLinkName = "goods_sub_type";
-            }
-            Column service_sub_type
-            {
-                FieldLinkName = "service_sub_type";
-            }
-            Column custom_service_category
-            {
-                FieldLinkName = "custom_service_category";
-            }
-            Column description
-            {
-                FieldLinkName = "description";
-            }
-            Column batch_tracking_required
-            {
-                FieldLinkName = "batch_tracking_required";
-            }
-            Column shelf_life_days
-            {
-                FieldLinkName = "shelf_life_days";
-            }
-            Column qc_responsibility
-            {
-                FieldLinkName = "qc_responsibility";
-            }
-            Column qc_template
-            {
-                FieldLinkName = "qc_template";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column secondary_uoms
-            {
-                FieldLinkName = "secondary_uoms";
-            }
-            Column specific_gravity
-            {
-                FieldLinkName = "specific_gravity";
-            }
-            Column conversion_notes
-            {
-                FieldLinkName = "conversion_notes";
-            }
-            Column packing_material_default
-            {
-                FieldLinkName = "packing_material_default";
-            }
-            Column yield_tracking_required
-            {
-                FieldLinkName = "yield_tracking_required";
-            }
-            Column yield_parameters
-            {
-                FieldLinkName = "yield_parameters";
-            }
-            Column wage_method
-            {
-                FieldLinkName = "wage_method";
-            }
-            Column freight_class
-            {
-                FieldLinkName = "freight_class";
-            }
-            Column active_flag
-            {
-                FieldLinkName = "active_flag";
-            }
-            Column created_by
-            {
-                FieldLinkName = "created_by";
-            }
-            Column created_date
-            {
-                FieldLinkName = "created_date";
-            }
-            Column last_modified_by
-            {
-                FieldLinkName = "last_modified_by";
-            }
-            Column last_modified_date
-            {
-                FieldLinkName = "last_modified_date";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column sku_code
-                    {
-                        FieldLinkName = "sku_code";
-                    }
-                    Column product_name
-                    {
-                        FieldLinkName = "product_name";
-                    }
-                    Column product_type
-                    {
-                        FieldLinkName = "product_type";
-                    }
-                    Column goods_sub_type
-                    {
-                        FieldLinkName = "goods_sub_type";
-                    }
-                    Column service_sub_type
-                    {
-                        FieldLinkName = "service_sub_type";
-                    }
-                    Column custom_service_category
-                    {
-                        FieldLinkName = "custom_service_category";
-                    }
-                    Column description
-                    {
-                        FieldLinkName = "description";
-                    }
-                    Column batch_tracking_required
-                    {
-                        FieldLinkName = "batch_tracking_required";
-                    }
-                    Column shelf_life_days
-                    {
-                        FieldLinkName = "shelf_life_days";
-                    }
-                    Column qc_responsibility
-                    {
-                        FieldLinkName = "qc_responsibility";
-                    }
-                    Column qc_template
-                    {
-                        FieldLinkName = "qc_template";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column secondary_uoms
-                    {
-                        FieldLinkName = "secondary_uoms";
-                    }
-                    Column specific_gravity
-                    {
-                        FieldLinkName = "specific_gravity";
-                    }
-                    Column conversion_notes
-                    {
-                        FieldLinkName = "conversion_notes";
-                    }
-                    Column packing_material_default
-                    {
-                        FieldLinkName = "packing_material_default";
-                    }
-                    Column yield_tracking_required
-                    {
-                        FieldLinkName = "yield_tracking_required";
-                    }
-                    Column yield_parameters
-                    {
-                        FieldLinkName = "yield_parameters";
-                    }
-                    Column wage_method
-                    {
-                        FieldLinkName = "wage_method";
-                    }
-                    Column freight_class
-                    {
-                        FieldLinkName = "freight_class";
-                    }
-                    Column active_flag
-                    {
-                        FieldLinkName = "active_flag";
-                    }
-                    Column created_by
-                    {
-                        FieldLinkName = "created_by";
-                    }
-                    Column created_date
-                    {
-                        FieldLinkName = "created_date";
-                    }
-                    Column last_modified_by
-                    {
-                        FieldLinkName = "last_modified_by";
-                    }
-                    Column last_modified_date
-                    {
-                        FieldLinkName = "last_modified_date";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Product Master Report"
+	show all rows from product_master
+	(
+		sku_code as "SKU Code"
+		product_name as "Product Name"
+		product_type as "Product Type"
+		goods_sub_type as "Goods Sub-Type"
+		service_sub_type as "Service Sub-Type"
+		custom_service_category as "Custom Service Category"
+		description as "Description"
+		batch_tracking_required as "Batch Tracking Required"
+		shelf_life_days as "Shelf Life (Days)"
+		qc_responsibility as "QC Responsibility"
+		qc_template as "QC Template"
+		uom as "UOM"
+		secondary_uoms as "Secondary UOMs"
+		specific_gravity as "Specific Gravity"
+		conversion_notes as "Conversion Notes"
+		packing_material_default as "Packing Material Default"
+		yield_tracking_required as "Yield Tracking Required"
+		yield_parameters as "Yield Parameters"
+		wage_method as "Wage Method"
+		freight_class as "Freight Class"
+		active_flag as "Active Flag"
+		created_by as "Created By"
+		created_date as "Created Date"
+		last_modified_by as "Last Modified By"
+		last_modified_date as "Last Modified Date"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Product Master Overview"
+				fields
+				(
+					sku_code as "SKU Code"
+					product_name as "Product Name"
+					product_type as "Product Type"
+					goods_sub_type as "Goods Sub-Type"
+					service_sub_type as "Service Sub-Type"
+					custom_service_category as "Custom Service Category"
+					description as "Description"
+					batch_tracking_required as "Batch Tracking Required"
+					shelf_life_days as "Shelf Life (Days)"
+					qc_responsibility as "QC Responsibility"
+					qc_template as "QC Template"
+					uom as "UOM"
+					secondary_uoms as "Secondary UOMs"
+					specific_gravity as "Specific Gravity"
+					conversion_notes as "Conversion Notes"
+					packing_material_default as "Packing Material Default"
+					yield_tracking_required as "Yield Tracking Required"
+					yield_parameters as "Yield Parameters"
+					wage_method as "Wage Method"
+					freight_class as "Freight Class"
+					active_flag as "Active Flag"
+					created_by as "Created By"
+					created_date as "Created Date"
+					last_modified_by as "Last Modified By"
+					last_modified_date as "Last Modified Date"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Product Master Overview"
+				fields
+				(
+					sku_code as "SKU Code"
+					product_name as "Product Name"
+					product_type as "Product Type"
+					goods_sub_type as "Goods Sub-Type"
+					service_sub_type as "Service Sub-Type"
+					custom_service_category as "Custom Service Category"
+					description as "Description"
+					batch_tracking_required as "Batch Tracking Required"
+					shelf_life_days as "Shelf Life (Days)"
+					qc_responsibility as "QC Responsibility"
+					qc_template as "QC Template"
+					uom as "UOM"
+					secondary_uoms as "Secondary UOMs"
+					specific_gravity as "Specific Gravity"
+					conversion_notes as "Conversion Notes"
+					packing_material_default as "Packing Material Default"
+					yield_tracking_required as "Yield Tracking Required"
+					yield_parameters as "Yield Parameters"
+					wage_method as "Wage Method"
+					freight_class as "Freight Class"
+					active_flag as "Active Flag"
+					created_by as "Created By"
+					created_date as "Created Date"
+					last_modified_by as "Last Modified By"
+					last_modified_date as "Last Modified Date"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

@@ -1,64 +1,89 @@
-// Module: 8. Attendance & HR Module
 form staff_summary
 {
-    DisplayName = "Staff Summary";
-    LinkName = "staff_summary";
-    Module = "8. Attendance & HR Module";
-    Type = "Form";
+	displayname = "Staff Summary"
+	success message = "Staff Summary added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field staff
-                {
-                    DisplayName = "Staff";
-                    LinkName = "staff";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "staff_master";
-                }
-                Field present_days
-                {
-                    DisplayName = "Present Days";
-                    LinkName = "present_days";
-                    Type = "Number";
-                    IsMandatory = true;
-                }
-                Field absent_days
-                {
-                    DisplayName = "Absent Days";
-                    LinkName = "absent_days";
-                    Type = "Number";
-                    IsMandatory = true;
-                }
-                Field overtime_hours
-                {
-                    DisplayName = "Overtime Hours";
-                    LinkName = "overtime_hours";
-                    Type = "Decimal";
-                }
-                Field wages_amount
-                {
-                    DisplayName = "Wages Amount";
-                    LinkName = "wages_amount";
-                    Type = "INR";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have staff
+	(
+		type = lookup
+		displayname = "Staff"
+		row = 1
+		column = 1
+		width = medium
+		related form = staff_master
+	)
+
+	must have present_days
+	(
+		type = number
+		displayname = "Present Days"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have absent_days
+	(
+		type = number
+		displayname = "Absent Days"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	overtime_hours
+	(
+		type = number
+		displayname = "Overtime Hours"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	wages_amount
+	(
+		type = INR
+		displayname = "Wages Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

@@ -1,83 +1,83 @@
-report approval_levels_report
+list approval_levels_report
 {
-    DisplayName = "Approval Levels Report";
-    LinkName = "approval_levels_report";
-    Type = "List";
-    SourceFormLinkName = "approval_levels";
-
-    ListView
-    {
-        Columns
-        {
-            Column module
-            {
-                FieldLinkName = "module";
-            }
-            Column stage
-            {
-                FieldLinkName = "stage";
-            }
-            Column min_amount
-            {
-                FieldLinkName = "min_amount";
-            }
-            Column max_amount
-            {
-                FieldLinkName = "max_amount";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column module
-            {
-                FieldLinkName = "module";
-            }
-            Column stage
-            {
-                FieldLinkName = "stage";
-            }
-            Column min_amount
-            {
-                FieldLinkName = "min_amount";
-            }
-            Column max_amount
-            {
-                FieldLinkName = "max_amount";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column module
-                    {
-                        FieldLinkName = "module";
-                    }
-                    Column stage
-                    {
-                        FieldLinkName = "stage";
-                    }
-                    Column min_amount
-                    {
-                        FieldLinkName = "min_amount";
-                    }
-                    Column max_amount
-                    {
-                        FieldLinkName = "max_amount";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Approval Levels Report"
+	show all rows from approval_levels
+	(
+		module as "Module"
+		stage as "Stage"
+		min_amount as "Min Amount"
+		max_amount as "Max Amount"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Approval Levels Overview"
+				fields
+				(
+					module as "Module"
+					stage as "Stage"
+					min_amount as "Min Amount"
+					max_amount as "Max Amount"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Approval Levels Overview"
+				fields
+				(
+					module as "Module"
+					stage as "Stage"
+					min_amount as "Min Amount"
+					max_amount as "Max Amount"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

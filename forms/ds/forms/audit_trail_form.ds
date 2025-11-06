@@ -1,100 +1,131 @@
-// Module: 9. Configuration & Audit
 form audit_trail
 {
-    DisplayName = "Audit Trail";
-    LinkName = "audit_trail";
-    Module = "9. Configuration & Audit";
-    Type = "Form";
+	displayname = "Audit Trail"
+	success message = "Audit Trail added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field audit_id
-                {
-                    DisplayName = "Audit ID";
-                    LinkName = "audit_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field module
-                {
-                    DisplayName = "Module";
-                    LinkName = "module";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field record_id
-                {
-                    DisplayName = "Record ID";
-                    LinkName = "record_id";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field action
-                {
-                    DisplayName = "Action";
-                    LinkName = "action";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Create / Update / Delete / Approve";
-                }
-                Field user
-                {
-                    DisplayName = "User";
-                    LinkName = "user";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field timestamp
-                {
-                    DisplayName = "Timestamp";
-                    LinkName = "timestamp";
-                    Type = "DateTime";
-                    IsMandatory = true;
-                }
-                Field before_snapshot
-                {
-                    DisplayName = "Before Snapshot";
-                    LinkName = "before_snapshot";
-                    Type = "UploadFile";
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "JSON export";
-                }
-                Field after_snapshot
-                {
-                    DisplayName = "After Snapshot";
-                    LinkName = "after_snapshot";
-                    Type = "UploadFile";
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "JSON export";
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have audit_id
+	(
+		type = autonumber
+		displayname = "Audit ID"
+		row = 1
+		column = 1
+		width = medium
+		start index = 1
+	)
+
+	must have module
+	(
+		type = picklist
+		displayname = "Module"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have record_id
+	(
+		type = text
+		displayname = "Record ID"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have action
+	(
+		type = picklist
+		displayname = "Action"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have user
+	(
+		type = lookup
+		displayname = "User"
+		row = 1
+		column = 1
+		width = medium
+		related form = stakeholder_user
+	)
+
+	must have timestamp
+	(
+		type = datetime
+		displayname = "Timestamp"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	before_snapshot
+	(
+		type = upload file
+		displayname = "Before Snapshot"
+		row = 1
+		column = 1
+		width = medium
+		file count = 10
+		browse = localdrive
+	)
+
+	after_snapshot
+	(
+		type = upload file
+		displayname = "After Snapshot"
+		row = 1
+		column = 1
+		width = medium
+		file count = 10
+		browse = localdrive
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

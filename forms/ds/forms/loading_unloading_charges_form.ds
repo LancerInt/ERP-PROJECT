@@ -1,66 +1,89 @@
-// Module: 6. Inventory, Logistics & Returns
 form loading_unloading_charges
 {
-    DisplayName = "Loading/Unloading Charges";
-    LinkName = "loading_unloading_charges";
-    Module = "6. Inventory, Logistics & Returns";
-    Type = "Form";
+	displayname = "Loading/Unloading Charges"
+	success message = "Loading/Unloading Charges added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field charge_type
-                {
-                    DisplayName = "Charge Type";
-                    LinkName = "charge_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Loading / Unloading";
-                }
-                Field contractor_vendor
-                {
-                    DisplayName = "Contractor Vendor";
-                    LinkName = "contractor_vendor";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "vendor";
-                }
-                Field amount
-                {
-                    DisplayName = "Amount";
-                    LinkName = "amount";
-                    Type = "INR";
-                    IsMandatory = true;
-                }
-                Field tds
-                {
-                    DisplayName = "TDS %";
-                    LinkName = "tds";
-                    Type = "Decimal";
-                }
-                Field payable_by
-                {
-                    DisplayName = "Payable By";
-                    LinkName = "payable_by";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Company / Customer";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have charge_type
+	(
+		type = picklist
+		displayname = "Charge Type"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	contractor_vendor
+	(
+		type = lookup
+		displayname = "Contractor Vendor"
+		row = 1
+		column = 1
+		width = medium
+		related form = vendor
+	)
+
+	must have amount
+	(
+		type = INR
+		displayname = "Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	tds
+	(
+		type = number
+		displayname = "TDS %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have payable_by
+	(
+		type = picklist
+		displayname = "Payable By"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

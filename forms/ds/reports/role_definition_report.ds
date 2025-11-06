@@ -1,119 +1,92 @@
-report role_definition_report
+list role_definition_report
 {
-    DisplayName = "Role Definition Report";
-    LinkName = "role_definition_report";
-    Type = "List";
-    SourceFormLinkName = "role_definition";
-
-    ListView
-    {
-        Columns
-        {
-            Column role_code
-            {
-                FieldLinkName = "role_code";
-            }
-            Column role_name
-            {
-                FieldLinkName = "role_name";
-            }
-            Column module_permissions
-            {
-                FieldLinkName = "module_permissions";
-            }
-            Column data_scope
-            {
-                FieldLinkName = "data_scope";
-            }
-            Column approval_levels
-            {
-                FieldLinkName = "approval_levels";
-            }
-            Column default_share_rules
-            {
-                FieldLinkName = "default_share_rules";
-            }
-            Column active_flag
-            {
-                FieldLinkName = "active_flag";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column role_code
-            {
-                FieldLinkName = "role_code";
-            }
-            Column role_name
-            {
-                FieldLinkName = "role_name";
-            }
-            Column module_permissions
-            {
-                FieldLinkName = "module_permissions";
-            }
-            Column data_scope
-            {
-                FieldLinkName = "data_scope";
-            }
-            Column approval_levels
-            {
-                FieldLinkName = "approval_levels";
-            }
-            Column default_share_rules
-            {
-                FieldLinkName = "default_share_rules";
-            }
-            Column active_flag
-            {
-                FieldLinkName = "active_flag";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column role_code
-                    {
-                        FieldLinkName = "role_code";
-                    }
-                    Column role_name
-                    {
-                        FieldLinkName = "role_name";
-                    }
-                    Column module_permissions
-                    {
-                        FieldLinkName = "module_permissions";
-                    }
-                    Column data_scope
-                    {
-                        FieldLinkName = "data_scope";
-                    }
-                    Column approval_levels
-                    {
-                        FieldLinkName = "approval_levels";
-                    }
-                    Column default_share_rules
-                    {
-                        FieldLinkName = "default_share_rules";
-                    }
-                    Column active_flag
-                    {
-                        FieldLinkName = "active_flag";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Role Definition Report"
+	show all rows from role_definition
+	(
+		role_code as "Role Code"
+		role_name as "Role Name"
+		module_permissions as "Module Permissions"
+		data_scope as "Data Scope"
+		approval_levels as "Approval Levels"
+		default_share_rules as "Default Share Rules"
+		active_flag as "Active Flag"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Role Definition Overview"
+				fields
+				(
+					role_code as "Role Code"
+					role_name as "Role Name"
+					module_permissions as "Module Permissions"
+					data_scope as "Data Scope"
+					approval_levels as "Approval Levels"
+					default_share_rules as "Default Share Rules"
+					active_flag as "Active Flag"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Role Definition Overview"
+				fields
+				(
+					role_code as "Role Code"
+					role_name as "Role Name"
+					module_permissions as "Module Permissions"
+					data_scope as "Data Scope"
+					approval_levels as "Approval Levels"
+					default_share_rules as "Default Share Rules"
+					active_flag as "Active Flag"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

@@ -1,95 +1,86 @@
-report assigned_parameters_report
+list assigned_parameters_report
 {
-    DisplayName = "Assigned Parameters Report";
-    LinkName = "assigned_parameters_report";
-    Type = "List";
-    SourceFormLinkName = "assigned_parameters";
-
-    ListView
-    {
-        Columns
-        {
-            Column parameter
-            {
-                FieldLinkName = "parameter";
-            }
-            Column result_value
-            {
-                FieldLinkName = "result_value";
-            }
-            Column result_text
-            {
-                FieldLinkName = "result_text";
-            }
-            Column result_photo
-            {
-                FieldLinkName = "result_photo";
-            }
-            Column pass_fail
-            {
-                FieldLinkName = "pass_fail";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column parameter
-            {
-                FieldLinkName = "parameter";
-            }
-            Column result_value
-            {
-                FieldLinkName = "result_value";
-            }
-            Column result_text
-            {
-                FieldLinkName = "result_text";
-            }
-            Column result_photo
-            {
-                FieldLinkName = "result_photo";
-            }
-            Column pass_fail
-            {
-                FieldLinkName = "pass_fail";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column parameter
-                    {
-                        FieldLinkName = "parameter";
-                    }
-                    Column result_value
-                    {
-                        FieldLinkName = "result_value";
-                    }
-                    Column result_text
-                    {
-                        FieldLinkName = "result_text";
-                    }
-                    Column result_photo
-                    {
-                        FieldLinkName = "result_photo";
-                    }
-                    Column pass_fail
-                    {
-                        FieldLinkName = "pass_fail";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Assigned Parameters Report"
+	show all rows from assigned_parameters
+	(
+		parameter as "Parameter"
+		result_value as "Result Value"
+		result_text as "Result Text"
+		result_photo as "Result Photo"
+		pass_fail as "Pass/Fail"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Assigned Parameters Overview"
+				fields
+				(
+					parameter as "Parameter"
+					result_value as "Result Value"
+					result_text as "Result Text"
+					result_photo as "Result Photo"
+					pass_fail as "Pass/Fail"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Assigned Parameters Overview"
+				fields
+				(
+					parameter as "Parameter"
+					result_value as "Result Value"
+					result_text as "Result Text"
+					result_photo as "Result Photo"
+					pass_fail as "Pass/Fail"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

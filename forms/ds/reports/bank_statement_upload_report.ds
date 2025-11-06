@@ -1,155 +1,101 @@
-report bank_statement_upload_report
+list bank_statement_upload_report
 {
-    DisplayName = "Bank Statement Upload Report";
-    LinkName = "bank_statement_upload_report";
-    Type = "List";
-    SourceFormLinkName = "bank_statement_upload";
-
-    ListView
-    {
-        Columns
-        {
-            Column upload_id
-            {
-                FieldLinkName = "upload_id";
-            }
-            Column bank_account
-            {
-                FieldLinkName = "bank_account";
-            }
-            Column statement_period_start
-            {
-                FieldLinkName = "statement_period_start";
-            }
-            Column statement_period_end
-            {
-                FieldLinkName = "statement_period_end";
-            }
-            Column upload_date
-            {
-                FieldLinkName = "upload_date";
-            }
-            Column statement_file
-            {
-                FieldLinkName = "statement_file";
-            }
-            Column parsing_status
-            {
-                FieldLinkName = "parsing_status";
-            }
-            Column auto_matched_entries
-            {
-                FieldLinkName = "auto_matched_entries";
-            }
-            Column exceptions
-            {
-                FieldLinkName = "exceptions";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column upload_id
-            {
-                FieldLinkName = "upload_id";
-            }
-            Column bank_account
-            {
-                FieldLinkName = "bank_account";
-            }
-            Column statement_period_start
-            {
-                FieldLinkName = "statement_period_start";
-            }
-            Column statement_period_end
-            {
-                FieldLinkName = "statement_period_end";
-            }
-            Column upload_date
-            {
-                FieldLinkName = "upload_date";
-            }
-            Column statement_file
-            {
-                FieldLinkName = "statement_file";
-            }
-            Column parsing_status
-            {
-                FieldLinkName = "parsing_status";
-            }
-            Column auto_matched_entries
-            {
-                FieldLinkName = "auto_matched_entries";
-            }
-            Column exceptions
-            {
-                FieldLinkName = "exceptions";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column upload_id
-                    {
-                        FieldLinkName = "upload_id";
-                    }
-                    Column bank_account
-                    {
-                        FieldLinkName = "bank_account";
-                    }
-                    Column statement_period_start
-                    {
-                        FieldLinkName = "statement_period_start";
-                    }
-                    Column statement_period_end
-                    {
-                        FieldLinkName = "statement_period_end";
-                    }
-                    Column upload_date
-                    {
-                        FieldLinkName = "upload_date";
-                    }
-                    Column statement_file
-                    {
-                        FieldLinkName = "statement_file";
-                    }
-                    Column parsing_status
-                    {
-                        FieldLinkName = "parsing_status";
-                    }
-                    Column auto_matched_entries
-                    {
-                        FieldLinkName = "auto_matched_entries";
-                    }
-                    Column exceptions
-                    {
-                        FieldLinkName = "exceptions";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Bank Statement Upload Report"
+	show all rows from bank_statement_upload
+	(
+		upload_id as "Upload ID"
+		bank_account as "Bank Account"
+		statement_period_start as "Statement Period Start"
+		statement_period_end as "Statement Period End"
+		upload_date as "Upload Date"
+		statement_file as "Statement File"
+		parsing_status as "Parsing Status"
+		auto_matched_entries as "Auto-Matched Entries"
+		exceptions as "Exceptions"
+		remarks as "Remarks"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Bank Statement Upload Overview"
+				fields
+				(
+					upload_id as "Upload ID"
+					bank_account as "Bank Account"
+					statement_period_start as "Statement Period Start"
+					statement_period_end as "Statement Period End"
+					upload_date as "Upload Date"
+					statement_file as "Statement File"
+					parsing_status as "Parsing Status"
+					auto_matched_entries as "Auto-Matched Entries"
+					exceptions as "Exceptions"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Bank Statement Upload Overview"
+				fields
+				(
+					upload_id as "Upload ID"
+					bank_account as "Bank Account"
+					statement_period_start as "Statement Period Start"
+					statement_period_end as "Statement Period End"
+					upload_date as "Upload Date"
+					statement_file as "Statement File"
+					parsing_status as "Parsing Status"
+					auto_matched_entries as "Auto-Matched Entries"
+					exceptions as "Exceptions"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

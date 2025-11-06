@@ -1,175 +1,223 @@
-// Module: 6. Inventory, Logistics & Returns
 form stock_adjustment
 {
-    DisplayName = "Stock Adjustment";
-    LinkName = "stock_adjustment";
-    Module = "6. Inventory, Logistics & Returns";
-    Type = "Form";
+	displayname = "Stock Adjustment"
+	success message = "Stock Adjustment added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field adjustment_no
-                {
-                    DisplayName = "Adjustment No.";
-                    LinkName = "adjustment_no";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field adjustment_date
-                {
-                    DisplayName = "Adjustment Date";
-                    LinkName = "adjustment_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field warehouse
-                {
-                    DisplayName = "Warehouse";
-                    LinkName = "warehouse";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "warehouse";
-                }
-                Field godown
-                {
-                    DisplayName = "Godown";
-                    LinkName = "godown";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "godown";
-                    HelpText = "Stock location";
-                }
-                Field product
-                {
-                    DisplayName = "Product";
-                    LinkName = "product";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                }
-                Field batch
-                {
-                    DisplayName = "Batch";
-                    LinkName = "batch";
-                    Type = "SingleLine";
-                }
-                Field adjustment_type
-                {
-                    DisplayName = "Adjustment Type";
-                    LinkName = "adjustment_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Positive / Negative";
-                }
-                Field quantity
-                {
-                    DisplayName = "Quantity";
-                    LinkName = "quantity";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field reason_code
-                {
-                    DisplayName = "Reason Code";
-                    LinkName = "reason_code";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Damage / Expiry / Shortage / Surplus / Audit Correction / Others";
-                }
-                Field other_reason
-                {
-                    DisplayName = "Other Reason";
-                    LinkName = "other_reason";
-                    Type = "MultiLine";
-                    ConditionalMandatory = true;
-                    HelpText = "Mandatory if Others";
-                }
-                Field evidence_attachments
-                {
-                    DisplayName = "Evidence Attachments";
-                    LinkName = "evidence_attachments";
-                    Type = "UploadFile";
-                    IsMandatory = true;
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "Photos, documents";
-                }
-                Field value_impact
-                {
-                    DisplayName = "Value Impact";
-                    LinkName = "value_impact";
-                    Type = "INR";
-                    IsMandatory = true;
-                    HelpText = "Auto-calculated";
-                }
-                Field finance_review_required
-                {
-                    DisplayName = "Finance Review Required";
-                    LinkName = "finance_review_required";
-                    Type = "Checkbox";
-                    IsMandatory = true;
-                    HelpText = "Auto flag if value > ₹25,000";
-                }
-                Field approval_status
-                {
-                    DisplayName = "Approval Status";
-                    LinkName = "approval_status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Draft / Pending / Approved / Rejected";
-                }
-                Field approved_by
-                {
-                    DisplayName = "Approved By";
-                    LinkName = "approved_by";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field approval_date
-                {
-                    DisplayName = "Approval Date";
-                    LinkName = "approval_date";
-                    Type = "DateTime";
-                }
-                Field notified_to
-                {
-                    DisplayName = "Notified To";
-                    LinkName = "notified_to";
-                    Type = "SingleLine";
-                    AllowMultiple = true;
-                    HelpText = "Office Manager notification";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have adjustment_no
+	(
+		type = autonumber
+		displayname = "Adjustment No."
+		row = 1
+		column = 1
+		width = medium
+		start index = 1
+	)
+
+	must have adjustment_date
+	(
+		type = date
+		displayname = "Adjustment Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have warehouse
+	(
+		type = lookup
+		displayname = "Warehouse"
+		row = 1
+		column = 1
+		width = medium
+		related form = warehouse
+	)
+
+	must have godown
+	(
+		type = lookup
+		displayname = "Godown"
+		row = 1
+		column = 1
+		width = medium
+		related form = godown
+	)
+
+	must have product
+	(
+		type = lookup
+		displayname = "Product"
+		row = 1
+		column = 1
+		width = medium
+		related form = product_master
+	)
+
+	batch
+	(
+		type = text
+		displayname = "Batch"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have adjustment_type
+	(
+		type = picklist
+		displayname = "Adjustment Type"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have quantity
+	(
+		type = number
+		displayname = "Quantity"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have reason_code
+	(
+		type = picklist
+		displayname = "Reason Code"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have other_reason
+	(
+		type = textarea
+		displayname = "Other Reason"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	must have evidence_attachments
+	(
+		type = upload file
+		displayname = "Evidence Attachments"
+		row = 1
+		column = 1
+		width = medium
+		file count = 10
+		browse = localdrive
+	)
+
+	must have value_impact
+	(
+		type = INR
+		displayname = "Value Impact"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have finance_review_required
+	(
+		type = checkbox
+		displayname = "Finance Review Required"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have approval_status
+	(
+		type = picklist
+		displayname = "Approval Status"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	approved_by
+	(
+		type = lookup
+		displayname = "Approved By"
+		row = 1
+		column = 1
+		width = medium
+		related form = stakeholder_user
+	)
+
+	approval_date
+	(
+		type = datetime
+		displayname = "Approval Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notified_to
+	(
+		type = text
+		displayname = "Notified To"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

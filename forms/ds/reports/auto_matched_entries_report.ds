@@ -1,95 +1,86 @@
-report auto_matched_entries_report
+list auto_matched_entries_report
 {
-    DisplayName = "Auto-Matched Entries Report";
-    LinkName = "auto_matched_entries_report";
-    Type = "List";
-    SourceFormLinkName = "auto_matched_entries";
-
-    ListView
-    {
-        Columns
-        {
-            Column statement_line_id
-            {
-                FieldLinkName = "statement_line_id";
-            }
-            Column match_type
-            {
-                FieldLinkName = "match_type";
-            }
-            Column linked_document
-            {
-                FieldLinkName = "linked_document";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column statement_line_id
-            {
-                FieldLinkName = "statement_line_id";
-            }
-            Column match_type
-            {
-                FieldLinkName = "match_type";
-            }
-            Column linked_document
-            {
-                FieldLinkName = "linked_document";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column statement_line_id
-                    {
-                        FieldLinkName = "statement_line_id";
-                    }
-                    Column match_type
-                    {
-                        FieldLinkName = "match_type";
-                    }
-                    Column linked_document
-                    {
-                        FieldLinkName = "linked_document";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Auto-Matched Entries Report"
+	show all rows from auto_matched_entries
+	(
+		statement_line_id as "Statement Line ID"
+		match_type as "Match Type"
+		linked_document as "Linked Document"
+		amount as "Amount"
+		status as "Status"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Auto-Matched Entries Overview"
+				fields
+				(
+					statement_line_id as "Statement Line ID"
+					match_type as "Match Type"
+					linked_document as "Linked Document"
+					amount as "Amount"
+					status as "Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Auto-Matched Entries Overview"
+				fields
+				(
+					statement_line_id as "Statement Line ID"
+					match_type as "Match Type"
+					linked_document as "Linked Document"
+					amount as "Amount"
+					status as "Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

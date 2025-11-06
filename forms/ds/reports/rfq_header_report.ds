@@ -1,191 +1,110 @@
-report rfq_header_report
+list rfq_header_report
 {
-    DisplayName = "RFQ Header Report";
-    LinkName = "rfq_header_report";
-    Type = "List";
-    SourceFormLinkName = "rfq_header";
-
-    ListView
-    {
-        Columns
-        {
-            Column rfq_no
-            {
-                FieldLinkName = "rfq_no";
-            }
-            Column linked_prs
-            {
-                FieldLinkName = "linked_prs";
-            }
-            Column created_by
-            {
-                FieldLinkName = "created_by";
-            }
-            Column creation_date
-            {
-                FieldLinkName = "creation_date";
-            }
-            Column rfq_mode
-            {
-                FieldLinkName = "rfq_mode";
-            }
-            Column rfq_documents
-            {
-                FieldLinkName = "rfq_documents";
-            }
-            Column rfq_status
-            {
-                FieldLinkName = "rfq_status";
-            }
-            Column quote_count_expected
-            {
-                FieldLinkName = "quote_count_expected";
-            }
-            Column skip_rfq_flag
-            {
-                FieldLinkName = "skip_rfq_flag";
-            }
-            Column skip_rfq_justification
-            {
-                FieldLinkName = "skip_rfq_justification";
-            }
-            Column purchase_manager_approval
-            {
-                FieldLinkName = "purchase_manager_approval";
-            }
-            Column approval_attachment
-            {
-                FieldLinkName = "approval_attachment";
-            }
-            Column dispatch_eta_updates
-            {
-                FieldLinkName = "dispatch_eta_updates";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column rfq_no
-            {
-                FieldLinkName = "rfq_no";
-            }
-            Column linked_prs
-            {
-                FieldLinkName = "linked_prs";
-            }
-            Column created_by
-            {
-                FieldLinkName = "created_by";
-            }
-            Column creation_date
-            {
-                FieldLinkName = "creation_date";
-            }
-            Column rfq_mode
-            {
-                FieldLinkName = "rfq_mode";
-            }
-            Column rfq_documents
-            {
-                FieldLinkName = "rfq_documents";
-            }
-            Column rfq_status
-            {
-                FieldLinkName = "rfq_status";
-            }
-            Column quote_count_expected
-            {
-                FieldLinkName = "quote_count_expected";
-            }
-            Column skip_rfq_flag
-            {
-                FieldLinkName = "skip_rfq_flag";
-            }
-            Column skip_rfq_justification
-            {
-                FieldLinkName = "skip_rfq_justification";
-            }
-            Column purchase_manager_approval
-            {
-                FieldLinkName = "purchase_manager_approval";
-            }
-            Column approval_attachment
-            {
-                FieldLinkName = "approval_attachment";
-            }
-            Column dispatch_eta_updates
-            {
-                FieldLinkName = "dispatch_eta_updates";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column rfq_no
-                    {
-                        FieldLinkName = "rfq_no";
-                    }
-                    Column linked_prs
-                    {
-                        FieldLinkName = "linked_prs";
-                    }
-                    Column created_by
-                    {
-                        FieldLinkName = "created_by";
-                    }
-                    Column creation_date
-                    {
-                        FieldLinkName = "creation_date";
-                    }
-                    Column rfq_mode
-                    {
-                        FieldLinkName = "rfq_mode";
-                    }
-                    Column rfq_documents
-                    {
-                        FieldLinkName = "rfq_documents";
-                    }
-                    Column rfq_status
-                    {
-                        FieldLinkName = "rfq_status";
-                    }
-                    Column quote_count_expected
-                    {
-                        FieldLinkName = "quote_count_expected";
-                    }
-                    Column skip_rfq_flag
-                    {
-                        FieldLinkName = "skip_rfq_flag";
-                    }
-                    Column skip_rfq_justification
-                    {
-                        FieldLinkName = "skip_rfq_justification";
-                    }
-                    Column purchase_manager_approval
-                    {
-                        FieldLinkName = "purchase_manager_approval";
-                    }
-                    Column approval_attachment
-                    {
-                        FieldLinkName = "approval_attachment";
-                    }
-                    Column dispatch_eta_updates
-                    {
-                        FieldLinkName = "dispatch_eta_updates";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "RFQ Header Report"
+	show all rows from rfq_header
+	(
+		rfq_no as "RFQ No."
+		linked_prs as "Linked PRs"
+		created_by as "Created By"
+		creation_date as "Creation Date"
+		rfq_mode as "RFQ Mode"
+		rfq_documents as "RFQ Documents"
+		rfq_status as "RFQ Status"
+		quote_count_expected as "Quote Count Expected"
+		skip_rfq_flag as "Skip RFQ Flag"
+		skip_rfq_justification as "Skip RFQ Justification"
+		purchase_manager_approval as "Purchase Manager Approval"
+		approval_attachment as "Approval Attachment"
+		dispatch_eta_updates as "Dispatch ETA Updates"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "RFQ Header Overview"
+				fields
+				(
+					rfq_no as "RFQ No."
+					linked_prs as "Linked PRs"
+					created_by as "Created By"
+					creation_date as "Creation Date"
+					rfq_mode as "RFQ Mode"
+					rfq_documents as "RFQ Documents"
+					rfq_status as "RFQ Status"
+					quote_count_expected as "Quote Count Expected"
+					skip_rfq_flag as "Skip RFQ Flag"
+					skip_rfq_justification as "Skip RFQ Justification"
+					purchase_manager_approval as "Purchase Manager Approval"
+					approval_attachment as "Approval Attachment"
+					dispatch_eta_updates as "Dispatch ETA Updates"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "RFQ Header Overview"
+				fields
+				(
+					rfq_no as "RFQ No."
+					linked_prs as "Linked PRs"
+					created_by as "Created By"
+					creation_date as "Creation Date"
+					rfq_mode as "RFQ Mode"
+					rfq_documents as "RFQ Documents"
+					rfq_status as "RFQ Status"
+					quote_count_expected as "Quote Count Expected"
+					skip_rfq_flag as "Skip RFQ Flag"
+					skip_rfq_justification as "Skip RFQ Justification"
+					purchase_manager_approval as "Purchase Manager Approval"
+					approval_attachment as "Approval Attachment"
+					dispatch_eta_updates as "Dispatch ETA Updates"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

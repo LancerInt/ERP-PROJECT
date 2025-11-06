@@ -1,179 +1,107 @@
-report template_library_report
+list template_library_report
 {
-    DisplayName = "Template Library Report";
-    LinkName = "template_library_report";
-    Type = "List";
-    SourceFormLinkName = "template_library";
-
-    ListView
-    {
-        Columns
-        {
-            Column template_id
-            {
-                FieldLinkName = "template_id";
-            }
-            Column template_type
-            {
-                FieldLinkName = "template_type";
-            }
-            Column name
-            {
-                FieldLinkName = "name";
-            }
-            Column warehouse_scope
-            {
-                FieldLinkName = "warehouse_scope";
-            }
-            Column revision_no
-            {
-                FieldLinkName = "revision_no";
-            }
-            Column effective_from
-            {
-                FieldLinkName = "effective_from";
-            }
-            Column effective_to
-            {
-                FieldLinkName = "effective_to";
-            }
-            Column layout_json_xml
-            {
-                FieldLinkName = "layout_json_xml";
-            }
-            Column requires_digital_signature
-            {
-                FieldLinkName = "requires_digital_signature";
-            }
-            Column created_by
-            {
-                FieldLinkName = "created_by";
-            }
-            Column approval_log
-            {
-                FieldLinkName = "approval_log";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column template_id
-            {
-                FieldLinkName = "template_id";
-            }
-            Column template_type
-            {
-                FieldLinkName = "template_type";
-            }
-            Column name
-            {
-                FieldLinkName = "name";
-            }
-            Column warehouse_scope
-            {
-                FieldLinkName = "warehouse_scope";
-            }
-            Column revision_no
-            {
-                FieldLinkName = "revision_no";
-            }
-            Column effective_from
-            {
-                FieldLinkName = "effective_from";
-            }
-            Column effective_to
-            {
-                FieldLinkName = "effective_to";
-            }
-            Column layout_json_xml
-            {
-                FieldLinkName = "layout_json_xml";
-            }
-            Column requires_digital_signature
-            {
-                FieldLinkName = "requires_digital_signature";
-            }
-            Column created_by
-            {
-                FieldLinkName = "created_by";
-            }
-            Column approval_log
-            {
-                FieldLinkName = "approval_log";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column template_id
-                    {
-                        FieldLinkName = "template_id";
-                    }
-                    Column template_type
-                    {
-                        FieldLinkName = "template_type";
-                    }
-                    Column name
-                    {
-                        FieldLinkName = "name";
-                    }
-                    Column warehouse_scope
-                    {
-                        FieldLinkName = "warehouse_scope";
-                    }
-                    Column revision_no
-                    {
-                        FieldLinkName = "revision_no";
-                    }
-                    Column effective_from
-                    {
-                        FieldLinkName = "effective_from";
-                    }
-                    Column effective_to
-                    {
-                        FieldLinkName = "effective_to";
-                    }
-                    Column layout_json_xml
-                    {
-                        FieldLinkName = "layout_json_xml";
-                    }
-                    Column requires_digital_signature
-                    {
-                        FieldLinkName = "requires_digital_signature";
-                    }
-                    Column created_by
-                    {
-                        FieldLinkName = "created_by";
-                    }
-                    Column approval_log
-                    {
-                        FieldLinkName = "approval_log";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Template Library Report"
+	show all rows from template_library
+	(
+		template_id as "Template ID"
+		template_type as "Template Type"
+		name as "Name"
+		warehouse_scope as "Warehouse Scope"
+		revision_no as "Revision No."
+		effective_from as "Effective From"
+		effective_to as "Effective To"
+		layout_json_xml as "Layout JSON/XML"
+		requires_digital_signature as "Requires Digital Signature"
+		created_by as "Created By"
+		approval_log as "Approval Log"
+		status as "Status"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Template Library Overview"
+				fields
+				(
+					template_id as "Template ID"
+					template_type as "Template Type"
+					name as "Name"
+					warehouse_scope as "Warehouse Scope"
+					revision_no as "Revision No."
+					effective_from as "Effective From"
+					effective_to as "Effective To"
+					layout_json_xml as "Layout JSON/XML"
+					requires_digital_signature as "Requires Digital Signature"
+					created_by as "Created By"
+					approval_log as "Approval Log"
+					status as "Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Template Library Overview"
+				fields
+				(
+					template_id as "Template ID"
+					template_type as "Template Type"
+					name as "Name"
+					warehouse_scope as "Warehouse Scope"
+					revision_no as "Revision No."
+					effective_from as "Effective From"
+					effective_to as "Effective To"
+					layout_json_xml as "Layout JSON/XML"
+					requires_digital_signature as "Requires Digital Signature"
+					created_by as "Created By"
+					approval_log as "Approval Log"
+					status as "Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

@@ -1,179 +1,107 @@
-report stock_transfer_receipt_report
+list stock_transfer_receipt_report
 {
-    DisplayName = "Stock Transfer Receipt Report";
-    LinkName = "stock_transfer_receipt_report";
-    Type = "List";
-    SourceFormLinkName = "stock_transfer_receipt";
-
-    ListView
-    {
-        Columns
-        {
-            Column receipt_no
-            {
-                FieldLinkName = "receipt_no";
-            }
-            Column receipt_date
-            {
-                FieldLinkName = "receipt_date";
-            }
-            Column from_warehouse
-            {
-                FieldLinkName = "from_warehouse";
-            }
-            Column to_warehouse
-            {
-                FieldLinkName = "to_warehouse";
-            }
-            Column linked_transfer
-            {
-                FieldLinkName = "linked_transfer";
-            }
-            Column received_by
-            {
-                FieldLinkName = "received_by";
-            }
-            Column receipt_lines
-            {
-                FieldLinkName = "receipt_lines";
-            }
-            Column qc_result
-            {
-                FieldLinkName = "qc_result";
-            }
-            Column variance_notes
-            {
-                FieldLinkName = "variance_notes";
-            }
-            Column freight_details
-            {
-                FieldLinkName = "freight_details";
-            }
-            Column loading_unloading_wages
-            {
-                FieldLinkName = "loading_unloading_wages";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column receipt_no
-            {
-                FieldLinkName = "receipt_no";
-            }
-            Column receipt_date
-            {
-                FieldLinkName = "receipt_date";
-            }
-            Column from_warehouse
-            {
-                FieldLinkName = "from_warehouse";
-            }
-            Column to_warehouse
-            {
-                FieldLinkName = "to_warehouse";
-            }
-            Column linked_transfer
-            {
-                FieldLinkName = "linked_transfer";
-            }
-            Column received_by
-            {
-                FieldLinkName = "received_by";
-            }
-            Column receipt_lines
-            {
-                FieldLinkName = "receipt_lines";
-            }
-            Column qc_result
-            {
-                FieldLinkName = "qc_result";
-            }
-            Column variance_notes
-            {
-                FieldLinkName = "variance_notes";
-            }
-            Column freight_details
-            {
-                FieldLinkName = "freight_details";
-            }
-            Column loading_unloading_wages
-            {
-                FieldLinkName = "loading_unloading_wages";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column receipt_no
-                    {
-                        FieldLinkName = "receipt_no";
-                    }
-                    Column receipt_date
-                    {
-                        FieldLinkName = "receipt_date";
-                    }
-                    Column from_warehouse
-                    {
-                        FieldLinkName = "from_warehouse";
-                    }
-                    Column to_warehouse
-                    {
-                        FieldLinkName = "to_warehouse";
-                    }
-                    Column linked_transfer
-                    {
-                        FieldLinkName = "linked_transfer";
-                    }
-                    Column received_by
-                    {
-                        FieldLinkName = "received_by";
-                    }
-                    Column receipt_lines
-                    {
-                        FieldLinkName = "receipt_lines";
-                    }
-                    Column qc_result
-                    {
-                        FieldLinkName = "qc_result";
-                    }
-                    Column variance_notes
-                    {
-                        FieldLinkName = "variance_notes";
-                    }
-                    Column freight_details
-                    {
-                        FieldLinkName = "freight_details";
-                    }
-                    Column loading_unloading_wages
-                    {
-                        FieldLinkName = "loading_unloading_wages";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Stock Transfer Receipt Report"
+	show all rows from stock_transfer_receipt
+	(
+		receipt_no as "Receipt No."
+		receipt_date as "Receipt Date"
+		from_warehouse as "From Warehouse"
+		to_warehouse as "To Warehouse"
+		linked_transfer as "Linked Transfer"
+		received_by as "Received By"
+		receipt_lines as "Receipt Lines"
+		qc_result as "QC Result"
+		variance_notes as "Variance Notes"
+		freight_details as "Freight Details"
+		loading_unloading_wages as "Loading Unloading Wages"
+		status as "Status"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Stock Transfer Receipt Overview"
+				fields
+				(
+					receipt_no as "Receipt No."
+					receipt_date as "Receipt Date"
+					from_warehouse as "From Warehouse"
+					to_warehouse as "To Warehouse"
+					linked_transfer as "Linked Transfer"
+					received_by as "Received By"
+					receipt_lines as "Receipt Lines"
+					qc_result as "QC Result"
+					variance_notes as "Variance Notes"
+					freight_details as "Freight Details"
+					loading_unloading_wages as "Loading Unloading Wages"
+					status as "Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Stock Transfer Receipt Overview"
+				fields
+				(
+					receipt_no as "Receipt No."
+					receipt_date as "Receipt Date"
+					from_warehouse as "From Warehouse"
+					to_warehouse as "To Warehouse"
+					linked_transfer as "Linked Transfer"
+					received_by as "Received By"
+					receipt_lines as "Receipt Lines"
+					qc_result as "QC Result"
+					variance_notes as "Variance Notes"
+					freight_details as "Freight Details"
+					loading_unloading_wages as "Loading Unloading Wages"
+					status as "Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

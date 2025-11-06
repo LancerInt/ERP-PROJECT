@@ -301,6 +301,8 @@ def map_field_type(field, form, name_map):
         data_type = 'UploadFile'
     elif text == 'Auto Number':
         data_type = 'AutoNumber'
+    elif text == 'Percentage':
+        data_type = 'Percentage'
     elif text.startswith('Lookup'):
         data_type = 'Lookup'
         targets = parse_lookup_targets(field['type'])
@@ -349,34 +351,6 @@ def map_field_type(field, form, name_map):
     return data_type, props
 
 
-def format_value(value):
-    if isinstance(value, bool):
-        return 'true' if value else 'false'
-    if value is None:
-        return 'null'
-    if isinstance(value, (int, float)):
-        return str(value)
-    if isinstance(value, list):
-        return '[' + ', '.join(f'"{v}"' for v in value) + ']'
-    value = str(value).replace('"', '\\"')
-    return f'"{value}"'
-
-
-def format_address_block(indent='            '):
-    lines = [f"{indent}AddressFields", f"{indent}{{"]
-    for component in (
-        'AddressLine1',
-        'AddressLine2',
-        'City',
-        'State',
-        'Country',
-        'PostalCode',
-    ):
-        lines.append(f"{indent}    {component} = true;")
-    lines.append(f"{indent}}}")
-    return lines
-
-
 def prepare_field_meta(form, name_map):
     prepared = []
     for field in form['fields']:
@@ -387,110 +361,306 @@ def prepare_field_meta(form, name_map):
             'link_name': link_name,
             'data_type': data_type,
             'props': props,
+            'required': field['required'].strip().upper(),
         })
     return prepared
 
 
-def render_form_ds(form, name_map):
-    display_name = re.sub(r"\s*\(subform\)", "", form['display_name'], flags=re.IGNORECASE)
-    field_meta = prepare_field_meta(form, name_map)
+def ds_attr_name(key: str) -> str:
+    key = re.sub(r'([a-z0-9])([A-Z])', r'\1 \2', key)
+    key = key.replace('_', ' ')
+    return key.strip().lower()
+
+
+def ds_value(value, key=None):
+    if isinstance(value, bool):
+        return 'true' if value else 'false'
+    if isinstance(value, (int, float)):
+        if isinstance(value, float) and value.is_integer():
+            return str(int(value))
+        return str(value)
+    if isinstance(value, list):
+        return '{' + ','.join(f'"{v}"' for v in value) + '}'
+    if value is None:
+        return 'null'
+    value = str(value)
+    lower_key = (key or '').lower()
+    if lower_key in {'type', 'row', 'column', 'width', 'height', 'file count', 'start index', 'browse', 'format'}:
+        return value
+    if lower_key in {'related form', 'related forms'} and value:
+        return value
+    if lower_key == 'timedisplayoptions':
+        return f'"{value}"'
+    if value.endswith('px') and lower_key == 'height':
+        return value
+    return f'"{value}"'
+
+
+def render_address_components(indent):
+    components = [
+        ('address_line_1', 'Address Line 1'),
+        ('address_line_2', 'Address Line 2'),
+        ('district_city', 'City / District'),
+        ('state_province', 'State / Province'),
+        ('postal_code', 'Postal Code'),
+        ('country', 'Country'),
+        ('latitude', 'Latitude'),
+        ('longitude', 'Longitude'),
+    ]
     lines = []
-    lines.append(f"// Module: {form['module'] or 'General'}")
+    for name, label in components:
+        lines.append(f"{indent}{name}")
+        lines.append(f"{indent}(")
+        lines.append(f"{indent}\ttype = {ds_value(name, 'type')}")
+        lines.append(f"{indent}\tdisplayname = \"{label}\"")
+        if name in {'latitude', 'longitude'}:
+            lines.append(f"{indent}\tvisibility = false")
+        lines.append(f"{indent})")
+        lines.append("")
+    if lines:
+        lines.pop()
+    return lines
+
+
+def map_to_ds_type(meta):
+    data_type = meta['data_type']
+    extras = []
+    if data_type == 'SingleLine':
+        ds_type = 'text'
+    elif data_type == 'MultiLine':
+        ds_type = 'textarea'
+        extras.append(('height', '100px'))
+    elif data_type == 'Email':
+        ds_type = 'email'
+        extras.append(('personal data', True))
+    elif data_type == 'Phone':
+        ds_type = 'phonenumber'
+        extras.append(('personal data', True))
+    elif data_type == 'Dropdown':
+        ds_type = 'picklist'
+    elif data_type == 'Checkboxes':
+        ds_type = 'list'
+    elif data_type == 'Checkbox':
+        ds_type = 'checkbox'
+    elif data_type == 'Date':
+        ds_type = 'date'
+    elif data_type == 'DateTime':
+        ds_type = 'datetime'
+    elif data_type == 'Time':
+        ds_type = 'time'
+        extras.append(('timedisplayoptions', 'hh:mm:ss'))
+    elif data_type == 'AutoNumber':
+        ds_type = 'autonumber'
+        extras.append(('start index', 1))
+    elif data_type == 'Percentage':
+        ds_type = 'percentage'
+    elif data_type == 'Decimal':
+        ds_type = 'number'
+    elif data_type == 'Number':
+        ds_type = 'number'
+    elif data_type == 'INR':
+        ds_type = 'INR'
+    elif data_type == 'Address':
+        ds_type = 'address'
+        extras.append(('capture_coordinates', True))
+        extras.append(('adjust_using_map', False))
+        extras.append(('personal data', True))
+    elif data_type == 'Lookup':
+        ds_type = 'lookup'
+        if 'AllowMultiple' in meta['props'] and meta['props']['AllowMultiple']:
+            extras.append(('allow multiple', True))
+        related_single = meta['props'].get('RelatedFormLinkName')
+        related_multi = meta['props'].get('RelatedFormLinkNames')
+        if related_multi:
+            extras.append(('related forms', related_multi))
+        elif related_single:
+            extras.append(('related form', related_single))
+    elif data_type == 'SubForm':
+        ds_type = 'grid'
+    elif data_type == 'UploadFile':
+        ds_type = 'upload file'
+        extras.append(('file count', meta['props'].get('MaxFileCount', 10)))
+        extras.append(('browse', str(meta['props'].get('FileSource', 'local_drive')).lower()))
+    elif data_type == 'UploadImage':
+        ds_type = 'upload file'
+        extras.append(('file count', meta['props'].get('MaxFileCount', 10)))
+        extras.append(('browse', str(meta['props'].get('FileSource', 'local_drive')).lower()))
+    elif data_type == 'URL':
+        ds_type = 'url'
+    else:
+        ds_type = 'text'
+    return ds_type, extras
+
+
+def render_field(meta, forms_meta, indent='\t', include_layout=True, visited=None):
+    if visited is None:
+        visited = set()
+    required = meta['required']
+    prefix = 'must have ' if required in {'Y', 'C'} else ''
+    lines = []
+    lines.append(f"{indent}{prefix}{meta['link_name']}")
+    lines.append(f"{indent}(")
+    ds_type, extras = map_to_ds_type(meta)
+    lines.append(f"{indent}\ttype = {ds_value(ds_type, 'type')}")
+    lines.append(f"{indent}\tdisplayname = \"{meta['field']['field_name']}\"")
+    if include_layout:
+        lines.append(f"{indent}\trow = 1")
+        lines.append(f"{indent}\tcolumn = 1")
+    lines.append(f"{indent}\twidth = medium")
+    for key, value in extras:
+        lines.append(f"{indent}\t{key} = {ds_value(value, key)}")
+    for key, value in meta['props'].items():
+        if key in {'MaxFileCount', 'FileSource', 'AllowMultiple', 'RelatedFormLinkName', 'RelatedFormLinkNames', 'SubFormLinkName'}:
+            continue
+        attr_name = ds_attr_name(key)
+        lines.append(f"{indent}\t{attr_name} = {ds_value(value, attr_name)}")
+    if meta['data_type'] == 'Address':
+        sub_lines = render_address_components(f"{indent}\t")
+        lines.extend(sub_lines)
+    if meta['data_type'] == 'SubForm':
+        sub_slug = meta['props'].get('SubFormLinkName')
+        if sub_slug and sub_slug not in visited and sub_slug in forms_meta:
+            visited.add(sub_slug)
+            for sub_meta in forms_meta[sub_slug]:
+                lines.extend(render_field(sub_meta, forms_meta, indent + '\t', include_layout=False, visited=visited))
+            visited.remove(sub_slug)
+    lines.append(f"{indent})")
+    lines.append("")
+    return lines
+
+
+def render_form_ds(form, field_meta, forms_meta):
+    display_name = re.sub(r"\s*\(subform\)", "", form['display_name'], flags=re.IGNORECASE)
+    lines = []
     lines.append(f"form {form['slug']}")
     lines.append("{")
-    lines.append(f"    DisplayName = {format_value(display_name)};")
-    lines.append(f"    LinkName = {format_value(form['slug'])};")
-    lines.append(f"    Module = {format_value(form['module'] or 'General')};")
-    lines.append(f"    Type = \"Form\";")
+    lines.append(f"\tdisplayname = \"{display_name}\"")
+    lines.append(f"\tsuccess message = \"{display_name} added successfully\"")
     lines.append("")
-    lines.append("    Sections")
-    lines.append("    {")
-    lines.append("        Section main")
-    lines.append("        {")
-    lines.append("            DisplayName = \"Main\";")
-    lines.append("            Layout = \"OneColumn\";")
-    lines.append("            Fields")
-    lines.append("            {")
+    lines.append("\tSection")
+    lines.append("\t(")
+    lines.append("\t\ttype = section")
+    lines.append("\t\trow = 1")
+    lines.append("\t\tcolumn = 0")
+    lines.append("\t\twidth = medium")
+    lines.append("\t)")
+    lines.append("")
     for meta in field_meta:
-        field = meta['field']
-        lines.append(f"                Field {meta['link_name']}")
-        lines.append("                {")
-        lines.append(f"                    DisplayName = {format_value(field['field_name'])};")
-        lines.append(f"                    LinkName = {format_value(meta['link_name'])};")
-        lines.append(f"                    Type = {format_value(meta['data_type'])};")
-        required = field['required'].strip().upper()
-        if required == 'Y':
-            lines.append("                    IsMandatory = true;")
-        elif required == 'C':
-            lines.append("                    ConditionalMandatory = true;")
-        for key, value in meta['props'].items():
-            lines.append(f"                    {key} = {format_value(value)};")
-        if meta['data_type'] == 'Address':
-            lines.extend(format_address_block('                    '))
-        if field['notes']:
-            lines.append(f"                    HelpText = {format_value(field['notes'])};")
-        lines.append("                }")
-    lines.append("            }")
-    lines.append("        }")
-    lines.append("    }")
-    lines.append("")
-    lines.append("    Actions")
-    lines.append("    {")
-    lines.append("        on add")
-    lines.append("        {")
-    lines.append("        }")
-    lines.append("        on edit")
-    lines.append("        {")
-    lines.append("        }")
-    lines.append("    }")
+        lines.extend(render_field(meta, forms_meta))
+    lines.append("\tactions")
+    lines.append("\t{")
+    lines.append("\t\ton add")
+    lines.append("\t\t{")
+    lines.append("\t\t\tsubmit")
+    lines.append("\t\t\t(")
+    lines.append("\t\t\t\ttype = submit")
+    lines.append("\t\t\t\tdisplayname = \"Submit\"")
+    lines.append("\t\t\t)")
+    lines.append("\t\t\treset")
+    lines.append("\t\t\t(")
+    lines.append("\t\t\t\ttype = reset")
+    lines.append("\t\t\t\tdisplayname = \"Reset\"")
+    lines.append("\t\t\t)")
+    lines.append("\t\t}")
+    lines.append("\t\ton edit")
+    lines.append("\t\t{")
+    lines.append("\t\t\tupdate")
+    lines.append("\t\t\t(")
+    lines.append("\t\t\t\ttype = submit")
+    lines.append("\t\t\t\tdisplayname = \"Update\"")
+    lines.append("\t\t\t)")
+    lines.append("\t\t\tcancel")
+    lines.append("\t\t\t(")
+    lines.append("\t\t\t\ttype = cancel")
+    lines.append("\t\t\t\tdisplayname = \"Cancel\"")
+    lines.append("\t\t\t)")
+    lines.append("\t\t}")
+    lines.append("\t}")
     lines.append("}")
     lines.append("")
-    return "\n".join(lines), field_meta
+    return "\n".join(lines)
 
 
 def render_report_ds(form, field_meta):
     display_name = re.sub(r"\s*\(subform\)", "", form['display_name'], flags=re.IGNORECASE)
-    report_slug = f"{form['slug']}_report"
-    column_links = [meta['link_name'] for meta in field_meta]
+    slug = form['slug']
     lines = []
-    lines.append(f"report {report_slug}")
+    lines.append(f"list {slug}_report")
     lines.append("{")
-    lines.append(f"    DisplayName = {format_value(display_name + ' Report')};")
-    lines.append(f"    LinkName = {format_value(report_slug)};")
-    lines.append("    Type = \"List\";")
-    lines.append(f"    SourceFormLinkName = {format_value(form['slug'])};")
-    lines.append("")
-    def render_columns(indent):
-        col_lines = [f"{indent}Columns", f"{indent}{{"]
-        for link in column_links:
-            col_lines.append(f"{indent}    Column {link}")
-            col_lines.append(f"{indent}    {{")
-            col_lines.append(f"{indent}        FieldLinkName = {format_value(link)};")
-            col_lines.append(f"{indent}    }}")
-        col_lines.append(f"{indent}}}")
-        return col_lines
-
-    lines.append("    ListView")
-    lines.append("    {")
-    lines.extend(render_columns("        "))
-    lines.append("    }")
-    lines.append("")
-    lines.append("    QuickView")
-    lines.append("    {")
-    lines.extend(render_columns("        "))
-    lines.append("    }")
-    lines.append("")
-    lines.append("    DetailView")
-    lines.append("    {")
-    lines.append("        Sections")
-    lines.append("        {")
-    lines.append("            Section main")
-    lines.append("            {")
-    lines.append("                DisplayName = \"Main\";")
-    lines.extend(render_columns("                "))
-    lines.append("            }")
-    lines.append("        }")
-    lines.append("    }")
+    lines.append(f"\tdisplayName = \"{display_name} Report\"")
+    lines.append(f"\tshow all rows from {slug}")
+    lines.append("\t(")
+    for meta in field_meta:
+        lines.append(f"\t\t{meta['link_name']} as \"{meta['field']['field_name']}\"")
+    lines.append("\t)")
+    lines.append("\tquickview")
+    lines.append("\t(")
+    lines.append("\t\tlayout")
+    lines.append("\t\t(")
+    lines.append("\t\t\tdatablock1")
+    lines.append("\t\t\t(")
+    lines.append(f"\t\t\t\ttitle = \"{display_name} Overview\"")
+    lines.append("\t\t\t\tfields")
+    lines.append("\t\t\t\t(")
+    for meta in field_meta:
+        lines.append(f"\t\t\t\t\t{meta['link_name']} as \"{meta['field']['field_name']}\"")
+    lines.append("\t\t\t\t)")
+    lines.append("\t\t\t)")
+    lines.append("\t\t)")
+    lines.append("\t\tmenu")
+    lines.append("\t\t(")
+    lines.append("\t\t\theader")
+    lines.append("\t\t\t(")
+    lines.append("\t\t\t\tEdit")
+    lines.append("\t\t\t\tDuplicate")
+    lines.append("\t\t\t\tDelete")
+    lines.append("\t\t\t)")
+    lines.append("\t\t\trecord")
+    lines.append("\t\t\t(")
+    lines.append("\t\t\t\tEdit")
+    lines.append("\t\t\t\tDuplicate")
+    lines.append("\t\t\t\tDelete")
+    lines.append("\t\t\t)")
+    lines.append("\t\t)")
+    lines.append("\t\taction")
+    lines.append("\t\t(")
+    lines.append("\t\t\ton click")
+    lines.append("\t\t\t(")
+    lines.append("\t\t\t\tView Record")
+    lines.append("\t\t\t)")
+    lines.append("\t\t\ton right click")
+    lines.append("\t\t\t(")
+    lines.append("\t\t\t\tEdit")
+    lines.append("\t\t\t\tDelete")
+    lines.append("\t\t\t\tDuplicate")
+    lines.append("\t\t\t\tView Record")
+    lines.append("\t\t\t)")
+    lines.append("\t\t)")
+    lines.append("\t)")
+    lines.append("\tdetailview")
+    lines.append("\t(")
+    lines.append("\t\tlayout")
+    lines.append("\t\t(")
+    lines.append("\t\t\tdatablock1")
+    lines.append("\t\t\t(")
+    lines.append(f"\t\t\t\ttitle = \"{display_name} Overview\"")
+    lines.append("\t\t\t\tfields")
+    lines.append("\t\t\t\t(")
+    for meta in field_meta:
+        lines.append(f"\t\t\t\t\t{meta['link_name']} as \"{meta['field']['field_name']}\"")
+    lines.append("\t\t\t\t)")
+    lines.append("\t\t\t)")
+    lines.append("\t\t)")
+    lines.append("\t\tmenu")
+    lines.append("\t\t(")
+    lines.append("\t\t\theader")
+    lines.append("\t\t\t(")
+    lines.append("\t\t\t\tEdit")
+    lines.append("\t\t\t\tDuplicate")
+    lines.append("\t\t\t\tDelete")
+    lines.append("\t\t\t)")
+    lines.append("\t\t)")
+    lines.append("\t)")
     lines.append("}")
     lines.append("")
     return "\n".join(lines)
@@ -500,13 +670,17 @@ def main():
     forms = parse_forms()
     ensure_unique_slugs(forms)
     name_map = build_name_maps(forms)
+    forms_meta = {}
+    for form in forms:
+        forms_meta[form['slug']] = prepare_field_meta(form, name_map)
     if OUTPUT_ROOT.exists():
         shutil.rmtree(OUTPUT_ROOT)
     FORMS_OUTPUT.mkdir(parents=True, exist_ok=True)
     REPORTS_OUTPUT.mkdir(parents=True, exist_ok=True)
 
     for form in forms:
-        form_content, field_meta = render_form_ds(form, name_map)
+        field_meta = forms_meta[form['slug']]
+        form_content = render_form_ds(form, field_meta, forms_meta)
         form_path = FORMS_OUTPUT / f"{form['slug']}_form.ds"
         form_path.write_text(form_content)
         report_content = render_report_ds(form, field_meta)

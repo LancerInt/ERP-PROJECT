@@ -1,239 +1,122 @@
-report qc_request_report
+list qc_request_report
 {
-    DisplayName = "QC Request Report";
-    LinkName = "qc_request_report";
-    Type = "List";
-    SourceFormLinkName = "qc_request";
-
-    ListView
-    {
-        Columns
-        {
-            Column request_no
-            {
-                FieldLinkName = "request_no";
-            }
-            Column request_date
-            {
-                FieldLinkName = "request_date";
-            }
-            Column requested_by
-            {
-                FieldLinkName = "requested_by";
-            }
-            Column requestor_role
-            {
-                FieldLinkName = "requestor_role";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column stage
-            {
-                FieldLinkName = "stage";
-            }
-            Column qc_template
-            {
-                FieldLinkName = "qc_template";
-            }
-            Column selected_parameters
-            {
-                FieldLinkName = "selected_parameters";
-            }
-            Column sample_photo
-            {
-                FieldLinkName = "sample_photo";
-            }
-            Column sample_qty
-            {
-                FieldLinkName = "sample_qty";
-            }
-            Column priority
-            {
-                FieldLinkName = "priority";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column lab_code
-            {
-                FieldLinkName = "lab_code";
-            }
-            Column counter_sample_required
-            {
-                FieldLinkName = "counter_sample_required";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column request_no
-            {
-                FieldLinkName = "request_no";
-            }
-            Column request_date
-            {
-                FieldLinkName = "request_date";
-            }
-            Column requested_by
-            {
-                FieldLinkName = "requested_by";
-            }
-            Column requestor_role
-            {
-                FieldLinkName = "requestor_role";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column stage
-            {
-                FieldLinkName = "stage";
-            }
-            Column qc_template
-            {
-                FieldLinkName = "qc_template";
-            }
-            Column selected_parameters
-            {
-                FieldLinkName = "selected_parameters";
-            }
-            Column sample_photo
-            {
-                FieldLinkName = "sample_photo";
-            }
-            Column sample_qty
-            {
-                FieldLinkName = "sample_qty";
-            }
-            Column priority
-            {
-                FieldLinkName = "priority";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column lab_code
-            {
-                FieldLinkName = "lab_code";
-            }
-            Column counter_sample_required
-            {
-                FieldLinkName = "counter_sample_required";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column request_no
-                    {
-                        FieldLinkName = "request_no";
-                    }
-                    Column request_date
-                    {
-                        FieldLinkName = "request_date";
-                    }
-                    Column requested_by
-                    {
-                        FieldLinkName = "requested_by";
-                    }
-                    Column requestor_role
-                    {
-                        FieldLinkName = "requestor_role";
-                    }
-                    Column warehouse
-                    {
-                        FieldLinkName = "warehouse";
-                    }
-                    Column product
-                    {
-                        FieldLinkName = "product";
-                    }
-                    Column batch
-                    {
-                        FieldLinkName = "batch";
-                    }
-                    Column stage
-                    {
-                        FieldLinkName = "stage";
-                    }
-                    Column qc_template
-                    {
-                        FieldLinkName = "qc_template";
-                    }
-                    Column selected_parameters
-                    {
-                        FieldLinkName = "selected_parameters";
-                    }
-                    Column sample_photo
-                    {
-                        FieldLinkName = "sample_photo";
-                    }
-                    Column sample_qty
-                    {
-                        FieldLinkName = "sample_qty";
-                    }
-                    Column priority
-                    {
-                        FieldLinkName = "priority";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                    Column lab_code
-                    {
-                        FieldLinkName = "lab_code";
-                    }
-                    Column counter_sample_required
-                    {
-                        FieldLinkName = "counter_sample_required";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "QC Request Report"
+	show all rows from qc_request
+	(
+		request_no as "Request No."
+		request_date as "Request Date"
+		requested_by as "Requested By"
+		requestor_role as "Requestor Role"
+		warehouse as "Warehouse"
+		product as "Product"
+		batch as "Batch"
+		stage as "Stage"
+		qc_template as "QC Template"
+		selected_parameters as "Selected Parameters"
+		sample_photo as "Sample Photo"
+		sample_qty as "Sample Qty"
+		priority as "Priority"
+		remarks as "Remarks"
+		status as "Status"
+		lab_code as "Lab Code"
+		counter_sample_required as "Counter Sample Required"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "QC Request Overview"
+				fields
+				(
+					request_no as "Request No."
+					request_date as "Request Date"
+					requested_by as "Requested By"
+					requestor_role as "Requestor Role"
+					warehouse as "Warehouse"
+					product as "Product"
+					batch as "Batch"
+					stage as "Stage"
+					qc_template as "QC Template"
+					selected_parameters as "Selected Parameters"
+					sample_photo as "Sample Photo"
+					sample_qty as "Sample Qty"
+					priority as "Priority"
+					remarks as "Remarks"
+					status as "Status"
+					lab_code as "Lab Code"
+					counter_sample_required as "Counter Sample Required"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "QC Request Overview"
+				fields
+				(
+					request_no as "Request No."
+					request_date as "Request Date"
+					requested_by as "Requested By"
+					requestor_role as "Requestor Role"
+					warehouse as "Warehouse"
+					product as "Product"
+					batch as "Batch"
+					stage as "Stage"
+					qc_template as "QC Template"
+					selected_parameters as "Selected Parameters"
+					sample_photo as "Sample Photo"
+					sample_qty as "Sample Qty"
+					priority as "Priority"
+					remarks as "Remarks"
+					status as "Status"
+					lab_code as "Lab Code"
+					counter_sample_required as "Counter Sample Required"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

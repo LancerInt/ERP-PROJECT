@@ -1,56 +1,81 @@
-// Module: 5. Quality Control Module
 form selected_parameters
 {
-    DisplayName = "Selected Parameters";
-    LinkName = "selected_parameters";
-    Module = "5. Quality Control Module";
-    Type = "Form";
+	displayname = "Selected Parameters"
+	success message = "Selected Parameters added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field parameter
-                {
-                    DisplayName = "Parameter";
-                    LinkName = "parameter";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "qc_parameter_library";
-                }
-                Field override_range_min
-                {
-                    DisplayName = "Override Range Min";
-                    LinkName = "override_range_min";
-                    Type = "Decimal";
-                }
-                Field override_range_max
-                {
-                    DisplayName = "Override Range Max";
-                    LinkName = "override_range_max";
-                    Type = "Decimal";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have parameter
+	(
+		type = lookup
+		displayname = "Parameter"
+		row = 1
+		column = 1
+		width = medium
+		related form = qc_parameter_library
+	)
+
+	override_range_min
+	(
+		type = number
+		displayname = "Override Range Min"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	override_range_max
+	(
+		type = number
+		displayname = "Override Range Max"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

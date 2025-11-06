@@ -1,95 +1,86 @@
-report freight_charges_report
+list freight_charges_report
 {
-    DisplayName = "Freight Charges Report";
-    LinkName = "freight_charges_report";
-    Type = "List";
-    SourceFormLinkName = "freight_charges";
-
-    ListView
-    {
-        Columns
-        {
-            Column freight_type
-            {
-                FieldLinkName = "freight_type";
-            }
-            Column transporter
-            {
-                FieldLinkName = "transporter";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column discount
-            {
-                FieldLinkName = "discount";
-            }
-            Column payable_by
-            {
-                FieldLinkName = "payable_by";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column freight_type
-            {
-                FieldLinkName = "freight_type";
-            }
-            Column transporter
-            {
-                FieldLinkName = "transporter";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column discount
-            {
-                FieldLinkName = "discount";
-            }
-            Column payable_by
-            {
-                FieldLinkName = "payable_by";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column freight_type
-                    {
-                        FieldLinkName = "freight_type";
-                    }
-                    Column transporter
-                    {
-                        FieldLinkName = "transporter";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                    Column discount
-                    {
-                        FieldLinkName = "discount";
-                    }
-                    Column payable_by
-                    {
-                        FieldLinkName = "payable_by";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Freight Charges Report"
+	show all rows from freight_charges
+	(
+		freight_type as "Freight Type"
+		transporter as "Transporter"
+		amount as "Amount"
+		discount as "Discount"
+		payable_by as "Payable By"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Freight Charges Overview"
+				fields
+				(
+					freight_type as "Freight Type"
+					transporter as "Transporter"
+					amount as "Amount"
+					discount as "Discount"
+					payable_by as "Payable By"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Freight Charges Overview"
+				fields
+				(
+					freight_type as "Freight Type"
+					transporter as "Transporter"
+					amount as "Amount"
+					discount as "Discount"
+					payable_by as "Payable By"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

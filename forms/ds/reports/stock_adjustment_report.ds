@@ -1,263 +1,128 @@
-report stock_adjustment_report
+list stock_adjustment_report
 {
-    DisplayName = "Stock Adjustment Report";
-    LinkName = "stock_adjustment_report";
-    Type = "List";
-    SourceFormLinkName = "stock_adjustment";
-
-    ListView
-    {
-        Columns
-        {
-            Column adjustment_no
-            {
-                FieldLinkName = "adjustment_no";
-            }
-            Column adjustment_date
-            {
-                FieldLinkName = "adjustment_date";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column godown
-            {
-                FieldLinkName = "godown";
-            }
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column adjustment_type
-            {
-                FieldLinkName = "adjustment_type";
-            }
-            Column quantity
-            {
-                FieldLinkName = "quantity";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column reason_code
-            {
-                FieldLinkName = "reason_code";
-            }
-            Column other_reason
-            {
-                FieldLinkName = "other_reason";
-            }
-            Column evidence_attachments
-            {
-                FieldLinkName = "evidence_attachments";
-            }
-            Column value_impact
-            {
-                FieldLinkName = "value_impact";
-            }
-            Column finance_review_required
-            {
-                FieldLinkName = "finance_review_required";
-            }
-            Column approval_status
-            {
-                FieldLinkName = "approval_status";
-            }
-            Column approved_by
-            {
-                FieldLinkName = "approved_by";
-            }
-            Column approval_date
-            {
-                FieldLinkName = "approval_date";
-            }
-            Column notified_to
-            {
-                FieldLinkName = "notified_to";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column adjustment_no
-            {
-                FieldLinkName = "adjustment_no";
-            }
-            Column adjustment_date
-            {
-                FieldLinkName = "adjustment_date";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column godown
-            {
-                FieldLinkName = "godown";
-            }
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column adjustment_type
-            {
-                FieldLinkName = "adjustment_type";
-            }
-            Column quantity
-            {
-                FieldLinkName = "quantity";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column reason_code
-            {
-                FieldLinkName = "reason_code";
-            }
-            Column other_reason
-            {
-                FieldLinkName = "other_reason";
-            }
-            Column evidence_attachments
-            {
-                FieldLinkName = "evidence_attachments";
-            }
-            Column value_impact
-            {
-                FieldLinkName = "value_impact";
-            }
-            Column finance_review_required
-            {
-                FieldLinkName = "finance_review_required";
-            }
-            Column approval_status
-            {
-                FieldLinkName = "approval_status";
-            }
-            Column approved_by
-            {
-                FieldLinkName = "approved_by";
-            }
-            Column approval_date
-            {
-                FieldLinkName = "approval_date";
-            }
-            Column notified_to
-            {
-                FieldLinkName = "notified_to";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column adjustment_no
-                    {
-                        FieldLinkName = "adjustment_no";
-                    }
-                    Column adjustment_date
-                    {
-                        FieldLinkName = "adjustment_date";
-                    }
-                    Column warehouse
-                    {
-                        FieldLinkName = "warehouse";
-                    }
-                    Column godown
-                    {
-                        FieldLinkName = "godown";
-                    }
-                    Column product
-                    {
-                        FieldLinkName = "product";
-                    }
-                    Column batch
-                    {
-                        FieldLinkName = "batch";
-                    }
-                    Column adjustment_type
-                    {
-                        FieldLinkName = "adjustment_type";
-                    }
-                    Column quantity
-                    {
-                        FieldLinkName = "quantity";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column reason_code
-                    {
-                        FieldLinkName = "reason_code";
-                    }
-                    Column other_reason
-                    {
-                        FieldLinkName = "other_reason";
-                    }
-                    Column evidence_attachments
-                    {
-                        FieldLinkName = "evidence_attachments";
-                    }
-                    Column value_impact
-                    {
-                        FieldLinkName = "value_impact";
-                    }
-                    Column finance_review_required
-                    {
-                        FieldLinkName = "finance_review_required";
-                    }
-                    Column approval_status
-                    {
-                        FieldLinkName = "approval_status";
-                    }
-                    Column approved_by
-                    {
-                        FieldLinkName = "approved_by";
-                    }
-                    Column approval_date
-                    {
-                        FieldLinkName = "approval_date";
-                    }
-                    Column notified_to
-                    {
-                        FieldLinkName = "notified_to";
-                    }
-                    Column notes
-                    {
-                        FieldLinkName = "notes";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Stock Adjustment Report"
+	show all rows from stock_adjustment
+	(
+		adjustment_no as "Adjustment No."
+		adjustment_date as "Adjustment Date"
+		warehouse as "Warehouse"
+		godown as "Godown"
+		product as "Product"
+		batch as "Batch"
+		adjustment_type as "Adjustment Type"
+		quantity as "Quantity"
+		uom as "UOM"
+		reason_code as "Reason Code"
+		other_reason as "Other Reason"
+		evidence_attachments as "Evidence Attachments"
+		value_impact as "Value Impact"
+		finance_review_required as "Finance Review Required"
+		approval_status as "Approval Status"
+		approved_by as "Approved By"
+		approval_date as "Approval Date"
+		notified_to as "Notified To"
+		notes as "Notes"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Stock Adjustment Overview"
+				fields
+				(
+					adjustment_no as "Adjustment No."
+					adjustment_date as "Adjustment Date"
+					warehouse as "Warehouse"
+					godown as "Godown"
+					product as "Product"
+					batch as "Batch"
+					adjustment_type as "Adjustment Type"
+					quantity as "Quantity"
+					uom as "UOM"
+					reason_code as "Reason Code"
+					other_reason as "Other Reason"
+					evidence_attachments as "Evidence Attachments"
+					value_impact as "Value Impact"
+					finance_review_required as "Finance Review Required"
+					approval_status as "Approval Status"
+					approved_by as "Approved By"
+					approval_date as "Approval Date"
+					notified_to as "Notified To"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Stock Adjustment Overview"
+				fields
+				(
+					adjustment_no as "Adjustment No."
+					adjustment_date as "Adjustment Date"
+					warehouse as "Warehouse"
+					godown as "Godown"
+					product as "Product"
+					batch as "Batch"
+					adjustment_type as "Adjustment Type"
+					quantity as "Quantity"
+					uom as "UOM"
+					reason_code as "Reason Code"
+					other_reason as "Other Reason"
+					evidence_attachments as "Evidence Attachments"
+					value_impact as "Value Impact"
+					finance_review_required as "Finance Review Required"
+					approval_status as "Approval Status"
+					approved_by as "Approved By"
+					approval_date as "Approval Date"
+					notified_to as "Notified To"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

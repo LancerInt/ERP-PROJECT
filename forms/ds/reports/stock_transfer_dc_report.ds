@@ -1,179 +1,107 @@
-report stock_transfer_dc_report
+list stock_transfer_dc_report
 {
-    DisplayName = "Stock Transfer DC Report";
-    LinkName = "stock_transfer_dc_report";
-    Type = "List";
-    SourceFormLinkName = "stock_transfer_dc";
-
-    ListView
-    {
-        Columns
-        {
-            Column transfer_no
-            {
-                FieldLinkName = "transfer_no";
-            }
-            Column created_date
-            {
-                FieldLinkName = "created_date";
-            }
-            Column from_warehouse
-            {
-                FieldLinkName = "from_warehouse";
-            }
-            Column to_warehouse
-            {
-                FieldLinkName = "to_warehouse";
-            }
-            Column dispatch_date
-            {
-                FieldLinkName = "dispatch_date";
-            }
-            Column transporter
-            {
-                FieldLinkName = "transporter";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column loading_wages
-            {
-                FieldLinkName = "loading_wages";
-            }
-            Column freight_amount
-            {
-                FieldLinkName = "freight_amount";
-            }
-            Column transfer_lines
-            {
-                FieldLinkName = "transfer_lines";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column documents
-            {
-                FieldLinkName = "documents";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column transfer_no
-            {
-                FieldLinkName = "transfer_no";
-            }
-            Column created_date
-            {
-                FieldLinkName = "created_date";
-            }
-            Column from_warehouse
-            {
-                FieldLinkName = "from_warehouse";
-            }
-            Column to_warehouse
-            {
-                FieldLinkName = "to_warehouse";
-            }
-            Column dispatch_date
-            {
-                FieldLinkName = "dispatch_date";
-            }
-            Column transporter
-            {
-                FieldLinkName = "transporter";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column loading_wages
-            {
-                FieldLinkName = "loading_wages";
-            }
-            Column freight_amount
-            {
-                FieldLinkName = "freight_amount";
-            }
-            Column transfer_lines
-            {
-                FieldLinkName = "transfer_lines";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column documents
-            {
-                FieldLinkName = "documents";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column transfer_no
-                    {
-                        FieldLinkName = "transfer_no";
-                    }
-                    Column created_date
-                    {
-                        FieldLinkName = "created_date";
-                    }
-                    Column from_warehouse
-                    {
-                        FieldLinkName = "from_warehouse";
-                    }
-                    Column to_warehouse
-                    {
-                        FieldLinkName = "to_warehouse";
-                    }
-                    Column dispatch_date
-                    {
-                        FieldLinkName = "dispatch_date";
-                    }
-                    Column transporter
-                    {
-                        FieldLinkName = "transporter";
-                    }
-                    Column freight_terms
-                    {
-                        FieldLinkName = "freight_terms";
-                    }
-                    Column loading_wages
-                    {
-                        FieldLinkName = "loading_wages";
-                    }
-                    Column freight_amount
-                    {
-                        FieldLinkName = "freight_amount";
-                    }
-                    Column transfer_lines
-                    {
-                        FieldLinkName = "transfer_lines";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                    Column documents
-                    {
-                        FieldLinkName = "documents";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Stock Transfer DC Report"
+	show all rows from stock_transfer_dc
+	(
+		transfer_no as "Transfer No."
+		created_date as "Created Date"
+		from_warehouse as "From Warehouse"
+		to_warehouse as "To Warehouse"
+		dispatch_date as "Dispatch Date"
+		transporter as "Transporter"
+		freight_terms as "Freight Terms"
+		loading_wages as "Loading Wages"
+		freight_amount as "Freight Amount"
+		transfer_lines as "Transfer Lines"
+		status as "Status"
+		documents as "Documents"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Stock Transfer DC Overview"
+				fields
+				(
+					transfer_no as "Transfer No."
+					created_date as "Created Date"
+					from_warehouse as "From Warehouse"
+					to_warehouse as "To Warehouse"
+					dispatch_date as "Dispatch Date"
+					transporter as "Transporter"
+					freight_terms as "Freight Terms"
+					loading_wages as "Loading Wages"
+					freight_amount as "Freight Amount"
+					transfer_lines as "Transfer Lines"
+					status as "Status"
+					documents as "Documents"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Stock Transfer DC Overview"
+				fields
+				(
+					transfer_no as "Transfer No."
+					created_date as "Created Date"
+					from_warehouse as "From Warehouse"
+					to_warehouse as "To Warehouse"
+					dispatch_date as "Dispatch Date"
+					transporter as "Transporter"
+					freight_terms as "Freight Terms"
+					loading_wages as "Loading Wages"
+					freight_amount as "Freight Amount"
+					transfer_lines as "Transfer Lines"
+					status as "Status"
+					documents as "Documents"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

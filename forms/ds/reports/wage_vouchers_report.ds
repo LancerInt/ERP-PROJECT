@@ -1,59 +1,77 @@
-report wage_vouchers_report
+list wage_vouchers_report
 {
-    DisplayName = "Wage Vouchers Report";
-    LinkName = "wage_vouchers_report";
-    Type = "List";
-    SourceFormLinkName = "wage_vouchers";
-
-    ListView
-    {
-        Columns
-        {
-            Column wage_voucher
-            {
-                FieldLinkName = "wage_voucher";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column wage_voucher
-            {
-                FieldLinkName = "wage_voucher";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column wage_voucher
-                    {
-                        FieldLinkName = "wage_voucher";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Wage Vouchers Report"
+	show all rows from wage_vouchers
+	(
+		wage_voucher as "Wage Voucher"
+		amount as "Amount"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Wage Vouchers Overview"
+				fields
+				(
+					wage_voucher as "Wage Voucher"
+					amount as "Amount"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Wage Vouchers Overview"
+				fields
+				(
+					wage_voucher as "Wage Voucher"
+					amount as "Amount"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

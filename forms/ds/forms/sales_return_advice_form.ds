@@ -1,133 +1,328 @@
-// Module: 6. Inventory, Logistics & Returns
 form sales_return_advice
 {
-    DisplayName = "Sales Return Advice";
-    LinkName = "sales_return_advice";
-    Module = "6. Inventory, Logistics & Returns";
-    Type = "Form";
+	displayname = "Sales Return Advice"
+	success message = "Sales Return Advice added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field return_no
-                {
-                    DisplayName = "Return No.";
-                    LinkName = "return_no";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field return_date
-                {
-                    DisplayName = "Return Date";
-                    LinkName = "return_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field customer
-                {
-                    DisplayName = "Customer";
-                    LinkName = "customer";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "customer";
-                }
-                Field original_invoice
-                {
-                    DisplayName = "Original Invoice";
-                    LinkName = "original_invoice";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "sales_invoice_check";
-                }
-                Field returned_by
-                {
-                    DisplayName = "Returned By";
-                    LinkName = "returned_by";
-                    Type = "SingleLine";
-                    HelpText = "Customer contact";
-                }
-                Field received_warehouse
-                {
-                    DisplayName = "Received Warehouse";
-                    LinkName = "received_warehouse";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "warehouse";
-                }
-                Field return_lines
-                {
-                    DisplayName = "Return Lines";
-                    LinkName = "return_lines";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "return_lines";
-                }
-                Field freight_terms
-                {
-                    DisplayName = "Freight Terms";
-                    LinkName = "freight_terms";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field freight_charges
-                {
-                    DisplayName = "Freight Charges";
-                    LinkName = "freight_charges";
-                    Type = "SubForm";
-                    SubFormLinkName = "freight_charges";
-                }
-                Field loading_unloading_charges
-                {
-                    DisplayName = "Loading/Unloading Charges";
-                    LinkName = "loading_unloading_charges";
-                    Type = "SubForm";
-                    SubFormLinkName = "loading_unloading_charges";
-                }
-                Field qc_requirement
-                {
-                    DisplayName = "QC Requirement";
-                    LinkName = "qc_requirement";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Required / Optional";
-                }
-                Field approval_status
-                {
-                    DisplayName = "Approval Status";
-                    LinkName = "approval_status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Draft / Pending / Approved / Rejected";
-                }
-                Field approval_trail
-                {
-                    DisplayName = "Approval Trail";
-                    LinkName = "approval_trail";
-                    Type = "SubForm";
-                    SubFormLinkName = "approval_trail";
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have return_no
+	(
+		type = autonumber
+		displayname = "Return No."
+		row = 1
+		column = 1
+		width = medium
+		start index = 1
+	)
+
+	must have return_date
+	(
+		type = date
+		displayname = "Return Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have customer
+	(
+		type = lookup
+		displayname = "Customer"
+		row = 1
+		column = 1
+		width = medium
+		related form = customer
+	)
+
+	must have original_invoice
+	(
+		type = lookup
+		displayname = "Original Invoice"
+		row = 1
+		column = 1
+		width = medium
+		related form = sales_invoice_check
+	)
+
+	returned_by
+	(
+		type = text
+		displayname = "Returned By"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have received_warehouse
+	(
+		type = lookup
+		displayname = "Received Warehouse"
+		row = 1
+		column = 1
+		width = medium
+		related form = warehouse
+	)
+
+	must have return_lines
+	(
+		type = grid
+		displayname = "Return Lines"
+		row = 1
+		column = 1
+		width = medium
+		must have product
+		(
+			type = lookup
+			displayname = "Product"
+			width = medium
+			related form = product_master
+		)
+
+		batch
+		(
+			type = text
+			displayname = "Batch"
+			width = medium
+		)
+
+		must have quantity_returned
+		(
+			type = number
+			displayname = "Quantity Returned"
+			width = medium
+		)
+
+		must have uom
+		(
+			type = picklist
+			displayname = "UOM"
+			width = medium
+		)
+
+		must have condition
+		(
+			type = picklist
+			displayname = "Condition"
+			width = medium
+		)
+
+		viability_notes
+		(
+			type = textarea
+			displayname = "Viability Notes"
+			width = medium
+			height = 100px
+		)
+
+		packing_material_captured
+		(
+			type = lookup
+			displayname = "Packing Material Captured"
+			width = medium
+			related form = product_master
+		)
+
+	)
+
+	must have freight_terms
+	(
+		type = picklist
+		displayname = "Freight Terms"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	freight_charges
+	(
+		type = grid
+		displayname = "Freight Charges"
+		row = 1
+		column = 1
+		width = medium
+		must have freight_type
+		(
+			type = picklist
+			displayname = "Freight Type"
+			width = medium
+		)
+
+		transporter
+		(
+			type = lookup
+			displayname = "Transporter"
+			width = medium
+			related form = transporter
+		)
+
+		must have amount
+		(
+			type = INR
+			displayname = "Amount"
+			width = medium
+		)
+
+		discount
+		(
+			type = INR
+			displayname = "Discount"
+			width = medium
+		)
+
+		must have payable_by
+		(
+			type = picklist
+			displayname = "Payable By"
+			width = medium
+		)
+
+	)
+
+	loading_unloading_charges
+	(
+		type = grid
+		displayname = "Loading/Unloading Charges"
+		row = 1
+		column = 1
+		width = medium
+		must have charge_type
+		(
+			type = picklist
+			displayname = "Charge Type"
+			width = medium
+		)
+
+		contractor_vendor
+		(
+			type = lookup
+			displayname = "Contractor Vendor"
+			width = medium
+			related form = vendor
+		)
+
+		must have amount
+		(
+			type = INR
+			displayname = "Amount"
+			width = medium
+		)
+
+		tds
+		(
+			type = number
+			displayname = "TDS %"
+			width = medium
+		)
+
+		must have payable_by
+		(
+			type = picklist
+			displayname = "Payable By"
+			width = medium
+		)
+
+	)
+
+	must have qc_requirement
+	(
+		type = picklist
+		displayname = "QC Requirement"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have approval_status
+	(
+		type = picklist
+		displayname = "Approval Status"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	approval_trail
+	(
+		type = grid
+		displayname = "Approval Trail"
+		row = 1
+		column = 1
+		width = medium
+		must have action
+		(
+			type = picklist
+			displayname = "Action"
+			width = medium
+		)
+
+		must have actor
+		(
+			type = lookup
+			displayname = "Actor"
+			width = medium
+			related form = stakeholder_user
+		)
+
+		must have action_date
+		(
+			type = datetime
+			displayname = "Action Date"
+			width = medium
+		)
+
+		remarks
+		(
+			type = textarea
+			displayname = "Remarks"
+			width = medium
+			height = 100px
+		)
+
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

@@ -1,83 +1,83 @@
-report selected_parameters_report
+list selected_parameters_report
 {
-    DisplayName = "Selected Parameters Report";
-    LinkName = "selected_parameters_report";
-    Type = "List";
-    SourceFormLinkName = "selected_parameters";
-
-    ListView
-    {
-        Columns
-        {
-            Column parameter
-            {
-                FieldLinkName = "parameter";
-            }
-            Column override_range_min
-            {
-                FieldLinkName = "override_range_min";
-            }
-            Column override_range_max
-            {
-                FieldLinkName = "override_range_max";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column parameter
-            {
-                FieldLinkName = "parameter";
-            }
-            Column override_range_min
-            {
-                FieldLinkName = "override_range_min";
-            }
-            Column override_range_max
-            {
-                FieldLinkName = "override_range_max";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column parameter
-                    {
-                        FieldLinkName = "parameter";
-                    }
-                    Column override_range_min
-                    {
-                        FieldLinkName = "override_range_min";
-                    }
-                    Column override_range_max
-                    {
-                        FieldLinkName = "override_range_max";
-                    }
-                    Column notes
-                    {
-                        FieldLinkName = "notes";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Selected Parameters Report"
+	show all rows from selected_parameters
+	(
+		parameter as "Parameter"
+		override_range_min as "Override Range Min"
+		override_range_max as "Override Range Max"
+		notes as "Notes"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Selected Parameters Overview"
+				fields
+				(
+					parameter as "Parameter"
+					override_range_min as "Override Range Min"
+					override_range_max as "Override Range Max"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Selected Parameters Overview"
+				fields
+				(
+					parameter as "Parameter"
+					override_range_min as "Override Range Min"
+					override_range_max as "Override Range Max"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

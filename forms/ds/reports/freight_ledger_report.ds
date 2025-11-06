@@ -1,215 +1,116 @@
-report freight_ledger_report
+list freight_ledger_report
 {
-    DisplayName = "Freight Ledger Report";
-    LinkName = "freight_ledger_report";
-    Type = "List";
-    SourceFormLinkName = "freight_ledger";
-
-    ListView
-    {
-        Columns
-        {
-            Column ledger_id
-            {
-                FieldLinkName = "ledger_id";
-            }
-            Column direction
-            {
-                FieldLinkName = "direction";
-            }
-            Column transporter
-            {
-                FieldLinkName = "transporter";
-            }
-            Column freight_advice
-            {
-                FieldLinkName = "freight_advice";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column discount
-            {
-                FieldLinkName = "discount";
-            }
-            Column shipment_quantity
-            {
-                FieldLinkName = "shipment_quantity";
-            }
-            Column quantity_uom
-            {
-                FieldLinkName = "quantity_uom";
-            }
-            Column cost_per_unit
-            {
-                FieldLinkName = "cost_per_unit";
-            }
-            Column destination_state
-            {
-                FieldLinkName = "destination_state";
-            }
-            Column payment_schedule
-            {
-                FieldLinkName = "payment_schedule";
-            }
-            Column amount_paid
-            {
-                FieldLinkName = "amount_paid";
-            }
-            Column balance
-            {
-                FieldLinkName = "balance";
-            }
-            Column reminder_flag
-            {
-                FieldLinkName = "reminder_flag";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column ledger_id
-            {
-                FieldLinkName = "ledger_id";
-            }
-            Column direction
-            {
-                FieldLinkName = "direction";
-            }
-            Column transporter
-            {
-                FieldLinkName = "transporter";
-            }
-            Column freight_advice
-            {
-                FieldLinkName = "freight_advice";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column discount
-            {
-                FieldLinkName = "discount";
-            }
-            Column shipment_quantity
-            {
-                FieldLinkName = "shipment_quantity";
-            }
-            Column quantity_uom
-            {
-                FieldLinkName = "quantity_uom";
-            }
-            Column cost_per_unit
-            {
-                FieldLinkName = "cost_per_unit";
-            }
-            Column destination_state
-            {
-                FieldLinkName = "destination_state";
-            }
-            Column payment_schedule
-            {
-                FieldLinkName = "payment_schedule";
-            }
-            Column amount_paid
-            {
-                FieldLinkName = "amount_paid";
-            }
-            Column balance
-            {
-                FieldLinkName = "balance";
-            }
-            Column reminder_flag
-            {
-                FieldLinkName = "reminder_flag";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column ledger_id
-                    {
-                        FieldLinkName = "ledger_id";
-                    }
-                    Column direction
-                    {
-                        FieldLinkName = "direction";
-                    }
-                    Column transporter
-                    {
-                        FieldLinkName = "transporter";
-                    }
-                    Column freight_advice
-                    {
-                        FieldLinkName = "freight_advice";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                    Column discount
-                    {
-                        FieldLinkName = "discount";
-                    }
-                    Column shipment_quantity
-                    {
-                        FieldLinkName = "shipment_quantity";
-                    }
-                    Column quantity_uom
-                    {
-                        FieldLinkName = "quantity_uom";
-                    }
-                    Column cost_per_unit
-                    {
-                        FieldLinkName = "cost_per_unit";
-                    }
-                    Column destination_state
-                    {
-                        FieldLinkName = "destination_state";
-                    }
-                    Column payment_schedule
-                    {
-                        FieldLinkName = "payment_schedule";
-                    }
-                    Column amount_paid
-                    {
-                        FieldLinkName = "amount_paid";
-                    }
-                    Column balance
-                    {
-                        FieldLinkName = "balance";
-                    }
-                    Column reminder_flag
-                    {
-                        FieldLinkName = "reminder_flag";
-                    }
-                    Column notes
-                    {
-                        FieldLinkName = "notes";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Freight Ledger Report"
+	show all rows from freight_ledger
+	(
+		ledger_id as "Ledger ID"
+		direction as "Direction"
+		transporter as "Transporter"
+		freight_advice as "Freight Advice"
+		amount as "Amount"
+		discount as "Discount"
+		shipment_quantity as "Shipment Quantity"
+		quantity_uom as "Quantity UOM"
+		cost_per_unit as "Cost Per Unit"
+		destination_state as "Destination State"
+		payment_schedule as "Payment Schedule"
+		amount_paid as "Amount Paid"
+		balance as "Balance"
+		reminder_flag as "Reminder Flag"
+		notes as "Notes"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Freight Ledger Overview"
+				fields
+				(
+					ledger_id as "Ledger ID"
+					direction as "Direction"
+					transporter as "Transporter"
+					freight_advice as "Freight Advice"
+					amount as "Amount"
+					discount as "Discount"
+					shipment_quantity as "Shipment Quantity"
+					quantity_uom as "Quantity UOM"
+					cost_per_unit as "Cost Per Unit"
+					destination_state as "Destination State"
+					payment_schedule as "Payment Schedule"
+					amount_paid as "Amount Paid"
+					balance as "Balance"
+					reminder_flag as "Reminder Flag"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Freight Ledger Overview"
+				fields
+				(
+					ledger_id as "Ledger ID"
+					direction as "Direction"
+					transporter as "Transporter"
+					freight_advice as "Freight Advice"
+					amount as "Amount"
+					discount as "Discount"
+					shipment_quantity as "Shipment Quantity"
+					quantity_uom as "Quantity UOM"
+					cost_per_unit as "Cost Per Unit"
+					destination_state as "Destination State"
+					payment_schedule as "Payment Schedule"
+					amount_paid as "Amount Paid"
+					balance as "Balance"
+					reminder_flag as "Reminder Flag"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

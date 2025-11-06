@@ -1,125 +1,209 @@
-// Module: 3. Sales Module
 form customer_po_upload
 {
-    DisplayName = "Customer PO Upload";
-    LinkName = "customer_po_upload";
-    Module = "3. Sales Module";
-    Type = "Form";
+	displayname = "Customer PO Upload"
+	success message = "Customer PO Upload added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field upload_id
-                {
-                    DisplayName = "Upload ID";
-                    LinkName = "upload_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field customer
-                {
-                    DisplayName = "Customer";
-                    LinkName = "customer";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "customer";
-                }
-                Field upload_date
-                {
-                    DisplayName = "Upload Date";
-                    LinkName = "upload_date";
-                    Type = "DateTime";
-                    IsMandatory = true;
-                }
-                Field po_file
-                {
-                    DisplayName = "PO File";
-                    LinkName = "po_file";
-                    Type = "UploadFile";
-                    IsMandatory = true;
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "PDF";
-                }
-                Field ai_parser_confidence
-                {
-                    DisplayName = "AI Parser Confidence";
-                    LinkName = "ai_parser_confidence";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field parsed_po_number
-                {
-                    DisplayName = "Parsed PO Number";
-                    LinkName = "parsed_po_number";
-                    Type = "SingleLine";
-                }
-                Field parsed_po_date
-                {
-                    DisplayName = "Parsed PO Date";
-                    LinkName = "parsed_po_date";
-                    Type = "Date";
-                }
-                Field delivery_location
-                {
-                    DisplayName = "Delivery Location";
-                    LinkName = "delivery_location";
-                    Type = "Dropdown";
-                    HelpText = "Suggest price list";
-                }
-                Field parsed_lines
-                {
-                    DisplayName = "Parsed Lines";
-                    LinkName = "parsed_lines";
-                    Type = "SubForm";
-                    SubFormLinkName = "parsed_lines";
-                    HelpText = "Output of parser";
-                }
-                Field manual_review_required
-                {
-                    DisplayName = "Manual Review Required";
-                    LinkName = "manual_review_required";
-                    Type = "Checkbox";
-                    HelpText = "Auto checked if confidence < threshold";
-                }
-                Field review_comments
-                {
-                    DisplayName = "Review Comments";
-                    LinkName = "review_comments";
-                    Type = "MultiLine";
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Uploaded / Parsed / Converted / Archived";
-                }
-                Field linked_sales_order
-                {
-                    DisplayName = "Linked Sales Order";
-                    LinkName = "linked_sales_order";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "sales_order";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have upload_id
+	(
+		type = autonumber
+		displayname = "Upload ID"
+		row = 1
+		column = 1
+		width = medium
+		start index = 1
+	)
+
+	must have customer
+	(
+		type = lookup
+		displayname = "Customer"
+		row = 1
+		column = 1
+		width = medium
+		related form = customer
+	)
+
+	must have upload_date
+	(
+		type = datetime
+		displayname = "Upload Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have po_file
+	(
+		type = upload file
+		displayname = "PO File"
+		row = 1
+		column = 1
+		width = medium
+		file count = 10
+		browse = localdrive
+	)
+
+	must have ai_parser_confidence
+	(
+		type = number
+		displayname = "AI Parser Confidence"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	parsed_po_number
+	(
+		type = text
+		displayname = "Parsed PO Number"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	parsed_po_date
+	(
+		type = date
+		displayname = "Parsed PO Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	delivery_location
+	(
+		type = picklist
+		displayname = "Delivery Location"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	parsed_lines
+	(
+		type = grid
+		displayname = "Parsed Lines"
+		row = 1
+		column = 1
+		width = medium
+		product_description
+		(
+			type = text
+			displayname = "Product Description"
+			width = medium
+		)
+
+		quantity
+		(
+			type = number
+			displayname = "Quantity"
+			width = medium
+		)
+
+		uom
+		(
+			type = picklist
+			displayname = "UOM"
+			width = medium
+		)
+
+		price
+		(
+			type = INR
+			displayname = "Price"
+			width = medium
+		)
+
+		parsed_sku
+		(
+			type = lookup
+			displayname = "Parsed SKU"
+			width = medium
+			related form = product_master
+		)
+
+		confidence
+		(
+			type = number
+			displayname = "Confidence %"
+			width = medium
+		)
+
+	)
+
+	manual_review_required
+	(
+		type = checkbox
+		displayname = "Manual Review Required"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	review_comments
+	(
+		type = textarea
+		displayname = "Review Comments"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	linked_sales_order
+	(
+		type = lookup
+		displayname = "Linked Sales Order"
+		row = 1
+		column = 1
+		width = medium
+		related form = sales_order
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

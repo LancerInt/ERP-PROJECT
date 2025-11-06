@@ -1,99 +1,136 @@
-// Module: 2. Purchase Module
 form quote_lines
 {
-    DisplayName = "Quote Lines";
-    LinkName = "quote_lines";
-    Module = "2. Purchase Module";
-    Type = "Form";
+	displayname = "Quote Lines"
+	success message = "Quote Lines added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field pr_line
-                {
-                    DisplayName = "PR Line";
-                    LinkName = "pr_line";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "pr_lines";
-                }
-                Field product_service
-                {
-                    DisplayName = "Product/Service";
-                    LinkName = "product_service";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                }
-                Field specification
-                {
-                    DisplayName = "Specification";
-                    LinkName = "specification";
-                    Type = "MultiLine";
-                }
-                Field quantity_offered
-                {
-                    DisplayName = "Quantity Offered";
-                    LinkName = "quantity_offered";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field unit_price
-                {
-                    DisplayName = "Unit Price";
-                    LinkName = "unit_price";
-                    Type = "INR";
-                    IsMandatory = true;
-                }
-                Field discount
-                {
-                    DisplayName = "Discount %";
-                    LinkName = "discount";
-                    Type = "Decimal";
-                }
-                Field gst
-                {
-                    DisplayName = "GST %";
-                    LinkName = "gst";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field freight_charge
-                {
-                    DisplayName = "Freight Charge";
-                    LinkName = "freight_charge";
-                    Type = "INR";
-                }
-                Field delivery_timeline
-                {
-                    DisplayName = "Delivery Timeline";
-                    LinkName = "delivery_timeline";
-                    Type = "Number";
-                    HelpText = "Days";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have pr_line
+	(
+		type = lookup
+		displayname = "PR Line"
+		row = 1
+		column = 1
+		width = medium
+		related form = pr_lines
+	)
+
+	must have product_service
+	(
+		type = lookup
+		displayname = "Product/Service"
+		row = 1
+		column = 1
+		width = medium
+		related form = product_master
+	)
+
+	specification
+	(
+		type = textarea
+		displayname = "Specification"
+		row = 1
+		column = 1
+		width = medium
+		height = 100px
+	)
+
+	must have quantity_offered
+	(
+		type = number
+		displayname = "Quantity Offered"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have unit_price
+	(
+		type = INR
+		displayname = "Unit Price"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	discount
+	(
+		type = number
+		displayname = "Discount %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have gst
+	(
+		type = number
+		displayname = "GST %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	freight_charge
+	(
+		type = INR
+		displayname = "Freight Charge"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	delivery_timeline
+	(
+		type = number
+		displayname = "Delivery Timeline"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

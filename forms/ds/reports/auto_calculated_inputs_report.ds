@@ -1,95 +1,86 @@
-report auto_calculated_inputs_report
+list auto_calculated_inputs_report
 {
-    DisplayName = "Auto-calculated Inputs Report";
-    LinkName = "auto_calculated_inputs_report";
-    Type = "List";
-    SourceFormLinkName = "auto_calculated_inputs";
-
-    ListView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column required_qty
-            {
-                FieldLinkName = "required_qty";
-            }
-            Column available_qty
-            {
-                FieldLinkName = "available_qty";
-            }
-            Column shortfall_qty
-            {
-                FieldLinkName = "shortfall_qty";
-            }
-            Column purpose
-            {
-                FieldLinkName = "purpose";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column required_qty
-            {
-                FieldLinkName = "required_qty";
-            }
-            Column available_qty
-            {
-                FieldLinkName = "available_qty";
-            }
-            Column shortfall_qty
-            {
-                FieldLinkName = "shortfall_qty";
-            }
-            Column purpose
-            {
-                FieldLinkName = "purpose";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column product
-                    {
-                        FieldLinkName = "product";
-                    }
-                    Column required_qty
-                    {
-                        FieldLinkName = "required_qty";
-                    }
-                    Column available_qty
-                    {
-                        FieldLinkName = "available_qty";
-                    }
-                    Column shortfall_qty
-                    {
-                        FieldLinkName = "shortfall_qty";
-                    }
-                    Column purpose
-                    {
-                        FieldLinkName = "purpose";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Auto-calculated Inputs Report"
+	show all rows from auto_calculated_inputs
+	(
+		product as "Product"
+		required_qty as "Required Qty"
+		available_qty as "Available Qty"
+		shortfall_qty as "Shortfall Qty"
+		purpose as "Purpose"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Auto-calculated Inputs Overview"
+				fields
+				(
+					product as "Product"
+					required_qty as "Required Qty"
+					available_qty as "Available Qty"
+					shortfall_qty as "Shortfall Qty"
+					purpose as "Purpose"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Auto-calculated Inputs Overview"
+				fields
+				(
+					product as "Product"
+					required_qty as "Required Qty"
+					available_qty as "Available Qty"
+					shortfall_qty as "Shortfall Qty"
+					purpose as "Purpose"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

@@ -1,113 +1,210 @@
-// Module: 6. Inventory, Logistics & Returns
 form job_work_receipt
 {
-    DisplayName = "Job Work Receipt";
-    LinkName = "job_work_receipt";
-    Module = "6. Inventory, Logistics & Returns";
-    Type = "Form";
+	displayname = "Job Work Receipt"
+	success message = "Job Work Receipt added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field receipt_no
-                {
-                    DisplayName = "Receipt No.";
-                    LinkName = "receipt_no";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field receipt_date
-                {
-                    DisplayName = "Receipt Date";
-                    LinkName = "receipt_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field job_work_order
-                {
-                    DisplayName = "Job Work Order";
-                    LinkName = "job_work_order";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "job_work_order";
-                }
-                Field jw_dc_reference
-                {
-                    DisplayName = "JW DC Reference";
-                    LinkName = "jw_dc_reference";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "job_work_dc";
-                }
-                Field vendor
-                {
-                    DisplayName = "Vendor";
-                    LinkName = "vendor";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "vendor";
-                }
-                Field returned_goods
-                {
-                    DisplayName = "Returned Goods";
-                    LinkName = "returned_goods";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "returned_goods";
-                }
-                Field new_batch_id
-                {
-                    DisplayName = "New Batch ID";
-                    LinkName = "new_batch_id";
-                    Type = "SingleLine";
-                    HelpText = "Distinct batch";
-                }
-                Field qc_result
-                {
-                    DisplayName = "QC Result";
-                    LinkName = "qc_result";
-                    Type = "Dropdown";
-                    HelpText = "Pass / Fail";
-                }
-                Field pending_quantity
-                {
-                    DisplayName = "Pending Quantity";
-                    LinkName = "pending_quantity";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field charges
-                {
-                    DisplayName = "Charges";
-                    LinkName = "charges";
-                    Type = "SubForm";
-                    SubFormLinkName = "charges";
-                    HelpText = "Job work + freight";
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Draft / Completed";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have receipt_no
+	(
+		type = autonumber
+		displayname = "Receipt No."
+		row = 1
+		column = 1
+		width = medium
+		start index = 1
+	)
+
+	must have receipt_date
+	(
+		type = date
+		displayname = "Receipt Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have job_work_order
+	(
+		type = lookup
+		displayname = "Job Work Order"
+		row = 1
+		column = 1
+		width = medium
+		related form = job_work_order
+	)
+
+	must have jw_dc_reference
+	(
+		type = lookup
+		displayname = "JW DC Reference"
+		row = 1
+		column = 1
+		width = medium
+		related form = job_work_dc
+	)
+
+	must have vendor
+	(
+		type = lookup
+		displayname = "Vendor"
+		row = 1
+		column = 1
+		width = medium
+		related form = vendor
+	)
+
+	must have returned_goods
+	(
+		type = grid
+		displayname = "Returned Goods"
+		row = 1
+		column = 1
+		width = medium
+		must have product
+		(
+			type = lookup
+			displayname = "Product"
+			width = medium
+			related form = product_master
+		)
+
+		must have batch
+		(
+			type = text
+			displayname = "Batch"
+			width = medium
+		)
+
+		must have quantity_received
+		(
+			type = number
+			displayname = "Quantity Received"
+			width = medium
+		)
+
+		must have uom
+		(
+			type = picklist
+			displayname = "UOM"
+			width = medium
+		)
+
+		viability
+		(
+			type = picklist
+			displayname = "Viability"
+			width = medium
+		)
+
+	)
+
+	new_batch_id
+	(
+		type = text
+		displayname = "New Batch ID"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	qc_result
+	(
+		type = picklist
+		displayname = "QC Result"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have pending_quantity
+	(
+		type = number
+		displayname = "Pending Quantity"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	charges
+	(
+		type = grid
+		displayname = "Charges"
+		row = 1
+		column = 1
+		width = medium
+		must have charge_type
+		(
+			type = picklist
+			displayname = "Charge Type"
+			width = medium
+		)
+
+		must have amount
+		(
+			type = INR
+			displayname = "Amount"
+			width = medium
+		)
+
+		tds
+		(
+			type = number
+			displayname = "TDS %"
+			width = medium
+		)
+
+		must have payable_by
+		(
+			type = picklist
+			displayname = "Payable By"
+			width = medium
+		)
+
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }
