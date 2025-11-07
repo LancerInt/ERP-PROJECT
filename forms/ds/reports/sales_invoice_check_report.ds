@@ -4,7 +4,6 @@ list sales_invoice_check_report
 	show all rows from sales_invoice_check
 	(
 		invoice_check_id as "Invoice Check ID"
-		dc_reference as "DC Reference"
 		statutory_invoice_upload as "Statutory Invoice Upload"
 		invoice_number as "Invoice Number"
 		invoice_date as "Invoice Date"
@@ -14,7 +13,6 @@ list sales_invoice_check_report
 		variance_flag as "Variance Flag"
 		remarks as "Remarks"
 		acceptance_timestamp as "Acceptance Timestamp"
-		accepted_by as "Accepted By"
 	)
 	quickview
 	(
@@ -26,7 +24,6 @@ list sales_invoice_check_report
 				fields
 				(
 					invoice_check_id as "Invoice Check ID"
-					dc_reference as "DC Reference"
 					statutory_invoice_upload as "Statutory Invoice Upload"
 					invoice_number as "Invoice Number"
 					invoice_date as "Invoice Date"
@@ -36,7 +33,6 @@ list sales_invoice_check_report
 					variance_flag as "Variance Flag"
 					remarks as "Remarks"
 					acceptance_timestamp as "Acceptance Timestamp"
-					accepted_by as "Accepted By"
 				)
 			)
 		)
@@ -80,7 +76,6 @@ list sales_invoice_check_report
 				fields
 				(
 					invoice_check_id as "Invoice Check ID"
-					dc_reference as "DC Reference"
 					statutory_invoice_upload as "Statutory Invoice Upload"
 					invoice_number as "Invoice Number"
 					invoice_date as "Invoice Date"
@@ -90,7 +85,6 @@ list sales_invoice_check_report
 					variance_flag as "Variance Flag"
 					remarks as "Remarks"
 					acceptance_timestamp as "Acceptance Timestamp"
-					accepted_by as "Accepted By"
 				)
 			)
 		)

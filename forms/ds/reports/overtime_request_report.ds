@@ -4,14 +4,11 @@ list overtime_request_report
 	show all rows from overtime_request
 	(
 		request_no as "Request No."
-		staff as "Staff"
 		date as "Date"
-		shift as "Shift"
 		hours_worked as "Hours Worked"
 		task_description as "Task Description"
 		supporting_evidence as "Supporting Evidence"
 		approval_status as "Approval Status"
-		approved_by as "Approved By"
 		wage_integration_flag as "Wage Integration Flag"
 	)
 	quickview
@@ -24,14 +21,11 @@ list overtime_request_report
 				fields
 				(
 					request_no as "Request No."
-					staff as "Staff"
 					date as "Date"
-					shift as "Shift"
 					hours_worked as "Hours Worked"
 					task_description as "Task Description"
 					supporting_evidence as "Supporting Evidence"
 					approval_status as "Approval Status"
-					approved_by as "Approved By"
 					wage_integration_flag as "Wage Integration Flag"
 				)
 			)
@@ -76,14 +70,11 @@ list overtime_request_report
 				fields
 				(
 					request_no as "Request No."
-					staff as "Staff"
 					date as "Date"
-					shift as "Shift"
 					hours_worked as "Hours Worked"
 					task_description as "Task Description"
 					supporting_evidence as "Supporting Evidence"
 					approval_status as "Approval Status"
-					approved_by as "Approved By"
 					wage_integration_flag as "Wage Integration Flag"
 				)
 			)

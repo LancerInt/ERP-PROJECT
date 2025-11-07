@@ -4,8 +4,6 @@ list quote_response_report
 	show all rows from quote_response
 	(
 		quote_id as "Quote ID"
-		rfq as "RFQ"
-		vendor as "Vendor"
 		quote_date as "Quote Date"
 		price_valid_till as "Price Valid Till"
 		currency as "Currency"
@@ -29,8 +27,6 @@ list quote_response_report
 				fields
 				(
 					quote_id as "Quote ID"
-					rfq as "RFQ"
-					vendor as "Vendor"
 					quote_date as "Quote Date"
 					price_valid_till as "Price Valid Till"
 					currency as "Currency"
@@ -86,8 +82,6 @@ list quote_response_report
 				fields
 				(
 					quote_id as "Quote ID"
-					rfq as "RFQ"
-					vendor as "Vendor"
 					quote_date as "Quote Date"
 					price_valid_till as "Price Valid Till"
 					currency as "Currency"

@@ -4,12 +4,9 @@ list quote_evaluation_report
 	show all rows from quote_evaluation
 	(
 		evaluation_id as "Evaluation ID"
-		rfq as "RFQ"
 		evaluation_date as "Evaluation Date"
-		evaluated_by as "Evaluated By"
 		comparison_table as "Comparison Table"
 		best_quote_flag as "Best Quote Flag"
-		recommended_vendor as "Recommended Vendor"
 		justification_notes as "Justification Notes"
 		approval_status as "Approval Status"
 		approval_trail as "Approval Trail"
@@ -24,12 +21,9 @@ list quote_evaluation_report
 				fields
 				(
 					evaluation_id as "Evaluation ID"
-					rfq as "RFQ"
 					evaluation_date as "Evaluation Date"
-					evaluated_by as "Evaluated By"
 					comparison_table as "Comparison Table"
 					best_quote_flag as "Best Quote Flag"
-					recommended_vendor as "Recommended Vendor"
 					justification_notes as "Justification Notes"
 					approval_status as "Approval Status"
 					approval_trail as "Approval Trail"
@@ -76,12 +70,9 @@ list quote_evaluation_report
 				fields
 				(
 					evaluation_id as "Evaluation ID"
-					rfq as "RFQ"
 					evaluation_date as "Evaluation Date"
-					evaluated_by as "Evaluated By"
 					comparison_table as "Comparison Table"
 					best_quote_flag as "Best Quote Flag"
-					recommended_vendor as "Recommended Vendor"
 					justification_notes as "Justification Notes"
 					approval_status as "Approval Status"
 					approval_trail as "Approval Trail"

@@ -15,19 +15,11 @@ form materials_supplied
 	(
 		type = picklist
 		displayname = "Material Type"
+		values = {"RM","PM","Machine"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have product_machine
-	(
-		type = lookup
-		displayname = "Product/Machine"
-		row = 1
-		column = 1
-		width = medium
-		related forms = {"product_master","machinery"}
 	)
 
 	batch
@@ -52,6 +44,7 @@ form materials_supplied
 	(
 		type = picklist
 		displayname = "UOM"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

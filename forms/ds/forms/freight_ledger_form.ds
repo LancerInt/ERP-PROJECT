@@ -15,39 +15,21 @@ form freight_ledger
 	(
 		type = autonumber
 		displayname = "Ledger ID"
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have direction
 	(
 		type = picklist
 		displayname = "Direction"
+		values = {"Inbound","Outbound","Transfer"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have transporter
-	(
-		type = lookup
-		displayname = "Transporter"
-		row = 1
-		column = 1
-		width = medium
-		related form = transporter
-	)
-
-	must have freight_advice
-	(
-		type = lookup
-		displayname = "Freight Advice"
-		row = 1
-		column = 1
-		width = medium
-		related forms = {"freight_advice","freight_advice_2"}
 	)
 
 	must have amount
@@ -81,6 +63,7 @@ form freight_ledger
 	(
 		type = picklist
 		displayname = "Quantity UOM"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -99,6 +82,7 @@ form freight_ledger
 	(
 		type = picklist
 		displayname = "Destination State"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -108,22 +92,13 @@ form freight_ledger
 	(
 		type = grid
 		displayname = "Payment Schedule"
-		row = 1
-		column = 1
-		width = medium
 		must have freight_type
 		(
 			type = picklist
 			displayname = "Freight Type"
+			values = {"Local Drayage","Linehaul"}
+			maxchar = 100
 			width = medium
-		)
-
-		must have transporter
-		(
-			type = lookup
-			displayname = "Transporter"
-			width = medium
-			related form = transporter
 		)
 
 		must have due_date
@@ -154,6 +129,9 @@ form freight_ledger
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	amount_paid
@@ -187,10 +165,10 @@ form freight_ledger
 	(
 		type = textarea
 		displayname = "Notes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

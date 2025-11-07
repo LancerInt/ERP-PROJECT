@@ -5,10 +5,6 @@ list receipt_advice_report
 	(
 		receipt_advice_no as "Receipt Advice No."
 		receipt_date as "Receipt Date"
-		warehouse as "Warehouse"
-		godown as "Godown"
-		vendor as "Vendor"
-		linked_pos as "Linked PO(s)"
 		vehicle_number as "Vehicle Number"
 		driver_name as "Driver Name"
 		invoice_upload as "Invoice Upload"
@@ -21,7 +17,6 @@ list receipt_advice_report
 		qc_status as "QC Status"
 		partial_receipt_flag as "Partial Receipt Flag"
 		remarks as "Remarks"
-		created_by as "Created By"
 		created_time as "Created Time"
 	)
 	quickview
@@ -35,10 +30,6 @@ list receipt_advice_report
 				(
 					receipt_advice_no as "Receipt Advice No."
 					receipt_date as "Receipt Date"
-					warehouse as "Warehouse"
-					godown as "Godown"
-					vendor as "Vendor"
-					linked_pos as "Linked PO(s)"
 					vehicle_number as "Vehicle Number"
 					driver_name as "Driver Name"
 					invoice_upload as "Invoice Upload"
@@ -51,7 +42,6 @@ list receipt_advice_report
 					qc_status as "QC Status"
 					partial_receipt_flag as "Partial Receipt Flag"
 					remarks as "Remarks"
-					created_by as "Created By"
 					created_time as "Created Time"
 				)
 			)
@@ -97,10 +87,6 @@ list receipt_advice_report
 				(
 					receipt_advice_no as "Receipt Advice No."
 					receipt_date as "Receipt Date"
-					warehouse as "Warehouse"
-					godown as "Godown"
-					vendor as "Vendor"
-					linked_pos as "Linked PO(s)"
 					vehicle_number as "Vehicle Number"
 					driver_name as "Driver Name"
 					invoice_upload as "Invoice Upload"
@@ -113,7 +99,6 @@ list receipt_advice_report
 					qc_status as "QC Status"
 					partial_receipt_flag as "Partial Receipt Flag"
 					remarks as "Remarks"
-					created_by as "Created By"
 					created_time as "Created Time"
 				)
 			)

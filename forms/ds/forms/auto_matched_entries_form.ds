@@ -24,19 +24,11 @@ form auto_matched_entries
 	(
 		type = picklist
 		displayname = "Match Type"
+		values = {"Payable","Receivable"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have linked_document
-	(
-		type = lookup
-		displayname = "Linked Document"
-		row = 1
-		column = 1
-		width = medium
-		related forms = {"vendor_ledger","customer_ledger"}
 	)
 
 	must have amount
@@ -52,6 +44,8 @@ form auto_matched_entries
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Confirmed","Pending"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

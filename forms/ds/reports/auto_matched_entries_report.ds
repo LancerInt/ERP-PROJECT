@@ -5,7 +5,6 @@ list auto_matched_entries_report
 	(
 		statement_line_id as "Statement Line ID"
 		match_type as "Match Type"
-		linked_document as "Linked Document"
 		amount as "Amount"
 		status as "Status"
 	)
@@ -20,7 +19,6 @@ list auto_matched_entries_report
 				(
 					statement_line_id as "Statement Line ID"
 					match_type as "Match Type"
-					linked_document as "Linked Document"
 					amount as "Amount"
 					status as "Status"
 				)
@@ -67,7 +65,6 @@ list auto_matched_entries_report
 				(
 					statement_line_id as "Statement Line ID"
 					match_type as "Match Type"
-					linked_document as "Linked Document"
 					amount as "Amount"
 					status as "Status"
 				)

@@ -3,7 +3,6 @@ list comparison_table_report
 	displayName = "Comparison Table Report"
 	show all rows from comparison_table
 	(
-		vendor as "Vendor"
 		total_cost as "Total Cost"
 		lead_time as "Lead Time"
 		freight_terms as "Freight Terms"
@@ -20,7 +19,6 @@ list comparison_table_report
 				title = "Comparison Table Overview"
 				fields
 				(
-					vendor as "Vendor"
 					total_cost as "Total Cost"
 					lead_time as "Lead Time"
 					freight_terms as "Freight Terms"
@@ -69,7 +67,6 @@ list comparison_table_report
 				title = "Comparison Table Overview"
 				fields
 				(
-					vendor as "Vendor"
 					total_cost as "Total Cost"
 					lead_time as "Lead Time"
 					freight_terms as "Freight Terms"

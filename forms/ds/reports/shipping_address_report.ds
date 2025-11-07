@@ -6,7 +6,6 @@ list shipping_address_report
 		address_label as "Address Label"
 		address as "Address"
 		delivery_region as "Delivery Region"
-		default_price_list as "Default Price List"
 		contact_person as "Contact Person"
 		contact_phone as "Contact Phone"
 	)
@@ -22,7 +21,6 @@ list shipping_address_report
 					address_label as "Address Label"
 					address as "Address"
 					delivery_region as "Delivery Region"
-					default_price_list as "Default Price List"
 					contact_person as "Contact Person"
 					contact_phone as "Contact Phone"
 				)
@@ -70,7 +68,6 @@ list shipping_address_report
 					address_label as "Address Label"
 					address as "Address"
 					delivery_region as "Delivery Region"
-					default_price_list as "Default Price List"
 					contact_person as "Contact Person"
 					contact_phone as "Contact Phone"
 				)

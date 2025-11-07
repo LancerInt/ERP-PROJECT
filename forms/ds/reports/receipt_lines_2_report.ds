@@ -3,12 +3,10 @@ list receipt_lines_2_report
 	displayName = "Receipt Lines Report"
 	show all rows from receipt_lines_2
 	(
-		product as "Product"
 		batch as "Batch"
 		quantity_dispatched as "Quantity Dispatched"
 		quantity_received as "Quantity Received"
 		uom as "UOM"
-		received_godown as "Received Godown"
 		condition as "Condition"
 	)
 	quickview
@@ -20,12 +18,10 @@ list receipt_lines_2_report
 				title = "Receipt Lines Overview"
 				fields
 				(
-					product as "Product"
 					batch as "Batch"
 					quantity_dispatched as "Quantity Dispatched"
 					quantity_received as "Quantity Received"
 					uom as "UOM"
-					received_godown as "Received Godown"
 					condition as "Condition"
 				)
 			)
@@ -69,12 +65,10 @@ list receipt_lines_2_report
 				title = "Receipt Lines Overview"
 				fields
 				(
-					product as "Product"
 					batch as "Batch"
 					quantity_dispatched as "Quantity Dispatched"
 					quantity_received as "Quantity Received"
 					uom as "UOM"
-					received_godown as "Received Godown"
 					condition as "Condition"
 				)
 			)

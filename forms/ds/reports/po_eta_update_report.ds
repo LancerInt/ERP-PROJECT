@@ -4,9 +4,7 @@ list po_eta_update_report
 	show all rows from po_eta_update
 	(
 		update_id as "Update ID"
-		po as "PO"
 		update_date as "Update Date"
-		updated_by as "Updated By"
 		expected_arrival_date as "Expected Arrival Date"
 		status as "Status"
 		remarks as "Remarks"
@@ -21,9 +19,7 @@ list po_eta_update_report
 				fields
 				(
 					update_id as "Update ID"
-					po as "PO"
 					update_date as "Update Date"
-					updated_by as "Updated By"
 					expected_arrival_date as "Expected Arrival Date"
 					status as "Status"
 					remarks as "Remarks"
@@ -70,9 +66,7 @@ list po_eta_update_report
 				fields
 				(
 					update_id as "Update ID"
-					po as "PO"
 					update_date as "Update Date"
-					updated_by as "Updated By"
 					expected_arrival_date as "Expected Arrival Date"
 					status as "Status"
 					remarks as "Remarks"

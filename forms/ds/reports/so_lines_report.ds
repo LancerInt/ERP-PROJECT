@@ -4,7 +4,6 @@ list so_lines_report
 	show all rows from so_lines
 	(
 		line_no as "Line No."
-		product as "Product"
 		batch_preference as "Batch Preference"
 		quantity_ordered as "Quantity Ordered"
 		uom as "UOM"
@@ -25,7 +24,6 @@ list so_lines_report
 				fields
 				(
 					line_no as "Line No."
-					product as "Product"
 					batch_preference as "Batch Preference"
 					quantity_ordered as "Quantity Ordered"
 					uom as "UOM"
@@ -78,7 +76,6 @@ list so_lines_report
 				fields
 				(
 					line_no as "Line No."
-					product as "Product"
 					batch_preference as "Batch Preference"
 					quantity_ordered as "Quantity Ordered"
 					uom as "UOM"

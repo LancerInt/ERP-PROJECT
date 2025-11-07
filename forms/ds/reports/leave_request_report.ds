@@ -4,7 +4,6 @@ list leave_request_report
 	show all rows from leave_request
 	(
 		request_no as "Request No."
-		staff as "Staff"
 		leave_type as "Leave Type"
 		start_date as "Start Date"
 		end_date as "End Date"
@@ -12,7 +11,6 @@ list leave_request_report
 		reason as "Reason"
 		attachment as "Attachment"
 		status as "Status"
-		approver as "Approver"
 		approval_date as "Approval Date"
 	)
 	quickview
@@ -25,7 +23,6 @@ list leave_request_report
 				fields
 				(
 					request_no as "Request No."
-					staff as "Staff"
 					leave_type as "Leave Type"
 					start_date as "Start Date"
 					end_date as "End Date"
@@ -33,7 +30,6 @@ list leave_request_report
 					reason as "Reason"
 					attachment as "Attachment"
 					status as "Status"
-					approver as "Approver"
 					approval_date as "Approval Date"
 				)
 			)
@@ -78,7 +74,6 @@ list leave_request_report
 				fields
 				(
 					request_no as "Request No."
-					staff as "Staff"
 					leave_type as "Leave Type"
 					start_date as "Start Date"
 					end_date as "End Date"
@@ -86,7 +81,6 @@ list leave_request_report
 					reason as "Reason"
 					attachment as "Attachment"
 					status as "Status"
-					approver as "Approver"
 					approval_date as "Approval Date"
 				)
 			)

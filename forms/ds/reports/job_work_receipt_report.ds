@@ -5,9 +5,6 @@ list job_work_receipt_report
 	(
 		receipt_no as "Receipt No."
 		receipt_date as "Receipt Date"
-		job_work_order as "Job Work Order"
-		jw_dc_reference as "JW DC Reference"
-		vendor as "Vendor"
 		returned_goods as "Returned Goods"
 		new_batch_id as "New Batch ID"
 		qc_result as "QC Result"
@@ -26,9 +23,6 @@ list job_work_receipt_report
 				(
 					receipt_no as "Receipt No."
 					receipt_date as "Receipt Date"
-					job_work_order as "Job Work Order"
-					jw_dc_reference as "JW DC Reference"
-					vendor as "Vendor"
 					returned_goods as "Returned Goods"
 					new_batch_id as "New Batch ID"
 					qc_result as "QC Result"
@@ -79,9 +73,6 @@ list job_work_receipt_report
 				(
 					receipt_no as "Receipt No."
 					receipt_date as "Receipt Date"
-					job_work_order as "Job Work Order"
-					jw_dc_reference as "JW DC Reference"
-					vendor as "Vendor"
 					returned_goods as "Returned Goods"
 					new_batch_id as "New Batch ID"
 					qc_result as "QC Result"

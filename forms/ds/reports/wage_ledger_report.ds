@@ -4,8 +4,6 @@ list wage_ledger_report
 	show all rows from wage_ledger
 	(
 		ledger_id as "Ledger ID"
-		wage_voucher as "Wage Voucher"
-		contractor_staff_group as "Contractor/Staff Group"
 		amount as "Amount"
 		tds as "TDS %"
 		payment_week as "Payment Week"
@@ -23,8 +21,6 @@ list wage_ledger_report
 				fields
 				(
 					ledger_id as "Ledger ID"
-					wage_voucher as "Wage Voucher"
-					contractor_staff_group as "Contractor/Staff Group"
 					amount as "Amount"
 					tds as "TDS %"
 					payment_week as "Payment Week"
@@ -74,8 +70,6 @@ list wage_ledger_report
 				fields
 				(
 					ledger_id as "Ledger ID"
-					wage_voucher as "Wage Voucher"
-					contractor_staff_group as "Contractor/Staff Group"
 					amount as "Amount"
 					tds as "TDS %"
 					payment_week as "Payment Week"

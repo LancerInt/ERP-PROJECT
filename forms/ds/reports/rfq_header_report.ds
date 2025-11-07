@@ -4,8 +4,6 @@ list rfq_header_report
 	show all rows from rfq_header
 	(
 		rfq_no as "RFQ No."
-		linked_prs as "Linked PRs"
-		created_by as "Created By"
 		creation_date as "Creation Date"
 		rfq_mode as "RFQ Mode"
 		rfq_documents as "RFQ Documents"
@@ -13,7 +11,6 @@ list rfq_header_report
 		quote_count_expected as "Quote Count Expected"
 		skip_rfq_flag as "Skip RFQ Flag"
 		skip_rfq_justification as "Skip RFQ Justification"
-		purchase_manager_approval as "Purchase Manager Approval"
 		approval_attachment as "Approval Attachment"
 		dispatch_eta_updates as "Dispatch ETA Updates"
 	)
@@ -27,8 +24,6 @@ list rfq_header_report
 				fields
 				(
 					rfq_no as "RFQ No."
-					linked_prs as "Linked PRs"
-					created_by as "Created By"
 					creation_date as "Creation Date"
 					rfq_mode as "RFQ Mode"
 					rfq_documents as "RFQ Documents"
@@ -36,7 +31,6 @@ list rfq_header_report
 					quote_count_expected as "Quote Count Expected"
 					skip_rfq_flag as "Skip RFQ Flag"
 					skip_rfq_justification as "Skip RFQ Justification"
-					purchase_manager_approval as "Purchase Manager Approval"
 					approval_attachment as "Approval Attachment"
 					dispatch_eta_updates as "Dispatch ETA Updates"
 				)
@@ -82,8 +76,6 @@ list rfq_header_report
 				fields
 				(
 					rfq_no as "RFQ No."
-					linked_prs as "Linked PRs"
-					created_by as "Created By"
 					creation_date as "Creation Date"
 					rfq_mode as "RFQ Mode"
 					rfq_documents as "RFQ Documents"
@@ -91,7 +83,6 @@ list rfq_header_report
 					quote_count_expected as "Quote Count Expected"
 					skip_rfq_flag as "Skip RFQ Flag"
 					skip_rfq_justification as "Skip RFQ Justification"
-					purchase_manager_approval as "Purchase Manager Approval"
 					approval_attachment as "Approval Attachment"
 					dispatch_eta_updates as "Dispatch ETA Updates"
 				)

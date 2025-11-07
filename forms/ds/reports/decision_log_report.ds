@@ -5,7 +5,6 @@ list decision_log_report
 	(
 		decision_id as "Decision ID"
 		topic as "Topic"
-		stakeholders as "Stakeholders"
 		decision_details as "Decision Details"
 		decision_date as "Decision Date"
 		follow_up_actions as "Follow-up Actions"
@@ -21,7 +20,6 @@ list decision_log_report
 				(
 					decision_id as "Decision ID"
 					topic as "Topic"
-					stakeholders as "Stakeholders"
 					decision_details as "Decision Details"
 					decision_date as "Decision Date"
 					follow_up_actions as "Follow-up Actions"
@@ -69,7 +67,6 @@ list decision_log_report
 				(
 					decision_id as "Decision ID"
 					topic as "Topic"
-					stakeholders as "Stakeholders"
 					decision_details as "Decision Details"
 					decision_date as "Decision Date"
 					follow_up_actions as "Follow-up Actions"

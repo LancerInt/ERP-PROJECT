@@ -20,30 +20,11 @@ form price_list
 		width = medium
 	)
 
-	must have company
-	(
-		type = lookup
-		displayname = "Company"
-		row = 1
-		column = 1
-		width = medium
-		related form = company
-	)
-
-	customer
-	(
-		type = lookup
-		displayname = "Customer"
-		row = 1
-		column = 1
-		width = medium
-		related form = customer
-	)
-
 	delivery_region
 	(
 		type = picklist
 		displayname = "Delivery Region"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -53,6 +34,7 @@ form price_list
 	(
 		type = picklist
 		displayname = "Currency"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -80,6 +62,7 @@ form price_list
 	(
 		type = picklist
 		displayname = "Default Freight Terms"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -89,6 +72,8 @@ form price_list
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Draft","Active","Archived"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -98,21 +83,11 @@ form price_list
 	(
 		type = grid
 		displayname = "Price Lines"
-		row = 1
-		column = 1
-		width = medium
-		must have product
-		(
-			type = lookup
-			displayname = "Product"
-			width = medium
-			related form = product_master
-		)
-
 		must have uom
 		(
 			type = picklist
 			displayname = "UOM"
+			maxchar = 100
 			width = medium
 		)
 
@@ -158,16 +133,19 @@ form price_list
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	notes
 	(
 		type = textarea
 		displayname = "Notes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

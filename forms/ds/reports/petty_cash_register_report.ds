@@ -4,8 +4,6 @@ list petty_cash_register_report
 	show all rows from petty_cash_register
 	(
 		register_id as "Register ID"
-		warehouse as "Warehouse"
-		coordinator as "Coordinator"
 		opening_balance as "Opening Balance"
 		transactions as "Transactions"
 		current_balance as "Current Balance"
@@ -21,8 +19,6 @@ list petty_cash_register_report
 				fields
 				(
 					register_id as "Register ID"
-					warehouse as "Warehouse"
-					coordinator as "Coordinator"
 					opening_balance as "Opening Balance"
 					transactions as "Transactions"
 					current_balance as "Current Balance"
@@ -70,8 +66,6 @@ list petty_cash_register_report
 				fields
 				(
 					register_id as "Register ID"
-					warehouse as "Warehouse"
-					coordinator as "Coordinator"
 					opening_balance as "Opening Balance"
 					transactions as "Transactions"
 					current_balance as "Current Balance"

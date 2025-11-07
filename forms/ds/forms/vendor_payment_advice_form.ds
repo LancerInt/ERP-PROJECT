@@ -15,39 +15,21 @@ form vendor_payment_advice
 	(
 		type = autonumber
 		displayname = "Advice No."
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have vendor
-	(
-		type = lookup
-		displayname = "Vendor"
 		row = 1
 		column = 1
 		width = medium
-		related form = vendor
 	)
 
 	must have source_document_type
 	(
 		type = picklist
 		displayname = "Source Document Type"
+		values = {"PO","Receipt","Freight","Wage","Credit Note"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have source_document
-	(
-		type = lookup
-		displayname = "Source Document"
-		row = 1
-		column = 1
-		width = medium
-		related forms = {"purchase_order","receipt_advice","freight_advice","wage_voucher","credit_debit_note"}
 	)
 
 	must have amount
@@ -63,13 +45,12 @@ form vendor_payment_advice
 	(
 		type = grid
 		displayname = "Tax Components"
-		row = 1
-		column = 1
-		width = medium
 		must have tax_type
 		(
 			type = picklist
 			displayname = "Tax Type"
+			values = {"TDS","TCS"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -87,6 +68,9 @@ form vendor_payment_advice
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have due_date
@@ -102,47 +86,32 @@ form vendor_payment_advice
 	(
 		type = picklist
 		displayname = "Payment Method"
+		values = {"Bank Transfer","Cash","Cheque","UPI"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have prepared_by
-	(
-		type = lookup
-		displayname = "Prepared By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
 	)
 
 	must have approval_workflow
 	(
 		type = grid
 		displayname = "Approval Workflow"
-		row = 1
-		column = 1
-		width = medium
 		must have stage
 		(
 			type = picklist
 			displayname = "Stage"
+			values = {"Draft Review","Finance Manager Review","Office Manager Authorization"}
+			maxchar = 100
 			width = medium
-		)
-
-		must have approver
-		(
-			type = lookup
-			displayname = "Approver"
-			width = medium
-			related form = stakeholder_user
 		)
 
 		must have decision
 		(
 			type = picklist
 			displayname = "Decision"
+			values = {"Pending","Approved","Rejected"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -157,16 +126,21 @@ form vendor_payment_advice
 		(
 			type = textarea
 			displayname = "Remarks"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have status
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Draft","Pending","Approved","Paid","On Hold"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -176,10 +150,10 @@ form vendor_payment_advice
 	(
 		type = textarea
 		displayname = "Notes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

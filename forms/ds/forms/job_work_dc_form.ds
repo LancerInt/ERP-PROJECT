@@ -15,30 +15,10 @@ form job_work_dc
 	(
 		type = autonumber
 		displayname = "JW DC No."
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have job_work_order
-	(
-		type = lookup
-		displayname = "Job Work Order"
 		row = 1
 		column = 1
 		width = medium
-		related form = job_work_order
-	)
-
-	must have vendor
-	(
-		type = lookup
-		displayname = "Vendor"
-		row = 1
-		column = 1
-		width = medium
-		related form = vendor
 	)
 
 	must have dispatch_date
@@ -50,20 +30,11 @@ form job_work_dc
 		width = medium
 	)
 
-	transporter
-	(
-		type = lookup
-		displayname = "Transporter"
-		row = 1
-		column = 1
-		width = medium
-		related form = transporter
-	)
-
 	must have freight_terms
 	(
 		type = picklist
 		displayname = "Freight Terms"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -73,22 +44,13 @@ form job_work_dc
 	(
 		type = grid
 		displayname = "Issued Materials"
-		row = 1
-		column = 1
-		width = medium
 		must have material_type
 		(
 			type = picklist
 			displayname = "Material Type"
+			values = {"RM","PM","Machine"}
+			maxchar = 100
 			width = medium
-		)
-
-		must have product_machine
-		(
-			type = lookup
-			displayname = "Product/Machine"
-			width = medium
-			related forms = {"product_master","machinery"}
 		)
 
 		batch
@@ -109,6 +71,7 @@ form job_work_dc
 		(
 			type = picklist
 			displayname = "UOM"
+			maxchar = 100
 			width = medium
 		)
 
@@ -119,23 +82,28 @@ form job_work_dc
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	documents
 	(
 		type = upload file
 		displayname = "Documents"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	must have status
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Draft","Dispatched","Completed"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

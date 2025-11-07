@@ -15,10 +15,10 @@ form job_work_receipt
 	(
 		type = autonumber
 		displayname = "Receipt No."
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have receipt_date
@@ -30,51 +30,10 @@ form job_work_receipt
 		width = medium
 	)
 
-	must have job_work_order
-	(
-		type = lookup
-		displayname = "Job Work Order"
-		row = 1
-		column = 1
-		width = medium
-		related form = job_work_order
-	)
-
-	must have jw_dc_reference
-	(
-		type = lookup
-		displayname = "JW DC Reference"
-		row = 1
-		column = 1
-		width = medium
-		related form = job_work_dc
-	)
-
-	must have vendor
-	(
-		type = lookup
-		displayname = "Vendor"
-		row = 1
-		column = 1
-		width = medium
-		related form = vendor
-	)
-
 	must have returned_goods
 	(
 		type = grid
 		displayname = "Returned Goods"
-		row = 1
-		column = 1
-		width = medium
-		must have product
-		(
-			type = lookup
-			displayname = "Product"
-			width = medium
-			related form = product_master
-		)
-
 		must have batch
 		(
 			type = text
@@ -93,6 +52,7 @@ form job_work_receipt
 		(
 			type = picklist
 			displayname = "UOM"
+			maxchar = 100
 			width = medium
 		)
 
@@ -100,9 +60,14 @@ form job_work_receipt
 		(
 			type = picklist
 			displayname = "Viability"
+			values = {"Resaleable","Reformulate","Scrap"}
+			maxchar = 100
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	new_batch_id
@@ -118,6 +83,8 @@ form job_work_receipt
 	(
 		type = picklist
 		displayname = "QC Result"
+		values = {"Pass","Fail"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -136,13 +103,12 @@ form job_work_receipt
 	(
 		type = grid
 		displayname = "Charges"
-		row = 1
-		column = 1
-		width = medium
 		must have charge_type
 		(
 			type = picklist
 			displayname = "Charge Type"
+			values = {"Job Work","Freight","Loading","Unloading"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -164,15 +130,22 @@ form job_work_receipt
 		(
 			type = picklist
 			displayname = "Payable By"
+			values = {"Company","Vendor"}
+			maxchar = 100
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have status
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Draft","Completed"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

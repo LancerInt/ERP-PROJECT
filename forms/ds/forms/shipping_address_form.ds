@@ -24,9 +24,6 @@ form shipping_address
 	(
 		type = address
 		displayname = "Address"
-		row = 1
-		column = 1
-		width = medium
 		capture_coordinates = true
 		adjust_using_map = false
 		personal data = true
@@ -54,9 +51,9 @@ form shipping_address
 			displayname = "State / Province"
 		)
 
-		postal_code
+		postal_Code
 		(
-			type = postal_code
+			type = postal_Code
 			displayname = "Postal Code"
 		)
 
@@ -79,25 +76,19 @@ form shipping_address
 			displayname = "Longitude"
 			visibility = false
 		)
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have delivery_region
 	(
 		type = picklist
 		displayname = "Delivery Region"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	default_price_list
-	(
-		type = lookup
-		displayname = "Default Price List"
-		row = 1
-		column = 1
-		width = medium
-		related form = price_list
 	)
 
 	contact_person
@@ -113,10 +104,10 @@ form shipping_address
 	(
 		type = phonenumber
 		displayname = "Contact Phone"
+		personal data = true
 		row = 1
 		column = 1
 		width = medium
-		personal data = true
 	)
 
 	actions

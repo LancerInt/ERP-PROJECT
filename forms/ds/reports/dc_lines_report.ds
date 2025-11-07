@@ -3,11 +3,9 @@ list dc_lines_report
 	displayName = "DC Lines Report"
 	show all rows from dc_lines
 	(
-		product as "Product"
 		batch as "Batch"
 		quantity_dispatched as "Quantity Dispatched"
 		uom as "UOM"
-		linked_so_line as "Linked SO Line"
 		weight as "Weight"
 	)
 	quickview
@@ -19,11 +17,9 @@ list dc_lines_report
 				title = "DC Lines Overview"
 				fields
 				(
-					product as "Product"
 					batch as "Batch"
 					quantity_dispatched as "Quantity Dispatched"
 					uom as "UOM"
-					linked_so_line as "Linked SO Line"
 					weight as "Weight"
 				)
 			)
@@ -67,11 +63,9 @@ list dc_lines_report
 				title = "DC Lines Overview"
 				fields
 				(
-					product as "Product"
 					batch as "Batch"
 					quantity_dispatched as "Quantity Dispatched"
 					uom as "UOM"
-					linked_so_line as "Linked SO Line"
 					weight as "Weight"
 				)
 			)

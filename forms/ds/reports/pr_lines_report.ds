@@ -4,13 +4,11 @@ list pr_lines_report
 	show all rows from pr_lines
 	(
 		line_no as "Line No."
-		product_service as "Product/Service"
 		description_override as "Description Override"
 		quantity_requested as "Quantity Requested"
 		uom as "UOM"
 		required_date as "Required Date"
 		purpose as "Purpose"
-		machine_reference as "Machine Reference"
 		allow_rfq_skip as "Allow RFQ Skip"
 		attachments as "Attachments"
 		status as "Status"
@@ -26,13 +24,11 @@ list pr_lines_report
 				fields
 				(
 					line_no as "Line No."
-					product_service as "Product/Service"
 					description_override as "Description Override"
 					quantity_requested as "Quantity Requested"
 					uom as "UOM"
 					required_date as "Required Date"
 					purpose as "Purpose"
-					machine_reference as "Machine Reference"
 					allow_rfq_skip as "Allow RFQ Skip"
 					attachments as "Attachments"
 					status as "Status"
@@ -80,13 +76,11 @@ list pr_lines_report
 				fields
 				(
 					line_no as "Line No."
-					product_service as "Product/Service"
 					description_override as "Description Override"
 					quantity_requested as "Quantity Requested"
 					uom as "UOM"
 					required_date as "Required Date"
 					purpose as "Purpose"
-					machine_reference as "Machine Reference"
 					allow_rfq_skip as "Allow RFQ Skip"
 					attachments as "Attachments"
 					status as "Status"

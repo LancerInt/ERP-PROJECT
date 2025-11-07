@@ -20,59 +20,21 @@ form stakeholder_user
 		width = medium
 	)
 
-	must have employee_record
-	(
-		type = lookup
-		displayname = "Employee Record"
-		row = 1
-		column = 1
-		width = medium
-		related form = staff_master
-	)
-
 	must have primary_email
 	(
 		type = email
 		displayname = "Primary Email"
+		personal data = true
 		row = 1
 		column = 1
 		width = medium
-		personal data = true
 	)
 
 	mobile
 	(
 		type = phonenumber
 		displayname = "Mobile"
-		row = 1
-		column = 1
-		width = medium
 		personal data = true
-	)
-
-	must have assigned_roles
-	(
-		type = text
-		displayname = "Assigned Roles"
-		row = 1
-		column = 1
-		width = medium
-	)
-
-	default_warehouse
-	(
-		type = lookup
-		displayname = "Default Warehouse"
-		row = 1
-		column = 1
-		width = medium
-		related form = warehouse
-	)
-
-	warehouse_scope
-	(
-		type = text
-		displayname = "Warehouse Scope"
 		row = 1
 		column = 1
 		width = medium
@@ -82,6 +44,8 @@ form stakeholder_user
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Active","Suspended"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -100,10 +64,10 @@ form stakeholder_user
 	(
 		type = textarea
 		displayname = "Notes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

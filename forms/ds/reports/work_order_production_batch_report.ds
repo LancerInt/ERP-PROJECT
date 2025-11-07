@@ -5,11 +5,7 @@ list work_order_production_batch_report
 	(
 		batch_id as "Batch ID"
 		work_order_no as "Work Order No."
-		warehouse as "Warehouse"
-		production_template as "Production Template"
 		template_revision as "Template Revision"
-		linked_sales_order as "Linked Sales Order"
-		linked_dispatch_challan as "Linked Dispatch Challan"
 		planned_start_date as "Planned Start Date"
 		planned_end_date as "Planned End Date"
 		actual_start_date as "Actual Start Date"
@@ -18,12 +14,9 @@ list work_order_production_batch_report
 		input_consumption as "Input Consumption"
 		output_products as "Output Products"
 		damage_report as "Damage Report"
-		qc_request as "QC Request"
 		wage_method as "Wage Method"
 		wage_vouchers as "Wage Vouchers"
-		yield_log_reference as "Yield Log Reference"
 		rework_flag as "Rework Flag"
-		parent_batch as "Parent Batch"
 		notes as "Notes"
 	)
 	quickview
@@ -37,11 +30,7 @@ list work_order_production_batch_report
 				(
 					batch_id as "Batch ID"
 					work_order_no as "Work Order No."
-					warehouse as "Warehouse"
-					production_template as "Production Template"
 					template_revision as "Template Revision"
-					linked_sales_order as "Linked Sales Order"
-					linked_dispatch_challan as "Linked Dispatch Challan"
 					planned_start_date as "Planned Start Date"
 					planned_end_date as "Planned End Date"
 					actual_start_date as "Actual Start Date"
@@ -50,12 +39,9 @@ list work_order_production_batch_report
 					input_consumption as "Input Consumption"
 					output_products as "Output Products"
 					damage_report as "Damage Report"
-					qc_request as "QC Request"
 					wage_method as "Wage Method"
 					wage_vouchers as "Wage Vouchers"
-					yield_log_reference as "Yield Log Reference"
 					rework_flag as "Rework Flag"
-					parent_batch as "Parent Batch"
 					notes as "Notes"
 				)
 			)
@@ -101,11 +87,7 @@ list work_order_production_batch_report
 				(
 					batch_id as "Batch ID"
 					work_order_no as "Work Order No."
-					warehouse as "Warehouse"
-					production_template as "Production Template"
 					template_revision as "Template Revision"
-					linked_sales_order as "Linked Sales Order"
-					linked_dispatch_challan as "Linked Dispatch Challan"
 					planned_start_date as "Planned Start Date"
 					planned_end_date as "Planned End Date"
 					actual_start_date as "Actual Start Date"
@@ -114,12 +96,9 @@ list work_order_production_batch_report
 					input_consumption as "Input Consumption"
 					output_products as "Output Products"
 					damage_report as "Damage Report"
-					qc_request as "QC Request"
 					wage_method as "Wage Method"
 					wage_vouchers as "Wage Vouchers"
-					yield_log_reference as "Yield Log Reference"
 					rework_flag as "Rework Flag"
-					parent_batch as "Parent Batch"
 					notes as "Notes"
 				)
 			)

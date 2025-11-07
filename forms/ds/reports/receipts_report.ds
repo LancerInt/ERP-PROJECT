@@ -4,11 +4,9 @@ list receipts_report
 	show all rows from receipts
 	(
 		receipt_no as "Receipt No."
-		customer as "Customer"
 		receipt_date as "Receipt Date"
 		amount as "Amount"
 		payment_method as "Payment Method"
-		reference_document as "Reference Document"
 		notes as "Notes"
 	)
 	quickview
@@ -21,11 +19,9 @@ list receipts_report
 				fields
 				(
 					receipt_no as "Receipt No."
-					customer as "Customer"
 					receipt_date as "Receipt Date"
 					amount as "Amount"
 					payment_method as "Payment Method"
-					reference_document as "Reference Document"
 					notes as "Notes"
 				)
 			)
@@ -70,11 +66,9 @@ list receipts_report
 				fields
 				(
 					receipt_no as "Receipt No."
-					customer as "Customer"
 					receipt_date as "Receipt Date"
 					amount as "Amount"
 					payment_method as "Payment Method"
-					reference_document as "Reference Document"
 					notes as "Notes"
 				)
 			)

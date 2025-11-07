@@ -38,30 +38,22 @@ form exceptions
 		width = medium
 	)
 
-	suggested_match
-	(
-		type = lookup
-		displayname = "Suggested Match"
-		row = 1
-		column = 1
-		width = medium
-		related forms = {"vendor_ledger","customer_ledger","freight_ledger","wage_ledger"}
-	)
-
 	exception_notes
 	(
 		type = textarea
 		displayname = "Exception Notes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	must have resolution_status
 	(
 		type = picklist
 		displayname = "Resolution Status"
+		values = {"Open","Resolved"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

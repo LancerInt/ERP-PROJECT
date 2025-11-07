@@ -15,10 +15,10 @@ form purchase_order
 	(
 		type = autonumber
 		displayname = "PO No."
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have revision_no
@@ -28,55 +28,6 @@ form purchase_order
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have vendor
-	(
-		type = lookup
-		displayname = "Vendor"
-		row = 1
-		column = 1
-		width = medium
-		related form = vendor
-	)
-
-	must have company
-	(
-		type = lookup
-		displayname = "Company"
-		row = 1
-		column = 1
-		width = medium
-		related form = company
-	)
-
-	must have warehouse
-	(
-		type = lookup
-		displayname = "Warehouse"
-		row = 1
-		column = 1
-		width = medium
-		related form = warehouse
-	)
-
-	must have linked_prs
-	(
-		type = text
-		displayname = "Linked PRs"
-		row = 1
-		column = 1
-		width = medium
-	)
-
-	linked_rfq
-	(
-		type = lookup
-		displayname = "Linked RFQ"
-		row = 1
-		column = 1
-		width = medium
-		related form = rfq_header
 	)
 
 	must have po_date
@@ -110,6 +61,7 @@ form purchase_order
 	(
 		type = picklist
 		displayname = "Freight Terms"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -119,6 +71,7 @@ form purchase_order
 	(
 		type = picklist
 		displayname = "Payment Terms"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -128,6 +81,7 @@ form purchase_order
 	(
 		type = picklist
 		displayname = "Currency"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -137,9 +91,6 @@ form purchase_order
 	(
 		type = grid
 		displayname = "PO Lines"
-		row = 1
-		column = 1
-		width = medium
 		must have line_no
 		(
 			type = number
@@ -147,20 +98,12 @@ form purchase_order
 			width = medium
 		)
 
-		must have product_service
-		(
-			type = lookup
-			displayname = "Product/Service"
-			width = medium
-			related form = product_master
-		)
-
 		description
 		(
 			type = textarea
 			displayname = "Description"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
 		must have quantity_ordered
@@ -174,6 +117,7 @@ form purchase_order
 		(
 			type = picklist
 			displayname = "UOM"
+			maxchar = 100
 			width = medium
 		)
 
@@ -226,73 +170,51 @@ form purchase_order
 			width = medium
 		)
 
-		linked_pr_line
-		(
-			type = lookup
-			displayname = "Linked PR Line"
-			width = medium
-			related form = pr_lines
-		)
-
-		linked_rfq_line
-		(
-			type = lookup
-			displayname = "Linked RFQ Line"
-			width = medium
-			related form = quote_lines
-		)
-
 		batch_requirement_notes
 		(
 			type = textarea
 			displayname = "Batch Requirement Notes"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	attachments
 	(
 		type = upload file
 		displayname = "Attachments"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	terms_and_conditions
 	(
 		type = textarea
 		displayname = "Terms & Conditions"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	approval_trail
 	(
 		type = grid
 		displayname = "Approval Trail"
-		row = 1
-		column = 1
-		width = medium
 		must have action
 		(
 			type = picklist
 			displayname = "Action"
+			values = {"Approved","Rejected","Partial"}
+			maxchar = 100
 			width = medium
-		)
-
-		must have actor
-		(
-			type = lookup
-			displayname = "Actor"
-			width = medium
-			related form = stakeholder_user
 		)
 
 		must have action_date
@@ -306,16 +228,21 @@ form purchase_order
 		(
 			type = textarea
 			displayname = "Remarks"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have status
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Draft","Approved","Issued","Closed","Cancelled"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

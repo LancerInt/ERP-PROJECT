@@ -11,20 +11,21 @@ form staff_master
 		width = medium
 	)
 
-	must have staff_id
+	must have unique staff_id
 	(
 		type = text
 		displayname = "Staff ID"
 		row = 1
 		column = 1
 		width = medium
-		is unique = true
 	)
 
 	must have staff_type
 	(
 		type = picklist
 		displayname = "Staff Type"
+		values = {"Employee","Staff"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -52,6 +53,7 @@ form staff_master
 	(
 		type = picklist
 		displayname = "Gender"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -66,30 +68,11 @@ form staff_master
 		width = medium
 	)
 
-	must have company
-	(
-		type = lookup
-		displayname = "Company"
-		row = 1
-		column = 1
-		width = medium
-		related form = company
-	)
-
-	must have primary_location
-	(
-		type = lookup
-		displayname = "Primary Location"
-		row = 1
-		column = 1
-		width = medium
-		related form = warehouse
-	)
-
 	department
 	(
 		type = picklist
 		displayname = "Department"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -126,29 +109,11 @@ form staff_master
 	(
 		type = picklist
 		displayname = "Employment Status"
+		values = {"Active","On Leave","Resigned"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have hr_owner
-	(
-		type = lookup
-		displayname = "HR Owner"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
-	)
-
-	shift_assignment
-	(
-		type = lookup
-		displayname = "Shift Assignment"
-		row = 1
-		column = 1
-		width = medium
-		related form = shift_definition
 	)
 
 	overtime_eligible
@@ -169,23 +134,10 @@ form staff_master
 		width = medium
 	)
 
-	must have contractor_vendor
-	(
-		type = lookup
-		displayname = "Contractor Vendor"
-		row = 1
-		column = 1
-		width = medium
-		related form = vendor
-	)
-
 	bank_account
 	(
 		type = grid
 		displayname = "Bank Account"
-		row = 1
-		column = 1
-		width = medium
 		must have account_holder
 		(
 			type = text
@@ -218,22 +170,25 @@ form staff_master
 		(
 			type = picklist
 			displayname = "Account Type"
+			maxchar = 100
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	id_proofs
 	(
 		type = grid
 		displayname = "ID Proofs"
-		row = 1
-		column = 1
-		width = medium
 		must have document_type
 		(
 			type = picklist
 			displayname = "Document Type"
+			values = {"Aadhaar","PAN","License","Other"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -255,11 +210,14 @@ form staff_master
 		(
 			type = upload file
 			displayname = "Attachment"
-			width = medium
 			file count = 10
-			browse = localdrive
+			browse = local_drive
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have face_template_id
@@ -275,40 +233,37 @@ form staff_master
 	(
 		type = upload file
 		displayname = "Photo Reference"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = local_drive
 	)
 
 	contact_number
 	(
 		type = phonenumber
 		displayname = "Contact Number"
+		personal data = true
 		row = 1
 		column = 1
 		width = medium
-		personal data = true
 	)
 
 	emergency_contact
 	(
 		type = phonenumber
 		displayname = "Emergency Contact"
+		personal data = true
 		row = 1
 		column = 1
 		width = medium
-		personal data = true
 	)
 
 	address
 	(
 		type = address
 		displayname = "Address"
-		row = 1
-		column = 1
-		width = medium
 		capture_coordinates = true
 		adjust_using_map = false
 		personal data = true
@@ -336,9 +291,9 @@ form staff_master
 			displayname = "State / Province"
 		)
 
-		postal_code
+		postal_Code
 		(
-			type = postal_code
+			type = postal_Code
 			displayname = "Postal Code"
 		)
 
@@ -361,16 +316,19 @@ form staff_master
 			displayname = "Longitude"
 			visibility = false
 		)
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	remarks
 	(
 		type = textarea
 		displayname = "Remarks"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

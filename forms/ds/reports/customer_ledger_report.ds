@@ -4,9 +4,7 @@ list customer_ledger_report
 	show all rows from customer_ledger
 	(
 		ledger_id as "Ledger ID"
-		customer as "Customer"
 		document_type as "Document Type"
-		document_reference as "Document Reference"
 		document_date as "Document Date"
 		debit_amount as "Debit Amount"
 		credit_amount as "Credit Amount"
@@ -25,9 +23,7 @@ list customer_ledger_report
 				fields
 				(
 					ledger_id as "Ledger ID"
-					customer as "Customer"
 					document_type as "Document Type"
-					document_reference as "Document Reference"
 					document_date as "Document Date"
 					debit_amount as "Debit Amount"
 					credit_amount as "Credit Amount"
@@ -78,9 +74,7 @@ list customer_ledger_report
 				fields
 				(
 					ledger_id as "Ledger ID"
-					customer as "Customer"
 					document_type as "Document Type"
-					document_reference as "Document Reference"
 					document_date as "Document Date"
 					debit_amount as "Debit Amount"
 					credit_amount as "Credit Amount"

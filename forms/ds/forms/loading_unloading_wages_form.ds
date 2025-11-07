@@ -15,19 +15,11 @@ form loading_unloading_wages
 	(
 		type = picklist
 		displayname = "Wage Type"
+		values = {"Loading","Unloading"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have contractor_vendor
-	(
-		type = lookup
-		displayname = "Contractor Vendor"
-		row = 1
-		column = 1
-		width = medium
-		related form = vendor
 	)
 
 	must have amount
@@ -52,6 +44,8 @@ form loading_unloading_wages
 	(
 		type = picklist
 		displayname = "Payable By"
+		values = {"Company","Vendor"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -61,10 +55,10 @@ form loading_unloading_wages
 	(
 		type = textarea
 		displayname = "Remarks"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

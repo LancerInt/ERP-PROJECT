@@ -5,10 +5,7 @@ list sales_return_advice_report
 	(
 		return_no as "Return No."
 		return_date as "Return Date"
-		customer as "Customer"
-		original_invoice as "Original Invoice"
 		returned_by as "Returned By"
-		received_warehouse as "Received Warehouse"
 		return_lines as "Return Lines"
 		freight_terms as "Freight Terms"
 		freight_charges as "Freight Charges"
@@ -29,10 +26,7 @@ list sales_return_advice_report
 				(
 					return_no as "Return No."
 					return_date as "Return Date"
-					customer as "Customer"
-					original_invoice as "Original Invoice"
 					returned_by as "Returned By"
-					received_warehouse as "Received Warehouse"
 					return_lines as "Return Lines"
 					freight_terms as "Freight Terms"
 					freight_charges as "Freight Charges"
@@ -85,10 +79,7 @@ list sales_return_advice_report
 				(
 					return_no as "Return No."
 					return_date as "Return Date"
-					customer as "Customer"
-					original_invoice as "Original Invoice"
 					returned_by as "Returned By"
-					received_warehouse as "Received Warehouse"
 					return_lines as "Return Lines"
 					freight_terms as "Freight Terms"
 					freight_charges as "Freight Charges"

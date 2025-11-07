@@ -29,16 +29,6 @@ form customer
 		width = medium
 	)
 
-	must have company
-	(
-		type = lookup
-		displayname = "Company"
-		row = 1
-		column = 1
-		width = medium
-		related form = company
-	)
-
 	must have gstin
 	(
 		type = text
@@ -61,9 +51,6 @@ form customer
 	(
 		type = address
 		displayname = "Billing Address"
-		row = 1
-		column = 1
-		width = medium
 		capture_coordinates = true
 		adjust_using_map = false
 		personal data = true
@@ -91,9 +78,9 @@ form customer
 			displayname = "State / Province"
 		)
 
-		postal_code
+		postal_Code
 		(
-			type = postal_code
+			type = postal_Code
 			displayname = "Postal Code"
 		)
 
@@ -116,15 +103,15 @@ form customer
 			displayname = "Longitude"
 			visibility = false
 		)
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have shipping_addresses
 	(
 		type = grid
 		displayname = "Shipping Addresses"
-		row = 1
-		column = 1
-		width = medium
 		must have address_label
 		(
 			type = text
@@ -136,7 +123,6 @@ form customer
 		(
 			type = address
 			displayname = "Address"
-			width = medium
 			capture_coordinates = true
 			adjust_using_map = false
 			personal data = true
@@ -164,9 +150,9 @@ form customer
 				displayname = "State / Province"
 			)
 
-			postal_code
+			postal_Code
 			(
-				type = postal_code
+				type = postal_Code
 				displayname = "Postal Code"
 			)
 
@@ -189,21 +175,15 @@ form customer
 				displayname = "Longitude"
 				visibility = false
 			)
+			width = medium
 		)
 
 		must have delivery_region
 		(
 			type = picklist
 			displayname = "Delivery Region"
+			maxchar = 100
 			width = medium
-		)
-
-		default_price_list
-		(
-			type = lookup
-			displayname = "Default Price List"
-			width = medium
-			related form = price_list
 		)
 
 		contact_person
@@ -217,16 +197,21 @@ form customer
 		(
 			type = phonenumber
 			displayname = "Contact Phone"
-			width = medium
 			personal data = true
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have credit_terms
 	(
 		type = picklist
 		displayname = "Credit Terms"
+		values = {"Net 15","Net 30","Net 45","Custom"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -245,6 +230,8 @@ form customer
 	(
 		type = picklist
 		displayname = "Freight Terms"
+		values = {"Paid","To_Pay","Mixed"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -254,35 +241,7 @@ form customer
 	(
 		type = textarea
 		displayname = "Freight Split Notes"
-		row = 1
-		column = 1
-		width = medium
 		height = 100px
-	)
-
-	must have allowed_price_lists
-	(
-		type = text
-		displayname = "Allowed Price Lists"
-		row = 1
-		column = 1
-		width = medium
-	)
-
-	must have default_warehouse
-	(
-		type = lookup
-		displayname = "Default Warehouse"
-		row = 1
-		column = 1
-		width = medium
-		related form = warehouse
-	)
-
-	overdue_notification_recipients
-	(
-		type = text
-		displayname = "Overdue Notification Recipients"
 		row = 1
 		column = 1
 		width = medium
@@ -301,31 +260,31 @@ form customer
 	(
 		type = email
 		displayname = "Contact Email"
+		personal data = true
 		row = 1
 		column = 1
 		width = medium
-		personal data = true
 	)
 
 	contact_phone
 	(
 		type = phonenumber
 		displayname = "Contact Phone"
+		personal data = true
 		row = 1
 		column = 1
 		width = medium
-		personal data = true
 	)
 
 	documents
 	(
 		type = upload file
 		displayname = "Documents"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	must have active_flag

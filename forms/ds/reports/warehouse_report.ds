@@ -4,7 +4,6 @@ list warehouse_report
 	show all rows from warehouse
 	(
 		warehouse_code as "Warehouse Code"
-		company as "Company"
 		name as "Name"
 		warehouse_type as "Warehouse Type"
 		address as "Address"
@@ -16,11 +15,6 @@ list warehouse_report
 		geo_longitude as "Geo Longitude"
 		time_zone as "Time Zone"
 		default_currency as "Default Currency"
-		warehouse_coordinator_office as "Warehouse Coordinator (Office)"
-		warehouse_hr_coordinator as "Warehouse HR Coordinator"
-		warehouse_managers as "Warehouse Manager(s)"
-		warehouse_coordinators as "Warehouse Coordinator(s)"
-		warehouse_supervisors as "Warehouse Supervisor(s)"
 		active_flag as "Active Flag"
 		notes as "Notes"
 	)
@@ -34,7 +28,6 @@ list warehouse_report
 				fields
 				(
 					warehouse_code as "Warehouse Code"
-					company as "Company"
 					name as "Name"
 					warehouse_type as "Warehouse Type"
 					address as "Address"
@@ -46,11 +39,6 @@ list warehouse_report
 					geo_longitude as "Geo Longitude"
 					time_zone as "Time Zone"
 					default_currency as "Default Currency"
-					warehouse_coordinator_office as "Warehouse Coordinator (Office)"
-					warehouse_hr_coordinator as "Warehouse HR Coordinator"
-					warehouse_managers as "Warehouse Manager(s)"
-					warehouse_coordinators as "Warehouse Coordinator(s)"
-					warehouse_supervisors as "Warehouse Supervisor(s)"
 					active_flag as "Active Flag"
 					notes as "Notes"
 				)
@@ -96,7 +84,6 @@ list warehouse_report
 				fields
 				(
 					warehouse_code as "Warehouse Code"
-					company as "Company"
 					name as "Name"
 					warehouse_type as "Warehouse Type"
 					address as "Address"
@@ -108,11 +95,6 @@ list warehouse_report
 					geo_longitude as "Geo Longitude"
 					time_zone as "Time Zone"
 					default_currency as "Default Currency"
-					warehouse_coordinator_office as "Warehouse Coordinator (Office)"
-					warehouse_hr_coordinator as "Warehouse HR Coordinator"
-					warehouse_managers as "Warehouse Manager(s)"
-					warehouse_coordinators as "Warehouse Coordinator(s)"
-					warehouse_supervisors as "Warehouse Supervisor(s)"
 					active_flag as "Active Flag"
 					notes as "Notes"
 				)

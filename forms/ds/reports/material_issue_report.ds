@@ -5,10 +5,6 @@ list material_issue_report
 	(
 		issue_no as "Issue No."
 		issue_date as "Issue Date"
-		warehouse as "Warehouse"
-		work_order as "Work Order"
-		issued_by as "Issued By"
-		approved_by as "Approved By"
 		issue_lines as "Issue Lines"
 		remarks as "Remarks"
 	)
@@ -23,10 +19,6 @@ list material_issue_report
 				(
 					issue_no as "Issue No."
 					issue_date as "Issue Date"
-					warehouse as "Warehouse"
-					work_order as "Work Order"
-					issued_by as "Issued By"
-					approved_by as "Approved By"
 					issue_lines as "Issue Lines"
 					remarks as "Remarks"
 				)
@@ -73,10 +65,6 @@ list material_issue_report
 				(
 					issue_no as "Issue No."
 					issue_date as "Issue Date"
-					warehouse as "Warehouse"
-					work_order as "Work Order"
-					issued_by as "Issued By"
-					approved_by as "Approved By"
 					issue_lines as "Issue Lines"
 					remarks as "Remarks"
 				)

@@ -15,20 +15,10 @@ form dispatch_challan
 	(
 		type = autonumber
 		displayname = "DC No."
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have warehouse
-	(
-		type = lookup
-		displayname = "Warehouse"
 		row = 1
 		column = 1
 		width = medium
-		related form = warehouse
 	)
 
 	must have dispatch_date
@@ -40,20 +30,12 @@ form dispatch_challan
 		width = medium
 	)
 
-	transporter
-	(
-		type = lookup
-		displayname = "Transporter"
-		row = 1
-		column = 1
-		width = medium
-		related form = transporter
-	)
-
 	freight_rate_type
 	(
 		type = picklist
 		displayname = "Freight Rate Type"
+		values = {"Per km","Flat"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -90,16 +72,7 @@ form dispatch_challan
 	(
 		type = phonenumber
 		displayname = "Driver Contact"
-		row = 1
-		column = 1
-		width = medium
 		personal data = true
-	)
-
-	must have linked_so_lines
-	(
-		type = text
-		displayname = "Linked SO Lines"
 		row = 1
 		column = 1
 		width = medium
@@ -109,17 +82,6 @@ form dispatch_challan
 	(
 		type = grid
 		displayname = "DC Lines"
-		row = 1
-		column = 1
-		width = medium
-		must have product
-		(
-			type = lookup
-			displayname = "Product"
-			width = medium
-			related form = product_master
-		)
-
 		must have batch
 		(
 			type = text
@@ -138,15 +100,8 @@ form dispatch_challan
 		(
 			type = picklist
 			displayname = "UOM"
+			maxchar = 100
 			width = medium
-		)
-
-		must have linked_so_line
-		(
-			type = lookup
-			displayname = "Linked SO Line"
-			width = medium
-			related form = so_lines
 		)
 
 		weight
@@ -156,28 +111,20 @@ form dispatch_challan
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	delivery_locations
 	(
 		type = grid
 		displayname = "Delivery Locations"
-		row = 1
-		column = 1
-		width = medium
 		must have sequence
 		(
 			type = number
 			displayname = "Sequence"
 			width = medium
-		)
-
-		must have shipping_address
-		(
-			type = lookup
-			displayname = "Shipping Address"
-			width = medium
-			related form = shipping_address
 		)
 
 		must have quantity_for_location
@@ -194,46 +141,31 @@ form dispatch_challan
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	documents
 	(
 		type = upload file
 		displayname = "Documents"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	must have status
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Draft","Released","Delivered","Closed"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have created_by
-	(
-		type = lookup
-		displayname = "Created By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
-	)
-
-	freight_advice_link
-	(
-		type = lookup
-		displayname = "Freight Advice Link"
-		row = 1
-		column = 1
-		width = medium
-		related form = freight_advice_2
 	)
 
 	actions

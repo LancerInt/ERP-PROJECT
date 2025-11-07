@@ -3,7 +3,6 @@ list products_report
 	displayName = "Products Report"
 	show all rows from products
 	(
-		product as "Product"
 		batch as "Batch"
 		quantity as "Quantity"
 		uom as "UOM"
@@ -17,7 +16,6 @@ list products_report
 				title = "Products Overview"
 				fields
 				(
-					product as "Product"
 					batch as "Batch"
 					quantity as "Quantity"
 					uom as "UOM"
@@ -63,7 +61,6 @@ list products_report
 				title = "Products Overview"
 				fields
 				(
-					product as "Product"
 					batch as "Batch"
 					quantity as "Quantity"
 					uom as "UOM"
