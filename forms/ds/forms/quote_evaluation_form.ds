@@ -11,7 +11,7 @@ form quote_evaluation
 		width = medium
 	)
 
-	must have evaluation_id
+	evaluation_id
 	(
 		type = autonumber
 		displayname = "Evaluation ID"

@@ -11,7 +11,7 @@ form job_work_order
 		width = medium
 	)
 
-	must have order_no
+	order_no
 	(
 		type = autonumber
 		displayname = "Order No."

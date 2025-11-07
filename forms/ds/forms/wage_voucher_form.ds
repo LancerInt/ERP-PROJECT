@@ -11,7 +11,7 @@ form wage_voucher
 		width = medium
 	)
 
-	must have voucher_no
+	voucher_no
 	(
 		type = autonumber
 		displayname = "Voucher No."

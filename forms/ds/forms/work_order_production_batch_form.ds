@@ -11,7 +11,7 @@ form work_order_production_batch
 		width = medium
 	)
 
-	must have batch_id
+	batch_id
 	(
 		type = autonumber
 		displayname = "Batch ID"

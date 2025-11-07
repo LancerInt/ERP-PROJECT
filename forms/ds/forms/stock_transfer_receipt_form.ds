@@ -11,7 +11,7 @@ form stock_transfer_receipt
 		width = medium
 	)
 
-	must have receipt_no
+	receipt_no
 	(
 		type = autonumber
 		displayname = "Receipt No."

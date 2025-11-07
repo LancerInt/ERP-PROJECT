@@ -11,7 +11,7 @@ form sales_invoice_check
 		width = medium
 	)
 
-	must have invoice_check_id
+	invoice_check_id
 	(
 		type = autonumber
 		displayname = "Invoice Check ID"

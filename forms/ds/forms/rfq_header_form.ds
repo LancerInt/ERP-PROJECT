@@ -11,7 +11,7 @@ form rfq_header
 		width = medium
 	)
 
-	must have rfq_no
+	rfq_no
 	(
 		type = autonumber
 		displayname = "RFQ No."

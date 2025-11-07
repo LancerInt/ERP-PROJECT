@@ -11,7 +11,7 @@ form material_issue
 		width = medium
 	)
 
-	must have issue_no
+	issue_no
 	(
 		type = autonumber
 		displayname = "Issue No."

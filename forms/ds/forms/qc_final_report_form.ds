@@ -11,7 +11,7 @@ form qc_final_report
 		width = medium
 	)
 
-	must have report_no
+	report_no
 	(
 		type = autonumber
 		displayname = "Report No."
