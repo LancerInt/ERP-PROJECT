@@ -11,7 +11,7 @@ form credit_debit_note
 		width = medium
 	)
 
-	must have note_no
+	note_no
 	(
 		type = autonumber
 		displayname = "Note No."

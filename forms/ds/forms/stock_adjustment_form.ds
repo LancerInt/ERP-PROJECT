@@ -11,7 +11,7 @@ form stock_adjustment
 		width = medium
 	)
 
-	must have adjustment_no
+	adjustment_no
 	(
 		type = autonumber
 		displayname = "Adjustment No."

@@ -53,6 +53,7 @@ form staff_master
 	(
 		type = picklist
 		displayname = "Gender"
+		values = {"Male","Female","Other"}
 		maxchar = 100
 		row = 1
 		column = 1
@@ -72,6 +73,7 @@ form staff_master
 	(
 		type = picklist
 		displayname = "Department"
+		values = {"Operations","Production","Finance","HR","Logistics","Sales"}
 		maxchar = 100
 		row = 1
 		column = 1

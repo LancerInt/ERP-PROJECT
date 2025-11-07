@@ -11,6 +11,57 @@ FORMS_OUTPUT = OUTPUT_ROOT / 'forms'
 REPORTS_OUTPUT = OUTPUT_ROOT / 'reports'
 UNMAPPED_LOOKUPS = defaultdict(list)
 
+INDIAN_STATES = [
+    'Andhra Pradesh',
+    'Arunachal Pradesh',
+    'Assam',
+    'Bihar',
+    'Chhattisgarh',
+    'Delhi',
+    'Goa',
+    'Gujarat',
+    'Haryana',
+    'Himachal Pradesh',
+    'Jammu and Kashmir',
+    'Jharkhand',
+    'Karnataka',
+    'Kerala',
+    'Madhya Pradesh',
+    'Maharashtra',
+    'Manipur',
+    'Meghalaya',
+    'Mizoram',
+    'Nagaland',
+    'Odisha',
+    'Punjab',
+    'Rajasthan',
+    'Sikkim',
+    'Tamil Nadu',
+    'Telangana',
+    'Tripura',
+    'Uttar Pradesh',
+    'Uttarakhand',
+    'West Bengal',
+]
+
+COMMON_COUNTRIES = [
+    'India',
+    'United States',
+    'United Kingdom',
+    'Singapore',
+    'United Arab Emirates',
+]
+
+COMMON_CURRENCIES = ['INR', 'USD', 'EUR', 'GBP', 'SGD', 'AED']
+
+COMMON_TIMEZONES = [
+    'Asia/Kolkata',
+    'Asia/Dubai',
+    'Asia/Singapore',
+    'Europe/London',
+    'America/New_York',
+]
+
 LOOKUP_ALIAS_MAP = {
     'approval workflow': ['approval_workflow'],
     'bank details': ['vendor_bank_details'],
@@ -104,6 +155,24 @@ def normalize_name(name: str) -> str:
     name = re.sub(r"\s+", " ", name)
     return name.strip().lower()
 
+
+DEFAULT_DROPDOWN_VALUES_BY_LINK = {
+    'state': INDIAN_STATES,
+    'country': COMMON_COUNTRIES,
+    'time_zone': COMMON_TIMEZONES,
+    'default_currency': COMMON_CURRENCIES,
+    'currency': COMMON_CURRENCIES,
+}
+
+DEFAULT_DROPDOWN_VALUES_BY_FIELD = {
+    'gender': ['Male', 'Female', 'Other'],
+    'department': ['Operations', 'Production', 'Finance', 'HR', 'Logistics', 'Sales'],
+    'freight class': ['General Cargo', 'Hazardous', 'Refrigerated', 'Oversized'],
+}
+
+DEFAULT_MULTISELECT_VALUES_BY_FIELD = {
+    'multi select': ['Choice 1', 'Choice 2', 'Choice 3'],
+}
 
 def parse_forms():
     text = DATA_MODEL_PATH.read_text()
@@ -390,12 +459,15 @@ def prepare_field_meta(form, name_map):
         link_name = field['link_name'] or slugify(field['field_name'])
         data_type, props = map_field_type(field, form, name_map)
         is_unique = props.pop('IsUnique', False)
+        required_flag = field['required'].strip().upper()
+        if data_type == 'AutoNumber':
+            required_flag = ''
         prepared.append({
             'field': field,
             'link_name': link_name,
             'data_type': data_type,
             'props': props,
-            'required': field['required'].strip().upper(),
+            'required': required_flag,
             'is_unique': is_unique,
         })
     return prepared
@@ -475,6 +547,11 @@ def map_to_ds_type(meta):
     elif data_type == 'Dropdown':
         ds_type = 'picklist'
         values = extract_choice_values(field)
+        if not values:
+            values = DEFAULT_DROPDOWN_VALUES_BY_LINK.get(meta['link_name'])
+        if not values:
+            field_key = normalize_name(field.get('field_name', ''))
+            values = DEFAULT_DROPDOWN_VALUES_BY_FIELD.get(field_key)
         if values:
             extras.append(('values', values))
         extras.append(('maxchar', 100))
@@ -485,6 +562,11 @@ def map_to_ds_type(meta):
         else:
             ds_type = 'list'
         values = extract_choice_values(field)
+        if not values:
+            field_key = normalize_name(field.get('field_name', ''))
+            values = DEFAULT_MULTISELECT_VALUES_BY_FIELD.get(field_key)
+        if not values and ds_type == 'list':
+            values = ['Choice 1', 'Choice 2', 'Choice 3']
         if values:
             extras.append(('values', values))
         if 'multi-select' in field_type:
