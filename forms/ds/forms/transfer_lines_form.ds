@@ -1,77 +1,72 @@
-// Module: 6. Inventory, Logistics & Returns
 form transfer_lines
 {
-    DisplayName = "Transfer Lines";
-    LinkName = "transfer_lines";
-    Module = "6. Inventory, Logistics & Returns";
-    Type = "Form";
+	displayname = "Transfer Lines"
+	success message = "Transfer Lines added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field product
-                {
-                    DisplayName = "Product";
-                    LinkName = "product";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                }
-                Field batch
-                {
-                    DisplayName = "Batch";
-                    LinkName = "batch";
-                    Type = "SingleLine";
-                    ConditionalMandatory = true;
-                }
-                Field quantity
-                {
-                    DisplayName = "Quantity";
-                    LinkName = "quantity";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field source_godown
-                {
-                    DisplayName = "Source Godown";
-                    LinkName = "source_godown";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "godown";
-                    HelpText = "Origin location";
-                }
-                Field destination_godown
-                {
-                    DisplayName = "Destination Godown";
-                    LinkName = "destination_godown";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "godown";
-                    HelpText = "Receiving location";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have batch
+	(
+		type = text
+		displayname = "Batch"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have quantity
+	(
+		type = number
+		displayname = "Quantity"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

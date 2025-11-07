@@ -1,95 +1,86 @@
-report damage_report_report
+list damage_report_report
 {
-    DisplayName = "Damage Report Report";
-    LinkName = "damage_report_report";
-    Type = "List";
-    SourceFormLinkName = "damage_report";
-
-    ListView
-    {
-        Columns
-        {
-            Column stage
-            {
-                FieldLinkName = "stage";
-            }
-            Column description
-            {
-                FieldLinkName = "description";
-            }
-            Column quantity_lost
-            {
-                FieldLinkName = "quantity_lost";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column handling_action
-            {
-                FieldLinkName = "handling_action";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column stage
-            {
-                FieldLinkName = "stage";
-            }
-            Column description
-            {
-                FieldLinkName = "description";
-            }
-            Column quantity_lost
-            {
-                FieldLinkName = "quantity_lost";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column handling_action
-            {
-                FieldLinkName = "handling_action";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column stage
-                    {
-                        FieldLinkName = "stage";
-                    }
-                    Column description
-                    {
-                        FieldLinkName = "description";
-                    }
-                    Column quantity_lost
-                    {
-                        FieldLinkName = "quantity_lost";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column handling_action
-                    {
-                        FieldLinkName = "handling_action";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Damage Report Report"
+	show all rows from damage_report
+	(
+		stage as "Stage"
+		description as "Description"
+		quantity_lost as "Quantity Lost"
+		uom as "UOM"
+		handling_action as "Handling Action"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Damage Report Overview"
+				fields
+				(
+					stage as "Stage"
+					description as "Description"
+					quantity_lost as "Quantity Lost"
+					uom as "UOM"
+					handling_action as "Handling Action"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Damage Report Overview"
+				fields
+				(
+					stage as "Stage"
+					description as "Description"
+					quantity_lost as "Quantity Lost"
+					uom as "UOM"
+					handling_action as "Handling Action"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

@@ -1,107 +1,86 @@
-report parsed_lines_report
+list parsed_lines_report
 {
-    DisplayName = "Parsed Lines Report";
-    LinkName = "parsed_lines_report";
-    Type = "List";
-    SourceFormLinkName = "parsed_lines";
-
-    ListView
-    {
-        Columns
-        {
-            Column product_description
-            {
-                FieldLinkName = "product_description";
-            }
-            Column quantity
-            {
-                FieldLinkName = "quantity";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column price
-            {
-                FieldLinkName = "price";
-            }
-            Column parsed_sku
-            {
-                FieldLinkName = "parsed_sku";
-            }
-            Column confidence
-            {
-                FieldLinkName = "confidence";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column product_description
-            {
-                FieldLinkName = "product_description";
-            }
-            Column quantity
-            {
-                FieldLinkName = "quantity";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column price
-            {
-                FieldLinkName = "price";
-            }
-            Column parsed_sku
-            {
-                FieldLinkName = "parsed_sku";
-            }
-            Column confidence
-            {
-                FieldLinkName = "confidence";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column product_description
-                    {
-                        FieldLinkName = "product_description";
-                    }
-                    Column quantity
-                    {
-                        FieldLinkName = "quantity";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column price
-                    {
-                        FieldLinkName = "price";
-                    }
-                    Column parsed_sku
-                    {
-                        FieldLinkName = "parsed_sku";
-                    }
-                    Column confidence
-                    {
-                        FieldLinkName = "confidence";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Parsed Lines Report"
+	show all rows from parsed_lines
+	(
+		product_description as "Product Description"
+		quantity as "Quantity"
+		uom as "UOM"
+		price as "Price"
+		confidence as "Confidence %"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Parsed Lines Overview"
+				fields
+				(
+					product_description as "Product Description"
+					quantity as "Quantity"
+					uom as "UOM"
+					price as "Price"
+					confidence as "Confidence %"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Parsed Lines Overview"
+				fields
+				(
+					product_description as "Product Description"
+					quantity as "Quantity"
+					uom as "UOM"
+					price as "Price"
+					confidence as "Confidence %"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

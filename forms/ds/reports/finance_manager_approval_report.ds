@@ -1,71 +1,77 @@
-report finance_manager_approval_report
+list finance_manager_approval_report
 {
-    DisplayName = "Finance Manager Approval Report";
-    LinkName = "finance_manager_approval_report";
-    Type = "List";
-    SourceFormLinkName = "finance_manager_approval";
-
-    ListView
-    {
-        Columns
-        {
-            Column approved_by
-            {
-                FieldLinkName = "approved_by";
-            }
-            Column approval_date
-            {
-                FieldLinkName = "approval_date";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column approved_by
-            {
-                FieldLinkName = "approved_by";
-            }
-            Column approval_date
-            {
-                FieldLinkName = "approval_date";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column approved_by
-                    {
-                        FieldLinkName = "approved_by";
-                    }
-                    Column approval_date
-                    {
-                        FieldLinkName = "approval_date";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Finance Manager Approval Report"
+	show all rows from finance_manager_approval
+	(
+		approval_date as "Approval Date"
+		remarks as "Remarks"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Finance Manager Approval Overview"
+				fields
+				(
+					approval_date as "Approval Date"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Finance Manager Approval Overview"
+				fields
+				(
+					approval_date as "Approval Date"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

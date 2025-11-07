@@ -1,81 +1,143 @@
-// Module: 1. Core & Shared Masters
 form shipping_address
 {
-    DisplayName = "Shipping Address";
-    LinkName = "shipping_address";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "Shipping Address"
+	success message = "Shipping Address added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field address_label
-                {
-                    DisplayName = "Address Label";
-                    LinkName = "address_label";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field address
-                {
-                    DisplayName = "Address";
-                    LinkName = "address";
-                    Type = "Address";
-                    IsMandatory = true;
-                    AddressFields
-                    {
-                        AddressLine1 = true;
-                        AddressLine2 = true;
-                        City = true;
-                        State = true;
-                        Country = true;
-                        PostalCode = true;
-                    }
-                }
-                Field delivery_region
-                {
-                    DisplayName = "Delivery Region";
-                    LinkName = "delivery_region";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "For price list mapping";
-                }
-                Field default_price_list
-                {
-                    DisplayName = "Default Price List";
-                    LinkName = "default_price_list";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "price_list";
-                    HelpText = "Auto-selection";
-                }
-                Field contact_person
-                {
-                    DisplayName = "Contact Person";
-                    LinkName = "contact_person";
-                    Type = "SingleLine";
-                }
-                Field contact_phone
-                {
-                    DisplayName = "Contact Phone";
-                    LinkName = "contact_phone";
-                    Type = "Phone";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have address_label
+	(
+		type = text
+		displayname = "Address Label"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have address
+	(
+		type = address
+		displayname = "Address"
+		capture coordinates = true
+		adjust using map = false
+		address_line_1
+		(
+			type = address_line_1
+			displayname = "Address Line 1"
+		)
+
+		address_line_2
+		(
+			type = address_line_2
+			displayname = "Address Line 2"
+		)
+
+		district_city
+		(
+			type = district_city
+			displayname = "City / District"
+		)
+
+		state_province
+		(
+			type = state_province
+			displayname = "State / Province"
+		)
+
+		postal_Code
+		(
+			type = postal_Code
+			displayname = "Postal Code"
+		)
+
+		country
+		(
+			type = country
+			displayname = "Country"
+		)
+
+		latitude
+		(
+			type = latitude
+			displayname = "Latitude"
+			visibility = false
+		)
+
+		longitude
+		(
+			type = longitude
+			displayname = "Longitude"
+			visibility = false
+		)
+		row = 1
+		column = 1
+		width = medium
+		personal data = true
+	)
+
+	must have delivery_region
+	(
+		type = picklist
+		displayname = "Delivery Region"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	contact_person
+	(
+		type = text
+		displayname = "Contact Person"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	contact_phone
+	(
+		type = phonenumber
+		displayname = "Contact Phone"
+		row = 1
+		column = 1
+		width = medium
+		personal data = true
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

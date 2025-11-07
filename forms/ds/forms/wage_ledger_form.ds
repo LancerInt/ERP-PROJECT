@@ -1,96 +1,112 @@
-// Module: 7. Finance Module
 form wage_ledger
 {
-    DisplayName = "Wage Ledger";
-    LinkName = "wage_ledger";
-    Module = "7. Finance Module";
-    Type = "Form";
+	displayname = "Wage Ledger"
+	success message = "Wage Ledger added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field ledger_id
-                {
-                    DisplayName = "Ledger ID";
-                    LinkName = "ledger_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field wage_voucher
-                {
-                    DisplayName = "Wage Voucher";
-                    LinkName = "wage_voucher";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "wage_voucher";
-                }
-                Field contractor_staff_group
-                {
-                    DisplayName = "Contractor/Staff Group";
-                    LinkName = "contractor_staff_group";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkNames = ["vendor", "staff_master"];
-                }
-                Field amount
-                {
-                    DisplayName = "Amount";
-                    LinkName = "amount";
-                    Type = "INR";
-                    IsMandatory = true;
-                }
-                Field tds
-                {
-                    DisplayName = "TDS %";
-                    LinkName = "tds";
-                    Type = "Decimal";
-                }
-                Field payment_week
-                {
-                    DisplayName = "Payment Week";
-                    LinkName = "payment_week";
-                    Type = "Date";
-                    IsMandatory = true;
-                    HelpText = "Week ending date";
-                }
-                Field approval_status
-                {
-                    DisplayName = "Approval Status";
-                    LinkName = "approval_status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Draft / Pending / Approved / Paid";
-                }
-                Field settlement_method
-                {
-                    DisplayName = "Settlement Method";
-                    LinkName = "settlement_method";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Bank Transfer / Cash";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have ledger_id
+	(
+		type = autonumber
+		displayname = "Ledger ID"
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have amount
+	(
+		type = INR
+		displayname = "Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	tds
+	(
+		type = number
+		displayname = "TDS %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have payment_week
+	(
+		type = date
+		displayname = "Payment Week"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have approval_status
+	(
+		type = picklist
+		displayname = "Approval Status"
+		maxchar = 100
+		values = {"Draft","Pending","Approved","Paid"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have settlement_method
+	(
+		type = picklist
+		displayname = "Settlement Method"
+		maxchar = 100
+		values = {"Bank Transfer","Cash"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

@@ -1,215 +1,110 @@
-report quote_response_report
+list quote_response_report
 {
-    DisplayName = "Quote Response Report";
-    LinkName = "quote_response_report";
-    Type = "List";
-    SourceFormLinkName = "quote_response";
-
-    ListView
-    {
-        Columns
-        {
-            Column quote_id
-            {
-                FieldLinkName = "quote_id";
-            }
-            Column rfq
-            {
-                FieldLinkName = "rfq";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column quote_date
-            {
-                FieldLinkName = "quote_date";
-            }
-            Column price_valid_till
-            {
-                FieldLinkName = "price_valid_till";
-            }
-            Column currency
-            {
-                FieldLinkName = "currency";
-            }
-            Column quote_lines
-            {
-                FieldLinkName = "quote_lines";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column payment_terms
-            {
-                FieldLinkName = "payment_terms";
-            }
-            Column delivery_terms
-            {
-                FieldLinkName = "delivery_terms";
-            }
-            Column lead_time_days
-            {
-                FieldLinkName = "lead_time_days";
-            }
-            Column attachments
-            {
-                FieldLinkName = "attachments";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-            Column evaluation_score
-            {
-                FieldLinkName = "evaluation_score";
-            }
-            Column chosen_flag
-            {
-                FieldLinkName = "chosen_flag";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column quote_id
-            {
-                FieldLinkName = "quote_id";
-            }
-            Column rfq
-            {
-                FieldLinkName = "rfq";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column quote_date
-            {
-                FieldLinkName = "quote_date";
-            }
-            Column price_valid_till
-            {
-                FieldLinkName = "price_valid_till";
-            }
-            Column currency
-            {
-                FieldLinkName = "currency";
-            }
-            Column quote_lines
-            {
-                FieldLinkName = "quote_lines";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column payment_terms
-            {
-                FieldLinkName = "payment_terms";
-            }
-            Column delivery_terms
-            {
-                FieldLinkName = "delivery_terms";
-            }
-            Column lead_time_days
-            {
-                FieldLinkName = "lead_time_days";
-            }
-            Column attachments
-            {
-                FieldLinkName = "attachments";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-            Column evaluation_score
-            {
-                FieldLinkName = "evaluation_score";
-            }
-            Column chosen_flag
-            {
-                FieldLinkName = "chosen_flag";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column quote_id
-                    {
-                        FieldLinkName = "quote_id";
-                    }
-                    Column rfq
-                    {
-                        FieldLinkName = "rfq";
-                    }
-                    Column vendor
-                    {
-                        FieldLinkName = "vendor";
-                    }
-                    Column quote_date
-                    {
-                        FieldLinkName = "quote_date";
-                    }
-                    Column price_valid_till
-                    {
-                        FieldLinkName = "price_valid_till";
-                    }
-                    Column currency
-                    {
-                        FieldLinkName = "currency";
-                    }
-                    Column quote_lines
-                    {
-                        FieldLinkName = "quote_lines";
-                    }
-                    Column freight_terms
-                    {
-                        FieldLinkName = "freight_terms";
-                    }
-                    Column payment_terms
-                    {
-                        FieldLinkName = "payment_terms";
-                    }
-                    Column delivery_terms
-                    {
-                        FieldLinkName = "delivery_terms";
-                    }
-                    Column lead_time_days
-                    {
-                        FieldLinkName = "lead_time_days";
-                    }
-                    Column attachments
-                    {
-                        FieldLinkName = "attachments";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                    Column evaluation_score
-                    {
-                        FieldLinkName = "evaluation_score";
-                    }
-                    Column chosen_flag
-                    {
-                        FieldLinkName = "chosen_flag";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Quote Response Report"
+	show all rows from quote_response
+	(
+		quote_id as "Quote ID"
+		quote_date as "Quote Date"
+		price_valid_till as "Price Valid Till"
+		currency as "Currency"
+		quote_lines as "Quote Lines"
+		freight_terms as "Freight Terms"
+		payment_terms as "Payment Terms"
+		delivery_terms as "Delivery Terms"
+		lead_time_days as "Lead Time (Days)"
+		attachments as "Attachments"
+		remarks as "Remarks"
+		evaluation_score as "Evaluation Score"
+		chosen_flag as "Chosen Flag"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Quote Response Overview"
+				fields
+				(
+					quote_id as "Quote ID"
+					quote_date as "Quote Date"
+					price_valid_till as "Price Valid Till"
+					currency as "Currency"
+					quote_lines as "Quote Lines"
+					freight_terms as "Freight Terms"
+					payment_terms as "Payment Terms"
+					delivery_terms as "Delivery Terms"
+					lead_time_days as "Lead Time (Days)"
+					attachments as "Attachments"
+					remarks as "Remarks"
+					evaluation_score as "Evaluation Score"
+					chosen_flag as "Chosen Flag"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Quote Response Overview"
+				fields
+				(
+					quote_id as "Quote ID"
+					quote_date as "Quote Date"
+					price_valid_till as "Price Valid Till"
+					currency as "Currency"
+					quote_lines as "Quote Lines"
+					freight_terms as "Freight Terms"
+					payment_terms as "Payment Terms"
+					delivery_terms as "Delivery Terms"
+					lead_time_days as "Lead Time (Days)"
+					attachments as "Attachments"
+					remarks as "Remarks"
+					evaluation_score as "Evaluation Score"
+					chosen_flag as "Chosen Flag"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

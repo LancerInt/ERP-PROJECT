@@ -1,61 +1,83 @@
-// Module: 1. Core & Shared Masters
 form id_proofs
 {
-    DisplayName = "ID Proofs";
-    LinkName = "id_proofs";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "ID Proofs"
+	success message = "ID Proofs added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field document_type
-                {
-                    DisplayName = "Document Type";
-                    LinkName = "document_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Aadhaar / PAN / License / Other";
-                }
-                Field document_number
-                {
-                    DisplayName = "Document Number";
-                    LinkName = "document_number";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field expiry_date
-                {
-                    DisplayName = "Expiry Date";
-                    LinkName = "expiry_date";
-                    Type = "Date";
-                }
-                Field attachment
-                {
-                    DisplayName = "Attachment";
-                    LinkName = "attachment";
-                    Type = "UploadFile";
-                    IsMandatory = true;
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have document_type
+	(
+		type = picklist
+		displayname = "Document Type"
+		maxchar = 100
+		values = {"Aadhaar","PAN","License","Other"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have document_number
+	(
+		type = text
+		displayname = "Document Number"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	expiry_date
+	(
+		type = date
+		displayname = "Expiry Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have attachment
+	(
+		type = upload file
+		displayname = "Attachment"
+		file count = 10
+		browse = local_drive
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

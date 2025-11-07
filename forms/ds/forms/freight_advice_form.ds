@@ -1,170 +1,269 @@
-// Module: 2. Purchase Module
 form freight_advice
 {
-    DisplayName = "Freight Advice (Inbound)";
-    LinkName = "freight_advice";
-    Module = "2. Purchase Module";
-    Type = "Form";
+	displayname = "Freight Advice (Inbound)"
+	success message = "Freight Advice (Inbound) added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field advice_no
-                {
-                    DisplayName = "Advice No.";
-                    LinkName = "advice_no";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field direction
-                {
-                    DisplayName = "Direction";
-                    LinkName = "direction";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Inbound";
-                }
-                Field receipt_advice
-                {
-                    DisplayName = "Receipt Advice";
-                    LinkName = "receipt_advice";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "receipt_advice";
-                }
-                Field transporter
-                {
-                    DisplayName = "Transporter";
-                    LinkName = "transporter";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "transporter";
-                }
-                Field freight_type
-                {
-                    DisplayName = "Freight Type";
-                    LinkName = "freight_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Local Drayage / Linehaul";
-                }
-                Field created_by
-                {
-                    DisplayName = "Created By";
-                    LinkName = "created_by";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                    HelpText = "Freight Coordinator originator";
-                }
-                Field created_date
-                {
-                    DisplayName = "Created Date";
-                    LinkName = "created_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field base_amount
-                {
-                    DisplayName = "Base Amount";
-                    LinkName = "base_amount";
-                    Type = "INR";
-                    IsMandatory = true;
-                }
-                Field discount
-                {
-                    DisplayName = "Discount";
-                    LinkName = "discount";
-                    Type = "INR";
-                }
-                Field loading_wages_amount
-                {
-                    DisplayName = "Loading Wages Amount";
-                    LinkName = "loading_wages_amount";
-                    Type = "INR";
-                }
-                Field unloading_wages_amount
-                {
-                    DisplayName = "Unloading Wages Amount";
-                    LinkName = "unloading_wages_amount";
-                    Type = "INR";
-                }
-                Field quantity_basis
-                {
-                    DisplayName = "Quantity Basis";
-                    LinkName = "quantity_basis";
-                    Type = "Decimal";
-                    HelpText = "Total quantity covered by the advice";
-                }
-                Field quantity_uom
-                {
-                    DisplayName = "Quantity UOM";
-                    LinkName = "quantity_uom";
-                    Type = "Dropdown";
-                    HelpText = "Tonnes / KG / KL / Units";
-                }
-                Field cost_per_unit_calc
-                {
-                    DisplayName = "Cost Per Unit (Calc)";
-                    LinkName = "cost_per_unit_calc";
-                    Type = "Decimal";
-                    IsFormula = true;
-                    HelpText = "Payable amount divided by quantity basis";
-                }
-                Field destination_state
-                {
-                    DisplayName = "Destination State";
-                    LinkName = "destination_state";
-                    Type = "Dropdown";
-                    HelpText = "Auto-derived from receiving warehouse";
-                }
-                Field payable_amount
-                {
-                    DisplayName = "Payable Amount";
-                    LinkName = "payable_amount";
-                    Type = "INR";
-                    IsMandatory = true;
-                    HelpText = "Base - discount + wages";
-                }
-                Field payment_schedule
-                {
-                    DisplayName = "Payment Schedule";
-                    LinkName = "payment_schedule";
-                    Type = "SubForm";
-                    SubFormLinkName = "freight_payment_schedule";
-                }
-                Field approval_workflow
-                {
-                    DisplayName = "Approval Workflow";
-                    LinkName = "approval_workflow";
-                    Type = "SubForm";
-                    SubFormLinkName = "approval_workflow";
-                    HelpText = "Freight Coordinator → Finance Manager";
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Draft / Pending Approval / Approved / Paid";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have advice_no
+	(
+		type = autonumber
+		displayname = "Advice No."
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have direction
+	(
+		type = picklist
+		displayname = "Direction"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have freight_type
+	(
+		type = picklist
+		displayname = "Freight Type"
+		maxchar = 100
+		values = {"Local Drayage","Linehaul"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have created_date
+	(
+		type = date
+		displayname = "Created Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have base_amount
+	(
+		type = INR
+		displayname = "Base Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	discount
+	(
+		type = INR
+		displayname = "Discount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	loading_wages_amount
+	(
+		type = INR
+		displayname = "Loading Wages Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	unloading_wages_amount
+	(
+		type = INR
+		displayname = "Unloading Wages Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	quantity_basis
+	(
+		type = number
+		displayname = "Quantity Basis"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	quantity_uom
+	(
+		type = picklist
+		displayname = "Quantity UOM"
+		maxchar = 100
+		values = {"Tonnes","KG","KL","Units"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	cost_per_unit_calc
+	(
+		type = number
+		displayname = "Cost Per Unit (Calc)"
+		is formula = true
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	destination_state
+	(
+		type = picklist
+		displayname = "Destination State"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have payable_amount
+	(
+		type = INR
+		displayname = "Payable Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	payment_schedule
+	(
+		type = grid
+		displayname = "Payment Schedule"
+		must have freight_type
+		(
+			type = picklist
+			displayname = "Freight Type"
+			maxchar = 100
+			values = {"Local Drayage","Linehaul"}
+			width = medium
+		)
+
+		must have due_date
+		(
+			type = date
+			displayname = "Due Date"
+			width = medium
+		)
+
+		must have amount
+		(
+			type = INR
+			displayname = "Amount"
+			width = medium
+		)
+
+		tds
+		(
+			type = number
+			displayname = "TDS %"
+			width = medium
+		)
+
+		reminder_flag
+		(
+			type = checkbox
+			displayname = "Reminder Flag"
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	approval_workflow
+	(
+		type = grid
+		displayname = "Approval Workflow"
+		must have stage
+		(
+			type = picklist
+			displayname = "Stage"
+			maxchar = 100
+			values = {"Draft Review","Finance Manager Review","Office Manager Authorization"}
+			width = medium
+		)
+
+		must have decision
+		(
+			type = picklist
+			displayname = "Decision"
+			maxchar = 100
+			values = {"Pending","Approved","Rejected"}
+			width = medium
+		)
+
+		must have decision_date
+		(
+			type = datetime
+			displayname = "Decision Date"
+			width = medium
+		)
+
+		remarks
+		(
+			type = textarea
+			displayname = "Remarks"
+			height = 100px
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		maxchar = 100
+		values = {"Draft","Pending Approval","Approved","Paid"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

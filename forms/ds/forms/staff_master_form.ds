@@ -1,228 +1,366 @@
-// Module: 1. Core & Shared Masters
 form staff_master
 {
-    DisplayName = "Staff Master (Employees & Staff)";
-    LinkName = "staff_master";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "Staff Master (Employees & Staff)"
+	success message = "Staff Master (Employees & Staff) added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field staff_id
-                {
-                    DisplayName = "Staff ID";
-                    LinkName = "staff_id";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    IsUnique = true;
-                    HelpText = "Official staff number";
-                }
-                Field staff_type
-                {
-                    DisplayName = "Staff Type";
-                    LinkName = "staff_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Employee (Stakeholder) / Staff";
-                }
-                Field first_name
-                {
-                    DisplayName = "First Name";
-                    LinkName = "first_name";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field last_name
-                {
-                    DisplayName = "Last Name";
-                    LinkName = "last_name";
-                    Type = "SingleLine";
-                }
-                Field gender
-                {
-                    DisplayName = "Gender";
-                    LinkName = "gender";
-                    Type = "Dropdown";
-                }
-                Field date_of_birth
-                {
-                    DisplayName = "Date of Birth";
-                    LinkName = "date_of_birth";
-                    Type = "Date";
-                }
-                Field company
-                {
-                    DisplayName = "Company";
-                    LinkName = "company";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "company";
-                    HelpText = "Employer entity";
-                }
-                Field primary_location
-                {
-                    DisplayName = "Primary Location";
-                    LinkName = "primary_location";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "warehouse";
-                    HelpText = "For attendance";
-                }
-                Field department
-                {
-                    DisplayName = "Department";
-                    LinkName = "department";
-                    Type = "Dropdown";
-                }
-                Field designation
-                {
-                    DisplayName = "Designation";
-                    LinkName = "designation";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field employment_start_date
-                {
-                    DisplayName = "Employment Start Date";
-                    LinkName = "employment_start_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field employment_end_date
-                {
-                    DisplayName = "Employment End Date";
-                    LinkName = "employment_end_date";
-                    Type = "Date";
-                }
-                Field employment_status
-                {
-                    DisplayName = "Employment Status";
-                    LinkName = "employment_status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Active / On Leave / Resigned";
-                }
-                Field hr_owner
-                {
-                    DisplayName = "HR Owner";
-                    LinkName = "hr_owner";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                    HelpText = "Controls approvals";
-                }
-                Field shift_assignment
-                {
-                    DisplayName = "Shift Assignment";
-                    LinkName = "shift_assignment";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "shift_definition";
-                    HelpText = "Defaults attendance";
-                }
-                Field overtime_eligible
-                {
-                    DisplayName = "Overtime Eligible";
-                    LinkName = "overtime_eligible";
-                    Type = "Checkbox";
-                }
-                Field contractor_flag
-                {
-                    DisplayName = "Contractor Flag";
-                    LinkName = "contractor_flag";
-                    Type = "Checkbox";
-                    HelpText = "For wages via vendor";
-                }
-                Field contractor_vendor
-                {
-                    DisplayName = "Contractor Vendor";
-                    LinkName = "contractor_vendor";
-                    Type = "Lookup";
-                    ConditionalMandatory = true;
-                    RelatedFormLinkName = "vendor";
-                    HelpText = "Mandatory if contractor flag checked";
-                }
-                Field bank_account
-                {
-                    DisplayName = "Bank Account";
-                    LinkName = "bank_account";
-                    Type = "SubForm";
-                    SubFormLinkName = "bank_account";
-                    HelpText = "Payment details";
-                }
-                Field id_proofs
-                {
-                    DisplayName = "ID Proofs";
-                    LinkName = "id_proofs";
-                    Type = "SubForm";
-                    SubFormLinkName = "id_proofs";
-                    HelpText = "Attachments";
-                }
-                Field face_template_id
-                {
-                    DisplayName = "Face Template ID";
-                    LinkName = "face_template_id";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    HelpText = "External face recognition ID";
-                }
-                Field photo_reference
-                {
-                    DisplayName = "Photo Reference";
-                    LinkName = "photo_reference";
-                    Type = "UploadImage";
-                    IsMandatory = true;
-                    HelpText = "Stored for 7 days";
-                }
-                Field contact_number
-                {
-                    DisplayName = "Contact Number";
-                    LinkName = "contact_number";
-                    Type = "Phone";
-                }
-                Field emergency_contact
-                {
-                    DisplayName = "Emergency Contact";
-                    LinkName = "emergency_contact";
-                    Type = "Phone";
-                }
-                Field address
-                {
-                    DisplayName = "Address";
-                    LinkName = "address";
-                    Type = "Address";
-                    AddressFields
-                    {
-                        AddressLine1 = true;
-                        AddressLine2 = true;
-                        City = true;
-                        State = true;
-                        Country = true;
-                        PostalCode = true;
-                    }
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have unique staff_id
+	(
+		type = text
+		displayname = "Staff ID"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have staff_type
+	(
+		type = picklist
+		displayname = "Staff Type"
+		maxchar = 100
+		values = {"Employee","Staff"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have first_name
+	(
+		type = text
+		displayname = "First Name"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	last_name
+	(
+		type = text
+		displayname = "Last Name"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	gender
+	(
+		type = picklist
+		displayname = "Gender"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	date_of_birth
+	(
+		type = date
+		displayname = "Date of Birth"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	department
+	(
+		type = picklist
+		displayname = "Department"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have designation
+	(
+		type = text
+		displayname = "Designation"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have employment_start_date
+	(
+		type = date
+		displayname = "Employment Start Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	employment_end_date
+	(
+		type = date
+		displayname = "Employment End Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have employment_status
+	(
+		type = picklist
+		displayname = "Employment Status"
+		maxchar = 100
+		values = {"Active","On Leave","Resigned"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	overtime_eligible
+	(
+		type = checkbox
+		displayname = "Overtime Eligible"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	contractor_flag
+	(
+		type = checkbox
+		displayname = "Contractor Flag"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	bank_account
+	(
+		type = grid
+		displayname = "Bank Account"
+		must have account_holder
+		(
+			type = text
+			displayname = "Account Holder"
+			width = medium
+		)
+
+		must have bank_name
+		(
+			type = text
+			displayname = "Bank Name"
+			width = medium
+		)
+
+		must have ifsc_code
+		(
+			type = text
+			displayname = "IFSC Code"
+			width = medium
+		)
+
+		must have account_number
+		(
+			type = text
+			displayname = "Account Number"
+			width = medium
+		)
+
+		account_type
+		(
+			type = picklist
+			displayname = "Account Type"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	id_proofs
+	(
+		type = grid
+		displayname = "ID Proofs"
+		must have document_type
+		(
+			type = picklist
+			displayname = "Document Type"
+			maxchar = 100
+			values = {"Aadhaar","PAN","License","Other"}
+			width = medium
+		)
+
+		must have document_number
+		(
+			type = text
+			displayname = "Document Number"
+			width = medium
+		)
+
+		expiry_date
+		(
+			type = date
+			displayname = "Expiry Date"
+			width = medium
+		)
+
+		must have attachment
+		(
+			type = upload file
+			displayname = "Attachment"
+			file count = 10
+			browse = local_drive
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have face_template_id
+	(
+		type = text
+		displayname = "Face Template ID"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have photo_reference
+	(
+		type = upload file
+		displayname = "Photo Reference"
+		file count = 10
+		browse = local_drive
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	contact_number
+	(
+		type = phonenumber
+		displayname = "Contact Number"
+		row = 1
+		column = 1
+		width = medium
+		personal data = true
+	)
+
+	emergency_contact
+	(
+		type = phonenumber
+		displayname = "Emergency Contact"
+		row = 1
+		column = 1
+		width = medium
+		personal data = true
+	)
+
+	address
+	(
+		type = address
+		displayname = "Address"
+		capture coordinates = true
+		adjust using map = false
+		address_line_1
+		(
+			type = address_line_1
+			displayname = "Address Line 1"
+		)
+
+		address_line_2
+		(
+			type = address_line_2
+			displayname = "Address Line 2"
+		)
+
+		district_city
+		(
+			type = district_city
+			displayname = "City / District"
+		)
+
+		state_province
+		(
+			type = state_province
+			displayname = "State / Province"
+		)
+
+		postal_Code
+		(
+			type = postal_Code
+			displayname = "Postal Code"
+		)
+
+		country
+		(
+			type = country
+			displayname = "Country"
+		)
+
+		latitude
+		(
+			type = latitude
+			displayname = "Latitude"
+			visibility = false
+		)
+
+		longitude
+		(
+			type = longitude
+			displayname = "Longitude"
+			visibility = false
+		)
+		row = 1
+		column = 1
+		width = medium
+		personal data = true
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

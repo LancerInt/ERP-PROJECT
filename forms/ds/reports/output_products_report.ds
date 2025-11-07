@@ -1,119 +1,89 @@
-report output_products_report
+list output_products_report
 {
-    DisplayName = "Output Products Report";
-    LinkName = "output_products_report";
-    Type = "List";
-    SourceFormLinkName = "output_products";
-
-    ListView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch_id
-            {
-                FieldLinkName = "batch_id";
-            }
-            Column quantity_produced
-            {
-                FieldLinkName = "quantity_produced";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column purity
-            {
-                FieldLinkName = "purity";
-            }
-            Column ai_content
-            {
-                FieldLinkName = "ai_content";
-            }
-            Column qc_status
-            {
-                FieldLinkName = "qc_status";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch_id
-            {
-                FieldLinkName = "batch_id";
-            }
-            Column quantity_produced
-            {
-                FieldLinkName = "quantity_produced";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column purity
-            {
-                FieldLinkName = "purity";
-            }
-            Column ai_content
-            {
-                FieldLinkName = "ai_content";
-            }
-            Column qc_status
-            {
-                FieldLinkName = "qc_status";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column product
-                    {
-                        FieldLinkName = "product";
-                    }
-                    Column batch_id
-                    {
-                        FieldLinkName = "batch_id";
-                    }
-                    Column quantity_produced
-                    {
-                        FieldLinkName = "quantity_produced";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column purity
-                    {
-                        FieldLinkName = "purity";
-                    }
-                    Column ai_content
-                    {
-                        FieldLinkName = "ai_content";
-                    }
-                    Column qc_status
-                    {
-                        FieldLinkName = "qc_status";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Output Products Report"
+	show all rows from output_products
+	(
+		batch_id as "Batch ID"
+		quantity_produced as "Quantity Produced"
+		uom as "UOM"
+		purity as "Purity %"
+		ai_content as "AI Content"
+		qc_status as "QC Status"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Output Products Overview"
+				fields
+				(
+					batch_id as "Batch ID"
+					quantity_produced as "Quantity Produced"
+					uom as "UOM"
+					purity as "Purity %"
+					ai_content as "AI Content"
+					qc_status as "QC Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Output Products Overview"
+				fields
+				(
+					batch_id as "Batch ID"
+					quantity_produced as "Quantity Produced"
+					uom as "UOM"
+					purity as "Purity %"
+					ai_content as "AI Content"
+					qc_status as "QC Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

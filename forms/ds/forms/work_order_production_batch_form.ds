@@ -1,192 +1,316 @@
-// Module: 4. Production Module
 form work_order_production_batch
 {
-    DisplayName = "Work Order / Production Batch";
-    LinkName = "work_order_production_batch";
-    Module = "4. Production Module";
-    Type = "Form";
+	displayname = "Work Order / Production Batch"
+	success message = "Work Order / Production Batch added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field batch_id
-                {
-                    DisplayName = "Batch ID";
-                    LinkName = "batch_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field work_order_no
-                {
-                    DisplayName = "Work Order No.";
-                    LinkName = "work_order_no";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    HelpText = "Display";
-                }
-                Field warehouse
-                {
-                    DisplayName = "Warehouse";
-                    LinkName = "warehouse";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "warehouse";
-                }
-                Field production_template
-                {
-                    DisplayName = "Production Template";
-                    LinkName = "production_template";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "template_library";
-                    HelpText = "Includes revision";
-                }
-                Field template_revision
-                {
-                    DisplayName = "Template Revision";
-                    LinkName = "template_revision";
-                    Type = "Number";
-                    IsMandatory = true;
-                }
-                Field linked_sales_order
-                {
-                    DisplayName = "Linked Sales Order";
-                    LinkName = "linked_sales_order";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "sales_order";
-                }
-                Field linked_dispatch_challan
-                {
-                    DisplayName = "Linked Dispatch Challan";
-                    LinkName = "linked_dispatch_challan";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "dispatch_challan";
-                }
-                Field planned_start_date
-                {
-                    DisplayName = "Planned Start Date";
-                    LinkName = "planned_start_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field planned_end_date
-                {
-                    DisplayName = "Planned End Date";
-                    LinkName = "planned_end_date";
-                    Type = "Date";
-                }
-                Field actual_start_date
-                {
-                    DisplayName = "Actual Start Date";
-                    LinkName = "actual_start_date";
-                    Type = "Date";
-                }
-                Field actual_end_date
-                {
-                    DisplayName = "Actual End Date";
-                    LinkName = "actual_end_date";
-                    Type = "Date";
-                }
-                Field stage_status
-                {
-                    DisplayName = "Stage Status";
-                    LinkName = "stage_status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Material Issue / Mixing / Packing / QC / Closed";
-                }
-                Field input_consumption
-                {
-                    DisplayName = "Input Consumption";
-                    LinkName = "input_consumption";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "input_consumption";
-                    HelpText = "Actual usage";
-                }
-                Field output_products
-                {
-                    DisplayName = "Output Products";
-                    LinkName = "output_products";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "output_products";
-                    HelpText = "Manufactured goods";
-                }
-                Field damage_report
-                {
-                    DisplayName = "Damage Report";
-                    LinkName = "damage_report";
-                    Type = "SubForm";
-                    SubFormLinkName = "damage_report";
-                    HelpText = "Damage / scrap";
-                }
-                Field qc_request
-                {
-                    DisplayName = "QC Request";
-                    LinkName = "qc_request";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "qc_request";
-                }
-                Field wage_method
-                {
-                    DisplayName = "Wage Method";
-                    LinkName = "wage_method";
-                    Type = "Dropdown";
-                    HelpText = "Template Rate / Headcount";
-                }
-                Field wage_vouchers
-                {
-                    DisplayName = "Wage Vouchers";
-                    LinkName = "wage_vouchers";
-                    Type = "SubForm";
-                    SubFormLinkName = "wage_vouchers";
-                    HelpText = "Linked vouchers";
-                }
-                Field yield_log_reference
-                {
-                    DisplayName = "Yield Log Reference";
-                    LinkName = "yield_log_reference";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "production_yield_log";
-                }
-                Field rework_flag
-                {
-                    DisplayName = "Rework Flag";
-                    LinkName = "rework_flag";
-                    Type = "Checkbox";
-                    HelpText = "For reformulation";
-                }
-                Field parent_batch
-                {
-                    DisplayName = "Parent Batch";
-                    LinkName = "parent_batch";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "work_order_production_batch";
-                    HelpText = "For rework linkage";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have batch_id
+	(
+		type = autonumber
+		displayname = "Batch ID"
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have work_order_no
+	(
+		type = text
+		displayname = "Work Order No."
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have template_revision
+	(
+		type = number
+		displayname = "Template Revision"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have planned_start_date
+	(
+		type = date
+		displayname = "Planned Start Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	planned_end_date
+	(
+		type = date
+		displayname = "Planned End Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actual_start_date
+	(
+		type = date
+		displayname = "Actual Start Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actual_end_date
+	(
+		type = date
+		displayname = "Actual End Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have stage_status
+	(
+		type = picklist
+		displayname = "Stage Status"
+		maxchar = 100
+		values = {"Material Issue","Mixing","Packing","QC","Closed"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have input_consumption
+	(
+		type = grid
+		displayname = "Input Consumption"
+		must have planned_qty
+		(
+			type = number
+			displayname = "Planned Qty"
+			width = medium
+		)
+
+		must have actual_qty
+		(
+			type = number
+			displayname = "Actual Qty"
+			width = medium
+		)
+
+		must have uom
+		(
+			type = picklist
+			displayname = "UOM"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		must have batch_used
+		(
+			type = text
+			displayname = "Batch Used"
+			width = medium
+		)
+
+		yield_loss
+		(
+			type = number
+			displayname = "Yield Loss %"
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have output_products
+	(
+		type = grid
+		displayname = "Output Products"
+		must have batch_id
+		(
+			type = text
+			displayname = "Batch ID"
+			width = medium
+		)
+
+		must have quantity_produced
+		(
+			type = number
+			displayname = "Quantity Produced"
+			width = medium
+		)
+
+		must have uom
+		(
+			type = picklist
+			displayname = "UOM"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		must have purity
+		(
+			type = number
+			displayname = "Purity %"
+			width = medium
+		)
+
+		must have ai_content
+		(
+			type = number
+			displayname = "AI Content"
+			width = medium
+		)
+
+		must have qc_status
+		(
+			type = picklist
+			displayname = "QC Status"
+			maxchar = 100
+			values = {"Pending","Pass","Fail","Hold"}
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	damage_report
+	(
+		type = grid
+		displayname = "Damage Report"
+		must have stage
+		(
+			type = picklist
+			displayname = "Stage"
+			maxchar = 100
+			values = {"Mixing","Packing","QC"}
+			width = medium
+		)
+
+		must have description
+		(
+			type = textarea
+			displayname = "Description"
+			height = 100px
+			width = medium
+		)
+
+		quantity_lost
+		(
+			type = number
+			displayname = "Quantity Lost"
+			width = medium
+		)
+
+		uom
+		(
+			type = picklist
+			displayname = "UOM"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		handling_action
+		(
+			type = picklist
+			displayname = "Handling Action"
+			maxchar = 100
+			values = {"Scrap","Rework"}
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	wage_method
+	(
+		type = picklist
+		displayname = "Wage Method"
+		maxchar = 100
+		values = {"Template Rate","Headcount"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	wage_vouchers
+	(
+		type = grid
+		displayname = "Wage Vouchers"
+		must have amount
+		(
+			type = INR
+			displayname = "Amount"
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	rework_flag
+	(
+		type = checkbox
+		displayname = "Rework Flag"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

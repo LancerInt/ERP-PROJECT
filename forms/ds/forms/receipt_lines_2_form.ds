@@ -1,81 +1,92 @@
-// Module: 6. Inventory, Logistics & Returns
 form receipt_lines_2
 {
-    DisplayName = "Receipt Lines";
-    LinkName = "receipt_lines_2";
-    Module = "6. Inventory, Logistics & Returns";
-    Type = "Form";
+	displayname = "Receipt Lines"
+	success message = "Receipt Lines added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field product
-                {
-                    DisplayName = "Product";
-                    LinkName = "product";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                }
-                Field batch
-                {
-                    DisplayName = "Batch";
-                    LinkName = "batch";
-                    Type = "SingleLine";
-                }
-                Field quantity_dispatched
-                {
-                    DisplayName = "Quantity Dispatched";
-                    LinkName = "quantity_dispatched";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field quantity_received
-                {
-                    DisplayName = "Quantity Received";
-                    LinkName = "quantity_received";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field received_godown
-                {
-                    DisplayName = "Received Godown";
-                    LinkName = "received_godown";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "godown";
-                    HelpText = "Filtered by receiving warehouse";
-                }
-                Field condition
-                {
-                    DisplayName = "Condition";
-                    LinkName = "condition";
-                    Type = "Dropdown";
-                    HelpText = "Good / Damaged";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	batch
+	(
+		type = text
+		displayname = "Batch"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have quantity_dispatched
+	(
+		type = number
+		displayname = "Quantity Dispatched"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have quantity_received
+	(
+		type = number
+		displayname = "Quantity Received"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	condition
+	(
+		type = picklist
+		displayname = "Condition"
+		maxchar = 100
+		values = {"Good","Damaged"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

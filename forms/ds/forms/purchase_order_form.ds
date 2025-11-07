@@ -1,169 +1,293 @@
-// Module: 2. Purchase Module
 form purchase_order
 {
-    DisplayName = "Purchase Order (PO)";
-    LinkName = "purchase_order";
-    Module = "2. Purchase Module";
-    Type = "Form";
+	displayname = "Purchase Order (PO)"
+	success message = "Purchase Order (PO) added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field po_no
-                {
-                    DisplayName = "PO No.";
-                    LinkName = "po_no";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field revision_no
-                {
-                    DisplayName = "Revision No.";
-                    LinkName = "revision_no";
-                    Type = "Number";
-                    IsMandatory = true;
-                    HelpText = "Rev 0 default";
-                }
-                Field vendor
-                {
-                    DisplayName = "Vendor";
-                    LinkName = "vendor";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "vendor";
-                }
-                Field company
-                {
-                    DisplayName = "Company";
-                    LinkName = "company";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "company";
-                }
-                Field warehouse
-                {
-                    DisplayName = "Warehouse";
-                    LinkName = "warehouse";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "warehouse";
-                }
-                Field linked_prs
-                {
-                    DisplayName = "Linked PRs";
-                    LinkName = "linked_prs";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    AllowMultiple = true;
-                }
-                Field linked_rfq
-                {
-                    DisplayName = "Linked RFQ";
-                    LinkName = "linked_rfq";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "rfq_header";
-                }
-                Field po_date
-                {
-                    DisplayName = "PO Date";
-                    LinkName = "po_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field expected_delivery_start
-                {
-                    DisplayName = "Expected Delivery Start";
-                    LinkName = "expected_delivery_start";
-                    Type = "Date";
-                }
-                Field expected_delivery_end
-                {
-                    DisplayName = "Expected Delivery End";
-                    LinkName = "expected_delivery_end";
-                    Type = "Date";
-                }
-                Field freight_terms
-                {
-                    DisplayName = "Freight Terms";
-                    LinkName = "freight_terms";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field payment_terms
-                {
-                    DisplayName = "Payment Terms";
-                    LinkName = "payment_terms";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field currency
-                {
-                    DisplayName = "Currency";
-                    LinkName = "currency";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field po_lines
-                {
-                    DisplayName = "PO Lines";
-                    LinkName = "po_lines";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "po_lines";
-                }
-                Field attachments
-                {
-                    DisplayName = "Attachments";
-                    LinkName = "attachments";
-                    Type = "UploadFile";
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "Signed PO";
-                }
-                Field terms_and_conditions
-                {
-                    DisplayName = "Terms & Conditions";
-                    LinkName = "terms_and_conditions";
-                    Type = "MultiLine";
-                }
-                Field approval_trail
-                {
-                    DisplayName = "Approval Trail";
-                    LinkName = "approval_trail";
-                    Type = "SubForm";
-                    SubFormLinkName = "approval_trail";
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Draft / Approved / Issued / Closed / Cancelled";
-                }
-                Field partial_receipt_flag
-                {
-                    DisplayName = "Partial Receipt Flag";
-                    LinkName = "partial_receipt_flag";
-                    Type = "Checkbox";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have po_no
+	(
+		type = autonumber
+		displayname = "PO No."
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have revision_no
+	(
+		type = number
+		displayname = "Revision No."
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have po_date
+	(
+		type = date
+		displayname = "PO Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	expected_delivery_start
+	(
+		type = date
+		displayname = "Expected Delivery Start"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	expected_delivery_end
+	(
+		type = date
+		displayname = "Expected Delivery End"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have freight_terms
+	(
+		type = picklist
+		displayname = "Freight Terms"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have payment_terms
+	(
+		type = picklist
+		displayname = "Payment Terms"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have currency
+	(
+		type = picklist
+		displayname = "Currency"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have po_lines
+	(
+		type = grid
+		displayname = "PO Lines"
+		must have line_no
+		(
+			type = number
+			displayname = "Line No."
+			width = medium
+		)
+
+		description
+		(
+			type = textarea
+			displayname = "Description"
+			height = 100px
+			width = medium
+		)
+
+		must have quantity_ordered
+		(
+			type = number
+			displayname = "Quantity Ordered"
+			width = medium
+		)
+
+		must have uom
+		(
+			type = picklist
+			displayname = "UOM"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		must have unit_price
+		(
+			type = INR
+			displayname = "Unit Price"
+			width = medium
+		)
+
+		discount
+		(
+			type = number
+			displayname = "Discount %"
+			width = medium
+		)
+
+		must have gst
+		(
+			type = number
+			displayname = "GST %"
+			width = medium
+		)
+
+		extra_commission
+		(
+			type = INR
+			displayname = "Extra Commission"
+			width = medium
+		)
+
+		agent_commission
+		(
+			type = INR
+			displayname = "Agent Commission"
+			width = medium
+		)
+
+		freight_estimate
+		(
+			type = INR
+			displayname = "Freight Estimate"
+			width = medium
+		)
+
+		delivery_schedule
+		(
+			type = date
+			displayname = "Delivery Schedule"
+			width = medium
+		)
+
+		batch_requirement_notes
+		(
+			type = textarea
+			displayname = "Batch Requirement Notes"
+			height = 100px
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	attachments
+	(
+		type = upload file
+		displayname = "Attachments"
+		file count = 10
+		browse = local_drive
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	terms_and_conditions
+	(
+		type = textarea
+		displayname = "Terms & Conditions"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	approval_trail
+	(
+		type = grid
+		displayname = "Approval Trail"
+		must have action
+		(
+			type = picklist
+			displayname = "Action"
+			maxchar = 100
+			values = {"Approved","Rejected","Partial"}
+			width = medium
+		)
+
+		must have action_date
+		(
+			type = datetime
+			displayname = "Action Date"
+			width = medium
+		)
+
+		remarks
+		(
+			type = textarea
+			displayname = "Remarks"
+			height = 100px
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		maxchar = 100
+		values = {"Draft","Approved","Issued","Closed","Cancelled"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	partial_receipt_flag
+	(
+		type = checkbox
+		displayname = "Partial Receipt Flag"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

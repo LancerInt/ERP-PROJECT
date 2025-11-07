@@ -1,215 +1,101 @@
-report bom_request_report
+list bom_request_report
 {
-    DisplayName = "BOM Request Report";
-    LinkName = "bom_request_report";
-    Type = "List";
-    SourceFormLinkName = "bom_request";
-
-    ListView
-    {
-        Columns
-        {
-            Column request_no
-            {
-                FieldLinkName = "request_no";
-            }
-            Column request_date
-            {
-                FieldLinkName = "request_date";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column requested_by
-            {
-                FieldLinkName = "requested_by";
-            }
-            Column production_template
-            {
-                FieldLinkName = "production_template";
-            }
-            Column output_product
-            {
-                FieldLinkName = "output_product";
-            }
-            Column output_quantity
-            {
-                FieldLinkName = "output_quantity";
-            }
-            Column required_completion_date
-            {
-                FieldLinkName = "required_completion_date";
-            }
-            Column auto_calculated_inputs
-            {
-                FieldLinkName = "auto_calculated_inputs";
-            }
-            Column shortfall_summary
-            {
-                FieldLinkName = "shortfall_summary";
-            }
-            Column approval_status
-            {
-                FieldLinkName = "approval_status";
-            }
-            Column approved_by
-            {
-                FieldLinkName = "approved_by";
-            }
-            Column approved_date
-            {
-                FieldLinkName = "approved_date";
-            }
-            Column excel_export_link
-            {
-                FieldLinkName = "excel_export_link";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column request_no
-            {
-                FieldLinkName = "request_no";
-            }
-            Column request_date
-            {
-                FieldLinkName = "request_date";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column requested_by
-            {
-                FieldLinkName = "requested_by";
-            }
-            Column production_template
-            {
-                FieldLinkName = "production_template";
-            }
-            Column output_product
-            {
-                FieldLinkName = "output_product";
-            }
-            Column output_quantity
-            {
-                FieldLinkName = "output_quantity";
-            }
-            Column required_completion_date
-            {
-                FieldLinkName = "required_completion_date";
-            }
-            Column auto_calculated_inputs
-            {
-                FieldLinkName = "auto_calculated_inputs";
-            }
-            Column shortfall_summary
-            {
-                FieldLinkName = "shortfall_summary";
-            }
-            Column approval_status
-            {
-                FieldLinkName = "approval_status";
-            }
-            Column approved_by
-            {
-                FieldLinkName = "approved_by";
-            }
-            Column approved_date
-            {
-                FieldLinkName = "approved_date";
-            }
-            Column excel_export_link
-            {
-                FieldLinkName = "excel_export_link";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column request_no
-                    {
-                        FieldLinkName = "request_no";
-                    }
-                    Column request_date
-                    {
-                        FieldLinkName = "request_date";
-                    }
-                    Column warehouse
-                    {
-                        FieldLinkName = "warehouse";
-                    }
-                    Column requested_by
-                    {
-                        FieldLinkName = "requested_by";
-                    }
-                    Column production_template
-                    {
-                        FieldLinkName = "production_template";
-                    }
-                    Column output_product
-                    {
-                        FieldLinkName = "output_product";
-                    }
-                    Column output_quantity
-                    {
-                        FieldLinkName = "output_quantity";
-                    }
-                    Column required_completion_date
-                    {
-                        FieldLinkName = "required_completion_date";
-                    }
-                    Column auto_calculated_inputs
-                    {
-                        FieldLinkName = "auto_calculated_inputs";
-                    }
-                    Column shortfall_summary
-                    {
-                        FieldLinkName = "shortfall_summary";
-                    }
-                    Column approval_status
-                    {
-                        FieldLinkName = "approval_status";
-                    }
-                    Column approved_by
-                    {
-                        FieldLinkName = "approved_by";
-                    }
-                    Column approved_date
-                    {
-                        FieldLinkName = "approved_date";
-                    }
-                    Column excel_export_link
-                    {
-                        FieldLinkName = "excel_export_link";
-                    }
-                    Column notes
-                    {
-                        FieldLinkName = "notes";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "BOM Request Report"
+	show all rows from bom_request
+	(
+		request_no as "Request No."
+		request_date as "Request Date"
+		output_quantity as "Output Quantity"
+		required_completion_date as "Required Completion Date"
+		auto_calculated_inputs as "Auto-calculated Inputs"
+		shortfall_summary as "Shortfall Summary"
+		approval_status as "Approval Status"
+		approved_date as "Approved Date"
+		excel_export_link as "Excel Export Link"
+		notes as "Notes"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "BOM Request Overview"
+				fields
+				(
+					request_no as "Request No."
+					request_date as "Request Date"
+					output_quantity as "Output Quantity"
+					required_completion_date as "Required Completion Date"
+					auto_calculated_inputs as "Auto-calculated Inputs"
+					shortfall_summary as "Shortfall Summary"
+					approval_status as "Approval Status"
+					approved_date as "Approved Date"
+					excel_export_link as "Excel Export Link"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "BOM Request Overview"
+				fields
+				(
+					request_no as "Request No."
+					request_date as "Request Date"
+					output_quantity as "Output Quantity"
+					required_completion_date as "Required Completion Date"
+					auto_calculated_inputs as "Auto-calculated Inputs"
+					shortfall_summary as "Shortfall Summary"
+					approval_status as "Approval Status"
+					approved_date as "Approved Date"
+					excel_export_link as "Excel Export Link"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

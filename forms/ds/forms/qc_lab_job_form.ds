@@ -1,92 +1,136 @@
-// Module: 5. Quality Control Module
 form qc_lab_job
 {
-    DisplayName = "QC Lab Job";
-    LinkName = "qc_lab_job";
-    Module = "5. Quality Control Module";
-    Type = "Form";
+	displayname = "QC Lab Job"
+	success message = "QC Lab Job added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field job_no
-                {
-                    DisplayName = "Job No.";
-                    LinkName = "job_no";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field qc_request
-                {
-                    DisplayName = "QC Request";
-                    LinkName = "qc_request";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "qc_request";
-                }
-                Field analyst
-                {
-                    DisplayName = "Analyst";
-                    LinkName = "analyst";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field assigned_parameters
-                {
-                    DisplayName = "Assigned Parameters";
-                    LinkName = "assigned_parameters";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "assigned_parameters";
-                }
-                Field sample_received_date
-                {
-                    DisplayName = "Sample Received Date";
-                    LinkName = "sample_received_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field results_attachment
-                {
-                    DisplayName = "Results Attachment";
-                    LinkName = "results_attachment";
-                    Type = "UploadFile";
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "Raw data";
-                }
-                Field comments
-                {
-                    DisplayName = "Comments";
-                    LinkName = "comments";
-                    Type = "MultiLine";
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Assigned / In Progress / Completed";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have job_no
+	(
+		type = autonumber
+		displayname = "Job No."
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have assigned_parameters
+	(
+		type = grid
+		displayname = "Assigned Parameters"
+		result_value
+		(
+			type = number
+			displayname = "Result Value"
+			width = medium
+		)
+
+		result_text
+		(
+			type = textarea
+			displayname = "Result Text"
+			height = 100px
+			width = medium
+		)
+
+		result_photo
+		(
+			type = upload file
+			displayname = "Result Photo"
+			file count = 10
+			browse = local_drive
+			width = medium
+		)
+
+		pass_fail
+		(
+			type = picklist
+			displayname = "Pass/Fail"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have sample_received_date
+	(
+		type = date
+		displayname = "Sample Received Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	results_attachment
+	(
+		type = upload file
+		displayname = "Results Attachment"
+		file count = 10
+		browse = local_drive
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	comments
+	(
+		type = textarea
+		displayname = "Comments"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		maxchar = 100
+		values = {"Assigned","In Progress","Completed"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

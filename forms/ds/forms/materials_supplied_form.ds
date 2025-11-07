@@ -1,66 +1,83 @@
-// Module: 6. Inventory, Logistics & Returns
 form materials_supplied
 {
-    DisplayName = "Materials Supplied";
-    LinkName = "materials_supplied";
-    Module = "6. Inventory, Logistics & Returns";
-    Type = "Form";
+	displayname = "Materials Supplied"
+	success message = "Materials Supplied added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field material_type
-                {
-                    DisplayName = "Material Type";
-                    LinkName = "material_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "RM / PM / Machine";
-                }
-                Field product_machine
-                {
-                    DisplayName = "Product/Machine";
-                    LinkName = "product_machine";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkNames = ["product_master", "machinery"];
-                }
-                Field batch
-                {
-                    DisplayName = "Batch";
-                    LinkName = "batch";
-                    Type = "SingleLine";
-                }
-                Field quantity
-                {
-                    DisplayName = "Quantity";
-                    LinkName = "quantity";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have material_type
+	(
+		type = picklist
+		displayname = "Material Type"
+		maxchar = 100
+		values = {"RM","PM","Machine"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	batch
+	(
+		type = text
+		displayname = "Batch"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have quantity
+	(
+		type = number
+		displayname = "Quantity"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

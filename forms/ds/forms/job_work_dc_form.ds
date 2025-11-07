@@ -1,100 +1,143 @@
-// Module: 6. Inventory, Logistics & Returns
 form job_work_dc
 {
-    DisplayName = "Job Work DC";
-    LinkName = "job_work_dc";
-    Module = "6. Inventory, Logistics & Returns";
-    Type = "Form";
+	displayname = "Job Work DC"
+	success message = "Job Work DC added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field jw_dc_no
-                {
-                    DisplayName = "JW DC No.";
-                    LinkName = "jw_dc_no";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field job_work_order
-                {
-                    DisplayName = "Job Work Order";
-                    LinkName = "job_work_order";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "job_work_order";
-                }
-                Field vendor
-                {
-                    DisplayName = "Vendor";
-                    LinkName = "vendor";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "vendor";
-                }
-                Field dispatch_date
-                {
-                    DisplayName = "Dispatch Date";
-                    LinkName = "dispatch_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field transporter
-                {
-                    DisplayName = "Transporter";
-                    LinkName = "transporter";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "transporter";
-                }
-                Field freight_terms
-                {
-                    DisplayName = "Freight Terms";
-                    LinkName = "freight_terms";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field issued_materials
-                {
-                    DisplayName = "Issued Materials";
-                    LinkName = "issued_materials";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "issued_materials";
-                }
-                Field documents
-                {
-                    DisplayName = "Documents";
-                    LinkName = "documents";
-                    Type = "UploadFile";
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "DC, challan";
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Draft / Dispatched / Completed";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have jw_dc_no
+	(
+		type = autonumber
+		displayname = "JW DC No."
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have dispatch_date
+	(
+		type = date
+		displayname = "Dispatch Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have freight_terms
+	(
+		type = picklist
+		displayname = "Freight Terms"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have issued_materials
+	(
+		type = grid
+		displayname = "Issued Materials"
+		must have material_type
+		(
+			type = picklist
+			displayname = "Material Type"
+			maxchar = 100
+			values = {"RM","PM","Machine"}
+			width = medium
+		)
+
+		batch
+		(
+			type = text
+			displayname = "Batch"
+			width = medium
+		)
+
+		must have quantity
+		(
+			type = number
+			displayname = "Quantity"
+			width = medium
+		)
+
+		must have uom
+		(
+			type = picklist
+			displayname = "UOM"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		expected_return_date
+		(
+			type = date
+			displayname = "Expected Return Date"
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	documents
+	(
+		type = upload file
+		displayname = "Documents"
+		file count = 10
+		browse = local_drive
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		maxchar = 100
+		values = {"Draft","Dispatched","Completed"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

@@ -1,119 +1,89 @@
-report comparison_table_report
+list comparison_table_report
 {
-    DisplayName = "Comparison Table Report";
-    LinkName = "comparison_table_report";
-    Type = "List";
-    SourceFormLinkName = "comparison_table";
-
-    ListView
-    {
-        Columns
-        {
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column total_cost
-            {
-                FieldLinkName = "total_cost";
-            }
-            Column lead_time
-            {
-                FieldLinkName = "lead_time";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column payment_terms
-            {
-                FieldLinkName = "payment_terms";
-            }
-            Column score
-            {
-                FieldLinkName = "score";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column total_cost
-            {
-                FieldLinkName = "total_cost";
-            }
-            Column lead_time
-            {
-                FieldLinkName = "lead_time";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column payment_terms
-            {
-                FieldLinkName = "payment_terms";
-            }
-            Column score
-            {
-                FieldLinkName = "score";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column vendor
-                    {
-                        FieldLinkName = "vendor";
-                    }
-                    Column total_cost
-                    {
-                        FieldLinkName = "total_cost";
-                    }
-                    Column lead_time
-                    {
-                        FieldLinkName = "lead_time";
-                    }
-                    Column freight_terms
-                    {
-                        FieldLinkName = "freight_terms";
-                    }
-                    Column payment_terms
-                    {
-                        FieldLinkName = "payment_terms";
-                    }
-                    Column score
-                    {
-                        FieldLinkName = "score";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Comparison Table Report"
+	show all rows from comparison_table
+	(
+		total_cost as "Total Cost"
+		lead_time as "Lead Time"
+		freight_terms as "Freight Terms"
+		payment_terms as "Payment Terms"
+		score as "Score"
+		remarks as "Remarks"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Comparison Table Overview"
+				fields
+				(
+					total_cost as "Total Cost"
+					lead_time as "Lead Time"
+					freight_terms as "Freight Terms"
+					payment_terms as "Payment Terms"
+					score as "Score"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Comparison Table Overview"
+				fields
+				(
+					total_cost as "Total Cost"
+					lead_time as "Lead Time"
+					freight_terms as "Freight Terms"
+					payment_terms as "Payment Terms"
+					score as "Score"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

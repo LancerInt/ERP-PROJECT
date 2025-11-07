@@ -1,89 +1,111 @@
-// Module: 4. Production Module
 form material_issue
 {
-    DisplayName = "Material Issue";
-    LinkName = "material_issue";
-    Module = "4. Production Module";
-    Type = "Form";
+	displayname = "Material Issue"
+	success message = "Material Issue added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field issue_no
-                {
-                    DisplayName = "Issue No.";
-                    LinkName = "issue_no";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field issue_date
-                {
-                    DisplayName = "Issue Date";
-                    LinkName = "issue_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field warehouse
-                {
-                    DisplayName = "Warehouse";
-                    LinkName = "warehouse";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "warehouse";
-                }
-                Field work_order
-                {
-                    DisplayName = "Work Order";
-                    LinkName = "work_order";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "work_order_production_batch";
-                }
-                Field issued_by
-                {
-                    DisplayName = "Issued By";
-                    LinkName = "issued_by";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field approved_by
-                {
-                    DisplayName = "Approved By";
-                    LinkName = "approved_by";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field issue_lines
-                {
-                    DisplayName = "Issue Lines";
-                    LinkName = "issue_lines";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "issue_lines";
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have issue_no
+	(
+		type = autonumber
+		displayname = "Issue No."
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have issue_date
+	(
+		type = date
+		displayname = "Issue Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have issue_lines
+	(
+		type = grid
+		displayname = "Issue Lines"
+		must have batch_out
+		(
+			type = text
+			displayname = "Batch Out"
+			width = medium
+		)
+
+		must have quantity_issued
+		(
+			type = number
+			displayname = "Quantity Issued"
+			width = medium
+		)
+
+		must have uom
+		(
+			type = picklist
+			displayname = "UOM"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		reserved_for_template
+		(
+			type = checkbox
+			displayname = "Reserved for Template"
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

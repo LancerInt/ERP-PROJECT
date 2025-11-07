@@ -1,83 +1,90 @@
-// Module: 4. Production Module
 form input_consumption
 {
-    DisplayName = "Input Consumption";
-    LinkName = "input_consumption";
-    Module = "4. Production Module";
-    Type = "Form";
+	displayname = "Input Consumption"
+	success message = "Input Consumption added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field product
-                {
-                    DisplayName = "Product";
-                    LinkName = "product";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                }
-                Field planned_qty
-                {
-                    DisplayName = "Planned Qty";
-                    LinkName = "planned_qty";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                    HelpText = "From template";
-                }
-                Field actual_qty
-                {
-                    DisplayName = "Actual Qty";
-                    LinkName = "actual_qty";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field batch_used
-                {
-                    DisplayName = "Batch Used";
-                    LinkName = "batch_used";
-                    Type = "SingleLine";
-                    ConditionalMandatory = true;
-                }
-                Field godown
-                {
-                    DisplayName = "Godown";
-                    LinkName = "godown";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "godown";
-                    HelpText = "Filtered by production warehouse";
-                }
-                Field yield_loss
-                {
-                    DisplayName = "Yield Loss %";
-                    LinkName = "yield_loss";
-                    Type = "Decimal";
-                    HelpText = "Capture deviations";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have planned_qty
+	(
+		type = number
+		displayname = "Planned Qty"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have actual_qty
+	(
+		type = number
+		displayname = "Actual Qty"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have batch_used
+	(
+		type = text
+		displayname = "Batch Used"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	yield_loss
+	(
+		type = number
+		displayname = "Yield Loss %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

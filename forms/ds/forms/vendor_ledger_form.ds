@@ -1,114 +1,164 @@
-// Module: 7. Finance Module
 form vendor_ledger
 {
-    DisplayName = "Vendor Ledger";
-    LinkName = "vendor_ledger";
-    Module = "7. Finance Module";
-    Type = "Form";
+	displayname = "Vendor Ledger"
+	success message = "Vendor Ledger added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field ledger_id
-                {
-                    DisplayName = "Ledger ID";
-                    LinkName = "ledger_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field vendor
-                {
-                    DisplayName = "Vendor";
-                    LinkName = "vendor";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "vendor";
-                }
-                Field document_type
-                {
-                    DisplayName = "Document Type";
-                    LinkName = "document_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "PO / Receipt / Invoice / Freight / Wage / Credit Note";
-                }
-                Field document_reference
-                {
-                    DisplayName = "Document Reference";
-                    LinkName = "document_reference";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkNames = ["purchase_order", "receipt_advice", "freight_advice", "wage_voucher", "credit_debit_note"];
-                }
-                Field document_date
-                {
-                    DisplayName = "Document Date";
-                    LinkName = "document_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field debit_amount
-                {
-                    DisplayName = "Debit Amount";
-                    LinkName = "debit_amount";
-                    Type = "INR";
-                }
-                Field credit_amount
-                {
-                    DisplayName = "Credit Amount";
-                    LinkName = "credit_amount";
-                    Type = "INR";
-                }
-                Field tax_breakdown
-                {
-                    DisplayName = "Tax Breakdown";
-                    LinkName = "tax_breakdown";
-                    Type = "SubForm";
-                    SubFormLinkName = "tax_breakdown";
-                }
-                Field due_date
-                {
-                    DisplayName = "Due Date";
-                    LinkName = "due_date";
-                    Type = "Date";
-                }
-                Field payment_status
-                {
-                    DisplayName = "Payment Status";
-                    LinkName = "payment_status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Not Due / Partially Paid / Paid / Overdue";
-                }
-                Field ageing_bucket
-                {
-                    DisplayName = "Ageing Bucket";
-                    LinkName = "ageing_bucket";
-                    Type = "Dropdown";
-                    HelpText = "0-30 / 31-60 / >60";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have ledger_id
+	(
+		type = autonumber
+		displayname = "Ledger ID"
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have document_type
+	(
+		type = picklist
+		displayname = "Document Type"
+		maxchar = 100
+		values = {"PO","Receipt","Invoice","Freight","Wage","Credit Note"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have document_date
+	(
+		type = date
+		displayname = "Document Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	debit_amount
+	(
+		type = INR
+		displayname = "Debit Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	credit_amount
+	(
+		type = INR
+		displayname = "Credit Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	tax_breakdown
+	(
+		type = grid
+		displayname = "Tax Breakdown"
+		must have tax_type
+		(
+			type = picklist
+			displayname = "Tax Type"
+			maxchar = 100
+			values = {"GST","TDS","TCS"}
+			width = medium
+		)
+
+		must have rate
+		(
+			type = number
+			displayname = "Rate %"
+			width = medium
+		)
+
+		must have amount
+		(
+			type = INR
+			displayname = "Amount"
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	due_date
+	(
+		type = date
+		displayname = "Due Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have payment_status
+	(
+		type = picklist
+		displayname = "Payment Status"
+		maxchar = 100
+		values = {"Not Due","Partially Paid","Paid","Overdue"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	ageing_bucket
+	(
+		type = picklist
+		displayname = "Ageing Bucket"
+		maxchar = 100
+		values = {"0-30","31-60",">60"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

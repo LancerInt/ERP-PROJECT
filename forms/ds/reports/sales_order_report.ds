@@ -1,227 +1,98 @@
-report sales_order_report
+list sales_order_report
 {
-    DisplayName = "Sales Order (SO) Report";
-    LinkName = "sales_order_report";
-    Type = "List";
-    SourceFormLinkName = "sales_order";
-
-    ListView
-    {
-        Columns
-        {
-            Column so_no
-            {
-                FieldLinkName = "so_no";
-            }
-            Column customer
-            {
-                FieldLinkName = "customer";
-            }
-            Column company
-            {
-                FieldLinkName = "company";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column price_list
-            {
-                FieldLinkName = "price_list";
-            }
-            Column credit_terms
-            {
-                FieldLinkName = "credit_terms";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column customer_po_reference
-            {
-                FieldLinkName = "customer_po_reference";
-            }
-            Column so_date
-            {
-                FieldLinkName = "so_date";
-            }
-            Column required_ship_date
-            {
-                FieldLinkName = "required_ship_date";
-            }
-            Column lines
-            {
-                FieldLinkName = "lines";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-            Column approval_status
-            {
-                FieldLinkName = "approval_status";
-            }
-            Column approved_by
-            {
-                FieldLinkName = "approved_by";
-            }
-            Column approval_date
-            {
-                FieldLinkName = "approval_date";
-            }
-            Column assigned_warehouse_stakeholders
-            {
-                FieldLinkName = "assigned_warehouse_stakeholders";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column so_no
-            {
-                FieldLinkName = "so_no";
-            }
-            Column customer
-            {
-                FieldLinkName = "customer";
-            }
-            Column company
-            {
-                FieldLinkName = "company";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column price_list
-            {
-                FieldLinkName = "price_list";
-            }
-            Column credit_terms
-            {
-                FieldLinkName = "credit_terms";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column customer_po_reference
-            {
-                FieldLinkName = "customer_po_reference";
-            }
-            Column so_date
-            {
-                FieldLinkName = "so_date";
-            }
-            Column required_ship_date
-            {
-                FieldLinkName = "required_ship_date";
-            }
-            Column lines
-            {
-                FieldLinkName = "lines";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-            Column approval_status
-            {
-                FieldLinkName = "approval_status";
-            }
-            Column approved_by
-            {
-                FieldLinkName = "approved_by";
-            }
-            Column approval_date
-            {
-                FieldLinkName = "approval_date";
-            }
-            Column assigned_warehouse_stakeholders
-            {
-                FieldLinkName = "assigned_warehouse_stakeholders";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column so_no
-                    {
-                        FieldLinkName = "so_no";
-                    }
-                    Column customer
-                    {
-                        FieldLinkName = "customer";
-                    }
-                    Column company
-                    {
-                        FieldLinkName = "company";
-                    }
-                    Column warehouse
-                    {
-                        FieldLinkName = "warehouse";
-                    }
-                    Column price_list
-                    {
-                        FieldLinkName = "price_list";
-                    }
-                    Column credit_terms
-                    {
-                        FieldLinkName = "credit_terms";
-                    }
-                    Column freight_terms
-                    {
-                        FieldLinkName = "freight_terms";
-                    }
-                    Column customer_po_reference
-                    {
-                        FieldLinkName = "customer_po_reference";
-                    }
-                    Column so_date
-                    {
-                        FieldLinkName = "so_date";
-                    }
-                    Column required_ship_date
-                    {
-                        FieldLinkName = "required_ship_date";
-                    }
-                    Column lines
-                    {
-                        FieldLinkName = "lines";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                    Column approval_status
-                    {
-                        FieldLinkName = "approval_status";
-                    }
-                    Column approved_by
-                    {
-                        FieldLinkName = "approved_by";
-                    }
-                    Column approval_date
-                    {
-                        FieldLinkName = "approval_date";
-                    }
-                    Column assigned_warehouse_stakeholders
-                    {
-                        FieldLinkName = "assigned_warehouse_stakeholders";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Sales Order (SO) Report"
+	show all rows from sales_order
+	(
+		so_no as "SO No."
+		credit_terms as "Credit Terms"
+		freight_terms as "Freight Terms"
+		so_date as "SO Date"
+		required_ship_date as "Required Ship Date"
+		lines as "Lines"
+		remarks as "Remarks"
+		approval_status as "Approval Status"
+		approval_date as "Approval Date"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Sales Order (SO) Overview"
+				fields
+				(
+					so_no as "SO No."
+					credit_terms as "Credit Terms"
+					freight_terms as "Freight Terms"
+					so_date as "SO Date"
+					required_ship_date as "Required Ship Date"
+					lines as "Lines"
+					remarks as "Remarks"
+					approval_status as "Approval Status"
+					approval_date as "Approval Date"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Sales Order (SO) Overview"
+				fields
+				(
+					so_no as "SO No."
+					credit_terms as "Credit Terms"
+					freight_terms as "Freight Terms"
+					so_date as "SO Date"
+					required_ship_date as "Required Ship Date"
+					lines as "Lines"
+					remarks as "Remarks"
+					approval_status as "Approval Status"
+					approval_date as "Approval Date"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

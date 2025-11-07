@@ -1,118 +1,142 @@
-// Module: 2. Purchase Module
 form pr_lines
 {
-    DisplayName = "PR Lines";
-    LinkName = "pr_lines";
-    Module = "2. Purchase Module";
-    Type = "Form";
+	displayname = "PR Lines"
+	success message = "PR Lines added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field line_no
-                {
-                    DisplayName = "Line No.";
-                    LinkName = "line_no";
-                    Type = "Number";
-                    IsMandatory = true;
-                }
-                Field product_service
-                {
-                    DisplayName = "Product/Service";
-                    LinkName = "product_service";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                }
-                Field description_override
-                {
-                    DisplayName = "Description Override";
-                    LinkName = "description_override";
-                    Type = "MultiLine";
-                }
-                Field quantity_requested
-                {
-                    DisplayName = "Quantity Requested";
-                    LinkName = "quantity_requested";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field required_date
-                {
-                    DisplayName = "Required Date";
-                    LinkName = "required_date";
-                    Type = "Date";
-                }
-                Field purpose
-                {
-                    DisplayName = "Purpose";
-                    LinkName = "purpose";
-                    Type = "Dropdown";
-                    HelpText = "Production / Maintenance / Consumable";
-                }
-                Field machine_reference
-                {
-                    DisplayName = "Machine Reference";
-                    LinkName = "machine_reference";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "machinery";
-                    HelpText = "For spares/job work";
-                }
-                Field allow_rfq_skip
-                {
-                    DisplayName = "Allow RFQ Skip";
-                    LinkName = "allow_rfq_skip";
-                    Type = "Checkbox";
-                    HelpText = "Requires approval";
-                }
-                Field attachments
-                {
-                    DisplayName = "Attachments";
-                    LinkName = "attachments";
-                    Type = "UploadFile";
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "Photos";
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Pending / Approved / Rejected / Fulfilled";
-                }
-                Field approved_quantity
-                {
-                    DisplayName = "Approved Quantity";
-                    LinkName = "approved_quantity";
-                    Type = "Decimal";
-                    HelpText = "For partial approval";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have line_no
+	(
+		type = number
+		displayname = "Line No."
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	description_override
+	(
+		type = textarea
+		displayname = "Description Override"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have quantity_requested
+	(
+		type = number
+		displayname = "Quantity Requested"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	required_date
+	(
+		type = date
+		displayname = "Required Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	purpose
+	(
+		type = picklist
+		displayname = "Purpose"
+		maxchar = 100
+		values = {"Production","Maintenance","Consumable"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	allow_rfq_skip
+	(
+		type = checkbox
+		displayname = "Allow RFQ Skip"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	attachments
+	(
+		type = upload file
+		displayname = "Attachments"
+		file count = 10
+		browse = local_drive
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		maxchar = 100
+		values = {"Pending","Approved","Rejected","Fulfilled"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	approved_quantity
+	(
+		type = number
+		displayname = "Approved Quantity"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

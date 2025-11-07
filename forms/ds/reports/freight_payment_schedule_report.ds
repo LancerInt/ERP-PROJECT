@@ -1,107 +1,86 @@
-report freight_payment_schedule_report
+list freight_payment_schedule_report
 {
-    DisplayName = "Freight Payment Schedule Report";
-    LinkName = "freight_payment_schedule_report";
-    Type = "List";
-    SourceFormLinkName = "freight_payment_schedule";
-
-    ListView
-    {
-        Columns
-        {
-            Column freight_type
-            {
-                FieldLinkName = "freight_type";
-            }
-            Column transporter
-            {
-                FieldLinkName = "transporter";
-            }
-            Column due_date
-            {
-                FieldLinkName = "due_date";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column tds
-            {
-                FieldLinkName = "tds";
-            }
-            Column reminder_flag
-            {
-                FieldLinkName = "reminder_flag";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column freight_type
-            {
-                FieldLinkName = "freight_type";
-            }
-            Column transporter
-            {
-                FieldLinkName = "transporter";
-            }
-            Column due_date
-            {
-                FieldLinkName = "due_date";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column tds
-            {
-                FieldLinkName = "tds";
-            }
-            Column reminder_flag
-            {
-                FieldLinkName = "reminder_flag";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column freight_type
-                    {
-                        FieldLinkName = "freight_type";
-                    }
-                    Column transporter
-                    {
-                        FieldLinkName = "transporter";
-                    }
-                    Column due_date
-                    {
-                        FieldLinkName = "due_date";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                    Column tds
-                    {
-                        FieldLinkName = "tds";
-                    }
-                    Column reminder_flag
-                    {
-                        FieldLinkName = "reminder_flag";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Freight Payment Schedule Report"
+	show all rows from freight_payment_schedule
+	(
+		freight_type as "Freight Type"
+		due_date as "Due Date"
+		amount as "Amount"
+		tds as "TDS %"
+		reminder_flag as "Reminder Flag"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Freight Payment Schedule Overview"
+				fields
+				(
+					freight_type as "Freight Type"
+					due_date as "Due Date"
+					amount as "Amount"
+					tds as "TDS %"
+					reminder_flag as "Reminder Flag"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Freight Payment Schedule Overview"
+				fields
+				(
+					freight_type as "Freight Type"
+					due_date as "Due Date"
+					amount as "Amount"
+					tds as "TDS %"
+					reminder_flag as "Reminder Flag"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

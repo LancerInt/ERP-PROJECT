@@ -1,51 +1,62 @@
-// Module: 7. Finance Module
 form finance_manager_approval
 {
-    DisplayName = "Finance Manager Approval";
-    LinkName = "finance_manager_approval";
-    Module = "7. Finance Module";
-    Type = "Form";
+	displayname = "Finance Manager Approval"
+	success message = "Finance Manager Approval added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field approved_by
-                {
-                    DisplayName = "Approved By";
-                    LinkName = "approved_by";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field approval_date
-                {
-                    DisplayName = "Approval Date";
-                    LinkName = "approval_date";
-                    Type = "DateTime";
-                    IsMandatory = true;
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have approval_date
+	(
+		type = datetime
+		displayname = "Approval Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

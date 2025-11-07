@@ -1,107 +1,89 @@
-report attendance_device_log_report
+list attendance_device_log_report
 {
-    DisplayName = "Attendance Device Log Report";
-    LinkName = "attendance_device_log_report";
-    Type = "List";
-    SourceFormLinkName = "attendance_device_log";
-
-    ListView
-    {
-        Columns
-        {
-            Column log_id
-            {
-                FieldLinkName = "log_id";
-            }
-            Column device_id
-            {
-                FieldLinkName = "device_id";
-            }
-            Column event_time
-            {
-                FieldLinkName = "event_time";
-            }
-            Column event_type
-            {
-                FieldLinkName = "event_type";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column error_message
-            {
-                FieldLinkName = "error_message";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column log_id
-            {
-                FieldLinkName = "log_id";
-            }
-            Column device_id
-            {
-                FieldLinkName = "device_id";
-            }
-            Column event_time
-            {
-                FieldLinkName = "event_time";
-            }
-            Column event_type
-            {
-                FieldLinkName = "event_type";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column error_message
-            {
-                FieldLinkName = "error_message";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column log_id
-                    {
-                        FieldLinkName = "log_id";
-                    }
-                    Column device_id
-                    {
-                        FieldLinkName = "device_id";
-                    }
-                    Column event_time
-                    {
-                        FieldLinkName = "event_time";
-                    }
-                    Column event_type
-                    {
-                        FieldLinkName = "event_type";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                    Column error_message
-                    {
-                        FieldLinkName = "error_message";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Attendance Device Log Report"
+	show all rows from attendance_device_log
+	(
+		log_id as "Log ID"
+		device_id as "Device ID"
+		event_time as "Event Time"
+		event_type as "Event Type"
+		status as "Status"
+		error_message as "Error Message"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Attendance Device Log Overview"
+				fields
+				(
+					log_id as "Log ID"
+					device_id as "Device ID"
+					event_time as "Event Time"
+					event_type as "Event Type"
+					status as "Status"
+					error_message as "Error Message"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Attendance Device Log Overview"
+				fields
+				(
+					log_id as "Log ID"
+					device_id as "Device ID"
+					event_time as "Event Time"
+					event_type as "Event Type"
+					status as "Status"
+					error_message as "Error Message"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

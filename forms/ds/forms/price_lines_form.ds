@@ -1,84 +1,108 @@
-// Module: 1. Core & Shared Masters
 form price_lines
 {
-    DisplayName = "Price Lines";
-    LinkName = "price_lines";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "Price Lines"
+	success message = "Price Lines added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field product
-                {
-                    DisplayName = "Product";
-                    LinkName = "product";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field rate
-                {
-                    DisplayName = "Rate";
-                    LinkName = "rate";
-                    Type = "INR";
-                    IsMandatory = true;
-                }
-                Field discount
-                {
-                    DisplayName = "Discount %";
-                    LinkName = "discount";
-                    Type = "Decimal";
-                }
-                Field gst
-                {
-                    DisplayName = "GST %";
-                    LinkName = "gst";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field freight_component
-                {
-                    DisplayName = "Freight Component";
-                    LinkName = "freight_component";
-                    Type = "INR";
-                    HelpText = "Optional";
-                }
-                Field valid_from
-                {
-                    DisplayName = "Valid From";
-                    LinkName = "valid_from";
-                    Type = "Date";
-                }
-                Field valid_to
-                {
-                    DisplayName = "Valid To";
-                    LinkName = "valid_to";
-                    Type = "Date";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have rate
+	(
+		type = INR
+		displayname = "Rate"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	discount
+	(
+		type = number
+		displayname = "Discount %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have gst
+	(
+		type = number
+		displayname = "GST %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	freight_component
+	(
+		type = INR
+		displayname = "Freight Component"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	valid_from
+	(
+		type = date
+		displayname = "Valid From"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	valid_to
+	(
+		type = date
+		displayname = "Valid To"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

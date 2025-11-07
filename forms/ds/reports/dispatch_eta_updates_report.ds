@@ -1,83 +1,80 @@
-report dispatch_eta_updates_report
+list dispatch_eta_updates_report
 {
-    DisplayName = "Dispatch ETA Updates Report";
-    LinkName = "dispatch_eta_updates_report";
-    Type = "List";
-    SourceFormLinkName = "dispatch_eta_updates";
-
-    ListView
-    {
-        Columns
-        {
-            Column update_date
-            {
-                FieldLinkName = "update_date";
-            }
-            Column updated_by
-            {
-                FieldLinkName = "updated_by";
-            }
-            Column expected_arrival
-            {
-                FieldLinkName = "expected_arrival";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column update_date
-            {
-                FieldLinkName = "update_date";
-            }
-            Column updated_by
-            {
-                FieldLinkName = "updated_by";
-            }
-            Column expected_arrival
-            {
-                FieldLinkName = "expected_arrival";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column update_date
-                    {
-                        FieldLinkName = "update_date";
-                    }
-                    Column updated_by
-                    {
-                        FieldLinkName = "updated_by";
-                    }
-                    Column expected_arrival
-                    {
-                        FieldLinkName = "expected_arrival";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Dispatch ETA Updates Report"
+	show all rows from dispatch_eta_updates
+	(
+		update_date as "Update Date"
+		expected_arrival as "Expected Arrival"
+		remarks as "Remarks"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Dispatch ETA Updates Overview"
+				fields
+				(
+					update_date as "Update Date"
+					expected_arrival as "Expected Arrival"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Dispatch ETA Updates Overview"
+				fields
+				(
+					update_date as "Update Date"
+					expected_arrival as "Expected Arrival"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

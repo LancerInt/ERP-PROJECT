@@ -1,347 +1,134 @@
-report staff_master_report
+list staff_master_report
 {
-    DisplayName = "Staff Master (Employees & Staff) Report";
-    LinkName = "staff_master_report";
-    Type = "List";
-    SourceFormLinkName = "staff_master";
-
-    ListView
-    {
-        Columns
-        {
-            Column staff_id
-            {
-                FieldLinkName = "staff_id";
-            }
-            Column staff_type
-            {
-                FieldLinkName = "staff_type";
-            }
-            Column first_name
-            {
-                FieldLinkName = "first_name";
-            }
-            Column last_name
-            {
-                FieldLinkName = "last_name";
-            }
-            Column gender
-            {
-                FieldLinkName = "gender";
-            }
-            Column date_of_birth
-            {
-                FieldLinkName = "date_of_birth";
-            }
-            Column company
-            {
-                FieldLinkName = "company";
-            }
-            Column primary_location
-            {
-                FieldLinkName = "primary_location";
-            }
-            Column department
-            {
-                FieldLinkName = "department";
-            }
-            Column designation
-            {
-                FieldLinkName = "designation";
-            }
-            Column employment_start_date
-            {
-                FieldLinkName = "employment_start_date";
-            }
-            Column employment_end_date
-            {
-                FieldLinkName = "employment_end_date";
-            }
-            Column employment_status
-            {
-                FieldLinkName = "employment_status";
-            }
-            Column hr_owner
-            {
-                FieldLinkName = "hr_owner";
-            }
-            Column shift_assignment
-            {
-                FieldLinkName = "shift_assignment";
-            }
-            Column overtime_eligible
-            {
-                FieldLinkName = "overtime_eligible";
-            }
-            Column contractor_flag
-            {
-                FieldLinkName = "contractor_flag";
-            }
-            Column contractor_vendor
-            {
-                FieldLinkName = "contractor_vendor";
-            }
-            Column bank_account
-            {
-                FieldLinkName = "bank_account";
-            }
-            Column id_proofs
-            {
-                FieldLinkName = "id_proofs";
-            }
-            Column face_template_id
-            {
-                FieldLinkName = "face_template_id";
-            }
-            Column photo_reference
-            {
-                FieldLinkName = "photo_reference";
-            }
-            Column contact_number
-            {
-                FieldLinkName = "contact_number";
-            }
-            Column emergency_contact
-            {
-                FieldLinkName = "emergency_contact";
-            }
-            Column address
-            {
-                FieldLinkName = "address";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column staff_id
-            {
-                FieldLinkName = "staff_id";
-            }
-            Column staff_type
-            {
-                FieldLinkName = "staff_type";
-            }
-            Column first_name
-            {
-                FieldLinkName = "first_name";
-            }
-            Column last_name
-            {
-                FieldLinkName = "last_name";
-            }
-            Column gender
-            {
-                FieldLinkName = "gender";
-            }
-            Column date_of_birth
-            {
-                FieldLinkName = "date_of_birth";
-            }
-            Column company
-            {
-                FieldLinkName = "company";
-            }
-            Column primary_location
-            {
-                FieldLinkName = "primary_location";
-            }
-            Column department
-            {
-                FieldLinkName = "department";
-            }
-            Column designation
-            {
-                FieldLinkName = "designation";
-            }
-            Column employment_start_date
-            {
-                FieldLinkName = "employment_start_date";
-            }
-            Column employment_end_date
-            {
-                FieldLinkName = "employment_end_date";
-            }
-            Column employment_status
-            {
-                FieldLinkName = "employment_status";
-            }
-            Column hr_owner
-            {
-                FieldLinkName = "hr_owner";
-            }
-            Column shift_assignment
-            {
-                FieldLinkName = "shift_assignment";
-            }
-            Column overtime_eligible
-            {
-                FieldLinkName = "overtime_eligible";
-            }
-            Column contractor_flag
-            {
-                FieldLinkName = "contractor_flag";
-            }
-            Column contractor_vendor
-            {
-                FieldLinkName = "contractor_vendor";
-            }
-            Column bank_account
-            {
-                FieldLinkName = "bank_account";
-            }
-            Column id_proofs
-            {
-                FieldLinkName = "id_proofs";
-            }
-            Column face_template_id
-            {
-                FieldLinkName = "face_template_id";
-            }
-            Column photo_reference
-            {
-                FieldLinkName = "photo_reference";
-            }
-            Column contact_number
-            {
-                FieldLinkName = "contact_number";
-            }
-            Column emergency_contact
-            {
-                FieldLinkName = "emergency_contact";
-            }
-            Column address
-            {
-                FieldLinkName = "address";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column staff_id
-                    {
-                        FieldLinkName = "staff_id";
-                    }
-                    Column staff_type
-                    {
-                        FieldLinkName = "staff_type";
-                    }
-                    Column first_name
-                    {
-                        FieldLinkName = "first_name";
-                    }
-                    Column last_name
-                    {
-                        FieldLinkName = "last_name";
-                    }
-                    Column gender
-                    {
-                        FieldLinkName = "gender";
-                    }
-                    Column date_of_birth
-                    {
-                        FieldLinkName = "date_of_birth";
-                    }
-                    Column company
-                    {
-                        FieldLinkName = "company";
-                    }
-                    Column primary_location
-                    {
-                        FieldLinkName = "primary_location";
-                    }
-                    Column department
-                    {
-                        FieldLinkName = "department";
-                    }
-                    Column designation
-                    {
-                        FieldLinkName = "designation";
-                    }
-                    Column employment_start_date
-                    {
-                        FieldLinkName = "employment_start_date";
-                    }
-                    Column employment_end_date
-                    {
-                        FieldLinkName = "employment_end_date";
-                    }
-                    Column employment_status
-                    {
-                        FieldLinkName = "employment_status";
-                    }
-                    Column hr_owner
-                    {
-                        FieldLinkName = "hr_owner";
-                    }
-                    Column shift_assignment
-                    {
-                        FieldLinkName = "shift_assignment";
-                    }
-                    Column overtime_eligible
-                    {
-                        FieldLinkName = "overtime_eligible";
-                    }
-                    Column contractor_flag
-                    {
-                        FieldLinkName = "contractor_flag";
-                    }
-                    Column contractor_vendor
-                    {
-                        FieldLinkName = "contractor_vendor";
-                    }
-                    Column bank_account
-                    {
-                        FieldLinkName = "bank_account";
-                    }
-                    Column id_proofs
-                    {
-                        FieldLinkName = "id_proofs";
-                    }
-                    Column face_template_id
-                    {
-                        FieldLinkName = "face_template_id";
-                    }
-                    Column photo_reference
-                    {
-                        FieldLinkName = "photo_reference";
-                    }
-                    Column contact_number
-                    {
-                        FieldLinkName = "contact_number";
-                    }
-                    Column emergency_contact
-                    {
-                        FieldLinkName = "emergency_contact";
-                    }
-                    Column address
-                    {
-                        FieldLinkName = "address";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Staff Master (Employees & Staff) Report"
+	show all rows from staff_master
+	(
+		staff_id as "Staff ID"
+		staff_type as "Staff Type"
+		first_name as "First Name"
+		last_name as "Last Name"
+		gender as "Gender"
+		date_of_birth as "Date of Birth"
+		department as "Department"
+		designation as "Designation"
+		employment_start_date as "Employment Start Date"
+		employment_end_date as "Employment End Date"
+		employment_status as "Employment Status"
+		overtime_eligible as "Overtime Eligible"
+		contractor_flag as "Contractor Flag"
+		bank_account as "Bank Account"
+		id_proofs as "ID Proofs"
+		face_template_id as "Face Template ID"
+		photo_reference as "Photo Reference"
+		contact_number as "Contact Number"
+		emergency_contact as "Emergency Contact"
+		address as "Address"
+		remarks as "Remarks"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Staff Master (Employees & Staff) Overview"
+				fields
+				(
+					staff_id as "Staff ID"
+					staff_type as "Staff Type"
+					first_name as "First Name"
+					last_name as "Last Name"
+					gender as "Gender"
+					date_of_birth as "Date of Birth"
+					department as "Department"
+					designation as "Designation"
+					employment_start_date as "Employment Start Date"
+					employment_end_date as "Employment End Date"
+					employment_status as "Employment Status"
+					overtime_eligible as "Overtime Eligible"
+					contractor_flag as "Contractor Flag"
+					bank_account as "Bank Account"
+					id_proofs as "ID Proofs"
+					face_template_id as "Face Template ID"
+					photo_reference as "Photo Reference"
+					contact_number as "Contact Number"
+					emergency_contact as "Emergency Contact"
+					address as "Address"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Staff Master (Employees & Staff) Overview"
+				fields
+				(
+					staff_id as "Staff ID"
+					staff_type as "Staff Type"
+					first_name as "First Name"
+					last_name as "Last Name"
+					gender as "Gender"
+					date_of_birth as "Date of Birth"
+					department as "Department"
+					designation as "Designation"
+					employment_start_date as "Employment Start Date"
+					employment_end_date as "Employment End Date"
+					employment_status as "Employment Status"
+					overtime_eligible as "Overtime Eligible"
+					contractor_flag as "Contractor Flag"
+					bank_account as "Bank Account"
+					id_proofs as "ID Proofs"
+					face_template_id as "Face Template ID"
+					photo_reference as "Photo Reference"
+					contact_number as "Contact Number"
+					emergency_contact as "Emergency Contact"
+					address as "Address"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

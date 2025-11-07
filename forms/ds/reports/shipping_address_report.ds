@@ -1,107 +1,86 @@
-report shipping_address_report
+list shipping_address_report
 {
-    DisplayName = "Shipping Address Report";
-    LinkName = "shipping_address_report";
-    Type = "List";
-    SourceFormLinkName = "shipping_address";
-
-    ListView
-    {
-        Columns
-        {
-            Column address_label
-            {
-                FieldLinkName = "address_label";
-            }
-            Column address
-            {
-                FieldLinkName = "address";
-            }
-            Column delivery_region
-            {
-                FieldLinkName = "delivery_region";
-            }
-            Column default_price_list
-            {
-                FieldLinkName = "default_price_list";
-            }
-            Column contact_person
-            {
-                FieldLinkName = "contact_person";
-            }
-            Column contact_phone
-            {
-                FieldLinkName = "contact_phone";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column address_label
-            {
-                FieldLinkName = "address_label";
-            }
-            Column address
-            {
-                FieldLinkName = "address";
-            }
-            Column delivery_region
-            {
-                FieldLinkName = "delivery_region";
-            }
-            Column default_price_list
-            {
-                FieldLinkName = "default_price_list";
-            }
-            Column contact_person
-            {
-                FieldLinkName = "contact_person";
-            }
-            Column contact_phone
-            {
-                FieldLinkName = "contact_phone";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column address_label
-                    {
-                        FieldLinkName = "address_label";
-                    }
-                    Column address
-                    {
-                        FieldLinkName = "address";
-                    }
-                    Column delivery_region
-                    {
-                        FieldLinkName = "delivery_region";
-                    }
-                    Column default_price_list
-                    {
-                        FieldLinkName = "default_price_list";
-                    }
-                    Column contact_person
-                    {
-                        FieldLinkName = "contact_person";
-                    }
-                    Column contact_phone
-                    {
-                        FieldLinkName = "contact_phone";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Shipping Address Report"
+	show all rows from shipping_address
+	(
+		address_label as "Address Label"
+		address as "Address"
+		delivery_region as "Delivery Region"
+		contact_person as "Contact Person"
+		contact_phone as "Contact Phone"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Shipping Address Overview"
+				fields
+				(
+					address_label as "Address Label"
+					address as "Address"
+					delivery_region as "Delivery Region"
+					contact_person as "Contact Person"
+					contact_phone as "Contact Phone"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Shipping Address Overview"
+				fields
+				(
+					address_label as "Address Label"
+					address as "Address"
+					delivery_region as "Delivery Region"
+					contact_person as "Contact Person"
+					contact_phone as "Contact Phone"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

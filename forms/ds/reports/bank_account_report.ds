@@ -1,95 +1,86 @@
-report bank_account_report
+list bank_account_report
 {
-    DisplayName = "Bank Account Report";
-    LinkName = "bank_account_report";
-    Type = "List";
-    SourceFormLinkName = "bank_account";
-
-    ListView
-    {
-        Columns
-        {
-            Column account_holder
-            {
-                FieldLinkName = "account_holder";
-            }
-            Column bank_name
-            {
-                FieldLinkName = "bank_name";
-            }
-            Column ifsc_code
-            {
-                FieldLinkName = "ifsc_code";
-            }
-            Column account_number
-            {
-                FieldLinkName = "account_number";
-            }
-            Column account_type
-            {
-                FieldLinkName = "account_type";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column account_holder
-            {
-                FieldLinkName = "account_holder";
-            }
-            Column bank_name
-            {
-                FieldLinkName = "bank_name";
-            }
-            Column ifsc_code
-            {
-                FieldLinkName = "ifsc_code";
-            }
-            Column account_number
-            {
-                FieldLinkName = "account_number";
-            }
-            Column account_type
-            {
-                FieldLinkName = "account_type";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column account_holder
-                    {
-                        FieldLinkName = "account_holder";
-                    }
-                    Column bank_name
-                    {
-                        FieldLinkName = "bank_name";
-                    }
-                    Column ifsc_code
-                    {
-                        FieldLinkName = "ifsc_code";
-                    }
-                    Column account_number
-                    {
-                        FieldLinkName = "account_number";
-                    }
-                    Column account_type
-                    {
-                        FieldLinkName = "account_type";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Bank Account Report"
+	show all rows from bank_account
+	(
+		account_holder as "Account Holder"
+		bank_name as "Bank Name"
+		ifsc_code as "IFSC Code"
+		account_number as "Account Number"
+		account_type as "Account Type"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Bank Account Overview"
+				fields
+				(
+					account_holder as "Account Holder"
+					bank_name as "Bank Name"
+					ifsc_code as "IFSC Code"
+					account_number as "Account Number"
+					account_type as "Account Type"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Bank Account Overview"
+				fields
+				(
+					account_holder as "Account Holder"
+					bank_name as "Bank Name"
+					ifsc_code as "IFSC Code"
+					account_number as "Account Number"
+					account_type as "Account Type"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

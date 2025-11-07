@@ -1,119 +1,86 @@
-report receipt_lines_2_report
+list receipt_lines_2_report
 {
-    DisplayName = "Receipt Lines Report";
-    LinkName = "receipt_lines_2_report";
-    Type = "List";
-    SourceFormLinkName = "receipt_lines_2";
-
-    ListView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column quantity_dispatched
-            {
-                FieldLinkName = "quantity_dispatched";
-            }
-            Column quantity_received
-            {
-                FieldLinkName = "quantity_received";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column received_godown
-            {
-                FieldLinkName = "received_godown";
-            }
-            Column condition
-            {
-                FieldLinkName = "condition";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column quantity_dispatched
-            {
-                FieldLinkName = "quantity_dispatched";
-            }
-            Column quantity_received
-            {
-                FieldLinkName = "quantity_received";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column received_godown
-            {
-                FieldLinkName = "received_godown";
-            }
-            Column condition
-            {
-                FieldLinkName = "condition";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column product
-                    {
-                        FieldLinkName = "product";
-                    }
-                    Column batch
-                    {
-                        FieldLinkName = "batch";
-                    }
-                    Column quantity_dispatched
-                    {
-                        FieldLinkName = "quantity_dispatched";
-                    }
-                    Column quantity_received
-                    {
-                        FieldLinkName = "quantity_received";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column received_godown
-                    {
-                        FieldLinkName = "received_godown";
-                    }
-                    Column condition
-                    {
-                        FieldLinkName = "condition";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Receipt Lines Report"
+	show all rows from receipt_lines_2
+	(
+		batch as "Batch"
+		quantity_dispatched as "Quantity Dispatched"
+		quantity_received as "Quantity Received"
+		uom as "UOM"
+		condition as "Condition"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Receipt Lines Overview"
+				fields
+				(
+					batch as "Batch"
+					quantity_dispatched as "Quantity Dispatched"
+					quantity_received as "Quantity Received"
+					uom as "UOM"
+					condition as "Condition"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Receipt Lines Overview"
+				fields
+				(
+					batch as "Batch"
+					quantity_dispatched as "Quantity Dispatched"
+					quantity_received as "Quantity Received"
+					uom as "UOM"
+					condition as "Condition"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

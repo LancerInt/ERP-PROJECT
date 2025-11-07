@@ -1,143 +1,95 @@
-report service_catalogue_report
+list service_catalogue_report
 {
-    DisplayName = "Service Catalogue Report";
-    LinkName = "service_catalogue_report";
-    Type = "List";
-    SourceFormLinkName = "service_catalogue";
-
-    ListView
-    {
-        Columns
-        {
-            Column service_code
-            {
-                FieldLinkName = "service_code";
-            }
-            Column name
-            {
-                FieldLinkName = "name";
-            }
-            Column category
-            {
-                FieldLinkName = "category";
-            }
-            Column direction
-            {
-                FieldLinkName = "direction";
-            }
-            Column default_tds
-            {
-                FieldLinkName = "default_tds";
-            }
-            Column default_tcs
-            {
-                FieldLinkName = "default_tcs";
-            }
-            Column warehouse_availability
-            {
-                FieldLinkName = "warehouse_availability";
-            }
-            Column description
-            {
-                FieldLinkName = "description";
-            }
-            Column active_flag
-            {
-                FieldLinkName = "active_flag";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column service_code
-            {
-                FieldLinkName = "service_code";
-            }
-            Column name
-            {
-                FieldLinkName = "name";
-            }
-            Column category
-            {
-                FieldLinkName = "category";
-            }
-            Column direction
-            {
-                FieldLinkName = "direction";
-            }
-            Column default_tds
-            {
-                FieldLinkName = "default_tds";
-            }
-            Column default_tcs
-            {
-                FieldLinkName = "default_tcs";
-            }
-            Column warehouse_availability
-            {
-                FieldLinkName = "warehouse_availability";
-            }
-            Column description
-            {
-                FieldLinkName = "description";
-            }
-            Column active_flag
-            {
-                FieldLinkName = "active_flag";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column service_code
-                    {
-                        FieldLinkName = "service_code";
-                    }
-                    Column name
-                    {
-                        FieldLinkName = "name";
-                    }
-                    Column category
-                    {
-                        FieldLinkName = "category";
-                    }
-                    Column direction
-                    {
-                        FieldLinkName = "direction";
-                    }
-                    Column default_tds
-                    {
-                        FieldLinkName = "default_tds";
-                    }
-                    Column default_tcs
-                    {
-                        FieldLinkName = "default_tcs";
-                    }
-                    Column warehouse_availability
-                    {
-                        FieldLinkName = "warehouse_availability";
-                    }
-                    Column description
-                    {
-                        FieldLinkName = "description";
-                    }
-                    Column active_flag
-                    {
-                        FieldLinkName = "active_flag";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Service Catalogue Report"
+	show all rows from service_catalogue
+	(
+		service_code as "Service Code"
+		name as "Name"
+		category as "Category"
+		direction as "Direction"
+		default_tds as "Default TDS %"
+		default_tcs as "Default TCS %"
+		description as "Description"
+		active_flag as "Active Flag"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Service Catalogue Overview"
+				fields
+				(
+					service_code as "Service Code"
+					name as "Name"
+					category as "Category"
+					direction as "Direction"
+					default_tds as "Default TDS %"
+					default_tcs as "Default TCS %"
+					description as "Description"
+					active_flag as "Active Flag"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Service Catalogue Overview"
+				fields
+				(
+					service_code as "Service Code"
+					name as "Name"
+					category as "Category"
+					direction as "Direction"
+					default_tds as "Default TDS %"
+					default_tcs as "Default TCS %"
+					description as "Description"
+					active_flag as "Active Flag"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

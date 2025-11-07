@@ -1,68 +1,90 @@
-// Module: 3. Sales Module
 form parsed_lines
 {
-    DisplayName = "Parsed Lines";
-    LinkName = "parsed_lines";
-    Module = "3. Sales Module";
-    Type = "Form";
+	displayname = "Parsed Lines"
+	success message = "Parsed Lines added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field product_description
-                {
-                    DisplayName = "Product Description";
-                    LinkName = "product_description";
-                    Type = "SingleLine";
-                }
-                Field quantity
-                {
-                    DisplayName = "Quantity";
-                    LinkName = "quantity";
-                    Type = "Decimal";
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                }
-                Field price
-                {
-                    DisplayName = "Price";
-                    LinkName = "price";
-                    Type = "INR";
-                }
-                Field parsed_sku
-                {
-                    DisplayName = "Parsed SKU";
-                    LinkName = "parsed_sku";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "product_master";
-                    HelpText = "Auto-mapped";
-                }
-                Field confidence
-                {
-                    DisplayName = "Confidence %";
-                    LinkName = "confidence";
-                    Type = "Decimal";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	product_description
+	(
+		type = text
+		displayname = "Product Description"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	quantity
+	(
+		type = number
+		displayname = "Quantity"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	uom
+	(
+		type = picklist
+		displayname = "UOM"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	price
+	(
+		type = INR
+		displayname = "Price"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	confidence
+	(
+		type = number
+		displayname = "Confidence %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

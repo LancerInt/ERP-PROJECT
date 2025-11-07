@@ -1,107 +1,86 @@
-report loading_unloading_wages_report
+list loading_unloading_wages_report
 {
-    DisplayName = "Loading Unloading Wages Report";
-    LinkName = "loading_unloading_wages_report";
-    Type = "List";
-    SourceFormLinkName = "loading_unloading_wages";
-
-    ListView
-    {
-        Columns
-        {
-            Column wage_type
-            {
-                FieldLinkName = "wage_type";
-            }
-            Column contractor_vendor
-            {
-                FieldLinkName = "contractor_vendor";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column tds_applicable
-            {
-                FieldLinkName = "tds_applicable";
-            }
-            Column payable_by
-            {
-                FieldLinkName = "payable_by";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column wage_type
-            {
-                FieldLinkName = "wage_type";
-            }
-            Column contractor_vendor
-            {
-                FieldLinkName = "contractor_vendor";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column tds_applicable
-            {
-                FieldLinkName = "tds_applicable";
-            }
-            Column payable_by
-            {
-                FieldLinkName = "payable_by";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column wage_type
-                    {
-                        FieldLinkName = "wage_type";
-                    }
-                    Column contractor_vendor
-                    {
-                        FieldLinkName = "contractor_vendor";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                    Column tds_applicable
-                    {
-                        FieldLinkName = "tds_applicable";
-                    }
-                    Column payable_by
-                    {
-                        FieldLinkName = "payable_by";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Loading Unloading Wages Report"
+	show all rows from loading_unloading_wages
+	(
+		wage_type as "Wage Type"
+		amount as "Amount"
+		tds_applicable as "TDS Applicable %"
+		payable_by as "Payable By"
+		remarks as "Remarks"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Loading Unloading Wages Overview"
+				fields
+				(
+					wage_type as "Wage Type"
+					amount as "Amount"
+					tds_applicable as "TDS Applicable %"
+					payable_by as "Payable By"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Loading Unloading Wages Overview"
+				fields
+				(
+					wage_type as "Wage Type"
+					amount as "Amount"
+					tds_applicable as "TDS Applicable %"
+					payable_by as "Payable By"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

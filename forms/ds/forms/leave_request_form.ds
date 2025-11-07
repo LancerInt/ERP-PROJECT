@@ -1,114 +1,132 @@
-// Module: 8. Attendance & HR Module
 form leave_request
 {
-    DisplayName = "Leave Request";
-    LinkName = "leave_request";
-    Module = "8. Attendance & HR Module";
-    Type = "Form";
+	displayname = "Leave Request"
+	success message = "Leave Request added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field request_no
-                {
-                    DisplayName = "Request No.";
-                    LinkName = "request_no";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field staff
-                {
-                    DisplayName = "Staff";
-                    LinkName = "staff";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "staff_master";
-                }
-                Field leave_type
-                {
-                    DisplayName = "Leave Type";
-                    LinkName = "leave_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Full Day / Half Day / Permission";
-                }
-                Field start_date
-                {
-                    DisplayName = "Start Date";
-                    LinkName = "start_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field end_date
-                {
-                    DisplayName = "End Date";
-                    LinkName = "end_date";
-                    Type = "Date";
-                    ConditionalMandatory = true;
-                    HelpText = "Required when full-day leave";
-                }
-                Field duration_hours
-                {
-                    DisplayName = "Duration (Hours)";
-                    LinkName = "duration_hours";
-                    Type = "Decimal";
-                    ConditionalMandatory = true;
-                    HelpText = "Required for permission";
-                }
-                Field reason
-                {
-                    DisplayName = "Reason";
-                    LinkName = "reason";
-                    Type = "MultiLine";
-                    IsMandatory = true;
-                }
-                Field attachment
-                {
-                    DisplayName = "Attachment";
-                    LinkName = "attachment";
-                    Type = "UploadFile";
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "Medical proof";
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Pending / Approved / Rejected";
-                }
-                Field approver
-                {
-                    DisplayName = "Approver";
-                    LinkName = "approver";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field approval_date
-                {
-                    DisplayName = "Approval Date";
-                    LinkName = "approval_date";
-                    Type = "DateTime";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have request_no
+	(
+		type = autonumber
+		displayname = "Request No."
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have leave_type
+	(
+		type = picklist
+		displayname = "Leave Type"
+		maxchar = 100
+		values = {"Full Day","Half Day","Permission"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have start_date
+	(
+		type = date
+		displayname = "Start Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have end_date
+	(
+		type = date
+		displayname = "End Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have duration_hours
+	(
+		type = number
+		displayname = "Duration (Hours)"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have reason
+	(
+		type = textarea
+		displayname = "Reason"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	attachment
+	(
+		type = upload file
+		displayname = "Attachment"
+		file count = 10
+		browse = local_drive
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		maxchar = 100
+		values = {"Pending","Approved","Rejected"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	approval_date
+	(
+		type = datetime
+		displayname = "Approval Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

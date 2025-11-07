@@ -1,263 +1,116 @@
-report customer_report
+list customer_report
 {
-    DisplayName = "Customer Report";
-    LinkName = "customer_report";
-    Type = "List";
-    SourceFormLinkName = "customer";
-
-    ListView
-    {
-        Columns
-        {
-            Column customer_code
-            {
-                FieldLinkName = "customer_code";
-            }
-            Column customer_name
-            {
-                FieldLinkName = "customer_name";
-            }
-            Column company
-            {
-                FieldLinkName = "company";
-            }
-            Column gstin
-            {
-                FieldLinkName = "gstin";
-            }
-            Column pan
-            {
-                FieldLinkName = "pan";
-            }
-            Column billing_address
-            {
-                FieldLinkName = "billing_address";
-            }
-            Column shipping_addresses
-            {
-                FieldLinkName = "shipping_addresses";
-            }
-            Column credit_terms
-            {
-                FieldLinkName = "credit_terms";
-            }
-            Column custom_credit_days
-            {
-                FieldLinkName = "custom_credit_days";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column freight_split_notes
-            {
-                FieldLinkName = "freight_split_notes";
-            }
-            Column allowed_price_lists
-            {
-                FieldLinkName = "allowed_price_lists";
-            }
-            Column default_warehouse
-            {
-                FieldLinkName = "default_warehouse";
-            }
-            Column overdue_notification_recipients
-            {
-                FieldLinkName = "overdue_notification_recipients";
-            }
-            Column contact_person
-            {
-                FieldLinkName = "contact_person";
-            }
-            Column contact_email
-            {
-                FieldLinkName = "contact_email";
-            }
-            Column contact_phone
-            {
-                FieldLinkName = "contact_phone";
-            }
-            Column documents
-            {
-                FieldLinkName = "documents";
-            }
-            Column active_flag
-            {
-                FieldLinkName = "active_flag";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column customer_code
-            {
-                FieldLinkName = "customer_code";
-            }
-            Column customer_name
-            {
-                FieldLinkName = "customer_name";
-            }
-            Column company
-            {
-                FieldLinkName = "company";
-            }
-            Column gstin
-            {
-                FieldLinkName = "gstin";
-            }
-            Column pan
-            {
-                FieldLinkName = "pan";
-            }
-            Column billing_address
-            {
-                FieldLinkName = "billing_address";
-            }
-            Column shipping_addresses
-            {
-                FieldLinkName = "shipping_addresses";
-            }
-            Column credit_terms
-            {
-                FieldLinkName = "credit_terms";
-            }
-            Column custom_credit_days
-            {
-                FieldLinkName = "custom_credit_days";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column freight_split_notes
-            {
-                FieldLinkName = "freight_split_notes";
-            }
-            Column allowed_price_lists
-            {
-                FieldLinkName = "allowed_price_lists";
-            }
-            Column default_warehouse
-            {
-                FieldLinkName = "default_warehouse";
-            }
-            Column overdue_notification_recipients
-            {
-                FieldLinkName = "overdue_notification_recipients";
-            }
-            Column contact_person
-            {
-                FieldLinkName = "contact_person";
-            }
-            Column contact_email
-            {
-                FieldLinkName = "contact_email";
-            }
-            Column contact_phone
-            {
-                FieldLinkName = "contact_phone";
-            }
-            Column documents
-            {
-                FieldLinkName = "documents";
-            }
-            Column active_flag
-            {
-                FieldLinkName = "active_flag";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column customer_code
-                    {
-                        FieldLinkName = "customer_code";
-                    }
-                    Column customer_name
-                    {
-                        FieldLinkName = "customer_name";
-                    }
-                    Column company
-                    {
-                        FieldLinkName = "company";
-                    }
-                    Column gstin
-                    {
-                        FieldLinkName = "gstin";
-                    }
-                    Column pan
-                    {
-                        FieldLinkName = "pan";
-                    }
-                    Column billing_address
-                    {
-                        FieldLinkName = "billing_address";
-                    }
-                    Column shipping_addresses
-                    {
-                        FieldLinkName = "shipping_addresses";
-                    }
-                    Column credit_terms
-                    {
-                        FieldLinkName = "credit_terms";
-                    }
-                    Column custom_credit_days
-                    {
-                        FieldLinkName = "custom_credit_days";
-                    }
-                    Column freight_terms
-                    {
-                        FieldLinkName = "freight_terms";
-                    }
-                    Column freight_split_notes
-                    {
-                        FieldLinkName = "freight_split_notes";
-                    }
-                    Column allowed_price_lists
-                    {
-                        FieldLinkName = "allowed_price_lists";
-                    }
-                    Column default_warehouse
-                    {
-                        FieldLinkName = "default_warehouse";
-                    }
-                    Column overdue_notification_recipients
-                    {
-                        FieldLinkName = "overdue_notification_recipients";
-                    }
-                    Column contact_person
-                    {
-                        FieldLinkName = "contact_person";
-                    }
-                    Column contact_email
-                    {
-                        FieldLinkName = "contact_email";
-                    }
-                    Column contact_phone
-                    {
-                        FieldLinkName = "contact_phone";
-                    }
-                    Column documents
-                    {
-                        FieldLinkName = "documents";
-                    }
-                    Column active_flag
-                    {
-                        FieldLinkName = "active_flag";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Customer Report"
+	show all rows from customer
+	(
+		customer_code as "Customer Code"
+		customer_name as "Customer Name"
+		gstin as "GSTIN"
+		pan as "PAN"
+		billing_address as "Billing Address"
+		shipping_addresses as "Shipping Addresses"
+		credit_terms as "Credit Terms"
+		custom_credit_days as "Custom Credit Days"
+		freight_terms as "Freight Terms"
+		freight_split_notes as "Freight Split Notes"
+		contact_person as "Contact Person"
+		contact_email as "Contact Email"
+		contact_phone as "Contact Phone"
+		documents as "Documents"
+		active_flag as "Active Flag"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Customer Overview"
+				fields
+				(
+					customer_code as "Customer Code"
+					customer_name as "Customer Name"
+					gstin as "GSTIN"
+					pan as "PAN"
+					billing_address as "Billing Address"
+					shipping_addresses as "Shipping Addresses"
+					credit_terms as "Credit Terms"
+					custom_credit_days as "Custom Credit Days"
+					freight_terms as "Freight Terms"
+					freight_split_notes as "Freight Split Notes"
+					contact_person as "Contact Person"
+					contact_email as "Contact Email"
+					contact_phone as "Contact Phone"
+					documents as "Documents"
+					active_flag as "Active Flag"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Customer Overview"
+				fields
+				(
+					customer_code as "Customer Code"
+					customer_name as "Customer Name"
+					gstin as "GSTIN"
+					pan as "PAN"
+					billing_address as "Billing Address"
+					shipping_addresses as "Shipping Addresses"
+					credit_terms as "Credit Terms"
+					custom_credit_days as "Custom Credit Days"
+					freight_terms as "Freight Terms"
+					freight_split_notes as "Freight Split Notes"
+					contact_person as "Contact Person"
+					contact_email as "Contact Email"
+					contact_phone as "Contact Phone"
+					documents as "Documents"
+					active_flag as "Active Flag"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

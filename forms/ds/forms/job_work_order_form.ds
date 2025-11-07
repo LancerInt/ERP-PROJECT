@@ -1,127 +1,193 @@
-// Module: 6. Inventory, Logistics & Returns
 form job_work_order
 {
-    DisplayName = "Job Work Order";
-    LinkName = "job_work_order";
-    Module = "6. Inventory, Logistics & Returns";
-    Type = "Form";
+	displayname = "Job Work Order"
+	success message = "Job Work Order added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field order_no
-                {
-                    DisplayName = "Order No.";
-                    LinkName = "order_no";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field warehouse
-                {
-                    DisplayName = "Warehouse";
-                    LinkName = "warehouse";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "warehouse";
-                }
-                Field vendor
-                {
-                    DisplayName = "Vendor";
-                    LinkName = "vendor";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "vendor";
-                }
-                Field template
-                {
-                    DisplayName = "Template";
-                    LinkName = "template";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "template_library";
-                }
-                Field template_revision
-                {
-                    DisplayName = "Template Revision";
-                    LinkName = "template_revision";
-                    Type = "Number";
-                    IsMandatory = true;
-                }
-                Field start_date
-                {
-                    DisplayName = "Start Date";
-                    LinkName = "start_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field expected_completion_date
-                {
-                    DisplayName = "Expected Completion Date";
-                    LinkName = "expected_completion_date";
-                    Type = "Date";
-                    HelpText = "From template";
-                }
-                Field turnaround_threshold
-                {
-                    DisplayName = "Turnaround Threshold";
-                    LinkName = "turnaround_threshold";
-                    Type = "Number";
-                    HelpText = "For alerts";
-                }
-                Field materials_supplied
-                {
-                    DisplayName = "Materials Supplied";
-                    LinkName = "materials_supplied";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "materials_supplied";
-                }
-                Field outputs_expected
-                {
-                    DisplayName = "Outputs Expected";
-                    LinkName = "outputs_expected";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "outputs_expected";
-                }
-                Field freight_terms
-                {
-                    DisplayName = "Freight Terms";
-                    LinkName = "freight_terms";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Draft / In Progress / Completed";
-                }
-                Field alerts_enabled
-                {
-                    DisplayName = "Alerts Enabled";
-                    LinkName = "alerts_enabled";
-                    Type = "Checkbox";
-                    HelpText = "Trigger overdue reminders";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have order_no
+	(
+		type = autonumber
+		displayname = "Order No."
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have template_revision
+	(
+		type = number
+		displayname = "Template Revision"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have start_date
+	(
+		type = date
+		displayname = "Start Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	expected_completion_date
+	(
+		type = date
+		displayname = "Expected Completion Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	turnaround_threshold
+	(
+		type = number
+		displayname = "Turnaround Threshold"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have materials_supplied
+	(
+		type = grid
+		displayname = "Materials Supplied"
+		must have material_type
+		(
+			type = picklist
+			displayname = "Material Type"
+			maxchar = 100
+			values = {"RM","PM","Machine"}
+			width = medium
+		)
+
+		batch
+		(
+			type = text
+			displayname = "Batch"
+			width = medium
+		)
+
+		must have quantity
+		(
+			type = number
+			displayname = "Quantity"
+			width = medium
+		)
+
+		must have uom
+		(
+			type = picklist
+			displayname = "UOM"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have outputs_expected
+	(
+		type = grid
+		displayname = "Outputs Expected"
+		must have expected_quantity
+		(
+			type = number
+			displayname = "Expected Quantity"
+			width = medium
+		)
+
+		must have uom
+		(
+			type = picklist
+			displayname = "UOM"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		expected_batch_suffix
+		(
+			type = text
+			displayname = "Expected Batch Suffix"
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have freight_terms
+	(
+		type = picklist
+		displayname = "Freight Terms"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		maxchar = 100
+		values = {"Draft","In Progress","Completed"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	alerts_enabled
+	(
+		type = checkbox
+		displayname = "Alerts Enabled"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

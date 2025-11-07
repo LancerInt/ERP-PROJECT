@@ -1,58 +1,70 @@
-// Module: 3. Sales Module
 form delivery_locations
 {
-    DisplayName = "Delivery Locations";
-    LinkName = "delivery_locations";
-    Module = "3. Sales Module";
-    Type = "Form";
+	displayname = "Delivery Locations"
+	success message = "Delivery Locations added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field sequence
-                {
-                    DisplayName = "Sequence";
-                    LinkName = "sequence";
-                    Type = "Number";
-                    IsMandatory = true;
-                }
-                Field shipping_address
-                {
-                    DisplayName = "Shipping Address";
-                    LinkName = "shipping_address";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "shipping_address";
-                }
-                Field quantity_for_location
-                {
-                    DisplayName = "Quantity for Location";
-                    LinkName = "quantity_for_location";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field estimated_arrival
-                {
-                    DisplayName = "Estimated Arrival";
-                    LinkName = "estimated_arrival";
-                    Type = "Date";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have sequence
+	(
+		type = number
+		displayname = "Sequence"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have quantity_for_location
+	(
+		type = number
+		displayname = "Quantity for Location"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	estimated_arrival
+	(
+		type = date
+		displayname = "Estimated Arrival"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

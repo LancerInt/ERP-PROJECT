@@ -1,110 +1,127 @@
-// Module: 5. Quality Control Module
 form counter_sample_register
 {
-    DisplayName = "Counter Sample Register";
-    LinkName = "counter_sample_register";
-    Module = "5. Quality Control Module";
-    Type = "Form";
+	displayname = "Counter Sample Register"
+	success message = "Counter Sample Register added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field sample_id
-                {
-                    DisplayName = "Sample ID";
-                    LinkName = "sample_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field qc_request
-                {
-                    DisplayName = "QC Request";
-                    LinkName = "qc_request";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "qc_request";
-                }
-                Field storage_location
-                {
-                    DisplayName = "Storage Location";
-                    LinkName = "storage_location";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Warehouse / QC Lab";
-                }
-                Field shelf
-                {
-                    DisplayName = "Shelf";
-                    LinkName = "shelf";
-                    Type = "SingleLine";
-                }
-                Field bin
-                {
-                    DisplayName = "Bin";
-                    LinkName = "bin";
-                    Type = "SingleLine";
-                }
-                Field issued_to
-                {
-                    DisplayName = "Issued To";
-                    LinkName = "issued_to";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field issue_date
-                {
-                    DisplayName = "Issue Date";
-                    LinkName = "issue_date";
-                    Type = "Date";
-                }
-                Field expected_return_date
-                {
-                    DisplayName = "Expected Return Date";
-                    LinkName = "expected_return_date";
-                    Type = "Date";
-                }
-                Field actual_return_date
-                {
-                    DisplayName = "Actual Return Date";
-                    LinkName = "actual_return_date";
-                    Type = "Date";
-                }
-                Field reminder_sent
-                {
-                    DisplayName = "Reminder Sent";
-                    LinkName = "reminder_sent";
-                    Type = "Checkbox";
-                    HelpText = "Auto-reminder";
-                }
-                Field disposal_date
-                {
-                    DisplayName = "Disposal Date";
-                    LinkName = "disposal_date";
-                    Type = "Date";
-                }
-                Field disposal_approved_by
-                {
-                    DisplayName = "Disposal Approved By";
-                    LinkName = "disposal_approved_by";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have sample_id
+	(
+		type = autonumber
+		displayname = "Sample ID"
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have storage_location
+	(
+		type = picklist
+		displayname = "Storage Location"
+		maxchar = 100
+		values = {"Warehouse","QC Lab"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	shelf
+	(
+		type = text
+		displayname = "Shelf"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	bin
+	(
+		type = text
+		displayname = "Bin"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	issue_date
+	(
+		type = date
+		displayname = "Issue Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	expected_return_date
+	(
+		type = date
+		displayname = "Expected Return Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actual_return_date
+	(
+		type = date
+		displayname = "Actual Return Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	reminder_sent
+	(
+		type = checkbox
+		displayname = "Reminder Sent"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	disposal_date
+	(
+		type = date
+		displayname = "Disposal Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

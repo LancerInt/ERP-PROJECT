@@ -1,107 +1,86 @@
-report decision_log_report
+list decision_log_report
 {
-    DisplayName = "Decision Log Report";
-    LinkName = "decision_log_report";
-    Type = "List";
-    SourceFormLinkName = "decision_log";
-
-    ListView
-    {
-        Columns
-        {
-            Column decision_id
-            {
-                FieldLinkName = "decision_id";
-            }
-            Column topic
-            {
-                FieldLinkName = "topic";
-            }
-            Column stakeholders
-            {
-                FieldLinkName = "stakeholders";
-            }
-            Column decision_details
-            {
-                FieldLinkName = "decision_details";
-            }
-            Column decision_date
-            {
-                FieldLinkName = "decision_date";
-            }
-            Column follow_up_actions
-            {
-                FieldLinkName = "follow_up_actions";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column decision_id
-            {
-                FieldLinkName = "decision_id";
-            }
-            Column topic
-            {
-                FieldLinkName = "topic";
-            }
-            Column stakeholders
-            {
-                FieldLinkName = "stakeholders";
-            }
-            Column decision_details
-            {
-                FieldLinkName = "decision_details";
-            }
-            Column decision_date
-            {
-                FieldLinkName = "decision_date";
-            }
-            Column follow_up_actions
-            {
-                FieldLinkName = "follow_up_actions";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column decision_id
-                    {
-                        FieldLinkName = "decision_id";
-                    }
-                    Column topic
-                    {
-                        FieldLinkName = "topic";
-                    }
-                    Column stakeholders
-                    {
-                        FieldLinkName = "stakeholders";
-                    }
-                    Column decision_details
-                    {
-                        FieldLinkName = "decision_details";
-                    }
-                    Column decision_date
-                    {
-                        FieldLinkName = "decision_date";
-                    }
-                    Column follow_up_actions
-                    {
-                        FieldLinkName = "follow_up_actions";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Decision Log Report"
+	show all rows from decision_log
+	(
+		decision_id as "Decision ID"
+		topic as "Topic"
+		decision_details as "Decision Details"
+		decision_date as "Decision Date"
+		follow_up_actions as "Follow-up Actions"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Decision Log Overview"
+				fields
+				(
+					decision_id as "Decision ID"
+					topic as "Topic"
+					decision_details as "Decision Details"
+					decision_date as "Decision Date"
+					follow_up_actions as "Follow-up Actions"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Decision Log Overview"
+				fields
+				(
+					decision_id as "Decision ID"
+					topic as "Topic"
+					decision_details as "Decision Details"
+					decision_date as "Decision Date"
+					follow_up_actions as "Follow-up Actions"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

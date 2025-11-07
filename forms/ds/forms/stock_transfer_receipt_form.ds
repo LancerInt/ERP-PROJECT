@@ -1,120 +1,308 @@
-// Module: 6. Inventory, Logistics & Returns
 form stock_transfer_receipt
 {
-    DisplayName = "Stock Transfer Receipt";
-    LinkName = "stock_transfer_receipt";
-    Module = "6. Inventory, Logistics & Returns";
-    Type = "Form";
+	displayname = "Stock Transfer Receipt"
+	success message = "Stock Transfer Receipt added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field receipt_no
-                {
-                    DisplayName = "Receipt No.";
-                    LinkName = "receipt_no";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field receipt_date
-                {
-                    DisplayName = "Receipt Date";
-                    LinkName = "receipt_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field from_warehouse
-                {
-                    DisplayName = "From Warehouse";
-                    LinkName = "from_warehouse";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "warehouse";
-                }
-                Field to_warehouse
-                {
-                    DisplayName = "To Warehouse";
-                    LinkName = "to_warehouse";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "warehouse";
-                }
-                Field linked_transfer
-                {
-                    DisplayName = "Linked Transfer";
-                    LinkName = "linked_transfer";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stock_transfer_dc";
-                }
-                Field received_by
-                {
-                    DisplayName = "Received By";
-                    LinkName = "received_by";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field receipt_lines
-                {
-                    DisplayName = "Receipt Lines";
-                    LinkName = "receipt_lines";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "receipt_lines";
-                }
-                Field qc_result
-                {
-                    DisplayName = "QC Result";
-                    LinkName = "qc_result";
-                    Type = "Dropdown";
-                    HelpText = "Pass / Fail";
-                }
-                Field variance_notes
-                {
-                    DisplayName = "Variance Notes";
-                    LinkName = "variance_notes";
-                    Type = "MultiLine";
-                }
-                Field freight_details
-                {
-                    DisplayName = "Freight Details";
-                    LinkName = "freight_details";
-                    Type = "SubForm";
-                    SubFormLinkName = "freight_details";
-                    HelpText = "Local drayage";
-                }
-                Field loading_unloading_wages
-                {
-                    DisplayName = "Loading Unloading Wages";
-                    LinkName = "loading_unloading_wages";
-                    Type = "SubForm";
-                    SubFormLinkName = "loading_unloading_wages";
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Draft / Completed";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have receipt_no
+	(
+		type = autonumber
+		displayname = "Receipt No."
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have receipt_date
+	(
+		type = date
+		displayname = "Receipt Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have receipt_lines
+	(
+		type = grid
+		displayname = "Receipt Lines"
+		must have line_no
+		(
+			type = number
+			displayname = "Line No."
+			width = medium
+		)
+
+		must have batch_no
+		(
+			type = text
+			displayname = "Batch No."
+			width = medium
+		)
+
+		expiry_date
+		(
+			type = date
+			displayname = "Expiry Date"
+			width = medium
+		)
+
+		must have quantity_received
+		(
+			type = number
+			displayname = "Quantity Received"
+			width = medium
+		)
+
+		must have uom
+		(
+			type = picklist
+			displayname = "UOM"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		extra_commission
+		(
+			type = INR
+			displayname = "Extra Commission"
+			width = medium
+		)
+
+		agent_commission
+		(
+			type = INR
+			displayname = "Agent Commission"
+			width = medium
+		)
+
+		quantity_accepted
+		(
+			type = number
+			displayname = "Quantity Accepted"
+			width = medium
+		)
+
+		quantity_rejected
+		(
+			type = number
+			displayname = "Quantity Rejected"
+			width = medium
+		)
+
+		remarks
+		(
+			type = textarea
+			displayname = "Remarks"
+			height = 100px
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	qc_result
+	(
+		type = picklist
+		displayname = "QC Result"
+		maxchar = 100
+		values = {"Pass","Fail"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	variance_notes
+	(
+		type = textarea
+		displayname = "Variance Notes"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	freight_details
+	(
+		type = grid
+		displayname = "Freight Details"
+		must have freight_type
+		(
+			type = picklist
+			displayname = "Freight Type"
+			maxchar = 100
+			values = {"Local Drayage","Linehaul"}
+			width = medium
+		)
+
+		must have freight_terms
+		(
+			type = picklist
+			displayname = "Freight Terms"
+			maxchar = 100
+			values = {"Paid","To_Pay","Mixed"}
+			width = medium
+		)
+
+		tentative_charge
+		(
+			type = INR
+			displayname = "Tentative Charge"
+			width = medium
+		)
+
+		discount
+		(
+			type = INR
+			displayname = "Discount"
+			width = medium
+		)
+
+		must have payable_by
+		(
+			type = picklist
+			displayname = "Payable By"
+			maxchar = 100
+			values = {"Company","Vendor"}
+			width = medium
+		)
+
+		quantity_basis
+		(
+			type = number
+			displayname = "Quantity Basis"
+			width = medium
+		)
+
+		quantity_uom
+		(
+			type = picklist
+			displayname = "Quantity UOM"
+			maxchar = 100
+			values = {"Tonnes","KG","KL","Units"}
+			width = medium
+		)
+
+		destination_state
+		(
+			type = picklist
+			displayname = "Destination State"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		cost_per_unit_calc
+		(
+			type = number
+			displayname = "Cost Per Unit (Calc)"
+			is formula = true
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	loading_unloading_wages
+	(
+		type = grid
+		displayname = "Loading Unloading Wages"
+		must have wage_type
+		(
+			type = picklist
+			displayname = "Wage Type"
+			maxchar = 100
+			values = {"Loading","Unloading"}
+			width = medium
+		)
+
+		must have amount
+		(
+			type = INR
+			displayname = "Amount"
+			width = medium
+		)
+
+		tds_applicable
+		(
+			type = number
+			displayname = "TDS Applicable %"
+			width = medium
+		)
+
+		must have payable_by
+		(
+			type = picklist
+			displayname = "Payable By"
+			maxchar = 100
+			values = {"Company","Vendor"}
+			width = medium
+		)
+
+		remarks
+		(
+			type = textarea
+			displayname = "Remarks"
+			height = 100px
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		maxchar = 100
+		values = {"Draft","Completed"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

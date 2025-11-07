@@ -1,82 +1,120 @@
-// Module: 7. Finance Module
 form petty_cash_register
 {
-    DisplayName = "Petty Cash Register";
-    LinkName = "petty_cash_register";
-    Module = "7. Finance Module";
-    Type = "Form";
+	displayname = "Petty Cash Register"
+	success message = "Petty Cash Register added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field register_id
-                {
-                    DisplayName = "Register ID";
-                    LinkName = "register_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field warehouse
-                {
-                    DisplayName = "Warehouse";
-                    LinkName = "warehouse";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "warehouse";
-                }
-                Field coordinator
-                {
-                    DisplayName = "Coordinator";
-                    LinkName = "coordinator";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field opening_balance
-                {
-                    DisplayName = "Opening Balance";
-                    LinkName = "opening_balance";
-                    Type = "INR";
-                    IsMandatory = true;
-                }
-                Field transactions
-                {
-                    DisplayName = "Transactions";
-                    LinkName = "transactions";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "transactions";
-                }
-                Field current_balance
-                {
-                    DisplayName = "Current Balance";
-                    LinkName = "current_balance";
-                    Type = "INR";
-                    IsMandatory = true;
-                    HelpText = "Auto-calculated";
-                }
-                Field last_reconciled_date
-                {
-                    DisplayName = "Last Reconciled Date";
-                    LinkName = "last_reconciled_date";
-                    Type = "Date";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have register_id
+	(
+		type = autonumber
+		displayname = "Register ID"
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have opening_balance
+	(
+		type = INR
+		displayname = "Opening Balance"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have transactions
+	(
+		type = grid
+		displayname = "Transactions"
+		must have transaction_date
+		(
+			type = date
+			displayname = "Transaction Date"
+			width = medium
+		)
+
+		must have amount
+		(
+			type = INR
+			displayname = "Amount"
+			width = medium
+		)
+
+		must have type
+		(
+			type = picklist
+			displayname = "Type"
+			maxchar = 100
+			values = {"Advance","Settlement"}
+			width = medium
+		)
+
+		notes
+		(
+			type = textarea
+			displayname = "Notes"
+			height = 100px
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have current_balance
+	(
+		type = INR
+		displayname = "Current Balance"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	last_reconciled_date
+	(
+		type = date
+		displayname = "Last Reconciled Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

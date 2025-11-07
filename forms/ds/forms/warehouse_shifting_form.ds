@@ -1,125 +1,189 @@
-// Module: 6. Inventory, Logistics & Returns
 form warehouse_shifting
 {
-    DisplayName = "Warehouse Shifting";
-    LinkName = "warehouse_shifting";
-    Module = "6. Inventory, Logistics & Returns";
-    Type = "Form";
+	displayname = "Warehouse Shifting"
+	success message = "Warehouse Shifting added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field shifting_no
-                {
-                    DisplayName = "Shifting No.";
-                    LinkName = "shifting_no";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field warehouse
-                {
-                    DisplayName = "Warehouse";
-                    LinkName = "warehouse";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "warehouse";
-                }
-                Field request_date
-                {
-                    DisplayName = "Request Date";
-                    LinkName = "request_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field from_godown
-                {
-                    DisplayName = "From Godown";
-                    LinkName = "from_godown";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "godown";
-                    HelpText = "Origin location";
-                }
-                Field to_godown
-                {
-                    DisplayName = "To Godown";
-                    LinkName = "to_godown";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "godown";
-                    HelpText = "Destination location";
-                }
-                Field reason_code
-                {
-                    DisplayName = "Reason Code";
-                    LinkName = "reason_code";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Damage / Space Optimisation / Audit / Other";
-                }
-                Field other_reason
-                {
-                    DisplayName = "Other Reason";
-                    LinkName = "other_reason";
-                    Type = "MultiLine";
-                    ConditionalMandatory = true;
-                    HelpText = "Mandatory when Reason = Other";
-                }
-                Field products
-                {
-                    DisplayName = "Products";
-                    LinkName = "products";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "products";
-                }
-                Field freight_wage_drafts
-                {
-                    DisplayName = "Freight/Wage Drafts";
-                    LinkName = "freight_wage_drafts";
-                    Type = "SubForm";
-                    SubFormLinkName = "freight_wage_drafts";
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Draft / Pending Approval / Approved / Completed";
-                }
-                Field in_transit_flag
-                {
-                    DisplayName = "In-Transit Flag";
-                    LinkName = "in_transit_flag";
-                    Type = "Checkbox";
-                }
-                Field attachments
-                {
-                    DisplayName = "Attachments";
-                    LinkName = "attachments";
-                    Type = "UploadFile";
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "Evidence";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have shifting_no
+	(
+		type = autonumber
+		displayname = "Shifting No."
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have request_date
+	(
+		type = date
+		displayname = "Request Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have reason_code
+	(
+		type = picklist
+		displayname = "Reason Code"
+		maxchar = 100
+		values = {"Damage","Space Optimisation","Audit","Other"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have other_reason
+	(
+		type = textarea
+		displayname = "Other Reason"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have products
+	(
+		type = grid
+		displayname = "Products"
+		batch
+		(
+			type = text
+			displayname = "Batch"
+			width = medium
+		)
+
+		must have quantity
+		(
+			type = number
+			displayname = "Quantity"
+			width = medium
+		)
+
+		must have uom
+		(
+			type = picklist
+			displayname = "UOM"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	freight_wage_drafts
+	(
+		type = grid
+		displayname = "Freight/Wage Drafts"
+		must have expense_type
+		(
+			type = picklist
+			displayname = "Expense Type"
+			maxchar = 100
+			values = {"Freight","Loading","Unloading"}
+			width = medium
+		)
+
+		must have amount
+		(
+			type = INR
+			displayname = "Amount"
+			width = medium
+		)
+
+		must have payable_by
+		(
+			type = picklist
+			displayname = "Payable By"
+			maxchar = 100
+			values = {"Sending Warehouse","Receiving Warehouse"}
+			width = medium
+		)
+
+		must have approval_status
+		(
+			type = picklist
+			displayname = "Approval Status"
+			maxchar = 100
+			values = {"Draft","Pending","Approved"}
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		maxchar = 100
+		values = {"Draft","Pending Approval","Approved","Completed"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	in_transit_flag
+	(
+		type = checkbox
+		displayname = "In-Transit Flag"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	attachments
+	(
+		type = upload file
+		displayname = "Attachments"
+		file count = 10
+		browse = local_drive
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

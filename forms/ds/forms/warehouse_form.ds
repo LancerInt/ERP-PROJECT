@@ -1,194 +1,232 @@
-// Module: 1. Core & Shared Masters
 form warehouse
 {
-    DisplayName = "Warehouse";
-    LinkName = "warehouse";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "Warehouse"
+	success message = "Warehouse added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field warehouse_code
-                {
-                    DisplayName = "Warehouse Code";
-                    LinkName = "warehouse_code";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    IsUnique = true;
-                    HelpText = "Used in stock and logistics documents";
-                }
-                Field company
-                {
-                    DisplayName = "Company";
-                    LinkName = "company";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "company";
-                    HelpText = "Owning entity";
-                }
-                Field name
-                {
-                    DisplayName = "Name";
-                    LinkName = "name";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    HelpText = "Display name";
-                }
-                Field warehouse_type
-                {
-                    DisplayName = "Warehouse Type";
-                    LinkName = "warehouse_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Head Office / Factory / Job Work Partner";
-                }
-                Field address
-                {
-                    DisplayName = "Address";
-                    LinkName = "address";
-                    Type = "Address";
-                    IsMandatory = true;
-                    AddressFields
-                    {
-                        AddressLine1 = true;
-                        AddressLine2 = true;
-                        City = true;
-                        State = true;
-                        Country = true;
-                        PostalCode = true;
-                    }
-                    HelpText = "Physical location";
-                }
-                Field city
-                {
-                    DisplayName = "City";
-                    LinkName = "city";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field state
-                {
-                    DisplayName = "State";
-                    LinkName = "state";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "For GST place of supply";
-                }
-                Field country
-                {
-                    DisplayName = "Country";
-                    LinkName = "country";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field pincode
-                {
-                    DisplayName = "Pincode";
-                    LinkName = "pincode";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field geo_latitude
-                {
-                    DisplayName = "Geo Latitude";
-                    LinkName = "geo_latitude";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                    HelpText = "Attendance geofence";
-                }
-                Field geo_longitude
-                {
-                    DisplayName = "Geo Longitude";
-                    LinkName = "geo_longitude";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                    HelpText = "Attendance geofence";
-                }
-                Field time_zone
-                {
-                    DisplayName = "Time Zone";
-                    LinkName = "time_zone";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "For SLA calculations";
-                }
-                Field default_currency
-                {
-                    DisplayName = "Default Currency";
-                    LinkName = "default_currency";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Inherits from company by default";
-                }
-                Field warehouse_coordinator_office
-                {
-                    DisplayName = "Warehouse Coordinator (Office)";
-                    LinkName = "warehouse_coordinator_office";
-                    Type = "Lookup";
-                    ConditionalMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                    HelpText = "Required for warehouses";
-                }
-                Field warehouse_hr_coordinator
-                {
-                    DisplayName = "Warehouse HR Coordinator";
-                    LinkName = "warehouse_hr_coordinator";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "stakeholder_user";
-                    HelpText = "Optional";
-                }
-                Field warehouse_managers
-                {
-                    DisplayName = "Warehouse Manager(s)";
-                    LinkName = "warehouse_managers";
-                    Type = "SingleLine";
-                    AllowMultiple = true;
-                }
-                Field warehouse_coordinators
-                {
-                    DisplayName = "Warehouse Coordinator(s)";
-                    LinkName = "warehouse_coordinators";
-                    Type = "SingleLine";
-                    AllowMultiple = true;
-                }
-                Field warehouse_supervisors
-                {
-                    DisplayName = "Warehouse Supervisor(s)";
-                    LinkName = "warehouse_supervisors";
-                    Type = "SingleLine";
-                    AllowMultiple = true;
-                }
-                Field active_flag
-                {
-                    DisplayName = "Active Flag";
-                    LinkName = "active_flag";
-                    Type = "Checkbox";
-                    IsMandatory = true;
-                    HelpText = "Deactivate to hide from new transactions";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have unique warehouse_code
+	(
+		type = text
+		displayname = "Warehouse Code"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have name
+	(
+		type = text
+		displayname = "Name"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have warehouse_type
+	(
+		type = picklist
+		displayname = "Warehouse Type"
+		maxchar = 100
+		values = {"Head Office","Factory","Job Work Partner"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have address
+	(
+		type = address
+		displayname = "Address"
+		capture coordinates = true
+		adjust using map = false
+		address_line_1
+		(
+			type = address_line_1
+			displayname = "Address Line 1"
+		)
+
+		address_line_2
+		(
+			type = address_line_2
+			displayname = "Address Line 2"
+		)
+
+		district_city
+		(
+			type = district_city
+			displayname = "City / District"
+		)
+
+		state_province
+		(
+			type = state_province
+			displayname = "State / Province"
+		)
+
+		postal_Code
+		(
+			type = postal_Code
+			displayname = "Postal Code"
+		)
+
+		country
+		(
+			type = country
+			displayname = "Country"
+		)
+
+		latitude
+		(
+			type = latitude
+			displayname = "Latitude"
+			visibility = false
+		)
+
+		longitude
+		(
+			type = longitude
+			displayname = "Longitude"
+			visibility = false
+		)
+		row = 1
+		column = 1
+		width = medium
+		personal data = true
+	)
+
+	must have city
+	(
+		type = text
+		displayname = "City"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have state
+	(
+		type = picklist
+		displayname = "State"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have country
+	(
+		type = picklist
+		displayname = "Country"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have pincode
+	(
+		type = text
+		displayname = "Pincode"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have geo_latitude
+	(
+		type = number
+		displayname = "Geo Latitude"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have geo_longitude
+	(
+		type = number
+		displayname = "Geo Longitude"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have time_zone
+	(
+		type = picklist
+		displayname = "Time Zone"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have default_currency
+	(
+		type = picklist
+		displayname = "Default Currency"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have active_flag
+	(
+		type = checkbox
+		displayname = "Active Flag"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

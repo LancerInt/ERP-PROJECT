@@ -1,83 +1,80 @@
-report outputs_expected_report
+list outputs_expected_report
 {
-    DisplayName = "Outputs Expected Report";
-    LinkName = "outputs_expected_report";
-    Type = "List";
-    SourceFormLinkName = "outputs_expected";
-
-    ListView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column expected_quantity
-            {
-                FieldLinkName = "expected_quantity";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column expected_batch_suffix
-            {
-                FieldLinkName = "expected_batch_suffix";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column expected_quantity
-            {
-                FieldLinkName = "expected_quantity";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column expected_batch_suffix
-            {
-                FieldLinkName = "expected_batch_suffix";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column product
-                    {
-                        FieldLinkName = "product";
-                    }
-                    Column expected_quantity
-                    {
-                        FieldLinkName = "expected_quantity";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column expected_batch_suffix
-                    {
-                        FieldLinkName = "expected_batch_suffix";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Outputs Expected Report"
+	show all rows from outputs_expected
+	(
+		expected_quantity as "Expected Quantity"
+		uom as "UOM"
+		expected_batch_suffix as "Expected Batch Suffix"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Outputs Expected Overview"
+				fields
+				(
+					expected_quantity as "Expected Quantity"
+					uom as "UOM"
+					expected_batch_suffix as "Expected Batch Suffix"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Outputs Expected Overview"
+				fields
+				(
+					expected_quantity as "Expected Quantity"
+					uom as "UOM"
+					expected_batch_suffix as "Expected Batch Suffix"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

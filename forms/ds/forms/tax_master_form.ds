@@ -1,92 +1,120 @@
-// Module: 1. Core & Shared Masters
 form tax_master
 {
-    DisplayName = "Tax Master";
-    LinkName = "tax_master";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "Tax Master"
+	success message = "Tax Master added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field tax_type
-                {
-                    DisplayName = "Tax Type";
-                    LinkName = "tax_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "GST / TDS / TCS";
-                }
-                Field section_reference
-                {
-                    DisplayName = "Section Reference";
-                    LinkName = "section_reference";
-                    Type = "SingleLine";
-                }
-                Field rate
-                {
-                    DisplayName = "Rate %";
-                    LinkName = "rate";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field effective_from
-                {
-                    DisplayName = "Effective From";
-                    LinkName = "effective_from";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field effective_to
-                {
-                    DisplayName = "Effective To";
-                    LinkName = "effective_to";
-                    Type = "Date";
-                }
-                Field applicable_on
-                {
-                    DisplayName = "Applicable On";
-                    LinkName = "applicable_on";
-                    Type = "Checkboxes";
-                    IsMandatory = true;
-                    HelpText = "Product / Service / Freight / Wage";
-                }
-                Field threshold_amount
-                {
-                    DisplayName = "Threshold Amount";
-                    LinkName = "threshold_amount";
-                    Type = "INR";
-                }
-                Field company_scope
-                {
-                    DisplayName = "Company Scope";
-                    LinkName = "company_scope";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "company";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have tax_type
+	(
+		type = picklist
+		displayname = "Tax Type"
+		maxchar = 100
+		values = {"GST","TDS","TCS"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	section_reference
+	(
+		type = text
+		displayname = "Section Reference"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have rate
+	(
+		type = number
+		displayname = "Rate %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have effective_from
+	(
+		type = date
+		displayname = "Effective From"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	effective_to
+	(
+		type = date
+		displayname = "Effective To"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have applicable_on
+	(
+		type = list
+		displayname = "Applicable On"
+		values = {"Product","Service","Freight","Wage"}
+		height = 60px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	threshold_amount
+	(
+		type = INR
+		displayname = "Threshold Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

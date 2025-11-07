@@ -1,71 +1,99 @@
-// Module: 1. Core & Shared Masters
 form vendor_bank_details
 {
-    DisplayName = "Vendor Bank Details";
-    LinkName = "vendor_bank_details";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "Vendor Bank Details"
+	success message = "Vendor Bank Details added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field account_nickname
-                {
-                    DisplayName = "Account Nickname";
-                    LinkName = "account_nickname";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field bank_name
-                {
-                    DisplayName = "Bank Name";
-                    LinkName = "bank_name";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field branch
-                {
-                    DisplayName = "Branch";
-                    LinkName = "branch";
-                    Type = "SingleLine";
-                }
-                Field ifsc
-                {
-                    DisplayName = "IFSC";
-                    LinkName = "ifsc";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field account_number
-                {
-                    DisplayName = "Account Number";
-                    LinkName = "account_number";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field payment_method
-                {
-                    DisplayName = "Payment Method";
-                    LinkName = "payment_method";
-                    Type = "Dropdown";
-                    HelpText = "NEFT / RTGS / Cheque / UPI";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have account_nickname
+	(
+		type = text
+		displayname = "Account Nickname"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have bank_name
+	(
+		type = text
+		displayname = "Bank Name"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	branch
+	(
+		type = text
+		displayname = "Branch"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have ifsc
+	(
+		type = text
+		displayname = "IFSC"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have account_number
+	(
+		type = text
+		displayname = "Account Number"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	payment_method
+	(
+		type = picklist
+		displayname = "Payment Method"
+		maxchar = 100
+		values = {"NEFT","RTGS","Cheque","UPI"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

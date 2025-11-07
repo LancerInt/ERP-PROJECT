@@ -1,76 +1,127 @@
-// Module: 7. Finance Module
 form gst_reconciliation_report
 {
-    DisplayName = "GST Reconciliation Report";
-    LinkName = "gst_reconciliation_report";
-    Module = "7. Finance Module";
-    Type = "Form";
+	displayname = "GST Reconciliation Report"
+	success message = "GST Reconciliation Report added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field report_id
-                {
-                    DisplayName = "Report ID";
-                    LinkName = "report_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field reporting_period
-                {
-                    DisplayName = "Reporting Period";
-                    LinkName = "reporting_period";
-                    Type = "DateRange";
-                    IsMandatory = true;
-                    HelpText = "Month/Quarter";
-                }
-                Field data_source
-                {
-                    DisplayName = "Data Source";
-                    LinkName = "data_source";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Creator / GSTR-2B / GSTR-1";
-                }
-                Field variance_summary
-                {
-                    DisplayName = "Variance Summary";
-                    LinkName = "variance_summary";
-                    Type = "MultiLine";
-                }
-                Field adjustments
-                {
-                    DisplayName = "Adjustments";
-                    LinkName = "adjustments";
-                    Type = "SubForm";
-                    SubFormLinkName = "adjustments";
-                }
-                Field export_file
-                {
-                    DisplayName = "Export File";
-                    LinkName = "export_file";
-                    Type = "UploadFile";
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "CSV for Tally";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have report_id
+	(
+		type = autonumber
+		displayname = "Report ID"
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have reporting_period
+	(
+		type = text
+		displayname = "Reporting Period"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have data_source
+	(
+		type = picklist
+		displayname = "Data Source"
+		maxchar = 100
+		values = {"Creator","GSTR-2B","GSTR-1"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	variance_summary
+	(
+		type = textarea
+		displayname = "Variance Summary"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	adjustments
+	(
+		type = grid
+		displayname = "Adjustments"
+		must have adjustment_type
+		(
+			type = picklist
+			displayname = "Adjustment Type"
+			maxchar = 100
+			values = {"ITC Reversal","Additional Claim"}
+			width = medium
+		)
+
+		must have amount
+		(
+			type = INR
+			displayname = "Amount"
+			width = medium
+		)
+
+		notes
+		(
+			type = textarea
+			displayname = "Notes"
+			height = 100px
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	export_file
+	(
+		type = upload file
+		displayname = "Export File"
+		file count = 10
+		browse = local_drive
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

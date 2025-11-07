@@ -1,167 +1,95 @@
-report job_work_receipt_report
+list job_work_receipt_report
 {
-    DisplayName = "Job Work Receipt Report";
-    LinkName = "job_work_receipt_report";
-    Type = "List";
-    SourceFormLinkName = "job_work_receipt";
-
-    ListView
-    {
-        Columns
-        {
-            Column receipt_no
-            {
-                FieldLinkName = "receipt_no";
-            }
-            Column receipt_date
-            {
-                FieldLinkName = "receipt_date";
-            }
-            Column job_work_order
-            {
-                FieldLinkName = "job_work_order";
-            }
-            Column jw_dc_reference
-            {
-                FieldLinkName = "jw_dc_reference";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column returned_goods
-            {
-                FieldLinkName = "returned_goods";
-            }
-            Column new_batch_id
-            {
-                FieldLinkName = "new_batch_id";
-            }
-            Column qc_result
-            {
-                FieldLinkName = "qc_result";
-            }
-            Column pending_quantity
-            {
-                FieldLinkName = "pending_quantity";
-            }
-            Column charges
-            {
-                FieldLinkName = "charges";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column receipt_no
-            {
-                FieldLinkName = "receipt_no";
-            }
-            Column receipt_date
-            {
-                FieldLinkName = "receipt_date";
-            }
-            Column job_work_order
-            {
-                FieldLinkName = "job_work_order";
-            }
-            Column jw_dc_reference
-            {
-                FieldLinkName = "jw_dc_reference";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column returned_goods
-            {
-                FieldLinkName = "returned_goods";
-            }
-            Column new_batch_id
-            {
-                FieldLinkName = "new_batch_id";
-            }
-            Column qc_result
-            {
-                FieldLinkName = "qc_result";
-            }
-            Column pending_quantity
-            {
-                FieldLinkName = "pending_quantity";
-            }
-            Column charges
-            {
-                FieldLinkName = "charges";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column receipt_no
-                    {
-                        FieldLinkName = "receipt_no";
-                    }
-                    Column receipt_date
-                    {
-                        FieldLinkName = "receipt_date";
-                    }
-                    Column job_work_order
-                    {
-                        FieldLinkName = "job_work_order";
-                    }
-                    Column jw_dc_reference
-                    {
-                        FieldLinkName = "jw_dc_reference";
-                    }
-                    Column vendor
-                    {
-                        FieldLinkName = "vendor";
-                    }
-                    Column returned_goods
-                    {
-                        FieldLinkName = "returned_goods";
-                    }
-                    Column new_batch_id
-                    {
-                        FieldLinkName = "new_batch_id";
-                    }
-                    Column qc_result
-                    {
-                        FieldLinkName = "qc_result";
-                    }
-                    Column pending_quantity
-                    {
-                        FieldLinkName = "pending_quantity";
-                    }
-                    Column charges
-                    {
-                        FieldLinkName = "charges";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Job Work Receipt Report"
+	show all rows from job_work_receipt
+	(
+		receipt_no as "Receipt No."
+		receipt_date as "Receipt Date"
+		returned_goods as "Returned Goods"
+		new_batch_id as "New Batch ID"
+		qc_result as "QC Result"
+		pending_quantity as "Pending Quantity"
+		charges as "Charges"
+		status as "Status"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Job Work Receipt Overview"
+				fields
+				(
+					receipt_no as "Receipt No."
+					receipt_date as "Receipt Date"
+					returned_goods as "Returned Goods"
+					new_batch_id as "New Batch ID"
+					qc_result as "QC Result"
+					pending_quantity as "Pending Quantity"
+					charges as "Charges"
+					status as "Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Job Work Receipt Overview"
+				fields
+				(
+					receipt_no as "Receipt No."
+					receipt_date as "Receipt Date"
+					returned_goods as "Returned Goods"
+					new_batch_id as "New Batch ID"
+					qc_result as "QC Result"
+					pending_quantity as "Pending Quantity"
+					charges as "Charges"
+					status as "Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

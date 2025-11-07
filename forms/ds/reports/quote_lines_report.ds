@@ -1,155 +1,95 @@
-report quote_lines_report
+list quote_lines_report
 {
-    DisplayName = "Quote Lines Report";
-    LinkName = "quote_lines_report";
-    Type = "List";
-    SourceFormLinkName = "quote_lines";
-
-    ListView
-    {
-        Columns
-        {
-            Column pr_line
-            {
-                FieldLinkName = "pr_line";
-            }
-            Column product_service
-            {
-                FieldLinkName = "product_service";
-            }
-            Column specification
-            {
-                FieldLinkName = "specification";
-            }
-            Column quantity_offered
-            {
-                FieldLinkName = "quantity_offered";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column unit_price
-            {
-                FieldLinkName = "unit_price";
-            }
-            Column discount
-            {
-                FieldLinkName = "discount";
-            }
-            Column gst
-            {
-                FieldLinkName = "gst";
-            }
-            Column freight_charge
-            {
-                FieldLinkName = "freight_charge";
-            }
-            Column delivery_timeline
-            {
-                FieldLinkName = "delivery_timeline";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column pr_line
-            {
-                FieldLinkName = "pr_line";
-            }
-            Column product_service
-            {
-                FieldLinkName = "product_service";
-            }
-            Column specification
-            {
-                FieldLinkName = "specification";
-            }
-            Column quantity_offered
-            {
-                FieldLinkName = "quantity_offered";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column unit_price
-            {
-                FieldLinkName = "unit_price";
-            }
-            Column discount
-            {
-                FieldLinkName = "discount";
-            }
-            Column gst
-            {
-                FieldLinkName = "gst";
-            }
-            Column freight_charge
-            {
-                FieldLinkName = "freight_charge";
-            }
-            Column delivery_timeline
-            {
-                FieldLinkName = "delivery_timeline";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column pr_line
-                    {
-                        FieldLinkName = "pr_line";
-                    }
-                    Column product_service
-                    {
-                        FieldLinkName = "product_service";
-                    }
-                    Column specification
-                    {
-                        FieldLinkName = "specification";
-                    }
-                    Column quantity_offered
-                    {
-                        FieldLinkName = "quantity_offered";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column unit_price
-                    {
-                        FieldLinkName = "unit_price";
-                    }
-                    Column discount
-                    {
-                        FieldLinkName = "discount";
-                    }
-                    Column gst
-                    {
-                        FieldLinkName = "gst";
-                    }
-                    Column freight_charge
-                    {
-                        FieldLinkName = "freight_charge";
-                    }
-                    Column delivery_timeline
-                    {
-                        FieldLinkName = "delivery_timeline";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Quote Lines Report"
+	show all rows from quote_lines
+	(
+		specification as "Specification"
+		quantity_offered as "Quantity Offered"
+		uom as "UOM"
+		unit_price as "Unit Price"
+		discount as "Discount %"
+		gst as "GST %"
+		freight_charge as "Freight Charge"
+		delivery_timeline as "Delivery Timeline"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Quote Lines Overview"
+				fields
+				(
+					specification as "Specification"
+					quantity_offered as "Quantity Offered"
+					uom as "UOM"
+					unit_price as "Unit Price"
+					discount as "Discount %"
+					gst as "GST %"
+					freight_charge as "Freight Charge"
+					delivery_timeline as "Delivery Timeline"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Quote Lines Overview"
+				fields
+				(
+					specification as "Specification"
+					quantity_offered as "Quantity Offered"
+					uom as "UOM"
+					unit_price as "Unit Price"
+					discount as "Discount %"
+					gst as "GST %"
+					freight_charge as "Freight Charge"
+					delivery_timeline as "Delivery Timeline"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

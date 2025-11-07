@@ -1,191 +1,98 @@
-report wage_voucher_report
+list wage_voucher_report
 {
-    DisplayName = "Wage Voucher (Production) Report";
-    LinkName = "wage_voucher_report";
-    Type = "List";
-    SourceFormLinkName = "wage_voucher";
-
-    ListView
-    {
-        Columns
-        {
-            Column voucher_no
-            {
-                FieldLinkName = "voucher_no";
-            }
-            Column work_order
-            {
-                FieldLinkName = "work_order";
-            }
-            Column wage_type
-            {
-                FieldLinkName = "wage_type";
-            }
-            Column contractor_vendor
-            {
-                FieldLinkName = "contractor_vendor";
-            }
-            Column staff_group
-            {
-                FieldLinkName = "staff_group";
-            }
-            Column hours_tasks
-            {
-                FieldLinkName = "hours_tasks";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column tds
-            {
-                FieldLinkName = "tds";
-            }
-            Column prepared_by
-            {
-                FieldLinkName = "prepared_by";
-            }
-            Column prepared_date
-            {
-                FieldLinkName = "prepared_date";
-            }
-            Column approval_workflow
-            {
-                FieldLinkName = "approval_workflow";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column voucher_no
-            {
-                FieldLinkName = "voucher_no";
-            }
-            Column work_order
-            {
-                FieldLinkName = "work_order";
-            }
-            Column wage_type
-            {
-                FieldLinkName = "wage_type";
-            }
-            Column contractor_vendor
-            {
-                FieldLinkName = "contractor_vendor";
-            }
-            Column staff_group
-            {
-                FieldLinkName = "staff_group";
-            }
-            Column hours_tasks
-            {
-                FieldLinkName = "hours_tasks";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column tds
-            {
-                FieldLinkName = "tds";
-            }
-            Column prepared_by
-            {
-                FieldLinkName = "prepared_by";
-            }
-            Column prepared_date
-            {
-                FieldLinkName = "prepared_date";
-            }
-            Column approval_workflow
-            {
-                FieldLinkName = "approval_workflow";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column voucher_no
-                    {
-                        FieldLinkName = "voucher_no";
-                    }
-                    Column work_order
-                    {
-                        FieldLinkName = "work_order";
-                    }
-                    Column wage_type
-                    {
-                        FieldLinkName = "wage_type";
-                    }
-                    Column contractor_vendor
-                    {
-                        FieldLinkName = "contractor_vendor";
-                    }
-                    Column staff_group
-                    {
-                        FieldLinkName = "staff_group";
-                    }
-                    Column hours_tasks
-                    {
-                        FieldLinkName = "hours_tasks";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                    Column tds
-                    {
-                        FieldLinkName = "tds";
-                    }
-                    Column prepared_by
-                    {
-                        FieldLinkName = "prepared_by";
-                    }
-                    Column prepared_date
-                    {
-                        FieldLinkName = "prepared_date";
-                    }
-                    Column approval_workflow
-                    {
-                        FieldLinkName = "approval_workflow";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Wage Voucher (Production) Report"
+	show all rows from wage_voucher
+	(
+		voucher_no as "Voucher No."
+		wage_type as "Wage Type"
+		hours_tasks as "Hours / Tasks"
+		amount as "Amount"
+		tds as "TDS %"
+		prepared_date as "Prepared Date"
+		approval_workflow as "Approval Workflow"
+		status as "Status"
+		remarks as "Remarks"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Wage Voucher (Production) Overview"
+				fields
+				(
+					voucher_no as "Voucher No."
+					wage_type as "Wage Type"
+					hours_tasks as "Hours / Tasks"
+					amount as "Amount"
+					tds as "TDS %"
+					prepared_date as "Prepared Date"
+					approval_workflow as "Approval Workflow"
+					status as "Status"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Wage Voucher (Production) Overview"
+				fields
+				(
+					voucher_no as "Voucher No."
+					wage_type as "Wage Type"
+					hours_tasks as "Hours / Tasks"
+					amount as "Amount"
+					tds as "TDS %"
+					prepared_date as "Prepared Date"
+					approval_workflow as "Approval Workflow"
+					status as "Status"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

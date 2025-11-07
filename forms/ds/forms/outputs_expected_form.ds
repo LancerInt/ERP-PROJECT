@@ -1,59 +1,72 @@
-// Module: 6. Inventory, Logistics & Returns
 form outputs_expected
 {
-    DisplayName = "Outputs Expected";
-    LinkName = "outputs_expected";
-    Module = "6. Inventory, Logistics & Returns";
-    Type = "Form";
+	displayname = "Outputs Expected"
+	success message = "Outputs Expected added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field product
-                {
-                    DisplayName = "Product";
-                    LinkName = "product";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                }
-                Field expected_quantity
-                {
-                    DisplayName = "Expected Quantity";
-                    LinkName = "expected_quantity";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field expected_batch_suffix
-                {
-                    DisplayName = "Expected Batch Suffix";
-                    LinkName = "expected_batch_suffix";
-                    Type = "SingleLine";
-                    HelpText = "For tracking";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have expected_quantity
+	(
+		type = number
+		displayname = "Expected Quantity"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	expected_batch_suffix
+	(
+		type = text
+		displayname = "Expected Batch Suffix"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

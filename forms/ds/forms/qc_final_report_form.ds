@@ -1,110 +1,114 @@
-// Module: 5. Quality Control Module
 form qc_final_report
 {
-    DisplayName = "QC Final Report";
-    LinkName = "qc_final_report";
-    Module = "5. Quality Control Module";
-    Type = "Form";
+	displayname = "QC Final Report"
+	success message = "QC Final Report added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field report_no
-                {
-                    DisplayName = "Report No.";
-                    LinkName = "report_no";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field qc_request
-                {
-                    DisplayName = "QC Request";
-                    LinkName = "qc_request";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "qc_request";
-                }
-                Field template_revision
-                {
-                    DisplayName = "Template Revision";
-                    LinkName = "template_revision";
-                    Type = "Number";
-                    IsMandatory = true;
-                }
-                Field prepared_by
-                {
-                    DisplayName = "Prepared By";
-                    LinkName = "prepared_by";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                    HelpText = "Coordinator or Manager";
-                }
-                Field prepared_date
-                {
-                    DisplayName = "Prepared Date";
-                    LinkName = "prepared_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field overall_result
-                {
-                    DisplayName = "Overall Result";
-                    LinkName = "overall_result";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Pass / Fail / Rework";
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                }
-                Field digital_signature
-                {
-                    DisplayName = "Digital Signature";
-                    LinkName = "digital_signature";
-                    Type = "UploadFile";
-                    ConditionalMandatory = true;
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "Required if template demands";
-                }
-                Field distribution_list
-                {
-                    DisplayName = "Distribution List";
-                    LinkName = "distribution_list";
-                    Type = "SingleLine";
-                    AllowMultiple = true;
-                }
-                Field attachments
-                {
-                    DisplayName = "Attachments";
-                    LinkName = "attachments";
-                    Type = "UploadFile";
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "Final COA";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have report_no
+	(
+		type = autonumber
+		displayname = "Report No."
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have template_revision
+	(
+		type = number
+		displayname = "Template Revision"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have prepared_date
+	(
+		type = date
+		displayname = "Prepared Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have overall_result
+	(
+		type = picklist
+		displayname = "Overall Result"
+		maxchar = 100
+		values = {"Pass","Fail","Rework"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have digital_signature
+	(
+		type = upload file
+		displayname = "Digital Signature"
+		file count = 10
+		browse = local_drive
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	attachments
+	(
+		type = upload file
+		displayname = "Attachments"
+		file count = 10
+		browse = local_drive
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

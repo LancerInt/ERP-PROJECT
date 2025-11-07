@@ -1,106 +1,181 @@
-// Module: 2. Purchase Module
 form quote_evaluation
 {
-    DisplayName = "Quote Evaluation";
-    LinkName = "quote_evaluation";
-    Module = "2. Purchase Module";
-    Type = "Form";
+	displayname = "Quote Evaluation"
+	success message = "Quote Evaluation added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field evaluation_id
-                {
-                    DisplayName = "Evaluation ID";
-                    LinkName = "evaluation_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field rfq
-                {
-                    DisplayName = "RFQ";
-                    LinkName = "rfq";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "rfq_header";
-                }
-                Field evaluation_date
-                {
-                    DisplayName = "Evaluation Date";
-                    LinkName = "evaluation_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field evaluated_by
-                {
-                    DisplayName = "Evaluated By";
-                    LinkName = "evaluated_by";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field comparison_table
-                {
-                    DisplayName = "Comparison Table";
-                    LinkName = "comparison_table";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "comparison_table";
-                    HelpText = "Vendor comparisons";
-                }
-                Field best_quote_flag
-                {
-                    DisplayName = "Best Quote Flag";
-                    LinkName = "best_quote_flag";
-                    Type = "Checkbox";
-                }
-                Field recommended_vendor
-                {
-                    DisplayName = "Recommended Vendor";
-                    LinkName = "recommended_vendor";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "vendor";
-                }
-                Field justification_notes
-                {
-                    DisplayName = "Justification Notes";
-                    LinkName = "justification_notes";
-                    Type = "MultiLine";
-                    ConditionalMandatory = true;
-                    HelpText = "Mandatory when best quote not chosen";
-                }
-                Field approval_status
-                {
-                    DisplayName = "Approval Status";
-                    LinkName = "approval_status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Pending / Approved / Rejected";
-                }
-                Field approval_trail
-                {
-                    DisplayName = "Approval Trail";
-                    LinkName = "approval_trail";
-                    Type = "SubForm";
-                    SubFormLinkName = "approval_trail";
-                    HelpText = "Purchase Manager approval";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have evaluation_id
+	(
+		type = autonumber
+		displayname = "Evaluation ID"
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have evaluation_date
+	(
+		type = date
+		displayname = "Evaluation Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have comparison_table
+	(
+		type = grid
+		displayname = "Comparison Table"
+		must have total_cost
+		(
+			type = INR
+			displayname = "Total Cost"
+			width = medium
+		)
+
+		lead_time
+		(
+			type = number
+			displayname = "Lead Time"
+			width = medium
+		)
+
+		freight_terms
+		(
+			type = picklist
+			displayname = "Freight Terms"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		payment_terms
+		(
+			type = picklist
+			displayname = "Payment Terms"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		score
+		(
+			type = number
+			displayname = "Score"
+			width = medium
+		)
+
+		remarks
+		(
+			type = textarea
+			displayname = "Remarks"
+			height = 100px
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	best_quote_flag
+	(
+		type = checkbox
+		displayname = "Best Quote Flag"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have justification_notes
+	(
+		type = textarea
+		displayname = "Justification Notes"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have approval_status
+	(
+		type = picklist
+		displayname = "Approval Status"
+		maxchar = 100
+		values = {"Pending","Approved","Rejected"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	approval_trail
+	(
+		type = grid
+		displayname = "Approval Trail"
+		must have action
+		(
+			type = picklist
+			displayname = "Action"
+			maxchar = 100
+			values = {"Approved","Rejected","Partial"}
+			width = medium
+		)
+
+		must have action_date
+		(
+			type = datetime
+			displayname = "Action Date"
+			width = medium
+		)
+
+		remarks
+		(
+			type = textarea
+			displayname = "Remarks"
+			height = 100px
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

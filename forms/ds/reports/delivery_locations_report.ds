@@ -1,83 +1,80 @@
-report delivery_locations_report
+list delivery_locations_report
 {
-    DisplayName = "Delivery Locations Report";
-    LinkName = "delivery_locations_report";
-    Type = "List";
-    SourceFormLinkName = "delivery_locations";
-
-    ListView
-    {
-        Columns
-        {
-            Column sequence
-            {
-                FieldLinkName = "sequence";
-            }
-            Column shipping_address
-            {
-                FieldLinkName = "shipping_address";
-            }
-            Column quantity_for_location
-            {
-                FieldLinkName = "quantity_for_location";
-            }
-            Column estimated_arrival
-            {
-                FieldLinkName = "estimated_arrival";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column sequence
-            {
-                FieldLinkName = "sequence";
-            }
-            Column shipping_address
-            {
-                FieldLinkName = "shipping_address";
-            }
-            Column quantity_for_location
-            {
-                FieldLinkName = "quantity_for_location";
-            }
-            Column estimated_arrival
-            {
-                FieldLinkName = "estimated_arrival";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column sequence
-                    {
-                        FieldLinkName = "sequence";
-                    }
-                    Column shipping_address
-                    {
-                        FieldLinkName = "shipping_address";
-                    }
-                    Column quantity_for_location
-                    {
-                        FieldLinkName = "quantity_for_location";
-                    }
-                    Column estimated_arrival
-                    {
-                        FieldLinkName = "estimated_arrival";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Delivery Locations Report"
+	show all rows from delivery_locations
+	(
+		sequence as "Sequence"
+		quantity_for_location as "Quantity for Location"
+		estimated_arrival as "Estimated Arrival"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Delivery Locations Overview"
+				fields
+				(
+					sequence as "Sequence"
+					quantity_for_location as "Quantity for Location"
+					estimated_arrival as "Estimated Arrival"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Delivery Locations Overview"
+				fields
+				(
+					sequence as "Sequence"
+					quantity_for_location as "Quantity for Location"
+					estimated_arrival as "Estimated Arrival"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

@@ -1,179 +1,98 @@
-report vendor_payment_advice_report
+list vendor_payment_advice_report
 {
-    DisplayName = "Vendor Payment Advice Report";
-    LinkName = "vendor_payment_advice_report";
-    Type = "List";
-    SourceFormLinkName = "vendor_payment_advice";
-
-    ListView
-    {
-        Columns
-        {
-            Column advice_no
-            {
-                FieldLinkName = "advice_no";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column source_document_type
-            {
-                FieldLinkName = "source_document_type";
-            }
-            Column source_document
-            {
-                FieldLinkName = "source_document";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column tax_components
-            {
-                FieldLinkName = "tax_components";
-            }
-            Column due_date
-            {
-                FieldLinkName = "due_date";
-            }
-            Column payment_method
-            {
-                FieldLinkName = "payment_method";
-            }
-            Column prepared_by
-            {
-                FieldLinkName = "prepared_by";
-            }
-            Column approval_workflow
-            {
-                FieldLinkName = "approval_workflow";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column advice_no
-            {
-                FieldLinkName = "advice_no";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column source_document_type
-            {
-                FieldLinkName = "source_document_type";
-            }
-            Column source_document
-            {
-                FieldLinkName = "source_document";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column tax_components
-            {
-                FieldLinkName = "tax_components";
-            }
-            Column due_date
-            {
-                FieldLinkName = "due_date";
-            }
-            Column payment_method
-            {
-                FieldLinkName = "payment_method";
-            }
-            Column prepared_by
-            {
-                FieldLinkName = "prepared_by";
-            }
-            Column approval_workflow
-            {
-                FieldLinkName = "approval_workflow";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column advice_no
-                    {
-                        FieldLinkName = "advice_no";
-                    }
-                    Column vendor
-                    {
-                        FieldLinkName = "vendor";
-                    }
-                    Column source_document_type
-                    {
-                        FieldLinkName = "source_document_type";
-                    }
-                    Column source_document
-                    {
-                        FieldLinkName = "source_document";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                    Column tax_components
-                    {
-                        FieldLinkName = "tax_components";
-                    }
-                    Column due_date
-                    {
-                        FieldLinkName = "due_date";
-                    }
-                    Column payment_method
-                    {
-                        FieldLinkName = "payment_method";
-                    }
-                    Column prepared_by
-                    {
-                        FieldLinkName = "prepared_by";
-                    }
-                    Column approval_workflow
-                    {
-                        FieldLinkName = "approval_workflow";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                    Column notes
-                    {
-                        FieldLinkName = "notes";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Vendor Payment Advice Report"
+	show all rows from vendor_payment_advice
+	(
+		advice_no as "Advice No."
+		source_document_type as "Source Document Type"
+		amount as "Amount"
+		tax_components as "Tax Components"
+		due_date as "Due Date"
+		payment_method as "Payment Method"
+		approval_workflow as "Approval Workflow"
+		status as "Status"
+		notes as "Notes"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Vendor Payment Advice Overview"
+				fields
+				(
+					advice_no as "Advice No."
+					source_document_type as "Source Document Type"
+					amount as "Amount"
+					tax_components as "Tax Components"
+					due_date as "Due Date"
+					payment_method as "Payment Method"
+					approval_workflow as "Approval Workflow"
+					status as "Status"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Vendor Payment Advice Overview"
+				fields
+				(
+					advice_no as "Advice No."
+					source_document_type as "Source Document Type"
+					amount as "Amount"
+					tax_components as "Tax Components"
+					due_date as "Due Date"
+					payment_method as "Payment Method"
+					approval_workflow as "Approval Workflow"
+					status as "Status"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

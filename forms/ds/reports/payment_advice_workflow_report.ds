@@ -1,227 +1,107 @@
-report payment_advice_workflow_report
+list payment_advice_workflow_report
 {
-    DisplayName = "Payment Advice Workflow Report";
-    LinkName = "payment_advice_workflow_report";
-    Type = "List";
-    SourceFormLinkName = "payment_advice_workflow";
-
-    ListView
-    {
-        Columns
-        {
-            Column advice_no
-            {
-                FieldLinkName = "advice_no";
-            }
-            Column beneficiary_type
-            {
-                FieldLinkName = "beneficiary_type";
-            }
-            Column beneficiary
-            {
-                FieldLinkName = "beneficiary";
-            }
-            Column source_document
-            {
-                FieldLinkName = "source_document";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column tds_tcs_details
-            {
-                FieldLinkName = "tds_tcs_details";
-            }
-            Column due_date
-            {
-                FieldLinkName = "due_date";
-            }
-            Column payment_method
-            {
-                FieldLinkName = "payment_method";
-            }
-            Column bank_account
-            {
-                FieldLinkName = "bank_account";
-            }
-            Column prepared_by
-            {
-                FieldLinkName = "prepared_by";
-            }
-            Column prepared_date
-            {
-                FieldLinkName = "prepared_date";
-            }
-            Column finance_manager_approval
-            {
-                FieldLinkName = "finance_manager_approval";
-            }
-            Column office_manager_authorization
-            {
-                FieldLinkName = "office_manager_authorization";
-            }
-            Column payment_status
-            {
-                FieldLinkName = "payment_status";
-            }
-            Column payment_reference
-            {
-                FieldLinkName = "payment_reference";
-            }
-            Column attachments
-            {
-                FieldLinkName = "attachments";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column advice_no
-            {
-                FieldLinkName = "advice_no";
-            }
-            Column beneficiary_type
-            {
-                FieldLinkName = "beneficiary_type";
-            }
-            Column beneficiary
-            {
-                FieldLinkName = "beneficiary";
-            }
-            Column source_document
-            {
-                FieldLinkName = "source_document";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column tds_tcs_details
-            {
-                FieldLinkName = "tds_tcs_details";
-            }
-            Column due_date
-            {
-                FieldLinkName = "due_date";
-            }
-            Column payment_method
-            {
-                FieldLinkName = "payment_method";
-            }
-            Column bank_account
-            {
-                FieldLinkName = "bank_account";
-            }
-            Column prepared_by
-            {
-                FieldLinkName = "prepared_by";
-            }
-            Column prepared_date
-            {
-                FieldLinkName = "prepared_date";
-            }
-            Column finance_manager_approval
-            {
-                FieldLinkName = "finance_manager_approval";
-            }
-            Column office_manager_authorization
-            {
-                FieldLinkName = "office_manager_authorization";
-            }
-            Column payment_status
-            {
-                FieldLinkName = "payment_status";
-            }
-            Column payment_reference
-            {
-                FieldLinkName = "payment_reference";
-            }
-            Column attachments
-            {
-                FieldLinkName = "attachments";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column advice_no
-                    {
-                        FieldLinkName = "advice_no";
-                    }
-                    Column beneficiary_type
-                    {
-                        FieldLinkName = "beneficiary_type";
-                    }
-                    Column beneficiary
-                    {
-                        FieldLinkName = "beneficiary";
-                    }
-                    Column source_document
-                    {
-                        FieldLinkName = "source_document";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                    Column tds_tcs_details
-                    {
-                        FieldLinkName = "tds_tcs_details";
-                    }
-                    Column due_date
-                    {
-                        FieldLinkName = "due_date";
-                    }
-                    Column payment_method
-                    {
-                        FieldLinkName = "payment_method";
-                    }
-                    Column bank_account
-                    {
-                        FieldLinkName = "bank_account";
-                    }
-                    Column prepared_by
-                    {
-                        FieldLinkName = "prepared_by";
-                    }
-                    Column prepared_date
-                    {
-                        FieldLinkName = "prepared_date";
-                    }
-                    Column finance_manager_approval
-                    {
-                        FieldLinkName = "finance_manager_approval";
-                    }
-                    Column office_manager_authorization
-                    {
-                        FieldLinkName = "office_manager_authorization";
-                    }
-                    Column payment_status
-                    {
-                        FieldLinkName = "payment_status";
-                    }
-                    Column payment_reference
-                    {
-                        FieldLinkName = "payment_reference";
-                    }
-                    Column attachments
-                    {
-                        FieldLinkName = "attachments";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Payment Advice Workflow Report"
+	show all rows from payment_advice_workflow
+	(
+		advice_no as "Advice No."
+		beneficiary_type as "Beneficiary Type"
+		amount as "Amount"
+		tds_tcs_details as "TDS/TCS Details"
+		due_date as "Due Date"
+		payment_method as "Payment Method"
+		prepared_date as "Prepared Date"
+		finance_manager_approval as "Finance Manager Approval"
+		office_manager_authorization as "Office Manager Authorization"
+		payment_status as "Payment Status"
+		payment_reference as "Payment Reference"
+		attachments as "Attachments"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Payment Advice Workflow Overview"
+				fields
+				(
+					advice_no as "Advice No."
+					beneficiary_type as "Beneficiary Type"
+					amount as "Amount"
+					tds_tcs_details as "TDS/TCS Details"
+					due_date as "Due Date"
+					payment_method as "Payment Method"
+					prepared_date as "Prepared Date"
+					finance_manager_approval as "Finance Manager Approval"
+					office_manager_authorization as "Office Manager Authorization"
+					payment_status as "Payment Status"
+					payment_reference as "Payment Reference"
+					attachments as "Attachments"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Payment Advice Workflow Overview"
+				fields
+				(
+					advice_no as "Advice No."
+					beneficiary_type as "Beneficiary Type"
+					amount as "Amount"
+					tds_tcs_details as "TDS/TCS Details"
+					due_date as "Due Date"
+					payment_method as "Payment Method"
+					prepared_date as "Prepared Date"
+					finance_manager_approval as "Finance Manager Approval"
+					office_manager_authorization as "Office Manager Authorization"
+					payment_status as "Payment Status"
+					payment_reference as "Payment Reference"
+					attachments as "Attachments"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

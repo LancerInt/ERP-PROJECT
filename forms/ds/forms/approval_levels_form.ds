@@ -1,59 +1,83 @@
-// Module: 1. Core & Shared Masters
 form approval_levels
 {
-    DisplayName = "Approval Levels";
-    LinkName = "approval_levels";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "Approval Levels"
+	success message = "Approval Levels added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field module
-                {
-                    DisplayName = "Module";
-                    LinkName = "module";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Purchase / Sales / Production / etc.";
-                }
-                Field stage
-                {
-                    DisplayName = "Stage";
-                    LinkName = "stage";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Request / Evaluation / Payment";
-                }
-                Field min_amount
-                {
-                    DisplayName = "Min Amount";
-                    LinkName = "min_amount";
-                    Type = "INR";
-                    HelpText = "Threshold";
-                }
-                Field max_amount
-                {
-                    DisplayName = "Max Amount";
-                    LinkName = "max_amount";
-                    Type = "INR";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have module
+	(
+		type = picklist
+		displayname = "Module"
+		maxchar = 100
+		values = {"Purchase","Sales","Production","etc"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have stage
+	(
+		type = picklist
+		displayname = "Stage"
+		maxchar = 100
+		values = {"Request","Evaluation","Payment"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	min_amount
+	(
+		type = INR
+		displayname = "Min Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	max_amount
+	(
+		type = INR
+		displayname = "Max Amount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

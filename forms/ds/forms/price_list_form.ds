@@ -1,110 +1,184 @@
-// Module: 1. Core & Shared Masters
 form price_list
 {
-    DisplayName = "Price List";
-    LinkName = "price_list";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "Price List"
+	success message = "Price List added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field price_list_id
-                {
-                    DisplayName = "Price List ID";
-                    LinkName = "price_list_id";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field company
-                {
-                    DisplayName = "Company";
-                    LinkName = "company";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "company";
-                }
-                Field customer
-                {
-                    DisplayName = "Customer";
-                    LinkName = "customer";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "customer";
-                    HelpText = "Optional if customer-specific";
-                }
-                Field delivery_region
-                {
-                    DisplayName = "Delivery Region";
-                    LinkName = "delivery_region";
-                    Type = "Dropdown";
-                    HelpText = "For auto-selection";
-                }
-                Field currency
-                {
-                    DisplayName = "Currency";
-                    LinkName = "currency";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field effective_from
-                {
-                    DisplayName = "Effective From";
-                    LinkName = "effective_from";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field effective_to
-                {
-                    DisplayName = "Effective To";
-                    LinkName = "effective_to";
-                    Type = "Date";
-                }
-                Field default_freight_terms
-                {
-                    DisplayName = "Default Freight Terms";
-                    LinkName = "default_freight_terms";
-                    Type = "Dropdown";
-                    HelpText = "Overrides customer";
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Draft / Active / Archived";
-                }
-                Field price_lines
-                {
-                    DisplayName = "Price Lines";
-                    LinkName = "price_lines";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "price_lines";
-                    HelpText = "Product level rates";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have price_list_id
+	(
+		type = text
+		displayname = "Price List ID"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	delivery_region
+	(
+		type = picklist
+		displayname = "Delivery Region"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have currency
+	(
+		type = picklist
+		displayname = "Currency"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have effective_from
+	(
+		type = date
+		displayname = "Effective From"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	effective_to
+	(
+		type = date
+		displayname = "Effective To"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	default_freight_terms
+	(
+		type = picklist
+		displayname = "Default Freight Terms"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		maxchar = 100
+		values = {"Draft","Active","Archived"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have price_lines
+	(
+		type = grid
+		displayname = "Price Lines"
+		must have uom
+		(
+			type = picklist
+			displayname = "UOM"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		must have rate
+		(
+			type = INR
+			displayname = "Rate"
+			width = medium
+		)
+
+		discount
+		(
+			type = number
+			displayname = "Discount %"
+			width = medium
+		)
+
+		must have gst
+		(
+			type = number
+			displayname = "GST %"
+			width = medium
+		)
+
+		freight_component
+		(
+			type = INR
+			displayname = "Freight Component"
+			width = medium
+		)
+
+		valid_from
+		(
+			type = date
+			displayname = "Valid From"
+			width = medium
+		)
+
+		valid_to
+		(
+			type = date
+			displayname = "Valid To"
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

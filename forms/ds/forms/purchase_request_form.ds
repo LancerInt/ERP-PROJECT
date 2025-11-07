@@ -1,164 +1,267 @@
-// Module: 2. Purchase Module
 form purchase_request
 {
-    DisplayName = "Purchase Request (PR)";
-    LinkName = "purchase_request";
-    Module = "2. Purchase Module";
-    Type = "Form";
+	displayname = "Purchase Request (PR)"
+	success message = "Purchase Request (PR) added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field pr_no
-                {
-                    DisplayName = "PR No.";
-                    LinkName = "pr_no";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field request_date
-                {
-                    DisplayName = "Request Date";
-                    LinkName = "request_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field warehouse
-                {
-                    DisplayName = "Warehouse";
-                    LinkName = "warehouse";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "warehouse";
-                    HelpText = "Visibility restricted";
-                }
-                Field godown
-                {
-                    DisplayName = "Godown";
-                    LinkName = "godown";
-                    Type = "Lookup";
-                    ConditionalMandatory = true;
-                    RelatedFormLinkName = "godown";
-                    HelpText = "Filtered by selected warehouse";
-                }
-                Field requested_by
-                {
-                    DisplayName = "Requested By";
-                    LinkName = "requested_by";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field requestor_role
-                {
-                    DisplayName = "Requestor Role";
-                    LinkName = "requestor_role";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Warehouse Manager / Coordinator";
-                }
-                Field requirement_type
-                {
-                    DisplayName = "Requirement Type";
-                    LinkName = "requirement_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Goods / Services / Machinery";
-                }
-                Field lines
-                {
-                    DisplayName = "Lines";
-                    LinkName = "lines";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "pr_lines";
-                    HelpText = "Detailed requirements";
-                }
-                Field priority
-                {
-                    DisplayName = "Priority";
-                    LinkName = "priority";
-                    Type = "Dropdown";
-                    HelpText = "Low / Medium / High";
-                }
-                Field required_by_date
-                {
-                    DisplayName = "Required By Date";
-                    LinkName = "required_by_date";
-                    Type = "Date";
-                    ConditionalMandatory = true;
-                    HelpText = "Mandatory when Requirement Type = Goods";
-                }
-                Field justification
-                {
-                    DisplayName = "Justification";
-                    LinkName = "justification";
-                    Type = "MultiLine";
-                }
-                Field attachments
-                {
-                    DisplayName = "Attachments";
-                    LinkName = "attachments";
-                    Type = "UploadFile";
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "Specs, photos";
-                }
-                Field approval_status
-                {
-                    DisplayName = "Approval Status";
-                    LinkName = "approval_status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Draft / Pending / Approved / Rejected / Partially Approved";
-                }
-                Field approval_trail
-                {
-                    DisplayName = "Approval Trail";
-                    LinkName = "approval_trail";
-                    Type = "SubForm";
-                    SubFormLinkName = "approval_trail";
-                    HelpText = "Audit";
-                }
-                Field visibility_scope
-                {
-                    DisplayName = "Visibility Scope";
-                    LinkName = "visibility_scope";
-                    Type = "SingleLine";
-                    AllowMultiple = true;
-                    HelpText = "Auto-share";
-                }
-                Field created_from_bom_request
-                {
-                    DisplayName = "Created From BOM Request";
-                    LinkName = "created_from_bom_request";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "bom_request";
-                    HelpText = "Traceability";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have pr_no
+	(
+		type = autonumber
+		displayname = "PR No."
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have request_date
+	(
+		type = date
+		displayname = "Request Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have requestor_role
+	(
+		type = picklist
+		displayname = "Requestor Role"
+		maxchar = 100
+		values = {"Warehouse Manager","Coordinator"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have requirement_type
+	(
+		type = picklist
+		displayname = "Requirement Type"
+		maxchar = 100
+		values = {"Goods","Services","Machinery"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have lines
+	(
+		type = grid
+		displayname = "Lines"
+		must have line_no
+		(
+			type = number
+			displayname = "Line No."
+			width = medium
+		)
+
+		description_override
+		(
+			type = textarea
+			displayname = "Description Override"
+			height = 100px
+			width = medium
+		)
+
+		must have quantity_requested
+		(
+			type = number
+			displayname = "Quantity Requested"
+			width = medium
+		)
+
+		must have uom
+		(
+			type = picklist
+			displayname = "UOM"
+			maxchar = 100
+			values = {"Option 1","Option 2","Option 3"}
+			width = medium
+		)
+
+		required_date
+		(
+			type = date
+			displayname = "Required Date"
+			width = medium
+		)
+
+		purpose
+		(
+			type = picklist
+			displayname = "Purpose"
+			maxchar = 100
+			values = {"Production","Maintenance","Consumable"}
+			width = medium
+		)
+
+		allow_rfq_skip
+		(
+			type = checkbox
+			displayname = "Allow RFQ Skip"
+			width = medium
+		)
+
+		attachments
+		(
+			type = upload file
+			displayname = "Attachments"
+			file count = 10
+			browse = local_drive
+			width = medium
+		)
+
+		must have status
+		(
+			type = picklist
+			displayname = "Status"
+			maxchar = 100
+			values = {"Pending","Approved","Rejected","Fulfilled"}
+			width = medium
+		)
+
+		approved_quantity
+		(
+			type = number
+			displayname = "Approved Quantity"
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	priority
+	(
+		type = picklist
+		displayname = "Priority"
+		maxchar = 100
+		values = {"Low","Medium","High"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have required_by_date
+	(
+		type = date
+		displayname = "Required By Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	justification
+	(
+		type = textarea
+		displayname = "Justification"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	attachments
+	(
+		type = upload file
+		displayname = "Attachments"
+		file count = 10
+		browse = local_drive
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have approval_status
+	(
+		type = picklist
+		displayname = "Approval Status"
+		maxchar = 100
+		values = {"Draft","Pending","Approved","Rejected","Partially Approved"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	approval_trail
+	(
+		type = grid
+		displayname = "Approval Trail"
+		must have action
+		(
+			type = picklist
+			displayname = "Action"
+			maxchar = 100
+			values = {"Approved","Rejected","Partial"}
+			width = medium
+		)
+
+		must have action_date
+		(
+			type = datetime
+			displayname = "Action Date"
+			width = medium
+		)
+
+		remarks
+		(
+			type = textarea
+			displayname = "Remarks"
+			height = 100px
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

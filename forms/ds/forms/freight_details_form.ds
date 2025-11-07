@@ -1,106 +1,135 @@
-// Module: 2. Purchase Module
 form freight_details
 {
-    DisplayName = "Freight Details";
-    LinkName = "freight_details";
-    Module = "2. Purchase Module";
-    Type = "Form";
+	displayname = "Freight Details"
+	success message = "Freight Details added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field freight_type
-                {
-                    DisplayName = "Freight Type";
-                    LinkName = "freight_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Local Drayage / Linehaul";
-                }
-                Field transporter
-                {
-                    DisplayName = "Transporter";
-                    LinkName = "transporter";
-                    Type = "Lookup";
-                    ConditionalMandatory = true;
-                    RelatedFormLinkName = "transporter";
-                    HelpText = "Required when company pays";
-                }
-                Field freight_terms
-                {
-                    DisplayName = "Freight Terms";
-                    LinkName = "freight_terms";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Paid / To_Pay / Mixed";
-                }
-                Field tentative_charge
-                {
-                    DisplayName = "Tentative Charge";
-                    LinkName = "tentative_charge";
-                    Type = "INR";
-                    HelpText = "Pre-filled from PO";
-                }
-                Field discount
-                {
-                    DisplayName = "Discount";
-                    LinkName = "discount";
-                    Type = "INR";
-                    HelpText = "Optional";
-                }
-                Field payable_by
-                {
-                    DisplayName = "Payable By";
-                    LinkName = "payable_by";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Company / Vendor";
-                }
-                Field quantity_basis
-                {
-                    DisplayName = "Quantity Basis";
-                    LinkName = "quantity_basis";
-                    Type = "Decimal";
-                    HelpText = "Total shipment quantity for cost-per-unit reporting";
-                }
-                Field quantity_uom
-                {
-                    DisplayName = "Quantity UOM";
-                    LinkName = "quantity_uom";
-                    Type = "Dropdown";
-                    HelpText = "Tonnes / KG / KL / Units";
-                }
-                Field destination_state
-                {
-                    DisplayName = "Destination State";
-                    LinkName = "destination_state";
-                    Type = "Dropdown";
-                    HelpText = "Auto-populated from receiving warehouse";
-                }
-                Field cost_per_unit_calc
-                {
-                    DisplayName = "Cost Per Unit (Calc)";
-                    LinkName = "cost_per_unit_calc";
-                    Type = "Decimal";
-                    IsFormula = true;
-                    HelpText = "Tentative charge minus discount divided by quantity basis";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have freight_type
+	(
+		type = picklist
+		displayname = "Freight Type"
+		maxchar = 100
+		values = {"Local Drayage","Linehaul"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have freight_terms
+	(
+		type = picklist
+		displayname = "Freight Terms"
+		maxchar = 100
+		values = {"Paid","To_Pay","Mixed"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	tentative_charge
+	(
+		type = INR
+		displayname = "Tentative Charge"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	discount
+	(
+		type = INR
+		displayname = "Discount"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have payable_by
+	(
+		type = picklist
+		displayname = "Payable By"
+		maxchar = 100
+		values = {"Company","Vendor"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	quantity_basis
+	(
+		type = number
+		displayname = "Quantity Basis"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	quantity_uom
+	(
+		type = picklist
+		displayname = "Quantity UOM"
+		maxchar = 100
+		values = {"Tonnes","KG","KL","Units"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	destination_state
+	(
+		type = picklist
+		displayname = "Destination State"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	cost_per_unit_calc
+	(
+		type = number
+		displayname = "Cost Per Unit (Calc)"
+		is formula = true
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

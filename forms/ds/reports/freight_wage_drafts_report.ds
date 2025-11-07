@@ -1,95 +1,83 @@
-report freight_wage_drafts_report
+list freight_wage_drafts_report
 {
-    DisplayName = "Freight/Wage Drafts Report";
-    LinkName = "freight_wage_drafts_report";
-    Type = "List";
-    SourceFormLinkName = "freight_wage_drafts";
-
-    ListView
-    {
-        Columns
-        {
-            Column expense_type
-            {
-                FieldLinkName = "expense_type";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column payable_by
-            {
-                FieldLinkName = "payable_by";
-            }
-            Column approval_status
-            {
-                FieldLinkName = "approval_status";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column expense_type
-            {
-                FieldLinkName = "expense_type";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column payable_by
-            {
-                FieldLinkName = "payable_by";
-            }
-            Column approval_status
-            {
-                FieldLinkName = "approval_status";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column expense_type
-                    {
-                        FieldLinkName = "expense_type";
-                    }
-                    Column vendor
-                    {
-                        FieldLinkName = "vendor";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                    Column payable_by
-                    {
-                        FieldLinkName = "payable_by";
-                    }
-                    Column approval_status
-                    {
-                        FieldLinkName = "approval_status";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Freight/Wage Drafts Report"
+	show all rows from freight_wage_drafts
+	(
+		expense_type as "Expense Type"
+		amount as "Amount"
+		payable_by as "Payable By"
+		approval_status as "Approval Status"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Freight/Wage Drafts Overview"
+				fields
+				(
+					expense_type as "Expense Type"
+					amount as "Amount"
+					payable_by as "Payable By"
+					approval_status as "Approval Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Freight/Wage Drafts Overview"
+				fields
+				(
+					expense_type as "Expense Type"
+					amount as "Amount"
+					payable_by as "Payable By"
+					approval_status as "Approval Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

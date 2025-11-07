@@ -1,179 +1,101 @@
-report pr_lines_report
+list pr_lines_report
 {
-    DisplayName = "PR Lines Report";
-    LinkName = "pr_lines_report";
-    Type = "List";
-    SourceFormLinkName = "pr_lines";
-
-    ListView
-    {
-        Columns
-        {
-            Column line_no
-            {
-                FieldLinkName = "line_no";
-            }
-            Column product_service
-            {
-                FieldLinkName = "product_service";
-            }
-            Column description_override
-            {
-                FieldLinkName = "description_override";
-            }
-            Column quantity_requested
-            {
-                FieldLinkName = "quantity_requested";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column required_date
-            {
-                FieldLinkName = "required_date";
-            }
-            Column purpose
-            {
-                FieldLinkName = "purpose";
-            }
-            Column machine_reference
-            {
-                FieldLinkName = "machine_reference";
-            }
-            Column allow_rfq_skip
-            {
-                FieldLinkName = "allow_rfq_skip";
-            }
-            Column attachments
-            {
-                FieldLinkName = "attachments";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column approved_quantity
-            {
-                FieldLinkName = "approved_quantity";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column line_no
-            {
-                FieldLinkName = "line_no";
-            }
-            Column product_service
-            {
-                FieldLinkName = "product_service";
-            }
-            Column description_override
-            {
-                FieldLinkName = "description_override";
-            }
-            Column quantity_requested
-            {
-                FieldLinkName = "quantity_requested";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column required_date
-            {
-                FieldLinkName = "required_date";
-            }
-            Column purpose
-            {
-                FieldLinkName = "purpose";
-            }
-            Column machine_reference
-            {
-                FieldLinkName = "machine_reference";
-            }
-            Column allow_rfq_skip
-            {
-                FieldLinkName = "allow_rfq_skip";
-            }
-            Column attachments
-            {
-                FieldLinkName = "attachments";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column approved_quantity
-            {
-                FieldLinkName = "approved_quantity";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column line_no
-                    {
-                        FieldLinkName = "line_no";
-                    }
-                    Column product_service
-                    {
-                        FieldLinkName = "product_service";
-                    }
-                    Column description_override
-                    {
-                        FieldLinkName = "description_override";
-                    }
-                    Column quantity_requested
-                    {
-                        FieldLinkName = "quantity_requested";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column required_date
-                    {
-                        FieldLinkName = "required_date";
-                    }
-                    Column purpose
-                    {
-                        FieldLinkName = "purpose";
-                    }
-                    Column machine_reference
-                    {
-                        FieldLinkName = "machine_reference";
-                    }
-                    Column allow_rfq_skip
-                    {
-                        FieldLinkName = "allow_rfq_skip";
-                    }
-                    Column attachments
-                    {
-                        FieldLinkName = "attachments";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                    Column approved_quantity
-                    {
-                        FieldLinkName = "approved_quantity";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "PR Lines Report"
+	show all rows from pr_lines
+	(
+		line_no as "Line No."
+		description_override as "Description Override"
+		quantity_requested as "Quantity Requested"
+		uom as "UOM"
+		required_date as "Required Date"
+		purpose as "Purpose"
+		allow_rfq_skip as "Allow RFQ Skip"
+		attachments as "Attachments"
+		status as "Status"
+		approved_quantity as "Approved Quantity"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "PR Lines Overview"
+				fields
+				(
+					line_no as "Line No."
+					description_override as "Description Override"
+					quantity_requested as "Quantity Requested"
+					uom as "UOM"
+					required_date as "Required Date"
+					purpose as "Purpose"
+					allow_rfq_skip as "Allow RFQ Skip"
+					attachments as "Attachments"
+					status as "Status"
+					approved_quantity as "Approved Quantity"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "PR Lines Overview"
+				fields
+				(
+					line_no as "Line No."
+					description_override as "Description Override"
+					quantity_requested as "Quantity Requested"
+					uom as "UOM"
+					required_date as "Required Date"
+					purpose as "Purpose"
+					allow_rfq_skip as "Allow RFQ Skip"
+					attachments as "Attachments"
+					status as "Status"
+					approved_quantity as "Approved Quantity"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

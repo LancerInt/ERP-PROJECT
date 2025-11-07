@@ -1,105 +1,129 @@
-// Module: 1. Core & Shared Masters
 form godown
 {
-    DisplayName = "Godown";
-    LinkName = "godown";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "Godown"
+	success message = "Godown added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field godown_code
-                {
-                    DisplayName = "Godown Code";
-                    LinkName = "godown_code";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    IsUnique = true;
-                    HelpText = "Unique within company";
-                }
-                Field warehouse
-                {
-                    DisplayName = "Warehouse";
-                    LinkName = "warehouse";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "warehouse";
-                    HelpText = "Owning warehouse";
-                }
-                Field godown_name
-                {
-                    DisplayName = "Godown Name";
-                    LinkName = "godown_name";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    HelpText = "Display name";
-                }
-                Field storage_condition
-                {
-                    DisplayName = "Storage Condition";
-                    LinkName = "storage_condition";
-                    Type = "Dropdown";
-                    HelpText = "Ambient / Cold / Hazardous";
-                }
-                Field capacity_uom
-                {
-                    DisplayName = "Capacity UOM";
-                    LinkName = "capacity_uom";
-                    Type = "Dropdown";
-                }
-                Field capacity_value
-                {
-                    DisplayName = "Capacity Value";
-                    LinkName = "capacity_value";
-                    Type = "Decimal";
-                    HelpText = "Maximum storage capacity";
-                }
-                Field batch_tracking_enabled
-                {
-                    DisplayName = "Batch Tracking Enabled";
-                    LinkName = "batch_tracking_enabled";
-                    Type = "Checkbox";
-                    IsMandatory = true;
-                    HelpText = "Controls batch-level location";
-                }
-                Field default_qc_hold_area
-                {
-                    DisplayName = "Default QC Hold Area";
-                    LinkName = "default_qc_hold_area";
-                    Type = "Checkbox";
-                    HelpText = "Flags quarantine locations";
-                }
-                Field active_flag
-                {
-                    DisplayName = "Active Flag";
-                    LinkName = "active_flag";
-                    Type = "Checkbox";
-                    IsMandatory = true;
-                    HelpText = "Hide from selection when inactive";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have unique godown_code
+	(
+		type = text
+		displayname = "Godown Code"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have godown_name
+	(
+		type = text
+		displayname = "Godown Name"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	storage_condition
+	(
+		type = picklist
+		displayname = "Storage Condition"
+		maxchar = 100
+		values = {"Ambient","Cold","Hazardous"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	capacity_uom
+	(
+		type = picklist
+		displayname = "Capacity UOM"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	capacity_value
+	(
+		type = number
+		displayname = "Capacity Value"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have batch_tracking_enabled
+	(
+		type = checkbox
+		displayname = "Batch Tracking Enabled"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	default_qc_hold_area
+	(
+		type = checkbox
+		displayname = "Default QC Hold Area"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have active_flag
+	(
+		type = checkbox
+		displayname = "Active Flag"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

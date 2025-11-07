@@ -1,143 +1,89 @@
-report job_work_dc_report
+list job_work_dc_report
 {
-    DisplayName = "Job Work DC Report";
-    LinkName = "job_work_dc_report";
-    Type = "List";
-    SourceFormLinkName = "job_work_dc";
-
-    ListView
-    {
-        Columns
-        {
-            Column jw_dc_no
-            {
-                FieldLinkName = "jw_dc_no";
-            }
-            Column job_work_order
-            {
-                FieldLinkName = "job_work_order";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column dispatch_date
-            {
-                FieldLinkName = "dispatch_date";
-            }
-            Column transporter
-            {
-                FieldLinkName = "transporter";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column issued_materials
-            {
-                FieldLinkName = "issued_materials";
-            }
-            Column documents
-            {
-                FieldLinkName = "documents";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column jw_dc_no
-            {
-                FieldLinkName = "jw_dc_no";
-            }
-            Column job_work_order
-            {
-                FieldLinkName = "job_work_order";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column dispatch_date
-            {
-                FieldLinkName = "dispatch_date";
-            }
-            Column transporter
-            {
-                FieldLinkName = "transporter";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column issued_materials
-            {
-                FieldLinkName = "issued_materials";
-            }
-            Column documents
-            {
-                FieldLinkName = "documents";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column jw_dc_no
-                    {
-                        FieldLinkName = "jw_dc_no";
-                    }
-                    Column job_work_order
-                    {
-                        FieldLinkName = "job_work_order";
-                    }
-                    Column vendor
-                    {
-                        FieldLinkName = "vendor";
-                    }
-                    Column dispatch_date
-                    {
-                        FieldLinkName = "dispatch_date";
-                    }
-                    Column transporter
-                    {
-                        FieldLinkName = "transporter";
-                    }
-                    Column freight_terms
-                    {
-                        FieldLinkName = "freight_terms";
-                    }
-                    Column issued_materials
-                    {
-                        FieldLinkName = "issued_materials";
-                    }
-                    Column documents
-                    {
-                        FieldLinkName = "documents";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Job Work DC Report"
+	show all rows from job_work_dc
+	(
+		jw_dc_no as "JW DC No."
+		dispatch_date as "Dispatch Date"
+		freight_terms as "Freight Terms"
+		issued_materials as "Issued Materials"
+		documents as "Documents"
+		status as "Status"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Job Work DC Overview"
+				fields
+				(
+					jw_dc_no as "JW DC No."
+					dispatch_date as "Dispatch Date"
+					freight_terms as "Freight Terms"
+					issued_materials as "Issued Materials"
+					documents as "Documents"
+					status as "Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Job Work DC Overview"
+				fields
+				(
+					jw_dc_no as "JW DC No."
+					dispatch_date as "Dispatch Date"
+					freight_terms as "Freight Terms"
+					issued_materials as "Issued Materials"
+					documents as "Documents"
+					status as "Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

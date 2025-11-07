@@ -1,73 +1,103 @@
-// Module: 8. Attendance & HR Module
 form attendance_device_log
 {
-    DisplayName = "Attendance Device Log";
-    LinkName = "attendance_device_log";
-    Module = "8. Attendance & HR Module";
-    Type = "Form";
+	displayname = "Attendance Device Log"
+	success message = "Attendance Device Log added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field log_id
-                {
-                    DisplayName = "Log ID";
-                    LinkName = "log_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field device_id
-                {
-                    DisplayName = "Device ID";
-                    LinkName = "device_id";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field event_time
-                {
-                    DisplayName = "Event Time";
-                    LinkName = "event_time";
-                    Type = "DateTime";
-                    IsMandatory = true;
-                }
-                Field event_type
-                {
-                    DisplayName = "Event Type";
-                    LinkName = "event_type";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Capture / Sync";
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Success / Failed";
-                }
-                Field error_message
-                {
-                    DisplayName = "Error Message";
-                    LinkName = "error_message";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have log_id
+	(
+		type = autonumber
+		displayname = "Log ID"
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have device_id
+	(
+		type = text
+		displayname = "Device ID"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have event_time
+	(
+		type = datetime
+		displayname = "Event Time"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have event_type
+	(
+		type = picklist
+		displayname = "Event Type"
+		maxchar = 100
+		values = {"Capture","Sync"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		maxchar = 100
+		values = {"Success","Failed"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	error_message
+	(
+		type = textarea
+		displayname = "Error Message"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

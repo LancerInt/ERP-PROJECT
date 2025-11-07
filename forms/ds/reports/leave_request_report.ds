@@ -1,167 +1,98 @@
-report leave_request_report
+list leave_request_report
 {
-    DisplayName = "Leave Request Report";
-    LinkName = "leave_request_report";
-    Type = "List";
-    SourceFormLinkName = "leave_request";
-
-    ListView
-    {
-        Columns
-        {
-            Column request_no
-            {
-                FieldLinkName = "request_no";
-            }
-            Column staff
-            {
-                FieldLinkName = "staff";
-            }
-            Column leave_type
-            {
-                FieldLinkName = "leave_type";
-            }
-            Column start_date
-            {
-                FieldLinkName = "start_date";
-            }
-            Column end_date
-            {
-                FieldLinkName = "end_date";
-            }
-            Column duration_hours
-            {
-                FieldLinkName = "duration_hours";
-            }
-            Column reason
-            {
-                FieldLinkName = "reason";
-            }
-            Column attachment
-            {
-                FieldLinkName = "attachment";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column approver
-            {
-                FieldLinkName = "approver";
-            }
-            Column approval_date
-            {
-                FieldLinkName = "approval_date";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column request_no
-            {
-                FieldLinkName = "request_no";
-            }
-            Column staff
-            {
-                FieldLinkName = "staff";
-            }
-            Column leave_type
-            {
-                FieldLinkName = "leave_type";
-            }
-            Column start_date
-            {
-                FieldLinkName = "start_date";
-            }
-            Column end_date
-            {
-                FieldLinkName = "end_date";
-            }
-            Column duration_hours
-            {
-                FieldLinkName = "duration_hours";
-            }
-            Column reason
-            {
-                FieldLinkName = "reason";
-            }
-            Column attachment
-            {
-                FieldLinkName = "attachment";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column approver
-            {
-                FieldLinkName = "approver";
-            }
-            Column approval_date
-            {
-                FieldLinkName = "approval_date";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column request_no
-                    {
-                        FieldLinkName = "request_no";
-                    }
-                    Column staff
-                    {
-                        FieldLinkName = "staff";
-                    }
-                    Column leave_type
-                    {
-                        FieldLinkName = "leave_type";
-                    }
-                    Column start_date
-                    {
-                        FieldLinkName = "start_date";
-                    }
-                    Column end_date
-                    {
-                        FieldLinkName = "end_date";
-                    }
-                    Column duration_hours
-                    {
-                        FieldLinkName = "duration_hours";
-                    }
-                    Column reason
-                    {
-                        FieldLinkName = "reason";
-                    }
-                    Column attachment
-                    {
-                        FieldLinkName = "attachment";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                    Column approver
-                    {
-                        FieldLinkName = "approver";
-                    }
-                    Column approval_date
-                    {
-                        FieldLinkName = "approval_date";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Leave Request Report"
+	show all rows from leave_request
+	(
+		request_no as "Request No."
+		leave_type as "Leave Type"
+		start_date as "Start Date"
+		end_date as "End Date"
+		duration_hours as "Duration (Hours)"
+		reason as "Reason"
+		attachment as "Attachment"
+		status as "Status"
+		approval_date as "Approval Date"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Leave Request Overview"
+				fields
+				(
+					request_no as "Request No."
+					leave_type as "Leave Type"
+					start_date as "Start Date"
+					end_date as "End Date"
+					duration_hours as "Duration (Hours)"
+					reason as "Reason"
+					attachment as "Attachment"
+					status as "Status"
+					approval_date as "Approval Date"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Leave Request Overview"
+				fields
+				(
+					request_no as "Request No."
+					leave_type as "Leave Type"
+					start_date as "Start Date"
+					end_date as "End Date"
+					duration_hours as "Duration (Hours)"
+					reason as "Reason"
+					attachment as "Attachment"
+					status as "Status"
+					approval_date as "Approval Date"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

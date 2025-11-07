@@ -1,51 +1,63 @@
-// Module: 3. Sales Module
 form reminder_dates
 {
-    DisplayName = "Reminder Dates";
-    LinkName = "reminder_dates";
-    Module = "3. Sales Module";
-    Type = "Form";
+	displayname = "Reminder Dates"
+	success message = "Reminder Dates added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field reminder_date
-                {
-                    DisplayName = "Reminder Date";
-                    LinkName = "reminder_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field reminder_sent_by
-                {
-                    DisplayName = "Reminder Sent By";
-                    LinkName = "reminder_sent_by";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field reminder_method
-                {
-                    DisplayName = "Reminder Method";
-                    LinkName = "reminder_method";
-                    Type = "Dropdown";
-                    HelpText = "Email / Call";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have reminder_date
+	(
+		type = date
+		displayname = "Reminder Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	reminder_method
+	(
+		type = picklist
+		displayname = "Reminder Method"
+		maxchar = 100
+		values = {"Email","Call"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

@@ -1,100 +1,117 @@
-// Module: 4. Production Module
 form production_yield_log
 {
-    DisplayName = "Production Yield Log";
-    LinkName = "production_yield_log";
-    Module = "4. Production Module";
-    Type = "Form";
+	displayname = "Production Yield Log"
+	success message = "Production Yield Log added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field log_id
-                {
-                    DisplayName = "Log ID";
-                    LinkName = "log_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field work_order
-                {
-                    DisplayName = "Work Order";
-                    LinkName = "work_order";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "work_order_production_batch";
-                }
-                Field product
-                {
-                    DisplayName = "Product";
-                    LinkName = "product";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                }
-                Field planned_yield
-                {
-                    DisplayName = "Planned Yield %";
-                    LinkName = "planned_yield";
-                    Type = "Decimal";
-                }
-                Field actual_output_qty
-                {
-                    DisplayName = "Actual Output Qty";
-                    LinkName = "actual_output_qty";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field purity
-                {
-                    DisplayName = "Purity %";
-                    LinkName = "purity";
-                    Type = "Decimal";
-                    ConditionalMandatory = true;
-                }
-                Field ai_content
-                {
-                    DisplayName = "AI Content";
-                    LinkName = "ai_content";
-                    Type = "Decimal";
-                    ConditionalMandatory = true;
-                }
-                Field variance
-                {
-                    DisplayName = "Variance %";
-                    LinkName = "variance";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                }
-                Field report_date
-                {
-                    DisplayName = "Report Date";
-                    LinkName = "report_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have log_id
+	(
+		type = autonumber
+		displayname = "Log ID"
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	planned_yield
+	(
+		type = number
+		displayname = "Planned Yield %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have actual_output_qty
+	(
+		type = number
+		displayname = "Actual Output Qty"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have purity
+	(
+		type = number
+		displayname = "Purity %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have ai_content
+	(
+		type = number
+		displayname = "AI Content"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have variance
+	(
+		type = number
+		displayname = "Variance %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have report_date
+	(
+		type = date
+		displayname = "Report Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

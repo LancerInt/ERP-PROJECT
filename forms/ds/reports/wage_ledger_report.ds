@@ -1,143 +1,92 @@
-report wage_ledger_report
+list wage_ledger_report
 {
-    DisplayName = "Wage Ledger Report";
-    LinkName = "wage_ledger_report";
-    Type = "List";
-    SourceFormLinkName = "wage_ledger";
-
-    ListView
-    {
-        Columns
-        {
-            Column ledger_id
-            {
-                FieldLinkName = "ledger_id";
-            }
-            Column wage_voucher
-            {
-                FieldLinkName = "wage_voucher";
-            }
-            Column contractor_staff_group
-            {
-                FieldLinkName = "contractor_staff_group";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column tds
-            {
-                FieldLinkName = "tds";
-            }
-            Column payment_week
-            {
-                FieldLinkName = "payment_week";
-            }
-            Column approval_status
-            {
-                FieldLinkName = "approval_status";
-            }
-            Column settlement_method
-            {
-                FieldLinkName = "settlement_method";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column ledger_id
-            {
-                FieldLinkName = "ledger_id";
-            }
-            Column wage_voucher
-            {
-                FieldLinkName = "wage_voucher";
-            }
-            Column contractor_staff_group
-            {
-                FieldLinkName = "contractor_staff_group";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-            Column tds
-            {
-                FieldLinkName = "tds";
-            }
-            Column payment_week
-            {
-                FieldLinkName = "payment_week";
-            }
-            Column approval_status
-            {
-                FieldLinkName = "approval_status";
-            }
-            Column settlement_method
-            {
-                FieldLinkName = "settlement_method";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column ledger_id
-                    {
-                        FieldLinkName = "ledger_id";
-                    }
-                    Column wage_voucher
-                    {
-                        FieldLinkName = "wage_voucher";
-                    }
-                    Column contractor_staff_group
-                    {
-                        FieldLinkName = "contractor_staff_group";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                    Column tds
-                    {
-                        FieldLinkName = "tds";
-                    }
-                    Column payment_week
-                    {
-                        FieldLinkName = "payment_week";
-                    }
-                    Column approval_status
-                    {
-                        FieldLinkName = "approval_status";
-                    }
-                    Column settlement_method
-                    {
-                        FieldLinkName = "settlement_method";
-                    }
-                    Column notes
-                    {
-                        FieldLinkName = "notes";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Wage Ledger Report"
+	show all rows from wage_ledger
+	(
+		ledger_id as "Ledger ID"
+		amount as "Amount"
+		tds as "TDS %"
+		payment_week as "Payment Week"
+		approval_status as "Approval Status"
+		settlement_method as "Settlement Method"
+		notes as "Notes"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Wage Ledger Overview"
+				fields
+				(
+					ledger_id as "Ledger ID"
+					amount as "Amount"
+					tds as "TDS %"
+					payment_week as "Payment Week"
+					approval_status as "Approval Status"
+					settlement_method as "Settlement Method"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Wage Ledger Overview"
+				fields
+				(
+					ledger_id as "Ledger ID"
+					amount as "Amount"
+					tds as "TDS %"
+					payment_week as "Payment Week"
+					approval_status as "Approval Status"
+					settlement_method as "Settlement Method"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

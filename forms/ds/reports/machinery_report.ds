@@ -1,155 +1,92 @@
-report machinery_report
+list machinery_report
 {
-    DisplayName = "Machinery Report";
-    LinkName = "machinery_report";
-    Type = "List";
-    SourceFormLinkName = "machinery";
-
-    ListView
-    {
-        Columns
-        {
-            Column machine_id
-            {
-                FieldLinkName = "machine_id";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column godown
-            {
-                FieldLinkName = "godown";
-            }
-            Column machine_name
-            {
-                FieldLinkName = "machine_name";
-            }
-            Column category
-            {
-                FieldLinkName = "category";
-            }
-            Column commission_date
-            {
-                FieldLinkName = "commission_date";
-            }
-            Column maintenance_vendor
-            {
-                FieldLinkName = "maintenance_vendor";
-            }
-            Column next_service_due
-            {
-                FieldLinkName = "next_service_due";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column machine_id
-            {
-                FieldLinkName = "machine_id";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column godown
-            {
-                FieldLinkName = "godown";
-            }
-            Column machine_name
-            {
-                FieldLinkName = "machine_name";
-            }
-            Column category
-            {
-                FieldLinkName = "category";
-            }
-            Column commission_date
-            {
-                FieldLinkName = "commission_date";
-            }
-            Column maintenance_vendor
-            {
-                FieldLinkName = "maintenance_vendor";
-            }
-            Column next_service_due
-            {
-                FieldLinkName = "next_service_due";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column machine_id
-                    {
-                        FieldLinkName = "machine_id";
-                    }
-                    Column warehouse
-                    {
-                        FieldLinkName = "warehouse";
-                    }
-                    Column godown
-                    {
-                        FieldLinkName = "godown";
-                    }
-                    Column machine_name
-                    {
-                        FieldLinkName = "machine_name";
-                    }
-                    Column category
-                    {
-                        FieldLinkName = "category";
-                    }
-                    Column commission_date
-                    {
-                        FieldLinkName = "commission_date";
-                    }
-                    Column maintenance_vendor
-                    {
-                        FieldLinkName = "maintenance_vendor";
-                    }
-                    Column next_service_due
-                    {
-                        FieldLinkName = "next_service_due";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                    Column notes
-                    {
-                        FieldLinkName = "notes";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Machinery Report"
+	show all rows from machinery
+	(
+		machine_id as "Machine ID"
+		machine_name as "Machine Name"
+		category as "Category"
+		commission_date as "Commission Date"
+		next_service_due as "Next Service Due"
+		status as "Status"
+		notes as "Notes"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Machinery Overview"
+				fields
+				(
+					machine_id as "Machine ID"
+					machine_name as "Machine Name"
+					category as "Category"
+					commission_date as "Commission Date"
+					next_service_due as "Next Service Due"
+					status as "Status"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Machinery Overview"
+				fields
+				(
+					machine_id as "Machine ID"
+					machine_name as "Machine Name"
+					category as "Category"
+					commission_date as "Commission Date"
+					next_service_due as "Next Service Due"
+					status as "Status"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

@@ -1,155 +1,98 @@
-report freight_details_report
+list freight_details_report
 {
-    DisplayName = "Freight Details Report";
-    LinkName = "freight_details_report";
-    Type = "List";
-    SourceFormLinkName = "freight_details";
-
-    ListView
-    {
-        Columns
-        {
-            Column freight_type
-            {
-                FieldLinkName = "freight_type";
-            }
-            Column transporter
-            {
-                FieldLinkName = "transporter";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column tentative_charge
-            {
-                FieldLinkName = "tentative_charge";
-            }
-            Column discount
-            {
-                FieldLinkName = "discount";
-            }
-            Column payable_by
-            {
-                FieldLinkName = "payable_by";
-            }
-            Column quantity_basis
-            {
-                FieldLinkName = "quantity_basis";
-            }
-            Column quantity_uom
-            {
-                FieldLinkName = "quantity_uom";
-            }
-            Column destination_state
-            {
-                FieldLinkName = "destination_state";
-            }
-            Column cost_per_unit_calc
-            {
-                FieldLinkName = "cost_per_unit_calc";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column freight_type
-            {
-                FieldLinkName = "freight_type";
-            }
-            Column transporter
-            {
-                FieldLinkName = "transporter";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column tentative_charge
-            {
-                FieldLinkName = "tentative_charge";
-            }
-            Column discount
-            {
-                FieldLinkName = "discount";
-            }
-            Column payable_by
-            {
-                FieldLinkName = "payable_by";
-            }
-            Column quantity_basis
-            {
-                FieldLinkName = "quantity_basis";
-            }
-            Column quantity_uom
-            {
-                FieldLinkName = "quantity_uom";
-            }
-            Column destination_state
-            {
-                FieldLinkName = "destination_state";
-            }
-            Column cost_per_unit_calc
-            {
-                FieldLinkName = "cost_per_unit_calc";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column freight_type
-                    {
-                        FieldLinkName = "freight_type";
-                    }
-                    Column transporter
-                    {
-                        FieldLinkName = "transporter";
-                    }
-                    Column freight_terms
-                    {
-                        FieldLinkName = "freight_terms";
-                    }
-                    Column tentative_charge
-                    {
-                        FieldLinkName = "tentative_charge";
-                    }
-                    Column discount
-                    {
-                        FieldLinkName = "discount";
-                    }
-                    Column payable_by
-                    {
-                        FieldLinkName = "payable_by";
-                    }
-                    Column quantity_basis
-                    {
-                        FieldLinkName = "quantity_basis";
-                    }
-                    Column quantity_uom
-                    {
-                        FieldLinkName = "quantity_uom";
-                    }
-                    Column destination_state
-                    {
-                        FieldLinkName = "destination_state";
-                    }
-                    Column cost_per_unit_calc
-                    {
-                        FieldLinkName = "cost_per_unit_calc";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Freight Details Report"
+	show all rows from freight_details
+	(
+		freight_type as "Freight Type"
+		freight_terms as "Freight Terms"
+		tentative_charge as "Tentative Charge"
+		discount as "Discount"
+		payable_by as "Payable By"
+		quantity_basis as "Quantity Basis"
+		quantity_uom as "Quantity UOM"
+		destination_state as "Destination State"
+		cost_per_unit_calc as "Cost Per Unit (Calc)"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Freight Details Overview"
+				fields
+				(
+					freight_type as "Freight Type"
+					freight_terms as "Freight Terms"
+					tentative_charge as "Tentative Charge"
+					discount as "Discount"
+					payable_by as "Payable By"
+					quantity_basis as "Quantity Basis"
+					quantity_uom as "Quantity UOM"
+					destination_state as "Destination State"
+					cost_per_unit_calc as "Cost Per Unit (Calc)"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Freight Details Overview"
+				fields
+				(
+					freight_type as "Freight Type"
+					freight_terms as "Freight Terms"
+					tentative_charge as "Tentative Charge"
+					discount as "Discount"
+					payable_by as "Payable By"
+					quantity_basis as "Quantity Basis"
+					quantity_uom as "Quantity UOM"
+					destination_state as "Destination State"
+					cost_per_unit_calc as "Cost Per Unit (Calc)"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

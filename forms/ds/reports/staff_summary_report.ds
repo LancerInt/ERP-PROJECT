@@ -1,95 +1,83 @@
-report staff_summary_report
+list staff_summary_report
 {
-    DisplayName = "Staff Summary Report";
-    LinkName = "staff_summary_report";
-    Type = "List";
-    SourceFormLinkName = "staff_summary";
-
-    ListView
-    {
-        Columns
-        {
-            Column staff
-            {
-                FieldLinkName = "staff";
-            }
-            Column present_days
-            {
-                FieldLinkName = "present_days";
-            }
-            Column absent_days
-            {
-                FieldLinkName = "absent_days";
-            }
-            Column overtime_hours
-            {
-                FieldLinkName = "overtime_hours";
-            }
-            Column wages_amount
-            {
-                FieldLinkName = "wages_amount";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column staff
-            {
-                FieldLinkName = "staff";
-            }
-            Column present_days
-            {
-                FieldLinkName = "present_days";
-            }
-            Column absent_days
-            {
-                FieldLinkName = "absent_days";
-            }
-            Column overtime_hours
-            {
-                FieldLinkName = "overtime_hours";
-            }
-            Column wages_amount
-            {
-                FieldLinkName = "wages_amount";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column staff
-                    {
-                        FieldLinkName = "staff";
-                    }
-                    Column present_days
-                    {
-                        FieldLinkName = "present_days";
-                    }
-                    Column absent_days
-                    {
-                        FieldLinkName = "absent_days";
-                    }
-                    Column overtime_hours
-                    {
-                        FieldLinkName = "overtime_hours";
-                    }
-                    Column wages_amount
-                    {
-                        FieldLinkName = "wages_amount";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Staff Summary Report"
+	show all rows from staff_summary
+	(
+		present_days as "Present Days"
+		absent_days as "Absent Days"
+		overtime_hours as "Overtime Hours"
+		wages_amount as "Wages Amount"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Staff Summary Overview"
+				fields
+				(
+					present_days as "Present Days"
+					absent_days as "Absent Days"
+					overtime_hours as "Overtime Hours"
+					wages_amount as "Wages Amount"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Staff Summary Overview"
+				fields
+				(
+					present_days as "Present Days"
+					absent_days as "Absent Days"
+					overtime_hours as "Overtime Hours"
+					wages_amount as "Wages Amount"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

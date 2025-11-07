@@ -1,275 +1,116 @@
-report receipt_advice_report
+list receipt_advice_report
 {
-    DisplayName = "Receipt Advice (Inbound) Report";
-    LinkName = "receipt_advice_report";
-    Type = "List";
-    SourceFormLinkName = "receipt_advice";
-
-    ListView
-    {
-        Columns
-        {
-            Column receipt_advice_no
-            {
-                FieldLinkName = "receipt_advice_no";
-            }
-            Column receipt_date
-            {
-                FieldLinkName = "receipt_date";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column godown
-            {
-                FieldLinkName = "godown";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column linked_pos
-            {
-                FieldLinkName = "linked_pos";
-            }
-            Column vehicle_number
-            {
-                FieldLinkName = "vehicle_number";
-            }
-            Column driver_name
-            {
-                FieldLinkName = "driver_name";
-            }
-            Column invoice_upload
-            {
-                FieldLinkName = "invoice_upload";
-            }
-            Column packing_list_upload
-            {
-                FieldLinkName = "packing_list_upload";
-            }
-            Column receipt_lines
-            {
-                FieldLinkName = "receipt_lines";
-            }
-            Column packing_material_lines
-            {
-                FieldLinkName = "packing_material_lines";
-            }
-            Column freight_details
-            {
-                FieldLinkName = "freight_details";
-            }
-            Column loading_unloading_wages
-            {
-                FieldLinkName = "loading_unloading_wages";
-            }
-            Column qc_routing
-            {
-                FieldLinkName = "qc_routing";
-            }
-            Column qc_status
-            {
-                FieldLinkName = "qc_status";
-            }
-            Column partial_receipt_flag
-            {
-                FieldLinkName = "partial_receipt_flag";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-            Column created_by
-            {
-                FieldLinkName = "created_by";
-            }
-            Column created_time
-            {
-                FieldLinkName = "created_time";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column receipt_advice_no
-            {
-                FieldLinkName = "receipt_advice_no";
-            }
-            Column receipt_date
-            {
-                FieldLinkName = "receipt_date";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column godown
-            {
-                FieldLinkName = "godown";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column linked_pos
-            {
-                FieldLinkName = "linked_pos";
-            }
-            Column vehicle_number
-            {
-                FieldLinkName = "vehicle_number";
-            }
-            Column driver_name
-            {
-                FieldLinkName = "driver_name";
-            }
-            Column invoice_upload
-            {
-                FieldLinkName = "invoice_upload";
-            }
-            Column packing_list_upload
-            {
-                FieldLinkName = "packing_list_upload";
-            }
-            Column receipt_lines
-            {
-                FieldLinkName = "receipt_lines";
-            }
-            Column packing_material_lines
-            {
-                FieldLinkName = "packing_material_lines";
-            }
-            Column freight_details
-            {
-                FieldLinkName = "freight_details";
-            }
-            Column loading_unloading_wages
-            {
-                FieldLinkName = "loading_unloading_wages";
-            }
-            Column qc_routing
-            {
-                FieldLinkName = "qc_routing";
-            }
-            Column qc_status
-            {
-                FieldLinkName = "qc_status";
-            }
-            Column partial_receipt_flag
-            {
-                FieldLinkName = "partial_receipt_flag";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-            Column created_by
-            {
-                FieldLinkName = "created_by";
-            }
-            Column created_time
-            {
-                FieldLinkName = "created_time";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column receipt_advice_no
-                    {
-                        FieldLinkName = "receipt_advice_no";
-                    }
-                    Column receipt_date
-                    {
-                        FieldLinkName = "receipt_date";
-                    }
-                    Column warehouse
-                    {
-                        FieldLinkName = "warehouse";
-                    }
-                    Column godown
-                    {
-                        FieldLinkName = "godown";
-                    }
-                    Column vendor
-                    {
-                        FieldLinkName = "vendor";
-                    }
-                    Column linked_pos
-                    {
-                        FieldLinkName = "linked_pos";
-                    }
-                    Column vehicle_number
-                    {
-                        FieldLinkName = "vehicle_number";
-                    }
-                    Column driver_name
-                    {
-                        FieldLinkName = "driver_name";
-                    }
-                    Column invoice_upload
-                    {
-                        FieldLinkName = "invoice_upload";
-                    }
-                    Column packing_list_upload
-                    {
-                        FieldLinkName = "packing_list_upload";
-                    }
-                    Column receipt_lines
-                    {
-                        FieldLinkName = "receipt_lines";
-                    }
-                    Column packing_material_lines
-                    {
-                        FieldLinkName = "packing_material_lines";
-                    }
-                    Column freight_details
-                    {
-                        FieldLinkName = "freight_details";
-                    }
-                    Column loading_unloading_wages
-                    {
-                        FieldLinkName = "loading_unloading_wages";
-                    }
-                    Column qc_routing
-                    {
-                        FieldLinkName = "qc_routing";
-                    }
-                    Column qc_status
-                    {
-                        FieldLinkName = "qc_status";
-                    }
-                    Column partial_receipt_flag
-                    {
-                        FieldLinkName = "partial_receipt_flag";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                    Column created_by
-                    {
-                        FieldLinkName = "created_by";
-                    }
-                    Column created_time
-                    {
-                        FieldLinkName = "created_time";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Receipt Advice (Inbound) Report"
+	show all rows from receipt_advice
+	(
+		receipt_advice_no as "Receipt Advice No."
+		receipt_date as "Receipt Date"
+		vehicle_number as "Vehicle Number"
+		driver_name as "Driver Name"
+		invoice_upload as "Invoice Upload"
+		packing_list_upload as "Packing List Upload"
+		receipt_lines as "Receipt Lines"
+		packing_material_lines as "Packing Material Lines"
+		freight_details as "Freight Details"
+		loading_unloading_wages as "Loading Unloading Wages"
+		qc_routing as "QC Routing"
+		qc_status as "QC Status"
+		partial_receipt_flag as "Partial Receipt Flag"
+		remarks as "Remarks"
+		created_time as "Created Time"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Receipt Advice (Inbound) Overview"
+				fields
+				(
+					receipt_advice_no as "Receipt Advice No."
+					receipt_date as "Receipt Date"
+					vehicle_number as "Vehicle Number"
+					driver_name as "Driver Name"
+					invoice_upload as "Invoice Upload"
+					packing_list_upload as "Packing List Upload"
+					receipt_lines as "Receipt Lines"
+					packing_material_lines as "Packing Material Lines"
+					freight_details as "Freight Details"
+					loading_unloading_wages as "Loading Unloading Wages"
+					qc_routing as "QC Routing"
+					qc_status as "QC Status"
+					partial_receipt_flag as "Partial Receipt Flag"
+					remarks as "Remarks"
+					created_time as "Created Time"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Receipt Advice (Inbound) Overview"
+				fields
+				(
+					receipt_advice_no as "Receipt Advice No."
+					receipt_date as "Receipt Date"
+					vehicle_number as "Vehicle Number"
+					driver_name as "Driver Name"
+					invoice_upload as "Invoice Upload"
+					packing_list_upload as "Packing List Upload"
+					receipt_lines as "Receipt Lines"
+					packing_material_lines as "Packing Material Lines"
+					freight_details as "Freight Details"
+					loading_unloading_wages as "Loading Unloading Wages"
+					qc_routing as "QC Routing"
+					qc_status as "QC Status"
+					partial_receipt_flag as "Partial Receipt Flag"
+					remarks as "Remarks"
+					created_time as "Created Time"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

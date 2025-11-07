@@ -1,191 +1,101 @@
-report job_work_order_report
+list job_work_order_report
 {
-    DisplayName = "Job Work Order Report";
-    LinkName = "job_work_order_report";
-    Type = "List";
-    SourceFormLinkName = "job_work_order";
-
-    ListView
-    {
-        Columns
-        {
-            Column order_no
-            {
-                FieldLinkName = "order_no";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column template
-            {
-                FieldLinkName = "template";
-            }
-            Column template_revision
-            {
-                FieldLinkName = "template_revision";
-            }
-            Column start_date
-            {
-                FieldLinkName = "start_date";
-            }
-            Column expected_completion_date
-            {
-                FieldLinkName = "expected_completion_date";
-            }
-            Column turnaround_threshold
-            {
-                FieldLinkName = "turnaround_threshold";
-            }
-            Column materials_supplied
-            {
-                FieldLinkName = "materials_supplied";
-            }
-            Column outputs_expected
-            {
-                FieldLinkName = "outputs_expected";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column alerts_enabled
-            {
-                FieldLinkName = "alerts_enabled";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column order_no
-            {
-                FieldLinkName = "order_no";
-            }
-            Column warehouse
-            {
-                FieldLinkName = "warehouse";
-            }
-            Column vendor
-            {
-                FieldLinkName = "vendor";
-            }
-            Column template
-            {
-                FieldLinkName = "template";
-            }
-            Column template_revision
-            {
-                FieldLinkName = "template_revision";
-            }
-            Column start_date
-            {
-                FieldLinkName = "start_date";
-            }
-            Column expected_completion_date
-            {
-                FieldLinkName = "expected_completion_date";
-            }
-            Column turnaround_threshold
-            {
-                FieldLinkName = "turnaround_threshold";
-            }
-            Column materials_supplied
-            {
-                FieldLinkName = "materials_supplied";
-            }
-            Column outputs_expected
-            {
-                FieldLinkName = "outputs_expected";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-            Column alerts_enabled
-            {
-                FieldLinkName = "alerts_enabled";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column order_no
-                    {
-                        FieldLinkName = "order_no";
-                    }
-                    Column warehouse
-                    {
-                        FieldLinkName = "warehouse";
-                    }
-                    Column vendor
-                    {
-                        FieldLinkName = "vendor";
-                    }
-                    Column template
-                    {
-                        FieldLinkName = "template";
-                    }
-                    Column template_revision
-                    {
-                        FieldLinkName = "template_revision";
-                    }
-                    Column start_date
-                    {
-                        FieldLinkName = "start_date";
-                    }
-                    Column expected_completion_date
-                    {
-                        FieldLinkName = "expected_completion_date";
-                    }
-                    Column turnaround_threshold
-                    {
-                        FieldLinkName = "turnaround_threshold";
-                    }
-                    Column materials_supplied
-                    {
-                        FieldLinkName = "materials_supplied";
-                    }
-                    Column outputs_expected
-                    {
-                        FieldLinkName = "outputs_expected";
-                    }
-                    Column freight_terms
-                    {
-                        FieldLinkName = "freight_terms";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                    Column alerts_enabled
-                    {
-                        FieldLinkName = "alerts_enabled";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Job Work Order Report"
+	show all rows from job_work_order
+	(
+		order_no as "Order No."
+		template_revision as "Template Revision"
+		start_date as "Start Date"
+		expected_completion_date as "Expected Completion Date"
+		turnaround_threshold as "Turnaround Threshold"
+		materials_supplied as "Materials Supplied"
+		outputs_expected as "Outputs Expected"
+		freight_terms as "Freight Terms"
+		status as "Status"
+		alerts_enabled as "Alerts Enabled"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Job Work Order Overview"
+				fields
+				(
+					order_no as "Order No."
+					template_revision as "Template Revision"
+					start_date as "Start Date"
+					expected_completion_date as "Expected Completion Date"
+					turnaround_threshold as "Turnaround Threshold"
+					materials_supplied as "Materials Supplied"
+					outputs_expected as "Outputs Expected"
+					freight_terms as "Freight Terms"
+					status as "Status"
+					alerts_enabled as "Alerts Enabled"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Job Work Order Overview"
+				fields
+				(
+					order_no as "Order No."
+					template_revision as "Template Revision"
+					start_date as "Start Date"
+					expected_completion_date as "Expected Completion Date"
+					turnaround_threshold as "Turnaround Threshold"
+					materials_supplied as "Materials Supplied"
+					outputs_expected as "Outputs Expected"
+					freight_terms as "Freight Terms"
+					status as "Status"
+					alerts_enabled as "Alerts Enabled"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

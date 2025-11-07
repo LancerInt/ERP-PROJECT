@@ -1,131 +1,89 @@
-report qc_lab_job_report
+list qc_lab_job_report
 {
-    DisplayName = "QC Lab Job Report";
-    LinkName = "qc_lab_job_report";
-    Type = "List";
-    SourceFormLinkName = "qc_lab_job";
-
-    ListView
-    {
-        Columns
-        {
-            Column job_no
-            {
-                FieldLinkName = "job_no";
-            }
-            Column qc_request
-            {
-                FieldLinkName = "qc_request";
-            }
-            Column analyst
-            {
-                FieldLinkName = "analyst";
-            }
-            Column assigned_parameters
-            {
-                FieldLinkName = "assigned_parameters";
-            }
-            Column sample_received_date
-            {
-                FieldLinkName = "sample_received_date";
-            }
-            Column results_attachment
-            {
-                FieldLinkName = "results_attachment";
-            }
-            Column comments
-            {
-                FieldLinkName = "comments";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column job_no
-            {
-                FieldLinkName = "job_no";
-            }
-            Column qc_request
-            {
-                FieldLinkName = "qc_request";
-            }
-            Column analyst
-            {
-                FieldLinkName = "analyst";
-            }
-            Column assigned_parameters
-            {
-                FieldLinkName = "assigned_parameters";
-            }
-            Column sample_received_date
-            {
-                FieldLinkName = "sample_received_date";
-            }
-            Column results_attachment
-            {
-                FieldLinkName = "results_attachment";
-            }
-            Column comments
-            {
-                FieldLinkName = "comments";
-            }
-            Column status
-            {
-                FieldLinkName = "status";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column job_no
-                    {
-                        FieldLinkName = "job_no";
-                    }
-                    Column qc_request
-                    {
-                        FieldLinkName = "qc_request";
-                    }
-                    Column analyst
-                    {
-                        FieldLinkName = "analyst";
-                    }
-                    Column assigned_parameters
-                    {
-                        FieldLinkName = "assigned_parameters";
-                    }
-                    Column sample_received_date
-                    {
-                        FieldLinkName = "sample_received_date";
-                    }
-                    Column results_attachment
-                    {
-                        FieldLinkName = "results_attachment";
-                    }
-                    Column comments
-                    {
-                        FieldLinkName = "comments";
-                    }
-                    Column status
-                    {
-                        FieldLinkName = "status";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "QC Lab Job Report"
+	show all rows from qc_lab_job
+	(
+		job_no as "Job No."
+		assigned_parameters as "Assigned Parameters"
+		sample_received_date as "Sample Received Date"
+		results_attachment as "Results Attachment"
+		comments as "Comments"
+		status as "Status"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "QC Lab Job Overview"
+				fields
+				(
+					job_no as "Job No."
+					assigned_parameters as "Assigned Parameters"
+					sample_received_date as "Sample Received Date"
+					results_attachment as "Results Attachment"
+					comments as "Comments"
+					status as "Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "QC Lab Job Overview"
+				fields
+				(
+					job_no as "Job No."
+					assigned_parameters as "Assigned Parameters"
+					sample_received_date as "Sample Received Date"
+					results_attachment as "Results Attachment"
+					comments as "Comments"
+					status as "Status"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

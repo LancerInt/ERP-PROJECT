@@ -1,106 +1,136 @@
-// Module: 3. Sales Module
 form so_lines
 {
-    DisplayName = "SO Lines";
-    LinkName = "so_lines";
-    Module = "3. Sales Module";
-    Type = "Form";
+	displayname = "SO Lines"
+	success message = "SO Lines added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field line_no
-                {
-                    DisplayName = "Line No.";
-                    LinkName = "line_no";
-                    Type = "Number";
-                    IsMandatory = true;
-                }
-                Field product
-                {
-                    DisplayName = "Product";
-                    LinkName = "product";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                    HelpText = "Must exist in price list";
-                }
-                Field batch_preference
-                {
-                    DisplayName = "Batch Preference";
-                    LinkName = "batch_preference";
-                    Type = "SingleLine";
-                }
-                Field quantity_ordered
-                {
-                    DisplayName = "Quantity Ordered";
-                    LinkName = "quantity_ordered";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field unit_price
-                {
-                    DisplayName = "Unit Price";
-                    LinkName = "unit_price";
-                    Type = "INR";
-                    IsMandatory = true;
-                    HelpText = "From price list";
-                }
-                Field discount
-                {
-                    DisplayName = "Discount %";
-                    LinkName = "discount";
-                    Type = "Decimal";
-                }
-                Field gst
-                {
-                    DisplayName = "GST %";
-                    LinkName = "gst";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field delivery_schedule_date
-                {
-                    DisplayName = "Delivery Schedule Date";
-                    LinkName = "delivery_schedule_date";
-                    Type = "Date";
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                }
-                Field reserved_qty
-                {
-                    DisplayName = "Reserved Qty";
-                    LinkName = "reserved_qty";
-                    Type = "Decimal";
-                    HelpText = "Updated at dispatch";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have line_no
+	(
+		type = number
+		displayname = "Line No."
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	batch_preference
+	(
+		type = text
+		displayname = "Batch Preference"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have quantity_ordered
+	(
+		type = number
+		displayname = "Quantity Ordered"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have unit_price
+	(
+		type = INR
+		displayname = "Unit Price"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	discount
+	(
+		type = number
+		displayname = "Discount %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have gst
+	(
+		type = number
+		displayname = "GST %"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	delivery_schedule_date
+	(
+		type = date
+		displayname = "Delivery Schedule Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	reserved_qty
+	(
+		type = number
+		displayname = "Reserved Qty"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

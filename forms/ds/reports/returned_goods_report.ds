@@ -1,95 +1,83 @@
-report returned_goods_report
+list returned_goods_report
 {
-    DisplayName = "Returned Goods Report";
-    LinkName = "returned_goods_report";
-    Type = "List";
-    SourceFormLinkName = "returned_goods";
-
-    ListView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column quantity_received
-            {
-                FieldLinkName = "quantity_received";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column viability
-            {
-                FieldLinkName = "viability";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column quantity_received
-            {
-                FieldLinkName = "quantity_received";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column viability
-            {
-                FieldLinkName = "viability";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column product
-                    {
-                        FieldLinkName = "product";
-                    }
-                    Column batch
-                    {
-                        FieldLinkName = "batch";
-                    }
-                    Column quantity_received
-                    {
-                        FieldLinkName = "quantity_received";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column viability
-                    {
-                        FieldLinkName = "viability";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Returned Goods Report"
+	show all rows from returned_goods
+	(
+		batch as "Batch"
+		quantity_received as "Quantity Received"
+		uom as "UOM"
+		viability as "Viability"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Returned Goods Overview"
+				fields
+				(
+					batch as "Batch"
+					quantity_received as "Quantity Received"
+					uom as "UOM"
+					viability as "Viability"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Returned Goods Overview"
+				fields
+				(
+					batch as "Batch"
+					quantity_received as "Quantity Received"
+					uom as "UOM"
+					viability as "Viability"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

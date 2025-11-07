@@ -1,83 +1,83 @@
-report tds_tcs_details_report
+list tds_tcs_details_report
 {
-    DisplayName = "TDS/TCS Details Report";
-    LinkName = "tds_tcs_details_report";
-    Type = "List";
-    SourceFormLinkName = "tds_tcs_details";
-
-    ListView
-    {
-        Columns
-        {
-            Column tax_type
-            {
-                FieldLinkName = "tax_type";
-            }
-            Column section
-            {
-                FieldLinkName = "section";
-            }
-            Column rate
-            {
-                FieldLinkName = "rate";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column tax_type
-            {
-                FieldLinkName = "tax_type";
-            }
-            Column section
-            {
-                FieldLinkName = "section";
-            }
-            Column rate
-            {
-                FieldLinkName = "rate";
-            }
-            Column amount
-            {
-                FieldLinkName = "amount";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column tax_type
-                    {
-                        FieldLinkName = "tax_type";
-                    }
-                    Column section
-                    {
-                        FieldLinkName = "section";
-                    }
-                    Column rate
-                    {
-                        FieldLinkName = "rate";
-                    }
-                    Column amount
-                    {
-                        FieldLinkName = "amount";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "TDS/TCS Details Report"
+	show all rows from tds_tcs_details
+	(
+		tax_type as "Tax Type"
+		section as "Section"
+		rate as "Rate %"
+		amount as "Amount"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "TDS/TCS Details Overview"
+				fields
+				(
+					tax_type as "Tax Type"
+					section as "Section"
+					rate as "Rate %"
+					amount as "Amount"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "TDS/TCS Details Overview"
+				fields
+				(
+					tax_type as "Tax Type"
+					section as "Section"
+					rate as "Rate %"
+					amount as "Amount"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

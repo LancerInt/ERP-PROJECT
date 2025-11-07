@@ -1,82 +1,92 @@
-// Module: 2. Purchase Module
 form po_eta_update
 {
-    DisplayName = "PO ETA Update (Anticipated Arrival)";
-    LinkName = "po_eta_update";
-    Module = "2. Purchase Module";
-    Type = "Form";
+	displayname = "PO ETA Update (Anticipated Arrival)"
+	success message = "PO ETA Update (Anticipated Arrival) added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field update_id
-                {
-                    DisplayName = "Update ID";
-                    LinkName = "update_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field po
-                {
-                    DisplayName = "PO";
-                    LinkName = "po";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "purchase_order";
-                }
-                Field update_date
-                {
-                    DisplayName = "Update Date";
-                    LinkName = "update_date";
-                    Type = "DateTime";
-                    IsMandatory = true;
-                }
-                Field updated_by
-                {
-                    DisplayName = "Updated By";
-                    LinkName = "updated_by";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                    HelpText = "Purchase Coordinator or Warehouse Coordinator";
-                }
-                Field expected_arrival_date
-                {
-                    DisplayName = "Expected Arrival Date";
-                    LinkName = "expected_arrival_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field status
-                {
-                    DisplayName = "Status";
-                    LinkName = "status";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Pending / Updated";
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have update_id
+	(
+		type = autonumber
+		displayname = "Update ID"
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have update_date
+	(
+		type = datetime
+		displayname = "Update Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have expected_arrival_date
+	(
+		type = date
+		displayname = "Expected Arrival Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have status
+	(
+		type = picklist
+		displayname = "Status"
+		maxchar = 100
+		values = {"Pending","Updated"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

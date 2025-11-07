@@ -1,107 +1,83 @@
-report dc_lines_report
+list dc_lines_report
 {
-    DisplayName = "DC Lines Report";
-    LinkName = "dc_lines_report";
-    Type = "List";
-    SourceFormLinkName = "dc_lines";
-
-    ListView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column quantity_dispatched
-            {
-                FieldLinkName = "quantity_dispatched";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column linked_so_line
-            {
-                FieldLinkName = "linked_so_line";
-            }
-            Column weight
-            {
-                FieldLinkName = "weight";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column product
-            {
-                FieldLinkName = "product";
-            }
-            Column batch
-            {
-                FieldLinkName = "batch";
-            }
-            Column quantity_dispatched
-            {
-                FieldLinkName = "quantity_dispatched";
-            }
-            Column uom
-            {
-                FieldLinkName = "uom";
-            }
-            Column linked_so_line
-            {
-                FieldLinkName = "linked_so_line";
-            }
-            Column weight
-            {
-                FieldLinkName = "weight";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column product
-                    {
-                        FieldLinkName = "product";
-                    }
-                    Column batch
-                    {
-                        FieldLinkName = "batch";
-                    }
-                    Column quantity_dispatched
-                    {
-                        FieldLinkName = "quantity_dispatched";
-                    }
-                    Column uom
-                    {
-                        FieldLinkName = "uom";
-                    }
-                    Column linked_so_line
-                    {
-                        FieldLinkName = "linked_so_line";
-                    }
-                    Column weight
-                    {
-                        FieldLinkName = "weight";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "DC Lines Report"
+	show all rows from dc_lines
+	(
+		batch as "Batch"
+		quantity_dispatched as "Quantity Dispatched"
+		uom as "UOM"
+		weight as "Weight"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "DC Lines Overview"
+				fields
+				(
+					batch as "Batch"
+					quantity_dispatched as "Quantity Dispatched"
+					uom as "UOM"
+					weight as "Weight"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "DC Lines Overview"
+				fields
+				(
+					batch as "Batch"
+					quantity_dispatched as "Quantity Dispatched"
+					uom as "UOM"
+					weight as "Weight"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

@@ -1,77 +1,102 @@
-// Module: 2. Purchase Module
 form comparison_table
 {
-    DisplayName = "Comparison Table";
-    LinkName = "comparison_table";
-    Module = "2. Purchase Module";
-    Type = "Form";
+	displayname = "Comparison Table"
+	success message = "Comparison Table added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field vendor
-                {
-                    DisplayName = "Vendor";
-                    LinkName = "vendor";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "vendor";
-                }
-                Field total_cost
-                {
-                    DisplayName = "Total Cost";
-                    LinkName = "total_cost";
-                    Type = "INR";
-                    IsMandatory = true;
-                    HelpText = "Sum of lines";
-                }
-                Field lead_time
-                {
-                    DisplayName = "Lead Time";
-                    LinkName = "lead_time";
-                    Type = "Number";
-                }
-                Field freight_terms
-                {
-                    DisplayName = "Freight Terms";
-                    LinkName = "freight_terms";
-                    Type = "Dropdown";
-                }
-                Field payment_terms
-                {
-                    DisplayName = "Payment Terms";
-                    LinkName = "payment_terms";
-                    Type = "Dropdown";
-                }
-                Field score
-                {
-                    DisplayName = "Score";
-                    LinkName = "score";
-                    Type = "Decimal";
-                    HelpText = "Weighted";
-                }
-                Field remarks
-                {
-                    DisplayName = "Remarks";
-                    LinkName = "remarks";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have total_cost
+	(
+		type = INR
+		displayname = "Total Cost"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	lead_time
+	(
+		type = number
+		displayname = "Lead Time"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	freight_terms
+	(
+		type = picklist
+		displayname = "Freight Terms"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	payment_terms
+	(
+		type = picklist
+		displayname = "Payment Terms"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	score
+	(
+		type = number
+		displayname = "Score"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	remarks
+	(
+		type = textarea
+		displayname = "Remarks"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

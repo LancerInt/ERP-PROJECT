@@ -1,57 +1,73 @@
-// Module: Generated Utility Subforms
 form reminder_sent_flags
 {
-    DisplayName = "Reminder Sent Flags";
-    LinkName = "reminder_sent_flags";
-    Module = "Generated Utility Subforms";
-    Type = "Form";
+	displayname = "Reminder Sent Flags"
+	success message = "Reminder Sent Flags added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field reminder_date
-                {
-                    DisplayName = "Reminder Date";
-                    LinkName = "reminder_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field reminder_method
-                {
-                    DisplayName = "Reminder Method";
-                    LinkName = "reminder_method";
-                    Type = "Dropdown";
-                    HelpText = "Email / Call / SMS";
-                }
-                Field reminder_sent_by
-                {
-                    DisplayName = "Reminder Sent By";
-                    LinkName = "reminder_sent_by";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field notes
-                {
-                    DisplayName = "Notes";
-                    LinkName = "notes";
-                    Type = "MultiLine";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have reminder_date
+	(
+		type = date
+		displayname = "Reminder Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	reminder_method
+	(
+		type = picklist
+		displayname = "Reminder Method"
+		maxchar = 100
+		values = {"Email","Call","SMS"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	notes
+	(
+		type = textarea
+		displayname = "Notes"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

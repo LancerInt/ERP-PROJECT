@@ -1,79 +1,93 @@
-// Module: 6. Inventory, Logistics & Returns
 form return_lines
 {
-    DisplayName = "Return Lines";
-    LinkName = "return_lines";
-    Module = "6. Inventory, Logistics & Returns";
-    Type = "Form";
+	displayname = "Return Lines"
+	success message = "Return Lines added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field product
-                {
-                    DisplayName = "Product";
-                    LinkName = "product";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "product_master";
-                }
-                Field batch
-                {
-                    DisplayName = "Batch";
-                    LinkName = "batch";
-                    Type = "SingleLine";
-                }
-                Field quantity_returned
-                {
-                    DisplayName = "Quantity Returned";
-                    LinkName = "quantity_returned";
-                    Type = "Decimal";
-                    IsMandatory = true;
-                }
-                Field uom
-                {
-                    DisplayName = "UOM";
-                    LinkName = "uom";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                }
-                Field condition
-                {
-                    DisplayName = "Condition";
-                    LinkName = "condition";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Resaleable / Reformulate / Scrap";
-                }
-                Field viability_notes
-                {
-                    DisplayName = "Viability Notes";
-                    LinkName = "viability_notes";
-                    Type = "MultiLine";
-                }
-                Field packing_material_captured
-                {
-                    DisplayName = "Packing Material Captured";
-                    LinkName = "packing_material_captured";
-                    Type = "Lookup";
-                    RelatedFormLinkName = "product_master";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	batch
+	(
+		type = text
+		displayname = "Batch"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have quantity_returned
+	(
+		type = number
+		displayname = "Quantity Returned"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have uom
+	(
+		type = picklist
+		displayname = "UOM"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have condition
+	(
+		type = picklist
+		displayname = "Condition"
+		maxchar = 100
+		values = {"Resaleable","Reformulate","Scrap"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	viability_notes
+	(
+		type = textarea
+		displayname = "Viability Notes"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

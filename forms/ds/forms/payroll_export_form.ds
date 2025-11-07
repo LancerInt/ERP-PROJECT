@@ -1,95 +1,148 @@
-// Module: 8. Attendance & HR Module
 form payroll_export
 {
-    DisplayName = "Payroll Export";
-    LinkName = "payroll_export";
-    Module = "8. Attendance & HR Module";
-    Type = "Form";
+	displayname = "Payroll Export"
+	success message = "Payroll Export added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field export_id
-                {
-                    DisplayName = "Export ID";
-                    LinkName = "export_id";
-                    Type = "AutoNumber";
-                    IsMandatory = true;
-                }
-                Field period_start
-                {
-                    DisplayName = "Period Start";
-                    LinkName = "period_start";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field period_end
-                {
-                    DisplayName = "Period End";
-                    LinkName = "period_end";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-                Field warehouse
-                {
-                    DisplayName = "Warehouse";
-                    LinkName = "warehouse";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "warehouse";
-                }
-                Field staff_summary
-                {
-                    DisplayName = "Staff Summary";
-                    LinkName = "staff_summary";
-                    Type = "SubForm";
-                    IsMandatory = true;
-                    SubFormLinkName = "staff_summary";
-                }
-                Field attendance_metrics
-                {
-                    DisplayName = "Attendance Metrics";
-                    LinkName = "attendance_metrics";
-                    Type = "MultiLine";
-                }
-                Field overtime_hours_total
-                {
-                    DisplayName = "Overtime Hours Total";
-                    LinkName = "overtime_hours_total";
-                    Type = "Decimal";
-                }
-                Field exceptions
-                {
-                    DisplayName = "Exceptions";
-                    LinkName = "exceptions";
-                    Type = "MultiLine";
-                }
-                Field export_file
-                {
-                    DisplayName = "Export File";
-                    LinkName = "export_file";
-                    Type = "UploadFile";
-                    MaxFileCount = 10;
-                    AllowMultiple = true;
-                    FileSource = "LocalDrive";
-                    HelpText = "CSV for payroll";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have export_id
+	(
+		type = autonumber
+		displayname = "Export ID"
+		start index = 1
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have period_start
+	(
+		type = date
+		displayname = "Period Start"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have period_end
+	(
+		type = date
+		displayname = "Period End"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have staff_summary
+	(
+		type = grid
+		displayname = "Staff Summary"
+		must have present_days
+		(
+			type = number
+			displayname = "Present Days"
+			width = medium
+		)
+
+		must have absent_days
+		(
+			type = number
+			displayname = "Absent Days"
+			width = medium
+		)
+
+		overtime_hours
+		(
+			type = number
+			displayname = "Overtime Hours"
+			width = medium
+		)
+
+		wages_amount
+		(
+			type = INR
+			displayname = "Wages Amount"
+			width = medium
+		)
+
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	attendance_metrics
+	(
+		type = textarea
+		displayname = "Attendance Metrics"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	overtime_hours_total
+	(
+		type = number
+		displayname = "Overtime Hours Total"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	exceptions
+	(
+		type = textarea
+		displayname = "Exceptions"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	export_file
+	(
+		type = upload file
+		displayname = "Export File"
+		file count = 10
+		browse = local_drive
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

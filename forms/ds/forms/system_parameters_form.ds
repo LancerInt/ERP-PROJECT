@@ -1,73 +1,91 @@
-// Module: 9. Configuration & Audit
 form system_parameters
 {
-    DisplayName = "System Parameters";
-    LinkName = "system_parameters";
-    Module = "9. Configuration & Audit";
-    Type = "Form";
+	displayname = "System Parameters"
+	success message = "System Parameters added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field parameter_name
-                {
-                    DisplayName = "Parameter Name";
-                    LinkName = "parameter_name";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field parameter_value
-                {
-                    DisplayName = "Parameter Value";
-                    LinkName = "parameter_value";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field module_scope
-                {
-                    DisplayName = "Module Scope";
-                    LinkName = "module_scope";
-                    Type = "Dropdown";
-                    IsMandatory = true;
-                    HelpText = "Purchase / Sales / Inventory / Finance / Attendance";
-                }
-                Field description
-                {
-                    DisplayName = "Description";
-                    LinkName = "description";
-                    Type = "MultiLine";
-                }
-                Field last_updated_by
-                {
-                    DisplayName = "Last Updated By";
-                    LinkName = "last_updated_by";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "stakeholder_user";
-                }
-                Field effective_date
-                {
-                    DisplayName = "Effective Date";
-                    LinkName = "effective_date";
-                    Type = "Date";
-                    IsMandatory = true;
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have parameter_name
+	(
+		type = text
+		displayname = "Parameter Name"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have parameter_value
+	(
+		type = text
+		displayname = "Parameter Value"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have module_scope
+	(
+		type = picklist
+		displayname = "Module Scope"
+		maxchar = 100
+		values = {"Purchase","Sales","Inventory","Finance","Attendance"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	description
+	(
+		type = textarea
+		displayname = "Description"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have effective_date
+	(
+		type = date
+		displayname = "Effective Date"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

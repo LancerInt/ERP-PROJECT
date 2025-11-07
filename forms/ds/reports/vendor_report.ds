@@ -1,371 +1,146 @@
-report vendor_report
+list vendor_report
 {
-    DisplayName = "Vendor Report";
-    LinkName = "vendor_report";
-    Type = "List";
-    SourceFormLinkName = "vendor";
-
-    ListView
-    {
-        Columns
-        {
-            Column vendor_code
-            {
-                FieldLinkName = "vendor_code";
-            }
-            Column vendor_name
-            {
-                FieldLinkName = "vendor_name";
-            }
-            Column vendor_type
-            {
-                FieldLinkName = "vendor_type";
-            }
-            Column company
-            {
-                FieldLinkName = "company";
-            }
-            Column gstin
-            {
-                FieldLinkName = "gstin";
-            }
-            Column pan
-            {
-                FieldLinkName = "pan";
-            }
-            Column address
-            {
-                FieldLinkName = "address";
-            }
-            Column city
-            {
-                FieldLinkName = "city";
-            }
-            Column state
-            {
-                FieldLinkName = "state";
-            }
-            Column country
-            {
-                FieldLinkName = "country";
-            }
-            Column pincode
-            {
-                FieldLinkName = "pincode";
-            }
-            Column contact_person
-            {
-                FieldLinkName = "contact_person";
-            }
-            Column contact_email
-            {
-                FieldLinkName = "contact_email";
-            }
-            Column contact_phone
-            {
-                FieldLinkName = "contact_phone";
-            }
-            Column payment_terms
-            {
-                FieldLinkName = "payment_terms";
-            }
-            Column custom_payment_days
-            {
-                FieldLinkName = "custom_payment_days";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column freight_split_notes
-            {
-                FieldLinkName = "freight_split_notes";
-            }
-            Column credit_limit
-            {
-                FieldLinkName = "credit_limit";
-            }
-            Column credit_days
-            {
-                FieldLinkName = "credit_days";
-            }
-            Column tds_rate
-            {
-                FieldLinkName = "tds_rate";
-            }
-            Column tcs_rate
-            {
-                FieldLinkName = "tcs_rate";
-            }
-            Column bank_details
-            {
-                FieldLinkName = "bank_details";
-            }
-            Column preferred_transporters
-            {
-                FieldLinkName = "preferred_transporters";
-            }
-            Column allowed_warehouses
-            {
-                FieldLinkName = "allowed_warehouses";
-            }
-            Column attachments
-            {
-                FieldLinkName = "attachments";
-            }
-            Column active_flag
-            {
-                FieldLinkName = "active_flag";
-            }
-            Column created_date
-            {
-                FieldLinkName = "created_date";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column vendor_code
-            {
-                FieldLinkName = "vendor_code";
-            }
-            Column vendor_name
-            {
-                FieldLinkName = "vendor_name";
-            }
-            Column vendor_type
-            {
-                FieldLinkName = "vendor_type";
-            }
-            Column company
-            {
-                FieldLinkName = "company";
-            }
-            Column gstin
-            {
-                FieldLinkName = "gstin";
-            }
-            Column pan
-            {
-                FieldLinkName = "pan";
-            }
-            Column address
-            {
-                FieldLinkName = "address";
-            }
-            Column city
-            {
-                FieldLinkName = "city";
-            }
-            Column state
-            {
-                FieldLinkName = "state";
-            }
-            Column country
-            {
-                FieldLinkName = "country";
-            }
-            Column pincode
-            {
-                FieldLinkName = "pincode";
-            }
-            Column contact_person
-            {
-                FieldLinkName = "contact_person";
-            }
-            Column contact_email
-            {
-                FieldLinkName = "contact_email";
-            }
-            Column contact_phone
-            {
-                FieldLinkName = "contact_phone";
-            }
-            Column payment_terms
-            {
-                FieldLinkName = "payment_terms";
-            }
-            Column custom_payment_days
-            {
-                FieldLinkName = "custom_payment_days";
-            }
-            Column freight_terms
-            {
-                FieldLinkName = "freight_terms";
-            }
-            Column freight_split_notes
-            {
-                FieldLinkName = "freight_split_notes";
-            }
-            Column credit_limit
-            {
-                FieldLinkName = "credit_limit";
-            }
-            Column credit_days
-            {
-                FieldLinkName = "credit_days";
-            }
-            Column tds_rate
-            {
-                FieldLinkName = "tds_rate";
-            }
-            Column tcs_rate
-            {
-                FieldLinkName = "tcs_rate";
-            }
-            Column bank_details
-            {
-                FieldLinkName = "bank_details";
-            }
-            Column preferred_transporters
-            {
-                FieldLinkName = "preferred_transporters";
-            }
-            Column allowed_warehouses
-            {
-                FieldLinkName = "allowed_warehouses";
-            }
-            Column attachments
-            {
-                FieldLinkName = "attachments";
-            }
-            Column active_flag
-            {
-                FieldLinkName = "active_flag";
-            }
-            Column created_date
-            {
-                FieldLinkName = "created_date";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column vendor_code
-                    {
-                        FieldLinkName = "vendor_code";
-                    }
-                    Column vendor_name
-                    {
-                        FieldLinkName = "vendor_name";
-                    }
-                    Column vendor_type
-                    {
-                        FieldLinkName = "vendor_type";
-                    }
-                    Column company
-                    {
-                        FieldLinkName = "company";
-                    }
-                    Column gstin
-                    {
-                        FieldLinkName = "gstin";
-                    }
-                    Column pan
-                    {
-                        FieldLinkName = "pan";
-                    }
-                    Column address
-                    {
-                        FieldLinkName = "address";
-                    }
-                    Column city
-                    {
-                        FieldLinkName = "city";
-                    }
-                    Column state
-                    {
-                        FieldLinkName = "state";
-                    }
-                    Column country
-                    {
-                        FieldLinkName = "country";
-                    }
-                    Column pincode
-                    {
-                        FieldLinkName = "pincode";
-                    }
-                    Column contact_person
-                    {
-                        FieldLinkName = "contact_person";
-                    }
-                    Column contact_email
-                    {
-                        FieldLinkName = "contact_email";
-                    }
-                    Column contact_phone
-                    {
-                        FieldLinkName = "contact_phone";
-                    }
-                    Column payment_terms
-                    {
-                        FieldLinkName = "payment_terms";
-                    }
-                    Column custom_payment_days
-                    {
-                        FieldLinkName = "custom_payment_days";
-                    }
-                    Column freight_terms
-                    {
-                        FieldLinkName = "freight_terms";
-                    }
-                    Column freight_split_notes
-                    {
-                        FieldLinkName = "freight_split_notes";
-                    }
-                    Column credit_limit
-                    {
-                        FieldLinkName = "credit_limit";
-                    }
-                    Column credit_days
-                    {
-                        FieldLinkName = "credit_days";
-                    }
-                    Column tds_rate
-                    {
-                        FieldLinkName = "tds_rate";
-                    }
-                    Column tcs_rate
-                    {
-                        FieldLinkName = "tcs_rate";
-                    }
-                    Column bank_details
-                    {
-                        FieldLinkName = "bank_details";
-                    }
-                    Column preferred_transporters
-                    {
-                        FieldLinkName = "preferred_transporters";
-                    }
-                    Column allowed_warehouses
-                    {
-                        FieldLinkName = "allowed_warehouses";
-                    }
-                    Column attachments
-                    {
-                        FieldLinkName = "attachments";
-                    }
-                    Column active_flag
-                    {
-                        FieldLinkName = "active_flag";
-                    }
-                    Column created_date
-                    {
-                        FieldLinkName = "created_date";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Vendor Report"
+	show all rows from vendor
+	(
+		vendor_code as "Vendor Code"
+		vendor_name as "Vendor Name"
+		vendor_type as "Vendor Type"
+		gstin as "GSTIN"
+		pan as "PAN"
+		address as "Address"
+		city as "City"
+		state as "State"
+		country as "Country"
+		pincode as "Pincode"
+		contact_person as "Contact Person"
+		contact_email as "Contact Email"
+		contact_phone as "Contact Phone"
+		payment_terms as "Payment Terms"
+		custom_payment_days as "Custom Payment Days"
+		freight_terms as "Freight Terms"
+		freight_split_notes as "Freight Split Notes"
+		credit_limit as "Credit Limit"
+		credit_days as "Credit Days"
+		tds_rate as "TDS Rate %"
+		tcs_rate as "TCS Rate %"
+		bank_details as "Bank Details"
+		attachments as "Attachments"
+		active_flag as "Active Flag"
+		created_date as "Created Date"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Vendor Overview"
+				fields
+				(
+					vendor_code as "Vendor Code"
+					vendor_name as "Vendor Name"
+					vendor_type as "Vendor Type"
+					gstin as "GSTIN"
+					pan as "PAN"
+					address as "Address"
+					city as "City"
+					state as "State"
+					country as "Country"
+					pincode as "Pincode"
+					contact_person as "Contact Person"
+					contact_email as "Contact Email"
+					contact_phone as "Contact Phone"
+					payment_terms as "Payment Terms"
+					custom_payment_days as "Custom Payment Days"
+					freight_terms as "Freight Terms"
+					freight_split_notes as "Freight Split Notes"
+					credit_limit as "Credit Limit"
+					credit_days as "Credit Days"
+					tds_rate as "TDS Rate %"
+					tcs_rate as "TCS Rate %"
+					bank_details as "Bank Details"
+					attachments as "Attachments"
+					active_flag as "Active Flag"
+					created_date as "Created Date"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Vendor Overview"
+				fields
+				(
+					vendor_code as "Vendor Code"
+					vendor_name as "Vendor Name"
+					vendor_type as "Vendor Type"
+					gstin as "GSTIN"
+					pan as "PAN"
+					address as "Address"
+					city as "City"
+					state as "State"
+					country as "Country"
+					pincode as "Pincode"
+					contact_person as "Contact Person"
+					contact_email as "Contact Email"
+					contact_phone as "Contact Phone"
+					payment_terms as "Payment Terms"
+					custom_payment_days as "Custom Payment Days"
+					freight_terms as "Freight Terms"
+					freight_split_notes as "Freight Split Notes"
+					credit_limit as "Credit Limit"
+					credit_days as "Credit Days"
+					tds_rate as "TDS Rate %"
+					tcs_rate as "TCS Rate %"
+					bank_details as "Bank Details"
+					attachments as "Attachments"
+					active_flag as "Active Flag"
+					created_date as "Created Date"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

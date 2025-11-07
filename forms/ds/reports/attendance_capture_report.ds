@@ -1,215 +1,110 @@
-report attendance_capture_report
+list attendance_capture_report
 {
-    DisplayName = "Attendance Capture Report";
-    LinkName = "attendance_capture_report";
-    Type = "List";
-    SourceFormLinkName = "attendance_capture";
-
-    ListView
-    {
-        Columns
-        {
-            Column record_id
-            {
-                FieldLinkName = "record_id";
-            }
-            Column staff
-            {
-                FieldLinkName = "staff";
-            }
-            Column date
-            {
-                FieldLinkName = "date";
-            }
-            Column check_in_time
-            {
-                FieldLinkName = "check_in_time";
-            }
-            Column check_out_time
-            {
-                FieldLinkName = "check_out_time";
-            }
-            Column entry_photo
-            {
-                FieldLinkName = "entry_photo";
-            }
-            Column exit_photo
-            {
-                FieldLinkName = "exit_photo";
-            }
-            Column geo_latitude
-            {
-                FieldLinkName = "geo_latitude";
-            }
-            Column geo_longitude
-            {
-                FieldLinkName = "geo_longitude";
-            }
-            Column face_match_confidence
-            {
-                FieldLinkName = "face_match_confidence";
-            }
-            Column device_id
-            {
-                FieldLinkName = "device_id";
-            }
-            Column shift
-            {
-                FieldLinkName = "shift";
-            }
-            Column attendance_status
-            {
-                FieldLinkName = "attendance_status";
-            }
-            Column overtime_hours
-            {
-                FieldLinkName = "overtime_hours";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column record_id
-            {
-                FieldLinkName = "record_id";
-            }
-            Column staff
-            {
-                FieldLinkName = "staff";
-            }
-            Column date
-            {
-                FieldLinkName = "date";
-            }
-            Column check_in_time
-            {
-                FieldLinkName = "check_in_time";
-            }
-            Column check_out_time
-            {
-                FieldLinkName = "check_out_time";
-            }
-            Column entry_photo
-            {
-                FieldLinkName = "entry_photo";
-            }
-            Column exit_photo
-            {
-                FieldLinkName = "exit_photo";
-            }
-            Column geo_latitude
-            {
-                FieldLinkName = "geo_latitude";
-            }
-            Column geo_longitude
-            {
-                FieldLinkName = "geo_longitude";
-            }
-            Column face_match_confidence
-            {
-                FieldLinkName = "face_match_confidence";
-            }
-            Column device_id
-            {
-                FieldLinkName = "device_id";
-            }
-            Column shift
-            {
-                FieldLinkName = "shift";
-            }
-            Column attendance_status
-            {
-                FieldLinkName = "attendance_status";
-            }
-            Column overtime_hours
-            {
-                FieldLinkName = "overtime_hours";
-            }
-            Column notes
-            {
-                FieldLinkName = "notes";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column record_id
-                    {
-                        FieldLinkName = "record_id";
-                    }
-                    Column staff
-                    {
-                        FieldLinkName = "staff";
-                    }
-                    Column date
-                    {
-                        FieldLinkName = "date";
-                    }
-                    Column check_in_time
-                    {
-                        FieldLinkName = "check_in_time";
-                    }
-                    Column check_out_time
-                    {
-                        FieldLinkName = "check_out_time";
-                    }
-                    Column entry_photo
-                    {
-                        FieldLinkName = "entry_photo";
-                    }
-                    Column exit_photo
-                    {
-                        FieldLinkName = "exit_photo";
-                    }
-                    Column geo_latitude
-                    {
-                        FieldLinkName = "geo_latitude";
-                    }
-                    Column geo_longitude
-                    {
-                        FieldLinkName = "geo_longitude";
-                    }
-                    Column face_match_confidence
-                    {
-                        FieldLinkName = "face_match_confidence";
-                    }
-                    Column device_id
-                    {
-                        FieldLinkName = "device_id";
-                    }
-                    Column shift
-                    {
-                        FieldLinkName = "shift";
-                    }
-                    Column attendance_status
-                    {
-                        FieldLinkName = "attendance_status";
-                    }
-                    Column overtime_hours
-                    {
-                        FieldLinkName = "overtime_hours";
-                    }
-                    Column notes
-                    {
-                        FieldLinkName = "notes";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Attendance Capture Report"
+	show all rows from attendance_capture
+	(
+		record_id as "Record ID"
+		date as "Date"
+		check_in_time as "Check-in Time"
+		check_out_time as "Check-out Time"
+		entry_photo as "Entry Photo"
+		exit_photo as "Exit Photo"
+		geo_latitude as "Geo Latitude"
+		geo_longitude as "Geo Longitude"
+		face_match_confidence as "Face Match Confidence"
+		device_id as "Device ID"
+		attendance_status as "Attendance Status"
+		overtime_hours as "Overtime Hours"
+		notes as "Notes"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Attendance Capture Overview"
+				fields
+				(
+					record_id as "Record ID"
+					date as "Date"
+					check_in_time as "Check-in Time"
+					check_out_time as "Check-out Time"
+					entry_photo as "Entry Photo"
+					exit_photo as "Exit Photo"
+					geo_latitude as "Geo Latitude"
+					geo_longitude as "Geo Longitude"
+					face_match_confidence as "Face Match Confidence"
+					device_id as "Device ID"
+					attendance_status as "Attendance Status"
+					overtime_hours as "Overtime Hours"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Attendance Capture Overview"
+				fields
+				(
+					record_id as "Record ID"
+					date as "Date"
+					check_in_time as "Check-in Time"
+					check_out_time as "Check-out Time"
+					entry_photo as "Entry Photo"
+					exit_photo as "Exit Photo"
+					geo_latitude as "Geo Latitude"
+					geo_longitude as "Geo Longitude"
+					face_match_confidence as "Face Match Confidence"
+					device_id as "Device ID"
+					attendance_status as "Attendance Status"
+					overtime_hours as "Overtime Hours"
+					notes as "Notes"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

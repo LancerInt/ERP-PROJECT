@@ -1,95 +1,83 @@
-report approval_workflow_report
+list approval_workflow_report
 {
-    DisplayName = "Approval Workflow Report";
-    LinkName = "approval_workflow_report";
-    Type = "List";
-    SourceFormLinkName = "approval_workflow";
-
-    ListView
-    {
-        Columns
-        {
-            Column stage
-            {
-                FieldLinkName = "stage";
-            }
-            Column approver
-            {
-                FieldLinkName = "approver";
-            }
-            Column decision
-            {
-                FieldLinkName = "decision";
-            }
-            Column decision_date
-            {
-                FieldLinkName = "decision_date";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    QuickView
-    {
-        Columns
-        {
-            Column stage
-            {
-                FieldLinkName = "stage";
-            }
-            Column approver
-            {
-                FieldLinkName = "approver";
-            }
-            Column decision
-            {
-                FieldLinkName = "decision";
-            }
-            Column decision_date
-            {
-                FieldLinkName = "decision_date";
-            }
-            Column remarks
-            {
-                FieldLinkName = "remarks";
-            }
-        }
-    }
-
-    DetailView
-    {
-        Sections
-        {
-            Section main
-            {
-                DisplayName = "Main";
-                Columns
-                {
-                    Column stage
-                    {
-                        FieldLinkName = "stage";
-                    }
-                    Column approver
-                    {
-                        FieldLinkName = "approver";
-                    }
-                    Column decision
-                    {
-                        FieldLinkName = "decision";
-                    }
-                    Column decision_date
-                    {
-                        FieldLinkName = "decision_date";
-                    }
-                    Column remarks
-                    {
-                        FieldLinkName = "remarks";
-                    }
-                }
-            }
-        }
-    }
+	displayName = "Approval Workflow Report"
+	show all rows from approval_workflow
+	(
+		stage as "Stage"
+		decision as "Decision"
+		decision_date as "Decision Date"
+		remarks as "Remarks"
+	)
+	quickview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Approval Workflow Overview"
+				fields
+				(
+					stage as "Stage"
+					decision as "Decision"
+					decision_date as "Decision Date"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+			record
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+		action
+		(
+			on click
+			(
+				View Record
+			)
+			on right click
+			(
+				Edit
+				Delete
+				Duplicate
+				View Record
+			)
+		)
+	)
+	detailview
+	(
+		layout
+		(
+			datablock1
+			(
+				title = "Approval Workflow Overview"
+				fields
+				(
+					stage as "Stage"
+					decision as "Decision"
+					decision_date as "Decision Date"
+					remarks as "Remarks"
+				)
+			)
+		)
+		menu
+		(
+			header
+			(
+				Edit
+				Duplicate
+				Delete
+			)
+		)
+	)
 }

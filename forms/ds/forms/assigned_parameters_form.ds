@@ -1,62 +1,84 @@
-// Module: 5. Quality Control Module
 form assigned_parameters
 {
-    DisplayName = "Assigned Parameters";
-    LinkName = "assigned_parameters";
-    Module = "5. Quality Control Module";
-    Type = "Form";
+	displayname = "Assigned Parameters"
+	success message = "Assigned Parameters added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field parameter
-                {
-                    DisplayName = "Parameter";
-                    LinkName = "parameter";
-                    Type = "Lookup";
-                    IsMandatory = true;
-                    RelatedFormLinkName = "qc_parameter_library";
-                }
-                Field result_value
-                {
-                    DisplayName = "Result Value";
-                    LinkName = "result_value";
-                    Type = "Decimal";
-                }
-                Field result_text
-                {
-                    DisplayName = "Result Text";
-                    LinkName = "result_text";
-                    Type = "MultiLine";
-                }
-                Field result_photo
-                {
-                    DisplayName = "Result Photo";
-                    LinkName = "result_photo";
-                    Type = "UploadImage";
-                }
-                Field pass_fail
-                {
-                    DisplayName = "Pass/Fail";
-                    LinkName = "pass_fail";
-                    Type = "Dropdown";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	result_value
+	(
+		type = number
+		displayname = "Result Value"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	result_text
+	(
+		type = textarea
+		displayname = "Result Text"
+		height = 100px
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	result_photo
+	(
+		type = upload file
+		displayname = "Result Photo"
+		file count = 10
+		browse = local_drive
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	pass_fail
+	(
+		type = picklist
+		displayname = "Pass/Fail"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }

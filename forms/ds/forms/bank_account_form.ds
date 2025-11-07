@@ -1,66 +1,90 @@
-// Module: 1. Core & Shared Masters
 form bank_account
 {
-    DisplayName = "Bank Account";
-    LinkName = "bank_account";
-    Module = "1. Core & Shared Masters";
-    Type = "Form";
+	displayname = "Bank Account"
+	success message = "Bank Account added successfully"
 
-    Sections
-    {
-        Section main
-        {
-            DisplayName = "Main";
-            Layout = "OneColumn";
-            Fields
-            {
-                Field account_holder
-                {
-                    DisplayName = "Account Holder";
-                    LinkName = "account_holder";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field bank_name
-                {
-                    DisplayName = "Bank Name";
-                    LinkName = "bank_name";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                }
-                Field ifsc_code
-                {
-                    DisplayName = "IFSC Code";
-                    LinkName = "ifsc_code";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    HelpText = "Validate format";
-                }
-                Field account_number
-                {
-                    DisplayName = "Account Number";
-                    LinkName = "account_number";
-                    Type = "SingleLine";
-                    IsMandatory = true;
-                    HelpText = "Mask display";
-                }
-                Field account_type
-                {
-                    DisplayName = "Account Type";
-                    LinkName = "account_type";
-                    Type = "Dropdown";
-                }
-            }
-        }
-    }
+	Section
+	(
+		type = section
+		row = 1
+		column = 0
+		width = medium
+	)
 
-    Actions
-    {
-        on add
-        {
-        }
-        on edit
-        {
-        }
-    }
+	must have account_holder
+	(
+		type = text
+		displayname = "Account Holder"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have bank_name
+	(
+		type = text
+		displayname = "Bank Name"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have ifsc_code
+	(
+		type = text
+		displayname = "IFSC Code"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	must have account_number
+	(
+		type = text
+		displayname = "Account Number"
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	account_type
+	(
+		type = picklist
+		displayname = "Account Type"
+		maxchar = 100
+		values = {"Option 1","Option 2","Option 3"}
+		row = 1
+		column = 1
+		width = medium
+	)
+
+	actions
+	{
+		on add
+		{
+			submit
+			(
+				type = submit
+				displayname = "Submit"
+			)
+			reset
+			(
+				type = reset
+				displayname = "Reset"
+			)
+		}
+		on edit
+		{
+			update
+			(
+				type = submit
+				displayname = "Update"
+			)
+			cancel
+			(
+				type = cancel
+				displayname = "Cancel"
+			)
+		}
+	}
 }
