@@ -51,26 +51,28 @@ form transporter
 	(
 		type = email
 		displayname = "Contact Email"
+		personal data = true
 		row = 1
 		column = 1
 		width = medium
-		personal data = true
 	)
 
 	contact_phone
 	(
 		type = phonenumber
 		displayname = "Contact Phone"
+		personal data = true
 		row = 1
 		column = 1
 		width = medium
-		personal data = true
 	)
 
 	must have freight_modes
 	(
 		type = list
 		displayname = "Freight Modes"
+		values = {"Local Drayage","Linehaul"}
+		height = 60px
 		row = 1
 		column = 1
 		width = medium
@@ -80,10 +82,10 @@ form transporter
 	(
 		type = textarea
 		displayname = "Coverage Routes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	tds_rate
@@ -99,6 +101,8 @@ form transporter
 	(
 		type = picklist
 		displayname = "Payment Terms"
+		values = {"Net 15","Net 30","Custom"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -117,11 +121,11 @@ form transporter
 	(
 		type = upload file
 		displayname = "Documents"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	must have active_flag

@@ -3,13 +3,11 @@ list return_lines_report
 	displayName = "Return Lines Report"
 	show all rows from return_lines
 	(
-		product as "Product"
 		batch as "Batch"
 		quantity_returned as "Quantity Returned"
 		uom as "UOM"
 		condition as "Condition"
 		viability_notes as "Viability Notes"
-		packing_material_captured as "Packing Material Captured"
 	)
 	quickview
 	(
@@ -20,13 +18,11 @@ list return_lines_report
 				title = "Return Lines Overview"
 				fields
 				(
-					product as "Product"
 					batch as "Batch"
 					quantity_returned as "Quantity Returned"
 					uom as "UOM"
 					condition as "Condition"
 					viability_notes as "Viability Notes"
-					packing_material_captured as "Packing Material Captured"
 				)
 			)
 		)
@@ -69,13 +65,11 @@ list return_lines_report
 				title = "Return Lines Overview"
 				fields
 				(
-					product as "Product"
 					batch as "Batch"
 					quantity_returned as "Quantity Returned"
 					uom as "UOM"
 					condition as "Condition"
 					viability_notes as "Viability Notes"
-					packing_material_captured as "Packing Material Captured"
 				)
 			)
 		)

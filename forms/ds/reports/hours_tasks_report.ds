@@ -3,7 +3,6 @@ list hours_tasks_report
 	displayName = "Hours / Tasks Report"
 	show all rows from hours_tasks
 	(
-		staff as "Staff"
 		task_description as "Task Description"
 		hours_worked as "Hours Worked"
 		quantity_produced as "Quantity Produced"
@@ -17,7 +16,6 @@ list hours_tasks_report
 				title = "Hours / Tasks Overview"
 				fields
 				(
-					staff as "Staff"
 					task_description as "Task Description"
 					hours_worked as "Hours Worked"
 					quantity_produced as "Quantity Produced"
@@ -63,7 +61,6 @@ list hours_tasks_report
 				title = "Hours / Tasks Overview"
 				fields
 				(
-					staff as "Staff"
 					task_description as "Task Description"
 					hours_worked as "Hours Worked"
 					quantity_produced as "Quantity Produced"

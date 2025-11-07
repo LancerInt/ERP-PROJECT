@@ -33,19 +33,11 @@ form vendor
 	(
 		type = list
 		displayname = "Vendor Type"
+		values = {"Material","Service","Freight","Wages","Job Work","Contractor"}
+		height = 60px
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have company
-	(
-		type = lookup
-		displayname = "Company"
-		row = 1
-		column = 1
-		width = medium
-		related form = company
 	)
 
 	must have gstin
@@ -70,9 +62,6 @@ form vendor
 	(
 		type = address
 		displayname = "Address"
-		row = 1
-		column = 1
-		width = medium
 		capture_coordinates = true
 		adjust_using_map = false
 		personal data = true
@@ -100,9 +89,9 @@ form vendor
 			displayname = "State / Province"
 		)
 
-		postal_code
+		postal_Code
 		(
-			type = postal_code
+			type = postal_Code
 			displayname = "Postal Code"
 		)
 
@@ -125,6 +114,9 @@ form vendor
 			displayname = "Longitude"
 			visibility = false
 		)
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have city
@@ -140,6 +132,8 @@ form vendor
 	(
 		type = picklist
 		displayname = "State"
+		values = {"Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli and Daman and Diu","Delhi","Jammu and Kashmir","Ladakh","Lakshadweep","Puducherry"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -149,6 +143,8 @@ form vendor
 	(
 		type = picklist
 		displayname = "Country"
+		values = {"India","United Arab Emirates","Singapore"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -176,26 +172,28 @@ form vendor
 	(
 		type = email
 		displayname = "Contact Email"
+		personal data = true
 		row = 1
 		column = 1
 		width = medium
-		personal data = true
 	)
 
 	contact_phone
 	(
 		type = phonenumber
 		displayname = "Contact Phone"
+		personal data = true
 		row = 1
 		column = 1
 		width = medium
-		personal data = true
 	)
 
 	must have payment_terms
 	(
 		type = picklist
 		displayname = "Payment Terms"
+		values = {"Net 15","Net 30","Custom"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -214,6 +212,8 @@ form vendor
 	(
 		type = picklist
 		displayname = "Freight Terms"
+		values = {"Paid","To_Pay","Mixed"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -223,10 +223,10 @@ form vendor
 	(
 		type = textarea
 		displayname = "Freight Split Notes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	credit_limit
@@ -269,9 +269,6 @@ form vendor
 	(
 		type = grid
 		displayname = "Bank Details"
-		row = 1
-		column = 1
-		width = medium
 		must have account_nickname
 		(
 			type = text
@@ -311,24 +308,11 @@ form vendor
 		(
 			type = picklist
 			displayname = "Payment Method"
+			values = {"NEFT","RTGS","Cheque","UPI"}
+			maxchar = 100
 			width = medium
 		)
 
-	)
-
-	preferred_transporters
-	(
-		type = text
-		displayname = "Preferred Transporters"
-		row = 1
-		column = 1
-		width = medium
-	)
-
-	allowed_warehouses
-	(
-		type = text
-		displayname = "Allowed Warehouses"
 		row = 1
 		column = 1
 		width = medium
@@ -338,11 +322,11 @@ form vendor
 	(
 		type = upload file
 		displayname = "Attachments"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	must have active_flag

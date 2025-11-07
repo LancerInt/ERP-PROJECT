@@ -4,17 +4,14 @@ list counter_sample_register_report
 	show all rows from counter_sample_register
 	(
 		sample_id as "Sample ID"
-		qc_request as "QC Request"
 		storage_location as "Storage Location"
 		shelf as "Shelf"
 		bin as "Bin"
-		issued_to as "Issued To"
 		issue_date as "Issue Date"
 		expected_return_date as "Expected Return Date"
 		actual_return_date as "Actual Return Date"
 		reminder_sent as "Reminder Sent"
 		disposal_date as "Disposal Date"
-		disposal_approved_by as "Disposal Approved By"
 	)
 	quickview
 	(
@@ -26,17 +23,14 @@ list counter_sample_register_report
 				fields
 				(
 					sample_id as "Sample ID"
-					qc_request as "QC Request"
 					storage_location as "Storage Location"
 					shelf as "Shelf"
 					bin as "Bin"
-					issued_to as "Issued To"
 					issue_date as "Issue Date"
 					expected_return_date as "Expected Return Date"
 					actual_return_date as "Actual Return Date"
 					reminder_sent as "Reminder Sent"
 					disposal_date as "Disposal Date"
-					disposal_approved_by as "Disposal Approved By"
 				)
 			)
 		)
@@ -80,17 +74,14 @@ list counter_sample_register_report
 				fields
 				(
 					sample_id as "Sample ID"
-					qc_request as "QC Request"
 					storage_location as "Storage Location"
 					shelf as "Shelf"
 					bin as "Bin"
-					issued_to as "Issued To"
 					issue_date as "Issue Date"
 					expected_return_date as "Expected Return Date"
 					actual_return_date as "Actual Return Date"
 					reminder_sent as "Reminder Sent"
 					disposal_date as "Disposal Date"
-					disposal_approved_by as "Disposal Approved By"
 				)
 			)
 		)

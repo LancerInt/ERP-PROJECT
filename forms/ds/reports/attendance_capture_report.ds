@@ -4,7 +4,6 @@ list attendance_capture_report
 	show all rows from attendance_capture
 	(
 		record_id as "Record ID"
-		staff as "Staff"
 		date as "Date"
 		check_in_time as "Check-in Time"
 		check_out_time as "Check-out Time"
@@ -14,7 +13,6 @@ list attendance_capture_report
 		geo_longitude as "Geo Longitude"
 		face_match_confidence as "Face Match Confidence"
 		device_id as "Device ID"
-		shift as "Shift"
 		attendance_status as "Attendance Status"
 		overtime_hours as "Overtime Hours"
 		notes as "Notes"
@@ -29,7 +27,6 @@ list attendance_capture_report
 				fields
 				(
 					record_id as "Record ID"
-					staff as "Staff"
 					date as "Date"
 					check_in_time as "Check-in Time"
 					check_out_time as "Check-out Time"
@@ -39,7 +36,6 @@ list attendance_capture_report
 					geo_longitude as "Geo Longitude"
 					face_match_confidence as "Face Match Confidence"
 					device_id as "Device ID"
-					shift as "Shift"
 					attendance_status as "Attendance Status"
 					overtime_hours as "Overtime Hours"
 					notes as "Notes"
@@ -86,7 +82,6 @@ list attendance_capture_report
 				fields
 				(
 					record_id as "Record ID"
-					staff as "Staff"
 					date as "Date"
 					check_in_time as "Check-in Time"
 					check_out_time as "Check-out Time"
@@ -96,7 +91,6 @@ list attendance_capture_report
 					geo_longitude as "Geo Longitude"
 					face_match_confidence as "Face Match Confidence"
 					device_id as "Device ID"
-					shift as "Shift"
 					attendance_status as "Attendance Status"
 					overtime_hours as "Overtime Hours"
 					notes as "Notes"

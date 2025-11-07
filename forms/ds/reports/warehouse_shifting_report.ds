@@ -4,10 +4,7 @@ list warehouse_shifting_report
 	show all rows from warehouse_shifting
 	(
 		shifting_no as "Shifting No."
-		warehouse as "Warehouse"
 		request_date as "Request Date"
-		from_godown as "From Godown"
-		to_godown as "To Godown"
 		reason_code as "Reason Code"
 		other_reason as "Other Reason"
 		products as "Products"
@@ -26,10 +23,7 @@ list warehouse_shifting_report
 				fields
 				(
 					shifting_no as "Shifting No."
-					warehouse as "Warehouse"
 					request_date as "Request Date"
-					from_godown as "From Godown"
-					to_godown as "To Godown"
 					reason_code as "Reason Code"
 					other_reason as "Other Reason"
 					products as "Products"
@@ -80,10 +74,7 @@ list warehouse_shifting_report
 				fields
 				(
 					shifting_no as "Shifting No."
-					warehouse as "Warehouse"
 					request_date as "Request Date"
-					from_godown as "From Godown"
-					to_godown as "To Godown"
 					reason_code as "Reason Code"
 					other_reason as "Other Reason"
 					products as "Products"

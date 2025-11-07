@@ -11,43 +11,25 @@ form credit_debit_note
 		width = medium
 	)
 
-	must have note_no
+	note_no
 	(
 		type = autonumber
 		displayname = "Note No."
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have note_type
 	(
 		type = picklist
 		displayname = "Note Type"
+		values = {"Credit","Debit"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have vendor_customer
-	(
-		type = lookup
-		displayname = "Vendor/Customer"
-		row = 1
-		column = 1
-		width = medium
-		related forms = {"vendor","customer"}
-	)
-
-	must have source_document
-	(
-		type = lookup
-		displayname = "Source Document"
-		row = 1
-		column = 1
-		width = medium
-		related forms = {"purchase_order","sales_invoice_check"}
 	)
 
 	must have amount
@@ -72,29 +54,21 @@ form credit_debit_note
 	(
 		type = textarea
 		displayname = "Reason"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	must have approval_status
 	(
 		type = picklist
 		displayname = "Approval Status"
+		values = {"Draft","Pending","Approved"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	approved_by
-	(
-		type = lookup
-		displayname = "Approved By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
 	)
 
 	approval_date
@@ -104,16 +78,6 @@ form credit_debit_note
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	ledger_posting_reference
-	(
-		type = lookup
-		displayname = "Ledger Posting Reference"
-		row = 1
-		column = 1
-		width = medium
-		related forms = {"vendor_ledger","customer_ledger","freight_ledger","wage_ledger"}
 	)
 
 	actions

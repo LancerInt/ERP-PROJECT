@@ -3,6 +3,7 @@ import shutil
 from pathlib import Path
 from collections import defaultdict
 import copy
+from typing import Optional
 
 DATA_MODEL_PATH = Path('docs/data-models/zoho_creator_data_models.md')
 OUTPUT_ROOT = Path('forms/ds')
@@ -32,6 +33,66 @@ LOOKUP_ALIAS_MAP = {
     'staff': ['staff_master'],
     'varies': ['purchase_order', 'receipt_advice', 'freight_advice', 'wage_voucher', 'credit_debit_note'],
     'work order': ['work_order_production_batch'],
+}
+
+INDIAN_STATES = [
+    'Andhra Pradesh',
+    'Arunachal Pradesh',
+    'Assam',
+    'Bihar',
+    'Chhattisgarh',
+    'Goa',
+    'Gujarat',
+    'Haryana',
+    'Himachal Pradesh',
+    'Jharkhand',
+    'Karnataka',
+    'Kerala',
+    'Madhya Pradesh',
+    'Maharashtra',
+    'Manipur',
+    'Meghalaya',
+    'Mizoram',
+    'Nagaland',
+    'Odisha',
+    'Punjab',
+    'Rajasthan',
+    'Sikkim',
+    'Tamil Nadu',
+    'Telangana',
+    'Tripura',
+    'Uttar Pradesh',
+    'Uttarakhand',
+    'West Bengal',
+    'Andaman and Nicobar Islands',
+    'Chandigarh',
+    'Dadra and Nagar Haveli and Daman and Diu',
+    'Delhi',
+    'Jammu and Kashmir',
+    'Ladakh',
+    'Lakshadweep',
+    'Puducherry',
+]
+
+DEFAULT_PICKLIST_VALUES = {
+    'state': INDIAN_STATES,
+    'destination_state': INDIAN_STATES,
+    'country': ['India', 'United Arab Emirates', 'Singapore'],
+    'time_zone': ['Asia/Kolkata', 'Asia/Dubai', 'Asia/Singapore'],
+    'default_currency': ['INR', 'USD', 'EUR'],
+    'currency': ['INR', 'USD', 'EUR'],
+    'capacity_uom': ['Tonnes', 'KG', 'KL', 'Units', 'Pallets', 'CBM'],
+    'gender': ['Male', 'Female', 'Other'],
+    'department': ['Head Office', 'Finance', 'Purchase', 'Sales', 'Production', 'Quality', 'HR', 'IT', 'Logistics'],
+    'account_type': ['Current', 'Savings', 'Overdraft'],
+    'to_uom': ['Units', 'Pieces', 'KG', 'Tonnes', 'Litres', 'Metres'],
+    'uom': ['Units', 'Pieces', 'KG', 'Tonnes', 'Litres', 'Metres'],
+    'payment_terms': ['Net 15', 'Net 30', 'Custom'],
+    'freight_terms': ['Paid', 'To Pay', 'Mixed'],
+    'pass_fail': ['Pass', 'Fail'],
+    'bank_account': ['ICICI Bank - Current', 'HDFC Bank - Current', 'SBI Bank - Current'],
+    'quantity_uom': ['Tonnes', 'KG', 'KL', 'Units'],
+    'module': ['Purchase', 'Sales', 'Inventory', 'Production', 'Quality', 'Logistics', 'Finance', 'HR', 'System'],
 }
 
 EXTRA_FORMS = [
@@ -254,6 +315,36 @@ def map_lookup_target(target: str, name_map: dict, form=None, field=None):
     return matches
 
 
+def extract_choice_values(field: dict) -> Optional[list[str]]:
+    notes = (field.get('notes') or '').strip()
+    if not notes:
+        return None
+    notes = re.sub(r"\s+", " ", notes)
+    candidate = notes.rstrip('.').strip()
+    if not candidate:
+        return None
+    if any(sep in candidate for sep in (';', ':')):
+        return None
+    separators = None
+    if '/' in candidate:
+        separators = r"\s*/\s*"
+    elif ',' in candidate:
+        separators = r"\s*,\s*"
+    if not separators:
+        return None
+    tokens = [re.sub(r"\s*\(.*?\)\s*", "", token).strip() for token in re.split(separators, candidate)]
+    cleaned = []
+    for token in tokens:
+        token = re.sub(r"\betc\.\s*$", "", token, flags=re.IGNORECASE).strip()
+        if token:
+            cleaned.append(token)
+    if len(cleaned) <= 1:
+        return None
+    if any(len(token.split()) > 6 for token in cleaned):
+        return None
+    return cleaned
+
+
 def map_field_type(field, form, name_map):
     text = field['type'].strip()
     props: dict[str, object] = {}
@@ -303,7 +394,7 @@ def map_field_type(field, form, name_map):
         data_type = 'AutoNumber'
     elif text == 'Percentage':
         data_type = 'Percentage'
-    elif text.startswith('Lookup'):
+    elif 'Lookup' in text:
         data_type = 'Lookup'
         targets = parse_lookup_targets(field['type'])
         mapped = []
@@ -354,14 +445,18 @@ def map_field_type(field, form, name_map):
 def prepare_field_meta(form, name_map):
     prepared = []
     for field in form['fields']:
+        if 'Lookup' in (field.get('type') or ''):
+            continue
         link_name = field['link_name'] or slugify(field['field_name'])
         data_type, props = map_field_type(field, form, name_map)
+        is_unique = props.pop('IsUnique', False)
         prepared.append({
             'field': field,
             'link_name': link_name,
             'data_type': data_type,
             'props': props,
             'required': field['required'].strip().upper(),
+            'is_unique': is_unique,
         })
     return prepared
 
@@ -402,7 +497,7 @@ def render_address_components(indent):
         ('address_line_2', 'Address Line 2'),
         ('district_city', 'City / District'),
         ('state_province', 'State / Province'),
-        ('postal_code', 'Postal Code'),
+        ('postal_Code', 'Postal Code'),
         ('country', 'Country'),
         ('latitude', 'Latitude'),
         ('longitude', 'Longitude'),
@@ -425,6 +520,7 @@ def render_address_components(indent):
 def map_to_ds_type(meta):
     data_type = meta['data_type']
     extras = []
+    field = meta['field']
     if data_type == 'SingleLine':
         ds_type = 'text'
     elif data_type == 'MultiLine':
@@ -438,8 +534,27 @@ def map_to_ds_type(meta):
         extras.append(('personal data', True))
     elif data_type == 'Dropdown':
         ds_type = 'picklist'
+        values = extract_choice_values(field)
+        if not values:
+            link_key = meta['link_name'].lower()
+            values = DEFAULT_PICKLIST_VALUES.get(link_key)
+            if not values:
+                field_key = slugify(field['field_name'])
+                values = DEFAULT_PICKLIST_VALUES.get(field_key)
+        if values:
+            extras.append(('values', values))
+        extras.append(('maxchar', 100))
     elif data_type == 'Checkboxes':
-        ds_type = 'list'
+        field_type = (field.get('type') or '').lower()
+        if 'checkbox' in field_type and 'multi-select' not in field_type:
+            ds_type = 'checkboxes'
+        else:
+            ds_type = 'list'
+        values = extract_choice_values(field)
+        if values:
+            extras.append(('values', values))
+        if 'multi-select' in field_type:
+            extras.append(('height', '60px'))
     elif data_type == 'Checkbox':
         ds_type = 'checkbox'
     elif data_type == 'Date':
@@ -480,11 +595,17 @@ def map_to_ds_type(meta):
     elif data_type == 'UploadFile':
         ds_type = 'upload file'
         extras.append(('file count', meta['props'].get('MaxFileCount', 10)))
-        extras.append(('browse', str(meta['props'].get('FileSource', 'local_drive')).lower()))
+        source = str(meta['props'].get('FileSource', 'local_drive')).lower()
+        if source == 'localdrive':
+            source = 'local_drive'
+        extras.append(('browse', source))
     elif data_type == 'UploadImage':
         ds_type = 'upload file'
         extras.append(('file count', meta['props'].get('MaxFileCount', 10)))
-        extras.append(('browse', str(meta['props'].get('FileSource', 'local_drive')).lower()))
+        source = str(meta['props'].get('FileSource', 'local_drive')).lower()
+        if source == 'localdrive':
+            source = 'local_drive'
+        extras.append(('browse', source))
     elif data_type == 'URL':
         ds_type = 'url'
     else:
@@ -496,27 +617,44 @@ def render_field(meta, forms_meta, indent='\t', include_layout=True, visited=Non
     if visited is None:
         visited = set()
     required = meta['required']
-    prefix = 'must have ' if required in {'Y', 'C'} else ''
+    if meta['data_type'] == 'AutoNumber':
+        prefix = ''
+    elif meta.get('is_unique'):
+        prefix = 'must have unique '
+    elif required in {'Y', 'C'}:
+        prefix = 'must have '
+    else:
+        prefix = ''
     lines = []
     lines.append(f"{indent}{prefix}{meta['link_name']}")
     lines.append(f"{indent}(")
     ds_type, extras = map_to_ds_type(meta)
     lines.append(f"{indent}\ttype = {ds_value(ds_type, 'type')}")
     lines.append(f"{indent}\tdisplayname = \"{meta['field']['field_name']}\"")
-    if include_layout:
-        lines.append(f"{indent}\trow = 1")
-        lines.append(f"{indent}\tcolumn = 1")
-    lines.append(f"{indent}\twidth = medium")
+    property_lines = []
     for key, value in extras:
-        lines.append(f"{indent}\t{key} = {ds_value(value, key)}")
+        property_lines.append(f"{indent}\t{key} = {ds_value(value, key)}")
     for key, value in meta['props'].items():
         if key in {'MaxFileCount', 'FileSource', 'AllowMultiple', 'RelatedFormLinkName', 'RelatedFormLinkNames', 'SubFormLinkName'}:
             continue
         attr_name = ds_attr_name(key)
-        lines.append(f"{indent}\t{attr_name} = {ds_value(value, attr_name)}")
+        property_lines.append(f"{indent}\t{attr_name} = {ds_value(value, attr_name)}")
     if meta['data_type'] == 'Address':
-        sub_lines = render_address_components(f"{indent}\t")
-        lines.extend(sub_lines)
+        property_lines.extend(render_address_components(f"{indent}\t"))
+    if include_layout:
+        row_line = f"{indent}\trow = 1"
+        column_line = f"{indent}\tcolumn = 1"
+        if meta['data_type'] == 'SubForm' or ds_type == 'upload file':
+            layout_head = []
+            layout_tail = [row_line, column_line, f"{indent}\twidth = medium"]
+        else:
+            layout_head = [row_line, column_line]
+            layout_tail = [f"{indent}\twidth = medium"]
+    else:
+        layout_head = []
+        layout_tail = [f"{indent}\twidth = medium"]
+    lines.extend(property_lines)
+    lines.extend(layout_head)
     if meta['data_type'] == 'SubForm':
         sub_slug = meta['props'].get('SubFormLinkName')
         if sub_slug and sub_slug not in visited and sub_slug in forms_meta:
@@ -524,6 +662,7 @@ def render_field(meta, forms_meta, indent='\t', include_layout=True, visited=Non
             for sub_meta in forms_meta[sub_slug]:
                 lines.extend(render_field(sub_meta, forms_meta, indent + '\t', include_layout=False, visited=visited))
             visited.remove(sub_slug)
+    lines.extend(layout_tail)
     lines.append(f"{indent})")
     lines.append("")
     return lines

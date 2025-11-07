@@ -11,24 +11,14 @@ form warehouse_shifting
 		width = medium
 	)
 
-	must have shifting_no
+	shifting_no
 	(
 		type = autonumber
 		displayname = "Shifting No."
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have warehouse
-	(
-		type = lookup
-		displayname = "Warehouse"
 		row = 1
 		column = 1
 		width = medium
-		related form = warehouse
 	)
 
 	must have request_date
@@ -40,30 +30,12 @@ form warehouse_shifting
 		width = medium
 	)
 
-	must have from_godown
-	(
-		type = lookup
-		displayname = "From Godown"
-		row = 1
-		column = 1
-		width = medium
-		related form = godown
-	)
-
-	must have to_godown
-	(
-		type = lookup
-		displayname = "To Godown"
-		row = 1
-		column = 1
-		width = medium
-		related form = godown
-	)
-
 	must have reason_code
 	(
 		type = picklist
 		displayname = "Reason Code"
+		values = {"Damage","Space Optimisation","Audit","Other"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -73,27 +45,16 @@ form warehouse_shifting
 	(
 		type = textarea
 		displayname = "Other Reason"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	must have products
 	(
 		type = grid
 		displayname = "Products"
-		row = 1
-		column = 1
-		width = medium
-		must have product
-		(
-			type = lookup
-			displayname = "Product"
-			width = medium
-			related form = product_master
-		)
-
 		batch
 		(
 			type = text
@@ -112,31 +73,27 @@ form warehouse_shifting
 		(
 			type = picklist
 			displayname = "UOM"
+			values = {"Units","Pieces","KG","Tonnes","Litres","Metres"}
+			maxchar = 100
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	freight_wage_drafts
 	(
 		type = grid
 		displayname = "Freight/Wage Drafts"
-		row = 1
-		column = 1
-		width = medium
 		must have expense_type
 		(
 			type = picklist
 			displayname = "Expense Type"
+			values = {"Freight","Loading","Unloading"}
+			maxchar = 100
 			width = medium
-		)
-
-		must have vendor
-		(
-			type = lookup
-			displayname = "Vendor"
-			width = medium
-			related forms = {"vendor","transporter"}
 		)
 
 		must have amount
@@ -150,6 +107,8 @@ form warehouse_shifting
 		(
 			type = picklist
 			displayname = "Payable By"
+			values = {"Sending Warehouse","Receiving Warehouse"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -157,15 +116,22 @@ form warehouse_shifting
 		(
 			type = picklist
 			displayname = "Approval Status"
+			values = {"Draft","Pending","Approved"}
+			maxchar = 100
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have status
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Draft","Pending Approval","Approved","Completed"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -184,11 +150,11 @@ form warehouse_shifting
 	(
 		type = upload file
 		displayname = "Attachments"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	actions

@@ -11,34 +11,14 @@ form production_yield_log
 		width = medium
 	)
 
-	must have log_id
+	log_id
 	(
 		type = autonumber
 		displayname = "Log ID"
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have work_order
-	(
-		type = lookup
-		displayname = "Work Order"
 		row = 1
 		column = 1
 		width = medium
-		related form = work_order_production_batch
-	)
-
-	must have product
-	(
-		type = lookup
-		displayname = "Product"
-		row = 1
-		column = 1
-		width = medium
-		related form = product_master
 	)
 
 	planned_yield
@@ -90,10 +70,10 @@ form production_yield_log
 	(
 		type = textarea
 		displayname = "Remarks"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	must have report_date

@@ -11,14 +11,13 @@ form company
 		width = medium
 	)
 
-	must have company_code
+	must have unique company_code
 	(
 		type = text
 		displayname = "Company Code"
 		row = 1
 		column = 1
 		width = medium
-		is unique = true
 	)
 
 	must have legal_name
@@ -70,9 +69,6 @@ form company
 	(
 		type = address
 		displayname = "Registered Address"
-		row = 1
-		column = 1
-		width = medium
 		capture_coordinates = true
 		adjust_using_map = false
 		personal data = true
@@ -100,9 +96,9 @@ form company
 			displayname = "State / Province"
 		)
 
-		postal_code
+		postal_Code
 		(
-			type = postal_code
+			type = postal_Code
 			displayname = "Postal Code"
 		)
 
@@ -125,15 +121,15 @@ form company
 			displayname = "Longitude"
 			visibility = false
 		)
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have billing_address
 	(
 		type = address
 		displayname = "Billing Address"
-		row = 1
-		column = 1
-		width = medium
 		capture_coordinates = true
 		adjust_using_map = false
 		personal data = true
@@ -161,9 +157,9 @@ form company
 			displayname = "State / Province"
 		)
 
-		postal_code
+		postal_Code
 		(
-			type = postal_code
+			type = postal_Code
 			displayname = "Postal Code"
 		)
 
@@ -186,32 +182,37 @@ form company
 			displayname = "Longitude"
 			visibility = false
 		)
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	contact_email
 	(
 		type = email
 		displayname = "Contact Email"
+		personal data = true
 		row = 1
 		column = 1
 		width = medium
-		personal data = true
 	)
 
 	contact_phone
 	(
 		type = phonenumber
 		displayname = "Contact Phone"
+		personal data = true
 		row = 1
 		column = 1
 		width = medium
-		personal data = true
 	)
 
 	must have default_currency
 	(
 		type = picklist
 		displayname = "Default Currency"
+		values = {"INR","USD","EUR"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -248,10 +249,10 @@ form company
 	(
 		type = textarea
 		displayname = "Notes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

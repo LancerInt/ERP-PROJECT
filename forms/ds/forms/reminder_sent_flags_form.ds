@@ -24,29 +24,21 @@ form reminder_sent_flags
 	(
 		type = picklist
 		displayname = "Reminder Method"
+		values = {"Email","Call","SMS"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	reminder_sent_by
-	(
-		type = lookup
-		displayname = "Reminder Sent By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
 	)
 
 	notes
 	(
 		type = textarea
 		displayname = "Notes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

@@ -15,6 +15,8 @@ form secondary_uoms
 	(
 		type = picklist
 		displayname = "To UOM"
+		values = {"Units","Pieces","KG","Tonnes","Litres","Metres"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

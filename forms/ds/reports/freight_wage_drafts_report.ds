@@ -4,7 +4,6 @@ list freight_wage_drafts_report
 	show all rows from freight_wage_drafts
 	(
 		expense_type as "Expense Type"
-		vendor as "Vendor"
 		amount as "Amount"
 		payable_by as "Payable By"
 		approval_status as "Approval Status"
@@ -19,7 +18,6 @@ list freight_wage_drafts_report
 				fields
 				(
 					expense_type as "Expense Type"
-					vendor as "Vendor"
 					amount as "Amount"
 					payable_by as "Payable By"
 					approval_status as "Approval Status"
@@ -66,7 +64,6 @@ list freight_wage_drafts_report
 				fields
 				(
 					expense_type as "Expense Type"
-					vendor as "Vendor"
 					amount as "Amount"
 					payable_by as "Payable By"
 					approval_status as "Approval Status"

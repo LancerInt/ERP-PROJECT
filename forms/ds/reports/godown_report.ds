@@ -4,7 +4,6 @@ list godown_report
 	show all rows from godown
 	(
 		godown_code as "Godown Code"
-		warehouse as "Warehouse"
 		godown_name as "Godown Name"
 		storage_condition as "Storage Condition"
 		capacity_uom as "Capacity UOM"
@@ -24,7 +23,6 @@ list godown_report
 				fields
 				(
 					godown_code as "Godown Code"
-					warehouse as "Warehouse"
 					godown_name as "Godown Name"
 					storage_condition as "Storage Condition"
 					capacity_uom as "Capacity UOM"
@@ -76,7 +74,6 @@ list godown_report
 				fields
 				(
 					godown_code as "Godown Code"
-					warehouse as "Warehouse"
 					godown_name as "Godown Name"
 					storage_condition as "Storage Condition"
 					capacity_uom as "Capacity UOM"

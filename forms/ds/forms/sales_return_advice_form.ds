@@ -11,14 +11,14 @@ form sales_return_advice
 		width = medium
 	)
 
-	must have return_no
+	return_no
 	(
 		type = autonumber
 		displayname = "Return No."
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have return_date
@@ -30,26 +30,6 @@ form sales_return_advice
 		width = medium
 	)
 
-	must have customer
-	(
-		type = lookup
-		displayname = "Customer"
-		row = 1
-		column = 1
-		width = medium
-		related form = customer
-	)
-
-	must have original_invoice
-	(
-		type = lookup
-		displayname = "Original Invoice"
-		row = 1
-		column = 1
-		width = medium
-		related form = sales_invoice_check
-	)
-
 	returned_by
 	(
 		type = text
@@ -59,31 +39,10 @@ form sales_return_advice
 		width = medium
 	)
 
-	must have received_warehouse
-	(
-		type = lookup
-		displayname = "Received Warehouse"
-		row = 1
-		column = 1
-		width = medium
-		related form = warehouse
-	)
-
 	must have return_lines
 	(
 		type = grid
 		displayname = "Return Lines"
-		row = 1
-		column = 1
-		width = medium
-		must have product
-		(
-			type = lookup
-			displayname = "Product"
-			width = medium
-			related form = product_master
-		)
-
 		batch
 		(
 			type = text
@@ -102,6 +61,8 @@ form sales_return_advice
 		(
 			type = picklist
 			displayname = "UOM"
+			values = {"Units","Pieces","KG","Tonnes","Litres","Metres"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -109,6 +70,8 @@ form sales_return_advice
 		(
 			type = picklist
 			displayname = "Condition"
+			values = {"Resaleable","Reformulate","Scrap"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -116,24 +79,21 @@ form sales_return_advice
 		(
 			type = textarea
 			displayname = "Viability Notes"
-			width = medium
 			height = 100px
-		)
-
-		packing_material_captured
-		(
-			type = lookup
-			displayname = "Packing Material Captured"
 			width = medium
-			related form = product_master
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have freight_terms
 	(
 		type = picklist
 		displayname = "Freight Terms"
+		values = {"Paid","To Pay","Mixed"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -143,22 +103,13 @@ form sales_return_advice
 	(
 		type = grid
 		displayname = "Freight Charges"
-		row = 1
-		column = 1
-		width = medium
 		must have freight_type
 		(
 			type = picklist
 			displayname = "Freight Type"
+			values = {"Local Drayage","Linehaul"}
+			maxchar = 100
 			width = medium
-		)
-
-		transporter
-		(
-			type = lookup
-			displayname = "Transporter"
-			width = medium
-			related form = transporter
 		)
 
 		must have amount
@@ -179,31 +130,27 @@ form sales_return_advice
 		(
 			type = picklist
 			displayname = "Payable By"
+			values = {"Company","Customer"}
+			maxchar = 100
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	loading_unloading_charges
 	(
 		type = grid
 		displayname = "Loading/Unloading Charges"
-		row = 1
-		column = 1
-		width = medium
 		must have charge_type
 		(
 			type = picklist
 			displayname = "Charge Type"
+			values = {"Loading","Unloading"}
+			maxchar = 100
 			width = medium
-		)
-
-		contractor_vendor
-		(
-			type = lookup
-			displayname = "Contractor Vendor"
-			width = medium
-			related form = vendor
 		)
 
 		must have amount
@@ -224,15 +171,22 @@ form sales_return_advice
 		(
 			type = picklist
 			displayname = "Payable By"
+			values = {"Company","Customer"}
+			maxchar = 100
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have qc_requirement
 	(
 		type = picklist
 		displayname = "QC Requirement"
+		values = {"Required","Optional"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -242,6 +196,8 @@ form sales_return_advice
 	(
 		type = picklist
 		displayname = "Approval Status"
+		values = {"Draft","Pending","Approved","Rejected"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -251,22 +207,13 @@ form sales_return_advice
 	(
 		type = grid
 		displayname = "Approval Trail"
-		row = 1
-		column = 1
-		width = medium
 		must have action
 		(
 			type = picklist
 			displayname = "Action"
+			values = {"Approved","Rejected","Partial"}
+			maxchar = 100
 			width = medium
-		)
-
-		must have actor
-		(
-			type = lookup
-			displayname = "Actor"
-			width = medium
-			related form = stakeholder_user
 		)
 
 		must have action_date
@@ -280,20 +227,23 @@ form sales_return_advice
 		(
 			type = textarea
 			displayname = "Remarks"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	remarks
 	(
 		type = textarea
 		displayname = "Remarks"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

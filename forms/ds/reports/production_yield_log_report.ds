@@ -4,8 +4,6 @@ list production_yield_log_report
 	show all rows from production_yield_log
 	(
 		log_id as "Log ID"
-		work_order as "Work Order"
-		product as "Product"
 		planned_yield as "Planned Yield %"
 		actual_output_qty as "Actual Output Qty"
 		purity as "Purity %"
@@ -24,8 +22,6 @@ list production_yield_log_report
 				fields
 				(
 					log_id as "Log ID"
-					work_order as "Work Order"
-					product as "Product"
 					planned_yield as "Planned Yield %"
 					actual_output_qty as "Actual Output Qty"
 					purity as "Purity %"
@@ -76,8 +72,6 @@ list production_yield_log_report
 				fields
 				(
 					log_id as "Log ID"
-					work_order as "Work Order"
-					product as "Product"
 					planned_yield as "Planned Yield %"
 					actual_output_qty as "Actual Output Qty"
 					purity as "Purity %"

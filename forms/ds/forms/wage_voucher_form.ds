@@ -11,49 +11,22 @@ form wage_voucher
 		width = medium
 	)
 
-	must have voucher_no
+	voucher_no
 	(
 		type = autonumber
 		displayname = "Voucher No."
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have work_order
-	(
-		type = lookup
-		displayname = "Work Order"
 		row = 1
 		column = 1
 		width = medium
-		related form = work_order_production_batch
 	)
 
 	must have wage_type
 	(
 		type = picklist
 		displayname = "Wage Type"
-		row = 1
-		column = 1
-		width = medium
-	)
-
-	must have contractor_vendor
-	(
-		type = lookup
-		displayname = "Contractor Vendor"
-		row = 1
-		column = 1
-		width = medium
-		related form = vendor
-	)
-
-	must have staff_group
-	(
-		type = text
-		displayname = "Staff Group"
+		values = {"Template Rate","Headcount"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -63,23 +36,12 @@ form wage_voucher
 	(
 		type = grid
 		displayname = "Hours / Tasks"
-		row = 1
-		column = 1
-		width = medium
-		staff
-		(
-			type = lookup
-			displayname = "Staff"
-			width = medium
-			related form = staff_master
-		)
-
 		must have task_description
 		(
 			type = textarea
 			displayname = "Task Description"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
 		hours_worked
@@ -96,6 +58,9 @@ form wage_voucher
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have amount
@@ -116,16 +81,6 @@ form wage_voucher
 		width = medium
 	)
 
-	must have prepared_by
-	(
-		type = lookup
-		displayname = "Prepared By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
-	)
-
 	must have prepared_date
 	(
 		type = date
@@ -139,28 +94,21 @@ form wage_voucher
 	(
 		type = grid
 		displayname = "Approval Workflow"
-		row = 1
-		column = 1
-		width = medium
 		must have stage
 		(
 			type = picklist
 			displayname = "Stage"
+			values = {"Draft Review","Finance Manager Review","Office Manager Authorization"}
+			maxchar = 100
 			width = medium
-		)
-
-		must have approver
-		(
-			type = lookup
-			displayname = "Approver"
-			width = medium
-			related form = stakeholder_user
 		)
 
 		must have decision
 		(
 			type = picklist
 			displayname = "Decision"
+			values = {"Pending","Approved","Rejected"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -175,16 +123,21 @@ form wage_voucher
 		(
 			type = textarea
 			displayname = "Remarks"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have status
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Draft","Pending","Approved","Paid"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -194,10 +147,10 @@ form wage_voucher
 	(
 		type = textarea
 		displayname = "Remarks"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

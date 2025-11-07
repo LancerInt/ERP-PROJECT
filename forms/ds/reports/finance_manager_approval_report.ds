@@ -3,7 +3,6 @@ list finance_manager_approval_report
 	displayName = "Finance Manager Approval Report"
 	show all rows from finance_manager_approval
 	(
-		approved_by as "Approved By"
 		approval_date as "Approval Date"
 		remarks as "Remarks"
 	)
@@ -16,7 +15,6 @@ list finance_manager_approval_report
 				title = "Finance Manager Approval Overview"
 				fields
 				(
-					approved_by as "Approved By"
 					approval_date as "Approval Date"
 					remarks as "Remarks"
 				)
@@ -61,7 +59,6 @@ list finance_manager_approval_report
 				title = "Finance Manager Approval Overview"
 				fields
 				(
-					approved_by as "Approved By"
 					approval_date as "Approval Date"
 					remarks as "Remarks"
 				)

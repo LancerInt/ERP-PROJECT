@@ -4,14 +4,10 @@ list wage_voucher_report
 	show all rows from wage_voucher
 	(
 		voucher_no as "Voucher No."
-		work_order as "Work Order"
 		wage_type as "Wage Type"
-		contractor_vendor as "Contractor Vendor"
-		staff_group as "Staff Group"
 		hours_tasks as "Hours / Tasks"
 		amount as "Amount"
 		tds as "TDS %"
-		prepared_by as "Prepared By"
 		prepared_date as "Prepared Date"
 		approval_workflow as "Approval Workflow"
 		status as "Status"
@@ -27,14 +23,10 @@ list wage_voucher_report
 				fields
 				(
 					voucher_no as "Voucher No."
-					work_order as "Work Order"
 					wage_type as "Wage Type"
-					contractor_vendor as "Contractor Vendor"
-					staff_group as "Staff Group"
 					hours_tasks as "Hours / Tasks"
 					amount as "Amount"
 					tds as "TDS %"
-					prepared_by as "Prepared By"
 					prepared_date as "Prepared Date"
 					approval_workflow as "Approval Workflow"
 					status as "Status"
@@ -82,14 +74,10 @@ list wage_voucher_report
 				fields
 				(
 					voucher_no as "Voucher No."
-					work_order as "Work Order"
 					wage_type as "Wage Type"
-					contractor_vendor as "Contractor Vendor"
-					staff_group as "Staff Group"
 					hours_tasks as "Hours / Tasks"
 					amount as "Amount"
 					tds as "TDS %"
-					prepared_by as "Prepared By"
 					prepared_date as "Prepared Date"
 					approval_workflow as "Approval Workflow"
 					status as "Status"

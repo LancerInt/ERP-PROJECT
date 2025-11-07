@@ -11,16 +11,6 @@ form receipt_lines_2
 		width = medium
 	)
 
-	must have product
-	(
-		type = lookup
-		displayname = "Product"
-		row = 1
-		column = 1
-		width = medium
-		related form = product_master
-	)
-
 	batch
 	(
 		type = text
@@ -52,25 +42,19 @@ form receipt_lines_2
 	(
 		type = picklist
 		displayname = "UOM"
+		values = {"Units","Pieces","KG","Tonnes","Litres","Metres"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have received_godown
-	(
-		type = lookup
-		displayname = "Received Godown"
-		row = 1
-		column = 1
-		width = medium
-		related form = godown
 	)
 
 	condition
 	(
 		type = picklist
 		displayname = "Condition"
+		values = {"Good","Damaged"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

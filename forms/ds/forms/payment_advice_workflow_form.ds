@@ -11,43 +11,25 @@ form payment_advice_workflow
 		width = medium
 	)
 
-	must have advice_no
+	advice_no
 	(
 		type = autonumber
 		displayname = "Advice No."
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have beneficiary_type
 	(
 		type = picklist
 		displayname = "Beneficiary Type"
+		values = {"Vendor","Transporter","Contractor"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have beneficiary
-	(
-		type = lookup
-		displayname = "Beneficiary"
-		row = 1
-		column = 1
-		width = medium
-		related forms = {"vendor","transporter"}
-	)
-
-	must have source_document
-	(
-		type = lookup
-		displayname = "Source Document"
-		row = 1
-		column = 1
-		width = medium
-		related forms = {"purchase_order","receipt_advice","freight_advice","wage_voucher","credit_debit_note"}
 	)
 
 	must have amount
@@ -63,13 +45,12 @@ form payment_advice_workflow
 	(
 		type = grid
 		displayname = "TDS/TCS Details"
-		row = 1
-		column = 1
-		width = medium
 		must have tax_type
 		(
 			type = picklist
 			displayname = "Tax Type"
+			values = {"TDS","TCS"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -94,6 +75,9 @@ form payment_advice_workflow
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have due_date
@@ -109,29 +93,11 @@ form payment_advice_workflow
 	(
 		type = picklist
 		displayname = "Payment Method"
+		values = {"Bank Transfer","Cash","Cheque","UPI"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have bank_account
-	(
-		type = lookup
-		displayname = "Bank Account"
-		row = 1
-		column = 1
-		width = medium
-		related form = vendor_bank_details
-	)
-
-	must have prepared_by
-	(
-		type = lookup
-		displayname = "Prepared By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
 	)
 
 	must have prepared_date
@@ -147,17 +113,6 @@ form payment_advice_workflow
 	(
 		type = grid
 		displayname = "Finance Manager Approval"
-		row = 1
-		column = 1
-		width = medium
-		must have approved_by
-		(
-			type = lookup
-			displayname = "Approved By"
-			width = medium
-			related form = stakeholder_user
-		)
-
 		must have approval_date
 		(
 			type = datetime
@@ -169,27 +124,19 @@ form payment_advice_workflow
 		(
 			type = textarea
 			displayname = "Remarks"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have office_manager_authorization
 	(
 		type = grid
 		displayname = "Office Manager Authorization"
-		row = 1
-		column = 1
-		width = medium
-		must have authorized_by
-		(
-			type = lookup
-			displayname = "Authorized By"
-			width = medium
-			related form = stakeholder_user
-		)
-
 		must have authorization_date
 		(
 			type = datetime
@@ -201,16 +148,21 @@ form payment_advice_workflow
 		(
 			type = textarea
 			displayname = "Remarks"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have payment_status
 	(
 		type = picklist
 		displayname = "Payment Status"
+		values = {"Draft","Pending Finance","Pending Authorization","Approved","Paid"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -229,11 +181,11 @@ form payment_advice_workflow
 	(
 		type = upload file
 		displayname = "Attachments"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	actions

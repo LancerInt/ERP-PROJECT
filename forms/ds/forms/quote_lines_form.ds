@@ -11,34 +11,14 @@ form quote_lines
 		width = medium
 	)
 
-	must have pr_line
-	(
-		type = lookup
-		displayname = "PR Line"
-		row = 1
-		column = 1
-		width = medium
-		related form = pr_lines
-	)
-
-	must have product_service
-	(
-		type = lookup
-		displayname = "Product/Service"
-		row = 1
-		column = 1
-		width = medium
-		related form = product_master
-	)
-
 	specification
 	(
 		type = textarea
 		displayname = "Specification"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	must have quantity_offered
@@ -54,6 +34,8 @@ form quote_lines
 	(
 		type = picklist
 		displayname = "UOM"
+		values = {"Units","Pieces","KG","Tonnes","Litres","Metres"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

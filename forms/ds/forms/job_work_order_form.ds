@@ -11,44 +11,14 @@ form job_work_order
 		width = medium
 	)
 
-	must have order_no
+	order_no
 	(
 		type = autonumber
 		displayname = "Order No."
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have warehouse
-	(
-		type = lookup
-		displayname = "Warehouse"
 		row = 1
 		column = 1
 		width = medium
-		related form = warehouse
-	)
-
-	must have vendor
-	(
-		type = lookup
-		displayname = "Vendor"
-		row = 1
-		column = 1
-		width = medium
-		related form = vendor
-	)
-
-	must have template
-	(
-		type = lookup
-		displayname = "Template"
-		row = 1
-		column = 1
-		width = medium
-		related form = template_library
 	)
 
 	must have template_revision
@@ -91,22 +61,13 @@ form job_work_order
 	(
 		type = grid
 		displayname = "Materials Supplied"
-		row = 1
-		column = 1
-		width = medium
 		must have material_type
 		(
 			type = picklist
 			displayname = "Material Type"
+			values = {"RM","PM","Machine"}
+			maxchar = 100
 			width = medium
-		)
-
-		must have product_machine
-		(
-			type = lookup
-			displayname = "Product/Machine"
-			width = medium
-			related forms = {"product_master","machinery"}
 		)
 
 		batch
@@ -127,26 +88,20 @@ form job_work_order
 		(
 			type = picklist
 			displayname = "UOM"
+			values = {"Units","Pieces","KG","Tonnes","Litres","Metres"}
+			maxchar = 100
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have outputs_expected
 	(
 		type = grid
 		displayname = "Outputs Expected"
-		row = 1
-		column = 1
-		width = medium
-		must have product
-		(
-			type = lookup
-			displayname = "Product"
-			width = medium
-			related form = product_master
-		)
-
 		must have expected_quantity
 		(
 			type = number
@@ -158,6 +113,8 @@ form job_work_order
 		(
 			type = picklist
 			displayname = "UOM"
+			values = {"Units","Pieces","KG","Tonnes","Litres","Metres"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -168,12 +125,17 @@ form job_work_order
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have freight_terms
 	(
 		type = picklist
 		displayname = "Freight Terms"
+		values = {"Paid","To Pay","Mixed"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -183,6 +145,8 @@ form job_work_order
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Draft","In Progress","Completed"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

@@ -4,12 +4,9 @@ list machinery_report
 	show all rows from machinery
 	(
 		machine_id as "Machine ID"
-		warehouse as "Warehouse"
-		godown as "Godown"
 		machine_name as "Machine Name"
 		category as "Category"
 		commission_date as "Commission Date"
-		maintenance_vendor as "Maintenance Vendor"
 		next_service_due as "Next Service Due"
 		status as "Status"
 		notes as "Notes"
@@ -24,12 +21,9 @@ list machinery_report
 				fields
 				(
 					machine_id as "Machine ID"
-					warehouse as "Warehouse"
-					godown as "Godown"
 					machine_name as "Machine Name"
 					category as "Category"
 					commission_date as "Commission Date"
-					maintenance_vendor as "Maintenance Vendor"
 					next_service_due as "Next Service Due"
 					status as "Status"
 					notes as "Notes"
@@ -76,12 +70,9 @@ list machinery_report
 				fields
 				(
 					machine_id as "Machine ID"
-					warehouse as "Warehouse"
-					godown as "Godown"
 					machine_name as "Machine Name"
 					category as "Category"
 					commission_date as "Commission Date"
-					maintenance_vendor as "Maintenance Vendor"
 					next_service_due as "Next Service Due"
 					status as "Status"
 					notes as "Notes"

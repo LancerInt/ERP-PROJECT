@@ -11,34 +11,14 @@ form quote_response
 		width = medium
 	)
 
-	must have quote_id
+	quote_id
 	(
 		type = autonumber
 		displayname = "Quote ID"
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have rfq
-	(
-		type = lookup
-		displayname = "RFQ"
 		row = 1
 		column = 1
 		width = medium
-		related form = rfq_header
-	)
-
-	must have vendor
-	(
-		type = lookup
-		displayname = "Vendor"
-		row = 1
-		column = 1
-		width = medium
-		related form = vendor
 	)
 
 	must have quote_date
@@ -63,6 +43,8 @@ form quote_response
 	(
 		type = picklist
 		displayname = "Currency"
+		values = {"INR","USD","EUR"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -72,31 +54,12 @@ form quote_response
 	(
 		type = grid
 		displayname = "Quote Lines"
-		row = 1
-		column = 1
-		width = medium
-		must have pr_line
-		(
-			type = lookup
-			displayname = "PR Line"
-			width = medium
-			related form = pr_lines
-		)
-
-		must have product_service
-		(
-			type = lookup
-			displayname = "Product/Service"
-			width = medium
-			related form = product_master
-		)
-
 		specification
 		(
 			type = textarea
 			displayname = "Specification"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
 		must have quantity_offered
@@ -110,6 +73,8 @@ form quote_response
 		(
 			type = picklist
 			displayname = "UOM"
+			values = {"Units","Pieces","KG","Tonnes","Litres","Metres"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -148,12 +113,17 @@ form quote_response
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have freight_terms
 	(
 		type = picklist
 		displayname = "Freight Terms"
+		values = {"Paid","To_Pay","Mixed"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -163,6 +133,8 @@ form quote_response
 	(
 		type = picklist
 		displayname = "Payment Terms"
+		values = {"Net 15","Net 30","Custom"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -172,10 +144,10 @@ form quote_response
 	(
 		type = textarea
 		displayname = "Delivery Terms"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	lead_time_days
@@ -191,21 +163,21 @@ form quote_response
 	(
 		type = upload file
 		displayname = "Attachments"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	remarks
 	(
 		type = textarea
 		displayname = "Remarks"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	evaluation_score

@@ -4,8 +4,6 @@ list receivable_ledger_report
 	show all rows from receivable_ledger
 	(
 		ledger_id as "Ledger ID"
-		customer as "Customer"
-		invoice_reference as "Invoice Reference"
 		invoice_date as "Invoice Date"
 		due_date as "Due Date"
 		amount as "Amount"
@@ -26,8 +24,6 @@ list receivable_ledger_report
 				fields
 				(
 					ledger_id as "Ledger ID"
-					customer as "Customer"
-					invoice_reference as "Invoice Reference"
 					invoice_date as "Invoice Date"
 					due_date as "Due Date"
 					amount as "Amount"
@@ -80,8 +76,6 @@ list receivable_ledger_report
 				fields
 				(
 					ledger_id as "Ledger ID"
-					customer as "Customer"
-					invoice_reference as "Invoice Reference"
 					invoice_date as "Invoice Date"
 					due_date as "Due Date"
 					amount as "Amount"

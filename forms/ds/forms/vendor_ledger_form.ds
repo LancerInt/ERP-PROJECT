@@ -11,43 +11,25 @@ form vendor_ledger
 		width = medium
 	)
 
-	must have ledger_id
+	ledger_id
 	(
 		type = autonumber
 		displayname = "Ledger ID"
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have vendor
-	(
-		type = lookup
-		displayname = "Vendor"
 		row = 1
 		column = 1
 		width = medium
-		related form = vendor
 	)
 
 	must have document_type
 	(
 		type = picklist
 		displayname = "Document Type"
+		values = {"PO","Receipt","Invoice","Freight","Wage","Credit Note"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have document_reference
-	(
-		type = lookup
-		displayname = "Document Reference"
-		row = 1
-		column = 1
-		width = medium
-		related forms = {"purchase_order","receipt_advice","freight_advice","wage_voucher","credit_debit_note"}
 	)
 
 	must have document_date
@@ -81,13 +63,12 @@ form vendor_ledger
 	(
 		type = grid
 		displayname = "Tax Breakdown"
-		row = 1
-		column = 1
-		width = medium
 		must have tax_type
 		(
 			type = picklist
 			displayname = "Tax Type"
+			values = {"GST","TDS","TCS"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -105,6 +86,9 @@ form vendor_ledger
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	due_date
@@ -120,6 +104,8 @@ form vendor_ledger
 	(
 		type = picklist
 		displayname = "Payment Status"
+		values = {"Not Due","Partially Paid","Paid","Overdue"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -129,6 +115,8 @@ form vendor_ledger
 	(
 		type = picklist
 		displayname = "Ageing Bucket"
+		values = {"0-30","31-60",">60"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -138,10 +126,10 @@ form vendor_ledger
 	(
 		type = textarea
 		displayname = "Notes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

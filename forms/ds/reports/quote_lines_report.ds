@@ -3,8 +3,6 @@ list quote_lines_report
 	displayName = "Quote Lines Report"
 	show all rows from quote_lines
 	(
-		pr_line as "PR Line"
-		product_service as "Product/Service"
 		specification as "Specification"
 		quantity_offered as "Quantity Offered"
 		uom as "UOM"
@@ -23,8 +21,6 @@ list quote_lines_report
 				title = "Quote Lines Overview"
 				fields
 				(
-					pr_line as "PR Line"
-					product_service as "Product/Service"
 					specification as "Specification"
 					quantity_offered as "Quantity Offered"
 					uom as "UOM"
@@ -75,8 +71,6 @@ list quote_lines_report
 				title = "Quote Lines Overview"
 				fields
 				(
-					pr_line as "PR Line"
-					product_service as "Product/Service"
 					specification as "Specification"
 					quantity_offered as "Quantity Offered"
 					uom as "UOM"

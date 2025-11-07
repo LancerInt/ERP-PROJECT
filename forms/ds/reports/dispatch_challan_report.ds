@@ -4,21 +4,16 @@ list dispatch_challan_report
 	show all rows from dispatch_challan
 	(
 		dc_no as "DC No."
-		warehouse as "Warehouse"
 		dispatch_date as "Dispatch Date"
-		transporter as "Transporter"
 		freight_rate_type as "Freight Rate Type"
 		freight_rate_value as "Freight Rate Value"
 		freight_amount_total as "Freight Amount Total"
 		lorry_no as "Lorry No."
 		driver_contact as "Driver Contact"
-		linked_so_lines as "Linked SO Lines"
 		dc_lines as "DC Lines"
 		delivery_locations as "Delivery Locations"
 		documents as "Documents"
 		status as "Status"
-		created_by as "Created By"
-		freight_advice_link as "Freight Advice Link"
 	)
 	quickview
 	(
@@ -30,21 +25,16 @@ list dispatch_challan_report
 				fields
 				(
 					dc_no as "DC No."
-					warehouse as "Warehouse"
 					dispatch_date as "Dispatch Date"
-					transporter as "Transporter"
 					freight_rate_type as "Freight Rate Type"
 					freight_rate_value as "Freight Rate Value"
 					freight_amount_total as "Freight Amount Total"
 					lorry_no as "Lorry No."
 					driver_contact as "Driver Contact"
-					linked_so_lines as "Linked SO Lines"
 					dc_lines as "DC Lines"
 					delivery_locations as "Delivery Locations"
 					documents as "Documents"
 					status as "Status"
-					created_by as "Created By"
-					freight_advice_link as "Freight Advice Link"
 				)
 			)
 		)
@@ -88,21 +78,16 @@ list dispatch_challan_report
 				fields
 				(
 					dc_no as "DC No."
-					warehouse as "Warehouse"
 					dispatch_date as "Dispatch Date"
-					transporter as "Transporter"
 					freight_rate_type as "Freight Rate Type"
 					freight_rate_value as "Freight Rate Value"
 					freight_amount_total as "Freight Amount Total"
 					lorry_no as "Lorry No."
 					driver_contact as "Driver Contact"
-					linked_so_lines as "Linked SO Lines"
 					dc_lines as "DC Lines"
 					delivery_locations as "Delivery Locations"
 					documents as "Documents"
 					status as "Status"
-					created_by as "Created By"
-					freight_advice_link as "Freight Advice Link"
 				)
 			)
 		)

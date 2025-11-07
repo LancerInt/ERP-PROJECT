@@ -11,24 +11,14 @@ form hours_tasks
 		width = medium
 	)
 
-	staff
-	(
-		type = lookup
-		displayname = "Staff"
-		row = 1
-		column = 1
-		width = medium
-		related form = staff_master
-	)
-
 	must have task_description
 	(
 		type = textarea
 		displayname = "Task Description"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	hours_worked

@@ -3,7 +3,6 @@ list assigned_parameters_report
 	displayName = "Assigned Parameters Report"
 	show all rows from assigned_parameters
 	(
-		parameter as "Parameter"
 		result_value as "Result Value"
 		result_text as "Result Text"
 		result_photo as "Result Photo"
@@ -18,7 +17,6 @@ list assigned_parameters_report
 				title = "Assigned Parameters Overview"
 				fields
 				(
-					parameter as "Parameter"
 					result_value as "Result Value"
 					result_text as "Result Text"
 					result_photo as "Result Photo"
@@ -65,7 +63,6 @@ list assigned_parameters_report
 				title = "Assigned Parameters Overview"
 				fields
 				(
-					parameter as "Parameter"
 					result_value as "Result Value"
 					result_text as "Result Text"
 					result_photo as "Result Photo"

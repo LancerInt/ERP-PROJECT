@@ -3,7 +3,6 @@ list approval_log_report
 	displayName = "Approval Log Report"
 	show all rows from approval_log
 	(
-		approved_by as "Approved By"
 		approval_date as "Approval Date"
 		remarks as "Remarks"
 	)
@@ -16,7 +15,6 @@ list approval_log_report
 				title = "Approval Log Overview"
 				fields
 				(
-					approved_by as "Approved By"
 					approval_date as "Approval Date"
 					remarks as "Remarks"
 				)
@@ -61,7 +59,6 @@ list approval_log_report
 				title = "Approval Log Overview"
 				fields
 				(
-					approved_by as "Approved By"
 					approval_date as "Approval Date"
 					remarks as "Remarks"
 				)

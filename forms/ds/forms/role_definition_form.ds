@@ -33,16 +33,18 @@ form role_definition
 	(
 		type = textarea
 		displayname = "Module Permissions"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	must have data_scope
 	(
 		type = picklist
 		displayname = "Data Scope"
+		values = {"Global","Company","Warehouse"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -52,13 +54,12 @@ form role_definition
 	(
 		type = grid
 		displayname = "Approval Levels"
-		row = 1
-		column = 1
-		width = medium
 		must have module
 		(
 			type = picklist
 			displayname = "Module"
+			values = {"Purchase","Sales","Production","etc"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -66,6 +67,8 @@ form role_definition
 		(
 			type = picklist
 			displayname = "Stage"
+			values = {"Request","Evaluation","Payment"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -83,16 +86,19 @@ form role_definition
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	default_share_rules
 	(
 		type = textarea
 		displayname = "Default Share Rules"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	must have active_flag

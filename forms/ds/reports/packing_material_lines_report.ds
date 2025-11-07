@@ -3,7 +3,6 @@ list packing_material_lines_report
 	displayName = "Packing Material Lines Report"
 	show all rows from packing_material_lines
 	(
-		packaging_sku as "Packaging SKU"
 		quantity as "Quantity"
 		uom as "UOM"
 		condition as "Condition"
@@ -17,7 +16,6 @@ list packing_material_lines_report
 				title = "Packing Material Lines Overview"
 				fields
 				(
-					packaging_sku as "Packaging SKU"
 					quantity as "Quantity"
 					uom as "UOM"
 					condition as "Condition"
@@ -63,7 +61,6 @@ list packing_material_lines_report
 				title = "Packing Material Lines Overview"
 				fields
 				(
-					packaging_sku as "Packaging SKU"
 					quantity as "Quantity"
 					uom as "UOM"
 					condition as "Condition"

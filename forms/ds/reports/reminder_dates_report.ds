@@ -4,7 +4,6 @@ list reminder_dates_report
 	show all rows from reminder_dates
 	(
 		reminder_date as "Reminder Date"
-		reminder_sent_by as "Reminder Sent By"
 		reminder_method as "Reminder Method"
 	)
 	quickview
@@ -17,7 +16,6 @@ list reminder_dates_report
 				fields
 				(
 					reminder_date as "Reminder Date"
-					reminder_sent_by as "Reminder Sent By"
 					reminder_method as "Reminder Method"
 				)
 			)
@@ -62,7 +60,6 @@ list reminder_dates_report
 				fields
 				(
 					reminder_date as "Reminder Date"
-					reminder_sent_by as "Reminder Sent By"
 					reminder_method as "Reminder Method"
 				)
 			)

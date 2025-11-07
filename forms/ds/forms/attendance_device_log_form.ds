@@ -11,14 +11,14 @@ form attendance_device_log
 		width = medium
 	)
 
-	must have log_id
+	log_id
 	(
 		type = autonumber
 		displayname = "Log ID"
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have device_id
@@ -43,6 +43,8 @@ form attendance_device_log
 	(
 		type = picklist
 		displayname = "Event Type"
+		values = {"Capture","Sync"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -52,6 +54,8 @@ form attendance_device_log
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Success","Failed"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -61,10 +65,10 @@ form attendance_device_log
 	(
 		type = textarea
 		displayname = "Error Message"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

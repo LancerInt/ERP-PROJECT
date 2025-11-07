@@ -5,15 +5,11 @@ list credit_debit_note_report
 	(
 		note_no as "Note No."
 		note_type as "Note Type"
-		vendor_customer as "Vendor/Customer"
-		source_document as "Source Document"
 		amount as "Amount"
 		tax as "Tax"
 		reason as "Reason"
 		approval_status as "Approval Status"
-		approved_by as "Approved By"
 		approval_date as "Approval Date"
-		ledger_posting_reference as "Ledger Posting Reference"
 	)
 	quickview
 	(
@@ -26,15 +22,11 @@ list credit_debit_note_report
 				(
 					note_no as "Note No."
 					note_type as "Note Type"
-					vendor_customer as "Vendor/Customer"
-					source_document as "Source Document"
 					amount as "Amount"
 					tax as "Tax"
 					reason as "Reason"
 					approval_status as "Approval Status"
-					approved_by as "Approved By"
 					approval_date as "Approval Date"
-					ledger_posting_reference as "Ledger Posting Reference"
 				)
 			)
 		)
@@ -79,15 +71,11 @@ list credit_debit_note_report
 				(
 					note_no as "Note No."
 					note_type as "Note Type"
-					vendor_customer as "Vendor/Customer"
-					source_document as "Source Document"
 					amount as "Amount"
 					tax as "Tax"
 					reason as "Reason"
 					approval_status as "Approval Status"
-					approved_by as "Approved By"
 					approval_date as "Approval Date"
-					ledger_posting_reference as "Ledger Posting Reference"
 				)
 			)
 		)

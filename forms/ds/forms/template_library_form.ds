@@ -24,6 +24,8 @@ form template_library
 	(
 		type = picklist
 		displayname = "Template Type"
+		values = {"Production","QC Report","Job Work","Packing","Invoice"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -33,15 +35,6 @@ form template_library
 	(
 		type = text
 		displayname = "Name"
-		row = 1
-		column = 1
-		width = medium
-	)
-
-	must have warehouse_scope
-	(
-		type = text
-		displayname = "Warehouse Scope"
 		row = 1
 		column = 1
 		width = medium
@@ -78,10 +71,10 @@ form template_library
 	(
 		type = textarea
 		displayname = "Layout JSON/XML"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	requires_digital_signature
@@ -93,31 +86,10 @@ form template_library
 		width = medium
 	)
 
-	must have created_by
-	(
-		type = lookup
-		displayname = "Created By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
-	)
-
 	approval_log
 	(
 		type = grid
 		displayname = "Approval Log"
-		row = 1
-		column = 1
-		width = medium
-		must have approved_by
-		(
-			type = lookup
-			displayname = "Approved By"
-			width = medium
-			related form = stakeholder_user
-		)
-
 		must have approval_date
 		(
 			type = datetime
@@ -129,16 +101,21 @@ form template_library
 		(
 			type = textarea
 			displayname = "Remarks"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have status
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Draft","Active","Retired"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

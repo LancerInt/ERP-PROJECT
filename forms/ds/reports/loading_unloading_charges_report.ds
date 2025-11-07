@@ -4,7 +4,6 @@ list loading_unloading_charges_report
 	show all rows from loading_unloading_charges
 	(
 		charge_type as "Charge Type"
-		contractor_vendor as "Contractor Vendor"
 		amount as "Amount"
 		tds as "TDS %"
 		payable_by as "Payable By"
@@ -19,7 +18,6 @@ list loading_unloading_charges_report
 				fields
 				(
 					charge_type as "Charge Type"
-					contractor_vendor as "Contractor Vendor"
 					amount as "Amount"
 					tds as "TDS %"
 					payable_by as "Payable By"
@@ -66,7 +64,6 @@ list loading_unloading_charges_report
 				fields
 				(
 					charge_type as "Charge Type"
-					contractor_vendor as "Contractor Vendor"
 					amount as "Amount"
 					tds as "TDS %"
 					payable_by as "Payable By"

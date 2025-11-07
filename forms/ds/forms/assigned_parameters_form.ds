@@ -11,16 +11,6 @@ form assigned_parameters
 		width = medium
 	)
 
-	must have parameter
-	(
-		type = lookup
-		displayname = "Parameter"
-		row = 1
-		column = 1
-		width = medium
-		related form = qc_parameter_library
-	)
-
 	result_value
 	(
 		type = number
@@ -34,27 +24,29 @@ form assigned_parameters
 	(
 		type = textarea
 		displayname = "Result Text"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	result_photo
 	(
 		type = upload file
 		displayname = "Result Photo"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = local_drive
 	)
 
 	pass_fail
 	(
 		type = picklist
 		displayname = "Pass/Fail"
+		values = {"Pass","Fail"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

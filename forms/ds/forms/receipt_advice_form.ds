@@ -11,59 +11,20 @@ form receipt_advice
 		width = medium
 	)
 
-	must have receipt_advice_no
+	receipt_advice_no
 	(
 		type = autonumber
 		displayname = "Receipt Advice No."
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have receipt_date
 	(
 		type = date
 		displayname = "Receipt Date"
-		row = 1
-		column = 1
-		width = medium
-	)
-
-	must have warehouse
-	(
-		type = lookup
-		displayname = "Warehouse"
-		row = 1
-		column = 1
-		width = medium
-		related form = warehouse
-	)
-
-	must have godown
-	(
-		type = lookup
-		displayname = "Godown"
-		row = 1
-		column = 1
-		width = medium
-		related form = godown
-	)
-
-	must have vendor
-	(
-		type = lookup
-		displayname = "Vendor"
-		row = 1
-		column = 1
-		width = medium
-		related form = vendor
-	)
-
-	must have linked_pos
-	(
-		type = text
-		displayname = "Linked PO(s)"
 		row = 1
 		column = 1
 		width = medium
@@ -91,52 +52,33 @@ form receipt_advice
 	(
 		type = upload file
 		displayname = "Invoice Upload"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	packing_list_upload
 	(
 		type = upload file
 		displayname = "Packing List Upload"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	must have receipt_lines
 	(
 		type = grid
 		displayname = "Receipt Lines"
-		row = 1
-		column = 1
-		width = medium
 		must have line_no
 		(
 			type = number
 			displayname = "Line No."
 			width = medium
-		)
-
-		must have po_line
-		(
-			type = lookup
-			displayname = "PO Line"
-			width = medium
-			related form = po_lines
-		)
-
-		must have product
-		(
-			type = lookup
-			displayname = "Product"
-			width = medium
-			related form = product_master
 		)
 
 		must have batch_no
@@ -164,6 +106,8 @@ form receipt_advice
 		(
 			type = picklist
 			displayname = "UOM"
+			values = {"Units","Pieces","KG","Tonnes","Litres","Metres"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -195,39 +139,23 @@ form receipt_advice
 			width = medium
 		)
 
-		must have godown_location
-		(
-			type = lookup
-			displayname = "Godown Location"
-			width = medium
-			related form = godown
-		)
-
 		remarks
 		(
 			type = textarea
 			displayname = "Remarks"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	packing_material_lines
 	(
 		type = grid
 		displayname = "Packing Material Lines"
-		row = 1
-		column = 1
-		width = medium
-		must have packaging_sku
-		(
-			type = lookup
-			displayname = "Packaging SKU"
-			width = medium
-			related form = product_master
-		)
-
 		must have quantity
 		(
 			type = number
@@ -239,6 +167,8 @@ form receipt_advice
 		(
 			type = picklist
 			displayname = "UOM"
+			values = {"Units","Pieces","KG","Tonnes","Litres","Metres"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -246,37 +176,35 @@ form receipt_advice
 		(
 			type = picklist
 			displayname = "Condition"
+			values = {"New","Damaged"}
+			maxchar = 100
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	freight_details
 	(
 		type = grid
 		displayname = "Freight Details"
-		row = 1
-		column = 1
-		width = medium
 		must have freight_type
 		(
 			type = picklist
 			displayname = "Freight Type"
+			values = {"Local Drayage","Linehaul"}
+			maxchar = 100
 			width = medium
-		)
-
-		must have transporter
-		(
-			type = lookup
-			displayname = "Transporter"
-			width = medium
-			related form = transporter
 		)
 
 		must have freight_terms
 		(
 			type = picklist
 			displayname = "Freight Terms"
+			values = {"Paid","To_Pay","Mixed"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -298,6 +226,8 @@ form receipt_advice
 		(
 			type = picklist
 			displayname = "Payable By"
+			values = {"Company","Vendor"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -312,6 +242,8 @@ form receipt_advice
 		(
 			type = picklist
 			displayname = "Quantity UOM"
+			values = {"Tonnes","KG","KL","Units"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -319,6 +251,8 @@ form receipt_advice
 		(
 			type = picklist
 			displayname = "Destination State"
+			values = {"Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli and Daman and Diu","Delhi","Jammu and Kashmir","Ladakh","Lakshadweep","Puducherry"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -326,32 +260,26 @@ form receipt_advice
 		(
 			type = number
 			displayname = "Cost Per Unit (Calc)"
-			width = medium
 			is formula = true
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	loading_unloading_wages
 	(
 		type = grid
 		displayname = "Loading Unloading Wages"
-		row = 1
-		column = 1
-		width = medium
 		must have wage_type
 		(
 			type = picklist
 			displayname = "Wage Type"
+			values = {"Loading","Unloading"}
+			maxchar = 100
 			width = medium
-		)
-
-		must have contractor_vendor
-		(
-			type = lookup
-			displayname = "Contractor Vendor"
-			width = medium
-			related form = vendor
 		)
 
 		must have amount
@@ -372,6 +300,8 @@ form receipt_advice
 		(
 			type = picklist
 			displayname = "Payable By"
+			values = {"Company","Vendor"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -379,16 +309,21 @@ form receipt_advice
 		(
 			type = textarea
 			displayname = "Remarks"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have qc_routing
 	(
 		type = picklist
 		displayname = "QC Routing"
+		values = {"Warehouse","QC Coordinator","QC Manager"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -398,6 +333,8 @@ form receipt_advice
 	(
 		type = picklist
 		displayname = "QC Status"
+		values = {"Pending","Pass","Fail","Hold"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -416,20 +353,10 @@ form receipt_advice
 	(
 		type = textarea
 		displayname = "Remarks"
-		row = 1
-		column = 1
-		width = medium
 		height = 100px
-	)
-
-	must have created_by
-	(
-		type = lookup
-		displayname = "Created By"
 		row = 1
 		column = 1
 		width = medium
-		related form = stakeholder_user
 	)
 
 	must have created_time

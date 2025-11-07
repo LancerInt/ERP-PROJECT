@@ -11,20 +11,22 @@ form bank_statement_upload
 		width = medium
 	)
 
-	must have upload_id
+	upload_id
 	(
 		type = autonumber
 		displayname = "Upload ID"
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have bank_account
 	(
 		type = picklist
 		displayname = "Bank Account"
+		values = {"ICICI Bank - Current","HDFC Bank - Current","SBI Bank - Current"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -61,17 +63,19 @@ form bank_statement_upload
 	(
 		type = upload file
 		displayname = "Statement File"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	must have parsing_status
 	(
 		type = picklist
 		displayname = "Parsing Status"
+		values = {"Pending","Parsed","Error"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -81,9 +85,6 @@ form bank_statement_upload
 	(
 		type = grid
 		displayname = "Auto-Matched Entries"
-		row = 1
-		column = 1
-		width = medium
 		must have statement_line_id
 		(
 			type = text
@@ -95,15 +96,9 @@ form bank_statement_upload
 		(
 			type = picklist
 			displayname = "Match Type"
+			values = {"Payable","Receivable"}
+			maxchar = 100
 			width = medium
-		)
-
-		must have linked_document
-		(
-			type = lookup
-			displayname = "Linked Document"
-			width = medium
-			related forms = {"vendor_ledger","customer_ledger"}
 		)
 
 		must have amount
@@ -117,18 +112,20 @@ form bank_statement_upload
 		(
 			type = picklist
 			displayname = "Status"
+			values = {"Confirmed","Pending"}
+			maxchar = 100
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	exceptions
 	(
 		type = grid
 		displayname = "Exceptions"
-		row = 1
-		column = 1
-		width = medium
 		must have statement_line_id
 		(
 			type = text
@@ -150,39 +147,36 @@ form bank_statement_upload
 			width = medium
 		)
 
-		suggested_match
-		(
-			type = lookup
-			displayname = "Suggested Match"
-			width = medium
-			related forms = {"vendor_ledger","customer_ledger","freight_ledger","wage_ledger"}
-		)
-
 		exception_notes
 		(
 			type = textarea
 			displayname = "Exception Notes"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
 		must have resolution_status
 		(
 			type = picklist
 			displayname = "Resolution Status"
+			values = {"Open","Resolved"}
+			maxchar = 100
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	remarks
 	(
 		type = textarea
 		displayname = "Remarks"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

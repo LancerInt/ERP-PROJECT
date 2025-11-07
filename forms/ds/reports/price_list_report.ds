@@ -4,8 +4,6 @@ list price_list_report
 	show all rows from price_list
 	(
 		price_list_id as "Price List ID"
-		company as "Company"
-		customer as "Customer"
 		delivery_region as "Delivery Region"
 		currency as "Currency"
 		effective_from as "Effective From"
@@ -25,8 +23,6 @@ list price_list_report
 				fields
 				(
 					price_list_id as "Price List ID"
-					company as "Company"
-					customer as "Customer"
 					delivery_region as "Delivery Region"
 					currency as "Currency"
 					effective_from as "Effective From"
@@ -78,8 +74,6 @@ list price_list_report
 				fields
 				(
 					price_list_id as "Price List ID"
-					company as "Company"
-					customer as "Customer"
 					delivery_region as "Delivery Region"
 					currency as "Currency"
 					effective_from as "Effective From"

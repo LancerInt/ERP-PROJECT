@@ -4,7 +4,6 @@ list freight_details_report
 	show all rows from freight_details
 	(
 		freight_type as "Freight Type"
-		transporter as "Transporter"
 		freight_terms as "Freight Terms"
 		tentative_charge as "Tentative Charge"
 		discount as "Discount"
@@ -24,7 +23,6 @@ list freight_details_report
 				fields
 				(
 					freight_type as "Freight Type"
-					transporter as "Transporter"
 					freight_terms as "Freight Terms"
 					tentative_charge as "Tentative Charge"
 					discount as "Discount"
@@ -76,7 +74,6 @@ list freight_details_report
 				fields
 				(
 					freight_type as "Freight Type"
-					transporter as "Transporter"
 					freight_terms as "Freight Terms"
 					tentative_charge as "Tentative Charge"
 					discount as "Discount"

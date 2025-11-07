@@ -20,26 +20,6 @@ form receipt_lines
 		width = medium
 	)
 
-	must have po_line
-	(
-		type = lookup
-		displayname = "PO Line"
-		row = 1
-		column = 1
-		width = medium
-		related form = po_lines
-	)
-
-	must have product
-	(
-		type = lookup
-		displayname = "Product"
-		row = 1
-		column = 1
-		width = medium
-		related form = product_master
-	)
-
 	must have batch_no
 	(
 		type = text
@@ -71,6 +51,8 @@ form receipt_lines
 	(
 		type = picklist
 		displayname = "UOM"
+		values = {"Units","Pieces","KG","Tonnes","Litres","Metres"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -112,24 +94,14 @@ form receipt_lines
 		width = medium
 	)
 
-	must have godown_location
-	(
-		type = lookup
-		displayname = "Godown Location"
-		row = 1
-		column = 1
-		width = medium
-		related form = godown
-	)
-
 	remarks
 	(
 		type = textarea
 		displayname = "Remarks"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

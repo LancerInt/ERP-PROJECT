@@ -11,14 +11,14 @@ form stock_adjustment
 		width = medium
 	)
 
-	must have adjustment_no
+	adjustment_no
 	(
 		type = autonumber
 		displayname = "Adjustment No."
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have adjustment_date
@@ -28,36 +28,6 @@ form stock_adjustment
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have warehouse
-	(
-		type = lookup
-		displayname = "Warehouse"
-		row = 1
-		column = 1
-		width = medium
-		related form = warehouse
-	)
-
-	must have godown
-	(
-		type = lookup
-		displayname = "Godown"
-		row = 1
-		column = 1
-		width = medium
-		related form = godown
-	)
-
-	must have product
-	(
-		type = lookup
-		displayname = "Product"
-		row = 1
-		column = 1
-		width = medium
-		related form = product_master
 	)
 
 	batch
@@ -73,6 +43,8 @@ form stock_adjustment
 	(
 		type = picklist
 		displayname = "Adjustment Type"
+		values = {"Positive","Negative"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -91,6 +63,8 @@ form stock_adjustment
 	(
 		type = picklist
 		displayname = "UOM"
+		values = {"Units","Pieces","KG","Tonnes","Litres","Metres"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -100,6 +74,8 @@ form stock_adjustment
 	(
 		type = picklist
 		displayname = "Reason Code"
+		values = {"Damage","Expiry","Shortage","Surplus","Audit Correction","Others"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -109,21 +85,21 @@ form stock_adjustment
 	(
 		type = textarea
 		displayname = "Other Reason"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	must have evidence_attachments
 	(
 		type = upload file
 		displayname = "Evidence Attachments"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	must have value_impact
@@ -148,19 +124,11 @@ form stock_adjustment
 	(
 		type = picklist
 		displayname = "Approval Status"
+		values = {"Draft","Pending","Approved","Rejected"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	approved_by
-	(
-		type = lookup
-		displayname = "Approved By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
 	)
 
 	approval_date
@@ -172,23 +140,14 @@ form stock_adjustment
 		width = medium
 	)
 
-	notified_to
-	(
-		type = text
-		displayname = "Notified To"
-		row = 1
-		column = 1
-		width = medium
-	)
-
 	notes
 	(
 		type = textarea
 		displayname = "Notes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

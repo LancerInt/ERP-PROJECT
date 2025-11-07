@@ -11,60 +11,21 @@ form sales_order
 		width = medium
 	)
 
-	must have so_no
+	so_no
 	(
 		type = autonumber
 		displayname = "SO No."
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have customer
-	(
-		type = lookup
-		displayname = "Customer"
 		row = 1
 		column = 1
 		width = medium
-		related form = customer
-	)
-
-	must have company
-	(
-		type = lookup
-		displayname = "Company"
-		row = 1
-		column = 1
-		width = medium
-		related form = company
-	)
-
-	must have warehouse
-	(
-		type = lookup
-		displayname = "Warehouse"
-		row = 1
-		column = 1
-		width = medium
-		related form = warehouse
-	)
-
-	must have price_list
-	(
-		type = lookup
-		displayname = "Price List"
-		row = 1
-		column = 1
-		width = medium
-		related form = price_list
 	)
 
 	must have credit_terms
 	(
 		type = picklist
 		displayname = "Credit Terms"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -74,19 +35,11 @@ form sales_order
 	(
 		type = picklist
 		displayname = "Freight Terms"
+		values = {"Paid","To Pay","Mixed"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	customer_po_reference
-	(
-		type = lookup
-		displayname = "Customer PO Reference"
-		row = 1
-		column = 1
-		width = medium
-		related form = customer_po_upload
 	)
 
 	must have so_date
@@ -111,22 +64,11 @@ form sales_order
 	(
 		type = grid
 		displayname = "Lines"
-		row = 1
-		column = 1
-		width = medium
 		must have line_no
 		(
 			type = number
 			displayname = "Line No."
 			width = medium
-		)
-
-		must have product
-		(
-			type = lookup
-			displayname = "Product"
-			width = medium
-			related form = product_master
 		)
 
 		batch_preference
@@ -147,6 +89,8 @@ form sales_order
 		(
 			type = picklist
 			displayname = "UOM"
+			values = {"Units","Pieces","KG","Tonnes","Litres","Metres"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -182,8 +126,8 @@ form sales_order
 		(
 			type = textarea
 			displayname = "Remarks"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
 		reserved_qty
@@ -193,50 +137,36 @@ form sales_order
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	remarks
 	(
 		type = textarea
 		displayname = "Remarks"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	must have approval_status
 	(
 		type = picklist
 		displayname = "Approval Status"
+		values = {"Draft","Pending","Approved","Rejected"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	approved_by
-	(
-		type = lookup
-		displayname = "Approved By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
 	)
 
 	approval_date
 	(
 		type = datetime
 		displayname = "Approval Date"
-		row = 1
-		column = 1
-		width = medium
-	)
-
-	assigned_warehouse_stakeholders
-	(
-		type = text
-		displayname = "Assigned Warehouse Stakeholders"
 		row = 1
 		column = 1
 		width = medium

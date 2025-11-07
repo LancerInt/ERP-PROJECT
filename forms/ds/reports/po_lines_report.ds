@@ -4,7 +4,6 @@ list po_lines_report
 	show all rows from po_lines
 	(
 		line_no as "Line No."
-		product_service as "Product/Service"
 		description as "Description"
 		quantity_ordered as "Quantity Ordered"
 		uom as "UOM"
@@ -15,8 +14,6 @@ list po_lines_report
 		agent_commission as "Agent Commission"
 		freight_estimate as "Freight Estimate"
 		delivery_schedule as "Delivery Schedule"
-		linked_pr_line as "Linked PR Line"
-		linked_rfq_line as "Linked RFQ Line"
 		batch_requirement_notes as "Batch Requirement Notes"
 	)
 	quickview
@@ -29,7 +26,6 @@ list po_lines_report
 				fields
 				(
 					line_no as "Line No."
-					product_service as "Product/Service"
 					description as "Description"
 					quantity_ordered as "Quantity Ordered"
 					uom as "UOM"
@@ -40,8 +36,6 @@ list po_lines_report
 					agent_commission as "Agent Commission"
 					freight_estimate as "Freight Estimate"
 					delivery_schedule as "Delivery Schedule"
-					linked_pr_line as "Linked PR Line"
-					linked_rfq_line as "Linked RFQ Line"
 					batch_requirement_notes as "Batch Requirement Notes"
 				)
 			)
@@ -86,7 +80,6 @@ list po_lines_report
 				fields
 				(
 					line_no as "Line No."
-					product_service as "Product/Service"
 					description as "Description"
 					quantity_ordered as "Quantity Ordered"
 					uom as "UOM"
@@ -97,8 +90,6 @@ list po_lines_report
 					agent_commission as "Agent Commission"
 					freight_estimate as "Freight Estimate"
 					delivery_schedule as "Delivery Schedule"
-					linked_pr_line as "Linked PR Line"
-					linked_rfq_line as "Linked RFQ Line"
 					batch_requirement_notes as "Batch Requirement Notes"
 				)
 			)

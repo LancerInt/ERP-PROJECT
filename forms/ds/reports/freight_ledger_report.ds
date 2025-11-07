@@ -5,8 +5,6 @@ list freight_ledger_report
 	(
 		ledger_id as "Ledger ID"
 		direction as "Direction"
-		transporter as "Transporter"
-		freight_advice as "Freight Advice"
 		amount as "Amount"
 		discount as "Discount"
 		shipment_quantity as "Shipment Quantity"
@@ -30,8 +28,6 @@ list freight_ledger_report
 				(
 					ledger_id as "Ledger ID"
 					direction as "Direction"
-					transporter as "Transporter"
-					freight_advice as "Freight Advice"
 					amount as "Amount"
 					discount as "Discount"
 					shipment_quantity as "Shipment Quantity"
@@ -87,8 +83,6 @@ list freight_ledger_report
 				(
 					ledger_id as "Ledger ID"
 					direction as "Direction"
-					transporter as "Transporter"
-					freight_advice as "Freight Advice"
 					amount as "Amount"
 					discount as "Discount"
 					shipment_quantity as "Shipment Quantity"

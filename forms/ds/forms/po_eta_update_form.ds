@@ -11,24 +11,14 @@ form po_eta_update
 		width = medium
 	)
 
-	must have update_id
+	update_id
 	(
 		type = autonumber
 		displayname = "Update ID"
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have po
-	(
-		type = lookup
-		displayname = "PO"
 		row = 1
 		column = 1
 		width = medium
-		related form = purchase_order
 	)
 
 	must have update_date
@@ -38,16 +28,6 @@ form po_eta_update
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have updated_by
-	(
-		type = lookup
-		displayname = "Updated By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
 	)
 
 	must have expected_arrival_date
@@ -63,6 +43,8 @@ form po_eta_update
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Pending","Updated"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -72,10 +54,10 @@ form po_eta_update
 	(
 		type = textarea
 		displayname = "Remarks"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

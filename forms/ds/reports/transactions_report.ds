@@ -4,7 +4,6 @@ list transactions_report
 	show all rows from transactions
 	(
 		transaction_date as "Transaction Date"
-		voucher_reference as "Voucher Reference"
 		amount as "Amount"
 		type as "Type"
 		notes as "Notes"
@@ -19,7 +18,6 @@ list transactions_report
 				fields
 				(
 					transaction_date as "Transaction Date"
-					voucher_reference as "Voucher Reference"
 					amount as "Amount"
 					type as "Type"
 					notes as "Notes"
@@ -66,7 +64,6 @@ list transactions_report
 				fields
 				(
 					transaction_date as "Transaction Date"
-					voucher_reference as "Voucher Reference"
 					amount as "Amount"
 					type as "Type"
 					notes as "Notes"

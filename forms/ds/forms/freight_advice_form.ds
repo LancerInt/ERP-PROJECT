@@ -11,62 +11,35 @@ form freight_advice
 		width = medium
 	)
 
-	must have advice_no
+	advice_no
 	(
 		type = autonumber
 		displayname = "Advice No."
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have direction
 	(
 		type = picklist
 		displayname = "Direction"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have receipt_advice
-	(
-		type = lookup
-		displayname = "Receipt Advice"
-		row = 1
-		column = 1
-		width = medium
-		related form = receipt_advice
-	)
-
-	must have transporter
-	(
-		type = lookup
-		displayname = "Transporter"
-		row = 1
-		column = 1
-		width = medium
-		related form = transporter
 	)
 
 	must have freight_type
 	(
 		type = picklist
 		displayname = "Freight Type"
+		values = {"Local Drayage","Linehaul"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have created_by
-	(
-		type = lookup
-		displayname = "Created By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
 	)
 
 	must have created_date
@@ -127,6 +100,8 @@ form freight_advice
 	(
 		type = picklist
 		displayname = "Quantity UOM"
+		values = {"Tonnes","KG","KL","Units"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -136,16 +111,18 @@ form freight_advice
 	(
 		type = number
 		displayname = "Cost Per Unit (Calc)"
+		is formula = true
 		row = 1
 		column = 1
 		width = medium
-		is formula = true
 	)
 
 	destination_state
 	(
 		type = picklist
 		displayname = "Destination State"
+		values = {"Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli and Daman and Diu","Delhi","Jammu and Kashmir","Ladakh","Lakshadweep","Puducherry"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -164,22 +141,13 @@ form freight_advice
 	(
 		type = grid
 		displayname = "Payment Schedule"
-		row = 1
-		column = 1
-		width = medium
 		must have freight_type
 		(
 			type = picklist
 			displayname = "Freight Type"
+			values = {"Local Drayage","Linehaul"}
+			maxchar = 100
 			width = medium
-		)
-
-		must have transporter
-		(
-			type = lookup
-			displayname = "Transporter"
-			width = medium
-			related form = transporter
 		)
 
 		must have due_date
@@ -210,34 +178,30 @@ form freight_advice
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	approval_workflow
 	(
 		type = grid
 		displayname = "Approval Workflow"
-		row = 1
-		column = 1
-		width = medium
 		must have stage
 		(
 			type = picklist
 			displayname = "Stage"
+			values = {"Draft Review","Finance Manager Review","Office Manager Authorization"}
+			maxchar = 100
 			width = medium
-		)
-
-		must have approver
-		(
-			type = lookup
-			displayname = "Approver"
-			width = medium
-			related form = stakeholder_user
 		)
 
 		must have decision
 		(
 			type = picklist
 			displayname = "Decision"
+			values = {"Pending","Approved","Rejected"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -252,16 +216,21 @@ form freight_advice
 		(
 			type = textarea
 			displayname = "Remarks"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have status
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Draft","Pending Approval","Approved","Paid"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

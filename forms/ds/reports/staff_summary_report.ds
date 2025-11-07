@@ -3,7 +3,6 @@ list staff_summary_report
 	displayName = "Staff Summary Report"
 	show all rows from staff_summary
 	(
-		staff as "Staff"
 		present_days as "Present Days"
 		absent_days as "Absent Days"
 		overtime_hours as "Overtime Hours"
@@ -18,7 +17,6 @@ list staff_summary_report
 				title = "Staff Summary Overview"
 				fields
 				(
-					staff as "Staff"
 					present_days as "Present Days"
 					absent_days as "Absent Days"
 					overtime_hours as "Overtime Hours"
@@ -65,7 +63,6 @@ list staff_summary_report
 				title = "Staff Summary Overview"
 				fields
 				(
-					staff as "Staff"
 					present_days as "Present Days"
 					absent_days as "Absent Days"
 					overtime_hours as "Overtime Hours"

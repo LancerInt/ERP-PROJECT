@@ -4,10 +4,7 @@ list job_work_dc_report
 	show all rows from job_work_dc
 	(
 		jw_dc_no as "JW DC No."
-		job_work_order as "Job Work Order"
-		vendor as "Vendor"
 		dispatch_date as "Dispatch Date"
-		transporter as "Transporter"
 		freight_terms as "Freight Terms"
 		issued_materials as "Issued Materials"
 		documents as "Documents"
@@ -23,10 +20,7 @@ list job_work_dc_report
 				fields
 				(
 					jw_dc_no as "JW DC No."
-					job_work_order as "Job Work Order"
-					vendor as "Vendor"
 					dispatch_date as "Dispatch Date"
-					transporter as "Transporter"
 					freight_terms as "Freight Terms"
 					issued_materials as "Issued Materials"
 					documents as "Documents"
@@ -74,10 +68,7 @@ list job_work_dc_report
 				fields
 				(
 					jw_dc_no as "JW DC No."
-					job_work_order as "Job Work Order"
-					vendor as "Vendor"
 					dispatch_date as "Dispatch Date"
-					transporter as "Transporter"
 					freight_terms as "Freight Terms"
 					issued_materials as "Issued Materials"
 					documents as "Documents"

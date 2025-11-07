@@ -3,7 +3,6 @@ list auto_calculated_inputs_report
 	displayName = "Auto-calculated Inputs Report"
 	show all rows from auto_calculated_inputs
 	(
-		product as "Product"
 		required_qty as "Required Qty"
 		available_qty as "Available Qty"
 		shortfall_qty as "Shortfall Qty"
@@ -18,7 +17,6 @@ list auto_calculated_inputs_report
 				title = "Auto-calculated Inputs Overview"
 				fields
 				(
-					product as "Product"
 					required_qty as "Required Qty"
 					available_qty as "Available Qty"
 					shortfall_qty as "Shortfall Qty"
@@ -65,7 +63,6 @@ list auto_calculated_inputs_report
 				title = "Auto-calculated Inputs Overview"
 				fields
 				(
-					product as "Product"
 					required_qty as "Required Qty"
 					available_qty as "Available Qty"
 					shortfall_qty as "Shortfall Qty"

@@ -11,16 +11,6 @@ form issue_lines
 		width = medium
 	)
 
-	must have product
-	(
-		type = lookup
-		displayname = "Product"
-		row = 1
-		column = 1
-		width = medium
-		related form = product_master
-	)
-
 	must have batch_out
 	(
 		type = text
@@ -28,16 +18,6 @@ form issue_lines
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have godown
-	(
-		type = lookup
-		displayname = "Godown"
-		row = 1
-		column = 1
-		width = medium
-		related form = godown
 	)
 
 	must have quantity_issued
@@ -53,6 +33,8 @@ form issue_lines
 	(
 		type = picklist
 		displayname = "UOM"
+		values = {"Units","Pieces","KG","Tonnes","Litres","Metres"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

@@ -60,6 +60,8 @@ form vendor_bank_details
 	(
 		type = picklist
 		displayname = "Payment Method"
+		values = {"NEFT","RTGS","Cheque","UPI"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

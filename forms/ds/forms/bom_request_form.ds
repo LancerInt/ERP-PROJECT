@@ -11,14 +11,14 @@ form bom_request
 		width = medium
 	)
 
-	must have request_no
+	request_no
 	(
 		type = autonumber
 		displayname = "Request No."
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have request_date
@@ -28,46 +28,6 @@ form bom_request
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have warehouse
-	(
-		type = lookup
-		displayname = "Warehouse"
-		row = 1
-		column = 1
-		width = medium
-		related form = warehouse
-	)
-
-	must have requested_by
-	(
-		type = lookup
-		displayname = "Requested By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
-	)
-
-	must have production_template
-	(
-		type = lookup
-		displayname = "Production Template"
-		row = 1
-		column = 1
-		width = medium
-		related form = template_library
-	)
-
-	must have output_product
-	(
-		type = lookup
-		displayname = "Output Product"
-		row = 1
-		column = 1
-		width = medium
-		related form = product_master
 	)
 
 	must have output_quantity
@@ -92,17 +52,6 @@ form bom_request
 	(
 		type = grid
 		displayname = "Auto-calculated Inputs"
-		row = 1
-		column = 1
-		width = medium
-		must have product
-		(
-			type = lookup
-			displayname = "Product"
-			width = medium
-			related form = product_master
-		)
-
 		must have required_qty
 		(
 			type = number
@@ -128,38 +77,35 @@ form bom_request
 		(
 			type = picklist
 			displayname = "Purpose"
+			values = {"RM","PM","Wage"}
+			maxchar = 100
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	shortfall_summary
 	(
 		type = textarea
 		displayname = "Shortfall Summary"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	must have approval_status
 	(
 		type = picklist
 		displayname = "Approval Status"
+		values = {"Draft","Pending","Approved","Rejected"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	approved_by
-	(
-		type = lookup
-		displayname = "Approved By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
 	)
 
 	approved_date
@@ -184,10 +130,10 @@ form bom_request
 	(
 		type = textarea
 		displayname = "Notes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

@@ -11,34 +11,14 @@ form wage_ledger
 		width = medium
 	)
 
-	must have ledger_id
+	ledger_id
 	(
 		type = autonumber
 		displayname = "Ledger ID"
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have wage_voucher
-	(
-		type = lookup
-		displayname = "Wage Voucher"
 		row = 1
 		column = 1
 		width = medium
-		related form = wage_voucher
-	)
-
-	must have contractor_staff_group
-	(
-		type = lookup
-		displayname = "Contractor/Staff Group"
-		row = 1
-		column = 1
-		width = medium
-		related forms = {"vendor","staff_master"}
 	)
 
 	must have amount
@@ -72,6 +52,8 @@ form wage_ledger
 	(
 		type = picklist
 		displayname = "Approval Status"
+		values = {"Draft","Pending","Approved","Paid"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -81,6 +63,8 @@ form wage_ledger
 	(
 		type = picklist
 		displayname = "Settlement Method"
+		values = {"Bank Transfer","Cash"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -90,10 +74,10 @@ form wage_ledger
 	(
 		type = textarea
 		displayname = "Notes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions
