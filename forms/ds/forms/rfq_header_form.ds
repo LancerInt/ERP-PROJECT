@@ -15,29 +15,10 @@ form rfq_header
 	(
 		type = autonumber
 		displayname = "RFQ No."
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have linked_prs
-	(
-		type = text
-		displayname = "Linked PRs"
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have created_by
-	(
-		type = lookup
-		displayname = "Created By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
 	)
 
 	must have creation_date
@@ -53,6 +34,8 @@ form rfq_header
 	(
 		type = picklist
 		displayname = "RFQ Mode"
+		values = {"Email","Portal","Phone"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -62,17 +45,19 @@ form rfq_header
 	(
 		type = upload file
 		displayname = "RFQ Documents"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	must have rfq_status
 	(
 		type = picklist
 		displayname = "RFQ Status"
+		values = {"Open","Closed","Cancelled"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -100,53 +85,32 @@ form rfq_header
 	(
 		type = textarea
 		displayname = "Skip RFQ Justification"
-		row = 1
-		column = 1
-		width = medium
 		height = 100px
-	)
-
-	purchase_manager_approval
-	(
-		type = lookup
-		displayname = "Purchase Manager Approval"
 		row = 1
 		column = 1
 		width = medium
-		related form = stakeholder_user
 	)
 
 	approval_attachment
 	(
 		type = upload file
 		displayname = "Approval Attachment"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	dispatch_eta_updates
 	(
 		type = grid
 		displayname = "Dispatch ETA Updates"
-		row = 1
-		column = 1
-		width = medium
 		must have update_date
 		(
 			type = datetime
 			displayname = "Update Date"
 			width = medium
-		)
-
-		must have updated_by
-		(
-			type = lookup
-			displayname = "Updated By"
-			width = medium
-			related form = stakeholder_user
 		)
 
 		must have expected_arrival
@@ -160,10 +124,13 @@ form rfq_header
 		(
 			type = textarea
 			displayname = "Remarks"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	actions

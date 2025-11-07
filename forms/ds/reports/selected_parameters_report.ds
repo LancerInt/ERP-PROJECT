@@ -3,7 +3,6 @@ list selected_parameters_report
 	displayName = "Selected Parameters Report"
 	show all rows from selected_parameters
 	(
-		parameter as "Parameter"
 		override_range_min as "Override Range Min"
 		override_range_max as "Override Range Max"
 		notes as "Notes"
@@ -17,7 +16,6 @@ list selected_parameters_report
 				title = "Selected Parameters Overview"
 				fields
 				(
-					parameter as "Parameter"
 					override_range_min as "Override Range Min"
 					override_range_max as "Override Range Max"
 					notes as "Notes"
@@ -63,7 +61,6 @@ list selected_parameters_report
 				title = "Selected Parameters Overview"
 				fields
 				(
-					parameter as "Parameter"
 					override_range_min as "Override Range Min"
 					override_range_max as "Override Range Max"
 					notes as "Notes"

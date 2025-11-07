@@ -4,7 +4,6 @@ list freight_payment_schedule_report
 	show all rows from freight_payment_schedule
 	(
 		freight_type as "Freight Type"
-		transporter as "Transporter"
 		due_date as "Due Date"
 		amount as "Amount"
 		tds as "TDS %"
@@ -20,7 +19,6 @@ list freight_payment_schedule_report
 				fields
 				(
 					freight_type as "Freight Type"
-					transporter as "Transporter"
 					due_date as "Due Date"
 					amount as "Amount"
 					tds as "TDS %"
@@ -68,7 +66,6 @@ list freight_payment_schedule_report
 				fields
 				(
 					freight_type as "Freight Type"
-					transporter as "Transporter"
 					due_date as "Due Date"
 					amount as "Amount"
 					tds as "TDS %"

@@ -5,9 +5,6 @@ list stock_adjustment_report
 	(
 		adjustment_no as "Adjustment No."
 		adjustment_date as "Adjustment Date"
-		warehouse as "Warehouse"
-		godown as "Godown"
-		product as "Product"
 		batch as "Batch"
 		adjustment_type as "Adjustment Type"
 		quantity as "Quantity"
@@ -18,9 +15,7 @@ list stock_adjustment_report
 		value_impact as "Value Impact"
 		finance_review_required as "Finance Review Required"
 		approval_status as "Approval Status"
-		approved_by as "Approved By"
 		approval_date as "Approval Date"
-		notified_to as "Notified To"
 		notes as "Notes"
 	)
 	quickview
@@ -34,9 +29,6 @@ list stock_adjustment_report
 				(
 					adjustment_no as "Adjustment No."
 					adjustment_date as "Adjustment Date"
-					warehouse as "Warehouse"
-					godown as "Godown"
-					product as "Product"
 					batch as "Batch"
 					adjustment_type as "Adjustment Type"
 					quantity as "Quantity"
@@ -47,9 +39,7 @@ list stock_adjustment_report
 					value_impact as "Value Impact"
 					finance_review_required as "Finance Review Required"
 					approval_status as "Approval Status"
-					approved_by as "Approved By"
 					approval_date as "Approval Date"
-					notified_to as "Notified To"
 					notes as "Notes"
 				)
 			)
@@ -95,9 +85,6 @@ list stock_adjustment_report
 				(
 					adjustment_no as "Adjustment No."
 					adjustment_date as "Adjustment Date"
-					warehouse as "Warehouse"
-					godown as "Godown"
-					product as "Product"
 					batch as "Batch"
 					adjustment_type as "Adjustment Type"
 					quantity as "Quantity"
@@ -108,9 +95,7 @@ list stock_adjustment_report
 					value_impact as "Value Impact"
 					finance_review_required as "Finance Review Required"
 					approval_status as "Approval Status"
-					approved_by as "Approved By"
 					approval_date as "Approval Date"
-					notified_to as "Notified To"
 					notes as "Notes"
 				)
 			)

@@ -15,6 +15,8 @@ form damage_report
 	(
 		type = picklist
 		displayname = "Stage"
+		values = {"Mixing","Packing","QC"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -24,10 +26,10 @@ form damage_report
 	(
 		type = textarea
 		displayname = "Description"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	quantity_lost
@@ -43,6 +45,7 @@ form damage_report
 	(
 		type = picklist
 		displayname = "UOM"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -52,6 +55,8 @@ form damage_report
 	(
 		type = picklist
 		displayname = "Handling Action"
+		values = {"Scrap","Rework"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

@@ -15,10 +15,10 @@ form decision_log
 	(
 		type = autonumber
 		displayname = "Decision ID"
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have topic
@@ -30,23 +30,14 @@ form decision_log
 		width = medium
 	)
 
-	must have stakeholders
-	(
-		type = text
-		displayname = "Stakeholders"
-		row = 1
-		column = 1
-		width = medium
-	)
-
 	must have decision_details
 	(
 		type = textarea
 		displayname = "Decision Details"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	must have decision_date
@@ -62,10 +53,10 @@ form decision_log
 	(
 		type = textarea
 		displayname = "Follow-up Actions"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

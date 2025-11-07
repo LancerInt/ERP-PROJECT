@@ -15,10 +15,10 @@ form payroll_export
 	(
 		type = autonumber
 		displayname = "Export ID"
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have period_start
@@ -39,31 +39,10 @@ form payroll_export
 		width = medium
 	)
 
-	must have warehouse
-	(
-		type = lookup
-		displayname = "Warehouse"
-		row = 1
-		column = 1
-		width = medium
-		related form = warehouse
-	)
-
 	must have staff_summary
 	(
 		type = grid
 		displayname = "Staff Summary"
-		row = 1
-		column = 1
-		width = medium
-		must have staff
-		(
-			type = lookup
-			displayname = "Staff"
-			width = medium
-			related form = staff_master
-		)
-
 		must have present_days
 		(
 			type = number
@@ -92,16 +71,19 @@ form payroll_export
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	attendance_metrics
 	(
 		type = textarea
 		displayname = "Attendance Metrics"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	overtime_hours_total
@@ -117,21 +99,21 @@ form payroll_export
 	(
 		type = textarea
 		displayname = "Exceptions"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	export_file
 	(
 		type = upload file
 		displayname = "Export File"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	actions

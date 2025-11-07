@@ -15,25 +15,19 @@ form freight_details
 	(
 		type = picklist
 		displayname = "Freight Type"
+		values = {"Local Drayage","Linehaul"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have transporter
-	(
-		type = lookup
-		displayname = "Transporter"
-		row = 1
-		column = 1
-		width = medium
-		related form = transporter
 	)
 
 	must have freight_terms
 	(
 		type = picklist
 		displayname = "Freight Terms"
+		values = {"Paid","To_Pay","Mixed"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -61,6 +55,8 @@ form freight_details
 	(
 		type = picklist
 		displayname = "Payable By"
+		values = {"Company","Vendor"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -79,6 +75,8 @@ form freight_details
 	(
 		type = picklist
 		displayname = "Quantity UOM"
+		values = {"Tonnes","KG","KL","Units"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -88,6 +86,7 @@ form freight_details
 	(
 		type = picklist
 		displayname = "Destination State"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -97,10 +96,10 @@ form freight_details
 	(
 		type = number
 		displayname = "Cost Per Unit (Calc)"
+		is formula = true
 		row = 1
 		column = 1
 		width = medium
-		is formula = true
 	)
 
 	actions

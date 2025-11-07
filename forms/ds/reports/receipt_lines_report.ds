@@ -4,8 +4,6 @@ list receipt_lines_report
 	show all rows from receipt_lines
 	(
 		line_no as "Line No."
-		po_line as "PO Line"
-		product as "Product"
 		batch_no as "Batch No."
 		expiry_date as "Expiry Date"
 		quantity_received as "Quantity Received"
@@ -14,7 +12,6 @@ list receipt_lines_report
 		agent_commission as "Agent Commission"
 		quantity_accepted as "Quantity Accepted"
 		quantity_rejected as "Quantity Rejected"
-		godown_location as "Godown Location"
 		remarks as "Remarks"
 	)
 	quickview
@@ -27,8 +24,6 @@ list receipt_lines_report
 				fields
 				(
 					line_no as "Line No."
-					po_line as "PO Line"
-					product as "Product"
 					batch_no as "Batch No."
 					expiry_date as "Expiry Date"
 					quantity_received as "Quantity Received"
@@ -37,7 +32,6 @@ list receipt_lines_report
 					agent_commission as "Agent Commission"
 					quantity_accepted as "Quantity Accepted"
 					quantity_rejected as "Quantity Rejected"
-					godown_location as "Godown Location"
 					remarks as "Remarks"
 				)
 			)
@@ -82,8 +76,6 @@ list receipt_lines_report
 				fields
 				(
 					line_no as "Line No."
-					po_line as "PO Line"
-					product as "Product"
 					batch_no as "Batch No."
 					expiry_date as "Expiry Date"
 					quantity_received as "Quantity Received"
@@ -92,7 +84,6 @@ list receipt_lines_report
 					agent_commission as "Agent Commission"
 					quantity_accepted as "Quantity Accepted"
 					quantity_rejected as "Quantity Rejected"
-					godown_location as "Godown Location"
 					remarks as "Remarks"
 				)
 			)

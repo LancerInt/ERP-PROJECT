@@ -4,7 +4,6 @@ list dispatch_eta_updates_report
 	show all rows from dispatch_eta_updates
 	(
 		update_date as "Update Date"
-		updated_by as "Updated By"
 		expected_arrival as "Expected Arrival"
 		remarks as "Remarks"
 	)
@@ -18,7 +17,6 @@ list dispatch_eta_updates_report
 				fields
 				(
 					update_date as "Update Date"
-					updated_by as "Updated By"
 					expected_arrival as "Expected Arrival"
 					remarks as "Remarks"
 				)
@@ -64,7 +62,6 @@ list dispatch_eta_updates_report
 				fields
 				(
 					update_date as "Update Date"
-					updated_by as "Updated By"
 					expected_arrival as "Expected Arrival"
 					remarks as "Remarks"
 				)

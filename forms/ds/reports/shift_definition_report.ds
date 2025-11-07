@@ -4,7 +4,6 @@ list shift_definition_report
 	show all rows from shift_definition
 	(
 		shift_code as "Shift Code"
-		warehouse as "Warehouse"
 		shift_name as "Shift Name"
 		start_time as "Start Time"
 		end_time as "End Time"
@@ -24,7 +23,6 @@ list shift_definition_report
 				fields
 				(
 					shift_code as "Shift Code"
-					warehouse as "Warehouse"
 					shift_name as "Shift Name"
 					start_time as "Start Time"
 					end_time as "End Time"
@@ -76,7 +74,6 @@ list shift_definition_report
 				fields
 				(
 					shift_code as "Shift Code"
-					warehouse as "Warehouse"
 					shift_name as "Shift Name"
 					start_time as "Start Time"
 					end_time as "End Time"

@@ -5,10 +5,7 @@ list freight_advice_2_report
 	(
 		advice_no as "Advice No."
 		direction as "Direction"
-		dispatch_challan as "Dispatch Challan"
-		transporter as "Transporter"
 		freight_type as "Freight Type"
-		created_by as "Created By"
 		created_date as "Created Date"
 		base_amount as "Base Amount"
 		discount as "Discount"
@@ -34,10 +31,7 @@ list freight_advice_2_report
 				(
 					advice_no as "Advice No."
 					direction as "Direction"
-					dispatch_challan as "Dispatch Challan"
-					transporter as "Transporter"
 					freight_type as "Freight Type"
-					created_by as "Created By"
 					created_date as "Created Date"
 					base_amount as "Base Amount"
 					discount as "Discount"
@@ -95,10 +89,7 @@ list freight_advice_2_report
 				(
 					advice_no as "Advice No."
 					direction as "Direction"
-					dispatch_challan as "Dispatch Challan"
-					transporter as "Transporter"
 					freight_type as "Freight Type"
-					created_by as "Created By"
 					created_date as "Created Date"
 					base_amount as "Base Amount"
 					discount as "Discount"

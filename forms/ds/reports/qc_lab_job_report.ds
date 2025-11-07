@@ -4,8 +4,6 @@ list qc_lab_job_report
 	show all rows from qc_lab_job
 	(
 		job_no as "Job No."
-		qc_request as "QC Request"
-		analyst as "Analyst"
 		assigned_parameters as "Assigned Parameters"
 		sample_received_date as "Sample Received Date"
 		results_attachment as "Results Attachment"
@@ -22,8 +20,6 @@ list qc_lab_job_report
 				fields
 				(
 					job_no as "Job No."
-					qc_request as "QC Request"
-					analyst as "Analyst"
 					assigned_parameters as "Assigned Parameters"
 					sample_received_date as "Sample Received Date"
 					results_attachment as "Results Attachment"
@@ -72,8 +68,6 @@ list qc_lab_job_report
 				fields
 				(
 					job_no as "Job No."
-					qc_request as "QC Request"
-					analyst as "Analyst"
 					assigned_parameters as "Assigned Parameters"
 					sample_received_date as "Sample Received Date"
 					results_attachment as "Results Attachment"

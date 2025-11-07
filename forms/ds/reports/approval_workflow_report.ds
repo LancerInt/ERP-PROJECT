@@ -4,7 +4,6 @@ list approval_workflow_report
 	show all rows from approval_workflow
 	(
 		stage as "Stage"
-		approver as "Approver"
 		decision as "Decision"
 		decision_date as "Decision Date"
 		remarks as "Remarks"
@@ -19,7 +18,6 @@ list approval_workflow_report
 				fields
 				(
 					stage as "Stage"
-					approver as "Approver"
 					decision as "Decision"
 					decision_date as "Decision Date"
 					remarks as "Remarks"
@@ -66,7 +64,6 @@ list approval_workflow_report
 				fields
 				(
 					stage as "Stage"
-					approver as "Approver"
 					decision as "Decision"
 					decision_date as "Decision Date"
 					remarks as "Remarks"

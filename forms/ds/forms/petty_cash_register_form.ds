@@ -15,30 +15,10 @@ form petty_cash_register
 	(
 		type = autonumber
 		displayname = "Register ID"
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have warehouse
-	(
-		type = lookup
-		displayname = "Warehouse"
 		row = 1
 		column = 1
 		width = medium
-		related form = warehouse
-	)
-
-	must have coordinator
-	(
-		type = lookup
-		displayname = "Coordinator"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
 	)
 
 	must have opening_balance
@@ -54,22 +34,11 @@ form petty_cash_register
 	(
 		type = grid
 		displayname = "Transactions"
-		row = 1
-		column = 1
-		width = medium
 		must have transaction_date
 		(
 			type = date
 			displayname = "Transaction Date"
 			width = medium
-		)
-
-		must have voucher_reference
-		(
-			type = lookup
-			displayname = "Voucher Reference"
-			width = medium
-			related forms = {"vendor_payment_advice","wage_voucher"}
 		)
 
 		must have amount
@@ -83,6 +52,8 @@ form petty_cash_register
 		(
 			type = picklist
 			displayname = "Type"
+			values = {"Advance","Settlement"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -90,10 +61,13 @@ form petty_cash_register
 		(
 			type = textarea
 			displayname = "Notes"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have current_balance

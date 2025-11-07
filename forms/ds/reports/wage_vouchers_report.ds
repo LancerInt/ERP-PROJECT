@@ -3,7 +3,6 @@ list wage_vouchers_report
 	displayName = "Wage Vouchers Report"
 	show all rows from wage_vouchers
 	(
-		wage_voucher as "Wage Voucher"
 		amount as "Amount"
 	)
 	quickview
@@ -15,7 +14,6 @@ list wage_vouchers_report
 				title = "Wage Vouchers Overview"
 				fields
 				(
-					wage_voucher as "Wage Voucher"
 					amount as "Amount"
 				)
 			)
@@ -59,7 +57,6 @@ list wage_vouchers_report
 				title = "Wage Vouchers Overview"
 				fields
 				(
-					wage_voucher as "Wage Voucher"
 					amount as "Amount"
 				)
 			)

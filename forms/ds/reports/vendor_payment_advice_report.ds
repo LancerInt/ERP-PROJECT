@@ -4,14 +4,11 @@ list vendor_payment_advice_report
 	show all rows from vendor_payment_advice
 	(
 		advice_no as "Advice No."
-		vendor as "Vendor"
 		source_document_type as "Source Document Type"
-		source_document as "Source Document"
 		amount as "Amount"
 		tax_components as "Tax Components"
 		due_date as "Due Date"
 		payment_method as "Payment Method"
-		prepared_by as "Prepared By"
 		approval_workflow as "Approval Workflow"
 		status as "Status"
 		notes as "Notes"
@@ -26,14 +23,11 @@ list vendor_payment_advice_report
 				fields
 				(
 					advice_no as "Advice No."
-					vendor as "Vendor"
 					source_document_type as "Source Document Type"
-					source_document as "Source Document"
 					amount as "Amount"
 					tax_components as "Tax Components"
 					due_date as "Due Date"
 					payment_method as "Payment Method"
-					prepared_by as "Prepared By"
 					approval_workflow as "Approval Workflow"
 					status as "Status"
 					notes as "Notes"
@@ -80,14 +74,11 @@ list vendor_payment_advice_report
 				fields
 				(
 					advice_no as "Advice No."
-					vendor as "Vendor"
 					source_document_type as "Source Document Type"
-					source_document as "Source Document"
 					amount as "Amount"
 					tax_components as "Tax Components"
 					due_date as "Due Date"
 					payment_method as "Payment Method"
-					prepared_by as "Prepared By"
 					approval_workflow as "Approval Workflow"
 					status as "Status"
 					notes as "Notes"

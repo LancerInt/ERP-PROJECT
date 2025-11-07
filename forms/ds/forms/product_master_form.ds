@@ -11,14 +11,13 @@ form product_master
 		width = medium
 	)
 
-	must have sku_code
+	must have unique sku_code
 	(
 		type = text
 		displayname = "SKU Code"
 		row = 1
 		column = 1
 		width = medium
-		is unique = true
 	)
 
 	must have product_name
@@ -34,6 +33,8 @@ form product_master
 	(
 		type = picklist
 		displayname = "Product Type"
+		values = {"Goods","Services"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -43,6 +44,8 @@ form product_master
 	(
 		type = picklist
 		displayname = "Goods Sub-Type"
+		values = {"RAW_MATERIAL","PACKING_MATERIAL","FINISHED_GOOD","SEMI_FINISHED","TRADED_PRODUCTS","CAPITAL_GOOD","MACHINE_SPARES","CONSUMABLES"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -52,29 +55,21 @@ form product_master
 	(
 		type = picklist
 		displayname = "Service Sub-Type"
+		values = {"Warehouse Expense","Wages","Freight","Miscellaneous","Staff Welfare","Vehicle","Custom"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have custom_service_category
-	(
-		type = lookup
-		displayname = "Custom Service Category"
-		row = 1
-		column = 1
-		width = medium
-		related form = service_catalogue
 	)
 
 	description
 	(
 		type = textarea
 		displayname = "Description"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	must have batch_tracking_required
@@ -99,25 +94,18 @@ form product_master
 	(
 		type = picklist
 		displayname = "QC Responsibility"
+		values = {"Warehouse Coordinator","QC Coordinator","QC Manager"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	qc_template
-	(
-		type = lookup
-		displayname = "QC Template"
-		row = 1
-		column = 1
-		width = medium
-		related form = template_library
 	)
 
 	must have uom
 	(
 		type = picklist
 		displayname = "UOM"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -127,13 +115,11 @@ form product_master
 	(
 		type = grid
 		displayname = "Secondary UOMs"
-		row = 1
-		column = 1
-		width = medium
 		must have to_uom
 		(
 			type = picklist
 			displayname = "To UOM"
+			maxchar = 100
 			width = medium
 		)
 
@@ -165,6 +151,9 @@ form product_master
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	specific_gravity
@@ -180,20 +169,10 @@ form product_master
 	(
 		type = textarea
 		displayname = "Conversion Notes"
-		row = 1
-		column = 1
-		width = medium
 		height = 100px
-	)
-
-	packing_material_default
-	(
-		type = lookup
-		displayname = "Packing Material Default"
 		row = 1
 		column = 1
 		width = medium
-		related form = product_master
 	)
 
 	yield_tracking_required
@@ -209,6 +188,8 @@ form product_master
 	(
 		type = list
 		displayname = "Yield Parameters"
+		values = {"Physical Qty","Purity %","AI Content"}
+		height = 60px
 		row = 1
 		column = 1
 		width = medium
@@ -218,6 +199,8 @@ form product_master
 	(
 		type = picklist
 		displayname = "Wage Method"
+		values = {"Template Rate","Headcount","None"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -227,6 +210,7 @@ form product_master
 	(
 		type = picklist
 		displayname = "Freight Class"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -241,16 +225,6 @@ form product_master
 		width = medium
 	)
 
-	must have created_by
-	(
-		type = lookup
-		displayname = "Created By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
-	)
-
 	must have created_date
 	(
 		type = datetime
@@ -258,16 +232,6 @@ form product_master
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	last_modified_by
-	(
-		type = lookup
-		displayname = "Last Modified By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
 	)
 
 	last_modified_date

@@ -51,6 +51,7 @@ form bank_account
 	(
 		type = picklist
 		displayname = "Account Type"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

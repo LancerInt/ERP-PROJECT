@@ -15,39 +15,21 @@ form customer_ledger
 	(
 		type = autonumber
 		displayname = "Ledger ID"
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have customer
-	(
-		type = lookup
-		displayname = "Customer"
 		row = 1
 		column = 1
 		width = medium
-		related form = customer
 	)
 
 	must have document_type
 	(
 		type = picklist
 		displayname = "Document Type"
+		values = {"Invoice","Receipt","Credit Note"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have document_reference
-	(
-		type = lookup
-		displayname = "Document Reference"
-		row = 1
-		column = 1
-		width = medium
-		related forms = {"sales_invoice_check","receipts"}
 	)
 
 	must have document_date
@@ -90,6 +72,8 @@ form customer_ledger
 	(
 		type = picklist
 		displayname = "Payment Status"
+		values = {"Not Due","Partially Paid","Paid","Overdue"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -99,9 +83,6 @@ form customer_ledger
 	(
 		type = grid
 		displayname = "Reminder Sent Flags"
-		row = 1
-		column = 1
-		width = medium
 		must have reminder_date
 		(
 			type = date
@@ -113,35 +94,32 @@ form customer_ledger
 		(
 			type = picklist
 			displayname = "Reminder Method"
+			values = {"Email","Call","SMS"}
+			maxchar = 100
 			width = medium
-		)
-
-		reminder_sent_by
-		(
-			type = lookup
-			displayname = "Reminder Sent By"
-			width = medium
-			related form = stakeholder_user
 		)
 
 		notes
 		(
 			type = textarea
 			displayname = "Notes"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	notes
 	(
 		type = textarea
 		displayname = "Notes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

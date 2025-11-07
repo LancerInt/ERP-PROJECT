@@ -15,6 +15,8 @@ form approval_levels
 	(
 		type = picklist
 		displayname = "Module"
+		values = {"Purchase","Sales","Production","etc"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -24,6 +26,8 @@ form approval_levels
 	(
 		type = picklist
 		displayname = "Stage"
+		values = {"Request","Evaluation","Payment"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

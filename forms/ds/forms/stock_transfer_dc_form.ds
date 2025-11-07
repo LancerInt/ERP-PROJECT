@@ -15,10 +15,10 @@ form stock_transfer_dc
 	(
 		type = autonumber
 		displayname = "Transfer No."
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have created_date
@@ -30,26 +30,6 @@ form stock_transfer_dc
 		width = medium
 	)
 
-	must have from_warehouse
-	(
-		type = lookup
-		displayname = "From Warehouse"
-		row = 1
-		column = 1
-		width = medium
-		related form = warehouse
-	)
-
-	must have to_warehouse
-	(
-		type = lookup
-		displayname = "To Warehouse"
-		row = 1
-		column = 1
-		width = medium
-		related form = warehouse
-	)
-
 	dispatch_date
 	(
 		type = date
@@ -59,20 +39,11 @@ form stock_transfer_dc
 		width = medium
 	)
 
-	transporter
-	(
-		type = lookup
-		displayname = "Transporter"
-		row = 1
-		column = 1
-		width = medium
-		related form = transporter
-	)
-
 	must have freight_terms
 	(
 		type = picklist
 		displayname = "Freight Terms"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -100,17 +71,6 @@ form stock_transfer_dc
 	(
 		type = grid
 		displayname = "Transfer Lines"
-		row = 1
-		column = 1
-		width = medium
-		must have product
-		(
-			type = lookup
-			displayname = "Product"
-			width = medium
-			related form = product_master
-		)
-
 		must have batch
 		(
 			type = text
@@ -129,31 +89,21 @@ form stock_transfer_dc
 		(
 			type = picklist
 			displayname = "UOM"
+			maxchar = 100
 			width = medium
 		)
 
-		must have source_godown
-		(
-			type = lookup
-			displayname = "Source Godown"
-			width = medium
-			related form = godown
-		)
-
-		must have destination_godown
-		(
-			type = lookup
-			displayname = "Destination Godown"
-			width = medium
-			related form = godown
-		)
-
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have status
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Draft","In Transit","Received","Closed"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -163,11 +113,11 @@ form stock_transfer_dc
 	(
 		type = upload file
 		displayname = "Documents"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	actions

@@ -4,7 +4,6 @@ list issued_materials_report
 	show all rows from issued_materials
 	(
 		material_type as "Material Type"
-		product_machine as "Product/Machine"
 		batch as "Batch"
 		quantity as "Quantity"
 		uom as "UOM"
@@ -20,7 +19,6 @@ list issued_materials_report
 				fields
 				(
 					material_type as "Material Type"
-					product_machine as "Product/Machine"
 					batch as "Batch"
 					quantity as "Quantity"
 					uom as "UOM"
@@ -68,7 +66,6 @@ list issued_materials_report
 				fields
 				(
 					material_type as "Material Type"
-					product_machine as "Product/Machine"
 					batch as "Batch"
 					quantity as "Quantity"
 					uom as "UOM"

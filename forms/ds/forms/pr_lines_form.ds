@@ -20,24 +20,14 @@ form pr_lines
 		width = medium
 	)
 
-	must have product_service
-	(
-		type = lookup
-		displayname = "Product/Service"
-		row = 1
-		column = 1
-		width = medium
-		related form = product_master
-	)
-
 	description_override
 	(
 		type = textarea
 		displayname = "Description Override"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	must have quantity_requested
@@ -53,6 +43,7 @@ form pr_lines
 	(
 		type = picklist
 		displayname = "UOM"
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -71,19 +62,11 @@ form pr_lines
 	(
 		type = picklist
 		displayname = "Purpose"
+		values = {"Production","Maintenance","Consumable"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	machine_reference
-	(
-		type = lookup
-		displayname = "Machine Reference"
-		row = 1
-		column = 1
-		width = medium
-		related form = machinery
 	)
 
 	allow_rfq_skip
@@ -99,17 +82,19 @@ form pr_lines
 	(
 		type = upload file
 		displayname = "Attachments"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	must have status
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Pending","Approved","Rejected","Fulfilled"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

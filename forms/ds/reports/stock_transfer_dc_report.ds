@@ -5,10 +5,7 @@ list stock_transfer_dc_report
 	(
 		transfer_no as "Transfer No."
 		created_date as "Created Date"
-		from_warehouse as "From Warehouse"
-		to_warehouse as "To Warehouse"
 		dispatch_date as "Dispatch Date"
-		transporter as "Transporter"
 		freight_terms as "Freight Terms"
 		loading_wages as "Loading Wages"
 		freight_amount as "Freight Amount"
@@ -27,10 +24,7 @@ list stock_transfer_dc_report
 				(
 					transfer_no as "Transfer No."
 					created_date as "Created Date"
-					from_warehouse as "From Warehouse"
-					to_warehouse as "To Warehouse"
 					dispatch_date as "Dispatch Date"
-					transporter as "Transporter"
 					freight_terms as "Freight Terms"
 					loading_wages as "Loading Wages"
 					freight_amount as "Freight Amount"
@@ -81,10 +75,7 @@ list stock_transfer_dc_report
 				(
 					transfer_no as "Transfer No."
 					created_date as "Created Date"
-					from_warehouse as "From Warehouse"
-					to_warehouse as "To Warehouse"
 					dispatch_date as "Dispatch Date"
-					transporter as "Transporter"
 					freight_terms as "Freight Terms"
 					loading_wages as "Loading Wages"
 					freight_amount as "Freight Amount"

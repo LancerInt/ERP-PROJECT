@@ -7,7 +7,6 @@ list parsed_lines_report
 		quantity as "Quantity"
 		uom as "UOM"
 		price as "Price"
-		parsed_sku as "Parsed SKU"
 		confidence as "Confidence %"
 	)
 	quickview
@@ -23,7 +22,6 @@ list parsed_lines_report
 					quantity as "Quantity"
 					uom as "UOM"
 					price as "Price"
-					parsed_sku as "Parsed SKU"
 					confidence as "Confidence %"
 				)
 			)
@@ -71,7 +69,6 @@ list parsed_lines_report
 					quantity as "Quantity"
 					uom as "UOM"
 					price as "Price"
-					parsed_sku as "Parsed SKU"
 					confidence as "Confidence %"
 				)
 			)

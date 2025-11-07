@@ -5,9 +5,6 @@ list purchase_request_report
 	(
 		pr_no as "PR No."
 		request_date as "Request Date"
-		warehouse as "Warehouse"
-		godown as "Godown"
-		requested_by as "Requested By"
 		requestor_role as "Requestor Role"
 		requirement_type as "Requirement Type"
 		lines as "Lines"
@@ -17,8 +14,6 @@ list purchase_request_report
 		attachments as "Attachments"
 		approval_status as "Approval Status"
 		approval_trail as "Approval Trail"
-		visibility_scope as "Visibility Scope"
-		created_from_bom_request as "Created From BOM Request"
 		notes as "Notes"
 	)
 	quickview
@@ -32,9 +27,6 @@ list purchase_request_report
 				(
 					pr_no as "PR No."
 					request_date as "Request Date"
-					warehouse as "Warehouse"
-					godown as "Godown"
-					requested_by as "Requested By"
 					requestor_role as "Requestor Role"
 					requirement_type as "Requirement Type"
 					lines as "Lines"
@@ -44,8 +36,6 @@ list purchase_request_report
 					attachments as "Attachments"
 					approval_status as "Approval Status"
 					approval_trail as "Approval Trail"
-					visibility_scope as "Visibility Scope"
-					created_from_bom_request as "Created From BOM Request"
 					notes as "Notes"
 				)
 			)
@@ -91,9 +81,6 @@ list purchase_request_report
 				(
 					pr_no as "PR No."
 					request_date as "Request Date"
-					warehouse as "Warehouse"
-					godown as "Godown"
-					requested_by as "Requested By"
 					requestor_role as "Requestor Role"
 					requirement_type as "Requirement Type"
 					lines as "Lines"
@@ -103,8 +90,6 @@ list purchase_request_report
 					attachments as "Attachments"
 					approval_status as "Approval Status"
 					approval_trail as "Approval Trail"
-					visibility_scope as "Visibility Scope"
-					created_from_bom_request as "Created From BOM Request"
 					notes as "Notes"
 				)
 			)

@@ -3,7 +3,6 @@ list office_manager_authorization_report
 	displayName = "Office Manager Authorization Report"
 	show all rows from office_manager_authorization
 	(
-		authorized_by as "Authorized By"
 		authorization_date as "Authorization Date"
 		remarks as "Remarks"
 	)
@@ -16,7 +15,6 @@ list office_manager_authorization_report
 				title = "Office Manager Authorization Overview"
 				fields
 				(
-					authorized_by as "Authorized By"
 					authorization_date as "Authorization Date"
 					remarks as "Remarks"
 				)
@@ -61,7 +59,6 @@ list office_manager_authorization_report
 				title = "Office Manager Authorization Overview"
 				fields
 				(
-					authorized_by as "Authorized By"
 					authorization_date as "Authorization Date"
 					remarks as "Remarks"
 				)

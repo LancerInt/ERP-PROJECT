@@ -3,12 +3,9 @@ list transfer_lines_report
 	displayName = "Transfer Lines Report"
 	show all rows from transfer_lines
 	(
-		product as "Product"
 		batch as "Batch"
 		quantity as "Quantity"
 		uom as "UOM"
-		source_godown as "Source Godown"
-		destination_godown as "Destination Godown"
 	)
 	quickview
 	(
@@ -19,12 +16,9 @@ list transfer_lines_report
 				title = "Transfer Lines Overview"
 				fields
 				(
-					product as "Product"
 					batch as "Batch"
 					quantity as "Quantity"
 					uom as "UOM"
-					source_godown as "Source Godown"
-					destination_godown as "Destination Godown"
 				)
 			)
 		)
@@ -67,12 +61,9 @@ list transfer_lines_report
 				title = "Transfer Lines Overview"
 				fields
 				(
-					product as "Product"
 					batch as "Batch"
 					quantity as "Quantity"
 					uom as "UOM"
-					source_godown as "Source Godown"
-					destination_godown as "Destination Godown"
 				)
 			)
 		)

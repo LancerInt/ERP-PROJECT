@@ -3,12 +3,10 @@ list input_consumption_report
 	displayName = "Input Consumption Report"
 	show all rows from input_consumption
 	(
-		product as "Product"
 		planned_qty as "Planned Qty"
 		actual_qty as "Actual Qty"
 		uom as "UOM"
 		batch_used as "Batch Used"
-		godown as "Godown"
 		yield_loss as "Yield Loss %"
 	)
 	quickview
@@ -20,12 +18,10 @@ list input_consumption_report
 				title = "Input Consumption Overview"
 				fields
 				(
-					product as "Product"
 					planned_qty as "Planned Qty"
 					actual_qty as "Actual Qty"
 					uom as "UOM"
 					batch_used as "Batch Used"
-					godown as "Godown"
 					yield_loss as "Yield Loss %"
 				)
 			)
@@ -69,12 +65,10 @@ list input_consumption_report
 				title = "Input Consumption Overview"
 				fields
 				(
-					product as "Product"
 					planned_qty as "Planned Qty"
 					actual_qty as "Actual Qty"
 					uom as "UOM"
 					batch_used as "Batch Used"
-					godown as "Godown"
 					yield_loss as "Yield Loss %"
 				)
 			)

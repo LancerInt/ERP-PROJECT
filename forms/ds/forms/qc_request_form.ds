@@ -15,10 +15,10 @@ form qc_request
 	(
 		type = autonumber
 		displayname = "Request No."
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have request_date
@@ -30,43 +30,15 @@ form qc_request
 		width = medium
 	)
 
-	must have requested_by
-	(
-		type = lookup
-		displayname = "Requested By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
-	)
-
 	must have requestor_role
 	(
 		type = picklist
 		displayname = "Requestor Role"
+		values = {"Warehouse Supervisor","Coordinator","Manager"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have warehouse
-	(
-		type = lookup
-		displayname = "Warehouse"
-		row = 1
-		column = 1
-		width = medium
-		related form = warehouse
-	)
-
-	must have product
-	(
-		type = lookup
-		displayname = "Product"
-		row = 1
-		column = 1
-		width = medium
-		related form = product_master
 	)
 
 	must have batch
@@ -82,36 +54,17 @@ form qc_request
 	(
 		type = picklist
 		displayname = "Stage"
+		values = {"Receipt","In-Process","Finished","Sales Return"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have qc_template
-	(
-		type = lookup
-		displayname = "QC Template"
-		row = 1
-		column = 1
-		width = medium
-		related form = template_library
 	)
 
 	selected_parameters
 	(
 		type = grid
 		displayname = "Selected Parameters"
-		row = 1
-		column = 1
-		width = medium
-		must have parameter
-		(
-			type = lookup
-			displayname = "Parameter"
-			width = medium
-			related form = qc_parameter_library
-		)
-
 		override_range_min
 		(
 			type = number
@@ -130,21 +83,24 @@ form qc_request
 		(
 			type = textarea
 			displayname = "Notes"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	must have sample_photo
 	(
 		type = upload file
 		displayname = "Sample Photo"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = local_drive
 	)
 
 	sample_qty
@@ -160,6 +116,8 @@ form qc_request
 	(
 		type = picklist
 		displayname = "Priority"
+		values = {"Normal","Urgent"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -169,16 +127,18 @@ form qc_request
 	(
 		type = textarea
 		displayname = "Remarks"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	must have status
 	(
 		type = picklist
 		displayname = "Status"
+		values = {"Requested","In Progress","Completed"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

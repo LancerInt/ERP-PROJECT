@@ -4,7 +4,6 @@ list freight_charges_report
 	show all rows from freight_charges
 	(
 		freight_type as "Freight Type"
-		transporter as "Transporter"
 		amount as "Amount"
 		discount as "Discount"
 		payable_by as "Payable By"
@@ -19,7 +18,6 @@ list freight_charges_report
 				fields
 				(
 					freight_type as "Freight Type"
-					transporter as "Transporter"
 					amount as "Amount"
 					discount as "Discount"
 					payable_by as "Payable By"
@@ -66,7 +64,6 @@ list freight_charges_report
 				fields
 				(
 					freight_type as "Freight Type"
-					transporter as "Transporter"
 					amount as "Amount"
 					discount as "Discount"
 					payable_by as "Payable By"

@@ -3,7 +3,6 @@ list returned_goods_report
 	displayName = "Returned Goods Report"
 	show all rows from returned_goods
 	(
-		product as "Product"
 		batch as "Batch"
 		quantity_received as "Quantity Received"
 		uom as "UOM"
@@ -18,7 +17,6 @@ list returned_goods_report
 				title = "Returned Goods Overview"
 				fields
 				(
-					product as "Product"
 					batch as "Batch"
 					quantity_received as "Quantity Received"
 					uom as "UOM"
@@ -65,7 +63,6 @@ list returned_goods_report
 				title = "Returned Goods Overview"
 				fields
 				(
-					product as "Product"
 					batch as "Batch"
 					quantity_received as "Quantity Received"
 					uom as "UOM"

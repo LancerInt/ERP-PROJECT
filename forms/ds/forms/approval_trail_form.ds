@@ -15,19 +15,11 @@ form approval_trail
 	(
 		type = picklist
 		displayname = "Action"
+		values = {"Approved","Rejected","Partial"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have actor
-	(
-		type = lookup
-		displayname = "Actor"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
 	)
 
 	must have action_date
@@ -43,10 +35,10 @@ form approval_trail
 	(
 		type = textarea
 		displayname = "Remarks"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

@@ -4,9 +4,6 @@ list job_work_order_report
 	show all rows from job_work_order
 	(
 		order_no as "Order No."
-		warehouse as "Warehouse"
-		vendor as "Vendor"
-		template as "Template"
 		template_revision as "Template Revision"
 		start_date as "Start Date"
 		expected_completion_date as "Expected Completion Date"
@@ -27,9 +24,6 @@ list job_work_order_report
 				fields
 				(
 					order_no as "Order No."
-					warehouse as "Warehouse"
-					vendor as "Vendor"
-					template as "Template"
 					template_revision as "Template Revision"
 					start_date as "Start Date"
 					expected_completion_date as "Expected Completion Date"
@@ -82,9 +76,6 @@ list job_work_order_report
 				fields
 				(
 					order_no as "Order No."
-					warehouse as "Warehouse"
-					vendor as "Vendor"
-					template as "Template"
 					template_revision as "Template Revision"
 					start_date as "Start Date"
 					expected_completion_date as "Expected Completion Date"

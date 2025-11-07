@@ -15,6 +15,8 @@ form charges
 	(
 		type = picklist
 		displayname = "Charge Type"
+		values = {"Job Work","Freight","Loading","Unloading"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -42,6 +44,8 @@ form charges
 	(
 		type = picklist
 		displayname = "Payable By"
+		values = {"Company","Vendor"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium

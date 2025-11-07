@@ -15,20 +15,10 @@ form attendance_capture
 	(
 		type = autonumber
 		displayname = "Record ID"
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have staff
-	(
-		type = lookup
-		displayname = "Staff"
 		row = 1
 		column = 1
 		width = medium
-		related form = staff_master
 	)
 
 	must have date
@@ -62,22 +52,22 @@ form attendance_capture
 	(
 		type = upload file
 		displayname = "Entry Photo"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = local_drive
 	)
 
 	exit_photo
 	(
 		type = upload file
 		displayname = "Exit Photo"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = local_drive
 	)
 
 	must have geo_latitude
@@ -116,20 +106,12 @@ form attendance_capture
 		width = medium
 	)
 
-	must have shift
-	(
-		type = lookup
-		displayname = "Shift"
-		row = 1
-		column = 1
-		width = medium
-		related form = shift_definition
-	)
-
 	must have attendance_status
 	(
 		type = picklist
 		displayname = "Attendance Status"
+		values = {"Present","Absent","Half Day","Permission"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -148,10 +130,10 @@ form attendance_capture
 	(
 		type = textarea
 		displayname = "Notes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

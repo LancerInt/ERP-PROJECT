@@ -15,6 +15,8 @@ form tax_master
 	(
 		type = picklist
 		displayname = "Tax Type"
+		values = {"GST","TDS","TCS"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -60,6 +62,8 @@ form tax_master
 	(
 		type = list
 		displayname = "Applicable On"
+		values = {"Product","Service","Freight","Wage"}
+		height = 60px
 		row = 1
 		column = 1
 		width = medium
@@ -74,24 +78,14 @@ form tax_master
 		width = medium
 	)
 
-	must have company_scope
-	(
-		type = lookup
-		displayname = "Company Scope"
-		row = 1
-		column = 1
-		width = medium
-		related form = company
-	)
-
 	notes
 	(
 		type = textarea
 		displayname = "Notes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

@@ -15,19 +15,11 @@ form freight_payment_schedule
 	(
 		type = picklist
 		displayname = "Freight Type"
+		values = {"Local Drayage","Linehaul"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have transporter
-	(
-		type = lookup
-		displayname = "Transporter"
-		row = 1
-		column = 1
-		width = medium
-		related form = transporter
 	)
 
 	must have due_date

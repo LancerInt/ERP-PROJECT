@@ -4,7 +4,6 @@ list customer_po_upload_report
 	show all rows from customer_po_upload
 	(
 		upload_id as "Upload ID"
-		customer as "Customer"
 		upload_date as "Upload Date"
 		po_file as "PO File"
 		ai_parser_confidence as "AI Parser Confidence"
@@ -15,7 +14,6 @@ list customer_po_upload_report
 		manual_review_required as "Manual Review Required"
 		review_comments as "Review Comments"
 		status as "Status"
-		linked_sales_order as "Linked Sales Order"
 	)
 	quickview
 	(
@@ -27,7 +25,6 @@ list customer_po_upload_report
 				fields
 				(
 					upload_id as "Upload ID"
-					customer as "Customer"
 					upload_date as "Upload Date"
 					po_file as "PO File"
 					ai_parser_confidence as "AI Parser Confidence"
@@ -38,7 +35,6 @@ list customer_po_upload_report
 					manual_review_required as "Manual Review Required"
 					review_comments as "Review Comments"
 					status as "Status"
-					linked_sales_order as "Linked Sales Order"
 				)
 			)
 		)
@@ -82,7 +78,6 @@ list customer_po_upload_report
 				fields
 				(
 					upload_id as "Upload ID"
-					customer as "Customer"
 					upload_date as "Upload Date"
 					po_file as "PO File"
 					ai_parser_confidence as "AI Parser Confidence"
@@ -93,7 +88,6 @@ list customer_po_upload_report
 					manual_review_required as "Manual Review Required"
 					review_comments as "Review Comments"
 					status as "Status"
-					linked_sales_order as "Linked Sales Order"
 				)
 			)
 		)

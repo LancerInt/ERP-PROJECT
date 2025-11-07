@@ -4,14 +4,11 @@ list qc_final_report_report
 	show all rows from qc_final_report
 	(
 		report_no as "Report No."
-		qc_request as "QC Request"
 		template_revision as "Template Revision"
-		prepared_by as "Prepared By"
 		prepared_date as "Prepared Date"
 		overall_result as "Overall Result"
 		remarks as "Remarks"
 		digital_signature as "Digital Signature"
-		distribution_list as "Distribution List"
 		attachments as "Attachments"
 	)
 	quickview
@@ -24,14 +21,11 @@ list qc_final_report_report
 				fields
 				(
 					report_no as "Report No."
-					qc_request as "QC Request"
 					template_revision as "Template Revision"
-					prepared_by as "Prepared By"
 					prepared_date as "Prepared Date"
 					overall_result as "Overall Result"
 					remarks as "Remarks"
 					digital_signature as "Digital Signature"
-					distribution_list as "Distribution List"
 					attachments as "Attachments"
 				)
 			)
@@ -76,14 +70,11 @@ list qc_final_report_report
 				fields
 				(
 					report_no as "Report No."
-					qc_request as "QC Request"
 					template_revision as "Template Revision"
-					prepared_by as "Prepared By"
 					prepared_date as "Prepared Date"
 					overall_result as "Overall Result"
 					remarks as "Remarks"
 					digital_signature as "Digital Signature"
-					distribution_list as "Distribution List"
 					attachments as "Attachments"
 				)
 			)

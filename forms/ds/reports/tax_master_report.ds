@@ -10,7 +10,6 @@ list tax_master_report
 		effective_to as "Effective To"
 		applicable_on as "Applicable On"
 		threshold_amount as "Threshold Amount"
-		company_scope as "Company Scope"
 		notes as "Notes"
 	)
 	quickview
@@ -29,7 +28,6 @@ list tax_master_report
 					effective_to as "Effective To"
 					applicable_on as "Applicable On"
 					threshold_amount as "Threshold Amount"
-					company_scope as "Company Scope"
 					notes as "Notes"
 				)
 			)
@@ -80,7 +78,6 @@ list tax_master_report
 					effective_to as "Effective To"
 					applicable_on as "Applicable On"
 					threshold_amount as "Threshold Amount"
-					company_scope as "Company Scope"
 					notes as "Notes"
 				)
 			)

@@ -15,10 +15,10 @@ form purchase_request
 	(
 		type = autonumber
 		displayname = "PR No."
+		start index = 1
 		row = 1
 		column = 1
 		width = medium
-		start index = 1
 	)
 
 	must have request_date
@@ -30,40 +30,12 @@ form purchase_request
 		width = medium
 	)
 
-	must have warehouse
-	(
-		type = lookup
-		displayname = "Warehouse"
-		row = 1
-		column = 1
-		width = medium
-		related form = warehouse
-	)
-
-	must have godown
-	(
-		type = lookup
-		displayname = "Godown"
-		row = 1
-		column = 1
-		width = medium
-		related form = godown
-	)
-
-	must have requested_by
-	(
-		type = lookup
-		displayname = "Requested By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
-	)
-
 	must have requestor_role
 	(
 		type = picklist
 		displayname = "Requestor Role"
+		values = {"Warehouse Manager","Coordinator"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -73,6 +45,8 @@ form purchase_request
 	(
 		type = picklist
 		displayname = "Requirement Type"
+		values = {"Goods","Services","Machinery"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -82,9 +56,6 @@ form purchase_request
 	(
 		type = grid
 		displayname = "Lines"
-		row = 1
-		column = 1
-		width = medium
 		must have line_no
 		(
 			type = number
@@ -92,20 +63,12 @@ form purchase_request
 			width = medium
 		)
 
-		must have product_service
-		(
-			type = lookup
-			displayname = "Product/Service"
-			width = medium
-			related form = product_master
-		)
-
 		description_override
 		(
 			type = textarea
 			displayname = "Description Override"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
 		must have quantity_requested
@@ -119,6 +82,7 @@ form purchase_request
 		(
 			type = picklist
 			displayname = "UOM"
+			maxchar = 100
 			width = medium
 		)
 
@@ -133,15 +97,9 @@ form purchase_request
 		(
 			type = picklist
 			displayname = "Purpose"
+			values = {"Production","Maintenance","Consumable"}
+			maxchar = 100
 			width = medium
-		)
-
-		machine_reference
-		(
-			type = lookup
-			displayname = "Machine Reference"
-			width = medium
-			related form = machinery
 		)
 
 		allow_rfq_skip
@@ -155,15 +113,17 @@ form purchase_request
 		(
 			type = upload file
 			displayname = "Attachments"
-			width = medium
 			file count = 10
-			browse = localdrive
+			browse = local_drive
+			width = medium
 		)
 
 		must have status
 		(
 			type = picklist
 			displayname = "Status"
+			values = {"Pending","Approved","Rejected","Fulfilled"}
+			maxchar = 100
 			width = medium
 		)
 
@@ -174,12 +134,17 @@ form purchase_request
 			width = medium
 		)
 
+		row = 1
+		column = 1
+		width = medium
 	)
 
 	priority
 	(
 		type = picklist
 		displayname = "Priority"
+		values = {"Low","Medium","High"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -198,27 +163,29 @@ form purchase_request
 	(
 		type = textarea
 		displayname = "Justification"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	attachments
 	(
 		type = upload file
 		displayname = "Attachments"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	must have approval_status
 	(
 		type = picklist
 		displayname = "Approval Status"
+		values = {"Draft","Pending","Approved","Rejected","Partially Approved"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -228,22 +195,13 @@ form purchase_request
 	(
 		type = grid
 		displayname = "Approval Trail"
-		row = 1
-		column = 1
-		width = medium
 		must have action
 		(
 			type = picklist
 			displayname = "Action"
+			values = {"Approved","Rejected","Partial"}
+			maxchar = 100
 			width = medium
-		)
-
-		must have actor
-		(
-			type = lookup
-			displayname = "Actor"
-			width = medium
-			related form = stakeholder_user
 		)
 
 		must have action_date
@@ -257,39 +215,23 @@ form purchase_request
 		(
 			type = textarea
 			displayname = "Remarks"
-			width = medium
 			height = 100px
+			width = medium
 		)
 
-	)
-
-	visibility_scope
-	(
-		type = text
-		displayname = "Visibility Scope"
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	created_from_bom_request
-	(
-		type = lookup
-		displayname = "Created From BOM Request"
-		row = 1
-		column = 1
-		width = medium
-		related form = bom_request
 	)
 
 	notes
 	(
 		type = textarea
 		displayname = "Notes"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	actions

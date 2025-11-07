@@ -15,20 +15,10 @@ form qc_final_report
 	(
 		type = autonumber
 		displayname = "Report No."
-		row = 1
-		column = 1
-		width = medium
 		start index = 1
-	)
-
-	must have qc_request
-	(
-		type = lookup
-		displayname = "QC Request"
 		row = 1
 		column = 1
 		width = medium
-		related form = qc_request
 	)
 
 	must have template_revision
@@ -38,16 +28,6 @@ form qc_final_report
 		row = 1
 		column = 1
 		width = medium
-	)
-
-	must have prepared_by
-	(
-		type = lookup
-		displayname = "Prepared By"
-		row = 1
-		column = 1
-		width = medium
-		related form = stakeholder_user
 	)
 
 	must have prepared_date
@@ -63,6 +43,8 @@ form qc_final_report
 	(
 		type = picklist
 		displayname = "Overall Result"
+		values = {"Pass","Fail","Rework"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -72,27 +54,18 @@ form qc_final_report
 	(
 		type = textarea
 		displayname = "Remarks"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	must have digital_signature
 	(
 		type = upload file
 		displayname = "Digital Signature"
-		row = 1
-		column = 1
-		width = medium
 		file count = 10
-		browse = localdrive
-	)
-
-	distribution_list
-	(
-		type = text
-		displayname = "Distribution List"
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
@@ -102,11 +75,11 @@ form qc_final_report
 	(
 		type = upload file
 		displayname = "Attachments"
+		file count = 10
+		browse = local_drive
 		row = 1
 		column = 1
 		width = medium
-		file count = 10
-		browse = localdrive
 	)
 
 	actions

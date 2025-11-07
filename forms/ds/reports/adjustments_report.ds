@@ -6,7 +6,6 @@ list adjustments_report
 		adjustment_type as "Adjustment Type"
 		amount as "Amount"
 		notes as "Notes"
-		approved_by as "Approved By"
 	)
 	quickview
 	(
@@ -20,7 +19,6 @@ list adjustments_report
 					adjustment_type as "Adjustment Type"
 					amount as "Amount"
 					notes as "Notes"
-					approved_by as "Approved By"
 				)
 			)
 		)
@@ -66,7 +64,6 @@ list adjustments_report
 					adjustment_type as "Adjustment Type"
 					amount as "Amount"
 					notes as "Notes"
-					approved_by as "Approved By"
 				)
 			)
 		)

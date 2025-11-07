@@ -3,9 +3,7 @@ list issue_lines_report
 	displayName = "Issue Lines Report"
 	show all rows from issue_lines
 	(
-		product as "Product"
 		batch_out as "Batch Out"
-		godown as "Godown"
 		quantity_issued as "Quantity Issued"
 		uom as "UOM"
 		reserved_for_template as "Reserved for Template"
@@ -19,9 +17,7 @@ list issue_lines_report
 				title = "Issue Lines Overview"
 				fields
 				(
-					product as "Product"
 					batch_out as "Batch Out"
-					godown as "Godown"
 					quantity_issued as "Quantity Issued"
 					uom as "UOM"
 					reserved_for_template as "Reserved for Template"
@@ -67,9 +63,7 @@ list issue_lines_report
 				title = "Issue Lines Overview"
 				fields
 				(
-					product as "Product"
 					batch_out as "Batch Out"
-					godown as "Godown"
 					quantity_issued as "Quantity Issued"
 					uom as "UOM"
 					reserved_for_template as "Reserved for Template"

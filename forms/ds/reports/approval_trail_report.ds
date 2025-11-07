@@ -4,7 +4,6 @@ list approval_trail_report
 	show all rows from approval_trail
 	(
 		action as "Action"
-		actor as "Actor"
 		action_date as "Action Date"
 		remarks as "Remarks"
 	)
@@ -18,7 +17,6 @@ list approval_trail_report
 				fields
 				(
 					action as "Action"
-					actor as "Actor"
 					action_date as "Action Date"
 					remarks as "Remarks"
 				)
@@ -64,7 +62,6 @@ list approval_trail_report
 				fields
 				(
 					action as "Action"
-					actor as "Actor"
 					action_date as "Action Date"
 					remarks as "Remarks"
 				)

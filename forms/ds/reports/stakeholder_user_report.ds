@@ -4,12 +4,8 @@ list stakeholder_user_report
 	show all rows from stakeholder_user
 	(
 		portal_user_id as "Portal User ID"
-		employee_record as "Employee Record"
 		primary_email as "Primary Email"
 		mobile as "Mobile"
-		assigned_roles as "Assigned Roles"
-		default_warehouse as "Default Warehouse"
-		warehouse_scope as "Warehouse Scope"
 		status as "Status"
 		last_accessed as "Last Accessed"
 		notes as "Notes"
@@ -24,12 +20,8 @@ list stakeholder_user_report
 				fields
 				(
 					portal_user_id as "Portal User ID"
-					employee_record as "Employee Record"
 					primary_email as "Primary Email"
 					mobile as "Mobile"
-					assigned_roles as "Assigned Roles"
-					default_warehouse as "Default Warehouse"
-					warehouse_scope as "Warehouse Scope"
 					status as "Status"
 					last_accessed as "Last Accessed"
 					notes as "Notes"
@@ -76,12 +68,8 @@ list stakeholder_user_report
 				fields
 				(
 					portal_user_id as "Portal User ID"
-					employee_record as "Employee Record"
 					primary_email as "Primary Email"
 					mobile as "Mobile"
-					assigned_roles as "Assigned Roles"
-					default_warehouse as "Default Warehouse"
-					warehouse_scope as "Warehouse Scope"
 					status as "Status"
 					last_accessed as "Last Accessed"
 					notes as "Notes"

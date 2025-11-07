@@ -4,7 +4,6 @@ list loading_unloading_wages_report
 	show all rows from loading_unloading_wages
 	(
 		wage_type as "Wage Type"
-		contractor_vendor as "Contractor Vendor"
 		amount as "Amount"
 		tds_applicable as "TDS Applicable %"
 		payable_by as "Payable By"
@@ -20,7 +19,6 @@ list loading_unloading_wages_report
 				fields
 				(
 					wage_type as "Wage Type"
-					contractor_vendor as "Contractor Vendor"
 					amount as "Amount"
 					tds_applicable as "TDS Applicable %"
 					payable_by as "Payable By"
@@ -68,7 +66,6 @@ list loading_unloading_wages_report
 				fields
 				(
 					wage_type as "Wage Type"
-					contractor_vendor as "Contractor Vendor"
 					amount as "Amount"
 					tds_applicable as "TDS Applicable %"
 					payable_by as "Payable By"

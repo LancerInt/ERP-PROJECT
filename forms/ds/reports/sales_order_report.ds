@@ -4,21 +4,14 @@ list sales_order_report
 	show all rows from sales_order
 	(
 		so_no as "SO No."
-		customer as "Customer"
-		company as "Company"
-		warehouse as "Warehouse"
-		price_list as "Price List"
 		credit_terms as "Credit Terms"
 		freight_terms as "Freight Terms"
-		customer_po_reference as "Customer PO Reference"
 		so_date as "SO Date"
 		required_ship_date as "Required Ship Date"
 		lines as "Lines"
 		remarks as "Remarks"
 		approval_status as "Approval Status"
-		approved_by as "Approved By"
 		approval_date as "Approval Date"
-		assigned_warehouse_stakeholders as "Assigned Warehouse Stakeholders"
 	)
 	quickview
 	(
@@ -30,21 +23,14 @@ list sales_order_report
 				fields
 				(
 					so_no as "SO No."
-					customer as "Customer"
-					company as "Company"
-					warehouse as "Warehouse"
-					price_list as "Price List"
 					credit_terms as "Credit Terms"
 					freight_terms as "Freight Terms"
-					customer_po_reference as "Customer PO Reference"
 					so_date as "SO Date"
 					required_ship_date as "Required Ship Date"
 					lines as "Lines"
 					remarks as "Remarks"
 					approval_status as "Approval Status"
-					approved_by as "Approved By"
 					approval_date as "Approval Date"
-					assigned_warehouse_stakeholders as "Assigned Warehouse Stakeholders"
 				)
 			)
 		)
@@ -88,21 +74,14 @@ list sales_order_report
 				fields
 				(
 					so_no as "SO No."
-					customer as "Customer"
-					company as "Company"
-					warehouse as "Warehouse"
-					price_list as "Price List"
 					credit_terms as "Credit Terms"
 					freight_terms as "Freight Terms"
-					customer_po_reference as "Customer PO Reference"
 					so_date as "SO Date"
 					required_ship_date as "Required Ship Date"
 					lines as "Lines"
 					remarks as "Remarks"
 					approval_status as "Approval Status"
-					approved_by as "Approved By"
 					approval_date as "Approval Date"
-					assigned_warehouse_stakeholders as "Assigned Warehouse Stakeholders"
 				)
 			)
 		)

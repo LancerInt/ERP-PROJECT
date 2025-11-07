@@ -7,7 +7,6 @@ list system_parameters_report
 		parameter_value as "Parameter Value"
 		module_scope as "Module Scope"
 		description as "Description"
-		last_updated_by as "Last Updated By"
 		effective_date as "Effective Date"
 	)
 	quickview
@@ -23,7 +22,6 @@ list system_parameters_report
 					parameter_value as "Parameter Value"
 					module_scope as "Module Scope"
 					description as "Description"
-					last_updated_by as "Last Updated By"
 					effective_date as "Effective Date"
 				)
 			)
@@ -71,7 +69,6 @@ list system_parameters_report
 					parameter_value as "Parameter Value"
 					module_scope as "Module Scope"
 					description as "Description"
-					last_updated_by as "Last Updated By"
 					effective_date as "Effective Date"
 				)
 			)

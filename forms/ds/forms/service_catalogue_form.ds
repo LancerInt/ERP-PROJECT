@@ -33,6 +33,8 @@ form service_catalogue
 	(
 		type = picklist
 		displayname = "Category"
+		values = {"Warehouse Expense","Wages","Freight","Misc","Custom"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -42,6 +44,8 @@ form service_catalogue
 	(
 		type = picklist
 		displayname = "Direction"
+		values = {"Inbound","Outbound","Both"}
+		maxchar = 100
 		row = 1
 		column = 1
 		width = medium
@@ -65,23 +69,14 @@ form service_catalogue
 		width = medium
 	)
 
-	warehouse_availability
-	(
-		type = text
-		displayname = "Warehouse Availability"
-		row = 1
-		column = 1
-		width = medium
-	)
-
 	description
 	(
 		type = textarea
 		displayname = "Description"
+		height = 100px
 		row = 1
 		column = 1
 		width = medium
-		height = 100px
 	)
 
 	must have active_flag
