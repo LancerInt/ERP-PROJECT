@@ -11,7 +11,7 @@ form payroll_export
 		width = medium
 	)
 
-	must have export_id
+	export_id
 	(
 		type = autonumber
 		displayname = "Export ID"

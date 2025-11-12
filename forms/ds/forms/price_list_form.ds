@@ -34,6 +34,7 @@ form price_list
 	(
 		type = picklist
 		displayname = "Currency"
+		values = {"INR","USD","EUR","GBP","SGD","AED"}
 		maxchar = 100
 		row = 1
 		column = 1

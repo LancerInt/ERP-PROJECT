@@ -11,7 +11,7 @@ form receipt_advice
 		width = medium
 	)
 
-	must have receipt_advice_no
+	receipt_advice_no
 	(
 		type = autonumber
 		displayname = "Receipt Advice No."

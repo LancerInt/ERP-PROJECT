@@ -11,7 +11,7 @@ form purchase_order
 		width = medium
 	)
 
-	must have po_no
+	po_no
 	(
 		type = autonumber
 		displayname = "PO No."
@@ -81,6 +81,7 @@ form purchase_order
 	(
 		type = picklist
 		displayname = "Currency"
+		values = {"INR","USD","EUR","GBP","SGD","AED"}
 		maxchar = 100
 		row = 1
 		column = 1
