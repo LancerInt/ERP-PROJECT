@@ -11,7 +11,7 @@ form inventory_ledger
 		width = medium
 	)
 
-	must have ledger_entry_id
+	ledger_entry_id
 	(
 		type = autonumber
 		displayname = "Ledger Entry ID"

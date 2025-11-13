@@ -11,7 +11,7 @@ form po_eta_update
 		width = medium
 	)
 
-	must have update_id
+	update_id
 	(
 		type = autonumber
 		displayname = "Update ID"

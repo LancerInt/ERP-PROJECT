@@ -1,0 +1,6 @@
+form_name,form_displayname,record_index,batch_out,quantity_issued,uom,reserved_for_template
+issue_lines,Issue Lines,1,Batch Out Sample 1,100,Option 1,true
+issue_lines,Issue Lines,2,Batch Out Sample 2,105,Option 2,false
+issue_lines,Issue Lines,3,Batch Out Sample 3,110,Option 3,true
+issue_lines,Issue Lines,4,Batch Out Sample 4,115,Option 4,false
+issue_lines,Issue Lines,5,Batch Out Sample 5,120,Option 1,true

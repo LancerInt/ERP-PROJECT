@@ -11,7 +11,7 @@ form leave_request
 		width = medium
 	)
 
-	must have request_no
+	request_no
 	(
 		type = autonumber
 		displayname = "Request No."

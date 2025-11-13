@@ -1,0 +1,6 @@
+form_name,form_displayname,record_index,note_no,note_type,amount,tax,reason,approval_status,approval_date
+credit_debit_note,Credit/Debit Note,1,1000,Credit,1000.00,1000.00,Sample notes for Reason entry 1.,Draft,2024-02-01 10:00:00
+credit_debit_note,Credit/Debit Note,2,1001,Debit,1150.00,1150.00,Sample notes for Reason entry 2.,Pending,2024-02-02 10:10:00
+credit_debit_note,Credit/Debit Note,3,1002,Credit,1300.00,1300.00,Sample notes for Reason entry 3.,Approved,2024-02-03 10:20:00
+credit_debit_note,Credit/Debit Note,4,1003,Debit,1450.00,1450.00,Sample notes for Reason entry 4.,Draft,2024-02-04 10:30:00
+credit_debit_note,Credit/Debit Note,5,1004,Credit,1600.00,1600.00,Sample notes for Reason entry 5.,Pending,2024-02-05 10:40:00

@@ -11,7 +11,7 @@ form stock_transfer_dc
 		width = medium
 	)
 
-	must have transfer_no
+	transfer_no
 	(
 		type = autonumber
 		displayname = "Transfer No."

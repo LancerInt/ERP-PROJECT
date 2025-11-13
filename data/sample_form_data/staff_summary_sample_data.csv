@@ -1,0 +1,6 @@
+form_name,form_displayname,record_index,present_days,absent_days,overtime_hours,wages_amount
+staff_summary,Staff Summary,1,100,100,100,1000.00
+staff_summary,Staff Summary,2,105,105,105,1150.00
+staff_summary,Staff Summary,3,110,110,110,1300.00
+staff_summary,Staff Summary,4,115,115,115,1450.00
+staff_summary,Staff Summary,5,120,120,120,1600.00

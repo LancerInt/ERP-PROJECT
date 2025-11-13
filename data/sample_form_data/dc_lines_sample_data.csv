@@ -1,0 +1,6 @@
+form_name,form_displayname,record_index,batch,quantity_dispatched,uom,weight
+dc_lines,DC Lines,1,Batch Sample 1,100,Option 1,100
+dc_lines,DC Lines,2,Batch Sample 2,105,Option 2,105
+dc_lines,DC Lines,3,Batch Sample 3,110,Option 3,110
+dc_lines,DC Lines,4,Batch Sample 4,115,Option 4,115
+dc_lines,DC Lines,5,Batch Sample 5,120,Option 1,120

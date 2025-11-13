@@ -11,7 +11,7 @@ form sales_return_advice
 		width = medium
 	)
 
-	must have return_no
+	return_no
 	(
 		type = autonumber
 		displayname = "Return No."

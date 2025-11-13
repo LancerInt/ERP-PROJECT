@@ -11,7 +11,7 @@ form attendance_device_log
 		width = medium
 	)
 
-	must have log_id
+	log_id
 	(
 		type = autonumber
 		displayname = "Log ID"

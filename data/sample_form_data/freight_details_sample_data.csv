@@ -1,0 +1,6 @@
+form_name,form_displayname,record_index,freight_type,freight_terms,tentative_charge,discount,payable_by,quantity_basis,quantity_uom,destination_state,cost_per_unit_calc
+freight_details,Freight Details,1,Local Drayage,Paid,1000.00,1000.00,Company,100,Tonnes,Option 1,100
+freight_details,Freight Details,2,Linehaul,To_Pay,1150.00,1150.00,Vendor,105,KG,Option 2,105
+freight_details,Freight Details,3,Local Drayage,Mixed,1300.00,1300.00,Company,110,KL,Option 3,110
+freight_details,Freight Details,4,Linehaul,Paid,1450.00,1450.00,Vendor,115,Units,Option 4,115
+freight_details,Freight Details,5,Local Drayage,To_Pay,1600.00,1600.00,Company,120,Tonnes,Option 1,120

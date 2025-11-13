@@ -11,7 +11,7 @@ form warehouse_shifting
 		width = medium
 	)
 
-	must have shifting_no
+	shifting_no
 	(
 		type = autonumber
 		displayname = "Shifting No."

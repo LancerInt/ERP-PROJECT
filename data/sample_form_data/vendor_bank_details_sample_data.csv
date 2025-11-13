@@ -1,0 +1,6 @@
+form_name,form_displayname,record_index,account_nickname,bank_name,branch,ifsc,account_number,payment_method
+vendor_bank_details,Vendor Bank Details,1,Account Nickname Sample 1,Bank Name Sample 1,Branch Sample 1,IFSC Sample 1,Account Number Sample 1,NEFT
+vendor_bank_details,Vendor Bank Details,2,Account Nickname Sample 2,Bank Name Sample 2,Branch Sample 2,IFSC Sample 2,Account Number Sample 2,RTGS
+vendor_bank_details,Vendor Bank Details,3,Account Nickname Sample 3,Bank Name Sample 3,Branch Sample 3,IFSC Sample 3,Account Number Sample 3,Cheque
+vendor_bank_details,Vendor Bank Details,4,Account Nickname Sample 4,Bank Name Sample 4,Branch Sample 4,IFSC Sample 4,Account Number Sample 4,UPI
+vendor_bank_details,Vendor Bank Details,5,Account Nickname Sample 5,Bank Name Sample 5,Branch Sample 5,IFSC Sample 5,Account Number Sample 5,NEFT

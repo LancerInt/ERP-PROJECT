@@ -11,7 +11,7 @@ form payment_advice_workflow
 		width = medium
 	)
 
-	must have advice_no
+	advice_no
 	(
 		type = autonumber
 		displayname = "Advice No."

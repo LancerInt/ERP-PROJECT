@@ -1,0 +1,6 @@
+form_name,form_displayname,record_index,required_qty,available_qty,shortfall_qty,purpose
+auto_calculated_inputs,Auto-calculated Inputs,1,100,100,100,RM
+auto_calculated_inputs,Auto-calculated Inputs,2,105,105,105,PM
+auto_calculated_inputs,Auto-calculated Inputs,3,110,110,110,Wage
+auto_calculated_inputs,Auto-calculated Inputs,4,115,115,115,RM
+auto_calculated_inputs,Auto-calculated Inputs,5,120,120,120,PM

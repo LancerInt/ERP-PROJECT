@@ -1,0 +1,6 @@
+form_name,form_displayname,record_index,audit_id,module,record_id,action,timestamp,before_snapshot,after_snapshot,remarks
+audit_trail,Audit Trail,1,1000,Option 1,Record ID Sample 1,Create,2024-02-01 10:00:00,sample_before_snapshot_1.pdf,sample_after_snapshot_1.pdf,Sample notes for Remarks entry 1.
+audit_trail,Audit Trail,2,1001,Option 2,Record ID Sample 2,Update,2024-02-02 10:10:00,sample_before_snapshot_2.pdf,sample_after_snapshot_2.pdf,Sample notes for Remarks entry 2.
+audit_trail,Audit Trail,3,1002,Option 3,Record ID Sample 3,Delete,2024-02-03 10:20:00,sample_before_snapshot_3.pdf,sample_after_snapshot_3.pdf,Sample notes for Remarks entry 3.
+audit_trail,Audit Trail,4,1003,Option 4,Record ID Sample 4,Approve,2024-02-04 10:30:00,sample_before_snapshot_4.pdf,sample_after_snapshot_4.pdf,Sample notes for Remarks entry 4.
+audit_trail,Audit Trail,5,1004,Option 1,Record ID Sample 5,Create,2024-02-05 10:40:00,sample_before_snapshot_5.pdf,sample_after_snapshot_5.pdf,Sample notes for Remarks entry 5.

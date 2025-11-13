@@ -11,7 +11,7 @@ form dispatch_challan
 		width = medium
 	)
 
-	must have dc_no
+	dc_no
 	(
 		type = autonumber
 		displayname = "DC No."

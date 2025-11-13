@@ -11,7 +11,7 @@ form petty_cash_register
 		width = medium
 	)
 
-	must have register_id
+	register_id
 	(
 		type = autonumber
 		displayname = "Register ID"

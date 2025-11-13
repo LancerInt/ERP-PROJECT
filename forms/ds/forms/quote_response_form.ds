@@ -11,7 +11,7 @@ form quote_response
 		width = medium
 	)
 
-	must have quote_id
+	quote_id
 	(
 		type = autonumber
 		displayname = "Quote ID"
@@ -43,6 +43,7 @@ form quote_response
 	(
 		type = picklist
 		displayname = "Currency"
+		values = {"INR","USD","EUR","GBP","SGD","AED"}
 		maxchar = 100
 		row = 1
 		column = 1

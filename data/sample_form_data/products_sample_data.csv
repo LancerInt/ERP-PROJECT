@@ -1,0 +1,6 @@
+form_name,form_displayname,record_index,batch,quantity,uom
+products,Products,1,Batch Sample 1,100,Option 1
+products,Products,2,Batch Sample 2,105,Option 2
+products,Products,3,Batch Sample 3,110,Option 3
+products,Products,4,Batch Sample 4,115,Option 4
+products,Products,5,Batch Sample 5,120,Option 1
