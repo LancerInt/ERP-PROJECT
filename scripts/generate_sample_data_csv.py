@@ -1,16 +1,24 @@
 #!/usr/bin/env python3
-"""Generate sample CSV data for all Creator forms."""
+"""Generate sample CSV data for Zoho Creator forms.
+
+This script can ingest either the compiled ``ERP_PRO.ds`` application export or
+the already-split ``forms/ds/forms`` directory.  For every form discovered we
+emit a standalone CSV populated with ``NUM_RECORDS`` illustrative rows so that
+imports can be trialled without touching production data.
+"""
 
 from __future__ import annotations
 
 import csv
+import argparse
 import json
 import re
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, Iterable, List, Tuple
 
 FORMS_DIR = Path('forms/ds/forms')
-OUTPUT_PATH = Path('data/sample_form_data.csv')
+DS_EXPORT = Path('ERP_PRO.ds')
+OUTPUT_DIR = Path('data/sample_form_data')
 NUM_RECORDS = 5
 
 SKIP_NAMES = {'Section'}
@@ -42,7 +50,7 @@ def clean_field_name(raw: str) -> str:
     return re.sub(r'^(must have )?(unique )?', '', raw).strip()
 
 
-def parse_field(raw_name: str, block_lines: List[str]) -> Dict[str, object] | None:
+def parse_field(raw_name: str, block_lines: List[str], *, max_indent: int = 2) -> Dict[str, object] | None:
     info: Dict[str, object] = {
         'raw_name': raw_name.strip(),
         'name': clean_field_name(raw_name),
@@ -53,13 +61,14 @@ def parse_field(raw_name: str, block_lines: List[str]) -> Dict[str, object] | No
     }
     for line in block_lines:
         stripped = line.strip()
-        if stripped.startswith('type ='):
+        indent = len(line) - len(line.lstrip())
+        if stripped.startswith('type =') and indent <= max_indent:
             info['type'] = stripped.split('=', 1)[1].strip()
-        elif stripped.startswith('displayname ='):
+        elif stripped.startswith('displayname =') and indent <= max_indent:
             info['displayname'] = stripped.split('=', 1)[1].strip().strip('"')
-        elif 'values =' in stripped:
+        elif 'values =' in stripped and indent <= max_indent:
             info['values'] = re.findall(r'"([^\"]+)"', stripped)
-    if info['type'] in (None, 'section'):
+    if info['type'] in (None, 'section', 'submit', 'reset', 'cancel'):
         return None
     if info['type'] == 'grid':
         info['subfields'] = parse_subfields(block_lines)
@@ -79,7 +88,7 @@ def parse_subfields(block_lines: List[str]) -> List[Dict[str, object]]:
                 raw_name = last_nonempty.strip()
                 if raw_name and raw_name not in SKIP_NAMES:
                     sub_block, consumed = collect_block(block_lines, i + 1)
-                    field_info = parse_field(raw_name, sub_block)
+                    field_info = parse_field(raw_name, sub_block, max_indent=3)
                     if field_info:
                         fields.append(field_info)
                     i += consumed
@@ -91,8 +100,7 @@ def parse_subfields(block_lines: List[str]) -> List[Dict[str, object]]:
     return fields
 
 
-def parse_form(path: Path) -> Tuple[str | None, str | None, List[Dict[str, object]]]:
-    lines = path.read_text().splitlines()
+def parse_form_lines(lines: List[str]) -> Tuple[str | None, str | None, List[Dict[str, object]]]:
     fields: List[Dict[str, object]] = []
     displayname: str | None = None
     last_nonempty = ''
@@ -121,6 +129,10 @@ def parse_form(path: Path) -> Tuple[str | None, str | None, List[Dict[str, objec
             last_nonempty = line
         i += 1
     return form_name, displayname, fields
+
+
+def parse_form(path: Path) -> Tuple[str | None, str | None, List[Dict[str, object]]]:
+    return parse_form_lines(path.read_text().splitlines())
 
 
 def generate_field_value(field: Dict[str, object], index: int) -> str:
@@ -185,9 +197,39 @@ def generate_field_value(field: Dict[str, object], index: int) -> str:
     return f"Sample {display} {index + 1}"
 
 
-def main() -> None:
+def split_forms_from_ds(lines: List[str]) -> Iterable[List[str]]:
+    """Yield each form definition block from an application DS export."""
+
+    i = 0
+    while i < len(lines):
+        stripped = lines[i].strip()
+        if stripped.startswith('form '):
+            block: List[str] = [lines[i]]
+            i += 1
+            depth = 0
+            started = False
+            while i < len(lines):
+                line = lines[i]
+                block.append(line)
+                open_count = line.count('{')
+                close_count = line.count('}')
+                if open_count:
+                    depth += open_count
+                    started = True
+                if close_count and started:
+                    depth -= close_count
+                    if depth <= 0:
+                        i += 1
+                        break
+                i += 1
+            yield block
+            continue
+        i += 1
+
+
+def load_forms_from_directory(directory: Path) -> Dict[str, Dict[str, object]]:
     forms: Dict[str, Dict[str, object]] = {}
-    for path in sorted(FORMS_DIR.glob('*.ds')):
+    for path in sorted(directory.glob('*.ds')):
         form_name, displayname, fields = parse_form(path)
         if not form_name:
             continue
@@ -195,33 +237,132 @@ def main() -> None:
             'displayname': displayname or form_name.replace('_', ' ').title(),
             'fields': fields,
         }
+    return forms
 
-    records: List[Dict[str, object]] = []
-    ordered_fields: List[str] = []
-    for form_name, info in forms.items():
+
+def load_forms_from_ds(path: Path) -> Dict[str, Dict[str, object]]:
+    lines = path.read_text().splitlines()
+    forms: Dict[str, Dict[str, object]] = {}
+    for block in split_forms_from_ds(lines):
+        form_name, displayname, fields = parse_form_lines(block)
+        if not form_name:
+            continue
+        forms[form_name] = {
+            'displayname': displayname or form_name.replace('_', ' ').title(),
+            'fields': fields,
+        }
+    return forms
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        '-i',
+        '--input',
+        type=Path,
+        help='Path to ERP_PRO.ds or a directory of form DS files (defaults to auto-detection)',
+    )
+    parser.add_argument(
+        '-o',
+        '--output-dir',
+        type=Path,
+        default=OUTPUT_DIR,
+        help=f'Directory to write CSV files (default: {OUTPUT_DIR})',
+    )
+    parser.add_argument(
+        '-n',
+        '--num-records',
+        type=int,
+        default=NUM_RECORDS,
+        help=f'Number of sample records per form (default: {NUM_RECORDS})',
+    )
+    parser.add_argument(
+        '-f',
+        '--form',
+        dest='forms',
+        action='append',
+        help='Limit generation to the provided form link names (case-insensitive)',
+    )
+    parser.add_argument(
+        '--include-metadata',
+        action='store_true',
+        help='Include helper columns (form name, display name, record index) in each CSV',
+    )
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+
+    source_path = args.input
+    forms: Dict[str, Dict[str, object]]
+    if source_path:
+        if source_path.is_file():
+            forms = load_forms_from_ds(source_path)
+        elif source_path.is_dir():
+            forms = load_forms_from_directory(source_path)
+        else:
+            raise FileNotFoundError(f'Input path {source_path} does not exist')
+    else:
+        if DS_EXPORT.exists():
+            forms = load_forms_from_ds(DS_EXPORT)
+        else:
+            forms = load_forms_from_directory(FORMS_DIR)
+
+    requested_forms = {name.lower() for name in args.forms} if args.forms else None
+
+    output_dir = args.output_dir
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    generated_files: List[Path] = []
+    for form_name in sorted(forms):
+        info = forms[form_name]
+        if requested_forms and form_name.lower() not in requested_forms:
+            continue
+
         fields = info['fields']  # type: ignore[index]
-        for field in fields:
-            if field['name'] not in ordered_fields:
-                ordered_fields.append(field['name'])
-        for index in range(NUM_RECORDS):
-            row: Dict[str, object] = {
-                'form_name': form_name,
-                'form_displayname': info['displayname'],
-                'record_index': index + 1,
-            }
+        if not fields:
+            continue
+
+        rows: List[Dict[str, object]] = []
+        for index in range(args.num_records):
+            row: Dict[str, object] = {}
+            if args.include_metadata:
+                row.update(
+                    {
+                        'form_name': form_name,
+                        'form_displayname': info['displayname'],
+                        'record_index': index + 1,
+                    }
+                )
             for field in fields:
                 row[field['name']] = generate_field_value(field, index)  # type: ignore[index]
-            records.append(row)
+            rows.append(row)
 
-    columns = ['form_name', 'form_displayname', 'record_index', *ordered_fields]
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with OUTPUT_PATH.open('w', newline='', encoding='utf-8') as csvfile:
-        writer = csv.DictWriter(csvfile, fieldnames=columns)
-        writer.writeheader()
-        for record in records:
-            writer.writerow({column: record.get(column, '') for column in columns})
+        columns: List[str] = []
+        if args.include_metadata:
+            columns.extend(['form_name', 'form_displayname', 'record_index'])
+        columns.extend(field['name'] for field in fields)
+        output_path = output_dir / f'{form_name}_sample_data.csv'
+        with output_path.open('w', newline='', encoding='utf-8') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=columns)
+            writer.writeheader()
+            for row in rows:
+                writer.writerow(row)
 
-    print(f"Generated {len(records)} records across {len(forms)} forms -> {OUTPUT_PATH}")
+        generated_files.append(output_path)
+
+    if not generated_files:
+        if requested_forms:
+            missing = ', '.join(sorted(requested_forms))
+            raise SystemExit(f'No forms matched the requested filters: {missing}')
+        raise SystemExit('No forms discovered in the provided input')
+
+    if requested_forms:
+        filtered_count = len(generated_files)
+        print(f'Generated {filtered_count} CSV file(s) in {output_dir} for requested forms')
+    else:
+        print(f'Generated {len(generated_files)} CSV files in {output_dir}')
 
 
 if __name__ == '__main__':

@@ -1,0 +1,6 @@
+batch,quantity_received,uom,viability
+Batch Sample 1,100,Option 1,Resaleable
+Batch Sample 2,105,Option 2,Reformulate
+Batch Sample 3,110,Option 3,Scrap
+Batch Sample 4,115,Option 4,Resaleable
+Batch Sample 5,120,Option 1,Reformulate

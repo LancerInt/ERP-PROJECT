@@ -1,0 +1,6 @@
+batch_id,quantity_produced,uom,purity,ai_content,qc_status
+Batch ID Sample 1,100,Option 1,100,100,Pending
+Batch ID Sample 2,105,Option 2,105,105,Pass
+Batch ID Sample 3,110,Option 3,110,110,Fail
+Batch ID Sample 4,115,Option 4,115,115,Hold
+Batch ID Sample 5,120,Option 1,120,120,Pending

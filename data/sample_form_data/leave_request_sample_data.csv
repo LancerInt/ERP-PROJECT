@@ -1,0 +1,6 @@
+request_no,leave_type,start_date,end_date,duration_hours,reason,attachment,status,approval_date
+1000,Full Day,2024-02-01,2024-02-01,100,Sample notes for Reason entry 1.,sample_attachment_1.pdf,Pending,2024-02-01 10:00:00
+1001,Half Day,2024-02-02,2024-02-02,105,Sample notes for Reason entry 2.,sample_attachment_2.pdf,Approved,2024-02-02 10:10:00
+1002,Permission,2024-02-03,2024-02-03,110,Sample notes for Reason entry 3.,sample_attachment_3.pdf,Rejected,2024-02-03 10:20:00
+1003,Full Day,2024-02-04,2024-02-04,115,Sample notes for Reason entry 4.,sample_attachment_4.pdf,Pending,2024-02-04 10:30:00
+1004,Half Day,2024-02-05,2024-02-05,120,Sample notes for Reason entry 5.,sample_attachment_5.pdf,Approved,2024-02-05 10:40:00

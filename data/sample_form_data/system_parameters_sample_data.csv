@@ -1,0 +1,6 @@
+parameter_name,parameter_value,module_scope,description,effective_date
+Parameter Name Sample 1,Parameter Value Sample 1,Purchase,Sample notes for Description entry 1.,2024-02-01
+Parameter Name Sample 2,Parameter Value Sample 2,Sales,Sample notes for Description entry 2.,2024-02-02
+Parameter Name Sample 3,Parameter Value Sample 3,Inventory,Sample notes for Description entry 3.,2024-02-03
+Parameter Name Sample 4,Parameter Value Sample 4,Finance,Sample notes for Description entry 4.,2024-02-04
+Parameter Name Sample 5,Parameter Value Sample 5,Attendance,Sample notes for Description entry 5.,2024-02-05

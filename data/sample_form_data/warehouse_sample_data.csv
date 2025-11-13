@@ -1,0 +1,6 @@
+warehouse_code,name,warehouse_type,address,city,state,country,pincode,geo_latitude,geo_longitude,time_zone,default_currency,active_flag,notes
+Warehouse Code Sample 1,Name Sample 1,Head Office,"1 Sample Street, City 1, State, Country, 56000",City Sample 1,Andhra Pradesh,India,Pincode Sample 1,100,100,Asia/Kolkata,INR,true,Sample notes for Notes entry 1.
+Warehouse Code Sample 2,Name Sample 2,Factory,"2 Sample Street, City 2, State, Country, 56001",City Sample 2,Arunachal Pradesh,United States,Pincode Sample 2,105,105,Asia/Dubai,USD,false,Sample notes for Notes entry 2.
+Warehouse Code Sample 3,Name Sample 3,Job Work Partner,"3 Sample Street, City 3, State, Country, 56002",City Sample 3,Assam,United Kingdom,Pincode Sample 3,110,110,Asia/Singapore,EUR,true,Sample notes for Notes entry 3.
+Warehouse Code Sample 4,Name Sample 4,Head Office,"4 Sample Street, City 4, State, Country, 56003",City Sample 4,Bihar,Singapore,Pincode Sample 4,115,115,Europe/London,GBP,false,Sample notes for Notes entry 4.
+Warehouse Code Sample 5,Name Sample 5,Factory,"5 Sample Street, City 5, State, Country, 56004",City Sample 5,Chhattisgarh,United Arab Emirates,Pincode Sample 5,120,120,America/New_York,SGD,true,Sample notes for Notes entry 5.
