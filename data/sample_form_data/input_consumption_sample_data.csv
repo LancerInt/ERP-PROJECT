@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,planned_qty,actual_qty,uom,batch_used,yield_loss
-input_consumption,Input Consumption,1,100,100,Option 1,Batch Used Sample 1,100
-input_consumption,Input Consumption,2,105,105,Option 2,Batch Used Sample 2,105
-input_consumption,Input Consumption,3,110,110,Option 3,Batch Used Sample 3,110
-input_consumption,Input Consumption,4,115,115,Option 4,Batch Used Sample 4,115
-input_consumption,Input Consumption,5,120,120,Option 1,Batch Used Sample 5,120
+planned_qty,actual_qty,uom,batch_used,yield_loss
+100,100,Option 1,Batch Used Sample 1,100
+105,105,Option 2,Batch Used Sample 2,105
+110,110,Option 3,Batch Used Sample 3,110
+115,115,Option 4,Batch Used Sample 4,115
+120,120,Option 1,Batch Used Sample 5,120

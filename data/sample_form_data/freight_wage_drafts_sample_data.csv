@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,expense_type,amount,payable_by,approval_status
-freight_wage_drafts,Freight/Wage Drafts,1,Freight,1000.00,Sending Warehouse,Draft
-freight_wage_drafts,Freight/Wage Drafts,2,Loading,1150.00,Receiving Warehouse,Pending
-freight_wage_drafts,Freight/Wage Drafts,3,Unloading,1300.00,Sending Warehouse,Approved
-freight_wage_drafts,Freight/Wage Drafts,4,Freight,1450.00,Receiving Warehouse,Draft
-freight_wage_drafts,Freight/Wage Drafts,5,Loading,1600.00,Sending Warehouse,Pending
+expense_type,amount,payable_by,approval_status
+Freight,1000.00,Sending Warehouse,Draft
+Loading,1150.00,Receiving Warehouse,Pending
+Unloading,1300.00,Sending Warehouse,Approved
+Freight,1450.00,Receiving Warehouse,Draft
+Loading,1600.00,Sending Warehouse,Pending

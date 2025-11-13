@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,godown_code,godown_name,storage_condition,capacity_uom,capacity_value,batch_tracking_enabled,default_qc_hold_area,active_flag,notes
-godown,Godown,1,Godown Code Sample 1,Godown Name Sample 1,Ambient,Option 1,100,true,true,true,Sample notes for Notes entry 1.
-godown,Godown,2,Godown Code Sample 2,Godown Name Sample 2,Cold,Option 2,105,false,false,false,Sample notes for Notes entry 2.
-godown,Godown,3,Godown Code Sample 3,Godown Name Sample 3,Hazardous,Option 3,110,true,true,true,Sample notes for Notes entry 3.
-godown,Godown,4,Godown Code Sample 4,Godown Name Sample 4,Ambient,Option 4,115,false,false,false,Sample notes for Notes entry 4.
-godown,Godown,5,Godown Code Sample 5,Godown Name Sample 5,Cold,Option 1,120,true,true,true,Sample notes for Notes entry 5.
+godown_code,godown_name,storage_condition,capacity_uom,capacity_value,batch_tracking_enabled,default_qc_hold_area,active_flag,notes
+Godown Code Sample 1,Godown Name Sample 1,Ambient,Option 1,100,true,true,true,Sample notes for Notes entry 1.
+Godown Code Sample 2,Godown Name Sample 2,Cold,Option 2,105,false,false,false,Sample notes for Notes entry 2.
+Godown Code Sample 3,Godown Name Sample 3,Hazardous,Option 3,110,true,true,true,Sample notes for Notes entry 3.
+Godown Code Sample 4,Godown Name Sample 4,Ambient,Option 4,115,false,false,false,Sample notes for Notes entry 4.
+Godown Code Sample 5,Godown Name Sample 5,Cold,Option 1,120,true,true,true,Sample notes for Notes entry 5.

@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,result_value,result_text,result_photo,pass_fail
-assigned_parameters,Assigned Parameters,1,100,Sample notes for Result Text entry 1.,sample_result_photo_1.pdf,Option 1
-assigned_parameters,Assigned Parameters,2,105,Sample notes for Result Text entry 2.,sample_result_photo_2.pdf,Option 2
-assigned_parameters,Assigned Parameters,3,110,Sample notes for Result Text entry 3.,sample_result_photo_3.pdf,Option 3
-assigned_parameters,Assigned Parameters,4,115,Sample notes for Result Text entry 4.,sample_result_photo_4.pdf,Option 4
-assigned_parameters,Assigned Parameters,5,120,Sample notes for Result Text entry 5.,sample_result_photo_5.pdf,Option 1
+result_value,result_text,result_photo,pass_fail
+100,Sample notes for Result Text entry 1.,sample_result_photo_1.pdf,Option 1
+105,Sample notes for Result Text entry 2.,sample_result_photo_2.pdf,Option 2
+110,Sample notes for Result Text entry 3.,sample_result_photo_3.pdf,Option 3
+115,Sample notes for Result Text entry 4.,sample_result_photo_4.pdf,Option 4
+120,Sample notes for Result Text entry 5.,sample_result_photo_5.pdf,Option 1

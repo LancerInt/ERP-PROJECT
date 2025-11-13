@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,log_id,planned_yield,actual_output_qty,purity,ai_content,variance,remarks,report_date
-production_yield_log,Production Yield Log,1,1000,100,100,100,100,100,Sample notes for Remarks entry 1.,2024-02-01
-production_yield_log,Production Yield Log,2,1001,105,105,105,105,105,Sample notes for Remarks entry 2.,2024-02-02
-production_yield_log,Production Yield Log,3,1002,110,110,110,110,110,Sample notes for Remarks entry 3.,2024-02-03
-production_yield_log,Production Yield Log,4,1003,115,115,115,115,115,Sample notes for Remarks entry 4.,2024-02-04
-production_yield_log,Production Yield Log,5,1004,120,120,120,120,120,Sample notes for Remarks entry 5.,2024-02-05
+log_id,planned_yield,actual_output_qty,purity,ai_content,variance,remarks,report_date
+1000,100,100,100,100,100,Sample notes for Remarks entry 1.,2024-02-01
+1001,105,105,105,105,105,Sample notes for Remarks entry 2.,2024-02-02
+1002,110,110,110,110,110,Sample notes for Remarks entry 3.,2024-02-03
+1003,115,115,115,115,115,Sample notes for Remarks entry 4.,2024-02-04
+1004,120,120,120,120,120,Sample notes for Remarks entry 5.,2024-02-05

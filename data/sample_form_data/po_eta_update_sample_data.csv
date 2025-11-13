@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,update_id,update_date,expected_arrival_date,status,remarks
-po_eta_update,PO ETA Update (Anticipated Arrival),1,1000,2024-02-01 10:00:00,2024-02-01,Pending,Sample notes for Remarks entry 1.
-po_eta_update,PO ETA Update (Anticipated Arrival),2,1001,2024-02-02 10:10:00,2024-02-02,Updated,Sample notes for Remarks entry 2.
-po_eta_update,PO ETA Update (Anticipated Arrival),3,1002,2024-02-03 10:20:00,2024-02-03,Pending,Sample notes for Remarks entry 3.
-po_eta_update,PO ETA Update (Anticipated Arrival),4,1003,2024-02-04 10:30:00,2024-02-04,Updated,Sample notes for Remarks entry 4.
-po_eta_update,PO ETA Update (Anticipated Arrival),5,1004,2024-02-05 10:40:00,2024-02-05,Pending,Sample notes for Remarks entry 5.
+update_id,update_date,expected_arrival_date,status,remarks
+1000,2024-02-01 10:00:00,2024-02-01,Pending,Sample notes for Remarks entry 1.
+1001,2024-02-02 10:10:00,2024-02-02,Updated,Sample notes for Remarks entry 2.
+1002,2024-02-03 10:20:00,2024-02-03,Pending,Sample notes for Remarks entry 3.
+1003,2024-02-04 10:30:00,2024-02-04,Updated,Sample notes for Remarks entry 4.
+1004,2024-02-05 10:40:00,2024-02-05,Pending,Sample notes for Remarks entry 5.

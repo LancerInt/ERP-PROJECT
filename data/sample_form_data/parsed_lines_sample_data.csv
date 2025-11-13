@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,product_description,quantity,uom,price,confidence
-parsed_lines,Parsed Lines,1,Product Description Sample 1,100,Option 1,1000.00,100
-parsed_lines,Parsed Lines,2,Product Description Sample 2,105,Option 2,1150.00,105
-parsed_lines,Parsed Lines,3,Product Description Sample 3,110,Option 3,1300.00,110
-parsed_lines,Parsed Lines,4,Product Description Sample 4,115,Option 4,1450.00,115
-parsed_lines,Parsed Lines,5,Product Description Sample 5,120,Option 1,1600.00,120
+product_description,quantity,uom,price,confidence
+Product Description Sample 1,100,Option 1,1000.00,100
+Product Description Sample 2,105,Option 2,1150.00,105
+Product Description Sample 3,110,Option 3,1300.00,110
+Product Description Sample 4,115,Option 4,1450.00,115
+Product Description Sample 5,120,Option 1,1600.00,120

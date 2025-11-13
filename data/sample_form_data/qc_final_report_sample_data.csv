@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,report_no,template_revision,prepared_date,overall_result,remarks,digital_signature,attachments
-qc_final_report,QC Final Report,1,1000,100,2024-02-01,Pass,Sample notes for Remarks entry 1.,sample_digital_signature_1.pdf,sample_attachments_1.pdf
-qc_final_report,QC Final Report,2,1001,105,2024-02-02,Fail,Sample notes for Remarks entry 2.,sample_digital_signature_2.pdf,sample_attachments_2.pdf
-qc_final_report,QC Final Report,3,1002,110,2024-02-03,Rework,Sample notes for Remarks entry 3.,sample_digital_signature_3.pdf,sample_attachments_3.pdf
-qc_final_report,QC Final Report,4,1003,115,2024-02-04,Pass,Sample notes for Remarks entry 4.,sample_digital_signature_4.pdf,sample_attachments_4.pdf
-qc_final_report,QC Final Report,5,1004,120,2024-02-05,Fail,Sample notes for Remarks entry 5.,sample_digital_signature_5.pdf,sample_attachments_5.pdf
+report_no,template_revision,prepared_date,overall_result,remarks,digital_signature,attachments
+1000,100,2024-02-01,Pass,Sample notes for Remarks entry 1.,sample_digital_signature_1.pdf,sample_attachments_1.pdf
+1001,105,2024-02-02,Fail,Sample notes for Remarks entry 2.,sample_digital_signature_2.pdf,sample_attachments_2.pdf
+1002,110,2024-02-03,Rework,Sample notes for Remarks entry 3.,sample_digital_signature_3.pdf,sample_attachments_3.pdf
+1003,115,2024-02-04,Pass,Sample notes for Remarks entry 4.,sample_digital_signature_4.pdf,sample_attachments_4.pdf
+1004,120,2024-02-05,Fail,Sample notes for Remarks entry 5.,sample_digital_signature_5.pdf,sample_attachments_5.pdf

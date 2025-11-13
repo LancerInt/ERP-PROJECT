@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,batch,quantity_dispatched,quantity_received,uom,condition
-receipt_lines_2,Receipt Lines,1,Batch Sample 1,100,100,Option 1,Good
-receipt_lines_2,Receipt Lines,2,Batch Sample 2,105,105,Option 2,Damaged
-receipt_lines_2,Receipt Lines,3,Batch Sample 3,110,110,Option 3,Good
-receipt_lines_2,Receipt Lines,4,Batch Sample 4,115,115,Option 4,Damaged
-receipt_lines_2,Receipt Lines,5,Batch Sample 5,120,120,Option 1,Good
+batch,quantity_dispatched,quantity_received,uom,condition
+Batch Sample 1,100,100,Option 1,Good
+Batch Sample 2,105,105,Option 2,Damaged
+Batch Sample 3,110,110,Option 3,Good
+Batch Sample 4,115,115,Option 4,Damaged
+Batch Sample 5,120,120,Option 1,Good

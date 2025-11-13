@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,material_type,batch,quantity,uom,expected_return_date
-issued_materials,Issued Materials,1,RM,Batch Sample 1,100,Option 1,2024-02-01
-issued_materials,Issued Materials,2,PM,Batch Sample 2,105,Option 2,2024-02-02
-issued_materials,Issued Materials,3,Machine,Batch Sample 3,110,Option 3,2024-02-03
-issued_materials,Issued Materials,4,RM,Batch Sample 4,115,Option 4,2024-02-04
-issued_materials,Issued Materials,5,PM,Batch Sample 5,120,Option 1,2024-02-05
+material_type,batch,quantity,uom,expected_return_date
+RM,Batch Sample 1,100,Option 1,2024-02-01
+PM,Batch Sample 2,105,Option 2,2024-02-02
+Machine,Batch Sample 3,110,Option 3,2024-02-03
+RM,Batch Sample 4,115,Option 4,2024-02-04
+PM,Batch Sample 5,120,Option 1,2024-02-05

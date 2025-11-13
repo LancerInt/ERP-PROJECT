@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,reminder_date,reminder_method
-reminder_dates,Reminder Dates,1,2024-02-01,Email
-reminder_dates,Reminder Dates,2,2024-02-02,Call
-reminder_dates,Reminder Dates,3,2024-02-03,Email
-reminder_dates,Reminder Dates,4,2024-02-04,Call
-reminder_dates,Reminder Dates,5,2024-02-05,Email
+reminder_date,reminder_method
+2024-02-01,Email
+2024-02-02,Call
+2024-02-03,Email
+2024-02-04,Call
+2024-02-05,Email

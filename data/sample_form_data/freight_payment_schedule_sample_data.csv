@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,freight_type,due_date,amount,tds,reminder_flag
-freight_payment_schedule,Freight Payment Schedule,1,Local Drayage,2024-02-01,1000.00,100,true
-freight_payment_schedule,Freight Payment Schedule,2,Linehaul,2024-02-02,1150.00,105,false
-freight_payment_schedule,Freight Payment Schedule,3,Local Drayage,2024-02-03,1300.00,110,true
-freight_payment_schedule,Freight Payment Schedule,4,Linehaul,2024-02-04,1450.00,115,false
-freight_payment_schedule,Freight Payment Schedule,5,Local Drayage,2024-02-05,1600.00,120,true
+freight_type,due_date,amount,tds,reminder_flag
+Local Drayage,2024-02-01,1000.00,100,true
+Linehaul,2024-02-02,1150.00,105,false
+Local Drayage,2024-02-03,1300.00,110,true
+Linehaul,2024-02-04,1450.00,115,false
+Local Drayage,2024-02-05,1600.00,120,true

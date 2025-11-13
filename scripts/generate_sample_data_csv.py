@@ -283,6 +283,11 @@ def parse_args() -> argparse.Namespace:
         action='append',
         help='Limit generation to the provided form link names (case-insensitive)',
     )
+    parser.add_argument(
+        '--include-metadata',
+        action='store_true',
+        help='Include helper columns (form name, display name, record index) in each CSV',
+    )
     return parser.parse_args()
 
 
@@ -321,16 +326,23 @@ def main() -> None:
 
         rows: List[Dict[str, object]] = []
         for index in range(args.num_records):
-            row: Dict[str, object] = {
-                'form_name': form_name,
-                'form_displayname': info['displayname'],
-                'record_index': index + 1,
-            }
+            row: Dict[str, object] = {}
+            if args.include_metadata:
+                row.update(
+                    {
+                        'form_name': form_name,
+                        'form_displayname': info['displayname'],
+                        'record_index': index + 1,
+                    }
+                )
             for field in fields:
                 row[field['name']] = generate_field_value(field, index)  # type: ignore[index]
             rows.append(row)
 
-        columns = ['form_name', 'form_displayname', 'record_index', *[field['name'] for field in fields]]
+        columns: List[str] = []
+        if args.include_metadata:
+            columns.extend(['form_name', 'form_displayname', 'record_index'])
+        columns.extend(field['name'] for field in fields)
         output_path = output_dir / f'{form_name}_sample_data.csv'
         with output_path.open('w', newline='', encoding='utf-8') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=columns)

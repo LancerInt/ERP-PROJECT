@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,invoice_check_id,statutory_invoice_upload,invoice_number,invoice_date,total_value_upload,total_value_so,variance_amount,variance_flag,remarks,acceptance_timestamp
-sales_invoice_check,Sales Invoice Check,1,1000,sample_statutory_invoice_upload_1.pdf,Invoice Number Sample 1,2024-02-01,1000.00,1000.00,1000.00,Within Tolerance,Sample notes for Remarks entry 1.,2024-02-01 10:00:00
-sales_invoice_check,Sales Invoice Check,2,1001,sample_statutory_invoice_upload_2.pdf,Invoice Number Sample 2,2024-02-02,1150.00,1150.00,1150.00,Requires Review,Sample notes for Remarks entry 2.,2024-02-02 10:10:00
-sales_invoice_check,Sales Invoice Check,3,1002,sample_statutory_invoice_upload_3.pdf,Invoice Number Sample 3,2024-02-03,1300.00,1300.00,1300.00,Within Tolerance,Sample notes for Remarks entry 3.,2024-02-03 10:20:00
-sales_invoice_check,Sales Invoice Check,4,1003,sample_statutory_invoice_upload_4.pdf,Invoice Number Sample 4,2024-02-04,1450.00,1450.00,1450.00,Requires Review,Sample notes for Remarks entry 4.,2024-02-04 10:30:00
-sales_invoice_check,Sales Invoice Check,5,1004,sample_statutory_invoice_upload_5.pdf,Invoice Number Sample 5,2024-02-05,1600.00,1600.00,1600.00,Within Tolerance,Sample notes for Remarks entry 5.,2024-02-05 10:40:00
+invoice_check_id,statutory_invoice_upload,invoice_number,invoice_date,total_value_upload,total_value_so,variance_amount,variance_flag,remarks,acceptance_timestamp
+1000,sample_statutory_invoice_upload_1.pdf,Invoice Number Sample 1,2024-02-01,1000.00,1000.00,1000.00,Within Tolerance,Sample notes for Remarks entry 1.,2024-02-01 10:00:00
+1001,sample_statutory_invoice_upload_2.pdf,Invoice Number Sample 2,2024-02-02,1150.00,1150.00,1150.00,Requires Review,Sample notes for Remarks entry 2.,2024-02-02 10:10:00
+1002,sample_statutory_invoice_upload_3.pdf,Invoice Number Sample 3,2024-02-03,1300.00,1300.00,1300.00,Within Tolerance,Sample notes for Remarks entry 3.,2024-02-03 10:20:00
+1003,sample_statutory_invoice_upload_4.pdf,Invoice Number Sample 4,2024-02-04,1450.00,1450.00,1450.00,Requires Review,Sample notes for Remarks entry 4.,2024-02-04 10:30:00
+1004,sample_statutory_invoice_upload_5.pdf,Invoice Number Sample 5,2024-02-05,1600.00,1600.00,1600.00,Within Tolerance,Sample notes for Remarks entry 5.,2024-02-05 10:40:00

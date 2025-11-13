@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,reminder_date,reminder_method,notes
-reminder_sent_flags,Reminder Sent Flags,1,2024-02-01,Email,Sample notes for Notes entry 1.
-reminder_sent_flags,Reminder Sent Flags,2,2024-02-02,Call,Sample notes for Notes entry 2.
-reminder_sent_flags,Reminder Sent Flags,3,2024-02-03,SMS,Sample notes for Notes entry 3.
-reminder_sent_flags,Reminder Sent Flags,4,2024-02-04,Email,Sample notes for Notes entry 4.
-reminder_sent_flags,Reminder Sent Flags,5,2024-02-05,Call,Sample notes for Notes entry 5.
+reminder_date,reminder_method,notes
+2024-02-01,Email,Sample notes for Notes entry 1.
+2024-02-02,Call,Sample notes for Notes entry 2.
+2024-02-03,SMS,Sample notes for Notes entry 3.
+2024-02-04,Email,Sample notes for Notes entry 4.
+2024-02-05,Call,Sample notes for Notes entry 5.

@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,action,action_date,remarks
-approval_trail,Approval Trail,1,Approved,2024-02-01 10:00:00,Sample notes for Remarks entry 1.
-approval_trail,Approval Trail,2,Rejected,2024-02-02 10:10:00,Sample notes for Remarks entry 2.
-approval_trail,Approval Trail,3,Partial,2024-02-03 10:20:00,Sample notes for Remarks entry 3.
-approval_trail,Approval Trail,4,Approved,2024-02-04 10:30:00,Sample notes for Remarks entry 4.
-approval_trail,Approval Trail,5,Rejected,2024-02-05 10:40:00,Sample notes for Remarks entry 5.
+action,action_date,remarks
+Approved,2024-02-01 10:00:00,Sample notes for Remarks entry 1.
+Rejected,2024-02-02 10:10:00,Sample notes for Remarks entry 2.
+Partial,2024-02-03 10:20:00,Sample notes for Remarks entry 3.
+Approved,2024-02-04 10:30:00,Sample notes for Remarks entry 4.
+Rejected,2024-02-05 10:40:00,Sample notes for Remarks entry 5.

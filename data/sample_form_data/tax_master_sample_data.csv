@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,tax_type,section_reference,rate,effective_from,effective_to,applicable_on,threshold_amount,notes
-tax_master,Tax Master,1,GST,Section Reference Sample 1,100,2024-02-01,2024-02-01,Product; Service,1000.00,Sample notes for Notes entry 1.
-tax_master,Tax Master,2,TDS,Section Reference Sample 2,105,2024-02-02,2024-02-02,Service; Freight,1150.00,Sample notes for Notes entry 2.
-tax_master,Tax Master,3,TCS,Section Reference Sample 3,110,2024-02-03,2024-02-03,Freight; Wage,1300.00,Sample notes for Notes entry 3.
-tax_master,Tax Master,4,GST,Section Reference Sample 4,115,2024-02-04,2024-02-04,Wage; Product,1450.00,Sample notes for Notes entry 4.
-tax_master,Tax Master,5,TDS,Section Reference Sample 5,120,2024-02-05,2024-02-05,Product; Service,1600.00,Sample notes for Notes entry 5.
+tax_type,section_reference,rate,effective_from,effective_to,applicable_on,threshold_amount,notes
+GST,Section Reference Sample 1,100,2024-02-01,2024-02-01,Product; Service,1000.00,Sample notes for Notes entry 1.
+TDS,Section Reference Sample 2,105,2024-02-02,2024-02-02,Service; Freight,1150.00,Sample notes for Notes entry 2.
+TCS,Section Reference Sample 3,110,2024-02-03,2024-02-03,Freight; Wage,1300.00,Sample notes for Notes entry 3.
+GST,Section Reference Sample 4,115,2024-02-04,2024-02-04,Wage; Product,1450.00,Sample notes for Notes entry 4.
+TDS,Section Reference Sample 5,120,2024-02-05,2024-02-05,Product; Service,1600.00,Sample notes for Notes entry 5.

@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,expected_quantity,uom,expected_batch_suffix
-outputs_expected,Outputs Expected,1,100,Option 1,Expected Batch Suffix Sample 1
-outputs_expected,Outputs Expected,2,105,Option 2,Expected Batch Suffix Sample 2
-outputs_expected,Outputs Expected,3,110,Option 3,Expected Batch Suffix Sample 3
-outputs_expected,Outputs Expected,4,115,Option 4,Expected Batch Suffix Sample 4
-outputs_expected,Outputs Expected,5,120,Option 1,Expected Batch Suffix Sample 5
+expected_quantity,uom,expected_batch_suffix
+100,Option 1,Expected Batch Suffix Sample 1
+105,Option 2,Expected Batch Suffix Sample 2
+110,Option 3,Expected Batch Suffix Sample 3
+115,Option 4,Expected Batch Suffix Sample 4
+120,Option 1,Expected Batch Suffix Sample 5

@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,sequence,quantity_for_location,estimated_arrival
-delivery_locations,Delivery Locations,1,100,100,2024-02-01
-delivery_locations,Delivery Locations,2,105,105,2024-02-02
-delivery_locations,Delivery Locations,3,110,110,2024-02-03
-delivery_locations,Delivery Locations,4,115,115,2024-02-04
-delivery_locations,Delivery Locations,5,120,120,2024-02-05
+sequence,quantity_for_location,estimated_arrival
+100,100,2024-02-01
+105,105,2024-02-02
+110,110,2024-02-03
+115,115,2024-02-04
+120,120,2024-02-05

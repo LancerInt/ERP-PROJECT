@@ -1,6 +1,6 @@
-form_name,form_displayname,record_index,authorization_date,remarks
-office_manager_authorization,Office Manager Authorization,1,2024-02-01 10:00:00,Sample notes for Remarks entry 1.
-office_manager_authorization,Office Manager Authorization,2,2024-02-02 10:10:00,Sample notes for Remarks entry 2.
-office_manager_authorization,Office Manager Authorization,3,2024-02-03 10:20:00,Sample notes for Remarks entry 3.
-office_manager_authorization,Office Manager Authorization,4,2024-02-04 10:30:00,Sample notes for Remarks entry 4.
-office_manager_authorization,Office Manager Authorization,5,2024-02-05 10:40:00,Sample notes for Remarks entry 5.
+authorization_date,remarks
+2024-02-01 10:00:00,Sample notes for Remarks entry 1.
+2024-02-02 10:10:00,Sample notes for Remarks entry 2.
+2024-02-03 10:20:00,Sample notes for Remarks entry 3.
+2024-02-04 10:30:00,Sample notes for Remarks entry 4.
+2024-02-05 10:40:00,Sample notes for Remarks entry 5.
