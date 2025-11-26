@@ -1,12 +1,13 @@
 # Purchase Module Automation (Deluge)
 
-This guide lists the Deluge workflows that auto-create downstream artifacts in the Purchase module. Each snippet is written for Zoho Creator form workflows and assumes standard library functions (`zoho.creator.createRecord`, `getRecords`, etc.).
+This guide lists the Deluge workflows that auto-create downstream artifacts in the Purchase module. Each snippet is written for Zoho Creator form workflows and assumes standard library functions (`zoho.creator.createRecord`, `getRecords`, etc.). The examples align with the [Purchase Module data model](../data-models/zoho_creator_data_model_field_map.md#purchase-module) and cover every automation call-out from the process flowchart (PR → RFQ, quote → PO, invoice → receipts, QC → payments/credit, freight, and bank reconciliation).
 
 ## Automation Matrix
 - **PR approval → RFQ draft**: One-click generation of RFQ lines from approved PR lines, attaching specs/photos and vendor shortlist.
 - **Quote approval → PO**: Creates PO header and lines from the approved quote, preserves PR/RFQ linkage, and bumps PO revision when regenerated.
 - **Receipt advice from invoice scan**: Maps scanned invoice lines to PO lines, supports multi-PO receipts and partial quantities.
-- **Freight payable draft**: Creates freight payable advice based on receipt advice freight terms (local drayage, linehaul, loading/unloading wages, discounts).
+- **QC required? → QC request**: Creates QC requests/jobs automatically based on product-level QC template and warehouse routing.
+- **Freight payable draft**: Creates freight payable advice based on receipt advice freight terms (local drayage, linehaul, loading/unloading wages, discounts) plus payment schedules.
 - **QC outcome → Payment advice or Credit Note notification**: Generates payment advice on pass (respecting vendor credit terms) or notifies stakeholders and prepares credit note on fail.
 - **Bank statement upload → auto-match payments**: Parses bank uploads and matches against open payment advice.
 
@@ -122,7 +123,31 @@ for each  rl in Receipt_Lines[Receipt_Advice == input.ID]
 }
 ```
 
-### 4) Freight payable draft from receipt advice
+### 4) QC required? → QC request/job auto-creation
+```javascript
+// Form: Receipt_Advice | Event: On Success
+// Uses product-level QC template & routing from data model
+receipt_lines = Receipt_Lines[Receipt_Advice == input.ID];
+for each  rl in receipt_lines
+{
+    product = rl.Product;
+    // Only trigger QC when product demands it
+    if(product.QC_Template != null)
+    {
+        qc_data = {
+            "Receipt_Advice" : input.ID,
+            "Receipt_Line" : rl.ID,
+            "Product" : product.ID,
+            "Template" : product.QC_Template,
+            "Assigned_To" : ifnull(product.QC_Responsibility, input.qc_coordinator),
+            "Status" : "Open"
+        };
+        zoho.creator.createRecord("ERP_PRO", "QC_Request", qc_data);
+    }
+}
+```
+
+### 5) Freight payable draft from receipt advice
 ```javascript
 // Form: Receipt_Advice | Event: On Success
 if(input.freight_terms != null)
@@ -137,11 +162,25 @@ if(input.freight_terms != null)
         "Discount" : input.freight_discount,
         "Payer" : input.freight_terms // Paid / To_Pay
     };
-    zoho.creator.createRecord("ERP_PRO", "Freight_Advice", freight);
+    advice = zoho.creator.createRecord("ERP_PRO", "Freight_Advice", freight);
+
+    // Optional: create payment schedule rows
+    if(input.freight_due_dates != null)
+    {
+        for each  sched in input.freight_due_dates
+        {
+            zoho.creator.createRecord("ERP_PRO", "Freight_Payment_Schedule", {
+                "Freight_Advice" : advice.get("ID"),
+                "Due_Date" : sched.get("due_date"),
+                "Amount" : sched.get("amount"),
+                "TDS_Percent" : sched.get("tds")
+            });
+        }
+    }
 }
 ```
 
-### 5) QC outcome → Payment advice or credit note
+### 6) QC outcome → Payment advice or credit note
 ```javascript
 // Form: QC_Final_Report | Event: On Success
 if(input.result == "Pass")
@@ -174,7 +213,7 @@ else
 }
 ```
 
-### 6) Bank statement upload → auto-match payments
+### 7) Bank statement upload → auto-match payments
 ```javascript
 // Form: Bank_Statement_Upload | Event: On Success
 parsed = parse_bank_statement(input.file);
