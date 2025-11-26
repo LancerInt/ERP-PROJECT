@@ -6,7 +6,7 @@ This document provides module-specific process flowcharts derived from the maste
 ```mermaid
 flowchart TD
     subgraph Intake[Request & RFQ]
-        PR[PR raised\n(Warehouse Coord/Manager)] --> APRV{Approve / Partial Approve?\n(Purchase Coord/Manager)}
+        PR[PR raised\n Warehouse Coord/Manager ] --> APRV{Approve / Partial Approve?\n Purchase Coord/Manager }
         APRV -->|Reject| PRReject[Notify requester & close PR]
         APRV -->|Approve lines| RFQGen[Auto-create RFQ draft with shortlisted vendors]:::auto
         APRV -->|Partial| PRPartial[Store approved qty per line + justification]
@@ -25,7 +25,7 @@ flowchart TD
     subgraph Fulfilment[Receipt, QC & Freight]
         POCreation --> ETA[Update expected arrival dates]
         ETA --> InvoiceScan[Scan vendor invoice]
-        InvoiceScan --> RA[Auto-create Receipt Advice (multi-PO) + lines]:::auto
+        InvoiceScan --> RA[Auto-create Receipt Advice multi-PO  + lines]:::auto
         RA --> QCReq{QC required by product?}
         QCReq -->|Yes| QCAuto[Auto-create QC request with template]:::auto
         QCReq -->|No| SkipQC[Bypass QC]
