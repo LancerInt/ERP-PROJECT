@@ -11,7 +11,7 @@ form freight_ledger
 		width = medium
 	)
 
-	must have ledger_id
+	ledger_id
 	(
 		type = autonumber
 		displayname = "Ledger ID"

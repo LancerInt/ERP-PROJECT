@@ -1,0 +1,6 @@
+document_type,document_number,expiry_date,attachment
+Aadhaar,Document Number Sample 1,2024-02-01,sample_attachment_1.pdf
+PAN,Document Number Sample 2,2024-02-02,sample_attachment_2.pdf
+License,Document Number Sample 3,2024-02-03,sample_attachment_3.pdf
+Other,Document Number Sample 4,2024-02-04,sample_attachment_4.pdf
+Aadhaar,Document Number Sample 5,2024-02-05,sample_attachment_5.pdf

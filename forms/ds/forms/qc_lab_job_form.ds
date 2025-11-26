@@ -11,7 +11,7 @@ form qc_lab_job
 		width = medium
 	)
 
-	must have job_no
+	job_no
 	(
 		type = autonumber
 		displayname = "Job No."

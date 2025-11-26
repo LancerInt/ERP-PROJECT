@@ -1,0 +1,6 @@
+line_no,description_override,quantity_requested,uom,required_date,purpose,allow_rfq_skip,attachments,status,approved_quantity
+100,Sample notes for Description Override entry 1.,100,Option 1,2024-02-01,Production,true,sample_attachments_1.pdf,Pending,100
+105,Sample notes for Description Override entry 2.,105,Option 2,2024-02-02,Maintenance,false,sample_attachments_2.pdf,Approved,105
+110,Sample notes for Description Override entry 3.,110,Option 3,2024-02-03,Consumable,true,sample_attachments_3.pdf,Rejected,110
+115,Sample notes for Description Override entry 4.,115,Option 4,2024-02-04,Production,false,sample_attachments_4.pdf,Fulfilled,115
+120,Sample notes for Description Override entry 5.,120,Option 1,2024-02-05,Maintenance,true,sample_attachments_5.pdf,Pending,120

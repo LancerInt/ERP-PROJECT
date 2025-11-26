@@ -1,0 +1,6 @@
+stage,decision,decision_date,remarks
+Draft Review,Pending,2024-02-01 10:00:00,Sample notes for Remarks entry 1.
+Finance Manager Review,Approved,2024-02-02 10:10:00,Sample notes for Remarks entry 2.
+Office Manager Authorization,Rejected,2024-02-03 10:20:00,Sample notes for Remarks entry 3.
+Draft Review,Pending,2024-02-04 10:30:00,Sample notes for Remarks entry 4.
+Finance Manager Review,Approved,2024-02-05 10:40:00,Sample notes for Remarks entry 5.

@@ -11,7 +11,7 @@ form receipts
 		width = medium
 	)
 
-	must have receipt_no
+	receipt_no
 	(
 		type = autonumber
 		displayname = "Receipt No."

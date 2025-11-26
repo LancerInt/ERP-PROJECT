@@ -210,6 +210,7 @@ form product_master
 	(
 		type = picklist
 		displayname = "Freight Class"
+		values = {"General Cargo","Hazardous","Refrigerated","Oversized"}
 		maxchar = 100
 		row = 1
 		column = 1

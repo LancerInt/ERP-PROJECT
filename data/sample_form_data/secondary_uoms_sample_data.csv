@@ -1,0 +1,6 @@
+to_uom,conversion_factor,specific_gravity_override,valid_from,valid_to
+Option 1,100,100,2024-02-01,2024-02-01
+Option 2,105,105,2024-02-02,2024-02-02
+Option 3,110,110,2024-02-03,2024-02-03
+Option 4,115,115,2024-02-04,2024-02-04
+Option 1,120,120,2024-02-05,2024-02-05

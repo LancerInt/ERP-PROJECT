@@ -1,0 +1,6 @@
+sample_id,storage_location,shelf,bin,issue_date,expected_return_date,actual_return_date,reminder_sent,disposal_date
+1000,Warehouse,Shelf Sample 1,Bin Sample 1,2024-02-01,2024-02-01,2024-02-01,true,2024-02-01
+1001,QC Lab,Shelf Sample 2,Bin Sample 2,2024-02-02,2024-02-02,2024-02-02,false,2024-02-02
+1002,Warehouse,Shelf Sample 3,Bin Sample 3,2024-02-03,2024-02-03,2024-02-03,true,2024-02-03
+1003,QC Lab,Shelf Sample 4,Bin Sample 4,2024-02-04,2024-02-04,2024-02-04,false,2024-02-04
+1004,Warehouse,Shelf Sample 5,Bin Sample 5,2024-02-05,2024-02-05,2024-02-05,true,2024-02-05

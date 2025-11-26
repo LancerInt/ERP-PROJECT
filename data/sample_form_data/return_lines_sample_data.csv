@@ -1,0 +1,6 @@
+batch,quantity_returned,uom,condition,viability_notes
+Batch Sample 1,100,Option 1,Resaleable,Sample notes for Viability Notes entry 1.
+Batch Sample 2,105,Option 2,Reformulate,Sample notes for Viability Notes entry 2.
+Batch Sample 3,110,Option 3,Scrap,Sample notes for Viability Notes entry 3.
+Batch Sample 4,115,Option 4,Resaleable,Sample notes for Viability Notes entry 4.
+Batch Sample 5,120,Option 1,Reformulate,Sample notes for Viability Notes entry 5.

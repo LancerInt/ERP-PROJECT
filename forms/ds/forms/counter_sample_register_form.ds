@@ -11,7 +11,7 @@ form counter_sample_register
 		width = medium
 	)
 
-	must have sample_id
+	sample_id
 	(
 		type = autonumber
 		displayname = "Sample ID"

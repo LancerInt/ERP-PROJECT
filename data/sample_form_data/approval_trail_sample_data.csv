@@ -1,0 +1,6 @@
+action,action_date,remarks
+Approved,2024-02-01 10:00:00,Sample notes for Remarks entry 1.
+Rejected,2024-02-02 10:10:00,Sample notes for Remarks entry 2.
+Partial,2024-02-03 10:20:00,Sample notes for Remarks entry 3.
+Approved,2024-02-04 10:30:00,Sample notes for Remarks entry 4.
+Rejected,2024-02-05 10:40:00,Sample notes for Remarks entry 5.

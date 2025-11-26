@@ -1,0 +1,6 @@
+record_id,date,check_in_time,check_out_time,entry_photo,exit_photo,geo_latitude,geo_longitude,face_match_confidence,device_id,attendance_status,overtime_hours,notes
+1000,2024-02-01,2024-02-01 10:00:00,2024-02-01 10:00:00,sample_entry_photo_1.pdf,sample_exit_photo_1.pdf,100,100,100,Device ID Sample 1,Present,100,Sample notes for Notes entry 1.
+1001,2024-02-02,2024-02-02 10:10:00,2024-02-02 10:10:00,sample_entry_photo_2.pdf,sample_exit_photo_2.pdf,105,105,105,Device ID Sample 2,Absent,105,Sample notes for Notes entry 2.
+1002,2024-02-03,2024-02-03 10:20:00,2024-02-03 10:20:00,sample_entry_photo_3.pdf,sample_exit_photo_3.pdf,110,110,110,Device ID Sample 3,Half Day,110,Sample notes for Notes entry 3.
+1003,2024-02-04,2024-02-04 10:30:00,2024-02-04 10:30:00,sample_entry_photo_4.pdf,sample_exit_photo_4.pdf,115,115,115,Device ID Sample 4,Permission,115,Sample notes for Notes entry 4.
+1004,2024-02-05,2024-02-05 10:40:00,2024-02-05 10:40:00,sample_entry_photo_5.pdf,sample_exit_photo_5.pdf,120,120,120,Device ID Sample 5,Present,120,Sample notes for Notes entry 5.

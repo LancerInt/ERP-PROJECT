@@ -11,7 +11,7 @@ form customer_po_upload
 		width = medium
 	)
 
-	must have upload_id
+	upload_id
 	(
 		type = autonumber
 		displayname = "Upload ID"

@@ -11,7 +11,7 @@ form sales_order
 		width = medium
 	)
 
-	must have so_no
+	so_no
 	(
 		type = autonumber
 		displayname = "SO No."

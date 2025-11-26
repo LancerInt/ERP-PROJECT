@@ -1,0 +1,6 @@
+log_id,device_id,event_time,event_type,status,error_message
+1000,Device ID Sample 1,2024-02-01 10:00:00,Capture,Success,Sample notes for Error Message entry 1.
+1001,Device ID Sample 2,2024-02-02 10:10:00,Sync,Failed,Sample notes for Error Message entry 2.
+1002,Device ID Sample 3,2024-02-03 10:20:00,Capture,Success,Sample notes for Error Message entry 3.
+1003,Device ID Sample 4,2024-02-04 10:30:00,Sync,Failed,Sample notes for Error Message entry 4.
+1004,Device ID Sample 5,2024-02-05 10:40:00,Capture,Success,Sample notes for Error Message entry 5.

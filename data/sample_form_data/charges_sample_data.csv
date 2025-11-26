@@ -1,0 +1,6 @@
+charge_type,amount,tds,payable_by
+Job Work,1000.00,100,Company
+Freight,1150.00,105,Vendor
+Loading,1300.00,110,Company
+Unloading,1450.00,115,Vendor
+Job Work,1600.00,120,Company

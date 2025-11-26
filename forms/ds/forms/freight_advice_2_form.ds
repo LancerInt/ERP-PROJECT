@@ -11,7 +11,7 @@ form freight_advice_2
 		width = medium
 	)
 
-	must have advice_no
+	advice_no
 	(
 		type = autonumber
 		displayname = "Advice No."
