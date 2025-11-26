@@ -5,27 +5,44 @@ This document provides module-specific process flowcharts derived from the maste
 ## Purchase Module
 ```mermaid
 flowchart TD
-    PR[Purchase Request\nWarehouse Coordinator / Manager] --> APPR{HO Purchase Approval?}
-    APPR -->|Approve| RFQ[RFQ Creation\nPurchase Coordinator]
-    APPR -->|Reject| PRClose[Request Closed]
-    RFQ --> QuoteLoop{RFQ Required?}
-    QuoteLoop -->|Yes| QColl[Collect Vendor Quotes]
-    QuoteLoop -->|No| SkipNote[Skip RFQ Approval\nPurchase Manager]
-    QColl --> Eval[Quote Evaluation & Justification]
-    SkipNote --> Eval
-    Eval --> PMApprove{Purchase Manager Approves?}
-    PMApprove -->|Approved| PO[Purchase Order Issued]
-    PMApprove -->|Revision Needed| Revise[Revise Specs / Reopen RFQ]
-    PMApprove -->|Rejected| PRClose
-    PO --> ETA[Update Anticipated Arrival]
-    ETA --> RA[Receipt Advice\nWarehouse Coordinator]
-    RA --> QCCheck{QC Required?}
-    QCCheck -->|Pass| StockIn[Inventory Update]
-    QCCheck -->|Fail| NCR[Notify HO & Credit Note]
-    RA --> FreightAdvice[Freight Advice Draft\nFreight Coordinator]
-    FreightAdvice --> FreightApproval[Finance Manager Approval]
-    StockIn --> PayAdvice[Vendor Payment Advice\nFinance Manager]
-    PayAdvice --> Recon[Bank Reconciliation]
+    subgraph Intake[Request & RFQ]
+        PR[PR raised\n(Warehouse Coord/Manager)] --> APRV{Approve / Partial Approve?\n(Purchase Coord/Manager)}
+        APRV -->|Reject| PRReject[Notify requester & close PR]
+        APRV -->|Approve lines| RFQGen[Auto-create RFQ draft with shortlisted vendors]\n:::auto
+        APRV -->|Partial| PRPartial[Store approved qty per line + justification]
+        RFQGen --> RFQSend[Send RFQ to vendors / allow bypass per line]
+        RFQSend --> Quotes[Vendor quotes captured per PR line]
+    end
+
+    subgraph Evaluation[Evaluation & PO]
+        Quotes --> Eval[Quote evaluation & audit log]
+        Eval --> PMDecision{Purchase Manager decision?}
+        PMDecision -->|Approve| POCreation[Auto-create PO + rev tracking]\n:::auto
+        PMDecision -->|Revision Needed| Reopen[Reopen RFQ / adjust specs]
+        PMDecision -->|Reject| ClosePR[Close PR]
+    end
+
+    subgraph Fulfilment[Receipt, QC & Freight]
+        POCreation --> ETA[Update expected arrival dates]
+        ETA --> InvoiceScan[Scan vendor invoice]
+        InvoiceScan --> RA[Auto-create Receipt Advice (multi-PO) + lines]\n:::auto
+        RA --> QCReq{QC required by product?}
+        QCReq -->|Yes| QCAuto[Auto-create QC request with template]\n:::auto
+        QCReq -->|No| SkipQC[Bypass QC]
+        RA --> FreightDraft[Auto-draft inbound freight & wage schedules]\n:::auto
+    end
+
+    subgraph Settlement[Payments]
+        QCAuto --> QCOutcome{QC result}
+        SkipQC --> QCOutcome
+        QCOutcome -->|Pass| PayDraft[Auto-create vendor payment advice after credit terms]\n:::auto
+        QCOutcome -->|Fail| CreditNote[Notify stakeholders & draft credit note]\n:::auto
+        FreightDraft --> FreightApproval[Finance Manager approval]
+        PayDraft --> BankRecon[Bank upload auto-match]\n:::auto
+        FreightApproval --> BankRecon
+    end
+
+    classDef auto fill:#e0f7ff,stroke:#00a6fb,stroke-width:1px;
 ```
 
 ## Sales Module
