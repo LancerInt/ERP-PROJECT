@@ -211,6 +211,7 @@ form company
 	(
 		type = picklist
 		displayname = "Default Currency"
+		values = {"INR","USD","EUR","GBP","SGD","AED"}
 		maxchar = 100
 		row = 1
 		column = 1

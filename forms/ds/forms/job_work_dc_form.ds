@@ -11,7 +11,7 @@ form job_work_dc
 		width = medium
 	)
 
-	must have jw_dc_no
+	jw_dc_no
 	(
 		type = autonumber
 		displayname = "JW DC No."

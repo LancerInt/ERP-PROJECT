@@ -11,7 +11,7 @@ form purchase_request
 		width = medium
 	)
 
-	must have pr_no
+	pr_no
 	(
 		type = autonumber
 		displayname = "PR No."

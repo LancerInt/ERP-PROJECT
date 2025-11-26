@@ -11,7 +11,7 @@ form audit_trail
 		width = medium
 	)
 
-	must have audit_id
+	audit_id
 	(
 		type = autonumber
 		displayname = "Audit ID"

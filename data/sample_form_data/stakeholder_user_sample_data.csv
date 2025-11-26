@@ -1,0 +1,6 @@
+portal_user_id,primary_email,mobile,status,last_accessed,notes
+Portal User ID Sample 1,contact1@example.com,+91-900000000,Active,2024-02-01 10:00:00,Sample notes for Notes entry 1.
+Portal User ID Sample 2,contact2@example.com,+91-900000001,Suspended,2024-02-02 10:10:00,Sample notes for Notes entry 2.
+Portal User ID Sample 3,contact3@example.com,+91-900000002,Active,2024-02-03 10:20:00,Sample notes for Notes entry 3.
+Portal User ID Sample 4,contact4@example.com,+91-900000003,Suspended,2024-02-04 10:30:00,Sample notes for Notes entry 4.
+Portal User ID Sample 5,contact5@example.com,+91-900000004,Active,2024-02-05 10:40:00,Sample notes for Notes entry 5.

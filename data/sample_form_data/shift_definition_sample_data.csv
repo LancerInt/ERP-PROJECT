@@ -1,0 +1,6 @@
+shift_code,shift_name,start_time,end_time,break_duration_mins,overtime_eligibility,attendance_calculation_rule,grace_period_minutes,approval_required
+Shift Code Sample 1,Shift Name Sample 1,10:00:00,10:00:00,100,true,8-hour,100,true
+Shift Code Sample 2,Shift Name Sample 2,10:10:00,10:10:00,105,false,Custom,105,false
+Shift Code Sample 3,Shift Name Sample 3,10:20:00,10:20:00,110,true,8-hour,110,true
+Shift Code Sample 4,Shift Name Sample 4,10:30:00,10:30:00,115,false,Custom,115,false
+Shift Code Sample 5,Shift Name Sample 5,10:40:00,10:40:00,120,true,8-hour,120,true

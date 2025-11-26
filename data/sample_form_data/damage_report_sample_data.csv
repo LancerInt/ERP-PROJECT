@@ -1,0 +1,6 @@
+stage,description,quantity_lost,uom,handling_action
+Mixing,Sample notes for Description entry 1.,100,Option 1,Scrap
+Packing,Sample notes for Description entry 2.,105,Option 2,Rework
+QC,Sample notes for Description entry 3.,110,Option 3,Scrap
+Mixing,Sample notes for Description entry 4.,115,Option 4,Rework
+Packing,Sample notes for Description entry 5.,120,Option 1,Scrap

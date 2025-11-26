@@ -11,7 +11,7 @@ form gst_reconciliation_report
 		width = medium
 	)
 
-	must have report_id
+	report_id
 	(
 		type = autonumber
 		displayname = "Report ID"

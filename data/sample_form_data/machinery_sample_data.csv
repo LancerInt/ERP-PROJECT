@@ -1,0 +1,6 @@
+machine_id,machine_name,category,commission_date,next_service_due,status,notes
+Machine ID Sample 1,Machine Name Sample 1,Capital Goods,2024-02-01,2024-02-01,Active,Sample notes for Notes entry 1.
+Machine ID Sample 2,Machine Name Sample 2,Machine Spares,2024-02-02,2024-02-02,Under Maintenance,Sample notes for Notes entry 2.
+Machine ID Sample 3,Machine Name Sample 3,Production Line,2024-02-03,2024-02-03,Retired,Sample notes for Notes entry 3.
+Machine ID Sample 4,Machine Name Sample 4,Capital Goods,2024-02-04,2024-02-04,Active,Sample notes for Notes entry 4.
+Machine ID Sample 5,Machine Name Sample 5,Machine Spares,2024-02-05,2024-02-05,Under Maintenance,Sample notes for Notes entry 5.

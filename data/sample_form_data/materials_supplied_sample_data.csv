@@ -1,0 +1,6 @@
+material_type,batch,quantity,uom
+RM,Batch Sample 1,100,Option 1
+PM,Batch Sample 2,105,Option 2
+Machine,Batch Sample 3,110,Option 3
+RM,Batch Sample 4,115,Option 4
+PM,Batch Sample 5,120,Option 1

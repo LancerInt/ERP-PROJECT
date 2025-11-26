@@ -1,0 +1,6 @@
+line_no,batch_no,expiry_date,quantity_received,uom,extra_commission,agent_commission,quantity_accepted,quantity_rejected,remarks
+100,Batch No. Sample 1,2024-02-01,100,Option 1,1000.00,1000.00,100,100,Sample notes for Remarks entry 1.
+105,Batch No. Sample 2,2024-02-02,105,Option 2,1150.00,1150.00,105,105,Sample notes for Remarks entry 2.
+110,Batch No. Sample 3,2024-02-03,110,Option 3,1300.00,1300.00,110,110,Sample notes for Remarks entry 3.
+115,Batch No. Sample 4,2024-02-04,115,Option 4,1450.00,1450.00,115,115,Sample notes for Remarks entry 4.
+120,Batch No. Sample 5,2024-02-05,120,Option 1,1600.00,1600.00,120,120,Sample notes for Remarks entry 5.

@@ -11,7 +11,7 @@ form vendor_payment_advice
 		width = medium
 	)
 
-	must have advice_no
+	advice_no
 	(
 		type = autonumber
 		displayname = "Advice No."

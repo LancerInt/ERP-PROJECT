@@ -1,0 +1,6 @@
+tax_type,section,rate,amount
+TDS,Section Sample 1,100,1000.00
+TCS,Section Sample 2,105,1150.00
+TDS,Section Sample 3,110,1300.00
+TCS,Section Sample 4,115,1450.00
+TDS,Section Sample 5,120,1600.00

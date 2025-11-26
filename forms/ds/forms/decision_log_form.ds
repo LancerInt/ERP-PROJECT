@@ -11,7 +11,7 @@ form decision_log
 		width = medium
 	)
 
-	must have decision_id
+	decision_id
 	(
 		type = autonumber
 		displayname = "Decision ID"
