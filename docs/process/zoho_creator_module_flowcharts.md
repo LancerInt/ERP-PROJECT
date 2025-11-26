@@ -8,7 +8,7 @@ flowchart TD
     subgraph Intake[Request & RFQ]
         PR[PR raised\n(Warehouse Coord/Manager)] --> APRV{Approve / Partial Approve?\n(Purchase Coord/Manager)}
         APRV -->|Reject| PRReject[Notify requester & close PR]
-        APRV -->|Approve lines| RFQGen[Auto-create RFQ draft with shortlisted vendors]\n:::auto
+        APRV -->|Approve lines| RFQGen[Auto-create RFQ draft with shortlisted vendors]:::auto
         APRV -->|Partial| PRPartial[Store approved qty per line + justification]
         RFQGen --> RFQSend[Send RFQ to vendors / allow bypass per line]
         RFQSend --> Quotes[Vendor quotes captured per PR line]
@@ -17,7 +17,7 @@ flowchart TD
     subgraph Evaluation[Evaluation & PO]
         Quotes --> Eval[Quote evaluation & audit log]
         Eval --> PMDecision{Purchase Manager decision?}
-        PMDecision -->|Approve| POCreation[Auto-create PO + rev tracking]\n:::auto
+        PMDecision -->|Approve| POCreation[Auto-create PO + rev tracking]:::auto
         PMDecision -->|Revision Needed| Reopen[Reopen RFQ / adjust specs]
         PMDecision -->|Reject| ClosePR[Close PR]
     end
@@ -25,20 +25,20 @@ flowchart TD
     subgraph Fulfilment[Receipt, QC & Freight]
         POCreation --> ETA[Update expected arrival dates]
         ETA --> InvoiceScan[Scan vendor invoice]
-        InvoiceScan --> RA[Auto-create Receipt Advice (multi-PO) + lines]\n:::auto
+        InvoiceScan --> RA[Auto-create Receipt Advice (multi-PO) + lines]:::auto
         RA --> QCReq{QC required by product?}
-        QCReq -->|Yes| QCAuto[Auto-create QC request with template]\n:::auto
+        QCReq -->|Yes| QCAuto[Auto-create QC request with template]:::auto
         QCReq -->|No| SkipQC[Bypass QC]
-        RA --> FreightDraft[Auto-draft inbound freight & wage schedules]\n:::auto
+        RA --> FreightDraft[Auto-draft inbound freight & wage schedules]:::auto
     end
 
     subgraph Settlement[Payments]
         QCAuto --> QCOutcome{QC result}
         SkipQC --> QCOutcome
-        QCOutcome -->|Pass| PayDraft[Auto-create vendor payment advice after credit terms]\n:::auto
-        QCOutcome -->|Fail| CreditNote[Notify stakeholders & draft credit note]\n:::auto
+        QCOutcome -->|Pass| PayDraft[Auto-create vendor payment advice after credit terms]:::auto
+        QCOutcome -->|Fail| CreditNote[Notify stakeholders & draft credit note]:::auto
         FreightDraft --> FreightApproval[Finance Manager approval]
-        PayDraft --> BankRecon[Bank upload auto-match]\n:::auto
+        PayDraft --> BankRecon[Bank upload auto-match]:::auto
         FreightApproval --> BankRecon
     end
 
