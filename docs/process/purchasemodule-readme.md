@@ -2,6 +2,53 @@
 
 This document summarizes how the Purchase module is designed to satisfy the provided business requirements, from request initiation through payment and freight handling.
 
+## Process Flowcharts
+```mermaid
+flowchart TD
+    A[Warehouse Coordinator/Manager creates PR] --> B{PR approval? (Purchase Coord/Manager)}
+    B -->|Reject| B1[Capture rejection reason & notify requester]
+    B -->|Partial approve| B2[Mark approved qty per line + note]
+    B -->|Approve| C[One-click Generate RFQ from approved lines]
+    C --> D[Pre-fill vendor shortlist, specs, photos]
+    D --> E[Send RFQ to vendors]
+    E --> F[Receive vendor quotes]
+    F --> G[Quote Evaluation page: auto-detect best price]
+    G --> H{Approve quote? (Purchase Manager)}
+    H -->|Approve best or justified non-best| I[Auto-create PO (link PR/RFQ, set Rev #)]
+    H -->|Reject| H1[Record justification]
+    I --> I1[Revision updates bump Rev #, keep change notes]
+```
+
+```mermaid
+flowchart TD
+    A[Products dispatched against PO] --> B[Invoice scanned at warehouse]
+    B --> C[Create Receipt Advice (can cover multiple POs)]
+    C --> D{Partial receipt?}
+    D -->|Yes| D1[Store received qty; keep balance open]
+    D -->|No| D2[Close PO lines]
+    C --> E[Capture freight terms (local & linehaul), loading/unloading wages, discounts]
+    C --> F[Route QC based on product setup]
+    F -->|Pass| G[Notify Finance; generate Payment Advice after vendor credit terms]
+    F -->|Fail| H[Notify Office/Purchase Mgmt; allow credit note]
+    E --> I[Freight Coordinator drafts Freight Payable Advice]
+    I --> J[Finance Manager approves freight payment]
+    G --> K[Finance records payment via bank statement match]
+```
+
+```mermaid
+flowchart TD
+    A[Warehouse visibility rules] --> B[Stakeholders see only their warehouse data]
+    B --> C[Views]
+    C --> C1[List of requests for warehouse]
+    C --> C2[Approved & pending receipt]
+    C --> C3[Received in last 30 days]
+    C --> C4[Rejected in last 30 days]
+    A --> D[Reports]
+    D --> D1[Pending/partial POs]
+    D --> D2[Age-wise payables by vendor]
+    D --> D3[GST variance (tax vs price)]
+```
+
 ## Core Flow Overview
 1. **Purchase Request (PR) initiation** – Warehouse Coordinator/Manager raises a PR for a warehouse. Visibility is restricted to stakeholders of that warehouse.
 2. **One-step PR approval** – Purchase Coordinator/Manager approves, partially approves, or rejects the PR. Partial approvals capture approved quantities per line and justification.
